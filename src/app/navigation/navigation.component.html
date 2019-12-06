@@ -2,23 +2,25 @@
   <mat-toolbar color="warn" style="background-color: #182A36;">
   <mat-toolbar-row>
 
-  <div class="col-lg-1">
+  <div class=" col-1 col-lg-1">
     <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="primary">
       <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
     </button>
   </div>
 
-  <div class="col-lg-1">
+  <div class="col-md-2 col-2 col-lg-1">
     <span>
-        <img src="./assets/images/nrg_logo.png" style="height: 75px;margin:-4px 0px 0px -70px;" [routerLink]="['/landingpage']"/>
+        <img src="./assets/images/nrg_logo.png" id="nrg-logo-paddding" [routerLink]="['/landingpage']"/>
     </span>
   </div>
 
-  <div class="col-lg-5">
+  <div class="col-md-5 col-4 col-lg-5">
     <input type="text" placeholder="&#xf002;   search here" class="searchicon"/>
   </div>
 
-  <div class="col-lg-5">
+  <div class="col-lg-2"></div>
+
+  <div class="col-md-5 col-4 col-lg-2">
       <div class="row">
         <div id="user-img1">
             <i class="fa fa-cog" aria-hidden="true" id="icon-color"></i>
@@ -29,7 +31,7 @@
        </div>
      </div>
 
-  <div class="col-lg-1">
+  <div class="col-1 col-lg-2">
       <div class="dropdown">
           <div class="dropbtn icons btn-right showLeft" (click)="showDropdown()">
               <div id="user-img"> 
@@ -61,7 +63,7 @@
     
     <mat-nav-list style="width: 250px">
       <ng-container *ngFor="let item of menuItems let i=index">
-          <mat-list-item>  
+          <mat-list-item  class="white-hover">  
          <a mat-list-item routerLink= {{item.pageName}} > {{item.name}}</a>
              <mat-icon mat-list-icon>
               

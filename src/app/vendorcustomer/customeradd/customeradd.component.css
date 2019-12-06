@@ -254,33 +254,265 @@ height: 130px;
 #vendor-style1{
   color: black;
 }
-@media (min-width: 768px) and (max-width: 810px) and (orientation: landscape) {}
+@media (min-width: 320px) and (max-width: 359px) {
+  #purchase-div{
+    background: white;
+    margin : 0px 15px 30px 10px;
+    height: 530px;
+    color: white;
+    width: 93%;
+    border-radius: 10px;
+    /* border: 1px solid black; */
+  }
+  .empdet-div{
+    background: white;
+    height: 640px;
+    width: 222%;
+    border-radius: 10px;
+  }
+  #print-butn{
+    border: 2px solid #ddd;
+    color: white;
+    height: 29px;
+    background-color: #6d6b65;
+    width: 120px;
+    text-align: center;
+    margin-left: 40px;
+  }
+}
+@media (min-width: 359px) and (max-width: 374px) {
+  #purchase-div{
+    background: white;
+    margin : 0px 15px 30px 10px;
+    height: 530px;
+    color: white;
+    width: 93%;
+    border-radius: 10px;
+    /* border: 1px solid black; */
+  }
+  .empdet-div{
+    background: white;
+    height: 530px;
+    width: 222%;
+    border-radius: 10px;
+  }
+  #print-butn{
+    border: 2px solid #ddd;
+    color: white;
+    height: 29px;
+    background-color: #6d6b65;
+    width: 120px;
+    text-align: center;
+    margin-left: 40px;
+  }
+}
+@media (min-width: 375px) and (max-width: 409px) {
+  #purchase-div{
+    background: white;
+    margin : 0px 15px 30px 10px;
+    height: 530px;
+    color: white;
+    width: 93%;
+    border-radius: 10px;
+    /* border: 1px solid black; */
+  }
+  .empdet-div{
+    background: white;
+    height: 530px;
+    width: 222%;
+    border-radius: 10px;
+  }
+  #print-butn{
+    border: 2px solid #ddd;
+    color: white;
+    height: 29px;
+    background-color: #6d6b65;
+    width: 120px;
+    text-align: center;
+    margin-left: 40px;
+  }
+}
+@media (min-width: 410px) and (max-width: 470px) {
+  #purchase-div{
+    background: white;
+    margin : 0px 15px 30px 10px;
+    height: 530px;
+    color: white;
+    width: 93%;
+    border-radius: 10px;
+    /* border: 1px solid black; */
+  }
+  .empdet-div{
+    background: white;
+    height: 530px;
+    width: 222%;
+    border-radius: 10px;
+  }
+  #print-butn{
+    border: 2px solid #ddd;
+    color: white;
+    height: 29px;
+    background-color: #6d6b65;
+    width: 120px;
+    text-align: center;
+    margin-left: 40px;
+  }
+}
+@media (min-width: 471px) and (max-width: 530px) {
+  #purchase-div{
+    background: white;
+    margin : 0px 15px 30px 10px;
+    height: 530px;
+    color: white;
+    width: 93%;
+    border-radius: 10px;
+    /* border: 1px solid black; */
+  }
+  .empdet-div{
+    background: white;
+    height: 530px;
+    width: 222%;
+    border-radius: 10px;
+  }
+  #print-butn{
+    border: 2px solid #ddd;
+    color: white;
+    height: 29px;
+    background-color: #6d6b65;
+    width: 120px;
+    text-align: center;
+    margin-left: 40px;
+  }
+}
+@media (min-width: 531px) and (max-width: 539px) {
+  #purchase-div{
+    background: white;
+    margin : 0px 15px 30px 10px;
+    height: 530px;
+    color: white;
+    width: 93%;
+    border-radius: 10px;
+    /* border: 1px solid black; */
+  }
+  .empdet-div{
+    background: white;
+    height: 530px;
+    width: 222%;
+    border-radius: 10px;
+  }
+  #print-butn{
+    border: 2px solid #ddd;
+    color: white;
+    height: 29px;
+    background-color: #6d6b65;
+    width: 120px;
+    text-align: center;
+    margin-left: 40px;
+  }
+}
+@media (min-width: 540px) and (max-width: 600px) {
+  #purchase-div{
+    background: white;
+    margin : 0px 15px 30px 10px;
+    height: 530px;
+    color: white;
+    width: 93%;
+    border-radius: 10px;
+    /* border: 1px solid black; */
+  }
+  .empdet-div{
+    background: white;
+    height: 530px;
+    width: 222%;
+    border-radius: 10px;
+  }
+  #print-butn{
+    border: 2px solid #ddd;
+    color: white;
+    height: 29px;
+    background-color: #6d6b65;
+    width: 120px;
+    text-align: center;
+  }
+}
+@media (min-width: 601px) and (max-width: 767px) {
+  #purchase-div{
+    background: white;
+    margin : 0px 15px 30px 10px;
+    height: 530px;
+    color: white;
+    width: 93%;
+    border-radius: 10px;
+    /* border: 1px solid black; */
+  }
+  .empdet-div{
+    background: white;
+    height: 530px;
+    width: 222%;
+    border-radius: 10px;
+  }
+  #print-butn{
+    border: 2px solid #ddd;
+    color: white;
+    height: 29px;
+    background-color: #6d6b65;
+    width: 120px;
+    text-align: center;
+  }
+}
+@media (min-width: 768px) and (max-width: 810px) and (orientation: landscape) {
+  #purchase-div{
+    background: white;
+    margin : 0px 15px 30px 10px;
+    height: 530px;
+    color: white;
+    width: 107%;
+    border-radius: 10px;
+    /* border: 1px solid black; */
+  }
+  .empdet-div{
+    background: white;
+    height: 530px;
+    width: 97%;
+    border-radius: 10px;
+  } 
+  #print-butn{
+    border: 2px solid #ddd;
+    color: white;
+    height: 29px;
+    background-color: #6d6b65;
+    width: 120px;
+    text-align: center;
+    margin-left: 40px;
+  }
+}
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
   #purchase-div{
     background: white;
-    margin : 0px 15px 30px 95px;
+    margin : 0px 15px 30px 16px;
     height: 530px;
     color: white;
     width: 100%;
     border-radius: 10px;
     /* border: 1px solid black; */
   }
-  #vendor-style{
+  #customer-style{
     border-bottom: 2px solid #007bff;
     color: #1664a7;
     font-weight: bold;
-    margin-left: 20px;
   }
   .empdet-div{
     background: white;
     height: 530px;
     border-radius: 10px;
-    margin-left: 60px;
   }
   #vendor-style1{
     color: black;
-    margin-left: 65px;
   }  
+  #img-detaildiv{
+    width: 150px;
+    height: 130px;
+    }
 }
 
 @media (min-width: 1025px) and (max-width: 1280px){
@@ -293,11 +525,10 @@ height: 130px;
     border-radius: 10px;
     /* border: 1px solid black; */
   }
-  #vendor-style{
+  #customer-style{
     border-bottom: 2px solid #007bff;
     color: #1664a7;
     font-weight: bold;
-    margin-left: 20px;
   }
   .empdet-div{
     background: white;
@@ -311,3 +542,8 @@ height: 130px;
   }  
 
 }
+@media (min-width: 1281px) and (max-width: 1380px) {}
+@media (min-width: 1381px) and (max-width:2051px) {}
+@media (min-width:2052px) and (max-width:2732px){}
+@media (min-width:2733px) and (max-width:4102px){}
+@media (min-width:4103px) and (max-width:5464px){}
