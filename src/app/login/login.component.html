@@ -1,0 +1,46 @@
+<!--<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+-->
+
+<div id="fixed-header">
+    <div class="fixed-nav-bar">
+            
+      <nav class="navbar navbar-inverse" id="back-colorforheader">
+        <img src="./assets/images/nrg_logo.png"  id="logo-img"/>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                      
+            </div>
+        </nav>
+    </div>
+</div>
+<div id="black-color">
+  
+  <form class="modal-content animate" name="form" (ngSubmit)="f.form.valid && onClickSubmit()" #f="ngForm" novalidate>
+      <alert></alert>
+    <div class="container">
+        <h2>Employment Sign In</h2>
+
+      <label for="uname"><b>Username</b></label>
+
+      <input type="text"  class="form-control" placeholder="Username/Email"  
+      name="currentusername" [(ngModel)]="model.currentusername" 
+      #currentusername="ngModel" required/>
+      <div *ngIf="f.submitted && !currentusername.valid" class="help-block">Username is required</div>
+
+      <label for="psw"><b>Password</b></label>
+      <input class="text-xs-center" type="{{passwordtype}}" placeholder="Password"  id="typebox-with" name="currentpassword" [(ngModel)]="model.currentpassword"  #currentpassword="ngModel"
+      required> 
+
+      <div *ngIf="f.submitted && !currentpassword.valid" class="help-block">Password is required</div>        
+      <button type="submit" id="project-backcolor">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+

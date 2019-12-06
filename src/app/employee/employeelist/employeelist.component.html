@@ -1,0 +1,358 @@
+<div class="employee-content">
+        <div class="tab">
+            <a class="tablink" routerLink="../employeeadd" >Employee Add</a>
+            <a class="tablink" style="border-bottom: 3px solid #007bff;color: #1664a7;" id="defaultOpen">Employee List</a>
+            <a class="tablink" routerLink="../employeereport" id="defaultOpen" style="width: auto;">Employee Report</a>
+        </div>
+        
+        <div id="purchase-div"> 
+            <br/><br/><br/><br/>
+            <div class="row">
+                    <h2 id="vendor-text">Employee List</h2>
+                <div>
+                    <button id="print-butn">
+                        <i class="fa fa-print" aria-hidden="true" id="icon-mod"></i>
+                        <label id="text">Print Page</label>
+                    </button>
+
+                    <input type="text" placeholder="&#xf002;   search here" class="searchicon"/>
+
+                </div>
+            
+            </div>
+            <div class="row">              
+                <br/>
+                <table id="table-size">
+                    <thead>
+                        <tr id="tr-color">
+                            <td id="text-color">Employee Code</td>
+                            <td id="text-color">Name</td>
+                            <td id="text-color">Rank</td>
+                            <td id="text-color">Contact Number</td>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr *ngFor="let list of employeeList" id="cursor-pointer" (click)="employeeDetails(list.empCode)" id="{{ list.empCode }}">
+                            <td>{{ list.empCode }}</td>
+                            <td>{{ list.name }}</td>
+                            <td>{{ list.rank }}</td>
+                            <td>{{ list.contactNumber }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+                        
+    <div class="col-lg-3">
+        <div class="details-div">
+            <div class="hr">
+
+                <!-- Employee View Start -->
+                <div *ngIf="empdetails" class="empdet-div">
+                    <br/>
+                    <h3>Employee View</h3>
+                    <hr>
+                    <div class="row" id="empbut">
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                        <!-- edit button -->
+                        <button class='btn btn-info m-r-10px update-product-button' id="empButton" (click)="edit()">
+                            <span class='glyphicon glyphicon-edit'></span> Edit
+                        </button> &nbsp;&nbsp;&nbsp;
+                        <!-- delete button -->
+                        <button class='btn btn-danger delete-product-button' id="empButton">
+                            <span class='glyphicon glyphicon-remove'></span> Delete
+                        </button> &nbsp;&nbsp;&nbsp;
+                        <button class='btn btn-primary m-r-10px read-one-product-button' id="empButton">
+                            <span class='glyphicon glyphicon-eye-open'></span> Absent
+                        </button> &nbsp;&nbsp;&nbsp; 
+                    </div><br/>
+                  <!--  <div class="row" id="country">
+                        <div class="col-md-6 col-xs-6 col-lg-7">Employee Photo</div>
+                    </div> -->
+                    <div class="row" id="country">
+                        <div class="col-md-12 col-xs-12 col-lg-12">
+                            <img src="./assets/images/employee.png" height="100px"  class="imagecenter" />
+                        </div>
+                    </div><br/>
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">Employee_Code</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.empCode }}</div>
+                    </div><br/>
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">Employee_Name</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.name }}</div>
+                    </div><br/>
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">Rank</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.rank }}</div>
+                    </div><br/>
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">Phone</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.contactNumber }}</div>
+                    </div><br/>	
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">Address</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.address }}</div>
+                    </div><br/>	
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">EmailID</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.emailID }}</div>
+                    </div><br/>	
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">Birth</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.dob }}</div>
+                    </div><br/>	
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">Join Since</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.joinDate }}</div>
+                    </div><br/>	
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">Contract Number</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.contractNumber }}</div>
+                    </div><br/>	
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">NPWP</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.npwpNumber }}</div>
+                    </div><br/>	
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">BPJS</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.bpjsNumber }}</div>
+                    </div><br/>	
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">Monthly_Salary</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.monthlySalary }}</div>
+                    </div><br/>	
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">Overtime_Salary</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.overtimeSalary }}</div>
+                    </div><br/>	
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">Work_Hour</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.workHour }}</div>
+                    </div><br/>	
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">Annual_Leave</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.annualLeave }}</div>
+                    </div><br/>	
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">Absent Dedection</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.absentDeduction }}</div>
+                    </div><br/>		
+                </div>
+                <!-- Employee View End -->
+
+                <!-- Employee Edit Start -->
+                <div *ngIf="empeditdetails" class="empdet-div">
+                    <br/>
+                    <h3>Edit Employee Details</h3>
+                    <hr>
+                   
+                    <form name="formReg" (ngSubmit)="empf.form.valid && setEmployeeUpdate()" #empf="ngForm" novalidate>
+                        <br/>
+                        <div class="row" id="empbut">
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                            <!-- Save button -->
+                            <button class='btn btn-info m-r-10px update-product-button' id="empButton">
+                                <span class='fa fa-floppy-o'></span> Save
+                            </button> &nbsp;&nbsp;&nbsp;
+                            <!-- delete button -->
+                            <button class='btn btn-danger delete-product-button' id="empButton" (click)="cancelEdit()">
+                                <span class='glyphicon glyphicon-remove'></span> Cancel
+                            </button>  &nbsp;&nbsp;&nbsp;
+                        </div><br/>
+                        
+                        <div class="row" id="country">
+                            <div class="col-md-6 col-xs-6 col-lg-7">Employee Photo</div>
+                        </div>
+                        <div class="row" id="country">
+                            <div class="col-md-12 col-xs-12 col-lg-12">
+                                <img src="./assets/images/employee.png" class="imagecenter" />
+                            </div>
+                        </div><br/>
+                        <div class="row" id="country">
+                            <div class="form-group" [ngClass]="{'has-error':empf.submitted && !empCode.valid}">
+                                <div class="col-md-5 col-xs-5 col-lg-5">Employee_Code</div>
+                                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                <div class="col-md-6 col-xs-6 col-lg-5">
+                                    <input type="text" class="form-control" name="empCode" value="{{ this.model.empCode }}" [(ngModel)]="this.model.empCode" #empCode="ngModel" required  />
+                                </div>       
+                                <div *ngIf="empf.submitted && !empCode.valid" class="help-block"> Code is required.</div>
+                            </div>
+                        </div>
+                        <div class="row" id="country">
+                            <div class="form-group" [ngClass]="{'has-error':empf.submitted && !name.valid}">
+                                <div class="col-md-5 col-xs-5 col-lg-5">Employee_Name</div>
+                                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                <div class="col-md-6 col-xs-6 col-lg-5">
+                                    <input type="text" class="form-control" name="name" value="{{ this.model.name }}" [(ngModel)]="this.model.name" #name="ngModel" required  />
+                                </div>       
+                                <div *ngIf="empf.submitted && !name.valid" class="help-block"> Name is required.</div>
+                            </div>
+                        </div>
+                        <div class="row" id="country">
+                            <div class="form-group" [ngClass]="{'has-error':empf.submitted && !rank.valid}">
+                                <div class="col-md-5 col-xs-5 col-lg-5">Employee_Rank</div>
+                                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                <div class="col-md-6 col-xs-6 col-lg-5">
+                                    <input type="text" class="form-control" name="rank" value="{{ this.model.rank }}" [(ngModel)]="this.model.rank" #rank="ngModel" required  />
+                                </div>       
+                                <div *ngIf="empf.submitted && !rank.valid" class="help-block"> Rank is required.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="row" id="country">
+                            <div class="form-group" [ngClass]="{'has-error':empf.submitted && !contactNumber.valid}">
+                                <div class="col-md-5 col-xs-5 col-lg-5">Employee_Phone</div>
+                                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                <div class="col-md-6 col-xs-6 col-lg-5">
+                                    <input type="text" class="form-control" name="contactNumber" value="{{ this.model.contactNumber }}" [(ngModel)]="this.model.contactNumber" #contactNumber="ngModel" required  />
+                                </div>       
+                                <div *ngIf="empf.submitted && !contactNumber.valid" class="help-block"> Phone is required.</div>
+                            </div>
+                        </div>
+                        <div class="row" id="country">
+                            <div class="form-group" [ngClass]="{'has-error':empf.submitted && !address.valid}">
+                                <div class="col-md-5 col-xs-5 col-lg-5">Employee_Address</div>
+                                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                <div class="col-md-6 col-xs-6 col-lg-5">
+                                    <input type="text" class="form-control" name="address" value="{{ this.model.address }}" [(ngModel)]="this.model.address" #address="ngModel" required  />
+                                </div>       
+                                <div *ngIf="empf.submitted && !address.valid" class="help-block"> Address is required.</div>
+                            </div>
+                        </div>
+                        <div class="row" id="country">
+                            <div class="form-group" [ngClass]="{'has-error':empf.submitted && !emailID.valid}">
+                                <div class="col-md-5 col-xs-5 col-lg-5">Employee_EmailID</div>
+                                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                <div class="col-md-6 col-xs-6 col-lg-5">
+                                    <input type="text" class="form-control" name="emailID" value="{{ this.model.emailID }}" [(ngModel)]="this.model.emailID" #emailID="ngModel" required  />
+                                </div>       
+                                <div *ngIf="empf.submitted && !emailID.valid" class="help-block"> EmailID is required.</div>
+                            </div>
+                        </div>
+                        <div class="row" id="country">
+                            <div class="form-group" [ngClass]="{'has-error':empf.submitted && !dob.valid}">
+                                <div class="col-md-5 col-xs-5 col-lg-5">Employee_Birth</div>
+                                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                <div class="col-md-6 col-xs-6 col-lg-5">
+                                    <input type="text" class="form-control" name="dob" value="{{ this.model.dob }}" [(ngModel)]="this.model.dob" #dob="ngModel" required  />
+                                </div>       
+                                <div *ngIf="empf.submitted && !dob.valid" class="help-block"> Birth is required.</div>
+                            </div>
+                        </div>
+                        <div class="row" id="country">
+                            <div class="form-group" [ngClass]="{'has-error':empf.submitted && !joinDate.valid}">
+                                <div class="col-md-5 col-xs-5 col-lg-5"> Employee_Join</div>
+                                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                <div class="col-md-6 col-xs-6 col-lg-5">
+                                    <input type="text" class="form-control" name="joinDate" value="{{ this.model.joinDate }}" [(ngModel)]="this.model.joinDate" #joinDate="ngModel" required  />
+                                </div>       
+                                <div *ngIf="empf.submitted && !joinDate.valid" class="help-block"> Join Since is required.</div>
+                            </div>
+                        </div>
+                        <div class="row" id="country">
+                            <div class="form-group" [ngClass]="{'has-error':empf.submitted && !contractNumber.valid}">
+                                <div class="col-md-5 col-xs-5 col-lg-5">Contract Number</div>
+                                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                <div class="col-md-6 col-xs-6 col-lg-5">
+                                    <input type="text" class="form-control" name="contractNumber" value="{{ this.model.contractNumber }}" [(ngModel)]="this.model.contractNumber" #contractNumber="ngModel" required  />
+                                </div>       
+                                <div *ngIf="empf.submitted && !contractNumber.valid" class="help-block" id="helpblock"> Contract Number is required.</div>
+                            </div>
+                        </div>
+                        <div class="row" id="country">
+                            <div class="form-group" [ngClass]="{'has-error':empf.submitted && !npwpNumber.valid}">
+                                <div class="col-md-5 col-xs-5 col-lg-5">Employee_NPWP</div>
+                                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                <div class="col-md-6 col-xs-6 col-lg-5">
+                                    <input type="text" class="form-control" name="npwpNumber" value="{{ this.model.npwpNumber }}" [(ngModel)]="this.model.npwpNumber" #npwpNumber="ngModel" required  />
+                                </div>       
+                                <div *ngIf="empf.submitted && !npwpNumber.valid" class="help-block"> NPWP is required.</div>
+                            </div>
+                        </div>
+                        <div class="row" id="country">
+                            <div class="form-group" [ngClass]="{'has-error':empf.submitted && !bpjsNumber.valid}">
+                                <div class="col-md-5 col-xs-5 col-lg-5">Employee_BPJS</div>
+                                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                <div class="col-md-6 col-xs-6 col-lg-5">
+                                    <input type="text" class="form-control" name="bpjsNumber" value="{{ this.model.bpjsNumber }}" [(ngModel)]="this.model.bpjsNumber" #bpjsNumber="ngModel" required  />
+                                </div>       
+                                <div *ngIf="empf.submitted && !bpjsNumber.valid" class="help-block"> BPJS is required.</div>
+                            </div>
+                        </div>
+                        <div class="row" id="country">
+                            <div class="form-group" [ngClass]="{'has-error':empf.submitted && !monthlySalary.valid}">
+                                <div class="col-md-5 col-xs-5 col-lg-5">Monthly_Salary</div>
+                                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                <div class="col-md-6 col-xs-6 col-lg-5">
+                                    <input type="text" class="form-control" name="monthlySalary" value="{{ this.model.monthlySalary }}" [(ngModel)]="this.model.monthlySalary" #monthlySalary="ngModel" required  />
+                                </div>       
+                                <div *ngIf="empf.submitted && !monthlySalary.valid" class="help-block"> Monthly_Salary is required.</div>
+                            </div>
+                        </div>
+                        <div class="row" id="country">
+                            <div class="form-group" [ngClass]="{'has-error':empf.submitted && !overtimeSalary.valid}">
+                                <div class="col-md-5 col-xs-5 col-lg-5">Overtime_Salary</div>
+                                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                <div class="col-md-6 col-xs-6 col-lg-5">
+                                    <input type="text" class="form-control" name="overtimeSalary" value="{{ this.model.overtimeSalary }}" [(ngModel)]="this.model.overtimeSalary" #overtimeSalary="ngModel" required  />
+                                </div>       
+                                <div *ngIf="empf.submitted && !overtimeSalary.valid" class="help-block"> Overtime_Salary is required.</div>
+                            </div>
+                        </div>
+                        <div class="row" id="country">
+                            <div class="form-group" [ngClass]="{'has-error':empf.submitted && !workHour.valid}">
+                                <div class="col-md-5 col-xs-5 col-lg-5">Emp_Work Hour</div>
+                                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                <div class="col-md-6 col-xs-6 col-lg-5">
+                                    <input type="text" class="form-control" name="workHour" value="{{ this.model.workHour }}" [(ngModel)]="this.model.workHour" #workHour="ngModel" required  />
+                                </div>       
+                                <div *ngIf="empf.submitted && !workHour.valid" class="help-block" id="helpblock"> Work_Hour is required.</div>
+                            </div>
+                        </div>	
+                        <div class="row" id="country">
+                            <div class="form-group" [ngClass]="{'has-error':empf.submitted && !annualLeave.valid}">
+                                <div class="col-md-5 col-xs-5 col-lg-5">Annual_Leave</div>
+                                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                <div class="col-md-6 col-xs-6 col-lg-5">
+                                    <input type="text" class="form-control" name="annualLeave" value="{{ this.model.annualLeave }}" [(ngModel)]="this.model.annualLeave" #annualLeave="ngModel" required  />
+                                </div>       
+                                <div *ngIf="empf.submitted && !annualLeave.valid" class="help-block"> Annual_Leave is required.</div>
+                            </div>
+                        </div>	
+                        <div class="row" id="country">
+                            <div class="form-group" [ngClass]="{'has-error':empf.submitted && !absentDeduction.valid}">
+                                <div class="col-md-5 col-xs-5 col-lg-5">Absent Dedection</div>
+                                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                <div class="col-md-6 col-xs-6 col-lg-5">
+                                    <input type="text" class="form-control" name="absentDeduction" value="{{ this.model.absentDeduction }}" [(ngModel)]="this.model.absentDeduction" #absentDeduction="ngModel" required  />
+                                </div>       
+                                <div *ngIf="empf.submitted && !absentDeduction.valid" class="help-block" id="helpblock"> Absent Dedection is required.</div>
+                            </div>
+                        </div>	
+                                                
+                    </form>   
+                </div>     
+                <!-- Employee Edit End -->
+
+            </div>
+        </div>
+    </div>
+</div>

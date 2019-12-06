@@ -1,0 +1,223 @@
+.mat-tab-group {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+.mat-tab-label {
+    cursor: pointer;
+}
+
+.tab{
+    margin-left: 44px;
+}
+a:hover {
+    background-color: #F3F3F3;
+}
+.tablink {
+    color: black;
+    float: left;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    cursor: pointer;
+    padding: 14px 14px;
+    font-size: 17px;
+    text-align: center;
+    width: 25%;
+    height: 10%;
+}
+
+.tablink.active {
+    border-bottom: 3px solid #007bff;
+}
+
+#purchase-div{
+    background: white;
+    margin : 0px 15px 30px 20px;
+    height: 630px;
+    color: white;
+    width: 100%;
+    border-radius: 10px;
+    /* border: 1px solid black; */
+}
+
+a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 12px 12px;
+    text-decoration: none;
+}
+
+
+#print-butn{
+    border: 2px solid black;
+    color: white;
+    height: 29px;
+    width: 110px;
+    margin-top: 7px;
+    font-size: 15px;
+    background: green;
+}
+.searchicon{
+    font-family: fontawesome;
+    font-size: 18px;
+    color: black;
+    background: blanchedalmond;
+    width: 99%;
+    height: 40px;
+    border-radius: 25px;
+}
+#text{
+    color: black;
+    margin-left: 6px;
+}
+#vendor-text{
+    color: black;
+    margin-left: 20px;
+}
+#select-box-style{
+    width: 125px;
+    height: 26px;
+    background-color: transparent;
+    padding: 0px;
+    cursor: pointer;
+}
+table{
+    width: 100%;
+}
+table  th,td{
+    border-collapse: collapse;
+    border: 1px solid #DDD;
+    color: black;
+    text-align: center;
+    height: 35px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+thead {
+    display: table;
+    width: calc(100% - 17px); 
+}
+
+tbody {
+    display: block; 
+    max-height: 370px;
+    overflow-y: scroll; 
+}
+  
+th, td {
+    width: 22.33%;
+    padding: 5px;
+    word-break: break-all; 
+}
+  
+tr {
+    display: table; 
+    width: 100%;
+    box-sizing: border-box; 
+}
+
+#tr-color{
+    background-color: #243C48;
+}
+
+#table-size{
+    height: 40%;
+    width: 97%;
+    margin: 10px 25px;
+}
+#icon-mod{
+    color: black;
+    font-size: 18px;
+    margin-left: 3px;
+}
+#cursor-pointer{
+    cursor: pointer;
+    overflow-y: auto;
+}
+#text-color{
+    color: white;
+    width: 50px;
+    height: 35px;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px 0px;
+}
+
+.details-div{
+    border-left: 2px solid #DDD;
+    height: 550px;
+}
+.hr{
+    margin-left: 15px;
+}
+.empdet-div{
+    background: white;
+    border-radius: 10px;
+    height: 630px;
+    overflow-y: scroll;
+    
+}
+
+#country{
+    font-size: 14px;
+    margin: 4px;
+}
+h3{
+    text-align: center;
+}
+
+@media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
+    #purchase-div{
+      background: white;
+      margin : 0px 15px 30px 95px;
+      height: 630px;
+      color: white;
+      width: 100%;
+      border-radius: 10px;
+      /* border: 1px solid black; */
+    }
+    .empdet-div{
+      background: white;
+      height: 630px;
+      border-radius: 10px;
+      margin-left: 60px;
+    }
+    #image-size{
+      width: 130;
+      margin-left: 0px;
+    }
+    #empbut{
+        margin: -8px; 
+    }
+}
+@media (min-width: 1025px) and (max-width: 1280px){
+    #purchase-div{
+      background: white;
+      margin : 0px 15px 30px 45px;
+      height: 630px;
+      color: white;
+      width: 100%;
+      border-radius: 10px;
+      /* border: 1px solid black; */
+    }
+    .empdet-div{
+      background: white;
+      height: 630px;
+      border-radius: 10px;
+      margin-left: 15px;
+    }
+    #empbut{
+        margin: -8px; 
+    }
+}
+
+@media (min-width: 320px) and (max-width: 809px) {
+    #empbut{
+        font-size: 14px;
+        margin: 4px;
+    } 
+}
