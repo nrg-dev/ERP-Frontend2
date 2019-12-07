@@ -21,9 +21,14 @@
 }
 
 #black-color{
-  background-color: #33495c;
   height: auto;
   margin-top: 170px;
+
+   /* Full height    height: 100%;
+*/
+
+   /* Center and scale the image nicely */
+  
 }
 
 #fixed-heder{
@@ -155,7 +160,7 @@ span.psw {
 
 @media (min-width: 320px) and (max-width: 359px) {
   #black-color{
-    background-color: #33495c;
+    /*background-color: #33495c;*/
     height: auto;
     width: 708px;
     margin-top: 125px;
@@ -164,7 +169,7 @@ span.psw {
 }
 @media (min-width: 359px) and (max-width: 374px) {
   #black-color{
-    background-color: #33495c;
+    /*background-color: #33495c;*/
     height: auto;
     width: 800px;
     margin-top: 130px;
@@ -173,7 +178,7 @@ span.psw {
 }
 @media (min-width: 375px) and (max-width: 409px) {
   #black-color{
-    background-color: #33495c;
+    /*background-color: #33495c;*/
     height: auto;
     width: 845px;
     margin-top: 135px;
@@ -191,7 +196,7 @@ span.psw {
 }
 @media (min-width: 471px) and (max-width: 530px) {
   #black-color{
-    background-color: #33495c;
+    /*background-color: #33495c;*/
     height: auto;
     width: 960px;
     margin-top: 170px;
@@ -200,7 +205,7 @@ span.psw {
 }
 @media (min-width: 531px) and (max-width: 539px) {
   #black-color{
-    background-color: #33495c;
+    /*background-color: #33495c;*/
     height: auto;
     width: 945px;
     margin-top: 170px;
@@ -209,7 +214,7 @@ span.psw {
 }
 @media (min-width: 540px) and (max-width: 600px) {
   #black-color{
-    background-color: #33495c;
+    /*background-color: #33495c;*/
     height: auto;
     width: 1025px;
     margin-top: 170px;
@@ -218,7 +223,7 @@ span.psw {
 }
 @media (min-width: 601px) and (max-width: 767px) {
   #black-color{
-    background-color: #33495c;
+    /*background-color: #33495c;*/
     height: auto;
     width: 1010px;
     margin-top: 170px;
@@ -227,7 +232,7 @@ span.psw {
 }
 @media (min-width: 768px) and (max-width: 810px) and (orientation: landscape) {
   #black-color{
-    background-color: #33495c;
+    /*background-color: #33495c;*/
     height: auto;
     width: 1010px;
     margin-top: 170px;
@@ -236,14 +241,14 @@ span.psw {
 }
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
   #black-color{
-    background-color: #33495c;
+    /*background-color: #33495c;*/
     height: auto;
     margin-top: 170px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px){
   #black-color{
-    background-color: #33495c;
+    /*background-color: #33495c;*/
     height: auto;
     margin-top: 170px;
   }
