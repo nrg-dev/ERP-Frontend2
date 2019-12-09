@@ -13,10 +13,12 @@
         <img src="./assets/images/nrg_logo.png" id="nrg-logo-paddding" [routerLink]="['/landingpage']"/>
     </span>
   </div>
-
   <div class="col-md-5 col-4 col-lg-5">
-    <input type="text" placeholder="&#xf002;   search here" class="searchicon"/>
-  </div>
+    <input type="text" [(ngModel)]="searchText" autocomplete="on" 
+    placeholder="&#xf002; search here" class="searchicon"/>
+        
+</div>
+
 
   <div class="col-lg-2"></div>
 

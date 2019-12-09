@@ -10,6 +10,13 @@ import { RouterModule, Routes, Router ,ActivatedRoute} from "@angular/router";
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
+ 
+  searchText:any;
+  heroes = [
+    { id: 11, name: 'CHanaka Nice', country: 'India' },
+    { id: 12, name: 'MNarco' , country: 'USA'},
+
+  ];
 menuItems: MenuItem[];
 menuItemsIcons:MenuItem[];
 @ViewChild('sidenav',{ read: true, static: false }) sidenav: MatSidenav;

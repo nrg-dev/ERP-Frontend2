@@ -27,7 +27,7 @@
       <div *ngIf="f.submitted && !currentusername.valid" class="help-block">Username is required</div>
 
       <label for="psw"><b>Password</b></label>
-      <input class="text-xs-center" type="{{passwordtype}}" placeholder="Password"  id="typebox-with" name="currentpassword" [(ngModel)]="model.currentpassword"  #currentpassword="ngModel"
+      <input class="form-control" type="{{passwordtype}}" placeholder="Password"  id="typebox-with" name="currentpassword" [(ngModel)]="model.currentpassword"  #currentpassword="ngModel"
       required> 
       <div class="row">
         <input type="checkbox" (click)="showPassword()" value="Show Password" style="margin: 6px;" />

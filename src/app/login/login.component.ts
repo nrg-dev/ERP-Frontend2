@@ -35,8 +35,9 @@ export class LoginComponent implements OnInit {
 
     if(this.model.currentusername!=="admin"){
      // this.alertService.info(message);
-      this.alertService.warn(message);
-     // this.alertService.error(message);
+     // this.alertService.warn(message);
+     // this.alertService.success(message);
+      this.alertService.error(message);
      // this.alertService.success(message);
 
     }
