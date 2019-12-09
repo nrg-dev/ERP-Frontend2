@@ -3,9 +3,15 @@
   <mat-toolbar-row>
 
   <div class=" col-1 col-lg-1">
-    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="primary" id="outline-none">
+  <!--  <button type="button" aria-label="Toggle sidenav" mat-icon-button 
+    (click)="drawer.toggle()" color="primary" id="outline-none">
       <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-    </button>
+    </button> -->
+
+    <button mat-icon-button color='primary' (click) ='sidenav.toggle()'class ='toogleSidenav'[ngClass]="showToggle">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+
   </div>
 
   <div class="col-md-2 col-2 col-lg-1">
@@ -61,12 +67,12 @@
 <br/><br/>
 
 <mat-sidenav-container class="example-container">
-  <mat-sidenav #drawer mode="side" opened role="navigation">
-    
+  <!-- <mat-sidenav #drawer mode="side" opened role="navigation"> -->
+    <mat-sidenav class="sidenav" #sidenav [mode]="mode" [opened]="openSidenav" >
     <mat-nav-list style="width: 250px">
       <ng-container *ngFor="let item of menuItems let i=index">
           <mat-list-item  class="white-hover">  
-         <a mat-list-item routerLink= {{item.pageName}} > {{item.name}}</a>
+         <a mat-list-item  routerLink= {{item.pageName}} > {{item.name}}</a>
              <mat-icon mat-list-icon>
               
                <img width="20" height="20" src={{menuItemsIcons[i].name}} />

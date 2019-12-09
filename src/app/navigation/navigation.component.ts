@@ -1,8 +1,9 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit,ViewChild,HostListener } from '@angular/core';
 import { MenuItem } from '../menuItem.model';
 import { SubMenuItem } from '../subMenuItem.model';
 import { MatSidenav } from '@angular/material/sidenav';
 import { RouterModule, Routes, Router ,ActivatedRoute} from "@angular/router";
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navigation',
@@ -21,6 +22,12 @@ menuItems: MenuItem[];
 menuItemsIcons:MenuItem[];
 @ViewChild('sidenav',{ read: true, static: false }) sidenav: MatSidenav;
 
+showToggle: string;
+  mode: string;
+  openSidenav:boolean;
+  private screenWidth$ = new BehaviorSubject<number>
+    (window.innerWidth);
+
   public menu1 = false;
   public notSelected=true;
   //private count=0;
@@ -34,14 +41,29 @@ menuItemsIcons:MenuItem[];
 
      });
   }
-
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.screenWidth$.next(event.target.innerWidth);
+  }
+  getScreenWidth(): Observable<number> {
+    return this.screenWidth$.asObservable();
+  }
 
   ngOnInit() {
-    //this.router.navigate(['/dashboard']);
-    /* var subItemsArray: SubMenuItem[] = [
-      new SubMenuItem("New","dashboard"),
-      new SubMenuItem("View","employeelist"),
-    ] */
+    this.getScreenWidth().subscribe(width => {
+      if (width < 640) {
+       this.showToggle = 'show';
+       this.mode = 'over';
+       this.openSidenav = false;
+     }
+     else if (width > 640) {
+       this.showToggle = 'hide';
+       this.mode = 'side';
+       this.openSidenav = true;
+     }
+   });
+
+   
 
     this.menuItems = [
       new MenuItem("DashBoard","/landingpage"),
@@ -94,5 +116,9 @@ new MenuItem("home","login"),
   showDropdown() {
     document.getElementById("myDropdown").classList.toggle("show");
   }
+
+ 
+ 
+
 
 }
