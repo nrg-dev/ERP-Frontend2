@@ -30,7 +30,7 @@
             <hr style="margin: 0px;">
             <div id="curs-pointer">
                 <div *ngFor="let list of vendorList"  (click)="vendorDetails(list.vendorcode)" id="{{ list.vendorcode }}">          
-                    <h3 id="name-text">{{ list.name }}</h3>
+                    <h3 id="name-text">{{ list.vendorName }}</h3>
                     <div class="row" id="details-text">
                             <p id="country-text">country</p>
                             <p id="text2">:</p>
@@ -51,22 +51,18 @@
                         
 </div>
     <div class="col-md-6 col-6 col-lg-7">
-        <div>
-        <div class="hr">
         <div *ngIf="vendordetails" class="empdet-div">
         <br/>
-                        
-
         <div class="row">
             <div class="col-md-1 col-1 col-lg-1"></div>
             <div class="col-md-3 col-4 col-lg-4">
                 <h4>Vendor View</h4>
-                </div>
+            </div>
                 <div class=" col-lg-1"></div>
                 <div  class="col-md-4 col-2 col-lg-6">
                  <div class="row">
                     <button id="edit-butn1">
-                        <div class="row">
+                        <div class="row" (click)="vendoreditDetails()">
                             <i class="fa fa-pencil-square-o" aria-hidden="true" style="margin-top: 5px;"></i>
                             &nbsp;
                             <p>Edit</p>
@@ -84,44 +80,167 @@
             </div>
             <hr>
             <br/>
-        <div>
-            <div class="col-md-4  col-lg-5">
+            <div id="img-detaildiv">
+                <img src="./assets/images/employee.png"  id="image-size" />
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+             <div class="row">
+                <div class="col-xs-6 col-sm-12 col-md-12 col-lg-6">
+                    <div class="row" id="code">
+                        <p class="col-md-5 col-xs-5 col-lg-5" id="text3">Vendor Code</p>
+                        <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                        <p class="col-md-5 col-xs-5 col-lg-5">{{ this.model.vendorcode }}</p>
+                    </div>
+                    <div class="row" id="name">
+                        <p class="col-md-5 col-xs-5 col-lg-5" id="text3">VendorName</p>
+                        <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                        <p class="col-md-5 col-xs-5 col-lg-5" id="text3">{{ this.model.vendorName }}</p>
+                    </div>
+                    <div class="row" id="phonenumber">
+                        <p class="col-md-5 col-xs-5 col-lg-5" id="text3">PhoneNumber</p>
+                        <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                        <p class="col-md-5 col-xs-5 col-lg-5" id="text3">{{ this.model.phoneNumber }}</p>
+                    </div>
+                    <div class="row" id="mobilenumber">
+                        <p class="col-md-5 col-xs-5 col-lg-5" id="text3">MobileNumber</p>
+                        <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                        <p class="col-md-5 col-xs-5 col-lg-5" id="text3">{{ this.model.mobileNumber }}</p>
+                    </div>
+                    <div class="row" id="country">
+                        <p class="col-md-5 col-xs-5 col-lg-5" id="text3">Country</p>
+                        <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                        <p class="col-md-5 col-xs-5 col-lg-5" id="text3">{{ this.model.country }}</p>
+                    </div> 
+                </div>
+                <div class="col-xs-6 col-sm-12 col-md-12 col-lg-5">
+                    <div class="row" id="email">
+                            <p class="col-md-3 col-xs-3 col-lg-3" id="text3">Email</p>
+                            <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                            <p class="col-md-7 col-xs-7 col-lg-7" id="text3">{{ this.model.email }}</p>
+                    </div>
+                    <div class="row" id="city">
+                            <p class="col-md-3 col-xs-3 col-lg-3" id="text3">City</p>
+                            <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                            <p class="col-md-7 col-xs-7 col-lg-7" id="text3">{{ this.model.city }}</p>
+                    </div>
+                    <div class="row" id="lastedit">
+                            <p class="col-md-3 col-xs-3 col-lg-3" id="text3">LastEdit</p>
+                            <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                            <p class="col-md-7 col-xs-7 col-lg-7" id="text3">{{ this.model.lastedit }}</p>
+                    </div>
+                    <div class="row" id="addeddate">
+                            <p class="col-md-3 col-xs-3 col-lg-3" id="text3">Added Date</p>
+                            <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                            <p class="col-md-7 col-xs-7 col-lg-7" id="text3">{{ this.model.addeddate }}</p>
+                    </div>
+                    <div class="row" id="address">
+                            <p class="col-md-3 col-xs-3 col-lg-3" id="text3">Address</p>
+                            <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                            <p class="col-md-7 col-xs-7 col-lg-7" id="text3">{{ this.model.address }}</p>
+                    </div> 
+                </div>
+             </div>
+            </div>
+
+            </div>
+
+   <!-- Edit div start -->
+        <div *ngIf="vendoreditdetails" class="empdet-div">
+            <br/>
+            <div class="row">
+                <div class="col-md-1 col-1 col-lg-1"></div>
+                <div class="col-md-3 col-4 col-lg-4">
+                    <h4>Vendor Edit</h4>
+                </div>
+                    <div class=" col-lg-1"></div>
+                    <div  class="col-md-4 col-2 col-lg-6">
+                        <div class="row">
+                        <button id="edit-butn1">
+                            <div class="row" (click)="updateDetails()">
+                                <i class="fa fa-floppy-o" aria-hidden="true" style="margin-top: 5px;"></i>
+                                &nbsp;
+                                <p>Save</p>
+                              </div>
+                            </button>
+    
+                            <button id="print-butn">
+                            <div class="row" (click)="closeMethod()">
+                                <i class="fa fa-times" aria-hidden="true" id="icon-mod"></i>
+                                <p id="text">Cancel</p>
+                            </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <br/>
                 <div id="img-detaildiv">
                     <img src="./assets/images/employee.png"  id="image-size" />
                 </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <form>
+                    <div class="row">
+                    <div class="col-xs-6 col-sm-12 col-md-12 col-lg-6">
+                        <div class="row" id="code">
+                            <p class="col-md-5 col-xs-5 col-lg-5" id="text3">Vendor Code</p>
+                            <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                            <p class="col-md-5 col-xs-5 col-lg-5" id="text3">{{ this.model.vendorcode }}</p>
+                        </div>
+                        <div class="row" id="name">
+                            <p class="col-md-5 col-xs-5 col-lg-5" id="text3">VendorName</p>
+                            <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                            <input type="text" class="col-md-5 col-xs-5 col-lg-5" id="editinput-box" 
+                            [(ngModel)]="this.model.vendorName" #vendorName="ngModel"  value="{{ this.user.vendorName }}" />
+                        </div>
+                        <div class="row" id="phonenumber">
+                            <p class="col-md-5 col-xs-5 col-lg-5" id="text3">PhoneNumber</p>
+                            <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                            <input type="text" class="col-md-5 col-xs-5 col-lg-5" id="editinput-box" value="{{ this.model.phoneNumber }}" />
+                        </div>
+                        <div class="row" id="mobilenumber">
+                            <p class="col-md-5 col-xs-5 col-lg-5" id="text3">MobileNumber</p>
+                            <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                            <input type="text" class="col-md-5 col-xs-5 col-lg-5" id="editinput-box" value="{{ this.model.mobileNumber }}" />
+                        </div>
+                        <div class="row" id="country">
+                            <p class="col-md-5 col-xs-5 col-lg-5" id="text3">Country</p>
+                            <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                            <input type="text" class="col-md-5 col-xs-5 col-lg-5" id="editinput-box" value="{{ this.model.country }}" />
+                        </div> 
+                    </div>
+                    <div class="col-xs-6 col-sm-12 col-md-12 col-lg-5">
+                        <div class="row" id="email">
+                                <p class="col-md-5 col-xs-5 col-lg-5" id="text3">Email</p>
+                                <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                                <input type="text" class="col-md-5 col-xs-5 col-lg-5" id="editinput-box" value="{{ this.model.email }}" />
+                        </div>
+                        <div class="row" id="city">
+                                <p class="col-md-5 col-xs-5 col-lg-5" id="text3">City</p>
+                                <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                                <input type="text" class="col-md-5 col-xs-5 col-lg-5" id="editinput-box" value="{{ this.model.city }}" />
+                        </div>
+                        <div class="row" id="lastedit">
+                                <p class="col-md-5 col-xs-5 col-lg-5" id="text3">LastEdit</p>
+                                <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                                <p class="col-md-5 col-xs-5 col-lg-5" id="text3">{{ this.model.lastedit }}</p>
+                        </div>
+                        <div class="row" id="addeddate">
+                                <p class="col-md-5 col-xs-5 col-lg-5" id="text3">AddedDate</p>
+                                <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                                <p class="col-md-5 col-xs-5 col-lg-5" id="text3">{{ this.model.addeddate }}</p>
+                        </div>
+                        <div class="row" id="address">
+                                <p class="col-md-5 col-xs-5 col-lg-5" id="text3">Address</p>
+                                <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                                <input type="text" class="col-md-5 col-xs-5 col-lg-5" id="editinput-box" value="{{ this.model.address }}" />
+                        </div> 
+                    </div>
+                </div>
+            </form>
             </div>
-            <div class="col-md-8 col-12 col-lg-7">
-                <div class="row" id="country">
-                    <p  id="text3">Vendor Code</p>
-                    <p >:</p>
-                    <p >{{ this.model.vendorcode }}</p>
-                </div>
-                <div class="row" id="country">
-                    <p  id="text3">Vendor Name</p>
-                    <p >:</p>
-                    <p  id="text3">{{ this.model.name }}</p>
-                </div>
-                <div class="row" id="country">
-                    <p  id="text3">Contact Number</p>
-                    <p >:</p>
-                    <p  id="text3">{{ this.model.contactNumber }}</p>
-                </div>
-                <div class="row" id="country">
-                        <p  id="text3">Country</p>
-                        <p >:</p>
-                        <p  id="text3">{{ this.model.country }}</p>
-                </div>
-                <div class="row" id="country">
-                        <p  id="text3">Email</p>
-                        <p >:</p>
-                        <p  id="text3">{{ this.model.email }}</p>
-                </div>
-            </div>
-          </div>
-
-                </div>
-            </div>
+            
         </div>
+     <!-- Edit div End -->
     </div>
 </div>
     

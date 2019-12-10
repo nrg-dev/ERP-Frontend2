@@ -1,6 +1,6 @@
 <!-- header start -->
   <mat-toolbar color="warn" style="background-color: #182A36;">
-  <mat-toolbar-row>
+  <mat-toolbar-row style="height: 80px;">
 
   <div class=" col-1 col-lg-1">
   <!--  <button type="button" aria-label="Toggle sidenav" mat-icon-button 
@@ -69,7 +69,7 @@
 <mat-sidenav-container class="example-container">
   <!-- <mat-sidenav #drawer mode="side" opened role="navigation"> -->
     <mat-sidenav class="sidenav" #sidenav [mode]="mode" [opened]="openSidenav" >
-    <mat-nav-list style="width: 250px">
+    <mat-nav-list style="width: 250px;margin-top: 25px;">
       <ng-container *ngFor="let item of menuItems let i=index">
           <mat-list-item  class="white-hover">  
          <a mat-list-item  routerLink= {{item.pageName}} > {{item.name}}</a>
@@ -87,7 +87,7 @@
   
   
   </mat-sidenav>
-  <mat-sidenav-content class="content">
+  <mat-sidenav-content class="content" style="background: #245C81">
 
 
 <!-- <div *ngIf="notSelected"> -->

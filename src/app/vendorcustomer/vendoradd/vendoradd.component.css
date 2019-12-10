@@ -63,6 +63,7 @@ a {
   text-align: center;
   border: none;
   background-color: white;
+  outline: none;
 }
 #edit-butn1{
   color: black;
@@ -71,6 +72,7 @@ a {
   width: 70px;
   text-align: center;
   border: none;
+  outline: none;
 }
 .searchicon{
   font-family: fontawesome;
@@ -78,10 +80,14 @@ a {
   color: black;
   background: blanchedalmond;
 }
-input[type=text]{
+#input-box{
   width: 99%;
   height: 40px;
   border-radius: 25px;
+}
+#editinput-box{
+  width: 50%;
+  height: 30px;
 }
 #text{
   margin-left: 10px;
@@ -172,7 +178,6 @@ tr {
 
 #country{
   font-size: 14px;
-  margin: 4px;
 }
 h3{
   text-align: center;
@@ -244,7 +249,7 @@ height: 130px;
 }
 #image-size{
   width: 130;
-  margin-left: 50px;
+  margin-left: 240px;
 }
 #text3{
   font-size: 16px;

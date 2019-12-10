@@ -53,23 +53,23 @@ a {
   padding: 12px 12px;
   text-decoration: none;
 }
-
-
 #print-butn{
-  border: 2px solid #ddd;
-  color: white;
+  color: black;
   height: 29px;
-  background-color: #6d6b65;
   width: 120px;
   text-align: center;
+  border: none;
+  background-color: white;
+  outline: none;
 }
 #edit-butn1{
-  border: 2px solid #ddd;
-  color: white;
+  color: black;
   height: 29px;
-  background-color: #6d6b65;
+  background-color: white;
   width: 70px;
   text-align: center;
+  border: none;
+  outline: none;
 }
 .searchicon{
   font-family: fontawesome;
@@ -82,8 +82,12 @@ input[type=text]{
   height: 40px;
   border-radius: 25px;
 }
+#editinput-box{
+  width: 50%;
+  height: 30px;
+}
 #text{
-  color: white;
+  color: black;
   margin-left: 10px;
 }
 #vendor-text{
@@ -141,9 +145,8 @@ tr {
   margin: 10px 25px;
 }
 #icon-mod{
-  color: white;
+  color: black;
   font-size: 18px;
-  margin-left: 3px;
 }
 #cursor-pointer{
   cursor: pointer;
@@ -174,7 +177,6 @@ tr {
 
 #country{
   font-size: 14px;
-  margin: 4px;
 }
 h3{
   text-align: center;
@@ -244,6 +246,9 @@ a:hover {
 #img-detaildiv{
 width: 150px;
 height: 130px;
+}
+#image-size{
+  margin-left: 240px;
 }
 #text3{
   font-size: 16px;
