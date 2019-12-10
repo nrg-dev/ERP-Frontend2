@@ -3,13 +3,16 @@ import { FormBuilder, FormGroup, FormArray,Validators, FormControl } from '@angu
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChangeDetectorRef, ElementRef, ViewChild } from '@angular/core';
 import { User } from 'src/app/_models';
+import { AlertService } from 'src/app/_services';
+import { Router } from '@angular/router';
+import { AlertComponent } from 'src/app/_directives';
 
 @Component({
   selector: 'app-purchaseadd',
   templateUrl: './purchaseadd.component.html',
   styleUrls: ['./purchaseadd.component.css']
 })
-export class PurchaseaddComponent implements OnInit {
+export class PurchaseaddComponent  implements OnInit  {
   user:User;
   model: any ={};
   headElements = ['#ID', 'Product Name', 'Category Name', 'Quantity'];
@@ -105,7 +108,8 @@ export class PurchaseaddComponent implements OnInit {
       this.btnselected=true;
       this.addDynamicElement.push(this.fb.control(''))
     }
-  
+    showMsg: boolean = false;
+
     // Submit Registration Form
     onSubmit() {
       
@@ -114,8 +118,10 @@ export class PurchaseaddComponent implements OnInit {
       
 
     }
-alert("Successfully saved.")
-   
+//alert("Successfully saved.")
+//this.alertService.success("Successfully saved.");
+this.showMsg= true;
+
     }
 
   

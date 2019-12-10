@@ -1,10 +1,20 @@
+<div class="row" id="alertMsg" *ngIf="showMsg">
+    <div class="col-3"></div>
+    <div class="col-md-6  col-lg-5">
+      <p class="alert alert-success">
+          <strong>Purchase Order is Success!</strong> Please check!.
+
+      </p>
+    </div>
+  </div>
 <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+  
     <!-- Add Super Powers Dynamically-->
 <div class="group-gap" formArrayName="addDynamicElement">
 <h5 class="mb-3">Add New Purchase</h5>
 <div class="mb-3">
-  <button type="button"  (click)="addNew()">Add </button>  &nbsp; &nbsp; &nbsp; 
-  <button *ngIf="btnselected" type="submit" >Save</button>
+  <button type="button"  class="btn btn-primary" (click)="addNew()">Add </button>  &nbsp; &nbsp; &nbsp; 
+  <button *ngIf="btnselected" class="btn btn-primary" id="savebtn" type="submit" >Save</button>
 
   <br/>
 
@@ -36,6 +46,7 @@
         </td>
         <td><input class="form-control" type="text" [(ngModel)] ="this.model.purchaseOrdeData[i].quantity" [formControlName]="i">
         </td>
+
       </tr>
     </tbody>
   </table>

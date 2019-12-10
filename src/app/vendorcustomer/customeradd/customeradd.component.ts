@@ -178,5 +178,11 @@ export class CustomeraddComponent implements OnInit {
       this.customerdetails=true;
       this.customereditdetails=false;
     }
+    showMsg: boolean = false;
+
+    updateDetails(){
+      this.showMsg= true;
+
+    }
     
   }
