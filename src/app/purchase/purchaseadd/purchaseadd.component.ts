@@ -99,8 +99,10 @@ export class PurchaseaddComponent implements OnInit {
       return this.registrationForm.get('addDynamicElement') as FormArray
     }
     selected=false;
+    btnselected=false;
     addNew() {
       this.selected=true;
+      this.btnselected=true;
       this.addDynamicElement.push(this.fb.control(''))
     }
   

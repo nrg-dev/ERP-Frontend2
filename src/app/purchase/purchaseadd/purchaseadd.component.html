@@ -3,7 +3,8 @@
 <div class="group-gap" formArrayName="addDynamicElement">
 <h5 class="mb-3">Add New Purchase</h5>
 <div class="mb-3">
-  <button type="button"  (click)="addNew()">Add </button>  &nbsp; &nbsp; &nbsp; <button type="submit" >Save</button>
+  <button type="button"  (click)="addNew()">Add </button>  &nbsp; &nbsp; &nbsp; 
+  <button *ngIf="btnselected" type="submit" >Save</button>
 
   <br/>
 
@@ -24,9 +25,7 @@
               <option  *ngFor="let product of productList" value={{product}} >{{product}}</option>
               
             </select>
-        
-        
-        
+     
       </td>
         <td>
             <select [(ngModel)] ="this.model.purchaseOrdeData[i].category" class="form-control" [formControlName]="i">
