@@ -8,36 +8,56 @@
                 <div class="mb-3">
                   <button type="button"  (click)="addNew()">Add </button>
                   <br/><br/>
+                  <table>
+
                   <ul class="subjectList">
-                    <li *ngFor="let item of addDynamicElement.controls; let i = index">
-                        <table>
-                               <tr>
-<td>
-        <input type="text" [(ngModel)] ="qtd[i].text" id="qtd[i]"  [formControlName]="i">
+                        <tr>
 
+<td>
+<label class="form-control"> S.no </label>      
 </td>
 
 <td>
-        <input type="text" [(ngModel)] ="qtd[i].text" id="qtd[i]"  [formControlName]="i">
-
+<label class="form-control"> product name </label>      
 </td>
 
 <td>
-        <input type="text" [(ngModel)] ="qtd[i].text" id="qtd[i]"  [formControlName]="i">
+                <label class="form-control"> category name </label>      
+        </td>
 
-</td>
 <td>
-        <input type="text" [(ngModel)] ="qtd[i].text" id="qtd[i]"  [formControlName]="i">
+                <label class="form-control"> vendor name </label>      
+        </td>
 
+</tr>
+<li *ngFor="let item of addDynamicElement.controls; let i = index">
+                        
+<tr>
+<td>
+{{i}}
+</td>
+
+<td>
+<input class="form-control" type="text" [(ngModel)] ="qtd[i].productname" id="qtd[i]"  [formControlName]="i">
+</td>
+
+<td>
+<input class="form-control" type="text" [(ngModel)] ="qtd[i].category" id="qtd[i]"  [formControlName]="i">
+</td>
+
+<td>
+<input class="form-control" type="text" [(ngModel)] ="qtd[i].quantity" id="qtd[i]"  [formControlName]="i">
 </td>
 
 
-                               </tr> 
-                               <br/>
-                        </table>
+</tr> 
+<br/>
+                        
                     
                 </li>
                   </ul>
+                </table>
+
                 </div>
       
                 <!-- Submit Button -->

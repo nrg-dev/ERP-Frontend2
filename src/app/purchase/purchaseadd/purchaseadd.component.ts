@@ -102,10 +102,16 @@ export class PurchaseaddComponent implements OnInit {
       return this.registrationForm.get('addDynamicElement') as FormArray
     }
     qtd : any = [
-      {id: 1, text: ''},
-      {id: 2, text: ''},
-      {id: 3, text: ''},
-      {id: 4, text: ''},
+      {id: 1, productname: '',category: '',quantity: 0,text: ''},
+      {id: 2, productname: '',category: '',quantity: 0,text: ''},
+      {id: 3, productname: '',category: '',quantity: 0,text: ''},
+      {id: 4, productname: '',category: '',quantity: 0,text: ''},
+      {id: 5, productname: '',category: '',quantity: 0,text: ''},
+      {id: 6, productname: '',category: '',quantity: 0,text: ''},
+      {id: 7, productname: '',category: '',quantity: 0,text: ''},
+      {id: 8, productname: '',category: '',quantity: 0,text: ''},
+      {id: 9, productname: '',category: '',quantity: 0,text: ''},
+
     ];
     addNew() {
       this.addDynamicElement.push(this.fb.control(''))
@@ -113,14 +119,21 @@ export class PurchaseaddComponent implements OnInit {
   
     // Submit Registration Form
     onSubmit() {
-      alert(this.qtd[0].text);
-      alert(this.qtd[1].text);
+      
+      for (let entry of this.qtd) {
+        console.log(entry); // 1, "string", false
+        alert(entry.productname);
+
+    }
+
+    
+     // alert(this.qtd[1].text);
       this.submitted = true;
       if(!this.registrationForm.valid) {
-        alert('Please fill all the required fields to create a super hero!')
+        //alert('Please fill all the required fields to create a super hero!')
         return false;
       } else {
-        console.log(this.registrationForm.value)
+        //console.log(this.registrationForm.value)
       }
     }
 
