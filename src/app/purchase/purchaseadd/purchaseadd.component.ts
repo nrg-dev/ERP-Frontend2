@@ -13,7 +13,22 @@ export class PurchaseaddComponent implements OnInit {
   user:User;
   model: any ={};
   constructor( public fb: FormBuilder,
-    private cd: ChangeDetectorRef) { }
+    private cd: ChangeDetectorRef) { 
+
+      this.model.purchaseOrdeData = [
+        {id: 1, productname: '',category: '',quantity: 0,text: ''},
+        {id: 2, productname: '',category: '',quantity: 0,text: ''},
+        //{id: 3, productname: '',category: '',quantity: 0,text: ''},
+        //{id: 4, productname: '',category: '',quantity: 0,text: ''},
+        //{id: 5, productname: '',category: '',quantity: 0,text: ''},
+        //{id: 6, productname: '',category: '',quantity: 0,text: ''},
+        //{id: 7, productname: '',category: '',quantity: 0,text: ''},
+        //{id: 8, productname: '',category: '',quantity: 0,text: ''},
+        //{id: 9, productname: '',category: '',quantity: 0,text: ''},
+  
+      ];
+
+    }
     submitted = false;
 
     // City names
@@ -24,18 +39,7 @@ export class PurchaseaddComponent implements OnInit {
     /* Initiate the form structure */
     this.model.currentusername='';
 
-    this.model.purchaseOrdeData = [
-      {id: 1, productname: '',category: '',quantity: 0,text: ''},
-      {id: 2, productname: '',category: '',quantity: 0,text: ''},
-      {id: 3, productname: '',category: '',quantity: 0,text: ''},
-      {id: 4, productname: '',category: '',quantity: 0,text: ''},
-      {id: 5, productname: '',category: '',quantity: 0,text: ''},
-      {id: 6, productname: '',category: '',quantity: 0,text: ''},
-      {id: 7, productname: '',category: '',quantity: 0,text: ''},
-      {id: 8, productname: '',category: '',quantity: 0,text: ''},
-      {id: 9, productname: '',category: '',quantity: 0,text: ''},
-
-    ];
+   
   }
 
     /*##################### Registration Form #####################*/
@@ -124,9 +128,9 @@ export class PurchaseaddComponent implements OnInit {
     // Submit Registration Form
     onSubmit() {
       
-      for (let entry of this.user.purchaseOrdeData) {
+      for (let entry of this.model.purchaseOrdeData) {
         console.log(entry); // 1, "string", false
-        //alert(entry.productname);
+       // alert(entry.productname);
         //alert(entry.category);
         //alert(entry.quantity);
 
