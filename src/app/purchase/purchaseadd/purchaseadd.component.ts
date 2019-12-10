@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray,Validators, FormControl } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChangeDetectorRef, ElementRef, ViewChild } from '@angular/core';
+import { User } from 'src/app/_models';
 
 @Component({
   selector: 'app-purchaseadd',
@@ -9,7 +10,8 @@ import { ChangeDetectorRef, ElementRef, ViewChild } from '@angular/core';
   styleUrls: ['./purchaseadd.component.css']
 })
 export class PurchaseaddComponent implements OnInit {
-
+  user:User;
+  model: any ={};
   constructor( public fb: FormBuilder,
     private cd: ChangeDetectorRef) { }
     submitted = false;
@@ -20,7 +22,20 @@ export class PurchaseaddComponent implements OnInit {
 
   ngOnInit() {
     /* Initiate the form structure */
-   
+    this.model.currentusername='';
+
+    this.model.purchaseOrdeData = [
+      {id: 1, productname: '',category: '',quantity: 0,text: ''},
+      {id: 2, productname: '',category: '',quantity: 0,text: ''},
+      {id: 3, productname: '',category: '',quantity: 0,text: ''},
+      {id: 4, productname: '',category: '',quantity: 0,text: ''},
+      {id: 5, productname: '',category: '',quantity: 0,text: ''},
+      {id: 6, productname: '',category: '',quantity: 0,text: ''},
+      {id: 7, productname: '',category: '',quantity: 0,text: ''},
+      {id: 8, productname: '',category: '',quantity: 0,text: ''},
+      {id: 9, productname: '',category: '',quantity: 0,text: ''},
+
+    ];
   }
 
     /*##################### Registration Form #####################*/
@@ -101,18 +116,7 @@ export class PurchaseaddComponent implements OnInit {
     get addDynamicElement() {
       return this.registrationForm.get('addDynamicElement') as FormArray
     }
-    qtd : any = [
-      {id: 1, productname: '',category: '',quantity: 0,text: ''},
-      {id: 2, productname: '',category: '',quantity: 0,text: ''},
-      {id: 3, productname: '',category: '',quantity: 0,text: ''},
-      {id: 4, productname: '',category: '',quantity: 0,text: ''},
-      {id: 5, productname: '',category: '',quantity: 0,text: ''},
-      {id: 6, productname: '',category: '',quantity: 0,text: ''},
-      {id: 7, productname: '',category: '',quantity: 0,text: ''},
-      {id: 8, productname: '',category: '',quantity: 0,text: ''},
-      {id: 9, productname: '',category: '',quantity: 0,text: ''},
-
-    ];
+   
     addNew() {
       this.addDynamicElement.push(this.fb.control(''))
     }
@@ -120,21 +124,23 @@ export class PurchaseaddComponent implements OnInit {
     // Submit Registration Form
     onSubmit() {
       
-      for (let entry of this.qtd) {
+      for (let entry of this.user.purchaseOrdeData) {
         console.log(entry); // 1, "string", false
-        alert(entry.productname);
+        //alert(entry.productname);
+        //alert(entry.category);
+        //alert(entry.quantity);
 
     }
 
-    
+    // rest api and send this qtq array.
      // alert(this.qtd[1].text);
-      this.submitted = true;
-      if(!this.registrationForm.valid) {
+     // this.submitted = true;
+      //if(!this.registrationForm.valid) {
         //alert('Please fill all the required fields to create a super hero!')
-        return false;
-      } else {
+       // return false;
+     // } else {
         //console.log(this.registrationForm.value)
-      }
+      //}
     }
 
 
