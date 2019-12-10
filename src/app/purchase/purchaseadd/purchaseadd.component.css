@@ -1,0 +1,17 @@
+table {
+    width: 70%;
+    padding-left: 10px;
+  }
+
+  th{
+    color:white;
+    background-color:red
+  }
+  td{
+    background-color:white;
+
+  }
+  h5{
+    color:white;
+ 
+  }

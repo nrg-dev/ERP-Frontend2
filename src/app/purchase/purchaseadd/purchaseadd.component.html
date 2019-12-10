@@ -1,70 +1,34 @@
-      
-      
-            <!-- Form starts -->
-            <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-                    <!-- Add Super Powers Dynamically-->
-              <div class="group-gap" formArrayName="addDynamicElement">
-                <h5 class="mb-3">Add New Purchase</h5>
-                <div class="mb-3">
-                  <button type="button"  (click)="addNew()">Add </button>
-                  <br/><br/>
-                  <table>
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <!-- Add Super Powers Dynamically-->
+<div class="group-gap" formArrayName="addDynamicElement">
+<h5 class="mb-3">Add New Purchase</h5>
+<div class="mb-3">
+  <button type="button"  (click)="addNew()">Add </button>  &nbsp; &nbsp; &nbsp; <button type="submit" >Save</button>
 
-                  <ul class="subjectList">
-                        <tr>
+  <br/>
 
-<td>
-<label class="form-control"> S.no </label>      
-</td>
-
-<td>
-<label class="form-control"> product name </label>      
-</td>
-
-<td>
-                <label class="form-control"> category name </label>      
+  <br/>
+<table mdbTable>
+    <thead *ngIf="selected">
+      <tr>
+        <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr mdbTableCol *ngFor="let item of addDynamicElement.controls; let i = index">
+        <td scope="row">{{i+1}}</td>
+        <td><input class="form-control" type="text" [(ngModel)] ="this.model.purchaseOrdeData[i].productname" id="qtd[i]"  [formControlName]="i">
         </td>
-
-<td>
-                <label class="form-control"> vendor name </label>      
+        <td><input class="form-control" type="text" [(ngModel)] ="this.model.purchaseOrdeData[i].category" id="qtd[i]"  [formControlName]="i">
         </td>
-
-</tr>
-<li *ngFor="let item of addDynamicElement.controls; let i = index">
-                        
-<tr>
-<td>
-{{i}}
-</td>
-
-<td>
-<input class="form-control" type="text" [(ngModel)] ="this.model.purchaseOrdeData[i].productname" id="qtd[i]"  [formControlName]="i">
-</td>
-
-<td>
-<input class="form-control" type="text" [(ngModel)] ="this.model.purchaseOrdeData[i].category" id="qtd[i]"  [formControlName]="i">
-</td>
-
-<td>
-<input class="form-control" type="text" [(ngModel)] ="this.model.purchaseOrdeData[i].quantity" id="qtd[i]"  [formControlName]="i">
-</td>
-
-
-</tr> 
-<br/>
-                        
-                    
-                </li>
-                  </ul>
-                </table>
-
-                </div>
+        <td><input class="form-control" type="text" [(ngModel)] ="this.model.purchaseOrdeData[i].quantity" id="qtd[i]"  [formControlName]="i">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
       
-                <!-- Submit Button -->
-                <button type="submit" >Save</button>
-              </div>
-      
-            </form><!-- Form ends -->
-      
-    
-      
+<!-- Submit Button -->
+</div>
+
+</form><!-- Form ends -->

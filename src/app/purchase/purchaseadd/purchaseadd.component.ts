@@ -120,8 +120,9 @@ export class PurchaseaddComponent implements OnInit {
     get addDynamicElement() {
       return this.registrationForm.get('addDynamicElement') as FormArray
     }
-   
+    selected=false;
     addNew() {
+      this.selected=true;
       this.addDynamicElement.push(this.fb.control(''))
     }
   
@@ -129,23 +130,15 @@ export class PurchaseaddComponent implements OnInit {
     onSubmit() {
       
       for (let entry of this.model.purchaseOrdeData) {
-        console.log(entry); // 1, "string", false
-       // alert(entry.productname);
-        //alert(entry.category);
-        //alert(entry.quantity);
+        console.log(entry.productname); // 1, "string", false
+      
 
     }
 
-    // rest api and send this qtq array.
-     // alert(this.qtd[1].text);
-     // this.submitted = true;
-      //if(!this.registrationForm.valid) {
-        //alert('Please fill all the required fields to create a super hero!')
-       // return false;
-     // } else {
-        //console.log(this.registrationForm.value)
-      //}
+   
     }
 
-
+  
+  
+    headElements = ['#ID', 'Product Name', 'Category Name', 'Quantity'];
 }
