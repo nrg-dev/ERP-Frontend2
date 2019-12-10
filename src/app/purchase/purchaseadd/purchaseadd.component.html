@@ -1,15 +1,70 @@
+      
+      
+            <!-- Form starts -->
+            <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+                    <!-- Add Super Powers Dynamically-->
+              <div class="group-gap" formArrayName="addDynamicElement">
+                <h5 class="mb-3">Add New Purchase</h5>
+                <div class="mb-3">
+                  <button type="button"  (click)="addNew()">Add </button>
+                  <br/><br/>
+                  <table>
 
-<br/><br/>
+                  <ul class="subjectList">
+                        <tr>
 
-<div class="col-lg-3"></div>
-<div class="col-lg-9" >
-        <br/> <br/> <br/>     
-    <div class="content-wrapper">
-            <h2>PURCHASE MODULE IS WORK IN PROGRESS....</h2>
+<td>
+<label class="form-control"> S.no </label>      
+</td>
+
+<td>
+<label class="form-control"> product name </label>      
+</td>
+
+<td>
+                <label class="form-control"> category name </label>      
+        </td>
+
+<td>
+                <label class="form-control"> vendor name </label>      
+        </td>
+
+</tr>
+<li *ngFor="let item of addDynamicElement.controls; let i = index">
+                        
+<tr>
+<td>
+{{i}}
+</td>
+
+<td>
+<input class="form-control" type="text" [(ngModel)] ="qtd[i].productname" id="qtd[i]"  [formControlName]="i">
+</td>
+
+<td>
+<input class="form-control" type="text" [(ngModel)] ="qtd[i].category" id="qtd[i]"  [formControlName]="i">
+</td>
+
+<td>
+<input class="form-control" type="text" [(ngModel)] ="qtd[i].quantity" id="qtd[i]"  [formControlName]="i">
+</td>
 
 
-    <div class="line"></div>
+</tr> 
+<br/>
+                        
+                    
+                </li>
+                  </ul>
+                </table>
 
-   </div>
-   <div style="height:1000px;"></div>
-</div>
+                </div>
+      
+                <!-- Submit Button -->
+                <button type="submit" >Save</button>
+              </div>
+      
+            </form><!-- Form ends -->
+      
+    
+      
