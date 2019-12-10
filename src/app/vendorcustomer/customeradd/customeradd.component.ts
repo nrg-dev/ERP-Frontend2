@@ -96,6 +96,7 @@ export class CustomeraddComponent implements OnInit {
       document.getElementById(this.tempid).style.backgroundColor='#DDEDF9';
   
       this.customerdetails = true;
+      this.customereditdetails=false;
       if(custcode == "CUST001"){
         this.model.custcode = this.custList[0].custcode;
         this.model.customerName = this.custList[0].customerName;
