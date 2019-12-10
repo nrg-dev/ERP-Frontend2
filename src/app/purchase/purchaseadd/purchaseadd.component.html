@@ -16,12 +16,26 @@
     </thead>
     <tbody>
       <tr mdbTableCol *ngFor="let item of addDynamicElement.controls; let i = index">
-        <td scope="row">{{i+1}}</td>
-        <td><input class="form-control" type="text" [(ngModel)] ="this.model.purchaseOrdeData[i].productname" id="qtd[i]"  [formControlName]="i">
+        <td scope="row">{{this.model.purchaseOrdeData[i].id}}</td>
+       <!-- <td><input class="form-control" type="text" [(ngModel)] ="this.model.purchaseOrdeData[i].productname" id="qtd[i]"  [formControlName]="i">
+       -->
+       <td>
+          <select [(ngModel)] ="this.model.purchaseOrdeData[i].productname" class="form-control" [formControlName]="i">
+              <option  *ngFor="let product of productList" value={{product}} >{{product}}</option>
+              
+            </select>
+        
+        
+        
+      </td>
+        <td>
+            <select [(ngModel)] ="this.model.purchaseOrdeData[i].category" class="form-control" [formControlName]="i">
+                <option  *ngFor="let category of categoryList" value={{category}} >{{category}}</option>
+                
+              </select>
+          
         </td>
-        <td><input class="form-control" type="text" [(ngModel)] ="this.model.purchaseOrdeData[i].category" id="qtd[i]"  [formControlName]="i">
-        </td>
-        <td><input class="form-control" type="text" [(ngModel)] ="this.model.purchaseOrdeData[i].quantity" id="qtd[i]"  [formControlName]="i">
+        <td><input class="form-control" type="text" [(ngModel)] ="this.model.purchaseOrdeData[i].quantity" [formControlName]="i">
         </td>
       </tr>
     </tbody>
