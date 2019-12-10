@@ -1,15 +1,50 @@
+      
+      
+            <!-- Form starts -->
+            <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+                    <!-- Add Super Powers Dynamically-->
+              <div class="group-gap" formArrayName="addDynamicElement">
+                <h5 class="mb-3">Add New Purchase</h5>
+                <div class="mb-3">
+                  <button type="button"  (click)="addNew()">Add </button>
+                  <br/><br/>
+                  <ul class="subjectList">
+                    <li *ngFor="let item of addDynamicElement.controls; let i = index">
+                        <table>
+                               <tr>
+<td>
+        <input type="text" [(ngModel)] ="qtd[i].text" id="qtd[i]"  [formControlName]="i">
 
-<br/><br/>
+</td>
 
-<div class="col-lg-3"></div>
-<div class="col-lg-9" >
-        <br/> <br/> <br/>     
-    <div class="content-wrapper">
-            <h2>PURCHASE MODULE IS WORK IN PROGRESS....</h2>
+<td>
+        <input type="text" [(ngModel)] ="qtd[i].text" id="qtd[i]"  [formControlName]="i">
+
+</td>
+
+<td>
+        <input type="text" [(ngModel)] ="qtd[i].text" id="qtd[i]"  [formControlName]="i">
+
+</td>
+<td>
+        <input type="text" [(ngModel)] ="qtd[i].text" id="qtd[i]"  [formControlName]="i">
+
+</td>
 
 
-    <div class="line"></div>
-
-   </div>
-   <div style="height:1000px;"></div>
-</div>
+                               </tr> 
+                               <br/>
+                        </table>
+                    
+                </li>
+                  </ul>
+                </div>
+      
+                <!-- Submit Button -->
+                <button type="submit" >Save</button>
+              </div>
+      
+            </form><!-- Form ends -->
+      
+    
+      
