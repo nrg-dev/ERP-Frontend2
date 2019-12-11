@@ -2,11 +2,11 @@
   outline: none;
 }
 .example-container {
-  height: 92%;
+  height: 97%;
   padding-top: -20px;
 } 
 .content{
-  margin: 30px 0px 0px 10px;
+  margin: 30px 0px 0px 0px;
 }
 
 .mat-toolbar {
