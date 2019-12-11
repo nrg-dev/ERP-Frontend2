@@ -18,7 +18,7 @@ export class PurchaseaddComponent  implements OnInit  {
   headElements = ['#ID', 'Product Name', 'Category Name', 'Quantity'];
 
   constructor( public fb: FormBuilder,
-    private cd: ChangeDetectorRef) { 
+    private cd: ChangeDetectorRef, private router: Router, private alertService: AlertService) { 
 
       this.model.purchaseOrdeData = [
         {id: 1, productname: '',category: '',quantity: 0},
@@ -118,9 +118,10 @@ export class PurchaseaddComponent  implements OnInit  {
       
 
     }
+    this.alertService.success("Saved Successfully....");
 //alert("Successfully saved.")
 //this.alertService.success("Successfully saved.");
-this.showMsg= true;
+//this.showMsg= true;
 
     }
 

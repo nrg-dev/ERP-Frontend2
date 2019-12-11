@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PurchaseaddComponent } from './purchaseadd/purchaseadd.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AlertComponent } from '../_directives';
 
 
 const routes: Routes = [
@@ -12,7 +13,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [PurchaseaddComponent],
+  declarations: [PurchaseaddComponent,AlertComponent],
   imports: [
     CommonModule,
     FormsModule,

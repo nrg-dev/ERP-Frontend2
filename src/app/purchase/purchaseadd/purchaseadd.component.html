@@ -1,4 +1,4 @@
-<div class="row" id="alertMsg" *ngIf="showMsg">
+<!--<div class="row" id="alertMsg" *ngIf="showMsg">
     <div class="col-3"></div>
     <div class="col-md-6  col-lg-5">
       <p class="alert alert-success">
@@ -6,9 +6,15 @@
 
       </p>
     </div>
-  </div>
+  </div> -->
+  <div  class="row">
+      <div class="col-3"></div>
+  <div  class="col-md-6  col-lg-5" style="height: 50px; width: 400px;">
+  <alert></alert>
+</div>
+</div>
 <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-  
+
     <!-- Add Super Powers Dynamically-->
 <div class="group-gap" formArrayName="addDynamicElement">
 <h5 class="mb-3">Add New Purchase</h5>
