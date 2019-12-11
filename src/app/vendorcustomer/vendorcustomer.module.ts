@@ -20,7 +20,10 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [VendoraddComponent, CustomeraddComponent, CustvendorindexComponent, VencustAlertComponent],
+  declarations: [VendoraddComponent, 
+    CustomeraddComponent, 
+    CustvendorindexComponent, 
+    VencustAlertComponent],
   imports: [
     CommonModule,
     FormsModule,
