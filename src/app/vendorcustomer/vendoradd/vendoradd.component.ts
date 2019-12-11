@@ -115,6 +115,8 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
       this.model.email = this.vendorList[0].email;
       this.model.lastedit = this.vendorList[0].lastedit;
       this.model.addeddate = this.vendorList[0].addeddate;
+      this.alertService.success("");
+
     }else if(vendorcode == "VEN002"){
       this.model.vendorcode = this.vendorList[1].vendorcode;
       this.model.vendorName = this.vendorList[1].vendorName;
@@ -125,6 +127,7 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
       this.model.email = this.vendorList[1].email;
       this.model.lastedit = this.vendorList[1].lastedit;
       this.model.addeddate = this.vendorList[1].addeddate;
+      this.alertService.success("");
     }
     else if(vendorcode == "VEN003"){
       this.model.vendorcode = this.vendorList[2].vendorcode;
@@ -137,6 +140,7 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
       this.model.email = this.vendorList[2].email;
       this.model.lastedit = this.vendorList[2].lastedit;
       this.model.addeddate = this.vendorList[2].addeddate;
+      this.alertService.success("");
     }
     else if(vendorcode == "VEN004"){
       this.model.vendorcode = this.vendorList[3].vendorcode;
@@ -149,6 +153,7 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
       this.model.email = this.vendorList[3].email;
       this.model.lastedit = this.vendorList[3].lastedit;
       this.model.addeddate = this.vendorList[3].addeddate;
+      this.alertService.success("");
     }
     else if(vendorcode == "VEN005"){
       this.model.vendorcode = this.vendorList[4].vendorcode;
@@ -161,6 +166,7 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
       this.model.email = this.vendorList[4].email;
       this.model.lastedit = this.vendorList[4].lastedit;
       this.model.addeddate = this.vendorList[4].addeddate;
+      this.alertService.success("");
     }
 
     else if(vendorcode == "VEN006"){
@@ -174,20 +180,23 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
       this.model.email = this.vendorList[5].email;
       this.model.lastedit = this.vendorList[5].lastedit;
       this.model.addeddate = this.vendorList[5].addeddate;
+      this.alertService.success("");
     }
   }
 
   vendoreditDetails(){
     this.vendordetails=false;
     this.vendoreditdetails=true;
+    this.alertService.success("");
   }
   updateDetails(){
+    this.alertService.success("");
     this.alertService.success("Successfully Updated");
-    this.alertService=null;
 
   }
   closeMethod(){
     this.vendordetails=true;
     this.vendoreditdetails=false;
+    this.alertService.success("");
   }
 }

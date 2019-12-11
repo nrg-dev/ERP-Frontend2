@@ -122,6 +122,7 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
         this.model.email = this.custList[1].email;
         this.model.lastedit = this.custList[1].lastedit;
         this.model.addeddate = this.custList[1].addeddate;
+        this.alertService.success("");
       }
       else if(custcode == "CUST003"){
         this.model.custcode = this.custList[2].custcode;
@@ -134,6 +135,7 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
         this.model.email = this.custList[2].email;
         this.model.lastedit = this.custList[2].lastedit;
         this.model.addeddate = this.custList[2].addeddate;
+        this.alertService.success("");
       }
 
       else if(custcode == "CUST004"){
@@ -147,6 +149,7 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
         this.model.email = this.custList[3].email;
         this.model.lastedit = this.custList[3].lastedit;
         this.model.addeddate = this.custList[3].addeddate;
+        this.alertService.success("");
       }
       else if(custcode == "CUST005"){
         this.model.custcode = this.custList[4].custcode;
@@ -159,6 +162,7 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
         this.model.email = this.custList[4].email;
         this.model.lastedit = this.custList[4].lastedit;
         this.model.addeddate = this.custList[4].addeddate;
+        this.alertService.success("");
       }
 
       else if(custcode == "CUST006"){
@@ -172,20 +176,24 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
         this.model.email = this.custList[5].email;
         this.model.lastedit = this.custList[5].lastedit;
         this.model.addeddate = this.custList[5].addeddate;
+        this.alertService.success("");
       }
     }
     customerEditDetails(){
       this.customerdetails=false;
       this.customereditdetails=true;
+      this.alertService.success("");
     }
     closeMethod(){
       this.customerdetails=true;
       this.customereditdetails=false;
+      this.alertService.success("");
     }
 
     updateDetails(){
+      this.alertService.success("");
       this.alertService.success("Successfully Updated");
-      this.alertService=null;
+      //this.alertService=null;
 
 
     }
