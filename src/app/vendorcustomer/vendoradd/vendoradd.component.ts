@@ -181,8 +181,9 @@ export class VendoraddComponent implements OnInit {
     this.vendoreditdetails=true;
   }
   updateDetails(){
-
     this.alertService.success("Successfully Updated");
+    this.alertService=null;
+
   }
   closeMethod(){
     this.vendordetails=true;

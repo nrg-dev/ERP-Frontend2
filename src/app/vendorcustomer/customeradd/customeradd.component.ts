@@ -183,6 +183,8 @@ export class CustomeraddComponent implements OnInit {
 
     updateDetails(){
       this.alertService.success("Successfully Updated");
+      this.alertService=null;
+
 
     }
     
