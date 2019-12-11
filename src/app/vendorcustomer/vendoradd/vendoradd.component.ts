@@ -191,7 +191,7 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
   }
   updateDetails(){
     this.alertService.success("");
-    this.alertService.success("Successfully Updated");
+    this.alertService.success("Vendor Data is Successfully Updated");
 
   }
   closeMethod(){
