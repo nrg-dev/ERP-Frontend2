@@ -85,6 +85,7 @@ export class VendoraddComponent implements OnInit {
 },
 
 ];
+countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
 
   constructor(private router: Router, private alertService: AlertService) { }
 

@@ -87,6 +87,13 @@ input[type=text]{
   border-radius: 0px;
   width: 40%;
 }
+
+#editselect-box{
+  height: 35px;
+  border-radius: 0px;
+  width: 40%;
+}
+
 #text{
   color: black;
   margin-left: 10px;

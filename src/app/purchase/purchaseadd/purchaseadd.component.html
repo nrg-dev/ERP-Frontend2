@@ -38,8 +38,7 @@
        -->
        <td>
           <select [(ngModel)] ="this.model.purchaseOrdeData[i].productname" class="form-control" [formControlName]="i">
-              <option  *ngFor="let product of productList" value={{product}} >{{product}}</option>
-              
+              <option  *ngFor="let product of productList" value={{product}} >{{product}}</option>     
             </select>
      
       </td>

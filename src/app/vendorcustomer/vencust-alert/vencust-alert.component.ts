@@ -4,7 +4,7 @@ import { Alert, AlertType } from '../../_models/index';
 import { AlertService } from '../../_services/index';
 
 @Component({
-    selector: 'vendoralert',
+    selector: 'vendorcustalert',
   templateUrl: './vencust-alert.component.html',
   styleUrls: ['./vencust-alert.component.css']
 })

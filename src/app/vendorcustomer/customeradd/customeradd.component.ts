@@ -83,6 +83,8 @@ export class CustomeraddComponent implements OnInit {
 
 ];
 
+countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
+
   constructor(private router: Router, private alertService: AlertService) { }
 
   ngOnInit() {
