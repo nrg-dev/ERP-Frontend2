@@ -7,6 +7,7 @@ import { CustvendorindexComponent } from './custvendorindex/custvendorindex.comp
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from'@angular/common/http';
+import { VencustAlertComponent } from './vencust-alert/vencust-alert.component';
 
 
 
@@ -19,7 +20,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [VendoraddComponent, CustomeraddComponent, CustvendorindexComponent],
+  declarations: [VendoraddComponent, CustomeraddComponent, CustvendorindexComponent, VencustAlertComponent],
   imports: [
     CommonModule,
     FormsModule,

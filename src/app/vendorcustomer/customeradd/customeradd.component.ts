@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AlertService } from 'src/app/_services';
 
 @Component({
   selector: 'app-customeradd',
@@ -81,7 +83,7 @@ export class CustomeraddComponent implements OnInit {
 
 ];
 
-  constructor() { }
+  constructor(private router: Router, private alertService: AlertService) { }
 
   ngOnInit() {
     }
@@ -178,10 +180,9 @@ export class CustomeraddComponent implements OnInit {
       this.customerdetails=true;
       this.customereditdetails=false;
     }
-    showMsg: boolean = false;
 
     updateDetails(){
-      this.showMsg= true;
+      this.alertService.success("Successfully Updated");
 
     }
     
