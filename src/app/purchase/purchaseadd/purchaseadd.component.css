@@ -1,3 +1,7 @@
+* {
+  font-family: sans-serif;
+  font-size:medium;
+}
 table {
     width: 70%;
     padding-left: 10px;
@@ -21,4 +25,4 @@ table {
     
   }
 
- 
+  

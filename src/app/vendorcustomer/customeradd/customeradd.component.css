@@ -1,3 +1,8 @@
+* {
+  font-family: sans-serif;
+  font-size:medium;
+}
+
 #customer-style{
   border-bottom: 2px solid #007bff;
   color: #1664a7;

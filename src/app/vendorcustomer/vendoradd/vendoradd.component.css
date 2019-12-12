@@ -1,3 +1,7 @@
+* {
+  font-family: sans-serif;
+  font-size:medium;
+}
 #purchase-div{
   background: white;
   margin : 0px 15px 30px 20px;

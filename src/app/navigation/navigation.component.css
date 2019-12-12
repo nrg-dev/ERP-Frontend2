@@ -688,3 +688,8 @@ input[type=text]{
     margin: 20px 0px 0px 2px;
   }
   }
+
+  * {
+    font-family: sans-serif;
+    font-size:medium;
+  }
