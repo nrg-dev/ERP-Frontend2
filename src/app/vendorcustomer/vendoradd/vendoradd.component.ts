@@ -13,6 +13,7 @@ export class VendoraddComponent implements OnInit {
 
   public vendordetails = false;
   public vendoreditdetails=false;
+  public dragAndDrop=false;
   model:any ={};
   user:User;
 
@@ -99,6 +100,7 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
 
     }
     this.tempid=vendorcode;
+    this.dragAndDrop=false;
     document.getElementById(this.tempid).style.backgroundColor='#DDEDF9';
 
 
@@ -198,5 +200,10 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     this.vendordetails=true;
     this.vendoreditdetails=false;
     this.alertService.success("");
+  }
+  addVendor(){
+    this.dragAndDrop=true;
+    this.vendordetails=false;
+    this.vendoreditdetails=false;
   }
 }

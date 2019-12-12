@@ -9,6 +9,9 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from'@angular/common/http';
 import { VencustAlertComponent } from './vencust-alert/vencust-alert.component';
 
+import {CdkStepperModule} from '@angular/cdk/stepper';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+
 
 
 const routes: Routes = [
@@ -20,15 +23,19 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [VendoraddComponent, 
+  declarations: [
+    VendoraddComponent, 
     CustomeraddComponent, 
     CustvendorindexComponent, 
-    VencustAlertComponent],
+    VencustAlertComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    DragDropModule,
+    CdkStepperModule,
     RouterModule.forChild(routes) 
 
   ]
