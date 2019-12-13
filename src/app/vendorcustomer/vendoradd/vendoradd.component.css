@@ -1,5 +1,5 @@
 * {
-  font-family: sans-serif;
+  font-family: 'Lato',Georgia,Arial,sans-serif;
   font-size:medium;
 }
 #purchase-div{
@@ -8,13 +8,9 @@
   height: 530px;
   color: white;
   width: 100%;
+  height: 91%;
   border-radius: 10px;
   /* border: 1px solid black; */
-}
-#vendor-style{
-  border-bottom: 2px solid #007bff;
-  color: #1664a7;
-  font-weight: bold;
 }
 
 .mat-tab-group {
@@ -48,8 +44,6 @@
 .tablink.active {
   border-bottom: 3px solid #007bff;
 }
-
-
 
 a {
   display: block;
@@ -181,7 +175,7 @@ tr {
 }
 .empdet-div{
   background: white;
-  height: 530px;
+  height: 91%;
   width: 97%;
   border-radius: 10px;
 }
@@ -223,7 +217,7 @@ a:hover {
 #hole-div{
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 450px;
+  height: 87%;
   margin-top: 5px;
 }
 #name-text{
@@ -279,7 +273,7 @@ height: 130px;
 /* drag and drop css start */
 .example-box {
   width: 97%;
-  height: 530px;
+  height: 91%;
   border: solid 1px #ccc;
   color: rgba(0, 0, 0, 0.87);
   cursor: move;
@@ -555,11 +549,6 @@ height: 130px;
     border-radius: 10px;
     /* border: 1px solid black; */
   }
-  #vendor-style{
-    border-bottom: 2px solid #007bff;
-    color: #1664a7;
-    font-weight: bold;
-  }
   .empdet-div{
     background: white;
     height: 530px;
@@ -580,12 +569,7 @@ height: 130px;
     border-radius: 10px;
     /* border: 1px solid black; */
   }
-  #vendor-style{
-    border-bottom: 2px solid #007bff;
-    color: #1664a7;
-    font-weight: bold;
-    margin-left: 20px;
-  }
+
   .empdet-div{
     background: white;
     height: 530px;

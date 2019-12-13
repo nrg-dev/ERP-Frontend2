@@ -72,7 +72,8 @@
     <mat-nav-list style="width: 250px;margin-top: 25px;">
       <ng-container *ngFor="let item of menuItems let i=index">
           <mat-list-item  class="white-hover">  
-         <a mat-list-item  routerLink= {{item.pageName}} > {{item.name}}</a>
+         <a mat-list-item      style="font-family:'Lato',Georgia,Arial,sans-serif;font-size: medium;"
+          routerLink= {{item.pageName}} > {{item.name}}</a>
              <mat-icon mat-list-icon>
               
                <img width="20" height="20" src={{menuItemsIcons[i].name}} />
