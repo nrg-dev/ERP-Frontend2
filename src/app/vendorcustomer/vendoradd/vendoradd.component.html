@@ -1,6 +1,6 @@
 <div  class="row">
-    <div class="col-3"></div>
-    <div  class="col-md-6  col-lg-5" style="height: 60px;">
+    <div class="col-md-3"></div>
+    <div  class="col-2 col-md-3  col-lg-5" style="height: 60px;">
     <vendorcustalert></vendorcustalert>
     </div>
 
@@ -10,7 +10,7 @@
 </div>
 <br/>
 <div class="row">
-    <div class="col-md-6  col-lg-5">
+    <div class="col-12 col-sm-5 col-md-6  col-lg-5">
         <div class="tab">
             <a class="tablink"  id="vendorstyle" (click)="vendorcust(1)">Vendor</a>
             <a class="tablink" id="customerstyle" (click)="vendorcust(2)">Customer</a>
@@ -71,17 +71,16 @@
 <!-- Customer details end-->
 
 
-<div class="col-md-6 col-6 col-lg-7">
+<div class="col-12 col-sm-7 col-md-6 col-lg-7">
 <!-- Vendor left side deatils start-->
     <div *ngIf="vendordetails" class="empdet-div" id="scrolling">
             <br/>
             <div class="row">
                 <div class="col-md-1 col-1 col-lg-1"></div>
-                <div class="col-md-3 col-4 col-lg-4">
+                <div class="col-md-3 col-5 col-lg-4">
                     <h4>Vendor View</h4>
                 </div>
-                    <div class=" col-lg-1"></div>
-                    <div  class="col-md-4 col-2 col-lg-6">
+                    <div  class="col-md-5 col-5 col-lg-7">
                      <div class="row">
                         <button id="edit-butn1">
                             <div class="row" (click)="vendoreditDetails()">
@@ -97,6 +96,12 @@
                                 <p id="text">Print Page</p>
                             </div>
                          </button>
+                         <button id="print-butn">
+                            <div class="row">
+                                <i class="fa fa-trash" aria-hidden="true" id="icon-mod"></i>
+                                <p id="text">Delete</p>
+                            </div>
+                         </button>
                      </div>
                     </div>
                 </div>
@@ -106,59 +111,59 @@
              <div id="img-detaildiv">
                     <img src="./assets/images/employee.png"  id="image-size" />
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
-                     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12" >
+                     <div class="col-2 col-sm-2 col-md-2 col-lg-2"></div>
                    
                         <div class="row" id="code">
-                            <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Vendor Code</p>
-                            <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                            <p class="col-md-4 col-4 col-lg-4" id="text3">Vendor Code</p>
+                            <p class="col-md-1 col-1 col-lg-1">:</p>
                             <p >{{ this.model.vendorcode }}</p>
                         </div>
                         <div class="row" id="name">
-                            <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Vendor Name</p>
-                            <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                            <p class="col-md-4 col-4 col-lg-4" id="text3">Vendor Name</p>
+                            <p class="col-md-1 col-1 col-lg-1">:</p>
                             <p  id="text4">{{ this.model.vendorName }}</p>
                         </div>
                         <div class="row" id="phonenumber">
-                            <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Phone Number</p>
-                            <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                            <p class="col-md-4 col-4 col-lg-4" id="text3">Phone Number</p>
+                            <p class="col-md-1 col-1 col-lg-1">:</p>
                             <p >{{ this.model.phoneNumber }}</p>
                         </div>
                         <div class="row" id="mobilenumber">
-                            <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Mobile Number</p>
-                            <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                            <p class="col-md-4 col-4 col-lg-4" id="text3">Mobile Number</p>
+                            <p class="col-md-1 col-1 col-lg-1">:</p>
                             <p >{{ this.model.mobileNumber }}</p>
                         </div>
                         <div class="row" id="country">
-                            <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Country</p>
-                            <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                            <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
+                            <p class="col-md-1 col-1 col-lg-1">:</p>
                             <p >{{ this.model.country }}</p>
                         </div> 
                    
                     
                         <div class="row" id="email">
-                                <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Email</p>
-                                <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                                <p class="col-md-4 col-4 col-lg-4" id="text3">Email</p>
+                                <p class="col-md-1 col-1 col-lg-1">:</p>
                                 <p  >{{ this.model.email }}</p>
                         </div>
                         <div class="row" id="city">
-                                <p class="col-md-4 col-xs-4 col-lg-4" id="text3">City</p>
-                                <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                                <p class="col-md-4 col-4 col-lg-4" id="text3">City</p>
+                                <p class="col-md-1 col-1 col-lg-1">:</p>
                                 <p>{{ this.model.city }}</p>
                         </div>
                         <div class="row" id="lastedit">
-                                <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Last Edit</p>
-                                <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                                <p class="col-md-4 col-4 col-lg-4" id="text3">Last Edit</p>
+                                <p class="col-md-1 col-1 col-lg-1">:</p>
                                 <p>{{ this.model.lastedit }}</p>
                         </div>
                         <div class="row" id="addeddate">
-                                <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Added Date</p>
-                                <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                                <p class="col-md-4 col-4 col-lg-4" id="text3">Added Date</p>
+                                <p class="col-md-1 col-1 col-lg-1">:</p>
                                 <p>{{ this.model.addeddate }}</p>
                         </div>
                         <div class="row" id="address">
-                                <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Address</p>
-                                <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                                <p class="col-md-4 col-4 col-lg-4" id="text3">Address</p>
+                                <p class="col-md-1 col-1 col-lg-1">:</p>
                                 <p>{{ this.model.address }}</p>
                         </div>
                 </div>
@@ -171,11 +176,10 @@
             <br/>
             <div class="row">
                 <div class="col-md-1 col-1 col-lg-1"></div>
-                <div class="col-md-3 col-4 col-lg-5">
+                <div class="col-md-3 col-5 col-lg-4">
                     <h4>Customer View</h4>
                 </div>
-                <div class=" col-lg-1"></div>
-                <div  class="col-md-4 col-2 col-lg-5">
+                <div  class="col-md-5 col-5 col-lg-7">
                     <div class="row">
                     <button id="edit-butn1">
                     <div class="row" (click)="customerEditDetails()">
@@ -191,6 +195,12 @@
                         <p id="text">Print Page</p>
                     </div>
                     </button>
+                    <button id="print-butn">
+                        <div class="row">
+                            <i class="fa fa-trash" aria-hidden="true" id="icon-mod"></i>
+                            <p id="text">Delete</p>
+                        </div>
+                     </button>
                     </div>
                 </div>
             </div>
@@ -199,67 +209,67 @@
             <div id="img-detaildiv">
                 <img src="./assets/images/employee.png"  id="image-size" />
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-1 col-sm-1 col-md-1 col-lg-1"></div>
              
                     <div class="row" id="code">
-                        <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Customer Code</p>
-                        <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                        <p class="col-md-4 col-4 col-lg-4" id="text3">Customer Code</p>
+                        <p class="col-md-1 col-1 col-lg-1">:</p>
                         <p id="text4">{{ this.model.custcode }}</p>
                     </div>
                     
                     <div class="row" id="code">
-                        <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Customer Name</p>
-                        <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                        <p class="col-md-4 col-4 col-lg-4" id="text3">Customer Name</p>
+                        <p class="col-md-1 col-1 col-lg-1">:</p>
                         <p id="text4">{{ this.model.customerName }}</p>
                     </div>
                     
                     <div class="row" id="number">
-                        <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Phone Number</p>
-                        <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                        <p class="col-md-4 col-4 col-lg-4" id="text3">Phone Number</p>
+                        <p class="col-md-1 col-1 col-lg-1">:</p>
                         <p id="text4">{{ this.model.phoneNumber }}</p>
                     </div>
                     
                     <div class="row" id="name">
-                            <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Mobile Number</p>
-                            <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                            <p class="col-md-4 col-4 col-lg-4" id="text3">Mobile Number</p>
+                            <p class="col-md-1 col-1 col-lg-1">:</p>
                             <p id="text4">{{ this.model.mobileNumber }}</p>
                     </div>
                     
                     <div class="row" id="country">
-                        <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Country</p>
-                        <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                        <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
+                        <p class="col-md-1 col-1 col-lg-1">:</p>
                         <p id="text4">{{ this.model.country }}</p>
                     </div>
 
                 
                     <div class="row" id="country">
-                            <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Email</p>
-                            <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                            <p class="col-md-4 col-4 col-lg-4" id="text3">Email</p>
+                            <p class="col-md-1 col-1 col-lg-1">:</p>
                             <p id="text4">{{ this.model.email }}</p>
                     </div>
                     
                     <div class="row" id="city">
-                            <p class="col-md-4 col-xs-4 col-lg-4" id="text3">City</p>
-                            <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                            <p class="col-md-4 col-4 col-lg-4" id="text3">City</p>
+                            <p class="col-md-1 col-1 col-lg-1">:</p>
                             <p id="text4">{{ this.model.city }}</p>
                     </div>
                     
                     <div class="row" id="lastedit">
-                            <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Last Edit</p>
-                            <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                            <p class="col-md-4 col-4 col-lg-4" id="text3">Last Edit</p>
+                            <p class="col-md-1 col-1 col-lg-1">:</p>
                             <p id="text4">{{ this.model.lastedit }}</p>
                     </div>
                    
                     <div class="row" id="addeddate">
-                            <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Added Date</p>
-                            <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                            <p class="col-md-4 col-4 col-lg-4" id="text3">Added Date</p>
+                            <p class="col-md-1 col-1 col-lg-1">:</p>
                             <p id="text4">{{ this.model.addeddate }}</p>
                     </div>
                     
                     <div class="row" id="address">
-                            <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Address</p>
-                            <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                            <p class="col-md-4 col-4 col-lg-4" id="text3">Address</p>
+                            <p class="col-md-1 col-1 col-lg-1">:</p>
                             <p id="text4">{{ this.model.address }}</p>
                     </div>     
                
@@ -274,8 +284,8 @@
             <div class="col-md-3 col-4 col-lg-4">
                 <h4>Vendor Edit</h4>
             </div>
-                <div class=" col-lg-1"></div>
-                <div  class="col-md-4 col-2 col-lg-6">
+                <div class="col-md-1 col-1 col-lg-1"></div>
+                <div  class="col-md-6 col-4 col-lg-6">
                     <div class="row">
                     <button id="edit-butn1">
                         <div class="row" (click)="vendorupdateDetails()">
@@ -299,66 +309,66 @@
             <div id="img-detaildiv">
                 <img src="./assets/images/employee.png"  id="image-size" />
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-1 col-sm-1 col-md-1 col-lg-1"></div>
                 <div class="row" id="code">
-                    <p class="col-md-5 col-xs-5 col-lg-4" id="text3">Vendor Code</p>
-                    <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                    <p class="col-md-5 col-5 col-lg-4" id="text3">Vendor Code</p>
+                    <p class="col-md-1 col-1 col-lg-1">:</p>
                     <p id="text4">{{ this.model.vendorcode }}</p>
                 </div>
                 
                 <div class="row" id="name">
-                    <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Vendor Name</p>
-                    <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Vendor Name</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
                     <input type="text" id="editinput-box" value="{{ this.model.vendorName }}" />
                 </div>
                 
                 <div class="row" id="phonenumber">
-                    <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Phone Number</p>
-                    <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Phone Number</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
                     <input type="text" id="editinput-box" value="{{ this.model.phoneNumber }}" />
                 </div>
                     
                 <div class="row" id="mobilenumber">
-                    <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Mobile Number</p>
-                    <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Mobile Number</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
                     <input type="text" id="editinput-box" value="{{ this.model.mobileNumber }}" />
                 </div>
                 
                 <div class="row" id="country">
-                    <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Country</p>
-                    <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
                     <select id="editselect-box" [(ngModel)] ="this.model.country"  >
                             <option  *ngFor="let country of countryList" value={{country}} >{{country}}</option>     
               </select>                    </div>
                 
                 <div class="row" id="email">
-                    <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Email</p>
-                    <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Email</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
                     <input type="text" id="editinput-box" value="{{ this.model.email }}" />
                 </div>
                 
                 <div class="row" id="city">
-                    <p class="col-md-4 col-xs-4 col-lg-4" id="text3">City</p>
-                    <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">City</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
                     <input type="text" id="editinput-box" value="{{ this.model.city }}" />
                 </div>
                 
                 <div class="row" id="lastedit">
-                    <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Last Edit</p>
-                    <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Last Edit</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
                     <p id="text4">{{ this.model.lastedit }}</p>
                 </div>
                 
                 <div class="row" id="addeddate">
-                    <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Added Date</p>
-                    <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Added Date</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
                     <p id="text4">{{ this.model.addeddate }}</p>
                 </div>
                 
                 <div class="row" id="address">
-                    <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Address</p>
-                    <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Address</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
                     <input type="text" id="editinput-box" value="{{ this.model.address }}" />
                 </div>
                 
@@ -375,8 +385,8 @@
             <div class="col-md-3 col-4 col-lg-4">
                 <h4>Customer Edit</h4>
             </div>
-            <div class=" col-lg-1"></div>
-            <div  class="col-md-4 col-2 col-lg-6">
+            <div class="col-md-1 col-1 col-lg-1"></div>
+            <div  class="col-md-6 col-4 col-lg-6">
                 <div class="row">
                     <button id="edit-butn1">
                         <div class="row" (click)="customerupdateDetails()">
@@ -400,35 +410,35 @@
         <div id="img-detaildiv">
             <img src="./assets/images/employee.png"  id="image-size" />
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div class="col-md-1 col-xs-1 col-lg-1"></div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col-md-1 col-1 col-lg-1"></div>
                 <div class="row" id="code">
-                    <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Customer Code</p>
-                    <p class="col-md-1 col-xs-1 col-lg-1">:</p>
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Customer Code</p>
+                    <p class="col-md-1 col-1 col-lg-1">:</p>
                     <p>{{ this.model.custcode }}</p>
                 </div>
                 
                 <div class="row" id="name">
-                    <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Customer Name</p>
-                    <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Customer Name</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
                     <input type="text" id="editinput-box" value="{{ this.model.customerName }}" />
                 </div>
                     
                 <div class="row" id="phonenumber">
-                    <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Phone Number</p>
-                    <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Phone Number</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
                     <input type="text" id="editinput-box" value="{{ this.model.phoneNumber }}" />
                 </div>
                     
                 <div class="row" id="mobilenumber">
-                    <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Mobile Number</p>
-                    <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Mobile Number</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
                     <input type="text" id="editinput-box" value="{{ this.model.mobileNumber }}" />
                 </div>
                 
                 <div class="row" id="country">
-                    <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Country</p>
-                    <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
 
                     <select id="editselect-box" [(ngModel)] ="this.model.country"  >
                             <option  *ngFor="let country of countryList" value={{country}} >{{country}}</option>     
@@ -437,32 +447,32 @@
                 </div> 
                 
                     <div class="row" id="email">
-                        <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Email</p>
-                        <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                        <p class="col-md-4 col-4 col-lg-4" id="text3">Email</p>
+                        <p class="col-md-1 col-1 col-lg-1" >:</p>
                         <input type="text" id="editinput-box" value="{{ this.model.email }}" />
                     </div>
                     
                     <div class="row" id="city">
-                        <p class="col-md-4 col-xs-4 col-lg-4" id="text3">City</p>
-                        <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                        <p class="col-md-4 col-4 col-lg-4" id="text3">City</p>
+                        <p class="col-md-1 col-1 col-lg-1" >:</p>
                         <input type="text" id="editinput-box" value="{{ this.model.city }}" />
                     </div>
                     
                     <div class="row" id="lastedit">
-                        <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Last Edit</p>
-                        <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                        <p class="col-md-4 col-4 col-lg-4" id="text3">Last Edit</p>
+                        <p class="col-md-1 col-1 col-lg-1" >:</p>
                         <p id="text4">{{ this.model.lastedit }}</p>
                     </div>
                     
                     <div class="row" id="addeddate">
-                        <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Added Date</p>
-                        <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                        <p class="col-md-4 col-4 col-lg-4" id="text3">Added Date</p>
+                        <p class="col-md-1 col-1 col-lg-1" >:</p>
                         <p id="text4">{{ this.model.addeddate }}</p>
                     </div>
                 
                     <div class="row" id="address">
-                        <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Address</p>
-                        <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                        <p class="col-md-4 col-4 col-lg-4" id="text3">Address</p>
+                        <p class="col-md-1 col-1 col-lg-1" >:</p>
                         <input type="text" id="editinput-box" value="{{ this.model.address }}" />
                     </div>
                     
@@ -477,66 +487,66 @@
         <h2>Add New Vendor</h2>
         <br/>
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-7 col-md-8 col-lg-8">
                 <div id="selectimg-div">
                         <p>Select Image</p>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="row">
-            <button id="edit-butn1">
-                <div class="row" (click)="customerupdateDetails()">
-                    <i class="fa fa-floppy-o" aria-hidden="true" style="margin-top: 5px;"></i>
-                    &nbsp;
-                    <p>Save</p>
-                </div>
-            </button>
+            <div class="col-5 col-md-4 col-lg-4">
+            <div class="row">
+                <button id="edit-butn1">
+                    <div class="row" (click)="customerupdateDetails()">
+                        <i class="fa fa-floppy-o" aria-hidden="true" style="margin-top: 5px;"></i>
+                        &nbsp;
+                        <p>Save</p>
+                    </div>
+                </button>
 
-            <button id="print-butn">
-            <div class="row" (click)="customercloseMethod()">
-                <i class="fa fa-times" aria-hidden="true" id="icon-mod"></i>
-                <p id="text">Cancel</p>
+                <button id="print-butn">
+                <div class="row" (click)="customercloseMethod()">
+                    <i class="fa fa-times" aria-hidden="true" id="icon-mod"></i>
+                    <p id="text">Cancel</p>
+                </div>
+                </button>
             </div>
-            </button>
-        </div>
-        </div>
+          </div>
         </div>
        
         <br/>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
             <div class="row" id="address">
-                <p class="col-md-4 col-xs-4 col-lg-4" id="text3">VendorName</p>
-                <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                <p class="col-md-4 col-4 col-lg-4" id="text3">VendorName</p>
+                <p class="col-md-1 col-1 col-lg-1" >:</p>
                 <input type="text" id="editinput-box" value="" />
             </div>
             <div class="row" id="address">
-                <p class="col-md-4 col-xs-4 col-lg-4" id="text3">PhoneNumber</p>
-                <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                <p class="col-md-4 col-4 col-lg-4" id="text3">PhoneNumber</p>
+                <p class="col-md-1 col-1 col-lg-1" >:</p>
                 <input type="text" id="editinput-box" value="" />
             </div>
             <div class="row" id="address">
-                <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Address</p>
-                <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                <p class="col-md-4 col-4 col-lg-4" id="text3">Address</p>
+                <p class="col-md-1 col-1 col-lg-1" >:</p>
                 <input type="text" id="editinput-box" value="" />
             </div>
             <div class="row" id="address">
-                <p class="col-md-4 col-xs-4 col-lg-4" id="text3">City</p>
-                <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                <p class="col-md-4 col-4 col-lg-4" id="text3">City</p>
+                <p class="col-md-1 col-1 col-lg-1" >:</p>
                 <input type="text" id="editinput-box" value="" />
             </div>
             <div class="row" id="address">
-                <p class="col-md-4 col-xs-4 col-lg-4" id="text3">EmailAddress</p>
-                <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                <p class="col-md-4 col-4 col-lg-4" id="text3">EmailAddress</p>
+                <p class="col-md-1 col-1 col-lg-1" >:</p>
                 <input type="text" id="editinput-box" value="" />
             </div>
             <div class="row" id="address">
-                <p class="col-md-4 col-xs-4 col-lg-4" id="text3">MobileNumber</p>
-                <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                <p class="col-md-4 col-4 col-lg-4" id="text3">MobileNumber</p>
+                <p class="col-md-1 col-1 col-lg-1" >:</p>
                 <input type="text" id="editinput-box" value="" />
             </div>
             <div class="row" id="address">
-                <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Country</p>
-                <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
+                <p class="col-md-1 col-1 col-lg-1" >:</p>
                 <input type="text" id="editinput-box" value="" />
             </div>
         </div>
@@ -549,44 +559,66 @@
         <br/>
         <h2>Add New Customer</h2>
         <br/>
-        <div id="selectimg-div">
-            <p>Select Image</p>
+        <div class="row">
+            <div class="col-7 col-md-8 col-lg-8">
+                <div id="selectimg-div">
+                        <p>Select Image</p>
+                </div>
+            </div>
+            <div class="col-5 col-md-4 col-lg-4">
+            <div class="row">
+                <button id="edit-butn1">
+                    <div class="row" (click)="customerupdateDetails()">
+                        <i class="fa fa-floppy-o" aria-hidden="true" style="margin-top: 5px;"></i>
+                        &nbsp;
+                        <p>Save</p>
+                    </div>
+                </button>
+
+                <button id="print-butn">
+                <div class="row" (click)="customercloseMethod()">
+                    <i class="fa fa-times" aria-hidden="true" id="icon-mod"></i>
+                    <p id="text">Cancel</p>
+                </div>
+                </button>
+            </div>
+          </div>
         </div>
         <br/>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
             <div class="row" id="address">
-                <p class="col-md-4 col-xs-4 col-lg-4" id="text3">CustomerName</p>
-                <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                <p class="col-md-4 col-4 col-lg-4" id="text3">CustomerName</p>
+                <p class="col-md-1 col-1 col-lg-1" >:</p>
                 <input type="text" id="editinput-box" value="" />
             </div>
             <div class="row" id="address">
-                <p class="col-md-4 col-xs-4 col-lg-4" id="text3">PhoneNumber</p>
-                <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                <p class="col-md-4 col-4 col-lg-4" id="text3">PhoneNumber</p>
+                <p class="col-md-1 col-1 col-lg-1" >:</p>
                 <input type="text" id="editinput-box" value="" />
             </div>
             <div class="row" id="address">
-                <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Address</p>
-                <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                <p class="col-md-4 col-4 col-lg-4" id="text3">Address</p>
+                <p class="col-md-1 col-1 col-lg-1" >:</p>
                 <input type="text" id="editinput-box" value="" />
             </div>
             <div class="row" id="address">
-                <p class="col-md-4 col-xs-4 col-lg-4" id="text3">City</p>
-                <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                <p class="col-md-4 col-4 col-lg-4" id="text3">City</p>
+                <p class="col-md-1 col-1 col-lg-1" >:</p>
                 <input type="text" id="editinput-box" value="" />
             </div>
             <div class="row" id="address">
-                <p class="col-md-4 col-xs-4 col-lg-4" id="text3">EmailAddress</p>
-                <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                <p class="col-md-4 col-4 col-lg-4" id="text3">EmailAddress</p>
+                <p class="col-md-1 col-1 col-lg-1" >:</p>
                 <input type="text" id="editinput-box" value="" />
             </div>
             <div class="row" id="address">
-                <p class="col-md-4 col-xs-4 col-lg-4" id="text3">MobileNumber</p>
-                <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                <p class="col-md-4 col-4 col-lg-4" id="text3">MobileNumber</p>
+                <p class="col-md-1 col-1 col-lg-1" >:</p>
                 <input type="text" id="editinput-box" value="" />
             </div>
             <div class="row" id="address">
-                <p class="col-md-4 col-xs-4 col-lg-4" id="text3">Country</p>
-                <p class="col-md-1 col-xs-1 col-lg-1" >:</p>
+                <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
+                <p class="col-md-1 col-1 col-lg-1" >:</p>
                 <input type="text" id="editinput-box" value="" />
             </div>
         </div>
