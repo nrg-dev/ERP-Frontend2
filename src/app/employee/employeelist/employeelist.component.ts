@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/_models';
+import { AlertService } from 'src/app/_services/index';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employeelist',
@@ -11,6 +13,7 @@ export class EmployeelistComponent implements OnInit {
   model: any = {};
   public empdetails = false;
   public empeditdetails = false;
+  public empdeletedetails = false;
 
   employeeList : any = [ 
     {
@@ -89,7 +92,7 @@ export class EmployeelistComponent implements OnInit {
 
   emptempid = null;
 
-  constructor() { }
+  constructor(private router: Router, private alertService: AlertService) { }
 
   ngOnInit() {
 
@@ -110,60 +113,68 @@ export class EmployeelistComponent implements OnInit {
       this.model.name = this.employeeList[0].name;
       this.model.rank = this.employeeList[0].rank;
       this.model.contactNumber = this.employeeList[0].contactNumber;
+      this.alertService.success("");
     }else if(empCode == "NRG2"){
       this.model.empCode = this.employeeList[1].empCode;
       this.model.name = this.employeeList[1].name;
       this.model.rank = this.employeeList[1].rank;
       this.model.contactNumber = this.employeeList[1].contactNumber;
+      this.alertService.success("");
     }
     else if(empCode == "NRG3"){
       this.model.empCode = this.employeeList[2].empCode;
       this.model.name = this.employeeList[2].name;
       this.model.rank = this.employeeList[2].rank;
       this.model.contactNumber = this.employeeList[2].contactNumber;
-    
+      this.alertService.success("");
     }
     else if(empCode == "NRG4"){
       this.model.empCode = this.employeeList[3].empCode;
       this.model.name = this.employeeList[3].name;
       this.model.rank = this.employeeList[3].rank;
       this.model.contactNumber = this.employeeList[3].contactNumber;
-    
+      this.alertService.success("");
     }else if(empCode == "NRG5"){
       this.model.empCode = this.employeeList[4].empCode;
       this.model.name = this.employeeList[4].name;
       this.model.rank = this.employeeList[4].rank;
       this.model.contactNumber = this.employeeList[4].contactNumber;
+      this.alertService.success("");
     }
     else if(empCode == "NRG6"){
       this.model.empCode = this.employeeList[5].empCode;
       this.model.name = this.employeeList[5].name;
       this.model.rank = this.employeeList[5].rank;
       this.model.contactNumber = this.employeeList[5].contactNumber;
+      this.alertService.success("");
     }
     else if(empCode == "NRG7"){
       this.model.empCode = this.employeeList[6].empCode;
       this.model.name = this.employeeList[6].name;
       this.model.rank = this.employeeList[6].rank;
       this.model.contactNumber = this.employeeList[6].contactNumber;
+      this.alertService.success("");
     }
     else if(empCode == "NRG8"){
       this.model.empCode = this.employeeList[7].empCode;
       this.model.name = this.employeeList[7].name;
       this.model.rank = this.employeeList[7].rank;
       this.model.contactNumber = this.employeeList[7].contactNumber;
+      this.alertService.success("");
     }
     else if(empCode == "NRG9"){
       this.model.empCode = this.employeeList[8].empCode;
       this.model.name = this.employeeList[8].name;
       this.model.rank = this.employeeList[8].rank;
       this.model.contactNumber = this.employeeList[8].contactNumber;
+      this.alertService.success("");
     }
     else if(empCode == "NRG10"){
       this.model.empCode = this.employeeList[9].empCode;
       this.model.name = this.employeeList[9].name;
       this.model.rank = this.employeeList[9].rank;
       this.model.contactNumber = this.employeeList[9].contactNumber;
+      this.alertService.success("");
     }
 
     else if(empCode == "NRG11"){
@@ -171,42 +182,55 @@ export class EmployeelistComponent implements OnInit {
       this.model.name = this.employeeList[10].name;
       this.model.rank = this.employeeList[10].rank;
       this.model.contactNumber = this.employeeList[10].contactNumber;
+      this.alertService.success("");
     }
     else if(empCode == "NRG12"){
       this.model.empCode = this.employeeList[11].empCode;
       this.model.name = this.employeeList[11].name;
       this.model.rank = this.employeeList[11].rank;
       this.model.contactNumber = this.employeeList[11].contactNumber;
+      this.alertService.success("");
     }
   }
 
   edit(){
     this.empdetails = false;
     this.empeditdetails = true;
+    this.empdeletedetails = false;
+    this.alertService.success("");
   }
 
-  setEmployeeUpdate(){
-    alert("Employee Code ---->"+this.model.empCode);
-    alert("Employee Name ---->"+this.model.name);
-    alert("Employee Rank ---->"+this.model.rank);
-    alert("Employee Phone ---->"+this.model.contactNumber);
-    alert("Employee Address ---->"+this.model.address);
-    alert("Employee EmailId ---->"+this.model.emailID);
-    alert("Employee Birth ---->"+this.model.dob);
-    alert("Employee JoinDate ---->"+this.model.joinDate);
-    alert("Employee Contract ---->"+this.model.contactNumber);
-    alert("Employee Npwp ---->"+this.model.npwpNumber);
-    alert("Employee BPJS ---->"+this.model.bpjsNumber);
-    alert("Employee MonthlySalary ---->"+this.model.monthlySalary);
-    alert("Employee OvertimeSalary ---->"+this.model.overtimeSalary);
-    alert("Employee Work Hour ---->"+this.model.workHour);
-    alert("Employee AnnualLeave ---->"+this.model.annualLeave);
-    alert("Employee AbsentDeduction ---->"+this.model.absentDeduction);
+  setEmployeeUpdate(){    
+    this.alertService.success("");
+    this.alertService.success("Employee Data is Successfully Updated..");
   }
 
   cancelEdit(){
     this.empdetails = true;
     this.empeditdetails = false;
+    this.empdeletedetails = false;
+    this.alertService.success("");
+  }
+
+  delete(){
+    this.empdetails = false;
+    this.empeditdetails = false;
+    this.empdeletedetails = true;
+    this.alertService.success("");
+  }
+
+  confirmDelete(){
+    this.empdetails = false;
+    this.empeditdetails = false;
+    this.empdeletedetails = false;
+    this.alertService.success("Employee Data was Successfully Deleted..");
+  }
+
+  cancelDelete(){
+    this.empdetails = true;
+    this.empeditdetails = false;
+    this.empdeletedetails = false;
+    this.alertService.success("");
   }
 
 }

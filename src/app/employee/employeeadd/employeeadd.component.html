@@ -1,34 +1,128 @@
+<div  class="row">
+    <div class="col-3"></div>
+    <div  class="col-md-6  col-lg-5" style="height: 60px;">
+        <app-employeealert></app-employeealert>
+    </div>    
+</div>
+
+<br/><br/>
 <div class="employee-content">
-    <div class="col-lg-2"></div>
-    <div class="col-lg-7">
-        <div class="tab">
-            <a class="tablink" style="border-bottom: 3px solid #007bff;color: #1664a7;" id="defaultOpen">Employee Add</a>
-            <a class="tablink" routerLink="../employeelist">Employee List</a>
-            <a class="tablink" routerLink="../employeereport" id="defaultOpen" style="width: auto;">Employee Report</a>
-        </div>
-        
-        <div id="purchase-div">
-            <br/><br/><br/><br/><br/><br/>
-            <div class="row">
-                <div class="col-lg-5">
-                    <h2 id="vendor-text">Add New Employee</h2>
+    <div class="row">
+        <div class="col-lg-7">
+            <div class="tab">
+                <a class="tablink" style="border-bottom: 3px solid #007bff;color: #1664a7;width: auto;" id="defaultOpen">Employee Add</a>
+                <a class="tablink" routerLink="../employeelist" style="width: auto;">Employee List</a>
+                <a class="tablink" routerLink="../employeereport" id="defaultOpen" style="width: auto;">Employee Report</a>
+            </div>
+            
+            <div id="purchase-div">
+                <br/><br/><br/><br/><br/>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h4 id="vendor-text">Add New Employee</h4>
+                    </div>
+                    <div class="col-lg-5">
+                        <button class='btn btn-info m-r-10px update-product-button' id="empButton"> Cancel
+                        </button> &nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class='btn btn-info m-r-10px update-product-button' id="empButton">
+                            <span class='fa fa-floppy-o'></span> Save
+                        </button> 
+                    </div>
                 </div>
-                <div class="col-lg-2"></div>
-                <div class="col-lg-5">
-                    <button class='btn btn-info m-r-10px update-product-button' id="empButton"> Cancel
-                    </button> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <button class='btn btn-info m-r-10px update-product-button' id="empButton">
-                        <span class='fa fa-floppy-o'></span> Save
-                    </button> 
+                <br/><br/><br/>
+                <div class="row">              
+                    <br/>
+                    <div class="row" id="country">
+                    </div>
+                    <div class="row" id="country">
+                        <div class="col-md-12 col-xs-12 col-lg-12">
+                            <img src="./assets/images/employee.png" height="100px"  class="imagecenter" />
+                        </div>
+                    </div><br/>
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">Employee_Code</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.empCode }}</div>
+                    </div><br/>
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">Employee_Name</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.name }}</div>
+                    </div><br/>
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">Rank</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.rank }}</div>
+                    </div><br/>
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">Phone</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.contactNumber }}</div>
+                    </div><br/>	
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">Address</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.address }}</div>
+                    </div><br/>	
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">EmailID</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.emailID }}</div>
+                    </div><br/>	
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">Birth</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.dob }}</div>
+                    </div><br/>	
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">Join Since</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.joinDate }}</div>
+                    </div><br/>	
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">Contract Number</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.contractNumber }}</div>
+                    </div><br/>	
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">NPWP</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.npwpNumber }}</div>
+                    </div><br/>	
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">BPJS</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.bpjsNumber }}</div>
+                    </div><br/>	
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">Monthly_Salary</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.monthlySalary }}</div>
+                    </div><br/>	
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">Overtime_Salary</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.overtimeSalary }}</div>
+                    </div><br/>	
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">Work_Hour</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.workHour }}</div>
+                    </div><br/>	
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">Annual_Leave</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.annualLeave }}</div>
+                    </div><br/>	
+                    <div class="row" id="country">
+                        <div class="col-md-5 col-xs-5 col-lg-5">Absent Dedection</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.absentDeduction }}</div>
+                    </div><br/>		
                 </div>
             </div>
-            <div class="row">              
-                <br/>
-               
-            </div>
+                            
         </div>
-                        
     </div>
-    <div class="col-lg-3">
-        
+    <br/><br/><br/>
 </div>
