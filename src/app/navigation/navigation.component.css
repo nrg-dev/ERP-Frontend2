@@ -191,7 +191,7 @@ input[type=text]{
     color: black;
   }
   #nrg-logo-paddding{
-    height: 75px;
+    height: 155px;
     margin:-4px 0px 0px -10px;
     outline: none;
     cursor: pointer;
@@ -583,7 +583,7 @@ input[type=text]{
   }
   @media (min-width: 1025px) and (max-width: 1280px){
     #nrg-logo-paddding{
-      height: 75px;
+      height: 155px;
       margin:-4px 0px 0px 0px;
     }
     input[type=text]{
@@ -642,7 +642,7 @@ input[type=text]{
   }
   @media (min-width: 1381px) and (max-width:2051px) {
     #nrg-logo-paddding{
-      height: 75px;
+      height: 155px;
       margin:-4px 0px 0px -10px;
     }
   #user-imag{
