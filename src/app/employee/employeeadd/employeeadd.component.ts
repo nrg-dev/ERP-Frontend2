@@ -15,7 +15,20 @@ export class EmployeeaddComponent implements OnInit {
   //notSelected: boolean;
   user:User;
   model: any = {};
-
+  employeeReg : any = [ 
+    {
+      code:'Employe code',
+      name :'Employee Name',
+      phonenumber : 'Phone Number',
+      mobilenumber : 'Mobile Number',
+      address : 'Address',
+      country :  'Indonesia',
+      city : 'Jakarta',
+      email : 'Email',
+      emergencynumber : 'Emergency Number',
+      dob : 'Date of Birth',
+      rank:'Rank'
+    }];
   constructor() {
    // alert("test");
     //this.notSelected = false;

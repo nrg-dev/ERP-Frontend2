@@ -30,7 +30,7 @@
     border-bottom: 3px solid #007bff;
 }
 
-#purchase-div{
+#addemployee-div{
     background: white;
     height: 630px;
     color: white;
@@ -90,7 +90,7 @@ a:hover {
 }
 
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
-    #purchase-div{
+    #addemployee-div{
       background: white;
       height: 630px;
       color: white;
@@ -101,7 +101,7 @@ a:hover {
     }
 }
 @media (min-width: 1025px) and (max-width: 1280px){
-    #purchase-div{
+    #addemployee-div{
       background: white;
       height: 630px;
       color: white;
