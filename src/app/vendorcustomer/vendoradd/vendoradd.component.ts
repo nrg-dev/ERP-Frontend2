@@ -466,6 +466,14 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     this.vendordragAndDrop = false;
     this.alertService.success("");
   }
+  customerdragdropclose(){
+    this.customerdetails=true;
+    this.customereditdetails=false;
+    this.vendoreditdetails = false;
+    this.vendordragAndDrop = false;
+    this.customerdragAndDrop = false;
+    this.alertService.success("");
+  }
   customerupdateDetails(){
     this.alertService.success("");
     this.alertService.success("Customer Data Successfully Updated");

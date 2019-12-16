@@ -73,7 +73,7 @@
 
 <div class="col-12 col-sm-7 col-md-6 col-lg-7">
 <!-- Vendor left side deatils start-->
-    <div *ngIf="vendordetails" class="empdet-div" id="scrolling">
+    <div *ngIf="vendordetails" class="empdet-div" cdkDrag>
             <br/>
             <div class="row">
                 <div class="col-md-1 col-1 col-lg-1"></div>
@@ -105,11 +105,16 @@
                      </div>
                     </div>
                 </div>
-                <hr>
+                <hr style="margin-top: 25px;">
                 <br/>
-            <div>
-             <div id="img-detaildiv">
-                    <img src="./assets/images/employee.png"  id="image-size" />
+
+                <div id="img-detaildiv">
+                    <div class="row">
+                        <img src="./assets/images/employee.png"  id="image-size"/>
+                        <div id="selecticon-dev">
+                            <i class="fa fa-camera" aria-hidden="true" id="camera-icon"></i>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12" >
                      <div class="col-2 col-sm-2 col-md-2 col-lg-2"></div>
@@ -167,12 +172,11 @@
                                 <p>{{ this.model.address }}</p>
                         </div>
                 </div>
-            </div>
         </div>
  <!-- Vendor left side deatils end-->
 
   <!-- Customer left side deatils start-->
-    <div *ngIf="customerdetails" class="empdet-div" id="scrolling">
+    <div *ngIf="customerdetails" class="empdet-div" cdkDrag>
             <br/>
             <div class="row">
                 <div class="col-md-1 col-1 col-lg-1"></div>
@@ -204,10 +208,15 @@
                     </div>
                 </div>
             </div>
-            <hr>
+            <hr style="margin-top: 25px;">
             <br/>
             <div id="img-detaildiv">
-                <img src="./assets/images/employee.png"  id="image-size" />
+                <div class="row">
+                    <img src="./assets/images/employee.png"  id="image-size"/>
+                    <div id="selecticon-dev">
+                        <i class="fa fa-camera" aria-hidden="true" id="camera-icon"></i>
+                    </div>
+                </div>
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="col-1 col-sm-1 col-md-1 col-lg-1"></div>
@@ -277,7 +286,7 @@
         </div>
  <!-- Customer left side deatils end-->
 <!--vendor Edit div start -->
-<div *ngIf="vendoreditdetails" class="empdet-div" id="scrolling"> 
+<div *ngIf="vendoreditdetails" class="empdet-div" id="scrolling" cdkDrag> 
         <br/>
         <div class="row">
             <div class="col-md-1 col-1 col-lg-1"></div>
@@ -304,10 +313,15 @@
                     </div>
                 </div>
             </div>
-            <hr>
+            <hr style="margin-top: 25px;">
             <br/>
             <div id="img-detaildiv">
-                <img src="./assets/images/employee.png"  id="image-size" />
+                <div class="row">
+                    <img src="./assets/images/employee.png"  id="image-size"/>
+                    <div id="selecticon-dev">
+                        <i class="fa fa-camera" aria-hidden="true" id="camera-icon"></i>
+                    </div>
+                </div>
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="col-1 col-sm-1 col-md-1 col-lg-1"></div>
@@ -339,8 +353,9 @@
                     <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
                     <p class="col-md-1 col-1 col-lg-1" >:</p>
                     <select id="editselect-box" [(ngModel)] ="this.model.country"  >
-                            <option  *ngFor="let country of countryList" value={{country}} >{{country}}</option>     
-              </select>                    </div>
+                        <option  *ngFor="let country of countryList" value={{country}} >{{country}}</option>     
+                     </select>                 
+                </div>
                 
                 <div class="row" id="email">
                     <p class="col-md-4 col-4 col-lg-4" id="text3">Email</p>
@@ -378,7 +393,7 @@
 <!--vendor Edit div End -->
 
  <!--customer Edit div start -->
- <div *ngIf="customereditdetails" class="empdet-div" id="scrolling">
+ <div *ngIf="customereditdetails" class="empdet-div" id="scrolling" cdkDrag>
         <br/>
         <div class="row">
             <div class="col-md-1 col-1 col-lg-1"></div>
@@ -405,10 +420,15 @@
                 </div>
             </div>
         </div>
-        <hr>
+        <hr style="margin-top: 25px;">
         <br/>
         <div id="img-detaildiv">
-            <img src="./assets/images/employee.png"  id="image-size" />
+            <div class="row">
+                <img src="./assets/images/employee.png"  id="image-size"/>
+                <div id="selecticon-dev">
+                    <i class="fa fa-camera" aria-hidden="true" id="camera-icon"></i>
+                </div>
+            </div>
         </div>
         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
             <div class="col-md-1 col-1 col-lg-1"></div>
@@ -483,16 +503,14 @@
 
 <!--vendor Drag and Drop start-->
 <div *ngIf="vendordragAndDrop" class="example-box" cdkDrag>
-        <br/>
-        <h2>Add New Vendor</h2>
-        <br/>
-        <div class="row">
-            <div class="col-7 col-md-8 col-lg-8">
-                <div id="selectimg-div">
-                        <p>Select Image</p>
-                </div>
-            </div>
-            <div class="col-5 col-md-4 col-lg-4">
+    <br/>
+    <div class="row">
+        <div class="col-md-1 col-1 col-lg-1"></div>
+        <div class="col-md-3 col-4 col-lg-4">
+            <h4>Add Vendor</h4>
+        </div>
+        <div class="col-md-1 col-1 col-lg-1"></div>
+        <div  class="col-md-6 col-4 col-lg-6">
             <div class="row">
                 <button id="edit-butn1">
                     <div class="row" (click)="customerupdateDetails()">
@@ -509,63 +527,71 @@
                 </div>
                 </button>
             </div>
-          </div>
         </div>
-       
-        <br/>
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-            <div class="row" id="address">
-                <p class="col-md-4 col-4 col-lg-4" id="text3">VendorName</p>
-                <p class="col-md-1 col-1 col-lg-1" >:</p>
-                <input type="text" id="editinput-box" value="" />
-            </div>
-            <div class="row" id="address">
-                <p class="col-md-4 col-4 col-lg-4" id="text3">PhoneNumber</p>
-                <p class="col-md-1 col-1 col-lg-1" >:</p>
-                <input type="text" id="editinput-box" value="" />
-            </div>
-            <div class="row" id="address">
-                <p class="col-md-4 col-4 col-lg-4" id="text3">Address</p>
-                <p class="col-md-1 col-1 col-lg-1" >:</p>
-                <input type="text" id="editinput-box" value="" />
-            </div>
-            <div class="row" id="address">
-                <p class="col-md-4 col-4 col-lg-4" id="text3">City</p>
-                <p class="col-md-1 col-1 col-lg-1" >:</p>
-                <input type="text" id="editinput-box" value="" />
-            </div>
-            <div class="row" id="address">
-                <p class="col-md-4 col-4 col-lg-4" id="text3">EmailAddress</p>
-                <p class="col-md-1 col-1 col-lg-1" >:</p>
-                <input type="text" id="editinput-box" value="" />
-            </div>
-            <div class="row" id="address">
-                <p class="col-md-4 col-4 col-lg-4" id="text3">MobileNumber</p>
-                <p class="col-md-1 col-1 col-lg-1" >:</p>
-                <input type="text" id="editinput-box" value="" />
-            </div>
-            <div class="row" id="address">
-                <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
-                <p class="col-md-1 col-1 col-lg-1" >:</p>
-                <input type="text" id="editinput-box" value="" />
+    </div>
+    <hr style="margin-top: 25px;">
+    <br/>
+    <div id="img-detaildiv">
+        <div class="row">
+            <img src="./assets/images/employee.png"  id="image-size"/>
+            <div id="selecticon-dev">
+                <i class="fa fa-camera" aria-hidden="true" id="camera-icon"></i>
             </div>
         </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row" id="address">
+            <p class="col-md-4 col-4 col-lg-4" id="text3">VendorName</p>
+            <p class="col-md-1 col-1 col-lg-1" >:</p>
+            <input type="text" id="editinput-box" value="" />
+        </div>
+        <div class="row" id="address">
+            <p class="col-md-4 col-4 col-lg-4" id="text3">PhoneNumber</p>
+            <p class="col-md-1 col-1 col-lg-1" >:</p>
+            <input type="text" id="editinput-box" value="" />
+        </div>
+        <div class="row" id="address">
+            <p class="col-md-4 col-4 col-lg-4" id="text3">Address</p>
+            <p class="col-md-1 col-1 col-lg-1" >:</p>
+            <input type="text" id="editinput-box" value="" />
+        </div>
+        <div class="row" id="address">
+            <p class="col-md-4 col-4 col-lg-4" id="text3">City</p>
+            <p class="col-md-1 col-1 col-lg-1" >:</p>
+            <input type="text" id="editinput-box" value="" />
+        </div>
+        <div class="row" id="address">
+            <p class="col-md-4 col-4 col-lg-4" id="text3">EmailAddress</p>
+            <p class="col-md-1 col-1 col-lg-1" >:</p>
+            <input type="text" id="editinput-box" value="" />
+        </div>
+        <div class="row" id="address">
+            <p class="col-md-4 col-4 col-lg-4" id="text3">MobileNumber</p>
+            <p class="col-md-1 col-1 col-lg-1" >:</p>
+            <input type="text" id="editinput-box" value="" />
+        </div>
+        <div class="row" id="address">
+            <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
+            <p class="col-md-1 col-1 col-lg-1" >:</p>
+            <select id="editselect-box" [(ngModel)] ="this.model.country">
+                <option  *ngFor="let country of countryList" value={{country}} >{{country}}</option>     
+            </select>  
+        </div>
+    </div>
 
-      </div>
+</div>
   <!-- vendor Drag and Drop end-->
 
   <!--customer Drag and Drop start-->
 <div *ngIf="customerdragAndDrop" class="example-box" cdkDrag>
-        <br/>
-        <h2>Add New Customer</h2>
-        <br/>
-        <div class="row">
-            <div class="col-7 col-md-8 col-lg-8">
-                <div id="selectimg-div">
-                        <p>Select Image</p>
-                </div>
-            </div>
-            <div class="col-5 col-md-4 col-lg-4">
+    <br/>
+    <div class="row">
+        <div class="col-md-1 col-1 col-lg-1"></div>
+        <div class="col-md-3 col-4 col-lg-4">
+            <h4>Customer Edit</h4>
+        </div>
+        <div class="col-md-1 col-1 col-lg-1"></div>
+        <div  class="col-md-6 col-4 col-lg-6">
             <div class="row">
                 <button id="edit-butn1">
                     <div class="row" (click)="customerupdateDetails()">
@@ -576,16 +602,25 @@
                 </button>
 
                 <button id="print-butn">
-                <div class="row" (click)="customercloseMethod()">
+                <div class="row" (click)="customerdragdropclose()">
                     <i class="fa fa-times" aria-hidden="true" id="icon-mod"></i>
                     <p id="text">Cancel</p>
                 </div>
                 </button>
             </div>
-          </div>
         </div>
-        <br/>
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+    </div>
+    <hr style="margin-top: 25px;">
+    <br/>
+    <div id="img-detaildiv">
+        <div class="row">
+            <img src="./assets/images/employee.png"  id="image-size"/>
+            <div id="selecticon-dev">
+                <i class="fa fa-camera" aria-hidden="true" id="camera-icon"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
             <div class="row" id="address">
                 <p class="col-md-4 col-4 col-lg-4" id="text3">CustomerName</p>
                 <p class="col-md-1 col-1 col-lg-1" >:</p>
@@ -619,11 +654,13 @@
             <div class="row" id="address">
                 <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
                 <p class="col-md-1 col-1 col-lg-1" >:</p>
-                <input type="text" id="editinput-box" value="" />
+                <select id="editselect-box" [(ngModel)] ="this.model.country"  >
+                    <option  *ngFor="let country of countryList" value={{country}} >{{country}}</option>     
+                 </select>  
             </div>
         </div>
 
-      </div>
+    </div>
   <!-- customer Drag and Drop end-->
 
     </div>            
