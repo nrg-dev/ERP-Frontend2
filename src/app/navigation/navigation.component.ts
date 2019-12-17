@@ -77,7 +77,7 @@ showToggle: string;
       new MenuItem("Stock","stockadd"),
       new MenuItem("Report","allreport"),
       new MenuItem("User Management","usermgtadd"),
-      new MenuItem("Log Out","login"),
+      new MenuItem("",""),
 
     ]
 
@@ -94,7 +94,7 @@ showToggle: string;
       new MenuItem("./assets/images/stock.png","stockadd"),
       new MenuItem("./assets/images/reports.png","allreport"),
       new MenuItem("./assets/images/usermgt.png","usermgtadd"),
-      new MenuItem("./assets/images/logout.png","login"),
+      new MenuItem('./assets/images/null.png',""),
 
 
 /*
