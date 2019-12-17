@@ -22,7 +22,16 @@ table {
   #savebtn {
     background-color:#51AF57 ;
     color:white;
-    
+    position: -webkit-sticky;
+    position: sticky;
+    top: 50px;
+
   }
 
-  
+  #sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 50px;
+    padding: 5px;
+
+  }

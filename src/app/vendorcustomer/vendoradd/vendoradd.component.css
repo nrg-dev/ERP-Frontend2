@@ -2,6 +2,16 @@
   font-family: 'Lato',Georgia,Arial,sans-serif;
   font-size:medium;
 }
+
+#sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 50px;
+  padding:20px;
+  background-color: #cae8ca;
+  border: 2px solid #4CAF50;
+}
+
 #purchase-div{
   background: white;
   margin : 0px 15px 30px 20px;
