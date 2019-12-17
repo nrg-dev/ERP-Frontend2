@@ -308,6 +308,17 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
   vendorcloseMethod(){
     this.vendordetails=true;
     this.vendoreditdetails=false;
+    this.vendordragAndDrop=false;
+    this.customerdetails = false;
+    this.customereditdetails = false;
+    this.customerdragAndDrop = false;
+    this.alertService.success("");
+  }
+  vendordragdropcloseMethod(){
+    this.vendordetails=true;
+    this.vendoreditdetails=false;
+    this.vendordragAndDrop=false;
+    this.customerdetails = false;
     this.customereditdetails = false;
     this.customerdragAndDrop = false;
     this.alertService.success("");
@@ -319,6 +330,9 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     this.customerdetails = false;
     this.customereditdetails = false;
     this.customerdragAndDrop = false;
+  }
+  vendordelete(){
+    this.alertService.error("Deleted Successsfully");
   }
 
 
@@ -464,6 +478,14 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     this.customereditdetails=false;
     this.vendoreditdetails = false;
     this.vendordragAndDrop = false;
+    this.alertService.success("");
+  }
+  customerdragdropcloseMethod(){
+    this.customerdetails=true;
+    this.customereditdetails=false;
+    this.vendoreditdetails = false;
+    this.vendordragAndDrop = false;
+    this.customerdragAndDrop = false;
     this.alertService.success("");
   }
   customerdragdropclose(){

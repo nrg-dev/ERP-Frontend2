@@ -5,10 +5,9 @@
 #purchase-div{
   background: white;
   margin : 0px 15px 30px 20px;
-  height: 530px;
   color: white;
   width: 100%;
-  height: 91%;
+  height: 95%;
   border-radius: 10px;
   /* border: 1px solid black; */
 }
@@ -175,10 +174,9 @@ tr {
 }
 .empdet-div{
   background: white;
-  height: 91%;
+  height: 95%;
   width: 97%;
   border-radius: 10px;
-  cursor: move;
 }
 
 #country{
@@ -198,7 +196,7 @@ a:hover {
 #hole-div{
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 87%;
+  height: 85%;
   margin-top: 5px;
 }
 #name-text{
@@ -243,16 +241,10 @@ margin-left: 240px;
 #curs-pointer{
   cursor: pointer;
 }
-#scrolling{
-  overflow-y: scroll;
-  overflow-x: hidden;
-  cursor: move;
-}
-
 /* drag and drop css start */
 .example-box {
   width: 97%;
-  height: 91%;
+  height: 95%;
   border: solid 1px #ccc;
   color: rgba(0, 0, 0, 0.87);
   cursor: move;
@@ -348,6 +340,10 @@ margin-left: 240px;
     height: 130px;
     margin-left: 100px;
   }
+  #scrolling{
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
 }
 @media (min-width: 359px) and (max-width: 374px) {
   #purchase-div{
@@ -388,6 +384,10 @@ margin-left: 240px;
     margin-left: 10px;
     padding-top: 50px;
     cursor: pointer;
+  }
+  #scrolling{
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
 }
 @media (min-width: 375px) and (max-width: 409px) {
@@ -436,6 +436,10 @@ margin-left: 240px;
     padding-top: 50px;
     cursor: pointer;
   }
+  #scrolling{
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
 }
 @media (min-width: 410px) and (max-width: 470px) {
   #purchase-div{
@@ -476,6 +480,10 @@ margin-left: 240px;
     margin-left: 10px;
     padding-top: 50px;
     cursor: pointer;
+  }
+  #scrolling{
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
 }
 @media (min-width: 471px) and (max-width: 530px) {
@@ -518,6 +526,10 @@ margin-left: 240px;
     padding-top: 50px;
     cursor: pointer;
   }
+  #scrolling{
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
 }
 @media (min-width: 531px) and (max-width: 539px) {
   #purchase-div{
@@ -559,6 +571,10 @@ margin-left: 240px;
     padding-top: 50px;
     cursor: pointer;
   }
+  #scrolling{
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
 }
 @media (min-width: 540px) and (max-width: 600px) {
   #purchase-div{
@@ -599,6 +615,10 @@ margin-left: 240px;
     padding-top: 50px;
     cursor: pointer;
   }
+  #scrolling{
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
 }
 @media (min-width: 601px) and (max-width: 767px) {
   #purchase-div{
@@ -638,6 +658,10 @@ margin-left: 240px;
     margin-left: 10px;
     padding-top: 50px;
     cursor: pointer;
+  }
+  #scrolling{
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
 }
 @media (min-width: 768px) and (max-width: 810px) and (orientation: landscape) {
@@ -681,7 +705,12 @@ margin-left: 240px;
   }
   #image-size{
     width: 130;
-    margin-left: 85px;
+    margin-left: 0px;
+  }
+  #img-detaildiv{
+    width: 150px;
+    height: 130px;
+    margin-left: 110px;
   }
   #selectimg-div{
     width: 160px;
@@ -692,7 +721,10 @@ margin-left: 240px;
     padding-top: 50px;
     cursor: pointer;
   }
-  
+  #scrolling{
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
 }
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape){
   #purchase-div{
@@ -711,8 +743,12 @@ margin-left: 240px;
   }
   #image-size{
     width: 130;
-    margin-left: 110px;
   }
+  #img-detaildiv{
+    width: 150px;
+    height: 130px;
+    margin-left: 110px;
+   }
   #selectimg-div{
     width: 160px;
     height: 125px;
@@ -721,6 +757,10 @@ margin-left: 240px;
     margin-left: 55px;
     padding-top: 50px;
     cursor: pointer;
+  }
+  #scrolling{
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px){
@@ -744,7 +784,6 @@ margin-left: 240px;
   }
   #image-size{
     width: 130;
-    margin-left: 160px;
   }
   #selectimg-div{
     width: 160px;
@@ -754,6 +793,10 @@ margin-left: 240px;
     margin-left: 120px;
     padding-top: 50px;
     cursor: pointer;
+  }
+  #scrolling{
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
 }
 
@@ -765,7 +808,20 @@ margin-left: 240px;
 @media (min-width: 1381px) and (max-width:2051px) {
   #image-size{
     width: 130;
-    margin-left: 240px;
+    margin-left: 50px;
+  }
+  
+}
+@media (min-width:2052px) and (max-width:2732px){
+  #scrolling{
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+}
+@media (min-width:2733px) and (max-width:4102px){
+  #scrolling{
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
 }
 

@@ -67,7 +67,7 @@
 
 <mat-sidenav-container class="example-container">
   <!-- <mat-sidenav #drawer mode="side" opened role="navigation"> -->
-    <mat-sidenav class="sidenav" #sidenav [mode]="mode" [opened]="openSidenav" >
+    <mat-sidenav class="sidenav" #sidenav [mode]="mode" [opened]="openSidenav" style="height: 98%;">
     <mat-nav-list style="width: 250px;margin-top: 25px;">
       <ng-container *ngFor="let item of menuItems let i=index">
           <mat-list-item  class="white-hover">  
@@ -89,7 +89,7 @@
   </mat-sidenav>
   <mat-sidenav-content class="content" style="background: #245C81">
 
-
+<br/>
 <!-- <div *ngIf="notSelected"> -->
     <div *ngIf="route.firstChild.children.length === 0">
 

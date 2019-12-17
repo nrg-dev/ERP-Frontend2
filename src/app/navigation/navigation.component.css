@@ -6,7 +6,7 @@
   padding-top: -20px;
 } 
 .content{
-  margin: 30px 0px 0px 0px;
+  margin: 5px 0px 0px 0px;
 }
 
 .mat-toolbar {
@@ -48,16 +48,18 @@ input[type=text]{
   padding-left: 20px;   
 }
 #user-img{
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border-radius: 20px;
-  margin: 20px 0px 0px 2px;
+  margin: 28px 0px 0px 27px;
+  outline: none;
 }
 #user-imag{
   width: 70px;
   height: 48px;
   border-radius: 20px;
   margin: 20px 0px 0px 2px;
+  outline: none;
 }
 #user-img1{
   width: 35px;
@@ -65,6 +67,7 @@ input[type=text]{
   background-color: #39b722;
   border-radius: 20px;
   margin-top: 15px;
+  outline: none;
 }
 #user-img2{
   width: 35px;
@@ -73,12 +76,14 @@ input[type=text]{
   border-radius: 20px;
   margin-top: 15px;
   margin-left: 15px;
+  outline: none;
 }
 #icon-color{
   color: white;
   font-size: 22px;
   padding: 7px;
   cursor: pointer;
+  outline: none;
 }
 
 
@@ -162,7 +167,7 @@ input[type=text]{
   .dropdown-content {
       display: none;
       position: relative;
-      margin-top: 40px;
+      margin-top: 12px;
       background-color: #f9f9f9;
       min-width: 160px;
       height: 350px;
@@ -170,7 +175,7 @@ input[type=text]{
       box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
       z-index: 1;
       border-radius: 6px;
-      right: 125px;
+      right: 20px;
   }
 
   .dropdown-content a {
@@ -233,6 +238,7 @@ input[type=text]{
       border-radius: 20px;
       margin-top: 10px;
       margin-left: 5px;
+      outline: none;
     }
     #myDropdown{
       margin-left: 240px;
@@ -637,10 +643,7 @@ input[type=text]{
       margin-top: 10px;
       margin-left: 15px;
     }
-    #myDropdown{
-      margin-left: 145px;
-      width: 286px;
-    }
+    
   }
 
   @media (min-width: 1281px) and (max-width: 1380px) {
