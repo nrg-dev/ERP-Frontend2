@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 export class VendoraddComponent implements OnInit {
   custtempid = null;
   tempid=null;
+  message=null;
+  mainmessage=null;
 
   public vendordetails=false;
   public vendoreditdetails=false;
@@ -24,6 +26,9 @@ export class VendoraddComponent implements OnInit {
 
   public vendordragAndDrop =false;
   public customerdragAndDrop =false;
+
+  successdialog = 'none';
+
   model:any ={};
   user:User;
 
@@ -301,9 +306,17 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     this.alertService.success("");
   }
   vendorupdateDetails(){
-    this.alertService.success("");
-    this.alertService.success("Vendor Data is Successfully Updated");
-
+    this.message="Vendor detailsupdated Successfully."
+    this.mainmessage="Successfully Saved."
+    this.successdialog = 'block';
+    setTimeout(() => {
+      this.successdialog = 'none';
+      this.vendordetails=true;
+      this.vendordetails=false;
+      this.vendoreditdetails=false;
+      this.customereditdetails=false;
+      this.customerdragAndDrop = false;
+    }, 1500);
   }
   vendorcloseMethod(){
     this.vendordetails=true;
@@ -332,7 +345,18 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     this.customerdragAndDrop = false;
   }
   vendordelete(){
-    this.alertService.error("Deleted Successsfully");
+    this.message="Vendor DetailsDeleted Successfully."
+    this.mainmessage="Deleted."
+    this.successdialog = 'block';
+    setTimeout(() => {
+      this.successdialog = 'none';
+      this.vendordetails=true;
+      this.vendordragAndDrop=false;
+      this.vendoreditdetails=false;
+      this.customerdetails = false;
+      this.customereditdetails = false;
+      this.customerdragAndDrop = false;
+    }, 1500);
   }
 
 
@@ -497,9 +521,17 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     this.alertService.success("");
   }
   customerupdateDetails(){
-    this.alertService.success("");
-    this.alertService.success("Customer Data Successfully Updated");
-    //this.alertService=null;
+    this.message="Customer details saved Successfully."
+    this.mainmessage="Successfully Saved."
+    this.successdialog = 'block';
+    setTimeout(() => {
+      this.successdialog = 'none';
+      this.customerdetails = true;
+      this.customereditdetails=false;
+      this.vendoreditdetails = false;
+      this.vendordragAndDrop = false;
+      this.customerdragAndDrop = false;
+    }, 1500);
   }
   addCustomer(){
     this.customerdragAndDrop = true;
@@ -509,5 +541,17 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     this.customereditdetails = false;
     this.vendordragAndDrop = false;
   }
-  
+  customerdelete(){
+    this.message="Customer details Deleted Successfully."
+    this.mainmessage="Deleted."
+    this.successdialog = 'block';
+    setTimeout(() => {
+      this.successdialog = 'none';
+      this.customerdetails = true;
+      this.customereditdetails=false;
+      this.vendoreditdetails = false;
+      this.vendordragAndDrop = false;
+      this.customerdragAndDrop = false;
+    }, 1500);
+  }
 }
