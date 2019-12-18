@@ -220,8 +220,12 @@ export class EmployeelistComponent implements OnInit {
     this.empdeletedetails = true;
     this.alertService.success("");
   }
-
+message=null;
+mainmessage=null;
   confirmDelete(){
+    this.message="Deleted Successfully."
+    this.mainmessage="Deleted."
+
     this.empdetails = false;
     this.empeditdetails = false;
     this.empdeletedetails = false;
