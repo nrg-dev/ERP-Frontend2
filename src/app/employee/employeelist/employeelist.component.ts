@@ -15,6 +15,8 @@ export class EmployeelistComponent implements OnInit {
   public empeditdetails = false;
   public empdeletedetails = false;
 
+  successdialog = 'none';
+
   employeeList : any = [ 
     {
       empCode:'NRG1',
@@ -223,7 +225,11 @@ export class EmployeelistComponent implements OnInit {
     this.empdetails = false;
     this.empeditdetails = false;
     this.empdeletedetails = false;
-    this.alertService.success("Employee Data was Successfully Deleted..");
+    //this.alertService.success("Employee Data was Successfully Deleted..");
+    this.successdialog = 'block';
+    setTimeout(() => {
+      this.successdialog = 'none';
+    }, 1500);
   }
 
   cancelDelete(){

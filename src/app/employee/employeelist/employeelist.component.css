@@ -210,6 +210,41 @@ a:hover {
     margin-right: auto;
 }
 
+/* Start Dialog Box Styles */
+.modal-dialog {
+    -webkit-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    margin: 0 auto;
+    margin-left: 510px;
+}
+.modal-content {
+    overflow:hidden;
+    height: 465px;
+    width: 325px;
+    margin-top: 235px;
+}
+
+#box-dialouge{
+    margin-top: 45px; 
+    margin-left: 90px;
+    background-color: #0cc50c;
+    width: 150px;
+    height: 150px;
+    border-radius: 80px;
+}
+#icon-font{
+    font-size: 90px;
+    padding-left: 30px;
+    padding-top: 24px;
+    color: white;
+}
+#p-text{
+    padding-left: 30px;
+    font-size: 16px;
+}
+/* End DialogBox Styles */
+
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
     #purchase-div{
       background: white;
@@ -270,3 +305,4 @@ a:hover {
         margin: 4px;
     } 
 }
+

@@ -17,17 +17,21 @@ export class EmployeeaddComponent implements OnInit {
   model: any = {};
   employeeReg : any = [ 
     {
-      code:'Employe code',
       name :'Employee Name',
+      rank:'Employee Rank',
       phonenumber : 'Phone Number',
-      mobilenumber : 'Mobile Number',
+      contractnumber : 'Contract Number ',
       address : 'Address',
       country :  'Indonesia',
       city : 'Jakarta',
       email : 'Email',
       emergencynumber : 'Emergency Number',
       dob : 'Date of Birth',
-      rank:'Rank'
+      npwp : 'NPWP Number',
+      bpjs : 'BPJS',
+      monthlysalary : 'Monthly Salary',
+      workHour : 'Work Hour',
+      annualLeave : 'Annual Leave',
     }];
   constructor() {
    // alert("test");
