@@ -199,7 +199,7 @@
                     </div>
                     </button>
                     <button id="print-butn">
-                        <div class="row" (click)="vendordelete()">
+                        <div class="row" (click)="customerdelete()">
                             <i class="fa fa-trash" aria-hidden="true" id="icon-mod"></i>
                             <p id="text">Delete</p>
                         </div>
@@ -662,4 +662,18 @@
 
     </div>            
 </div>
+
+<!--Dialouge box start-->
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':successdialog}" style="margin-top:9%;">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div id="box-dialouge"><i class="fa fa-check" aria-hidden="true" id="icon-font"></i></div>
+          <br/><br/>
+          <h2 style="text-align: center;">{{mainmessage}}</h2>
+          <br/><br/>
+         <!-- <p id="p-text">{{message}}.</p> -->
+      </div>
+    </div>
+  </div>
+  <!--Dialouge box end-->
 

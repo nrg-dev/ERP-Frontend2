@@ -310,6 +310,42 @@ margin-left: 240px;
   height: 40px;
 }
 
+/* Start Dialog Box Styles */
+.modal-dialog {
+  -webkit-transform: translate(0,-50%);
+  -o-transform: translate(0,-50%);
+  transform: translate(0,-50%);
+  margin: 0 auto;
+  margin-left: 510px;
+}
+.modal-content {
+  overflow:hidden;
+  height: 465px;
+  width: 325px;
+  margin-top: 235px;
+}
+
+#box-dialouge{
+  margin-top: 45px; 
+  margin-left: 90px;
+  background-color: #0cc50c;
+  width: 150px;
+  height: 150px;
+  border-radius: 80px;
+}
+#icon-font{
+  font-size: 90px;
+  padding-left: 30px;
+  padding-top: 24px;
+  color: white;
+}
+#p-text{
+  padding-left: 30px;
+  font-size: 16px;
+}
+/* End DialogBox Styles */
+
+
 @media (min-width: 320px) and (max-width: 359px) {
   #purchase-div{
     background: white;
@@ -353,6 +389,21 @@ margin-left: 240px;
   #scrolling{
     overflow-y: scroll;
     overflow-x: hidden;
+  }
+  .modal-content {
+    overflow: hidden;
+    height: 330px;
+    width: 268px;
+    margin-top: 257px;
+    margin-left: -495px;
+  }
+  #box-dialouge{
+    margin-top: 45px; 
+    margin-left: 55px;
+    background-color: #0cc50c;
+    width: 150px;
+    height: 150px;
+    border-radius: 80px;
   }
 }
 @media (min-width: 359px) and (max-width: 374px) {
@@ -398,6 +449,21 @@ margin-left: 240px;
   #scrolling{
     overflow-y: scroll;
     overflow-x: hidden;
+  }
+  .modal-content {
+    overflow: hidden;
+    height: 330px;
+    width: 300px;
+    margin-top: 295px;
+    margin-left: -485px;
+  }
+  #box-dialouge{
+    margin-top: 45px; 
+    margin-left: 70px;
+    background-color: #0cc50c;
+    width: 150px;
+    height: 150px;
+    border-radius: 80px;
   }
 }
 @media (min-width: 375px) and (max-width: 409px) {
@@ -450,6 +516,21 @@ margin-left: 240px;
     overflow-y: scroll;
     overflow-x: hidden;
   }
+  .modal-content {
+    overflow: hidden;
+    height: 330px;
+    width: 300px;
+    margin-top: 370px;
+    margin-left: -485px;
+  }
+  #box-dialouge{
+    margin-top: 45px; 
+    margin-left: 90px;
+    background-color: #0cc50c;
+    width: 150px;
+    height: 150px;
+    border-radius: 80px;
+  }
 }
 @media (min-width: 410px) and (max-width: 470px) {
   #purchase-div{
@@ -494,6 +575,21 @@ margin-left: 240px;
   #scrolling{
     overflow-y: scroll;
     overflow-x: hidden;
+  }
+  .modal-content {
+    overflow: hidden;
+    height: 330px;
+    width: 300px;
+    margin-top: 370px;
+    margin-left: -485px;
+  }
+  #box-dialouge{
+    margin-top: 45px; 
+    margin-left: 90px;
+    background-color: #0cc50c;
+    width: 150px;
+    height: 150px;
+    border-radius: 80px;
   }
 }
 @media (min-width: 471px) and (max-width: 530px) {
@@ -540,6 +636,21 @@ margin-left: 240px;
     overflow-y: scroll;
     overflow-x: hidden;
   }
+  .modal-content {
+    overflow: hidden;
+    height: 330px;
+    width: 300px;
+    margin-top: 370px;
+    margin-left: -450px;
+  }
+  #box-dialouge{
+    margin-top: 45px; 
+    margin-left: 75px;
+    background-color: #0cc50c;
+    width: 150px;
+    height: 150px;
+    border-radius: 80px;
+  }
 }
 @media (min-width: 531px) and (max-width: 539px) {
   #purchase-div{
@@ -585,6 +696,21 @@ margin-left: 240px;
     overflow-y: scroll;
     overflow-x: hidden;
   }
+  .modal-content {
+    overflow: hidden;
+    height: 360px;
+    width: 300px;
+    margin-top: 370px;
+    margin-left: -430px;
+  }
+  #box-dialouge{
+    margin-top: 45px; 
+    margin-left: 75px;
+    background-color: #0cc50c;
+    width: 150px;
+    height: 150px;
+    border-radius: 80px;
+  }
 }
 @media (min-width: 540px) and (max-width: 600px) {
   #purchase-div{
@@ -629,6 +755,21 @@ margin-left: 240px;
     overflow-y: scroll;
     overflow-x: hidden;
   }
+  .modal-content {
+    overflow: hidden;
+    height: 330px;
+    width: 300px;
+    margin-top: 370px;
+    margin-left: -485px;
+  }
+  #box-dialouge{
+    margin-top: 45px; 
+    margin-left: 90px;
+    background-color: #0cc50c;
+    width: 150px;
+    height: 150px;
+    border-radius: 80px;
+  }
 }
 @media (min-width: 601px) and (max-width: 767px) {
   #purchase-div{
@@ -672,6 +813,21 @@ margin-left: 240px;
   #scrolling{
     overflow-y: scroll;
     overflow-x: hidden;
+  }
+  .modal-content {
+    overflow: hidden;
+    height: 370px;
+    width: 300px;
+    margin-top: 370px;
+    margin-left: -400px;
+  }
+  #box-dialouge{
+    margin-top: 45px; 
+    margin-left: 76px;
+    background-color: #0cc50c;
+    width: 150px;
+    height: 150px;
+    border-radius: 80px;
   }
 }
 @media (min-width: 768px) and (max-width: 810px) and (orientation: landscape) {
@@ -735,6 +891,21 @@ margin-left: 240px;
     overflow-y: scroll;
     overflow-x: hidden;
   }
+  .modal-content {
+    overflow: hidden;
+    height: 381px;
+    width: 300px;
+    margin-top: 325px;
+    margin-left: -190px;
+  }
+  #box-dialouge{
+    margin-top: 45px; 
+    margin-left: 75px;
+    background-color: #0cc50c;
+    width: 150px;
+    height: 150px;
+    border-radius: 80px;
+  }
 }
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape){
   #purchase-div{
@@ -771,6 +942,21 @@ margin-left: 240px;
   #scrolling{
     overflow-y: scroll;
     overflow-x: hidden;
+  }
+  .modal-content {
+    overflow: hidden;
+    height: 330px;
+    width: 300px;
+    margin-top: 370px;
+    margin-left: -485px;
+  }
+  #box-dialouge{
+    margin-top: 45px; 
+    margin-left: 90px;
+    background-color: #0cc50c;
+    width: 150px;
+    height: 150px;
+    border-radius: 80px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px){
