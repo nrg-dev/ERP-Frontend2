@@ -14,8 +14,11 @@ export class EmployeelistComponent implements OnInit {
   public empdetails = false;
   public empeditdetails = false;
   public empdeletedetails = false;
-
+  public absentdiv = false;
+  message=null;
+  mainmessage=null;
   successdialog = 'none';
+  updatesuccessdialog = 'none';
 
   employeeList : any = [ 
     {
@@ -203,8 +206,15 @@ export class EmployeelistComponent implements OnInit {
   }
 
   setEmployeeUpdate(){    
-    this.alertService.success("");
-    this.alertService.success("Employee Data is Successfully Updated..");
+    this.mainmessage="Employee Data is Successfully Updated...";
+
+    this.empdetails = true;
+    this.empeditdetails = false;
+    this.empdeletedetails = false;
+    this.updatesuccessdialog = 'block';
+    setTimeout(() => {
+      this.updatesuccessdialog = 'none';
+    }, 1500);
   }
 
   cancelEdit(){
@@ -220,8 +230,7 @@ export class EmployeelistComponent implements OnInit {
     this.empdeletedetails = true;
     this.alertService.success("");
   }
-message=null;
-mainmessage=null;
+  
   confirmDelete(){
     this.message="Deleted Successfully."
     this.mainmessage="Deleted."
@@ -241,6 +250,13 @@ mainmessage=null;
     this.empeditdetails = false;
     this.empdeletedetails = false;
     this.alertService.success("");
+  }
+
+  absent(){
+    this.absentdiv = true;
+    this.empdetails = false;
+    this.empeditdetails = false;
+    this.empdeletedetails = false;
   }
 
 }

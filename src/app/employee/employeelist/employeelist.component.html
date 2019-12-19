@@ -69,7 +69,7 @@
                             <button class='btn btn-danger delete-product-button' id="empButton"(click)="delete()">
                                 <span class='glyphicon glyphicon-remove'></span> Delete
                             </button> &nbsp;&nbsp;&nbsp;
-                            <button class='btn btn-primary m-r-10px read-one-product-button' id="empButton">
+                            <button class='btn btn-primary m-r-10px read-one-product-button' id="empButton" (click)="absent()">
                                 <span class='glyphicon glyphicon-eye-open'></span> Absent
                             </button> &nbsp;&nbsp;&nbsp; 
                         </div><br/>
@@ -386,6 +386,41 @@
                             </div><br/>
                         </div>
                         <!-- Employee Delete End -->
+
+                        <!-- Employee Absent Start -->
+                        <div *ngIf="absentdiv" class="empdet-div" id="example-box" cdkDrag>
+                            <br/>
+                            <h3>Employee Absent</h3>
+                            <hr>
+                            <div class="row" id="country">
+                                <div class="col-md-5 col-xs-5 col-lg-5">Employee_Code</div>
+                                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.empCode }}</div>
+                            </div><br/>
+                            <div class="row" id="country">
+                                <div class="col-md-5 col-xs-5 col-lg-5">Employee_Name</div>
+                                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.name }}</div>
+                            </div><br/>
+                            <div class="row" id="country">
+                                <div class="col-md-5 col-xs-5 col-lg-5">Rank</div>
+                                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.rank }}</div>
+                            </div><br/>	<br/>	
+                            <div class="row" id="empbut">
+                                <div class="col-md-2 col-xs-2 ol-lg-2"></div>
+                                <div class="col-md-9 col-xs-9 col-lg-9">
+                                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                                    <button class='btn btn-danger delete-product-button' id="empButton">
+                                        <span class='glyphicon glyphicon-remove'></span> Absent
+                                    </button> &nbsp;&nbsp;&nbsp;
+                                    <button class='btn btn-primary m-r-10px read-one-product-button' id="empButton">
+                                        <span class='glyphicon glyphicon-eye-open'></span> No
+                                    </button> &nbsp;&nbsp;&nbsp; 
+                                </div>
+                            </div><br/>
+                        </div>
+                        <!-- Employee Absent End -->
     
                 </div>
             </div>
@@ -404,4 +439,16 @@
          <!-- <p id="p-text">{{message}}.</p> -->
       </div>
     </div>
-  </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':updatesuccessdialog}" style="margin-top:9%;">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div id="box-dialouge"><i class="fa fa-check" aria-hidden="true" id="icon-font"></i></div>
+          <br/><br/>
+          <h2 style="text-align: center;">{{mainmessage}}</h2>
+          <br/><br/>
+         <!-- <p id="p-text">{{message}}.</p> -->
+      </div>
+    </div>
+</div>
