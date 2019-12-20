@@ -1,4 +1,105 @@
-<div class="tab">
-<a class="tablink" style="border-bottom: 3px solid #007bff;color: #1664a7;" id="defaultOpen">Category</a>
-<a class="tablink" routerLink="../product" >Product</a>
+<div class="row" id="categoryhole-div">
+    <div class="col-12 col-sm-5 col-md-6  col-lg-3">
+        <br/>
+        <div id="category">
+            <br/>
+            <div id="adddelete-div">
+                <h2 id="text-category">Category</h2>
+                <div class="row" style="margin-left: 30px;">
+                    <span>
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                        Add
+                    </span>
+                    &nbsp; &nbsp;
+                    <span>
+                        <i class="fa fa-pencil-square" aria-hidden="true"></i>
+                        Edit/Delete
+                    </span>
+                </div>
+            </div>
+            <br/>
+            <div id="categorylist-div">
+             <div *ngFor="let list of categorylist" (click)="categorydetails(list.number)" class="categorylist-alignment" id="{{ list.number }}">
+                <p>{{ list.allproduct }}</p>
+                <p>{{ list.discount }}</p>
+                <p>{{ list.freegifts }}</p>
+                <p>{{ list.fiber }}</p>
+                <p>{{ list.pigmen }}</p>
+                <p>{{ list.brush }}</p>
+                <p>{{ list.sandpaper }}</p>
+                <p>{{ list.hardware }}</p>
+                <p>{{ list.accesories }}</p>
+              </div> 
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="col-12 col-sm-7 col-md-6 col-lg-9">
+        <br/>
+        <div *ngIf="leftdetails" id="leftside-div">
+            <div *ngIf="discountdetails">
+                <div class="col-lg-12">
+
+                 <br/>
+                  <div class="row">
+                        <div class="col-lg-5">
+                            <h2>Discount Product</h2>
+                            <div class="row" style="margin-left: 10px;">
+                                <span>
+                                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                    Add
+                                </span>
+                                &nbsp; &nbsp;
+                                <span>
+                                    <i class="fa fa-pencil-square" aria-hidden="true"></i>
+                                    Edit/Delete
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="row" id="button-printpage">
+                                <i class="fa fa-print" aria-hidden="true" id="icon-align"></i>
+                                &nbsp;&nbsp;
+                                <p>Print Page</p>
+                            </div>
+                        </div>
+                            <div class="col-lg-5">
+                                 <input type="search" placeholder="&#xf002; search here" class="searchicon"/>
+                            </div>
+                    </div>
+
+                    <br/>
+                    <table>
+                        <tr style="background: #171B1E;">
+                          <td>Product Code</td>
+                          <td>Product Name</td>
+                          <td>Discount</td>
+                          <td>Discount Time</td>
+                          <td>Qty</td>
+                          <td>Price</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,31 +1,74 @@
-.mat-tab-group {
-    display: flex;
-    flex-direction: column;
-    font-size: 20px;
+* {
+    font-family: 'Lato',Georgia,Arial,sans-serif;
+    font-size:medium;
+    color:white;
+  }
+h2{
+    font-size: 30px;
 }
-
-.mat-tab-label {
-    cursor: pointer;
-}
-
-.tab{
-    margin-left: 44px;
-}
-
-.tablink {
-    color: black;
-    float: left;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    cursor: pointer;
-    padding: 14px 14px;
-    font-size: 17px;
+table{
+    width: 100%;
     text-align: center;
-    width: 25%;
-    height: 10%;
 }
+table th,td{
+    border: 1px solid black;
+    width: 150px;
+    height: 40px;
+}
+#text-category{
+    text-align: center;
+    font-weight: bold;
+}
+#categoryhole-div{
+    background: #434F5B;
+    width: 97%;
+    height: 80%;
+    margin-left: 10px;
+}
+#category{
+    width: 100%;
+    height: 92%;
+    background: #333C45;
+}
+#adddelete-div{
+    background: #272E34;
+    width: 90%;
+    height: 18%;
+    margin-left: 12px;
+}
+#categorylist-div{
+    background: #272E34;
+    color: white;
+    margin-left: 21px;
+    width: 84%;
+    height: 70%;
+    overflow-y: scroll;
 
-.tablink.active {
-    border-bottom: 3px solid #007bff;
 }
+#leftside-div{
+    width: 100%;
+    height: 92%;
+    background: #333C45;
+}
+.categorylist-alignment{
+    text-align: center;
+    cursor: pointer;
+}
+#button-printpage{
+    height: 30px;
+    width: 120px;
+    border: 1px solid;
+    margin-top: 10px;
+}
+.searchicon{
+    font-family: fontawesome;
+    font-size: 20px;
+    height: 50%;
+    border-radius: 5px;
+    border: none;
+    margin-top: 10px;
+    color: black;
+  }
+#icon-align{
+    margin: 5px;
+  }

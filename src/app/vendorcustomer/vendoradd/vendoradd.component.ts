@@ -203,7 +203,6 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
 
     }
     this.tempid=vendorcode;
-    this.vendordragAndDrop=false;
     document.getElementById(this.tempid).style.backgroundColor='#2F4756';
     //-- VendorDetails Div Calling --
     this.vendordetailsstart = true;
