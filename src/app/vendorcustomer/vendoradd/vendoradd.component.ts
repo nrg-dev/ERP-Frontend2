@@ -198,13 +198,13 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
   //Vendor details methos start
   vendorDetails(vendorcode:string){
     if(this.tempid!==null){
-      document.getElementById(this.tempid).style.backgroundColor='white';
+      document.getElementById(this.tempid).style.backgroundColor='#243641';
       this.tempid=null;
 
     }
     this.tempid=vendorcode;
     this.vendordragAndDrop=false;
-    document.getElementById(this.tempid).style.backgroundColor='#DDEDF9';
+    document.getElementById(this.tempid).style.backgroundColor='#2F4756';
     //-- VendorDetails Div Calling --
     this.vendordetailsstart = true;
     this.customerdetailsstart = false;
@@ -394,12 +394,12 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
   //Customer method start
   customerDetails(custcode:string){
     if(this.custtempid!==null){
-      document.getElementById(this.custtempid).style.backgroundColor='white';
+      document.getElementById(this.custtempid).style.backgroundColor='#243641';
       this.custtempid=null;
 
     }
     this.custtempid=custcode;
-    document.getElementById(this.custtempid).style.backgroundColor='#DDEDF9';
+    document.getElementById(this.custtempid).style.backgroundColor='#2F4756';
 //customer div calling
     this.vendordetailsstart = false;
     this.customerdetailsstart = true;

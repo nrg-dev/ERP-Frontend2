@@ -1,6 +1,7 @@
 * {
   font-family: 'Lato',Georgia,Arial,sans-serif;
   font-size:medium;
+  color:white;
 }
 
 #sticky {
@@ -13,11 +14,11 @@
 }
 
 #purchase-div{
-  background: white;
+  background: #243641;
   margin : 0px 15px 30px 20px;
   color: white;
   width: 100%;
-  height: 95%;
+  height: 88%;
   border-radius: 10px;
   /* border: 1px solid black; */
 }
@@ -37,7 +38,6 @@
 }
 
 .tablink {
-  color: black;
   float: left;
   border-top: none;
   border-left: none;
@@ -56,7 +56,6 @@
 
 a {
   display: block;
-  color: black;
   text-align: center;
   padding: 12px 12px;
   text-decoration: none;
@@ -64,18 +63,16 @@ a {
 
 
 #print-butn{
-  color: black;
   height: 29px;
   width: 120px;
   text-align: center;
   border: none;
-  background-color: white;
+  background-color: #243641;
   outline: none;
 }
 #edit-butn1{
-  color: black;
   height: 29px;
-  background-color: white;
+  background-color: #243641;
   width: 70px;
   text-align: center;
   border: none;
@@ -84,7 +81,6 @@ a {
 .searchicon{
   font-family: fontawesome;
   font-size: 20px;
-  color: black;
   background: blanchedalmond;
 }
 #input-box{
@@ -95,18 +91,19 @@ a {
 #editinput-box{
   height: 30px;
   width: 40%;
+  color: black;
 }
 #editselect-box{
   height: 35px;
   border-radius: 0px;
   width: 40%;
+  color: black;
 }
 
 #text{
   margin-left: 10px;
 }
 #vendor-text{
-  color: black;
   margin-left: 20px;
 }
 #select-box-style{
@@ -121,8 +118,7 @@ table{
 }
 table  th,td{
   border-collapse: collapse;
-  border: 1px solid #DDD;
-  color: black;
+  border: 1px solid #243641;
   text-align: center;
   height: 35px;
   font-size: 14px;
@@ -167,7 +163,6 @@ tr {
   overflow-y: auto;
 }
 #text-color{
-  color: white;
   width: 50px;
   height: 35px;
   font-size: 14px;
@@ -183,9 +178,9 @@ tr {
   margin-left: 15px;
 }
 .empdet-div{
-  background: white;
-  height: 95%;
-  width: 97%;
+  background: #243641;
+  height: 82%;
+  width: 100%;
   border-radius: 10px;
 }
 
@@ -201,7 +196,7 @@ background-color: royalblue;
   }
 
 a:hover {
-  background-color: #F3F3F3;
+  background-color: #243641;
 }
 #hole-div{
   overflow-y: scroll;
@@ -210,23 +205,19 @@ a:hover {
   margin-top: 5px;
 }
 #name-text{
-  color: black;
   text-align: left;
   margin: 3px;
 }
 #country-text{
-  color: black;
   text-align: center;
   font-size: 16px;
 }
 #text1{
-  color: black;
   text-align: center;
   font-size: 16px;
   margin-left: 9px;
 }
 #text2{
-  color: black;
   margin-left: 10px;
 }
 #addr-text{
@@ -253,20 +244,19 @@ margin-left: 240px;
 }
 /* drag and drop css start */
 .example-box {
-  width: 97%;
-  height: 95%;
-  border: solid 1px #ccc;
-  color: rgba(0, 0, 0, 0.87);
+ /* width: 97%;
+  border: solid 1px #ccc; */
+  height: 82%;
   cursor: move;
-  background: #fff;
+  background: #243641;
   border-radius: 10px;
   position: relative;
   z-index: 1;
   transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+ /* box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
               0 2px 2px 0 rgba(0, 0, 0, 0.14),
-              0 1px 5px 0 rgba(0, 0, 0, 0.12);
-}
+              0 1px 5px 0 rgba(0, 0, 0, 0.12); */
+} 
 
 .example-box:active {
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
@@ -279,7 +269,7 @@ margin-left: 240px;
 #selectimg-div{
   width: 160px;
   height: 125px;
-  background: #e8e1e1;
+  background: #243641;
   align-items: center;
   margin-left: 210px;
   padding-top: 50px;
@@ -294,7 +284,7 @@ margin-left: 240px;
 #selecticon-dev{
   height: 35px;
   width: 35px;
-  background: #fdf5ff;
+  background: #243641;
   margin-top: 60px;
   border-radius: 25px;
   margin-left: -25px;
@@ -345,37 +335,55 @@ margin-left: 240px;
 }
 /* End DialogBox Styles */
 
-
+#vencustab{
+  background: #243641;
+  width: 93%;
+  border-radius: 10px;
+  margin-left: 10px;
+  height: 88%;
+}
+#scrolling{
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+#black-color{
+  color: black;
+}
 @media (min-width: 320px) and (max-width: 359px) {
   #purchase-div{
-    background: white;
+    background: #243641;
     margin : 0px 15px 30px 10px;
-    height: 530px;
+    height: 88%;
     color: white;
     width: 93%;
     border-radius: 10px;
     /* border: 1px solid black; */
   }
   .empdet-div{
-    background: white;
-    height: 640px;
+    background: #243641;
+    height: 82%;
+    width: 100%;
+    border-radius: 10px;
+  }
+  #vencustab{
+    background: #243641;
     width: 93%;
+    height: 75%;
     border-radius: 10px;
     margin-left: 10px;
   }
   #print-butn{
-    color: black;
     height: 29px;
     width: 120px;
     text-align: center;
     border: none;
-    background-color: white;
+    background-color: #243641;
     outline: none;
   }
   #selectimg-div{
     width: 160px;
     height: 125px;
-    background: #e8e1e1;
+    background: #243641;
     align-items: center;
     margin-left: 0px;
     padding-top: 50px;
@@ -408,28 +416,33 @@ margin-left: 240px;
 }
 @media (min-width: 359px) and (max-width: 374px) {
   #purchase-div{
-    background: white;
+    background: #243641;
     margin : 0px 15px 30px 10px;
-    height: 530px;
+    height: 88%;
     color: white;
     width: 93%;
     border-radius: 10px;
     /* border: 1px solid black; */
   }
   .empdet-div{
-    background: white;
-    height: 530px;
-    width: 98%;
+    background: #243641;
+    height: 82%;
+    width: 100%;
     border-radius: 10px;
-    margin-left: 5px;
+  }
+  #vencustab{
+    background: #243641;
+    width: 93%;
+    height: 75%;
+    border-radius: 10px;
+    margin-left: 10px;
   }
   #print-butn{
-    color: black;
     height: 29px;
     width: 120px;
     text-align: center;
     border: none;
-    background-color: white;
+    background-color: #243641;
     outline: none;
   }
   #img-detaildiv{
@@ -440,7 +453,7 @@ margin-left: 240px;
   #selectimg-div{
     width: 160px;
     height: 125px;
-    background: #e8e1e1;
+    background: #243641;
     align-items: center;
     margin-left: 10px;
     padding-top: 50px;
@@ -474,28 +487,32 @@ margin-left: 240px;
     margin-top: 5px;
   }
   #purchase-div{
-    background: white;
+    background: #243641;
     margin : 0px 15px 30px 10px;
-    height: 530px;
-    color: white;
     width: 93%;
+    height: 88%;
     border-radius: 10px;
     /* border: 1px solid black; */
   }
   .empdet-div{
-    background: white;
-    height: 530px;
-    width: 97%;
+    background: #243641;
+    height: 82%;
+    width: 100%;
     border-radius: 10px;
-    margin-left: 8px;
+  }
+  #vencustab{
+    background: #243641;
+    width: 93%;
+    height: 75%;
+    border-radius: 10px;
+    margin-left: 10px;
   }
   #print-butn{
-    color: black;
     height: 29px;
     width: 120px;
     text-align: center;
     border: none;
-    background-color: white;
+    background-color: #243641;
     outline: none;
   }
   #img-detaildiv{
@@ -506,15 +523,11 @@ margin-left: 240px;
   #selectimg-div{
     width: 160px;
     height: 125px;
-    background: #e8e1e1;
+    background: #243641;
     align-items: center;
     margin-left: 10px;
     padding-top: 50px;
     cursor: pointer;
-  }
-  #scrolling{
-    overflow-y: scroll;
-    overflow-x: hidden;
   }
   .modal-content {
     overflow: hidden;
@@ -534,28 +547,32 @@ margin-left: 240px;
 }
 @media (min-width: 410px) and (max-width: 470px) {
   #purchase-div{
-    background: white;
+    background: #243641;
     margin : 0px 15px 30px 10px;
-    height: 530px;
-    color: white;
+    height: 88%;
     width: 93%;
     border-radius: 10px;
     /* border: 1px solid black; */
   }
   .empdet-div{
-    background: white;
-    height: 530px;
+    background: #243641;
+    height: 82%;
+    width: 100%;
+    border-radius: 10px;
+  }
+  #vencustab{
+    background: #243641;
     width: 93%;
+    height: 75%;
     border-radius: 10px;
     margin-left: 10px;
   }
   #print-butn{
-    color: black;
     height: 29px;
     width: 120px;
     text-align: center;
     border: none;
-    background-color: white;
+    background-color: #243641;
     outline: none;
   }
   #img-detaildiv{
@@ -566,7 +583,7 @@ margin-left: 240px;
   #selectimg-div{
     width: 160px;
     height: 125px;
-    background: #e8e1e1;
+    background: #243641;
     align-items: center;
     margin-left: 10px;
     padding-top: 50px;
@@ -594,28 +611,32 @@ margin-left: 240px;
 }
 @media (min-width: 471px) and (max-width: 530px) {
   #purchase-div{
-    background: white;
+    background: #243641;
     margin : 0px 15px 30px 10px;
-    height: 530px;
-    color: white;
+    height: 88%;
     width: 93%;
     border-radius: 10px;
     /* border: 1px solid black; */
   }
   .empdet-div{
-    background: white;
-    height: 530px;
+    background: #243641;
+    height: 82%;
+    width: 100%;
+    border-radius: 10px;
+  }
+  #vencustab{
+    background: #243641;
     width: 93%;
+    height: 75%;
     border-radius: 10px;
     margin-left: 10px;
   }
   #print-butn{
-    color: black;
     height: 29px;
     width: 100px;
     text-align: center;
     border: none;
-    background-color: white;
+    background-color: #243641;
     outline: none;
   }
   #img-detaildiv{
@@ -626,7 +647,7 @@ margin-left: 240px;
   #selectimg-div{
     width: 160px;
     height: 125px;
-    background: #e8e1e1;
+    background: #243641;
     align-items: center;
     margin-left: 10px;
     padding-top: 50px;
@@ -654,28 +675,32 @@ margin-left: 240px;
 }
 @media (min-width: 531px) and (max-width: 539px) {
   #purchase-div{
-    background: white;
+    background: #243641;
     margin : 0px 15px 30px 10px;
-    height: 530px;
-    color: white;
+    height: 88%;
     width: 93%;
     border-radius: 10px;
     /* border: 1px solid black; */
   }
   .empdet-div{
-    background: white;
-    height: 530px;
+    background: #243641;
+    height: 82%;
+    width: 100%;
+    border-radius: 10px;
+  }
+  #vencustab{
+    background: #243641;
     width: 93%;
+    height: 75%;
     border-radius: 10px;
     margin-left: 10px;
   }
   #print-butn{
-    color: black;
     height: 29px;
     width: 120px;
     text-align: center;
     border: none;
-    background-color: white;
+    background-color: #243641;
     outline: none;
   }
   #img-detaildiv{
@@ -686,7 +711,7 @@ margin-left: 240px;
   #selectimg-div{
     width: 160px;
     height: 125px;
-    background: #e8e1e1;
+    background: #243641;
     align-items: center;
     margin-left: 10px;
     padding-top: 50px;
@@ -714,27 +739,32 @@ margin-left: 240px;
 }
 @media (min-width: 540px) and (max-width: 600px) {
   #purchase-div{
-    background: white;
+    background: #243641;
     margin : 0px 15px 30px 10px;
-    height: 530px;
-    color: white;
+    height: 75%;
     width: 99%;
     border-radius: 10px;
     /* border: 1px solid black; */
   }
   .empdet-div{
-    background: white;
-    height: 530px;
-    width: 97%;
+    background: #243641;
+    height: 82%;
+    width: 100%;
     border-radius: 10px;
   }
+  #vencustab{
+    background: #243641;
+    width: 93%;
+    height: 75%;
+    border-radius: 10px;
+    margin-left: 10px;
+  }
   #print-butn{
-    color: black;
     height: 29px;
     width: 120px;
     text-align: center;
     border: none;
-    background-color: white;
+    background-color: #243641;
     outline: none;
   }
   #img-detaildiv{
@@ -745,7 +775,7 @@ margin-left: 240px;
   #selectimg-div{
     width: 160px;
     height: 125px;
-    background: #e8e1e1;
+    background: #243641;
     align-items: center;
     margin-left: 10px;
     padding-top: 50px;
@@ -773,27 +803,32 @@ margin-left: 240px;
 }
 @media (min-width: 601px) and (max-width: 767px) {
   #purchase-div{
-    background: white;
+    background: #243641;
     margin : 0px 15px 30px 10px;
-    height: 530px;
-    color: white;
+    height: 75%;
     width: 93%;
     border-radius: 10px;
     /* border: 1px solid black; */
   }
   .empdet-div{
-    background: white;
-    height: 530px;
-    width: 97%;
+    background: #243641;
+    height: 82%;
+    width: 100%;
     border-radius: 10px;
   }
+  #vencustab{
+    background: #243641;
+    width: 93%;
+    height: 75%;
+    border-radius: 10px;
+    margin-left: 10px;
+  }
   #print-butn{
-    color: black;
     height: 29px;
     width: 120px;
     text-align: center;
     border: none;
-    background-color: white;
+    background-color: #243641;
     outline: none;
   }
   #img-detaildiv{
@@ -804,7 +839,7 @@ margin-left: 240px;
   #selectimg-div{
     width: 160px;
     height: 125px;
-    background: #e8e1e1;
+    background: #243641;
     align-items: center;
     margin-left: 10px;
     padding-top: 50px;
@@ -832,32 +867,35 @@ margin-left: 240px;
 }
 @media (min-width: 768px) and (max-width: 810px) and (orientation: landscape) {
   #purchase-div{
-    background: white;
+    background: #243641;
     margin : 0px 15px 30px 10px;
-    height: 530px;
-    color: white;
     width: 100%;
+    height: 75%;
     border-radius: 10px;
     /* border: 1px solid black; */
   }
   .empdet-div{
-    background: white;
-    height: 530px;
-    width: 97%;
+    background: #243641;
+    height: 75%;
+    width: 100%;
+    border-radius: 10px;
+  }
+  #vencustab{
+    background: #243641;
+    width: 93%;
+    height: 75%;
     border-radius: 10px;
     margin-left: 10px;
-  } 
+  }
   #print-butn{
-    color: black;
       height: 29px;
       width: 100px;
       text-align: center;
       border: none;
-      background-color: white;
+      background-color: #243641;
       outline: none;  
   }
   .tablink {
-    color: black;
     float: left;
     border-top: none;
     border-left: none;
@@ -881,7 +919,7 @@ margin-left: 240px;
   #selectimg-div{
     width: 160px;
     height: 125px;
-    background: #e8e1e1;
+    background: #243641;
     align-items: center;
     margin-left: 10px;
     padding-top: 50px;
@@ -906,21 +944,37 @@ margin-left: 240px;
     height: 150px;
     border-radius: 80px;
   }
+  .example-box {
+     height: 76%;
+     cursor: move;
+     background: #243641;
+     border-radius: 10px;
+     position: relative;
+     z-index: 1;
+     transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
+   } 
 }
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape){
   #purchase-div{
-    background: white;
+    background: #243641;
     margin : 0px 15px 30px 16px;
-    height: 530px;
-    color: white;
+    height: 88%;
     width: 100%;
     border-radius: 10px;
     /* border: 1px solid black; */
   }
   .empdet-div{
-    background: white;
-    height: 530px;
+    background: #243641;
+    height: 82%;
+    width: 100%;
     border-radius: 10px;
+  }
+  #vencustab{
+    background: #243641;
+    width: 93%;
+    height: 75%;
+    border-radius: 10px;
+    margin-left: 10px;
   }
   #image-size{
     width: 130;
@@ -933,7 +987,7 @@ margin-left: 240px;
   #selectimg-div{
     width: 160px;
     height: 125px;
-    background: #e8e1e1;
+    background: #243641;
     align-items: center;
     margin-left: 55px;
     padding-top: 50px;
@@ -959,24 +1013,32 @@ margin-left: 240px;
     border-radius: 80px;
   }
 }
+/*Desktop size  */
 @media (min-width: 1025px) and (max-width: 1280px){
   #vendorstyle{
     margin-left: 25px;
   }
   #purchase-div{
-    background: white;
-    margin : 0px 15px 30px 20px;
-    height: 530px;
-    color: white;
+    background: #243641;
+    margin : 0px 15px 30px 10px;
     width: 100%;
+    height: 75%;
     border-radius: 10px;
     /* border: 1px solid black; */
   }
 
   .empdet-div{
-    background: white;
-    height: 530px;
+    background: #243641;
+    height: 75%;
+    width: 100%;
     border-radius: 10px;
+  }
+  #vencustab{
+    background: #243641;
+    width: 93%;
+    height: 75%;
+    border-radius: 10px;
+    margin-left: 10px;
   }
   #image-size{
     width: 130;
@@ -984,15 +1046,34 @@ margin-left: 240px;
   #selectimg-div{
     width: 160px;
     height: 125px;
-    background: #e8e1e1;
+    background: #243641;
     align-items: center;
     margin-left: 120px;
     padding-top: 50px;
     cursor: pointer;
   }
-  #scrolling{
+  #hole-div{
     overflow-y: scroll;
     overflow-x: hidden;
+    height: 82%;
+    margin-top: 5px;
+  }
+  .example-box {
+    height: 78%;
+    cursor: move;
+    background: #243641;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+    transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
+  } 
+  #edit-butn1{
+    height: 29px;
+    background-color: #243641;
+    width: 50px;
+    text-align: center;
+    border: none;
+    outline: none;
   }
 }
 

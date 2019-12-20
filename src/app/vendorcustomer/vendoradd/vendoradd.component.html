@@ -1,14 +1,12 @@
-<br/>
 <div  class="row">
     <div class="col-md-3"></div>
-    <div  class="col-2 col-md-3  col-lg-5" style="height: 60px;">
-    <vendorcustalert></vendorcustalert>
-    </div>
+    <div  class="col-2 col-md-2  col-lg-5" ></div>
 
     <button type="button"  class="btn btn-primary" (click)="addVendor()">Add Vendor</button>  &nbsp; &nbsp; &nbsp; 
     <button type="button"  class="btn btn-primary" (click)="addCustomer()">Add Customer</button>  &nbsp; &nbsp; &nbsp; 
 
 </div>
+<br/>
 <div class="row">
     <div class="col-12 col-sm-5 col-md-6  col-lg-5">
         <div class="tab">
@@ -73,7 +71,7 @@
 
 <div class="col-12 col-sm-7 col-md-6 col-lg-7">
 <!-- Vendor left side deatils start-->
-    <div *ngIf="vendordetails" class="empdet-div" id="scrolling">
+    <div *ngIf="vendordetails" id="vencustab">
             <br/>
             <div class="row">
                 <div class="col-md-1 col-1 col-lg-1"></div>
@@ -107,6 +105,7 @@
                 </div>
                 <hr style="margin-top: 25px;">
 
+                <div class="empdet-div" id="scrolling">
                 <div id="img-detaildiv">
                     <div class="row">
                         <img src="./assets/images/employee.png"  id="image-size"/>
@@ -171,11 +170,12 @@
                                 <p>{{ this.model.address }}</p>
                         </div>
                 </div>
+                </div>
         </div>
  <!-- Vendor left side deatils end-->
 
   <!-- Customer left side deatils start-->
-    <div *ngIf="customerdetails" class="empdet-div" id="scrolling">
+    <div *ngIf="customerdetails" id="vencustab">
             <br/>
             <div class="row">
                 <div class="col-md-1 col-1 col-lg-1"></div>
@@ -208,6 +208,8 @@
                 </div>
             </div>
             <hr style="margin-top: 25px;">
+
+        <div class="empdet-div" id="scrolling">
             <div id="img-detaildiv">
                 <div class="row">
                     <img src="./assets/images/employee.png"  id="image-size"/>
@@ -217,74 +219,75 @@
                 </div>
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="col-1 col-sm-1 col-md-1 col-lg-1"></div>
-             
-                    <div class="row" id="code">
-                        <p class="col-md-4 col-4 col-lg-4" id="text3">Customer Code</p>
-                        <p class="col-md-1 col-1 col-lg-1">:</p>
-                        <p id="text4">{{ this.model.custcode }}</p>
-                    </div>
-                    
-                    <div class="row" id="code">
-                        <p class="col-md-4 col-4 col-lg-4" id="text3">Customer Name</p>
-                        <p class="col-md-1 col-1 col-lg-1">:</p>
-                        <p id="text4">{{ this.model.customerName }}</p>
-                    </div>
-                    
-                    <div class="row" id="number">
-                        <p class="col-md-4 col-4 col-lg-4" id="text3">Phone Number</p>
-                        <p class="col-md-1 col-1 col-lg-1">:</p>
-                        <p id="text4">{{ this.model.phoneNumber }}</p>
-                    </div>
-                    
-                    <div class="row" id="name">
-                            <p class="col-md-4 col-4 col-lg-4" id="text3">Mobile Number</p>
-                            <p class="col-md-1 col-1 col-lg-1">:</p>
-                            <p id="text4">{{ this.model.mobileNumber }}</p>
-                    </div>
-                    
-                    <div class="row" id="country">
-                        <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
-                        <p class="col-md-1 col-1 col-lg-1">:</p>
-                        <p id="text4">{{ this.model.country }}</p>
-                    </div>
-
+                <div class="col-1 col-sm-1 col-md-1 col-lg-1"></div>
+            
+                <div class="row" id="code">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Customer Code</p>
+                    <p class="col-md-1 col-1 col-lg-1">:</p>
+                    <p id="text4">{{ this.model.custcode }}</p>
+                </div>
                 
-                    <div class="row" id="country">
-                            <p class="col-md-4 col-4 col-lg-4" id="text3">Email</p>
-                            <p class="col-md-1 col-1 col-lg-1">:</p>
-                            <p id="text4">{{ this.model.email }}</p>
-                    </div>
-                    
-                    <div class="row" id="city">
-                            <p class="col-md-4 col-4 col-lg-4" id="text3">City</p>
-                            <p class="col-md-1 col-1 col-lg-1">:</p>
-                            <p id="text4">{{ this.model.city }}</p>
-                    </div>
-                    
-                    <div class="row" id="lastedit">
-                            <p class="col-md-4 col-4 col-lg-4" id="text3">Last Edit</p>
-                            <p class="col-md-1 col-1 col-lg-1">:</p>
-                            <p id="text4">{{ this.model.lastedit }}</p>
-                    </div>
-                   
-                    <div class="row" id="addeddate">
-                            <p class="col-md-4 col-4 col-lg-4" id="text3">Added Date</p>
-                            <p class="col-md-1 col-1 col-lg-1">:</p>
-                            <p id="text4">{{ this.model.addeddate }}</p>
-                    </div>
-                    
-                    <div class="row" id="address">
-                            <p class="col-md-4 col-4 col-lg-4" id="text3">Address</p>
-                            <p class="col-md-1 col-1 col-lg-1">:</p>
-                            <p id="text4">{{ this.model.address }}</p>
-                    </div>     
-               
+                <div class="row" id="code">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Customer Name</p>
+                    <p class="col-md-1 col-1 col-lg-1">:</p>
+                    <p id="text4">{{ this.model.customerName }}</p>
+                </div>
+                
+                <div class="row" id="number">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Phone Number</p>
+                    <p class="col-md-1 col-1 col-lg-1">:</p>
+                    <p id="text4">{{ this.model.phoneNumber }}</p>
+                </div>
+                
+                <div class="row" id="name">
+                        <p class="col-md-4 col-4 col-lg-4" id="text3">Mobile Number</p>
+                        <p class="col-md-1 col-1 col-lg-1">:</p>
+                        <p id="text4">{{ this.model.mobileNumber }}</p>
+                </div>
+                
+                <div class="row" id="country">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
+                    <p class="col-md-1 col-1 col-lg-1">:</p>
+                    <p id="text4">{{ this.model.country }}</p>
+                </div>
+
+            
+                <div class="row" id="country">
+                        <p class="col-md-4 col-4 col-lg-4" id="text3">Email</p>
+                        <p class="col-md-1 col-1 col-lg-1">:</p>
+                        <p id="text4">{{ this.model.email }}</p>
+                </div>
+                
+                <div class="row" id="city">
+                        <p class="col-md-4 col-4 col-lg-4" id="text3">City</p>
+                        <p class="col-md-1 col-1 col-lg-1">:</p>
+                        <p id="text4">{{ this.model.city }}</p>
+                </div>
+                
+                <div class="row" id="lastedit">
+                        <p class="col-md-4 col-4 col-lg-4" id="text3">Last Edit</p>
+                        <p class="col-md-1 col-1 col-lg-1">:</p>
+                        <p id="text4">{{ this.model.lastedit }}</p>
+                </div>
+                
+                <div class="row" id="addeddate">
+                        <p class="col-md-4 col-4 col-lg-4" id="text3">Added Date</p>
+                        <p class="col-md-1 col-1 col-lg-1">:</p>
+                        <p id="text4">{{ this.model.addeddate }}</p>
+                </div>
+                
+                <div class="row" id="address">
+                        <p class="col-md-4 col-4 col-lg-4" id="text3">Address</p>
+                        <p class="col-md-1 col-1 col-lg-1">:</p>
+                        <p id="text4">{{ this.model.address }}</p>
+                </div>     
+            
             </div>
         </div>
+    </div>
  <!-- Customer left side deatils end-->
 <!--vendor Edit div start -->
-<div *ngIf="vendoreditdetails" class="empdet-div" id="scrolling" id="scrolling"> 
+<div *ngIf="vendoreditdetails" id="vencustab"> 
         <br/>
         <div class="row">
             <div class="col-md-1 col-1 col-lg-1"></div>
@@ -312,6 +315,8 @@
                 </div>
             </div>
             <hr style="margin-top: 25px;">
+
+        <div class="empdet-div" id="scrolling">
             <div id="img-detaildiv">
                 <div class="row">
                     <img src="./assets/images/employee.png"  id="image-size"/>
@@ -350,7 +355,7 @@
                     <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
                     <p class="col-md-1 col-1 col-lg-1" >:</p>
                     <select id="editselect-box" [(ngModel)] ="this.model.country"  >
-                        <option  *ngFor="let country of countryList" value={{country}} >{{country}}</option>     
+                        <option  *ngFor="let country of countryList" value={{country}} id="black-color">{{country}}</option>     
                      </select>                 
                 </div>
                 
@@ -384,13 +389,13 @@
                     <input type="text" id="editinput-box" value="{{ this.model.address }}" />
                 </div>
                 
+             </div>
         </div>
-        
     </div>
 <!--vendor Edit div End -->
 
  <!--customer Edit div start -->
- <div *ngIf="customereditdetails" class="empdet-div" id="scrolling" cdkDrag>
+ <div *ngIf="customereditdetails" id="vencustab">
         <br/>
         <div class="row">
             <div class="col-md-1 col-1 col-lg-1"></div>
@@ -418,6 +423,8 @@
             </div>
         </div>
         <hr style="margin-top: 25px;">
+
+    <div class="empdet-div" id="scrolling">
         <div id="img-detaildiv">
             <div class="row">
                 <img src="./assets/images/employee.png"  id="image-size"/>
@@ -456,49 +463,48 @@
                     <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
                     <p class="col-md-1 col-1 col-lg-1" >:</p>
 
-                    <select id="editselect-box" [(ngModel)] ="this.model.country"  >
-                            <option  *ngFor="let country of countryList" value={{country}} >{{country}}</option>     
-              </select>
-
+                <select id="editselect-box" [(ngModel)] ="this.model.country"  >
+                        <option  *ngFor="let country of countryList" value={{country}} id="black-color">{{country}}</option>     
+                    </select>
                 </div> 
+
+                <div class="row" id="email">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Email</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="{{ this.model.email }}" />
+                </div>
                 
-                    <div class="row" id="email">
-                        <p class="col-md-4 col-4 col-lg-4" id="text3">Email</p>
-                        <p class="col-md-1 col-1 col-lg-1" >:</p>
-                        <input type="text" id="editinput-box" value="{{ this.model.email }}" />
-                    </div>
-                    
-                    <div class="row" id="city">
-                        <p class="col-md-4 col-4 col-lg-4" id="text3">City</p>
-                        <p class="col-md-1 col-1 col-lg-1" >:</p>
-                        <input type="text" id="editinput-box" value="{{ this.model.city }}" />
-                    </div>
-                    
-                    <div class="row" id="lastedit">
-                        <p class="col-md-4 col-4 col-lg-4" id="text3">Last Edit</p>
-                        <p class="col-md-1 col-1 col-lg-1" >:</p>
-                        <p id="text4">{{ this.model.lastedit }}</p>
-                    </div>
-                    
-                    <div class="row" id="addeddate">
-                        <p class="col-md-4 col-4 col-lg-4" id="text3">Added Date</p>
-                        <p class="col-md-1 col-1 col-lg-1" >:</p>
-                        <p id="text4">{{ this.model.addeddate }}</p>
-                    </div>
+                <div class="row" id="city">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">City</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="{{ this.model.city }}" />
+                </div>
                 
-                    <div class="row" id="address">
-                        <p class="col-md-4 col-4 col-lg-4" id="text3">Address</p>
-                        <p class="col-md-1 col-1 col-lg-1" >:</p>
-                        <input type="text" id="editinput-box" value="{{ this.model.address }}" />
-                    </div>
+                <div class="row" id="lastedit">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Last Edit</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <p id="text4">{{ this.model.lastedit }}</p>
+                </div>
+                
+                <div class="row" id="addeddate">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Added Date</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <p id="text4">{{ this.model.addeddate }}</p>
+                </div>
+            
+                <div class="row" id="address">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Address</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="{{ this.model.address }}" />
+                </div>
                     
+              </div>
         </div>
-        
     </div>
 <!--customer Edit div End -->
 
 <!--vendor Drag and Drop start-->
-<div *ngIf="vendordragAndDrop" class="example-box" cdkDrag>
+<div *ngIf="vendordragAndDrop" id="vencustab" cdkDrag>
     <br/>
     <div class="row">
         <div class="col-md-1 col-1 col-lg-1"></div>
@@ -526,60 +532,61 @@
         </div>
     </div>
     <hr style="margin-top: 25px;">
-    <br/>
-    <div id="img-detaildiv">
-        <div class="row">
-            <img src="./assets/images/employee.png"  id="image-size"/>
-            <div id="selecticon-dev">
-                <i class="fa fa-camera" aria-hidden="true" id="camera-icon"></i>
+
+    <div class="example-box" id="scrolling">
+        <div id="img-detaildiv">
+            <div class="row">
+                <img src="./assets/images/employee.png"  id="image-size"/>
+                <div id="selecticon-dev">
+                    <i class="fa fa-camera" aria-hidden="true" id="camera-icon"></i>
+                </div>
             </div>
         </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="row" id="address">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Vendor Name</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="" />
+                </div>
+                <div class="row" id="address">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Phone Number</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="" />
+                </div>
+                <div class="row" id="address">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Address</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="" />
+                </div>
+                <div class="row" id="address">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">City</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="" />
+                </div>
+                <div class="row" id="address">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">EmailAddress</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="" />
+                </div>
+                <div class="row" id="address">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Mobile Number</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="" />
+                </div>
+                <div class="row" id="address">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <select id="editselect-box" [(ngModel)] ="this.model.country">
+                        <option  *ngFor="let country of countryList" value={{country}} id="black-color">{{country}}</option>     
+                    </select>  
+                </div>
+          </div>
+        </div>
     </div>
-    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-        <div class="row" id="address">
-            <p class="col-md-4 col-4 col-lg-4" id="text3">Vendor Name</p>
-            <p class="col-md-1 col-1 col-lg-1" >:</p>
-            <input type="text" id="editinput-box" value="" />
-        </div>
-        <div class="row" id="address">
-            <p class="col-md-4 col-4 col-lg-4" id="text3">Phone Number</p>
-            <p class="col-md-1 col-1 col-lg-1" >:</p>
-            <input type="text" id="editinput-box" value="" />
-        </div>
-        <div class="row" id="address">
-            <p class="col-md-4 col-4 col-lg-4" id="text3">Address</p>
-            <p class="col-md-1 col-1 col-lg-1" >:</p>
-            <input type="text" id="editinput-box" value="" />
-        </div>
-        <div class="row" id="address">
-            <p class="col-md-4 col-4 col-lg-4" id="text3">City</p>
-            <p class="col-md-1 col-1 col-lg-1" >:</p>
-            <input type="text" id="editinput-box" value="" />
-        </div>
-        <div class="row" id="address">
-            <p class="col-md-4 col-4 col-lg-4" id="text3">EmailAddress</p>
-            <p class="col-md-1 col-1 col-lg-1" >:</p>
-            <input type="text" id="editinput-box" value="" />
-        </div>
-        <div class="row" id="address">
-            <p class="col-md-4 col-4 col-lg-4" id="text3">Mobile Number</p>
-            <p class="col-md-1 col-1 col-lg-1" >:</p>
-            <input type="text" id="editinput-box" value="" />
-        </div>
-        <div class="row" id="address">
-            <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
-            <p class="col-md-1 col-1 col-lg-1" >:</p>
-            <select id="editselect-box" [(ngModel)] ="this.model.country">
-                <option  *ngFor="let country of countryList" value={{country}} >{{country}}</option>     
-            </select>  
-        </div>
-    </div>
-
-</div>
   <!-- vendor Drag and Drop end-->
 
   <!--customer Drag and Drop start-->
-<div *ngIf="customerdragAndDrop" class="example-box" cdkDrag>
+<div *ngIf="customerdragAndDrop" id="vencustab" cdkDrag>
     <br/>
     <div class="row">
 
@@ -608,7 +615,8 @@
         </div>
     </div>
     <hr style="margin-top: 25px;">
-    <br/>
+
+    <div class="example-box" id="scrolling">
     <div id="img-detaildiv">
         <div class="row">
             <img src="./assets/images/employee.png"  id="image-size"/>
@@ -652,12 +660,12 @@
                 <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
                 <p class="col-md-1 col-1 col-lg-1" >:</p>
                 <select id="editselect-box" [(ngModel)] ="this.model.country"  >
-                    <option  *ngFor="let country of countryList" value={{country}} >{{country}}</option>     
+                    <option  *ngFor="let country of countryList" value={{country}} id="black-color">{{country}}</option>     
                  </select>  
             </div>
         </div>
-
     </div>
+</div>
   <!-- customer Drag and Drop end-->
 
     </div>            
@@ -669,7 +677,7 @@
       <div class="modal-content">
           <div id="box-dialouge"><i class="fa fa-check" aria-hidden="true" id="icon-font"></i></div>
           <br/><br/>
-          <h2 style="text-align: center;">{{mainmessage}}</h2>
+          <h2 style="text-align: center;color: black;">{{mainmessage}}</h2>
           <br/><br/>
          <!-- <p id="p-text">{{message}}.</p> -->
       </div>
