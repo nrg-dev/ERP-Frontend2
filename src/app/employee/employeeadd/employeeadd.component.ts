@@ -15,6 +15,8 @@ export class EmployeeaddComponent implements OnInit {
   //notSelected: boolean;
   user:User;
   model: any = {};
+  successdialog = 'none';
+  mainmessage = null;
   employeeReg : any = [ 
     {
       name :'Employee Name',
@@ -45,11 +47,30 @@ export class EmployeeaddComponent implements OnInit {
 
   ngOnInit() {
     //this.notSelected = false;
-
-  //localStorage.setItem("notSelected","false");
-
+    //localStorage.setItem("notSelected","false");
   }
 
-  
+  saveEmployee(){
+    this.mainmessage = "Successfully Saved."
+    this.successdialog = 'block';
+    setTimeout(() => {
+      this.successdialog = 'none';
+    }, 1500);
+  }
+
+  cancelEmployee(){
+    this.model.name = '';
+    this.model.rank = '';
+    this.model.phonenumber = '';
+    this.model.address = '';
+    this.model.email = '';
+    this.model.dob = '';
+    this.model.contractnumber = '';
+    this.model.npwp = '';
+    this.model.bpjs = '';
+    this.model.monthlysalary = '';
+    this.model.workHour = '';
+    this.model.annualLeave = '';
+  }
 
 }

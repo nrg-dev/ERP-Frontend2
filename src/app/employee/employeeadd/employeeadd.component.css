@@ -151,3 +151,55 @@ a:hover {
     width: 100%;
 }
 /*Profile Pic End*/
+
+#save-butn{
+    background-color: #07ab07;
+    width: 100px;
+    height: 32px;
+    color: white;
+}
+#cancel-butn{
+    background-color: #d40505;
+    width: 100px;
+    height: 32px;
+    color: white;
+}
+
+#text{
+    color: white;
+}
+
+/* Start Dialog Box Styles */
+.modal-dialog {
+    -webkit-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    margin: 0 auto;
+    margin-left: 510px;
+}
+.modal-content {
+    overflow:hidden;
+    height: 465px;
+    width: 325px;
+    margin-top: 235px;
+}
+
+#box-dialouge{
+    margin-top: 45px; 
+    margin-left: 90px;
+    background-color: #0cc50c;
+    width: 150px;
+    height: 150px;
+    border-radius: 80px;
+}
+#icon-font{
+    font-size: 90px;
+    padding-left: 30px;
+    padding-top: 24px;
+    color: white;
+}
+#p-text{
+    padding-left: 30px;
+    font-size: 16px;
+}
+/* End DialogBox Styles */

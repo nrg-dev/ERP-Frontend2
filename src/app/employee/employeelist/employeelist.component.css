@@ -154,7 +154,7 @@ tr {
     margin-left: 15px;
 }
 .empdet-div{
-    background: white;
+    background: #1B2931;
     border-radius: 10px;
     height: 630px;
     overflow-y: scroll;
@@ -164,9 +164,11 @@ tr {
 #country{
     font-size: 14px;
     margin: 4px;
+    color: white;
 }
 h3{
     text-align: center;
+    color: white;
 }
 
 .empdet-div::-webkit-scrollbar { 
@@ -244,6 +246,67 @@ a:hover {
     font-size: 16px;
 }
 /* End DialogBox Styles */
+
+#date-details{
+    width: 100%;
+    margin: 0 25px;
+    height:auto;
+    background-color: #5a5a5a;
+}
+
+.text{
+    margin : 10px 85px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.datetext{
+    margin : 5px 90px;
+    color: white;
+    font-size: 18px;
+}
+
+#date{
+    font-size: 22px;
+    font-weight: bold;
+    padding-left: 15px;
+}
+
+#save-butn{
+    background-color: #07ab07;
+    width: 100px;
+    height: 32px;
+    color: white;
+    margin: 5px 0 0 90px;
+}
+#cancel-butn{
+    background-color: #d40505;
+    width: 100px;
+    height: 32px;
+    color: white;
+    margin: 5px 0 0 5px;
+}
+
+#absentbtn{
+    width: 60%;
+    margin: 0 85px;
+    height:auto;
+    color:white;
+    background-color: #f99704;
+}
+
+#btntext{
+    color: white;
+}
+
+#reason{
+    width: 100%;
+    margin: 0 25px;
+    height: 100px;
+    background-color: white;
+}
+
 
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
     #purchase-div{

@@ -13,12 +13,16 @@ export class EmployeelistComponent implements OnInit {
   model: any = {};
   public empdetails = false;
   public empeditdetails = false;
-  public empdeletedetails = false;
   public absentdiv = false;
   message=null;
   mainmessage=null;
   successdialog = 'none';
   updatesuccessdialog = 'none';
+
+  todayNumber: number = Date.now();
+  todayDate : Date = new Date();
+  todayString : string = new Date().toDateString();
+  todayISOString : string = new Date().toISOString();
 
   employeeList : any = [ 
     {
@@ -112,6 +116,7 @@ export class EmployeelistComponent implements OnInit {
     document.getElementById(this.emptempid).style.backgroundColor='#DDEDF9';
     this.empdetails = true;
     this.empeditdetails = false;
+    this.absentdiv = false;
 
     if(empCode == "NRG1"){
       this.model.empCode = this.employeeList[0].empCode;
@@ -201,8 +206,7 @@ export class EmployeelistComponent implements OnInit {
   edit(){
     this.empdetails = false;
     this.empeditdetails = true;
-    this.empdeletedetails = false;
-    this.alertService.success("");
+    this.absentdiv = false;
   }
 
   setEmployeeUpdate(){    
@@ -210,7 +214,7 @@ export class EmployeelistComponent implements OnInit {
 
     this.empdetails = true;
     this.empeditdetails = false;
-    this.empdeletedetails = false;
+    this.absentdiv = false;
     this.updatesuccessdialog = 'block';
     setTimeout(() => {
       this.updatesuccessdialog = 'none';
@@ -220,43 +224,39 @@ export class EmployeelistComponent implements OnInit {
   cancelEdit(){
     this.empdetails = true;
     this.empeditdetails = false;
-    this.empdeletedetails = false;
-    this.alertService.success("");
+    this.absentdiv = false;
   }
 
   delete(){
-    this.empdetails = false;
-    this.empeditdetails = false;
-    this.empdeletedetails = true;
-    this.alertService.success("");
-  }
-  
-  confirmDelete(){
     this.message="Deleted Successfully."
     this.mainmessage="Deleted."
 
     this.empdetails = false;
     this.empeditdetails = false;
-    this.empdeletedetails = false;
-    //this.alertService.success("Employee Data was Successfully Deleted..");
+    this.absentdiv = false;
     this.successdialog = 'block';
     setTimeout(() => {
       this.successdialog = 'none';
     }, 1500);
-  }
-
-  cancelDelete(){
-    this.empdetails = true;
-    this.empeditdetails = false;
-    this.empdeletedetails = false;
-    this.alertService.success("");
+    //this.alertService.success("Employee Data was Successfully Deleted..");
   }
 
   absent(){
     this.absentdiv = true;
     this.empdetails = false;
     this.empeditdetails = false;
-    this.empdeletedetails = false;
+  }
+
+  checkIn(todayDate:string){
+    alert("CheckIn Date -->"+todayDate);
+  }
+
+  checkOut(todayDate:string){
+    alert("CheckOut Date -->"+todayDate);
+  }
+
+  absentDate(date:string){
+    alert("Absent Date -->"+date);
   }
 
 }

@@ -1,9 +1,3 @@
-<div  class="row">
-    <div class="col-3"></div>
-    <div  class="col-md-6  col-lg-5" style="height: 60px;">
-        <app-employeealert></app-employeealert>
-    </div>    
-</div>
 <div class="employee-content">
     <div class="row">
         <div class="col-lg-7">
@@ -353,74 +347,37 @@
                     </div>     
                     <!-- Employee Edit End -->
 
-                    <div *ngIf="empdeletedetails" class="empdet-div" id="example-box" cdkDrag>
-                            <br/>
-                            <h3>Employee Delete</h3>
-                            <hr>
-                            <div class="row" id="country">
-                                <div class="col-md-5 col-xs-5 col-lg-5">Employee_Code</div>
-                                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
-                                <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.empCode }}</div>
-                            </div><br/>
-                            <div class="row" id="country">
-                                <div class="col-md-5 col-xs-5 col-lg-5">Employee_Name</div>
-                                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
-                                <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.name }}</div>
-                            </div><br/>
-                            <div class="row" id="country">
-                                <div class="col-md-5 col-xs-5 col-lg-5">Rank</div>
-                                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
-                                <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.rank }}</div>
-                            </div><br/>	<br/>	
-                            <div class="row" id="empbut">
-                                <div class="col-md-2 col-xs-2 ol-lg-2"></div>
-                                <div class="col-md-9 col-xs-9 col-lg-9">
-                                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                                    <button class='btn btn-danger delete-product-button' id="empButton" (click)="confirmDelete()">
-                                        <span class='glyphicon glyphicon-remove'></span> Yes
-                                    </button> &nbsp;&nbsp;&nbsp;
-                                    <button class='btn btn-primary m-r-10px read-one-product-button' id="empButton" (click)="cancelDelete()">
-                                        <span class='glyphicon glyphicon-eye-open'></span> No
-                                    </button> &nbsp;&nbsp;&nbsp; 
-                                </div>
-                            </div><br/>
+                    <!-- Employee Absent Start -->
+                    <div *ngIf="absentdiv" class="empdet-div" id="example-box" cdkDrag>
+                        <br/>
+                        <h3>Employee Absent</h3>
+                        <hr>
+                        <div class="row">
+                            <div id="date-details">
+                                <label class="text">SET DATE AND TIME</label>
+                                <label class="datetext"> {{todayDate | date:'longDate'}} </label>
+                                <label class="datetext" id="date">{{todayDate | date:'mediumTime'}}</label>
+                            </div>
                         </div>
-                        <!-- Employee Delete End -->
-
-                        <!-- Employee Absent Start -->
-                        <div *ngIf="absentdiv" class="empdet-div" id="example-box" cdkDrag>
-                            <br/>
-                            <h3>Employee Absent</h3>
-                            <hr>
-                            <div class="row" id="country">
-                                <div class="col-md-5 col-xs-5 col-lg-5">Employee_Code</div>
-                                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
-                                <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.empCode }}</div>
-                            </div><br/>
-                            <div class="row" id="country">
-                                <div class="col-md-5 col-xs-5 col-lg-5">Employee_Name</div>
-                                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
-                                <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.name }}</div>
-                            </div><br/>
-                            <div class="row" id="country">
-                                <div class="col-md-5 col-xs-5 col-lg-5">Rank</div>
-                                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
-                                <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.rank }}</div>
-                            </div><br/>	<br/>	
-                            <div class="row" id="empbut">
-                                <div class="col-md-2 col-xs-2 ol-lg-2"></div>
-                                <div class="col-md-9 col-xs-9 col-lg-9">
-                                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                                    <button class='btn btn-danger delete-product-button' id="empButton">
-                                        <span class='glyphicon glyphicon-remove'></span> Absent
-                                    </button> &nbsp;&nbsp;&nbsp;
-                                    <button class='btn btn-primary m-r-10px read-one-product-button' id="empButton">
-                                        <span class='glyphicon glyphicon-eye-open'></span> No
-                                    </button> &nbsp;&nbsp;&nbsp; 
-                                </div>
-                            </div><br/>
+                        <div class="row">
+                            <button id="save-butn" (click)="checkIn(todayDate)">
+                                <label id="btntext">CHECK IN</label>
+                            </button>&nbsp;&nbsp;
+                            <button id="cancel-butn" (click)="checkOut(todayDate)">
+                                <label id="btntext">CHECK OUT</label>
+                            </button>
+                        </div><br/>
+                        <div class="row">
+                            <button id="absentbtn" (click)="absentDate(todayDate)">ABSENT</button>
+                        </div>	<br/>
+                        <div class="row">
+                            <textarea type="text" id="reason"  class="form-control" name="absentReason" value="{{ this.model.absentReason }}" [(ngModel)]="this.model.absentReason" #absentReason="ngModel" required></textarea>  
                         </div>
-                        <!-- Employee Absent End -->
+                        <div class="row">
+                            <p style="margin: 0 25px;color:white;">Fill this form if late check in / early check out / absent </p>
+                        </div>
+                    </div>
+                    <!-- Employee Absent End -->
     
                 </div>
             </div>
@@ -446,7 +403,7 @@
       <div class="modal-content">
           <div id="box-dialouge"><i class="fa fa-check" aria-hidden="true" id="icon-font"></i></div>
           <br/><br/>
-          <h2 style="text-align: center;">{{mainmessage}}</h2>
+          <h4 style="text-align: center;">{{mainmessage}}</h4>
           <br/><br/>
          <!-- <p id="p-text">{{message}}.</p> -->
       </div>
