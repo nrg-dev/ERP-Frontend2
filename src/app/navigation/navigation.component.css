@@ -1,3 +1,9 @@
+*{
+  /*font-family: 'Lato',Georgia,Arial,sans-serif;
+  font-size:medium;*/
+  color: white;
+}
+
 #outline-none{
   outline: none;
 }
