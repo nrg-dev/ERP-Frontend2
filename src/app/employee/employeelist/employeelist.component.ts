@@ -109,10 +109,15 @@ export class EmployeelistComponent implements OnInit {
 
   employeeDetails(empCode:string){
     if(this.emptempid!==null){
+      //document.getElementById(this.emptempid).style.backgroundColor='#272E34';
+
       //$("table tbody tr:nth-child(odd)").style.backgroundColor='#1f303b';
       //$("table tbody tr:nth-child(even)").style.backgroundColor='#1a2932';
       this.emptempid=null;
-    }
+    } 
+
+    //document.getElementById(this.emptempid).style.backgroundColor='#1a2932';
+
     this.emptempid = empCode;
    // document.getElementById(this.emptempid).style.backgroundColor='#2F4756';
     this.empdetails = true;

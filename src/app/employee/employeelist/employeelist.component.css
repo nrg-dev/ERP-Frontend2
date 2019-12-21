@@ -1,4 +1,6 @@
 *{
+    font-family: 'Lato',Georgia,Arial,sans-serif;
+    font-size:medium;
     color: white;
 }
 .mat-tab-group {
@@ -31,7 +33,7 @@
 .tablink.active {
     border-bottom: 3px solid #007bff;
 }
-
+ 
 #purchase-div{
     background: #243642;
     height: 630px;
@@ -331,7 +333,7 @@ textarea{
 
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
     #purchase-div{
-      background: white;
+      background: #243642;
       height: 630px;
       width: 100%;
       border-radius: 10px;
@@ -354,7 +356,7 @@ textarea{
 }
 @media (min-width: 1025px) and (max-width: 1280px){
     #purchase-div{
-      background: white;
+      background: #243642;
       height: 630px;
       width: 100%;
       border-radius: 10px;

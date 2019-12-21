@@ -68,7 +68,7 @@ showToggle: string;
     this.menuItems = [
       new MenuItem("DashBoard","/landingpage"),
       new MenuItem("Employment","employeelist"),
-      new MenuItem("TimeSheet","employeelist"),
+      new MenuItem("TimeSheet","timesheet"),
       new MenuItem("Vendor & Customer","vendoradd"),
       new MenuItem("Category & Product","categoryadd"),
       new MenuItem("Purchase","purchaseadd"),

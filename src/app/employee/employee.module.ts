@@ -8,19 +8,24 @@ import { EmployeeindexComponent } from './employeeindex/employeeindex.component'
 import { MatTabsModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { EmployeealertComponent } from './employeealert/employeealert.component';
+import { TimesheetComponent } from './timesheet/timesheet.component';
 
 
 const routes: Routes = [
-  { path: 'employeeindex', component: EmployeeindexComponent },
+
   { path: 'employeeadd', component: EmployeeaddComponent },
   { path: 'employeelist', component: EmployeelistComponent },
+  { path: 'timesheet', component: TimesheetComponent },
+
+  // no used
+  { path: 'employeeindex', component: EmployeeindexComponent },
   { path: 'employeereport', component: EmployeereportComponent },
   { path: 'employeealert', component: EmployeealertComponent }
 ];
 
 
 @NgModule({
-  declarations: [EmployeeaddComponent, EmployeelistComponent, EmployeereportComponent, EmployeeindexComponent, EmployeealertComponent],
+  declarations: [EmployeeaddComponent, EmployeelistComponent, EmployeereportComponent, EmployeeindexComponent, EmployeealertComponent, TimesheetComponent],
   imports: [
     FormsModule,
     CommonModule,MatTabsModule,RouterModule.forChild(routes) 
