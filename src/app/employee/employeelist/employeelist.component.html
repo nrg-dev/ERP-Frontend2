@@ -7,7 +7,7 @@
             </div>
             
             <div id="purchase-div">
-                <br/><br/><br/><br/><br/>
+                <br/><br/><br/>
                 <div class="row">
                     <div class="col-lg-5">
                         <h4 id="vendor-text">Employee List</h4>
@@ -357,18 +357,18 @@
                         <div class="empdet-div" style="height: 540px;">
                             <div class="row">
                                 <div id="date-details">
-                                    <label class="text">SET DATE AND TIME</label>
-                                    <label class="datetext"> {{todayDate | date:'longDate'}} </label>
-                                    <label class="datetext" id="date">{{todayDate | date:'mediumTime'}}</label>
+                                    <p class="text">SET DATE AND TIME</p>
+                                    <p class="datetext"> {{todayDate | date:'longDate'}} </p>
+                                    <p class="datetext" id="date">{{todayDate | date:'mediumTime'}}</p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="radio-toolbar">
                                     <input type="radio" id="radio1" name="radios" value="check In" [(ngModel)]="model.status" #status="ngModel" required />
-                                    <label for="radio1" id="save-butn">CHECK IN</label>
+                                    <label for="radio1" id="checkIn-butn">CHECK IN</label>
                                   
                                     <input type="radio" id="radio2" name="radios" value="check Out" [(ngModel)]="model.status" #status="ngModel" required />
-                                    <label for="radio2" id="cancel-butn">CHECK OUT</label>
+                                    <label for="radio2" id="checkOut-butn">CHECK OUT</label>
                                 </div>
                             </div>
                             <div class="row">
@@ -388,7 +388,7 @@
                             </div>
                             <div class="row">
                                 <div id="date-details">
-                                    <label class="text">PREVIEW DETAIL </label>
+                                    <p class="text">PREVIEW DETAIL </p>
                                     <div class="row" id="country">
                                         <div class="col-md-5 col-xs-5 col-lg-5">Employee Code</div>
                                         <div class="col-md-1 col-xs-1 col-lg-1">:</div>
@@ -448,6 +448,17 @@
 </div>
 
 <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':updatesuccessdialog}" style="margin-top:9%;">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div id="box-dialouge"><i class="fa fa-check" aria-hidden="true" id="icon-font"></i></div>
+          <br/><br/>
+          <h4 style="text-align: center;color: black;">{{mainmessage}}</h4>
+          <br/><br/>
+      </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':absentmarkdialog}" style="margin-top:9%;">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
           <div id="box-dialouge"><i class="fa fa-check" aria-hidden="true" id="icon-font"></i></div>

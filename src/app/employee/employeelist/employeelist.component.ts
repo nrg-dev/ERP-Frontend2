@@ -18,6 +18,7 @@ export class EmployeelistComponent implements OnInit {
   mainmessage=null;
   successdialog = 'none';
   updatesuccessdialog = 'none';
+  absentmarkdialog = 'none';
 
   todayNumber: number = Date.now();
   todayDate : Date = new Date();
@@ -109,17 +110,14 @@ export class EmployeelistComponent implements OnInit {
 
   employeeDetails(empCode:string){
     if(this.emptempid!==null){
-      //document.getElementById(this.emptempid).style.backgroundColor='#272E34';
+      document.getElementById(this.emptempid).style.backgroundColor='#1a2932';
 
       //$("table tbody tr:nth-child(odd)").style.backgroundColor='#1f303b';
       //$("table tbody tr:nth-child(even)").style.backgroundColor='#1a2932';
       this.emptempid=null;
     } 
-
-    //document.getElementById(this.emptempid).style.backgroundColor='#1a2932';
-
     this.emptempid = empCode;
-   // document.getElementById(this.emptempid).style.backgroundColor='#2F4756';
+    document.getElementById(this.emptempid).style.backgroundColor='#2F4756';
     this.empdetails = true;
     this.empeditdetails = false;
     this.absentdiv = false;
@@ -225,12 +223,12 @@ export class EmployeelistComponent implements OnInit {
     this.message="Deleted Successfully."
     this.mainmessage="Deleted."
 
-    this.empdetails = false;
     this.empeditdetails = false;
     this.absentdiv = false;
     this.successdialog = 'block';
     setTimeout(() => {
       this.successdialog = 'none';
+      this.empdetails = false;
     }, 1500);
   }
 
@@ -241,9 +239,23 @@ export class EmployeelistComponent implements OnInit {
   }
 
   upload(date:string){
-    alert("Absent Date -->"+date);
-    alert("status -->"+this.model.status);
-    alert("Reason -->"+this.model.reason);
+    if(this.model.status == "absent"){
+      this.mainmessage="Absent Details was Successfully Saved...";
+    }else if(this.model.status == "check In"){
+      this.mainmessage="CheckIn Details was Successfully Saved...";
+    }else if(this.model.status == "check Out"){
+      this.mainmessage="CheckOut Details was Successfully Saved...";
+    }else  if(this.model.status == null){
+      this.mainmessage="Please Choose check in / early check out / absent button.";
+    }
+
+    this.empdetails = false;
+    this.empeditdetails = false;
+    this.absentmarkdialog = 'block';
+    setTimeout(() => {
+      this.absentmarkdialog = 'none';
+      this.absentdiv = false;
+    }, 1500);
   }
 
 }

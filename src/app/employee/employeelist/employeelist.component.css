@@ -54,7 +54,7 @@ a {
 #print-butn{
     border: 1px solid white;
     height: 29px;
-    width: 110px;
+    width: 115px;
     margin-top: 7px;
     font-size: 15px;
     background: #313F47;
@@ -91,21 +91,24 @@ table{
     width: 100%;
 }
 table th,td{
-    border: 1px solid #1f303b;
+    border: 1px solid #5f6e77;
     text-align: center;
     height: 35px;
     font-size: 14px;
     cursor: pointer;
 }
-table tbody tr:nth-child(odd) {
+table tbody tr{
+    background: #1a2932;
+}
+/*table tbody tr:nth-child(odd) {
     background: #1f303b;
 }
 table tbody tr:nth-child(even) {
     background: #1a2932;
-}
+}*/
 table thead tr{
     display: table;
-    background-color: #1B2A31;
+    background-color: #033c5f;
     width: calc(100% - 17px); 
 }
 
@@ -128,7 +131,7 @@ tr {
 }
 
 #tr-color{
-    background-color: #243C48;
+    background-color: #033c5f;
 }
 
 #table-size{
@@ -179,20 +182,6 @@ tr {
 }
 h3{
     text-align: center;
-}
-
-.empdet-div::-webkit-scrollbar { 
-    width: 5px;
-}
-.empdet-div::-webkit-scrollbar-track {
-    height: 50px;
-}
-
-/* Handle */
-.empdet-div::-webkit-scrollbar-thumb {
-    background: #929399; 
-    border-radius: 10px;
-    height: 50px;
 }
 
 #empButton{
@@ -261,13 +250,15 @@ h3{
 }
 
 .text{
-    margin : 10px 85px;
+    margin : 8px 0 auto;
+    text-align: center;
     font-size: 18px;
     font-weight: bold;
 }
 
 .datetext{
-    margin : 5px 90px;
+    margin : 8px 0 auto;
+    text-align: center;
     font-size: 18px;
 }
 
@@ -275,15 +266,16 @@ h3{
     font-size: 22px;
     font-weight: bold;
     padding-left: 15px;
+    margin-bottom: 5px;
 }
 
-#save-butn{
+#checkIn-butn{
     background-color: #07ab07;
     width: 100px;
     height: 32px;
     margin: 5px 0 0 90px;
 }
-#cancel-butn{
+#checkOut-butn{
     background-color: #d40505;
     width: 120px;
     height: 32px;
@@ -371,6 +363,25 @@ textarea{
     }
     #empbut{
         margin: -12px; 
+    }
+    #checkIn-butn{
+        background-color: #07ab07;
+        width: 100px;
+        height: 32px;
+        margin: 5px 0 0 45px;
+    }
+    #checkOut-butn{
+        background-color: #d40505;
+        width: 120px;
+        height: 32px;
+        margin: 5px 0 0 5px;
+    }
+    #absentbtn{
+        width: 100%;
+        margin: 5px 58px;
+        height: auto;
+        background-color: #f99704;
+        text-align: center;
     }
 }
   
