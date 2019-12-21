@@ -3,7 +3,9 @@
   font-size:medium;
   color:white;
 }
-
+hr{
+  background: #1f1e1e;
+}
 #sticky {
   position: -webkit-sticky;
   position: sticky;
@@ -206,7 +208,7 @@ a:hover {
 }
 #name-text{
   text-align: left;
-  margin: 3px;
+  margin: 10px 0px 0px 5px;
 }
 #country-text{
   text-align: center;
@@ -349,6 +351,9 @@ margin-left: 240px;
 #black-color{
   color: black;
 }
+#hole-divsize{
+  height: 75%;
+}
 @media (min-width: 320px) and (max-width: 359px) {
   #purchase-div{
     background: #243641;
@@ -368,7 +373,7 @@ margin-left: 240px;
   #vencustab{
     background: #243641;
     width: 93%;
-    height: 75%;
+    height: 70%;
     border-radius: 10px;
     margin-left: 10px;
   }
@@ -1070,7 +1075,7 @@ margin-left: 240px;
   #edit-butn1{
     height: 29px;
     background-color: #243641;
-    width: 50px;
+    width: 60px;
     text-align: center;
     border: none;
     outline: none;
