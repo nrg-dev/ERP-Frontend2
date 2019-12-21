@@ -1,3 +1,6 @@
+*{
+    color: white;
+}
 .mat-tab-group {
     display: flex;
     flex-direction: column;
@@ -11,9 +14,13 @@
 .tab{
     margin-left: 15px;
 }
-
+form{
+    border: 1px solid #243642!important;
+}
+#labeltext{
+    color: #243642;
+}
 .tablink {
-    color: black;
     float: left;
     border-top: none;
     border-left: none;
@@ -31,9 +38,8 @@
 }
 
 #addemployee-div{
-    background: white;
+    background: #243642;
     height: 630px;
-    color: white;
     width: 100%;
     border-radius: 10px;
     margin-left: 10px;;
@@ -43,16 +49,11 @@
 
 a {
     display: block;
-    color: black;
     text-align: center;
     padding: 12px 12px;
     text-decoration: none;
 }
 
-#vendor-text{
-    color: black;
-    margin-left: 20px;
-}
 #cursor-pointer{
     cursor: pointer;
     overflow-y: auto;
@@ -74,9 +75,6 @@ h3{
     text-align: center;
 }
 
-a:hover {
-    background-color: #F3F3F3;
-}
 #empButton{
     width: 65px;
     font-size: 12px;
@@ -91,9 +89,8 @@ a:hover {
 
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
     #addemployee-div{
-      background: white;
+      background: #243642;
       height: 630px;
-      color: white;
       width: 100%;
       border-radius: 10px;
       /* border: 1px solid black;
@@ -102,9 +99,8 @@ a:hover {
 }
 @media (min-width: 1025px) and (max-width: 1280px){
     #addemployee-div{
-      background: white;
+      background: #243642;
       height: 630px;
-      color: white;
       width: 100%;
       border-radius: 10px;
       /* border: 1px solid black;
@@ -130,7 +126,6 @@ a:hover {
     height: 106px;
     background-color: #999999;
     border: 4px solid #CCCCCC;
-    color: #FFFFFF;
     border-radius: 50%;
     margin: 0px auto;
     overflow: hidden;
@@ -156,17 +151,11 @@ a:hover {
     background-color: #07ab07;
     width: 100px;
     height: 32px;
-    color: white;
 }
 #cancel-butn{
     background-color: #d40505;
     width: 100px;
     height: 32px;
-    color: white;
-}
-
-#text{
-    color: white;
 }
 
 /* Start Dialog Box Styles */
@@ -196,7 +185,6 @@ a:hover {
     font-size: 90px;
     padding-left: 30px;
     padding-top: 24px;
-    color: white;
 }
 #p-text{
     padding-left: 30px;

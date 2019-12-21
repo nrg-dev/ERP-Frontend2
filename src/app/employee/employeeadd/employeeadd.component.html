@@ -2,13 +2,12 @@
   <div class="row">
       <div class="col-lg-7">
   <div class="tab">
-      <a class="tablink" style="border-bottom: 3px solid #007bff;color: #1664a7;width: auto;" id="defaultOpen">Employee Add</a>
-      <a class="tablink" routerLink="../employeelist" style="width: auto;">Employee List</a>
+      <a class="tablink" style="border-bottom: 3px solid #007bff;width: auto;" id="defaultOpen">Employee Add</a>
+      <a class="tablink" routerLink="../employeelist" style="width: auto;color:white;">Employee List</a>
   </div>
             
   <div id="addemployee-div">
     <br/><br/>
-    Default form contact
     <form class="text-center border border-light p-4">
         <!--<div class="container">
             <h4 style="color: black;">Employee Photo</h6>
@@ -23,62 +22,62 @@
       <br/><br/> 
       <div class="form-row mb-4">
           <div class="col">
-            Employee Name 
+            <label id="labeltext">Employee Name </label>
             <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="{{ employeeReg[0].name }}" [(ngModel)]="this.model.name" #name="ngModel" required>
           </div>
           <div class="col">
-            Employee Rank 
+            <label id="labeltext">Employee Rank </label>
             <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="{{ employeeReg[0].rank }}" [(ngModel)]="this.model.rank" #rank="ngModel" required>
           </div>
           <div class="col">
-            PhoneNumber
+            <label id="labeltext">PhoneNumber</label>
             <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="{{ employeeReg[0].phonenumber }}" [(ngModel)]="this.model.phonenumber" #phonenumber="ngModel" required>
           </div>
       </div>
 
       <div class="form-row mb-4">
           <div class="col">
-            Employee Address 
+            <label id="labeltext">Employee Address</label> 
             <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="{{ employeeReg[0].address }}" [(ngModel)]="this.model.address" #address="ngModel" required>
           </div>
           <div class="col">
-            Employee Email
+            <label id="labeltext">Employee Email</label>
             <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="{{ employeeReg[0].email }}" [(ngModel)]="this.model.email" #email="ngModel" required>
           </div>
           <div class="col">
-            Employee DOB 
+            <label id="labeltext">Employee DOB </label>
             <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="{{ employeeReg[0].dob }}" [(ngModel)]="this.model.dob" #dob="ngModel" required>
           </div>
       </div>
 
       <div class="form-row mb-4">
         <div class="col">
-           Contract Number 
+          <label id="labeltext">Contract Number </label>
           <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="{{ employeeReg[0].contractnumber }}" [(ngModel)]="this.model.contractnumber" #contractnumber="ngModel" required>
         </div>
         <div class="col">
-          NPWP Number 
+          <label id="labeltext">NPWP Number </label>
           <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="{{ employeeReg[0].npwp }}" [(ngModel)]="this.model.npwp" #npwp="ngModel" required>
         </div>
 
         <div class="col">
-          BPJS
+          <label id="labeltext">BPJS </label>
           <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="{{ employeeReg[0].bpjs }}" [(ngModel)]="this.model.bpjs" #bpjs="ngModel" required>
         </div>
       </div>
 
       <div class="form-row mb-4">
         <div class="col">
-           Monthly Salary 
+          <label id="labeltext"> Monthly Salary </label>
           <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="{{ employeeReg[0].monthlysalary }}" [(ngModel)]="this.model.monthlysalary" #monthlysalary="ngModel" required>
         </div>
         <div class="col">
-          Work Hour 
+          <label id="labeltext">Work Hour </label>
           <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="{{ employeeReg[0].workHour }}" [(ngModel)]="this.model.workHour" #workHour="ngModel" required>
         </div>
 
         <div class="col">
-            Annual Leave
+          <label id="labeltext">Annual Leave </label>
             <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="{{ employeeReg[0].annualLeave }}" [(ngModel)]="this.model.annualLeave" #annualLeave="ngModel" required>
         </div>
       </div>
@@ -113,9 +112,8 @@
     <div class="modal-content">
         <div id="box-dialouge"><i class="fa fa-check" aria-hidden="true" id="icon-font"></i></div>
         <br/><br/>
-        <h4 style="text-align: center;">{{mainmessage}}</h4>
+        <h4 style="text-align: center;color: black;">{{mainmessage}}</h4>
         <br/><br/>
-       <!-- <p id="p-text">{{message}}.</p> -->
     </div>
   </div>
 </div>

@@ -1,3 +1,6 @@
+*{
+    color: white;
+}
 .mat-tab-group {
     display: flex;
     flex-direction: column;
@@ -13,7 +16,6 @@
 }
 
 .tablink {
-    color: black;
     float: left;
     border-top: none;
     border-left: none;
@@ -31,9 +33,8 @@
 }
 
 #purchase-div{
-    background: white;
+    background: #243642;
     height: 630px;
-    color: white;
     width: 100%;
     border-radius: 10px;
     margin-left: 10px;;
@@ -43,38 +44,38 @@
 
 a {
     display: block;
-    color: black;
     text-align: center;
     padding: 12px 12px;
     text-decoration: none;
 }
 
-
 #print-butn{
-    border: 2px solid black;
-    color: white;
+    border: 1px solid white;
     height: 29px;
     width: 110px;
     margin-top: 7px;
     font-size: 15px;
-    background: green;
+    background: #313F47;
 }
 .searchicon{
     font-family: fontawesome;
     font-size: 18px;
-    color: black;
-    background: blanchedalmond;
+    background: #58656A;
+    border: 1px solid #58656A;
+    /* background: blanchedalmond;
+    color: black; */
     width: 50%;
     height: 35px;
     border-radius: 25px;
     margin-left: 10px;
 }
+::placeholder {
+  color: white;
+}
 #text{
-    color: black;
     margin-left: 6px;
 }
 #vendor-text{
-    color: black;
     margin-left: 20px;
 }
 #select-box-style{
@@ -87,17 +88,22 @@ a {
 table{
     width: 100%;
 }
-table  th,td{
-    border: 1px solid #DDD;
-    color: black;
+table th,td{
+    border: 1px solid #1f303b;
     text-align: center;
     height: 35px;
     font-size: 14px;
     cursor: pointer;
 }
-
-thead {
+table tbody tr:nth-child(odd) {
+    background: #1f303b;
+}
+table tbody tr:nth-child(even) {
+    background: #1a2932;
+}
+table thead tr{
     display: table;
+    background-color: #1B2A31;
     width: calc(100% - 17px); 
 }
 
@@ -129,7 +135,6 @@ tr {
     margin: 0px 25px;
 }
 #icon-mod{
-    color: black;
     font-size: 18px;
     margin-left: 3px;
 }
@@ -138,7 +143,6 @@ tr {
     overflow-y: auto;
 }
 #text-color{
-    color: white;
     width: 50px;
     height: 35px;
     font-size: 14px;
@@ -154,21 +158,25 @@ tr {
     margin-left: 15px;
 }
 .empdet-div{
-    background: #1B2931;
-    border-radius: 10px;
-    height: 630px;
+    height: 480px;
     overflow-y: scroll;
     overflow-x: hidden;
+}
+.scroll-div{
+    background: #243642;
+    border-radius: 10px;
 }
 
 #country{
     font-size: 14px;
     margin: 4px;
-    color: white;
+}
+
+#country input{
+    color: black;
 }
 h3{
     text-align: center;
-    color: white;
 }
 
 .empdet-div::-webkit-scrollbar { 
@@ -185,9 +193,6 @@ h3{
     height: 50px;
 }
 
-a:hover {
-    background-color: #F3F3F3;
-}
 #empButton{
     width: 65px;
     font-size: 12px;
@@ -239,7 +244,6 @@ a:hover {
     font-size: 90px;
     padding-left: 30px;
     padding-top: 24px;
-    color: white;
 }
 #p-text{
     padding-left: 30px;
@@ -256,14 +260,12 @@ a:hover {
 
 .text{
     margin : 10px 85px;
-    color: white;
     font-size: 18px;
     font-weight: bold;
 }
 
 .datetext{
     margin : 5px 90px;
-    color: white;
     font-size: 18px;
 }
 
@@ -277,49 +279,67 @@ a:hover {
     background-color: #07ab07;
     width: 100px;
     height: 32px;
-    color: white;
     margin: 5px 0 0 90px;
 }
 #cancel-butn{
     background-color: #d40505;
-    width: 100px;
+    width: 120px;
     height: 32px;
-    color: white;
     margin: 5px 0 0 5px;
 }
 
 #absentbtn{
-    width: 60%;
-    margin: 0 85px;
-    height:auto;
-    color:white;
+    width: 85%;
+    margin: 5px 90px;
+    height: auto;
     background-color: #f99704;
+    text-align: center;
 }
-
-#btntext{
-    color: white;
+textarea{
+    color: black;
 }
-
 #reason{
     width: 100%;
     margin: 0 25px;
     height: 100px;
     background-color: white;
 }
+#reason-text{
+    font-size: 15px;
+    margin: 0 auto;
+    text-align: center;
+    width: 700px;
+}
 
+.radio-toolbar input[type="radio"] {
+    display: none;
+}
+  
+.radio-toolbar label {
+    display: inline-block;
+    padding: 4px 11px;
+    font-family: Arial;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#uploadbtn{
+    width: 100%;
+    margin: 10px 25px;
+    background-color: #1B2931;
+}
 
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
     #purchase-div{
       background: white;
       height: 630px;
-      color: white;
       width: 100%;
       border-radius: 10px;
       /* border: 1px solid black;
       margin : 0px 15px 30px 95px; */
     }
     .empdet-div{
-      background: white;
+      background: #243642;
       height: 630px;
       border-radius: 10px;
       margin-left: 60px;
@@ -336,14 +356,13 @@ a:hover {
     #purchase-div{
       background: white;
       height: 630px;
-      color: white;
       width: 100%;
       border-radius: 10px;
       /* border: 1px solid black;
       margin : 0px 15px 30px 45px; */
     }
     .empdet-div{
-      background: white;
+      background: #243642;
       height: 630px;
       border-radius: 10px;
       margin-left: 15px;
