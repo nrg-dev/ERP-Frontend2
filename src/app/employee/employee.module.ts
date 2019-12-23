@@ -9,6 +9,7 @@ import { MatTabsModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { EmployeealertComponent } from './employeealert/employeealert.component';
 import { TimesheetComponent } from './timesheet/timesheet.component';
+import { DataTablesModule } from 'angular-datatables';
 
 
 const routes: Routes = [
@@ -28,7 +29,7 @@ const routes: Routes = [
   declarations: [EmployeeaddComponent, EmployeelistComponent, EmployeereportComponent, EmployeeindexComponent, EmployeealertComponent, TimesheetComponent],
   imports: [
     FormsModule,
-    CommonModule,MatTabsModule,RouterModule.forChild(routes) 
+    CommonModule,MatTabsModule,DataTablesModule.forRoot(),RouterModule.forChild(routes) 
   ]
 })
 export class EmployeeModule { }

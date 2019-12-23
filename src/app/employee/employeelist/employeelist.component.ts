@@ -24,6 +24,7 @@ export class EmployeelistComponent implements OnInit {
   todayDate : Date = new Date();
   todayString : string = new Date().toDateString();
   todayISOString : string = new Date().toISOString();
+  dtOptions: DataTables.Settings = {};
 
   employeeList : any = [ 
     {
@@ -105,7 +106,11 @@ export class EmployeelistComponent implements OnInit {
   constructor(private router: Router, private alertService: AlertService) { }
 
   ngOnInit() {
-
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      processing: true
+    }
   }
 
   employeeDetails(empCode:string){

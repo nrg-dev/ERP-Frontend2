@@ -17,6 +17,7 @@ export class EmployeeaddComponent implements OnInit {
   model: any = {};
   successdialog = 'none';
   mainmessage = null;
+  rank='Employee Rank';
   employeeReg : any = [ 
     {
       name :'Employee Name',
