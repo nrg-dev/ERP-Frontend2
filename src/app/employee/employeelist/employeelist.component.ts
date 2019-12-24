@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/_models';
 import { AlertService } from 'src/app/_services/index';
 import { Router } from '@angular/router';
-declare var $: any;
+
 @Component({
   selector: 'app-employeelist',
   templateUrl: './employeelist.component.html',
@@ -116,9 +116,6 @@ export class EmployeelistComponent implements OnInit {
   employeeDetails(empCode:string){
     if(this.emptempid!==null){
       document.getElementById(this.emptempid).style.backgroundColor='#1a2932';
-
-      //$("table tbody tr:nth-child(odd)").style.backgroundColor='#1f303b';
-      //$("table tbody tr:nth-child(even)").style.backgroundColor='#1a2932';
       this.emptempid=null;
     } 
     this.emptempid = empCode;

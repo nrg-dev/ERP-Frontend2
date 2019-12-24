@@ -136,7 +136,6 @@ tr {
 
 #table-size{
     height: 40%;
-    width: 97%;
     margin: 0px 25px;
 }
 #icon-mod{
@@ -349,7 +348,7 @@ textarea{
 @media (min-width: 1025px) and (max-width: 1280px){
     #purchase-div{
       background: #243642;
-      height: 630px;
+      height: 690px;
       width: 100%;
       border-radius: 10px;
       /* border: 1px solid black;
@@ -357,7 +356,7 @@ textarea{
     }
     .empdet-div{
       background: #243642;
-      height: 630px;
+      height: 513px;
       border-radius: 10px;
       margin-left: 15px;
     }
