@@ -2,25 +2,32 @@
     font-family: 'Lato',Georgia,Arial,sans-serif;
     font-size:medium;
     color:white;
-  }
+}
 h2{
     font-size: 30px;
 }
+/*table css start */
 table{
+    display: block;
     width: 100%;
     text-align: center;
 }
 table th,td{
     border: 1px solid black;
-    width: 150px;
+    width: 120px;
     height: 40px;
 }
+tbody{
+    display: block;
+    overflow-y: scroll;
+}
+/*table css end */
 #text-category{
     text-align: center;
     font-weight: bold;
 }
 #categoryhole-div{
-    background: #434F5B;
+    background: #282F37;
     width: 97%;
     height: 80%;
     margin-left: 10px;
@@ -28,7 +35,7 @@ table th,td{
 #category{
     width: 100%;
     height: 92%;
-    background: #333C45;
+    background: #1F2429;
 }
 #adddelete-div{
     background: #272E34;
@@ -48,7 +55,7 @@ table th,td{
 #leftside-div{
     width: 100%;
     height: 92%;
-    background: #333C45;
+    background: #1F2429;
 }
 .categorylist-alignment{
     text-align: center;
@@ -68,7 +75,113 @@ table th,td{
     border: none;
     margin-top: 10px;
     color: black;
-  }
+}
 #icon-align{
     margin: 5px;
+}
+#editdelete-button{
+    margin-left: 10px;
+    cursor: pointer;
+}
+#editdelcategory-div{
+    width: 180px;
+    height: 340px;
+    background: #272E34;
+    margin: 30px;
+    text-align: center;
+}
+#categoryname-div{
+    width: 410px;
+    height: 60px;
+    background: #272E34;
+}
+#categorydesc-div{
+    width: 410px;
+    height: 150px;
+    background: #272E34;
+}
+#fontsize-21{
+    font-size: 21px;
+}
+#save-btn{
+    width: 140px;
+    height: 50px;
+    background: #51AF57;
+    border: none;
+}
+#cancel-btn{
+    width: 140px;
+    height: 50px;
+    background: #FF0000;
+    border: none;
+}
+#edit-del-text{
+    font-size: 23px;
+    margin: 8px;
+}
+
+/* Start Dialog Box Styles */
+.modal-dialog {
+    -webkit-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    margin: 0 auto;
+    margin-left: 510px;
   }
+.modal-content {
+    overflow:hidden;
+    height: 490px;
+    width: 530px;
+    margin-top: 235px;
+    background-color: #434F5B;
+}
+  
+#box-dialouge{
+    width: 94%;
+    height: 92%;
+    background: #333C45;
+    margin: 23px 0px 0px 15px;
+}
+#icon-font{
+    font-size: 90px;
+    padding-left: 30px;
+    padding-top: 24px;
+    color: white;
+}
+  #p-text{
+    padding-left: 30px;
+    font-size: 16px;
+}
+  /* End DialogBox Styles */
+#selectbox-category{
+    width: 50%;
+    height: 35px;
+    border: none;
+    color: #636A70;
+    background: #272E34;
+    box-shadow: none;
+}
+.searchicon2{
+    font-family: fontawesome;
+    font-size: 20px;
+    width: 50%;
+    height: 30%;
+    background: #272E34;
+    border: none;
+    box-shadow: none;
+}
+#dicountinput-box{
+    width: 55px;
+    height: 35px;
+    text-align: end;
+    background: #272E34;
+    border: none;
+    box-shadow: none;
+}
+#qtyinput-box{
+    width: 55px;
+    height: 35px;
+    background: #272E34;
+    border: none;
+    box-shadow: none;
+}

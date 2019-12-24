@@ -35,10 +35,11 @@
 
     </div>
 
-
+<!--Leftside div start-->
     <div class="col-12 col-sm-7 col-md-6 col-lg-9">
-        <br/>
-        <div *ngIf="leftdetails" id="leftside-div">
+    <br/>
+    <div id="leftside-div">
+        <div *ngIf="leftdetails">
             <div *ngIf="discountdetails">
                 <div class="col-lg-12">
 
@@ -46,13 +47,13 @@
                   <div class="row">
                         <div class="col-lg-5">
                             <h2>Discount Product</h2>
-                            <div class="row" style="margin-left: 10px;">
-                                <span>
+                            <div class="row"  id="editdelete-button">
+                                <span (click)="addpromotion()">
                                     <i class="fa fa-plus-circle" aria-hidden="true"></i>
                                     Add
                                 </span>
                                 &nbsp; &nbsp;
-                                <span>
+                                <span (click)="editdelete()">
                                     <i class="fa fa-pencil-square" aria-hidden="true"></i>
                                     Edit/Delete
                                 </span>
@@ -72,34 +73,121 @@
 
                     <br/>
                     <table>
-                        <tr style="background: #171B1E;">
-                          <td>Product Code</td>
-                          <td>Product Name</td>
-                          <td>Discount</td>
-                          <td>Discount Time</td>
-                          <td>Qty</td>
-                          <td>Price</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                        <thead>
+                            <tr style="background: #171B1E;">
+                            <td>Product Code</td>
+                            <td>Product Name</td>
+                            <td>Discount</td>
+                            <td>Discount Time</td>
+                            <td>Qty</td>
+                            <td>Price</td>
+                            </tr>
+                         </thead>
+                         <tbody>
+                            <tr *ngFor='let data of dataDiscountList'>
+                                <td>{{ data.ProductCode }}</td>
+                                <td>{{ data.ProductName }}</td>
+                                <td>{{ data.discount }}</td>
+                                <td>{{ data.discounttime }}</td>
+                                <td>{{ data.qty }}</td>
+                                <td>{{ data.prize }}</td>
+                            </tr>
+                         </tbody>
                     </table>
 
                 </div>
             </div>
         </div>
+
+        <div *ngIf="editdeletediv" >
+            <label id="edit-del-text">
+                <i class="fa fa-pencil-square" style="font-size: 23px;" aria-hidden="true"></i>
+                &nbsp;
+                Edit/Delete Category
+            </label >
+            <div class="row">
+                <div class="col-lg-4">
+                     <div id="editdelcategory-div">
+                         <p>Resin</p>
+                         <p>Carbon Fabric</p>
+                         <p>Fiber</p>
+                         <p>Pigmen</p>
+                         <p>Brush</p>
+                         <p>Sandpaper</p>
+                         <p>Hardware</p>
+                         <p>Accecories</p>
+                     </div>
+                 </div>
+                 <div class="col-lg-7">
+                     <br/>
+                     <p id="fontsize-21">Category Name</p>
+                     <div id="categoryname-div"></div>
+                     <br/>
+                     <p id="fontsize-21">Category Description</p>
+                     <div id="categorydesc-div"></div>
+                     <br/>
+                     <div class="row">
+                        <div class="col-lg-6">
+                            <button id="save-btn">Save</button>
+                        </div>
+                        <div class="col-lg-6">
+                            <button id="cancel-btn">Cancel</button>
+                        </div>
+                     </div>
+                 </div>
+            </div>
+
+        </div>
     </div>
+
+    </div>
+    <!--Leftside div end-->
 </div>
+
+
+<!--Dialouge box start-->
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':successdialog}" style="margin-top:9%;">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div id="box-dialouge">
+              <br/>
+              <h2 style="text-align: center;">Add Promotion Product</h2>
+              <div class="row">
+                  <div class="col-lg-2"></div>
+                  <div class="col-lg-10">
+                      <div class="row">
+                        <p>Ctegory</p>
+                        &nbsp;
+                        <p>:</p>
+                        &nbsp;&nbsp;
+                        <select id="selectbox-category">
+                            <option>Select Product Category</option>
+                        </select>
+                      </div>
+
+                      <div class="row">
+                        <p>Ctegory</p>
+                        &nbsp;
+                        <p>:</p>
+                        &nbsp;&nbsp;
+                        <input type="text" placeholder="&#xf002; search here" class="searchicon2" />
+                      </div>
+
+                      <div class="row">
+                       <input type="checkbox" style="margin: 7px;"/>
+                       <p>Discount</p>
+                       &nbsp;
+                       <input type="text" placeholder="%" id="dicountinput-box"/>
+                       &nbsp;&nbsp;&nbsp;
+                       <p>Qty</p>
+                       &nbsp;
+                       <input type="text" id="qtyinput-box"/>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <!--Dialouge box end-->
