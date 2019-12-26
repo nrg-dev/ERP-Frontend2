@@ -5,33 +5,111 @@
 table {
     width: 70%;
     padding-left: 10px;
-  }
+}
 
-  th{
+th{
     color:white;
     background-color:#243C48;
-  }
-  td{
+}
+td{
     background-color:white;
 
-  }
-  h5{
+}
+h5{
     color:white;
  
-  }
-  #savebtn {
+}
+#savebtn {
     background-color:#51AF57 ;
     color:white;
     position: -webkit-sticky;
     position: sticky;
     top: 50px;
 
-  }
+}
 
-  #sticky {
+#sticky {
     position: -webkit-sticky;
     position: sticky;
     top: 50px;
     padding: 5px;
 
+}
+
+h2{
+    font-size: 30px;
+}
+.mat-tab-group {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+
+.mat-tab-label {
+  cursor: pointer;
+}
+
+.tab{
+  margin-left: 25px;
+}
+form{
+  border: 1px solid #243642!important;
+}
+#labeltext{
+  color: #243642;
+}
+.tablink {
+  float: left;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  cursor: pointer;
+  /* padding: 14px 14px; */
+  font-size: 17px;
+  text-align: center;
+  width: 25%;
+  height: 10%;
+}
+
+.tablink.active {
+  border-bottom: 3px solid #007bff;
+}
+
+#addemployee-div{
+  background: #243642;
+  height: 630px;
+  width: 100%;
+  border-radius: 10px;
+  margin-left: 10px;;
+  /* border: 1px solid black;
+  margin : 0px 15px 30px 20px; */
+}
+
+a {
+  display: block;
+  text-align: center;
+  padding: 12px 12px;
+  text-decoration: none;
+}
+
+@media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
+  #addemployee-div{
+    background: #243642;
+    height: 630px;
+    width: 100%;
+    border-radius: 10px;
+    /* border: 1px solid black;
+    margin : 0px 15px 30px 95px; */
   }
+}
+@media (min-width: 1025px) and (max-width: 1280px){
+  #addemployee-div{
+    background: #243642;
+    height: 630px;
+    width: 100%;
+    border-radius: 10px;
+    /* border: 1px solid black;
+    margin : 0px 15px 30px 45px; */
+  }
+  
+}

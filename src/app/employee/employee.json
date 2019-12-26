@@ -1,0 +1,9 @@
+[
+   {  "empCode": "001","name": "Alex","rank": "Human Resource","contactNumber":"+61 43232134"},
+   {  "empCode": "002","name": "Josini","rank": "Engineer","contactNumber":"+61 43232134"},
+   {  "empCode": "003","name": "Nisho","rank": "Officer","contactNumber":"+61 43232134"},
+   {  "empCode": "004","name": "Jeff","rank": "Project Manager","contactNumber":"+60 43232134"},
+   {  "empCode": "005","name": "Jaya","rank": "Branch Manager","contactNumber":"+63 43232134"}
+
+]
+

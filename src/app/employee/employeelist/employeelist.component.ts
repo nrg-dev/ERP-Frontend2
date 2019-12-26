@@ -26,7 +26,8 @@ export class EmployeelistComponent implements OnInit {
   todayISOString : string = new Date().toISOString();
   dtOptions: DataTables.Settings = {};
 
-  employeeList : any = [ 
+  employeeList : any = 
+   [ 
     {
       empCode:'NRG1',
       name :'Alex Ubalton',
@@ -106,6 +107,10 @@ export class EmployeelistComponent implements OnInit {
   constructor(private router: Router, private alertService: AlertService) { }
 
   ngOnInit() {
+
+   // const data = require("../employee.json");
+    //this.employeeList=data;
+
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
