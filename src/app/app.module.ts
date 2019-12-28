@@ -27,6 +27,8 @@ import { ReportModule } from './report/report.module';
 //import { AlertComponent } from './_directives/index';
 import { AlertService, AuthenticationService,UserService } from './_services/index';
 
+import { MatDialogModule } from '@angular/material';
+
 
 const appRoutes: Routes = [
   //{ path: '', component: FirstComponent, data: { title: 'First Component' } },
@@ -80,9 +82,10 @@ const appRoutes: Routes = [
     FinanceModule,
     StockModule,
     ReportModule,
-    UsermgtModule
+    UsermgtModule,
+    MatDialogModule
   ],
   providers: [AlertService,AuthenticationService,UserService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

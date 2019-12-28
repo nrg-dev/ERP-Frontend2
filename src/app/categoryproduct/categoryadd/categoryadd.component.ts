@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { EditdeletedialogComponent } from '../editdeletedialog/editdeletedialog.component';
+import {MatDialog, MatDialogConfig} from "@angular/material";
+import { AddpromotionComponent } from '../addpromotion/addpromotion.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-categoryadd',
@@ -6,6 +10,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categoryadd.component.css']
 })
 export class CategoryaddComponent implements OnInit {
+  
+  displayedColumns: string[] = ['Productcode', 'ProductName','Discount','DiscountTime','Qty','Price'];
+  dataSource: MatTableDataSource<any>;
+
+  @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort,{ static: true }) sort: MatSort;
+ 
 
   tempid=null;
   public leftdetails=false;
@@ -54,31 +65,35 @@ export class CategoryaddComponent implements OnInit {
 ];
 
 
-dataDiscountList : any = [];
+//dataDiscountList : any = [];
+ discountdata = require("../../discountdata.json");
+dataDiscountList=this.discountdata;
 
-  constructor() { }
+  constructor(    private dialog: MatDialog,
+    //private dialog: MatDialog,
+    ) { 
 
-  ngOnInit() {
 
-    for (let i = 0; i <5; i++) {
-      console.log ("Block statement execution no." + i);
-      
-     
-      this.dataDiscountList[i] = 
-      { 
-      ProductName:'Apple Watch',
-      ProductCode :' PRO001 ',
-      discount : '10%',
-      discounttime : '23-sep-2019',
-      qty : '40',
-      prize : 'p. 30.000/kg',
+      this.dataSource = new MatTableDataSource(this.dataDiscountList);
 
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      //const users = Array.from({length: 100}, (_, k) => this.createNewUser(k + 1));
+
+      // Assign the data to the data source for the table to render
+    }
+
+    applyFilter(filterValue: string) {
+      this.dataSource.filter = filterValue.trim().toLowerCase();
+  
+      if (this.dataSource.paginator) {
+        this.dataSource.paginator.firstPage();
       }
     }
-    
+  ngOnInit() {
     this.leftdetails=true;
   }
-  
+   
 categorydetails(number: string){
   if(this.tempid!==null){
     document.getElementById(this.tempid).style.backgroundColor='#272E34';
@@ -116,8 +131,40 @@ categorydetails(number: string){
     this.editdeletediv=true;
     this.discountdetails=false;
   }
+  dialogConfig = new MatDialogConfig();
+
   addpromotion(){
-    this.successdialog = 'block';
+    //this.successdialog = 'block';
+
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+      'top': '1000',
+      left: '100'
+    };
+    this.dialog.open(AddpromotionComponent,{
+     // data: {dialogTitle: "hello", dialogText: "text"},
+      height: '80%', 
+    })
+    .afterClosed().subscribe(result => {
+    });
+      
   }
 
+
+  openDialog(){
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+      'top': '1000',
+      left: '100'
+    };
+    this.dialog.open(EditdeletedialogComponent,{
+      data: 'Hello...',
+      height: '80%', 
+    })
+    .afterClosed().subscribe(result => {
+     // this.refresh();
+    });
+  }
   }
