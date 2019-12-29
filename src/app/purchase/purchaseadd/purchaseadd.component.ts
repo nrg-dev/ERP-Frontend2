@@ -16,7 +16,20 @@ export class PurchaseaddComponent  implements OnInit  {
   user:User;
   model: any ={};
   headElements = ['#ID', 'Product Name', 'Category Name', 'Quantity'];
+  todayNumber: number = Date.now();
+  todayDate : Date = new Date();
+  todayString : string = new Date().toDateString();
+  todayISOString : string = new Date().toISOString();
 
+  fieldArray: Array<any> = [];
+  newAttribute: any = {};
+
+  firstField = true;
+  firstFieldName = 'Product Name';
+  Quantity = 'Quantity';
+  Tax = 'Tax';
+  NetAmount = 'Net Amount';
+  
   constructor( public fb: FormBuilder,
     private cd: ChangeDetectorRef, private router: Router, private alertService: AlertService) { 
 
@@ -33,49 +46,47 @@ export class PurchaseaddComponent  implements OnInit  {
   
       ];
 
-    }
-    submitted = false;
-   
-    // City names
-    productList: any = ['Mobile', 'Computer', 'Cloths', 'TV'];
-    categoryList: any = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];
+  }
+  submitted = false;
+  
+  // City names
+  productList: any = ['Mobile', 'Computer', 'Cloths', 'TV'];
+  categoryList: any = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];
 
   //productForm = new FormGroup();
 
   ngOnInit() {
     /* Initiate the form structure */
     this.model.currentusername='';
-
-   
   }
 
-    /*##################### Registration Form #####################*/
-    registrationForm = this.fb.group({
-     // file: [null],
-      /*fullName: this.fb.group({
-        firstName: ['', [Validators.required, Validators.minLength(2), Validators.pattern('^[_A-z0-9]*((-|\s)*[_A-z0-9])*$')]],
-        lastName: ['', [Validators.required]]
-      }),
+  /*##################### Registration Form #####################*/
+  registrationForm = this.fb.group({
+    // file: [null],
+    /*fullName: this.fb.group({
+      firstName: ['', [Validators.required, Validators.minLength(2), Validators.pattern('^[_A-z0-9]*((-|\s)*[_A-z0-9])*$')]],
+      lastName: ['', [Validators.required]]
+    }),
 
-      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      phoneNumber: ['', [Validators.required, Validators.maxLength(10), Validators.pattern('^[0-9]+$')]],
-      address: this.fb.group({
-        street: ['', [Validators.required]],
-        city: ['', [Validators.required]],
-        cityName: ['', [Validators.required]]
-      }),*/
-      //gender: ['male'],
-      //PasswordValidation: this.fb.group({
-      //  password: ['', Validators.required],
-      //  confirmPassword: ['', Validators.required]
-      //},
-      
-     // {
-       // validator: ValidatePassword.MatchPassword // your validation method
-     // }
-      //),
-      addDynamicElement: this.fb.array([])
-    })  
+    email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+    phoneNumber: ['', [Validators.required, Validators.maxLength(10), Validators.pattern('^[0-9]+$')]],
+    address: this.fb.group({
+      street: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      cityName: ['', [Validators.required]]
+    }),*/
+    //gender: ['male'],
+    //PasswordValidation: this.fb.group({
+    //  password: ['', Validators.required],
+    //  confirmPassword: ['', Validators.required]
+    //},
+    
+    // {
+      // validator: ValidatePassword.MatchPassword // your validation method
+    // }
+    //),
+    addDynamicElement: this.fb.array([])
+  })  
   
     /*########################## File Upload ########################*/
    // @ViewChild('fileInput') el: ElementRef;
@@ -97,34 +108,67 @@ export class PurchaseaddComponent  implements OnInit  {
      // })
     //}
   
-    /*############### Add Dynamic Elements ###############*/
-    get addDynamicElement() {
-      return this.registrationForm.get('addDynamicElement') as FormArray
-    }
-    selected=false;
-    btnselected=false;
-    addNew() {
-      this.selected=true;
-      this.btnselected=true;
-      this.addDynamicElement.push(this.fb.control(''))
-    }
-    showMsg: boolean = false;
+  /*############### Add Dynamic Elements ###############*/
+  get addDynamicElement() {
+    return this.registrationForm.get('addDynamicElement') as FormArray
+  }
+  selected=false;
+  btnselected=false;
+  addNew() {
+    this.selected=true;
+    this.btnselected=true;
+    this.addDynamicElement.push(this.fb.control(''))
+  }
+  showMsg: boolean = false;
 
-    // Submit Registration Form
-    onSubmit() {
-      
-      for (let entry of this.model.purchaseOrdeData) {
+  // Submit Registration Form
+  onSubmit() {
+    
+    for (let entry of this.model.purchaseOrdeData) {
         console.log(entry.productname); // 1, "string", false
-      
-
     }
     this.alertService.success("Saved Successfully....");
-//alert("Successfully saved.")
-//this.alertService.success("Successfully saved.");
-//this.showMsg= true;
+    //alert("Successfully saved.")
+    //this.alertService.success("Successfully saved.");
+    //this.showMsg= true;
 
-    }
+  }
 
-  
+  newPurchaseOrder(){
+    this.fieldArray.push(this.newAttribute);
+    this.newAttribute = {};
+}
+
+deleteFieldValue(index) {
+  this.fieldArray.splice(index, 1);
+}
+
+ onEditCloseItems() {
+  //this.isEditItems = !this.isEditItems;
+  this.fieldArray.push(this.newAttribute);
+  console.log(this.fieldArray);
+  this.model.Names = this.fieldArray;
+  /* this.userService.addPurchaseOrder(this.model)
+    .subscribe(
+      data => {
+        this.user=data;
+        if(this.user.status=="success"){
+          this.successdialog = 'block';
+        }else  if(this.user.status=="failure"){
+          this.failuredialog = 'block';
+        }
+      },
+      error => {
+        
+      }); */
+}
+
+  saveEmp(){
+    alert("------ Save Employeee -------");
+  }
+
+  cancelEmp(){
+    alert("------ Cancel Employeee -------");
+  }
   
 }

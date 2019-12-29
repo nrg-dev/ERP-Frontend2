@@ -1,31 +1,36 @@
 * {
+  margin: 0;
+  padding: 0;
   font-family: sans-serif;
   font-size:medium;
 }
 table {
-    width: 70%;
+    width: 100%;
     padding-left: 10px;
+    height:50%;
+    overflow: auto;
 }
 
 th{
-    color:white;
-    background-color:#243C48;
+    color:#ffffff;
+    background-color:#21272D;
 }
-td{
-    background-color:white;
 
+td{
+    background-color:#434F5B;
 }
 h5{
     color:white;
  
 }
 #savebtn {
-    background-color:#51AF57 ;
+    background-color:#51AF57;
+    border: #51AF57;
     color:white;
     position: -webkit-sticky;
     position: sticky;
     top: 50px;
-
+    padding: 5px;
 }
 
 #sticky {
@@ -33,7 +38,6 @@ h5{
     position: sticky;
     top: 50px;
     padding: 5px;
-
 }
 
 h2{
@@ -76,7 +80,7 @@ form{
 }
 
 #addemployee-div{
-  background: #243642;
+  background: #1B2931;
   height: 630px;
   width: 100%;
   border-radius: 10px;
@@ -92,9 +96,63 @@ a {
   text-decoration: none;
 }
 
+#date-details{
+  width: 100%;
+  margin: 0 25px;
+  height:auto;
+  background-color: #151F25;
+}
+
+.text{
+  text-align: center;
+  padding: 10px;
+  margin: -10px 0 auto;
+}
+
+#purchasetext{
+  padding-left: 30px;
+  font-size: small;
+}
+#purchaseoutput{
+  font-size: small;
+}
+
+hr{
+  background-color: white;
+  width: 85%;
+  margin: auto;
+}
+
+#checkIn-butn{
+  background-color: #07ab07;
+  width: 100px;
+  height: 32px;
+  margin: 5px 0 0 120px;
+  text-align: center;
+}
+#checkOut-butn{
+  background-color: #d40505;
+  width: 120px;
+  height: 32px;
+  margin: 5px 0 0 5px;
+  text-align: center;
+}
+
+.radio-toolbar input[type="radio"] {
+  display: none;
+}
+
+.radio-toolbar label {
+  display: inline-block;
+  padding: 4px 11px;
+  font-family: Arial;
+  font-size: 16px;
+  cursor: pointer;
+}
+
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
   #addemployee-div{
-    background: #243642;
+    background: #1B2931;
     height: 630px;
     width: 100%;
     border-radius: 10px;
@@ -104,7 +162,7 @@ a {
 }
 @media (min-width: 1025px) and (max-width: 1280px){
   #addemployee-div{
-    background: #243642;
+    background: #1B2931;
     height: 630px;
     width: 100%;
     border-radius: 10px;

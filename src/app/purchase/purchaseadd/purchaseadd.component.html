@@ -4,21 +4,124 @@
       <div class="tab">
         <a class="tablink" style="border-bottom: 3px solid #007bff;width: auto;" id="defaultOpen">Purchase Order</a>
         <a class="tablink" routerLink="../purchaseadd" style="width: auto;color:white;">Purchase Invoice</a>
-        <a class="tablink" style="border-bottom: 3px solid #007bff;width: auto;" id="defaultOpen">Purchase Return</a>
+        <a class="tablink" routerLink="../purchaseadd" style="width: auto;color:white;">Purchase Return</a>
         <a class="tablink" routerLink="../purchaseadd" style="width: auto;color:white;">Purchase Report</a>
       </div>
               
       <div id="addemployee-div">
-        <br/><br/>
         <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
           <!-- Add Super Powers Dynamically-->
-          <div class="group-gap" formArrayName="addDynamicElement">
-            <h5 class="mb-3">Add New Purchase</h5>
+          <div class="group-gap" formArrayName="addDynamicElement" style="margin: 40px;">
+            <br/><br/>
+            <div class="row">
+              <div class="col-lg-3">    
+                <h5 class="mb-3">Add New Purchase</h5>
+              </div>
+              <div class="col-lg-2"> </div>
+              <div class="col-lg-7">    
+                <div id="date-details">
+                  <p class="text">Pucrhase Order Summary</p>
+                  <div class="row"id="date">
+                      <div class="col-md-5 col-xs-5 col-lg-5" id="purchasetext">Date of PO</div>
+                      <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                      <div class="col-md-6 col-xs-6 col-lg-6">
+                        <p id="purchaseoutput">{{todayDate | date:'longDate'}}</p>
+                      </div>       
+                  </div>	
+                  <div class="row"id="date">
+                    <div class="col-md-5 col-xs-5 col-lg-5" id="purchasetext">Total Product</div>
+                    <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                    <div class="col-md-6 col-xs-6 col-lg-6">
+                      <p id="purchaseoutput">{{todayDate | date:'longDate'}}</p>
+                    </div>       
+                  </div>	
+                  <div class="row"id="date">
+                    <div class="col-md-5 col-xs-5 col-lg-5" id="purchasetext">Subtotal</div>
+                    <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                    <div class="col-md-6 col-xs-6 col-lg-6">
+                      <p id="purchaseoutput">{{todayDate | date:'longDate'}}</p>
+                    </div>       
+                  </div>
+                  <div class="row">
+                    <div class="col-md-5 col-xs-5 col-lg-5" id="purchasetext">Delivery Charge </div>
+                    <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                    <div class="col-md-6 col-xs-6 col-lg-6">
+                      <p id="purchaseoutput">{{todayDate | date:'longDate'}}</p>
+                    </div>       
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-md-5 col-xs-5 col-lg-5" id="purchasetext">TOTAL : </div>
+                    <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                    <div class="col-md-6 col-xs-6 col-lg-6">
+                      <p id="purchaseoutput">{{todayDate | date:'longDate'}}</p>
+                    </div>       
+                  </div>
+                  <div class="row">
+                    <div class="radio-toolbar">
+                      <label for="radio1" id="checkIn-butn" (click)="saveEmp()">Save</label>
+                      <label for="radio2" id="checkOut-butn" (click)="cancelEmp()">Cancel</label>
+                    </div>
+                  </div>
+                  <br/>
+                </div>
+              </div>
+            </div>
             <div class="mb-3">
               <button id="sticky" type="button"  class="btn btn-primary" (click)="addNew()">Add </button>  &nbsp; &nbsp; &nbsp; 
               <button  *ngIf="btnselected" class="btn btn-primary" id="savebtn" type="submit" >Save</button>
               <br/><br/>
-              <table mdbTable>
+              <button (click)="newPurchaseOrder()" class="btn btn-success btn-sm" id="newPurchaseOrder"> Add Rows </button>
+  
+              <br/><br/>
+              <table cellpadding="0" cellspacing="0" border="0" id="test">
+                <thead style="background-color: #3c8dbc;color:white; ">
+                  <th style="padding-right: 10px;padding: 9px;">Product Name </th> 
+                  <th style="padding-right: 10px;padding: 9px;">Quantity </th>
+                  <th style="padding-right: 10px;padding: 9px;">Tax  </th>
+                  <th style="padding-right: 10px;padding: 9px;">Net Amount  </th>
+              
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="padding-right: 10px;padding: 9px;">
+                        <select class="form-control" id="newAttributeName" [(ngModel)]="newAttribute.productName" name="newAttributeName" style="height: auto;color: black;" >
+                            <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
+                        </select> 
+                    </td>
+                    <td style="padding-right: 10px;padding: 9px;">
+                      <input class="form-control" type="text" id="newAttributeQuantity" [(ngModel)]="newAttribute.quantity" name="newAttributeQuantity" />
+                    </td>
+                    <td style="padding-right: 10px;padding: 9px;">
+                      <input class="form-control" type="text" id="newAttributeTax" [(ngModel)]="newAttribute.tax" name="newAttributeTax"/>
+                    </td>
+                    <td style="padding-right: 10px;padding: 9px;">
+                      <input class="form-control" type="text" id="newAttributeAmount" [(ngModel)]="newAttribute.netAmount" name="newAttributeAmount"/>
+                    </td>
+                  </tr>
+                  <tr *ngFor="let model of fieldArray; let i = index">
+                    <td style="padding-right: 10px;padding: 9px;">
+                      <select class="form-control" [(ngModel)]="model.productName" name="{{model.productName}}" #productName="ngModel" style="height: auto;color: black;" >
+                          <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
+                      </select> 
+                    </td>
+                    <td style="padding-right: 10px;padding: 9px;">
+                      <input type="text" class="form-control" [(ngModel)]="model.quantity" #quantity="ngModel" name="{{model.quantity}}" />
+                    </td>
+                    <td style="padding-right: 10px;padding: 9px;">
+                      <input type="text" class="form-control" [(ngModel)]="model.tax" #tax="ngModel" name="{{model.tax}}" />
+                    </td>
+                    <td style="padding-right: 10px;padding: 9px;">
+                      <input type="text" class="form-control" [(ngModel)]="model.netAmount" #netAmount="ngModel" name="{{model.netAmount}}" />
+                    </td>
+                    <td style="padding-right: 10px;padding: 9px;">
+                        <button class="btn btn-primary btn-sm" (click)="deleteFieldValue(i)" id="Remove"> Remove </button> 
+                    </td>
+                  </tr>
+                          
+                </tbody>
+              </table>
+              <!--<table mdbTable>
                 <thead *ngIf="selected">
                   <tr>
                     <th *ngFor="let head of headElements" scope="col">{{head}} </th>
@@ -27,8 +130,8 @@
                 <tbody>
                   <tr mdbTableCol *ngFor="let item of addDynamicElement.controls; let i = index">
                     <td scope="row">{{this.model.purchaseOrdeData[i].id}}</td>
-                  <!-- <td><input class="form-control" type="text" [(ngModel)] ="this.model.purchaseOrdeData[i].productname" id="qtd[i]"  [formControlName]="i">
-                  -->
+                  -- <td><input class="form-control" type="text" [(ngModel)] ="this.model.purchaseOrdeData[i].productname" id="qtd[i]"  [formControlName]="i">
+                  --
                   <td>
                       <select [(ngModel)] ="this.model.purchaseOrdeData[i].productname" class="form-control" [formControlName]="i">
                           <option  *ngFor="let product of productList" value={{product}} >{{product}}</option>     
@@ -47,7 +150,7 @@
             
                   </tr>
                 </tbody>
-              </table>
+              </table> -->
             </div>      
           <!-- Submit Button -->
           </div>
