@@ -6,22 +6,33 @@
 h2{
     font-size: 30px;
 }
-/*table css start */
-table{
-    display: block;
+table.mat-table {
     width: 100%;
-    text-align: center;
+    border-spacing: 0;
+    background-color: #181C20;
 }
 table th,td{
     border: 1px solid black;
-    width: 120px;
-    height: 40px;
 }
-tbody{
-    display: block;
+mat-paginator{
+    width: 100%;
+    background-color: #181C20;
+}
+.mat-elevation-z8{
+    height: 250PX;
+}
+mat-form-field{
+    background: white;
+    width: 25%;
+    height: 47px;
+    border-radius: 10px;
+}
+.mat-elevation-z8{
+    height: 230px;
     overflow-y: scroll;
 }
-/*table css end */
+
+
 #text-category{
     text-align: center;
     font-weight: bold;
@@ -119,7 +130,6 @@ tbody{
     font-size: 23px;
     margin: 8px;
 }
-
 /* Start Dialog Box Styles */
 .modal-dialog {
     -webkit-transform: translate(0,-50%);
