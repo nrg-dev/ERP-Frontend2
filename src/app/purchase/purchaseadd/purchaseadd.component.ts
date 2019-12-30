@@ -52,7 +52,7 @@ export class PurchaseaddComponent  implements OnInit  {
   // City names
   productList: any = ['Mobile', 'Computer', 'Cloths', 'TV'];
   categoryList: any = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];
-
+  vendorList:  any = ['Nisho','Alex','Josni','Mary'];
   //productForm = new FormGroup();
 
   ngOnInit() {
