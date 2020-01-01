@@ -3,7 +3,7 @@
     <div class="col-lg-11">
       <div class="tab">
         <a class="tablink" style="border-bottom: 3px solid #007bff;width: auto;" id="defaultOpen">Purchase Order</a>
-        <a class="tablink" routerLink="../purchaseadd" style="width: auto;color:white;">Purchase Invoice</a>
+        <a class="tablink" (click)="purchaseInvoice()" style="width: auto;color:white;">Purchase Invoice</a>
         <a class="tablink" style="border-bottom: 3px solid #007bff;width: auto;" id="defaultOpen">Purchase Return</a>
         <a class="tablink" routerLink="../purchaseadd" style="width: auto;color:white;">Purchase Return</a>
         <a class="tablink" routerLink="../purchaseadd" style="width: auto;color:white;">Purchase Report</a>
@@ -14,7 +14,6 @@
         <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
           <!-- Add Super Powers Dynamically-->
           <div class="group-gap" formArrayName="addDynamicElement">
-            <h5 class="mb-3">Add New Purchase</h5>
             <div class="group-gap" formArrayName="addDynamicElement" style="margin: 40px;">
               <br/><br/>
               <div class="row">
@@ -72,13 +71,13 @@
                 </div>
               </div>
               <div class="mb-3">
-                <button id="sticky" type="button"  class="btn btn-primary" (click)="addNew()">Add </button>  &nbsp; &nbsp; &nbsp; 
-                <button  *ngIf="btnselected" class="btn btn-primary" id="savebtn" type="submit" >Save</button>
-                <br/><br/>
+                <!-- <button id="sticky" type="button"  class="btn btn-primary" (click)="editinvoice()">Add </button>  &nbsp; &nbsp; &nbsp; 
+                <button  (click)="getstatus()" class="btn btn-primary" id="savebtn" type="submit" >Save</button>
+                <br/><br/> -->
                 <button (click)="newPurchaseOrder()" class="btn btn-success btn-sm" id="newPurchaseOrder"> Add Rows </button>
-                <br/><br/>
+                <br/><br/> 
                 <table cellpadding="0" cellspacing="0" border="0" id="test">
-                  <thead style="background-color: #3c8dbc;color:white; ">
+                  <thead style="background-color: #3c8dbc;color:white;">
                     <th style="padding-right: 10px;padding: 9px;">Product Name </th> 
                     <th style="padding-right: 10px;padding: 9px;">Category </th> 
                     <th style="padding-right: 10px;padding: 9px;">Vendor Name </th> 
@@ -89,17 +88,17 @@
                   <tbody>
                     <tr>
                       <td style="padding-right: 10px;padding: 9px;">
-                          <select class="form-control" id="newAttributeName" [(ngModel)]="newAttribute.productName" name="newAttributeName" style="height: auto;color: black;" >
+                          <select class="form-control" id="newAttributeName" [(ngModel)]="newAttribute.productName" name="newAttributeName" style="color: black;" >
                               <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
                           </select> 
                       </td>
                       <td style="padding-right: 10px;padding: 9px;">
-                        <select class="form-control" id="newAttributeCategory" [(ngModel)]="newAttribute.category" name="newAttributeCategory" style="height: auto;color: black;" >
+                        <select class="form-control" id="newAttributeCategory" [(ngModel)]="newAttribute.category" name="newAttributeCategory" style="color: black;" >
                             <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
                         </select> 
                       </td>
                       <td style="padding-right: 10px;padding: 9px;">
-                        <select class="form-control" id="newAttributevendorName" [(ngModel)]="newAttribute.vendorName" name="newAttributevendorName" style="height: auto;color: black;" >
+                        <select class="form-control" id="newAttributevendorName" [(ngModel)]="newAttribute.vendorName" name="newAttributevendorName" style="color: black;" >
                             <option *ngFor="let itemvendor of vendorList" value="{{ itemvendor }}"> {{ itemvendor }} </option> 
                         </select> 
                       </td>
@@ -115,17 +114,17 @@
                     </tr>
                     <tr *ngFor="let model of fieldArray; let i = index">
                       <td style="padding-right: 10px;padding: 9px;">
-                        <select class="form-control" [(ngModel)]="model.productName" name="{{model.productName}}" #productName="ngModel" style="height: auto;color: black;" >
+                        <select class="form-control" [(ngModel)]="model.productName" name="{{model.productName}}" #productName="ngModel" style="color: black;" >
                             <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
                         </select> 
                       </td>
                       <td style="padding-right: 10px;padding: 9px;">
-                        <select class="form-control" [(ngModel)]="model.category" name="{{model.category}}" #category="ngModel" style="height: auto;color: black;" >
+                        <select class="form-control" [(ngModel)]="model.category" name="{{model.category}}" #category="ngModel" style="color: black;" >
                             <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
                         </select> 
                       </td>
                       <td style="padding-right: 10px;padding: 9px;">
-                        <select class="form-control" [(ngModel)]="model.vendorName" name="{{model.vendorName}}" #vendorName="ngModel" style="height: auto;color: black;" >
+                        <select class="form-control" [(ngModel)]="model.vendorName" name="{{model.vendorName}}" #vendorName="ngModel" style="color: black;" >
                             <option *ngFor="let itemvendor of vendorList" value="{{ itemvendor }}"> {{ itemvendor }} </option> 
                         </select> 
                       </td>
@@ -138,7 +137,7 @@
                       <td style="padding-right: 10px;padding: 9px;">
                         <input type="text" class="form-control" [(ngModel)]="model.netAmount" #netAmount="ngModel" name="{{model.netAmount}}" />
                       </td>
-                      <td style="padding-right: 10px;padding: 9px;">
+                      <td style="padding-right: 10px;padding: 9px;background-color:#1B2931;">
                           <button class="btn btn-primary btn-sm" (click)="deleteFieldValue(i)" id="Remove"> Remove </button> 
                       </td>
                     </tr>

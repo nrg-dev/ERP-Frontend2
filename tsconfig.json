@@ -11,9 +11,9 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "target": "es2015",
     "resolveJsonModule": true, 
     "esModuleInterop": true,
-    "target": "es2015",
 
     "paths": {
       "@angular/*": [

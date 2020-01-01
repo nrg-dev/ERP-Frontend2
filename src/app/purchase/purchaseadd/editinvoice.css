@@ -5,19 +5,19 @@
   font-size:medium;
 }
 table {
-  display: block;
-  width: 100%;
-  padding-left: 10px;
-  height:230px;
-  overflow: auto;
+    width: 100%;
+    padding-left: 10px;
+    height:50%;
+    overflow: auto;
 }
+
 th{
-  color:#ffffff;
-  background-color:#21272D;
+    color:#ffffff;
+    background-color:#21272D;
 }
 
 td{
-  background-color:#434F5B;
+    background-color:#434F5B;
 }
 h5{
     color:white;

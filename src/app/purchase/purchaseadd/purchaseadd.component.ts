@@ -6,6 +6,61 @@ import { User } from 'src/app/_models';
 import { AlertService } from 'src/app/_services';
 import { Router } from '@angular/router';
 import { AlertComponent } from 'src/app/_directives';
+import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialog, MatDialogConfig} from "@angular/material";
+
+
+
+
+// edit invoice 
+
+@Component({
+  selector: 'editinvoice',
+  styleUrls: ['./editinvoice.css'],
+  templateUrl: './editinvoice.html', 
+})
+export class EditInvoice {
+
+
+  constructor(
+    public dialogRef: MatDialogRef<EditInvoice>,
+    ) {
+
+    }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  updateDelete(){
+  console.log("updateDelete");
+  }
+}
+
+//==== Status 
+
+@Component({
+  selector: 'status',
+  styleUrls: ['./editinvoice.css'],
+  templateUrl: './status.html', 
+})
+export class Status {
+
+
+  constructor(
+    public dialogRef: MatDialogRef<Status>,
+    ) {
+
+    }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  updateDelete(){
+    console.log("updateDelete");
+  }
+}
 
 @Component({
   selector: 'app-purchaseadd',
@@ -20,9 +75,14 @@ export class PurchaseaddComponent  implements OnInit  {
   todayDate : Date = new Date();
   todayString : string = new Date().toDateString();
   todayISOString : string = new Date().toISOString();
+  dialogConfig = new MatDialogConfig();
 
   fieldArray: Array<any> = [];
   newAttribute: any = {};
+
+  productList: any = {};
+  categoryList: any = {};
+  vendorList:  any = {};
 
   firstField = true;
   firstFieldName = 'Product Name';
@@ -31,6 +91,7 @@ export class PurchaseaddComponent  implements OnInit  {
   NetAmount = 'Net Amount';
   
   constructor( public fb: FormBuilder,
+    private dialog: MatDialog,
     private cd: ChangeDetectorRef, private router: Router, private alertService: AlertService) { 
 
       this.model.purchaseOrdeData = [
@@ -44,20 +105,20 @@ export class PurchaseaddComponent  implements OnInit  {
         {id: 8, productname: '',category: '',quantity: 0},
         {id: 9, productname: '',category: '',quantity: 0},
   
-      ];
+      ]; 
 
   }
   submitted = false;
   
-  // City names
-  productList: any = ['Mobile', 'Computer', 'Cloths', 'TV'];
-  categoryList: any = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];
-  vendorList:  any = ['Nisho','Alex','Josni','Mary'];
+ 
   //productForm = new FormGroup();
 
   ngOnInit() {
     /* Initiate the form structure */
     this.model.currentusername='';
+    this.productList = ['Mobile', 'Computer', 'Cloths', 'TV'];
+    this.categoryList = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];
+    this.vendorList = ['Nisho','Alex','Josni','Mary'];
   }
 
   /*##################### Registration Form #####################*/
@@ -137,11 +198,11 @@ export class PurchaseaddComponent  implements OnInit  {
   newPurchaseOrder(){
     this.fieldArray.push(this.newAttribute);
     this.newAttribute = {};
-}
+  }
 
-deleteFieldValue(index) {
-  this.fieldArray.splice(index, 1);
-}
+  deleteFieldValue(index) {
+    this.fieldArray.splice(index, 1);
+  }
 
  onEditCloseItems() {
   //this.isEditItems = !this.isEditItems;
@@ -169,6 +230,43 @@ deleteFieldValue(index) {
 
   cancelEmp(){
     alert("------ Cancel Employeee -------");
+  }
+  
+  
+  public editinvoice(){
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+      'top': '1000',
+      left: '100'
+    };
+    this.dialog.open(EditInvoice,{
+    //  data: {dialogTitle: "hello", dialogText: "text"},
+      data: "issueId",
+      height: '80%'
+    }).afterClosed().subscribe(result => {
+    // this.refresh();
+    });;
+  }
+
+  public getstatus(){
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+      'top': '1000',
+      left: '100'
+    };
+    this.dialog.open(Status,{
+    //  data: {dialogTitle: "hello", dialogText: "text"},
+      data: "issueId",
+      height: '80%'
+    }).afterClosed().subscribe(result => {
+    // this.refresh();
+    });;
+  }
+  //htmlData:any;
+  purchaseInvoice(){
+    //this.htmlData = this.Status;
   }
   
 }

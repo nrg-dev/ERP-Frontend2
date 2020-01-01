@@ -19,14 +19,14 @@ export class EmployeelistComponent implements OnInit {
   successdialog = 'none';
   updatesuccessdialog = 'none';
   absentmarkdialog = 'none';
-
+  employeeList : any ={};
   todayNumber: number = Date.now();
   todayDate : Date = new Date();
   todayString : string = new Date().toDateString();
   todayISOString : string = new Date().toISOString();
   dtOptions: DataTables.Settings = {};
 
-  employeeList : any = 
+ /* employeeList : any = 
    [ 
     {
       empCode:'NRG1',
@@ -100,7 +100,7 @@ export class EmployeelistComponent implements OnInit {
       rank: 'Senior Manager',
       contactNumber : '+62 43232134'
     },
-  ];
+  ]; */
 
   emptempid = null;
 
@@ -108,8 +108,8 @@ export class EmployeelistComponent implements OnInit {
 
   ngOnInit() {
 
-   // const data = require("../employee.json");
-    //this.employeeList=data;
+    const data = require("../employee.json");
+    this.employeeList=data;
 
     this.dtOptions = {
       pagingType: 'full_numbers',
