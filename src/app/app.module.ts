@@ -7,7 +7,10 @@ import { HttpClientModule } from'@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationComponent } from './navigation/navigation.component';
+import { SecondComponent } from './second/second.component';
+import { FirstComponent } from './first/first.component';
 import { RouterModule, Routes } from "@angular/router";
+import { CustomMaterialModule } from "./core/material.module";
 
 import { LoginComponent } from './login/login.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
@@ -64,6 +67,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     NavigationComponent,
+    SecondComponent,
+    FirstComponent,
     LoginComponent,
     LandingpageComponent,   
     DashboardComponent,
@@ -81,6 +86,7 @@ const appRoutes: Routes = [
       appRoutes,
       { useHash: true , onSameUrlNavigation: 'reload'} // <-- debugging purposes only
     ),
+    CustomMaterialModule,
     EmployeeModule,
     VendorcustomerModule,
     CategoryproductModule,
