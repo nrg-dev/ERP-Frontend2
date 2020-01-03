@@ -30,7 +30,27 @@ export class EditInvoice {
   }
 }
 
+@Component({
+  selector: 'filter',
+  styleUrls: ['./filter.css'],
+  templateUrl: './filter.html', 
+})
+export class Filter {
+  model: any = {};
+  constructor(
+    public dialogRef: MatDialogRef<Filter>,
+    ) {
+      
+    }
 
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  apply(){
+
+  }
+}
 @Component({
   selector: 'app-purchase-invoice',
   templateUrl: './purchase-invoice.component.html',
@@ -39,12 +59,12 @@ export class EditInvoice {
 export class PurchaseInvoiceComponent implements OnInit {
   user:User;
   model: any ={};
-  public dataList : any;
+  public purchaseList : any;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
   displayedColumns: string[] = ['Added Date','Invoice Number','Product List','Vendor','Qty','SubTotal','DeliverCost','Total','Status'];
   dataSource: MatTableDataSource<any>;
-
+  
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
   @ViewChild(MatSort,{ static: true }) sort: MatSort;
   
@@ -53,7 +73,10 @@ export class PurchaseInvoiceComponent implements OnInit {
     private router: Router, 
     private alertService: AlertService,
   ) { 
-    this.dataSource = new MatTableDataSource(this.dataList);
+    const purchasedata = require("../../purchasedata.json");
+    this.purchaseList=purchasedata;
+
+    this.dataSource = new MatTableDataSource(this.purchaseList);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -63,6 +86,25 @@ export class PurchaseInvoiceComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
+  openfilter(): void {
+   
+    const dialogRef = this.dialog.open(Filter, {
+    width: '60%',
+    //  data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }  
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+  
   public editinvoice(){
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;

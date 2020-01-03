@@ -7,8 +7,7 @@
 table {
   display: block;
   width: 100%;
-  padding-left: 10px;
-  height:230px;
+  height: 300px;
   overflow-y: auto;
   border-color: 1px solid grey;
 }
@@ -19,7 +18,7 @@ th{
 }
 
 td{
-  background-color:#434F5B;
+  background-color:white;
   width: 25%;
 }
 h5{
@@ -65,12 +64,21 @@ h2{
   border-bottom: 3px solid #007bff;
 }
 
+button {
+  background-color: #174fa6;
+  color: #fff;
+  padding: 10px 25px;
+  border: none;
+  cursor: pointer;
+  opacity: .9;
+  border-radius: 4px;
+}
 #addemployee-div{
   background: #1B2931;
   height: 650px;
   width: 100%;
   border-radius: 10px;
-  margin-left: 10px;;
+  margin-left: 10px;
 }
 
 a {
@@ -109,6 +117,8 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
 }
 .mat-input-element {
   font: inherit;
+  background:white;
+  height: 25px;
   outline: 0;
   padding: 1;
   margin: 10;
@@ -118,14 +128,6 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
   text-align:start;
   padding-bottom: 23px;
   border-radius: 6px;
-}
-
-.mat-form-field {
-  width: 100%;
-}
-
-mat-paginator{
-  width: 100%;
 }
 
 .matTable{
@@ -151,14 +153,6 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
   text-align:start;
   padding-bottom: 23px;
   border-radius: 6px;
-}
-
-.mat-form-field {
-  width: 100%;
-}
-
-mat-paginator{
-  width: 100%;
 }
 
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
