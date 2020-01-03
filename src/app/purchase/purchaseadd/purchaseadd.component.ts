@@ -9,39 +9,10 @@ import { AlertComponent } from 'src/app/_directives';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig} from "@angular/material";
 
-
-
-
-// edit invoice 
-
-@Component({
-  selector: 'editinvoice',
-  styleUrls: ['./editinvoice.css'],
-  templateUrl: './editinvoice.html', 
-})
-export class EditInvoice {
-
-
-  constructor(
-    public dialogRef: MatDialogRef<EditInvoice>,
-    ) {
-
-    }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-  updateDelete(){
-  console.log("updateDelete");
-  }
-}
-
 //==== Status 
-
 @Component({
   selector: 'status',
-  styleUrls: ['./editinvoice.css'],
+  styleUrls: ['./status.css'],
   templateUrl: './status.html', 
 })
 export class Status {
@@ -230,23 +201,6 @@ export class PurchaseaddComponent  implements OnInit  {
 
   cancelEmp(){
     alert("------ Cancel Employeee -------");
-  }
-  
-  
-  public editinvoice(){
-    this.dialogConfig.disableClose = true;
-    this.dialogConfig.autoFocus = true;
-    this.dialogConfig.position = {
-      'top': '1000',
-      left: '100'
-    };
-    this.dialog.open(EditInvoice,{
-    //  data: {dialogTitle: "hello", dialogText: "text"},
-      data: "issueId",
-      height: '80%'
-    }).afterClosed().subscribe(result => {
-    // this.refresh();
-    });;
   }
 
   public getstatus(){

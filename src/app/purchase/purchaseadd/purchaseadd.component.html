@@ -3,8 +3,7 @@
     <div class="col-lg-11">
       <div class="tab">
         <a class="tablink" style="border-bottom: 3px solid #007bff;width: auto;" id="defaultOpen">Purchase Order</a>
-        <a class="tablink" (click)="purchaseInvoice()" style="width: auto;color:white;">Purchase Invoice</a>
-        <a class="tablink" style="border-bottom: 3px solid #007bff;width: auto;" id="defaultOpen">Purchase Return</a>
+        <a class="tablink" routerLink="../purchase-invoice" style="width: auto;color:white;">Purchase Invoice</a>
         <a class="tablink" routerLink="../purchaseadd" style="width: auto;color:white;">Purchase Return</a>
         <a class="tablink" routerLink="../purchaseadd" style="width: auto;color:white;">Purchase Report</a>
       </div>
@@ -18,7 +17,7 @@
               <br/><br/>
               <div class="row">
                 <div class="col-lg-3">    
-                  <h5 class="mb-3">Add New Purchase</h5>
+                  <h5 class="mb-3">Make Purchase Order</h5>
                 </div>
                 <div class="col-lg-2"> </div>
                 <div class="col-lg-7">    
