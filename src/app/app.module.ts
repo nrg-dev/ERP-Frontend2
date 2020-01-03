@@ -36,7 +36,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent, data: { title: 'Login Component' }},
   { path: 'landingpage', component: LandingpageComponent, data: { title: 'Landing Component' },
     children: [
-      { path: '', loadChildren: () => EmployeeModule },
+     /*{ path: '', loadChildren: () => EmployeeModule },
       { path: '', loadChildren: () => VendorcustomerModule },
       { path: '', loadChildren: () => CategoryproductModule },
       { path: '', loadChildren: () => PurchaseModule },
@@ -44,7 +44,20 @@ const appRoutes: Routes = [
       { path: '', loadChildren: () => FinanceModule },
       { path: '', loadChildren: () => StockModule },
       { path: '', loadChildren: () => ReportModule },
-      { path: '', loadChildren: () => UsermgtModule }
+      { path: '', loadChildren: () => UsermgtModule }*/
+
+
+
+      { path: '', loadChildren: './employee/employee.module#EmployeeModule'   },
+      { path: '', loadChildren: './vendorcustomer/vendorcustomer.module#VendorcustomerModule'  },
+      { path: '', loadChildren: './categoryproduct/categoryproduct.module#CategoryproductModule' },
+      { path: '', loadChildren: './purchase/purchase.module#PurchaseModule'  },
+      { path: '', loadChildren: './sales/sales.module#SalesModule'   },
+      { path: '', loadChildren: './finance/finance.module#FinanceModule'  },
+      { path: '', loadChildren: './stock/stock.module#StockModule'  },
+      { path: '', loadChildren: './report/report.module#ReportModule'  },
+      { path: '', loadChildren: './usermgt/usermgt.module#UsermgtModule'  }
+
     ],
   },
 
