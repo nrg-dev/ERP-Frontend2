@@ -1,0 +1,117 @@
+
+::ng-deep .mat-dialog-container {
+    background-color: #434F5B;
+    width: 55%;
+}  
+
+.hrline{
+    background-color: white;
+    width: 20px;
+    height: 2px;
+}
+.hl{
+    border-left: 2px solid black;
+    height: 10px;
+}
+#dicountinput-box{
+    width: 55px;
+    height: 35px;
+    text-align: end;
+    background: #272E34;
+    border: none;
+    box-shadow: none;
+}
+#qtyinput-box{
+    width: 55px;
+    height: 35px;
+    background: #272E34;
+    border: none;
+    box-shadow: none;
+}
+#box-dialouge{
+    background: #333C45;
+    height: 100%;
+}
+#selectbox-category{
+    width: 50%;
+    height: 35px;
+    border: none;
+    color: #636A70;
+    background: #272E34;
+    box-shadow: none;
+}
+.searchicon2{
+    font-family: fontawesome;
+    font-size: 20px;
+    width: 50%;
+    height: 30%;
+    background: #272E34;
+    border: none;
+    box-shadow: none;
+}
+#dicountinput-box{
+    width: 55px;
+    height: 35px;
+    text-align: end;
+    background: #272E34;
+    border: none;
+    box-shadow: none;
+}
+#selectbox-category{
+    width: 50%;
+    height: 35px;
+    border: none;
+    color: #636A70;
+    background: #272E34;
+    box-shadow: none;
+}
+.searchicon2{
+    font-family: fontawesome;
+    font-size: 20px;
+    width: 50%;
+    height: 30%;
+    background: #272E34;
+    border: none;
+    box-shadow: none;
+}
+#dicountinput-box{
+    width: 55px;
+    height: 35px;
+    text-align: end;
+    background: #272E34;
+    border: none;
+    box-shadow: none;
+}
+#selectbox-category{
+    width: 57%;
+    height: 35px;
+    border: none;
+    color: #636A70;
+    background: #272E34;
+    box-shadow: none;
+}
+.searchicon2{
+    font-family: fontawesome;
+    font-size: 20px;
+    width: 57%;
+    height: 30%;
+    background: #272E34;
+    border: none;
+    box-shadow: none;
+}
+#dicountinput-box{
+    width: 55px;
+    height: 35px;
+    text-align: end;
+    background: #272E34;
+    border: none;
+    box-shadow: none;
+}
+#freegift-box{
+    width: 55px;
+    height: 35px;
+    text-align: end;
+    background: #272E34;
+    border: none;
+    box-shadow: none;
+}

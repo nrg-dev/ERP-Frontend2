@@ -1,9 +1,39 @@
 import { EditdeletedialogComponent } from '../editdeletedialog/editdeletedialog.component';
 import {MatDialog, MatDialogConfig} from "@angular/material";
-import { AddpromotionComponent } from '../addpromotion/addpromotion.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 
+
+
+// add promostion child 1
+
+@Component({
+  selector: 'addpromotion',
+  styleUrls: ['./addpromotion.css'],
+  templateUrl: './addpromotion.html', 
+})
+export class AddpromotionComponent {
+  countryList:any;
+  priorityList:any;
+  model: any = {};
+  constructor(
+
+    ) {
+     // this.countryList = require("../../../assets/country.json");
+    }
+
+    close() {
+    //this.dialogRef.close();
+  }
+
+
+}
+
+// child 2 end
+
+// child 2 end
+
+// Main compoent
 @Component({
   selector: 'app-categoryadd',
   templateUrl: './categoryadd.component.html',
@@ -11,7 +41,7 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 })
 export class CategoryaddComponent implements OnInit {
   
-  displayedColumns: string[] = ['Productcode', 'ProductName','Discount','DiscountTime','Qty','Price'];
+  displayedColumns: string[] = ['Productcode', 'ProductName','Discount','DiscountTime','Qty','Price','editdelete'];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
@@ -159,10 +189,7 @@ categorydetails(number: string){
       'top': '1000',
       left: '100'
     };
-    this.dialog.open(EditdeletedialogComponent,{
-      data: 'Hello...',
-      height: '80%', 
-    })
+    this.dialog.open(EditdeletedialogComponent,{ panelClass: 'mat-dialog-container' })
     .afterClosed().subscribe(result => {
      // this.refresh();
     });

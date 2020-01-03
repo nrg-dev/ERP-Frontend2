@@ -3,6 +3,9 @@
     font-size:medium;
     color:white;
 }
+#cursor-pointer{
+    cursor: pointer;
+}
 h2{
     font-size: 30px;
 }
@@ -194,4 +197,28 @@ mat-form-field{
     background: #272E34;
     border: none;
     box-shadow: none;
+}
+#rowedit-div{
+    height: 30px;
+    width: 30px;
+    background: #267CB4;
+    border-radius: 16px;
+}
+#rowview-div{
+    height: 30px;
+    width: 30px;
+    background: #EF6956; 
+    border-radius: 16px;
+}
+#rowedit-icon{
+    margin: 5px;
+    font-size: 20px;
+}
+#rowdelete-icon{
+    margin: 5px;
+    font-size: 20px;
+}
+
+ .mat-dialog-container{
+    background: yellow;
 }

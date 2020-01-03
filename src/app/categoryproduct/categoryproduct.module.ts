@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CategoryaddComponent } from './categoryadd/categoryadd.component';
+import { CategoryaddComponent, AddpromotionComponent } from './categoryadd/categoryadd.component';
 import { Routes, RouterModule } from '@angular/router';
 import { MatDialogModule, MatDialog, MatFormFieldModule } from '@angular/material';
-import { AddpromotionComponent } from './addpromotion/addpromotion.component';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -104,3 +103,4 @@ const routes: Routes = [
 export class CategoryproductModule { 
   constructor(private dialog: MatDialog) {}
 }
+ 
