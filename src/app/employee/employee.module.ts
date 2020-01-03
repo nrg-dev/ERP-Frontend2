@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { EmployeealertComponent } from './employeealert/employeealert.component';
 import { TimesheetComponent } from './timesheet/timesheet.component';
 import { DataTablesModule } from 'angular-datatables';
+import { EmployeeService } from './employee.service';
 
 
 const routes: Routes = [
@@ -26,10 +27,13 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [EmployeeaddComponent, EmployeelistComponent, EmployeereportComponent, EmployeeindexComponent, EmployeealertComponent, TimesheetComponent],
+  declarations: [EmployeeaddComponent, EmployeelistComponent, 
+    EmployeereportComponent, EmployeeindexComponent, EmployeealertComponent, TimesheetComponent],
   imports: [
     FormsModule,
     CommonModule,MatTabsModule,DataTablesModule.forRoot(),RouterModule.forChild(routes) 
-  ]
+  ],
+  providers: [EmployeeService],
+
 })
 export class EmployeeModule { }
