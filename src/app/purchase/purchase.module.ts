@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PurchaseaddComponent,Status } from './purchaseadd/purchaseadd.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AlertComponent } from '../_directives';
+//import { AlertComponent } from '../_directives';
 import { PurchaseInvoiceComponent, EditInvoice,Filter } from './purchase-invoice/purchase-invoice.component';
 import {
   MatButtonModule,
@@ -22,7 +22,9 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [PurchaseaddComponent,AlertComponent,EditInvoice,Status, PurchaseInvoiceComponent,Filter],
+  declarations: [PurchaseaddComponent,
+    //AlertComponent,
+    EditInvoice,Status, PurchaseInvoiceComponent,Filter],
   imports: [
     CommonModule,
     FormsModule,

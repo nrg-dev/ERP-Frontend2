@@ -23,7 +23,7 @@ import { FinanceModule } from './finance/finance.module';
 import { StockModule } from './stock/stock.module'; 
 import { UsermgtModule } from './usermgt/usermgt.module';
 import { ReportModule } from './report/report.module';
-//import { AlertComponent } from './_directives/index';
+import { AlertComponent } from './_directives/index';
 import { AlertService, AuthenticationService,UserService } from './_services/index';
 
 import { MatDialogModule } from '@angular/material';
@@ -69,7 +69,7 @@ const appRoutes: Routes = [
     LoginComponent,
     LandingpageComponent,   
     DashboardComponent,
-   // AlertComponent
+    AlertComponent
   ],
  
   imports: [
