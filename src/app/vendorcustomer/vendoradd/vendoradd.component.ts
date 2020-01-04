@@ -565,7 +565,7 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
                     console.log('return value -->'+res.status);
                       if(res.status ="success"){
                         console.log('successfully updated...');
-                        this.alertService.success("Bank info successfully saved ");
+                        this.alertService.success("Successfully saved ");
                         setTimeout(() => {
                          this.alertService.clear();
                        }, 2000);
