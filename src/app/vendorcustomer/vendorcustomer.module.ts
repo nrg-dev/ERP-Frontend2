@@ -11,6 +11,8 @@ import { VencustAlertComponent } from './vencust-alert/vencust-alert.component';
 
 import {CdkStepperModule} from '@angular/cdk/stepper';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { VendorService } from './vendor.service';
+import { CustomerService } from './customer.service';
 
 
 
@@ -38,6 +40,8 @@ const routes: Routes = [
     CdkStepperModule,
     RouterModule.forChild(routes) 
 
-  ]
+  ],
+  providers: [CustomerService,VendorService],
+
 })
 export class VendorcustomerModule { }

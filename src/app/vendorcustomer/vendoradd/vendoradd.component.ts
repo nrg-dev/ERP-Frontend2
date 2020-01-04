@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/_models';
+import { Customer,Vendor } from 'src/app/_models';
 import { AlertService } from 'src/app/_services/index';
 import { Router } from '@angular/router';
+import { CustomerService } from '../customer.service';
+import { VendorService } from '../vendor.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @Component({
@@ -30,7 +33,9 @@ export class VendoraddComponent implements OnInit {
   successdialog = 'none';
 
   model:any ={};
-  user:User;
+  customer:Customer;
+  vendor:Vendor;
+
 
   vendorList : any = [ {
     vendorcode:'VEN001',
@@ -158,7 +163,9 @@ custList : any = [
     lastedit : '17/9/2019',
     addeddate : '1/9/2019'
 },
-{   custcode:'CUST006',
+{   
+  
+    custcode:'CUST006',
     customerName :'MANOHARA ASRI PT',
     phoneNumber : '+62 878-2277-7690',
     mobileNumber : '+62 675-777-8998',
@@ -174,7 +181,13 @@ custList : any = [
 
 countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
 
-  constructor(private router: Router, private alertService: AlertService) { }
+  constructor(private router: Router,
+     private alertService: AlertService,
+    // private vendorService: VendorService,
+     private customerService: CustomerService,
+
+      
+    ) { }
 
   ngOnInit() {
     this.vendordetailsstart = true;
@@ -539,6 +552,35 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     this.customerdetails = false;
     this.customereditdetails = false;
     this.vendordragAndDrop = false;
+  }
+  saveCustomer(){
+    console.log("save bank");
+    this.model.createdPerson=localStorage.getItem("currentusername");
+    this.model.currentUser=localStorage.getItem('currentusername');
+    console.log('............controller save bank....');
+    this.customerService.save(this.model)
+              .subscribe(
+                  res => {
+                    console.log('............1 ....');
+                    console.log('return value -->'+res.status);
+                      if(res.status ="success"){
+                        console.log('successfully updated...');
+                        this.alertService.success("Bank info successfully saved ");
+                        setTimeout(() => {
+                         this.alertService.clear();
+                       }, 2000);
+         
+                      }
+                 
+                                   
+                  },
+                  error => {
+                    alert("Server error...");
+  
+                  });
+    
+  
+
   }
   customerdelete(){
     this.message="Customer details Deleted Successfully."

@@ -1,10 +1,10 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Employee } from '../_models';
+import { Usermgt } from '../_models';
 
 @Injectable()
-export class EmployeeService {    
- 
+export class UserMgtService {    
+
 //private commonURL = 'http://35.160.115.237:8095/erp/';
 private commonURL = 'http://localhost:8095/erp/employee/';
 
@@ -13,9 +13,9 @@ constructor(private http: HttpClient) { }
 //*********************Employee************************
 
 // Save 
-save(employee: Employee){
+save(usermgt: Usermgt){
     console.log('service....');
-    return this.http.post<Employee>(this.commonURL+'save',employee);
+    return this.http.post<Usermgt>(this.commonURL+'save',usermgt);
 }
 
 // Load 
@@ -25,12 +25,12 @@ load(){
 
 // get 
 get(id:number){
-    return this.http.get<Employee>(this.commonURL+'get?id='+id);
+    return this.http.get<Usermgt>(this.commonURL+'get?id='+id);
 }
 
 // Update 
-update(employee: Employee){
-    return this.http.put<Employee>(this.commonURL+'update',employee);
+update(usermgt: Usermgt){
+    return this.http.put<Usermgt>(this.commonURL+'update',usermgt);
 
 }
 

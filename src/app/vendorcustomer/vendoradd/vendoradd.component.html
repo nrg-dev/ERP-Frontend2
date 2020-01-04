@@ -588,6 +588,8 @@
 
   <!--customer Drag and Drop start-->
 <div *ngIf="customerdragAndDrop" id="vencustab" cdkDrag>
+    <form name="form"  (ngSubmit)=" saveCustomer()">
+
     <br/>
     <div class="row">
 
@@ -598,8 +600,8 @@
         <div class="col-md-1 col-1 col-lg-1"></div>
         <div  class="col-md-6 col-4 col-lg-6">
             <div class="row">
-                <button id="edit-butn1">
-                    <div class="row" (click)="customerupdateDetails()">
+                <button id="edit-butn1" type="submit">
+                    <div class="row" >
                         <i class="fa fa-floppy-o" aria-hidden="true" style="margin-top: 5px;"></i>
                         &nbsp;
                         <p>Save</p>
@@ -630,7 +632,9 @@
             <div class="row" id="address">
                 <p class="col-md-4 col-4 col-lg-4" id="text3">Customer Name</p>
                 <p class="col-md-1 col-1 col-lg-1" >:</p>
-                <input type="text" id="editinput-box" value="" />
+                <input type="text" id="editinput-box" value="" [(ngModel)]="model.customerName" 
+                #customerName="ngModel" 
+                placeholder="Enter Customer name" name="customerName"/>
             </div>
             <div class="row" id="address">
                 <p class="col-md-4 col-4 col-lg-4" id="text3">Phone Number</p>
@@ -666,6 +670,8 @@
             </div>
         </div>
     </div>
+</form>
+
 </div>
   <!-- customer Drag and Drop end-->
 

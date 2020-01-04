@@ -1,21 +1,21 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Employee } from '../_models';
+import { Vendor } from '../_models';
 
 @Injectable()
-export class EmployeeService {    
- 
+export class VendorService {    
+
 //private commonURL = 'http://35.160.115.237:8095/erp/';
-private commonURL = 'http://localhost:8095/erp/employee/';
+private commonURL = 'http://localhost:8095/erp/vendor/';
 
 constructor(private http: HttpClient) { }
 
 //*********************Employee************************
 
 // Save 
-save(employee: Employee){
+save(vendor: Vendor){
     console.log('service....');
-    return this.http.post<Employee>(this.commonURL+'save',employee);
+    return this.http.post<Vendor>(this.commonURL+'save',vendor);
 }
 
 // Load 
@@ -25,14 +25,14 @@ load(){
 
 // get 
 get(id:number){
-    return this.http.get<Employee>(this.commonURL+'get?id='+id);
+    return this.http.get<Vendor>(this.commonURL+'get?id='+id);
 }
 
 // Update 
-update(employee: Employee){
-    return this.http.put<Employee>(this.commonURL+'update',employee);
+update(vendor: Vendor){
+    return this.http.put<Vendor>(this.commonURL+'update',vendor);
 
-}
+} 
 
 // Remove 
 remove(id:number){
