@@ -6,16 +6,16 @@ import { Purchase } from '../_models';
 export class PurchaseService {    
 
 //private commonURL = 'http://35.160.115.237:8095/erp/';
-private commonURL = 'http://localhost:8095/erp/employee/';
+private commonURL = 'http://localhost:8095/erp/purchase/';
 
 constructor(private http: HttpClient) { }
 
 //*********************Employee************************
 
 // Save 
-save(purchase: Purchase){
+save(purchsearray: Array<any>){
     console.log('service....');
-    return this.http.post<Purchase>(this.commonURL+'save',purchase);
+    return this.http.post<Purchase>(this.commonURL+'save',purchsearray);
 }
 
 // Load 

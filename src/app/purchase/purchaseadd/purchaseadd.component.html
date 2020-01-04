@@ -12,6 +12,7 @@
         <br/><br/>
         <div class="group-gap" style="margin: 40px;">
           <br/><br/>
+          <form name="form">
           <div class="row">
             <div class="col-lg-3">    
               <h5 class="mb-3">Make Purchase Order</h5>
@@ -58,7 +59,7 @@
                 </div>
                 <div class="row">
                   <div class="radio-toolbar">
-                    <label for="radio1" id="checkIn-butn" (click)="saveEmp()">Save</label>
+                    <label for="radio1" id="checkIn-butn" (click)="savePurchase()">Save</label>
                     <label for="radio2" id="checkOut-butn" (click)="cancelEmp()">Cancel</label>
                   </div>
                 </div>
@@ -66,6 +67,7 @@
               </div>
             </div>
           </div>
+        </form>
           <div class="mb-3">
             <!-- <button id="sticky" type="button"  class="btn btn-primary" (click)="editinvoice()">Add </button>  &nbsp; &nbsp; &nbsp; 
             <button  (click)="getstatus()" class="btn btn-primary" id="savebtn" type="submit" >Save</button>
@@ -102,10 +104,12 @@
                     <p id="newAttributeDate" [(ngModel)]="newAttribute.poDate" name="newAttributeDate" style="color: white;">{{todayDate | date:'longDate'}}</p>
                   </td>
                   <td style="padding-right: 10px;padding: 9px;">
-                    <input class="form-control" type="text" id="newAttributeQuantity" [(ngModel)]="newAttribute.quantity" name="newAttributeQuantity" />
+                    <input class="form-control" type="text" id="newAttributeQuantity" 
+                    [(ngModel)]="newAttribute.quantity" name="newAttributeQuantity" />
                   </td>
                   <td style="padding-right: 10px;padding: 9px;">
-                    <input class="form-control" type="text" id="newAttributeAmount" [(ngModel)]="newAttribute.netAmount" name="newAttributeAmount"/>
+                    <input class="form-control" type="text" id="newAttributeAmount" 
+                    [(ngModel)]="newAttribute.netAmount" name="newAttributeAmount"/>
                   </td>
                 </tr>
                 <tr *ngFor="let model of fieldArray; let i = index">

@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray,Validators, FormControl } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChangeDetectorRef, ElementRef, ViewChild } from '@angular/core';
-import { User } from 'src/app/_models';
+import { Purchase } from 'src/app/_models';
 import { AlertService } from 'src/app/_services';
 import { Router } from '@angular/router';
 import { AlertComponent } from 'src/app/_directives';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig} from "@angular/material";
+import { PurchaseService } from '../purchase.service';
 
 //==== Status 
 @Component({
@@ -39,7 +40,7 @@ export class Status {
   styleUrls: ['./purchaseadd.component.css']
 })
 export class PurchaseaddComponent  implements OnInit  {
-  user:User;
+  purchase:Purchase;
   model: any ={};
   headElements = ['#ID', 'Product Name', 'Category Name', 'Quantity'];
   todayNumber: number = Date.now();
@@ -59,6 +60,7 @@ export class PurchaseaddComponent  implements OnInit  {
   
   constructor( public fb: FormBuilder,
     private dialog: MatDialog,
+    private purchaseService:PurchaseService,
     private cd: ChangeDetectorRef, private router: Router, private alertService: AlertService) { 
 
     }
@@ -71,19 +73,67 @@ export class PurchaseaddComponent  implements OnInit  {
   }
 
   newPurchaseOrder(){
+   // this.newAttribute = {};
     this.fieldArray.push(this.newAttribute);
     this.newAttribute = {};
+    //this.fieldArray.push(this.newAttribute);
+
   }
 
   deleteFieldValue(index) {
     this.fieldArray.splice(index, 1);
   }
+  purchsearray: Array<any> = [];
+  //purchsearray: Array<Purchase> = [];
 
-  saveEmp(){
-    alert("------ Save Employeee -------");
-    this.fieldArray.push(this.newAttribute);
-    console.log(this.fieldArray);
-    this.model.Names = this.fieldArray;
+  savePurchase(){
+    this.purchsearray = [];
+
+   // this.deleteFieldValue(2);
+
+   // this.newPurchaseOrder();
+    //alert("------ Save savePurchase -------");
+   // this.fieldArray.push(this.newAttribute);
+
+   // this.newAttribute = {};
+   this.purchsearray.push(this.fieldArray);
+   this.purchsearray.push(this.newAttribute);
+
+    //console.log(this.fieldArray);
+    //console.log(this.newAttribute);
+
+    //this.deleteFieldValue(2);
+    console.log(this.purchsearray);
+   // this.model.Names = this.fieldArray;
+
+
+
+   this.purchaseService.save(this.purchsearray)
+   .subscribe(
+       res => {
+         console.log('............1 ....');
+         console.log('value -->'+res.status);
+         if(res.status ="success"){
+          console.log('successfully updated...');
+          this.alertService.success("Successfully saved ");
+          setTimeout(() => {
+           this.alertService.clear();
+         }, 2000);
+
+        }
+      
+                        
+       },
+       error => {
+         alert("Server error...");
+
+       });
+
+
+
+
+
+
   }
 
   cancelEmp(){

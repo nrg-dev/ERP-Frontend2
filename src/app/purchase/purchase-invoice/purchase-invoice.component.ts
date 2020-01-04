@@ -62,7 +62,10 @@ export class PurchaseInvoiceComponent implements OnInit {
   public purchaseList : any;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
-  displayedColumns: string[] = ['Added Date','Invoice Number','Product List','Vendor','Qty','SubTotal','DeliverCost','Total','Status'];
+  displayedColumns: string[] = ['addedDate','invoiceNumber','productName','name','quantity',
+  'subTotal','deliveryCost','netAmount','status'];
+ 
+
   dataSource: MatTableDataSource<any>;
   
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
@@ -82,8 +85,8 @@ export class PurchaseInvoiceComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+   this.dataSource.paginator = this.paginator;
+   this.dataSource.sort = this.sort;
   }
 
   openfilter(): void {

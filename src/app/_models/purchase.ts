@@ -2,10 +2,11 @@
 
 export class Purchase extends Common {
 
-   id: string; 
-   name: string;
-   empCode: string;
-   rank: string;
-   contactNumber: string;
-   purchaseOrdeData:any;
+   productName: string; 
+   category: string;
+   vendorName: string;
+   poDate: string;
+   quantity: string;
+   netAmount:any;
+   status:string;
 }
