@@ -4,7 +4,7 @@ import { PurchaseaddComponent,Status } from './purchaseadd/purchaseadd.component
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertComponent } from '../_directives';
-import { PurchaseInvoiceComponent, EditInvoice } from './purchase-invoice/purchase-invoice.component';
+import { PurchaseInvoiceComponent, EditInvoice,Filter } from './purchase-invoice/purchase-invoice.component';
 import {
   MatButtonModule,
   MatFormFieldModule,
@@ -22,7 +22,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [PurchaseaddComponent,AlertComponent,EditInvoice,Status, PurchaseInvoiceComponent],
+  declarations: [PurchaseaddComponent,AlertComponent,EditInvoice,Status, PurchaseInvoiceComponent,Filter],
   imports: [
     CommonModule,
     FormsModule,
@@ -36,7 +36,7 @@ const routes: Routes = [
 
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  entryComponents: [EditInvoice,Status],
+  entryComponents: [EditInvoice,Status,Filter],
 
 })
 export class PurchaseModule { }

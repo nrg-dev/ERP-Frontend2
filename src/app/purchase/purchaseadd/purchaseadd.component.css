@@ -84,7 +84,7 @@ form{
   height: 650px;
   width: 100%;
   border-radius: 10px;
-  margin-left: 10px;;
+  margin-left: 10px;
   /* border: 1px solid black;
   margin : 0px 15px 30px 20px; */
 }
@@ -96,6 +96,21 @@ a {
   text-decoration: none;
 }
 
+button {
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  opacity: .9;
+  border-radius: 4px;
+}
+.addButton{
+  background-color: #27AE60;
+  padding: 10px 25px;
+}
+.romoveButton{
+  background-color: #174fa6;
+  padding: 10px 15px;
+}
 #date-details{
   width: 100%;
   margin: 0 25px;

@@ -1,0 +1,29 @@
+* {
+    font-family: sans-serif;
+   
+    /*background-color:;*/
+
+  }
+select {
+  width: 20%;
+  padding-left: 10px;
+}
+b, strong {
+  font-weight: bolder;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+  /* Set a style for all buttons */
+  button {
+    background-color:#174FA6;
+    color: white;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    border-radius: 4px;
+  
+  }
+  
