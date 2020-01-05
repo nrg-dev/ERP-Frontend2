@@ -62,7 +62,7 @@ export class PurchaseInvoiceComponent implements OnInit {
   public purchaseList : any;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
-  displayedColumns: string[] = ['Added Date','Invoice Number','Product List','Vendor','Qty','SubTotal','DeliverCost','Total','Status'];
+  displayedColumns: string[] = ['Added Date','Invoice Number','Product List','Vendor','Qty','SubTotal','DeliverCost','Total','Status','Action'];
   dataSource: MatTableDataSource<any>;
   
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
@@ -75,10 +75,7 @@ export class PurchaseInvoiceComponent implements OnInit {
   ) { 
     const purchasedata = require("../../purchasedata.json");
     this.purchaseList=purchasedata;
-
     this.dataSource = new MatTableDataSource(this.purchaseList);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
   }
 
   ngOnInit() {
@@ -99,10 +96,9 @@ export class PurchaseInvoiceComponent implements OnInit {
   }  
 
   applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
   }
   
   public editinvoice(){
@@ -113,12 +109,10 @@ export class PurchaseInvoiceComponent implements OnInit {
       left: '100'
     };
     this.dialog.open(EditInvoice,{
-    //  data: {dialogTitle: "hello", dialogText: "text"},
-      data: "issueId",
+      data: "invoiceNumber",
       height: '80%'
     }).afterClosed().subscribe(result => {
-    // this.refresh();
-    });;
+    });
 }
 
 }

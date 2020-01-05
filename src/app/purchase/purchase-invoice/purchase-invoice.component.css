@@ -1,8 +1,8 @@
 * {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    font-size:medium;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  font-size:medium;
 }
 table {
   display: block;
@@ -22,11 +22,11 @@ td{
   width: 25%;
 }
 h5{
-    color:white;
+  color:white;
 }
 
 h2{
-    font-size: 30px;
+  font-size: 30px;
 }
 .mat-tab-group {
   display: flex;
@@ -64,7 +64,7 @@ h2{
   border-bottom: 3px solid #007bff;
 }
 
-button {
+.filterButton {
   background-color: #174fa6;
   color: #fff;
   padding: 10px 25px;
@@ -72,6 +72,7 @@ button {
   cursor: pointer;
   opacity: .9;
   border-radius: 4px;
+  width:auto;
 }
 #addemployee-div{
   background: #1B2931;
@@ -118,7 +119,7 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
 .mat-input-element {
   font: inherit;
   background:white;
-  height: 25px;
+  color:black;
   outline: 0;
   padding: 1;
   margin: 10;
@@ -154,21 +155,43 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
   padding-bottom: 23px;
   border-radius: 6px;
 }
+td, th {
+  width: 25%;
+}
+mat-paginator{
+  width: 100%;
+}
+
+
+#rowedit-div{
+  height: 30px;
+  width: 30px;
+  background: #267CB4;
+}
+#rowview-div{
+  height: 30px;
+  width: 30px;
+  background: #EF6956; 
+}
+#rowedit-icon{
+  margin: 4px 5px;
+  font-size: 20px;
+}
 
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
-  #addemployee-div{
-    background: #1B2931;
-    height: 680px;
-    width: 100%;
-    border-radius: 10px;
-  }
+#addemployee-div{
+  background: #1B2931;
+  height: 680px;
+  width: 100%;
+  border-radius: 10px;
+}
 }
 @media (min-width: 1025px) and (max-width: 1280px){
-  #addemployee-div{
-    background: #1B2931;
-    height: 650px;
-    width: 100%;
-    border-radius: 10px;
-  }
-  
+#addemployee-div{
+  background: #1B2931;
+  height: 650px;
+  width: 100%;
+  border-radius: 10px;
+}
+
 }
