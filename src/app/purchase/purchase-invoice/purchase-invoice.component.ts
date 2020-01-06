@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild ,ElementRef,Inject} from '@angular/core';
-import { User } from 'src/app/_models';
+import { Purchase } from 'src/app/_models';
 import { AlertService } from 'src/app/_services';
 import { Router } from '@angular/router';
 import { AlertComponent } from 'src/app/_directives';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
+import { PurchaseService } from '../purchase.service';
 
 @Component({
   selector: 'editinvoice',
@@ -57,12 +58,12 @@ export class Filter {
   styleUrls: ['./purchase-invoice.component.css']
 })
 export class PurchaseInvoiceComponent implements OnInit {
-  user:User;
+  purchse:Purchase;
   model: any ={};
   public purchaseList : any;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
-  displayedColumns: string[] = ['addedDate','invoiceNumber','productName','name','quantity',
+  displayedColumns: string[] = ['category','invoiceNumber','productName','name','quantity',
   'subTotal','deliveryCost','netAmount','status'];
  
 
@@ -75,16 +76,48 @@ export class PurchaseInvoiceComponent implements OnInit {
     private dialog: MatDialog,
     private router: Router, 
     private alertService: AlertService,
+    private purchaseservice: PurchaseService,
   ) { 
     const purchasedata = require("../../purchasedata.json");
+
     this.purchaseList=purchasedata;
 
+    console.log("data3 -->"+this.purchaseList[2].addedDate);
+
+
+    /* 
+
+    this.purchaseservice.load().subscribe(res => { 
+      this.purchaseList = res;
+         //  console.log("data2 -->"+this.purchaseList[1].purchaseorder["vendorName"].values);
+           console.log("data3 -->"+this.purchaseList[2].purchaseorder.category);
+           console.log("speasifc data  -->");
+           console.log("data4 -->"+this.purchaseList[0]);
+           console.log("data5 -->"+this.purchaseList[1]);
+           console.log("data6 -->"+this.purchaseList[2]);
+
+          // console.log("data2 -->"+this.purchaseList[0].purchaseorder);
+           //console.log("data3 -->"+this.purchaseList[0].purchaseorder[0]);
+
+          // console.log("data4 -->"+data);
+
+
+        },
+        error => {
+            alert('Error !!!!');
+        }
+    );
+ 
+*/
     this.dataSource = new MatTableDataSource(this.purchaseList);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
+  
+  public polist: string [];
 
   ngOnInit() {
+   
    this.dataSource.paginator = this.paginator;
    this.dataSource.sort = this.sort;
   }

@@ -20,7 +20,10 @@ save(purchsearray: Array<any>){
 
 // Load 
 load(){
-    return this.http.get(this.commonURL+'load');
+    return this.http.get<Purchase>(this.commonURL+'load');
+
+    //         this.httpClient.get(this.baseUrl + '/products').subscribe((res : any[])=>{
+
 }
 
 // get 

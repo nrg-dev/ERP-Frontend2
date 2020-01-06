@@ -9,4 +9,5 @@ export class Purchase extends Common {
    quantity: string;
    netAmount:any;
    status:string;
+   purchaseorder:string; 
 }
