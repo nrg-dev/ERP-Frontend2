@@ -4,7 +4,7 @@ import { PurchaseaddComponent,Status } from './purchaseadd/purchaseadd.component
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //import { AlertComponent } from '../_directives';
-import { PurchaseInvoiceComponent, EditInvoice,Filter } from './purchase-invoice/purchase-invoice.component';
+import { PurchaseInvoiceComponent, EditInvoice,Filter,DeleteDialog } from './purchase-invoice/purchase-invoice.component';
 
 import {
   MatAutocompleteModule,
@@ -55,7 +55,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [PurchaseaddComponent,
     //AlertComponent,
-    EditInvoice,Status, PurchaseInvoiceComponent,Filter],
+    EditInvoice,Status, PurchaseInvoiceComponent,Filter,DeleteDialog],
   imports: [
     CommonModule,
     FormsModule,
@@ -109,7 +109,7 @@ const routes: Routes = [
   //schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [PurchaseService],
 
-  entryComponents: [EditInvoice,Status,Filter],
+  entryComponents: [EditInvoice,Status,Filter,DeleteDialog],
 
 })
 export class PurchaseModule { }

@@ -14,21 +14,79 @@ import { PurchaseService } from '../purchase.service';
   templateUrl: './editinvoice.html', 
 })
 export class EditInvoice {
-
-
+  model: any ={};
+  public purchaseEditList : any;
+  public purchaseList : any;
+  dialogConfig = new MatDialogConfig();
+  isDtInitialized:boolean = false;
   constructor(
-    public dialogRef: MatDialogRef<EditInvoice>,
-    ) {
+    private purchaseService: PurchaseService,
+    private dialog: MatDialog,
+    private alertService: AlertService,
 
-    }
+    public dialogRef: MatDialogRef<EditInvoice>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {  
+    alert("Invoice Number ---->"+this.data.invoiceNumber);
+    this.model.invoiceNumber = this.data.invoiceNumber;
+    const purchasedata = require("../../purchasedata.json");
+    this.purchaseEditList=purchasedata;
+    /* this.purchaseService.get(this.data)
+    .subscribe(
+      data => {
+        this.model = data;
+        console.log("Purchase InvoiceNumber -->"+this.model.invoiceNumber);
+      },
+      error => {
+          alert('Error !!!!');
+      }
+    ); */
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  updateDelete(){
-  console.log("updateDelete");
+  
+  public deletePurchaseInvoice(){
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+      'top': '1000',
+      left: '100'
+    };
+    this.dialog.open(DeleteDialog,{
+      panelClass: 'delete',
+      data: "invoiceNumber",
+      height: '80%'
+    }).afterClosed().subscribe(result => {
+      // this.refresh();
+    });
   }
+}
+
+@Component({
+  selector: 'deleteDialog',
+  styleUrls: ['./deleteDialog.css'],
+  templateUrl: './deleteDialog.html', 
+})
+export class DeleteDialog {
+  model: any ={};
+  constructor(
+    private purchaseService: PurchaseService,
+    private dialog: MatDialog,
+    private alertService: AlertService,
+
+    public dialogRef: MatDialogRef<DeleteDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {  
+    
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
 }
 
 @Component({
@@ -63,8 +121,8 @@ export class PurchaseInvoiceComponent implements OnInit {
   public purchaseList : any;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
-  displayedColumns: string[] = ['category','invoiceNumber','productName','name','quantity',
-  'subTotal','deliveryCost','netAmount','status'];
+  displayedColumns: string[] = ['Date','Invoice Number','ProductName','name','quantity',
+  'subTotal','deliveryCost','netAmount','status','Action'];
  
 
   dataSource: MatTableDataSource<any>;
@@ -141,7 +199,8 @@ export class PurchaseInvoiceComponent implements OnInit {
     }
   }
   
-  public editinvoice(){
+  public editinvoice(invoiceNumber:string){
+    console.log("Invoice Number  --->"+invoiceNumber);
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
     this.dialogConfig.position = {
@@ -149,12 +208,26 @@ export class PurchaseInvoiceComponent implements OnInit {
       left: '100'
     };
     this.dialog.open(EditInvoice,{
-    //  data: {dialogTitle: "hello", dialogText: "text"},
-      data: "issueId",
+      data: "invoiceNumber",
       height: '80%'
     }).afterClosed().subscribe(result => {
-    // this.refresh();
-    });;
-}
+      // this.refresh();
+    });
+  }
+
+  public deletePurchase(){
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+      'top': '1000',
+      left: '100'
+    };
+    this.dialog.open(DeleteDialog,{
+      panelClass: 'delete',
+      data: "invoiceNumber",
+      height: '80%'
+    }).afterClosed().subscribe(result => {
+    });
+  }
 
 }
