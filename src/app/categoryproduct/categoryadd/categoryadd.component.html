@@ -118,11 +118,11 @@
                             <th mat-header-cell *matHeaderCellDef mat-sort-header> Edit/Delet </th>
                             <td mat-cell *matCellDef="let row"> 
                                 <div class="row" style="margin: 10px;">
-                                    <div id="rowedit-div">
+                                    <div id="rowedit-div" (click)="discountEdit()">
                                         <i class="fa fa-pencil-square-o" id="rowedit-icon" aria-hidden="true"></i>    
                                     </div>  
                                     &nbsp;&nbsp;
-                                    <div id="rowview-div">
+                                    <div id="rowview-div" (click)="discountDelete()">
                                         <i class="fa fa-trash-o" id="rowdelete-icon" aria-hidden="true"></i>    
                                     </div>   
                                  </div> 

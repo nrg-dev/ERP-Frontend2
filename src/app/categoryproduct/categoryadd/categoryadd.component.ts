@@ -5,7 +5,7 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 
 
 
-// add promostion child 1
+// add promostion start
 
 @Component({
   selector: 'addpromotion',
@@ -25,13 +25,52 @@ export class AddpromotionComponent {
     close() {
     //this.dialogRef.close();
   }
-
-
 }
+// add promostion end
 
-// child 2 end
+//discountedit start
+@Component({
+  selector: 'discountedit',
+  styleUrls: ['../discountedit.css'],
+  templateUrl: '../discountedit.html', 
+})
+export class DiscounteditComponent {
+  countryList:any;
+  priorityList:any;
+  model: any = {};
+  constructor(
 
-// child 2 end
+    ) {
+     // this.countryList = require("../../../assets/country.json");
+    }
+
+    close() {
+    //this.dialogRef.close();
+  }
+}
+//discountedit end
+@Component({
+  selector: 'discountdelete',
+  styleUrls: ['../discountdelete.css'],
+  templateUrl: '../discountdelete.html', 
+})
+export class DiscountdeleteComponent {
+  countryList:any;
+  priorityList:any;
+  model: any = {};
+  constructor(
+
+    ) {
+     // this.countryList = require("../../../assets/country.json");
+    }
+
+    close() {
+    //this.dialogRef.close();
+  }
+}
+//discountdelete start
+
+//discountdelete end
 
 // Main compoent
 @Component({
@@ -181,6 +220,8 @@ categorydetails(number: string){
       
   }
 
+  
+
 
   openDialog(){
     this.dialogConfig.disableClose = true;
@@ -194,4 +235,42 @@ categorydetails(number: string){
      // this.refresh();
     });
   }
+
+  discountEdit(){
+    //this.successdialog = 'block';
+
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+      'top': '1000',
+      left: '100'
+    };
+    this.dialog.open(DiscounteditComponent,{
+     // data: {dialogTitle: "hello", dialogText: "text"},
+      height: '80%', 
+    })
+    .afterClosed().subscribe(result => {
+    });
+      
+  }
+
+  discountDelete(){
+    //this.successdialog = 'block';
+
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+      'top': '100',
+      left: '100'
+    };
+    this.dialog.open(DiscountdeleteComponent,{
+     // data: {dialogTitle: "hello", dialogText: "text"},
+      height: '80%', 
+      width: '60%'
+    })
+    .afterClosed().subscribe(result => {
+    });
+      
+  }
+
   }

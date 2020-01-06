@@ -38,24 +38,39 @@
                 </div>
 
                 <div class="row">
-                  <input type="checkbox" />
+                  <input type="checkbox" style="margin: 7px;"/>
                       <p>Free Gift</p>
                       <input type="text" id="freegift-box" placeholder="Product Free Gift" />
                 </div>
 
                 <div class="row">
-                  <input type="checkbox" />
+                    <label class="checkbox-inline">
+                  <input type="checkbox" style="margin: 7px;"/>
+                </label>
                       <p>others </p>
-                      <input type="text" id="freegift-box" placeholder="Custom Promotion" />
+                      <input type="text" id="others-box" placeholder="Custom Promotion" />
                 </div>
             </div>
-            <div class="row">
-                <p>Promotion Period :</p>
-                <input type="text"/>
+
+            <div class="col-lg-2"></div>
+            <div class="col-lg-10">
+                <div class="row">
+                    <p>Promotion Period :</p>
+                    <input type="text" placeholder="xx-xx-xxxx" id="promotion-periodbox"/>
+                    &nbsp;&nbsp;
+                <hr class="hrline">
                 &nbsp;&nbsp;
-               <hr class="hrline">
-               &nbsp;&nbsp;
-                <input type="text"/>
+                    <input type="text" placeholder="xx-xx-xxxx" id="promotion-periodbox"/>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <button id="save-btn">Save</button>
+                    </div>
+                    <div class="col-lg-6">
+                        <button id="cancel-btn">Cancel</button>
+                    </div>
+                 </div>
             </div>
         
 
