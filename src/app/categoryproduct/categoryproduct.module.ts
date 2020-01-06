@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CategoryaddComponent, AddpromotionComponent } from './categoryadd/categoryadd.component';
+import { CategoryaddComponent, AddpromotionComponent, DiscounteditComponent, DiscountdeleteComponent, CategoryeditdeleteComponent, AddnewcategoryComponent } from './categoryadd/categoryadd.component';
 import { Routes, RouterModule } from '@angular/router';
-import { MatDialogModule, MatDialog, MatFormFieldModule } from '@angular/material';
+import { MatDialogModule, MatDialog, MatFormFieldModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -42,7 +42,6 @@ import {
 import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { EditdeletedialogComponent } from './editdeletedialog/editdeletedialog.component';
 
 
 const routes: Routes = [
@@ -51,7 +50,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [CategoryaddComponent, AddpromotionComponent, EditdeletedialogComponent],
+  declarations: [AddnewcategoryComponent,CategoryaddComponent,CategoryeditdeleteComponent,AddpromotionComponent,DiscounteditComponent,DiscountdeleteComponent],
   imports: [
     MatFormFieldModule,
     MatInputModule,
@@ -98,7 +97,10 @@ const routes: Routes = [
     MatDialogModule,
     CommonModule,RouterModule.forChild(routes) ,
   ],
-  entryComponents: [EditdeletedialogComponent,AddpromotionComponent]
+  entryComponents: [AddnewcategoryComponent,AddpromotionComponent,CategoryeditdeleteComponent,DiscounteditComponent,DiscountdeleteComponent],
+  providers: [
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true, direction: 'ltr'}}
+  ]
 })
 export class CategoryproductModule { 
   constructor(private dialog: MatDialog) {}

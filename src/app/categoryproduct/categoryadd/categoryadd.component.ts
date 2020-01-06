@@ -1,16 +1,36 @@
-import { EditdeletedialogComponent } from '../editdeletedialog/editdeletedialog.component';
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 
 
 
-// add promostion start
+// addnewcategory start
+@Component({
+  selector: 'addnewcategory',
+  styleUrls: ['./addnewcategory.css'],
+  templateUrl: './addnewcategory.html', 
+})
+export class AddnewcategoryComponent {
+  countryList:any;
+  priorityList:any;
+  model: any = {};
+  constructor(
 
+    ) {
+     // this.countryList = require("../../../assets/country.json");
+    }
+
+    close() {
+    //this.dialogRef.close();
+  }
+}
+// addnewcategory end
+
+// add promostion start
 @Component({
   selector: 'addpromotion',
-  styleUrls: ['./addpromotion.css'],
-  templateUrl: './addpromotion.html', 
+  styleUrls: ['../addpromotion.css'],
+  templateUrl: '../addpromotion.html', 
 })
 export class AddpromotionComponent {
   countryList:any;
@@ -28,13 +48,13 @@ export class AddpromotionComponent {
 }
 // add promostion end
 
-//discountedit start
+// categoryeditdelete start
 @Component({
-  selector: 'discountedit',
-  styleUrls: ['../discountedit.css'],
-  templateUrl: '../discountedit.html', 
+  selector: 'categoryeditdelete',
+  styleUrls: ['../categoryeditdelete.css'],
+  templateUrl: '../categoryeditdelete.html', 
 })
-export class DiscounteditComponent {
+export class CategoryeditdeleteComponent {
   countryList:any;
   priorityList:any;
   model: any = {};
@@ -48,7 +68,29 @@ export class DiscounteditComponent {
     //this.dialogRef.close();
   }
 }
+// categoryeditdelete end
+
+//discountedit start
+@Component({
+  selector: 'discountedit',
+  styleUrls: ['../discountedit.css'],
+  templateUrl: '../discountedit.html', 
+})
+export class DiscounteditComponent {
+  countryList:any;
+  priorityList:any;
+  model: any = {};
+  constructor() {
+     // this.countryList = require("../../../assets/country.json");
+    }
+
+    close() {
+    //this.dialogRef.close();
+  }
+}
 //discountedit end
+
+//discountdelete start
 @Component({
   selector: 'discountdelete',
   styleUrls: ['../discountdelete.css'],
@@ -68,8 +110,6 @@ export class DiscountdeleteComponent {
     //this.dialogRef.close();
   }
 }
-//discountdelete start
-
 //discountdelete end
 
 // Main compoent
@@ -202,6 +242,23 @@ categorydetails(number: string){
   }
   dialogConfig = new MatDialogConfig();
 
+  addNewCategory(){
+    //this.successdialog = 'block';
+
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+      'top': '1000',
+      left: '100'
+    };
+    this.dialog.open(AddnewcategoryComponent,{
+      panelClass: 'addnewcategory'
+     // data: {dialogTitle: "hello", dialogText: "text"},
+    })
+    .afterClosed().subscribe(result => {
+    });
+  }
+
   addpromotion(){
     //this.successdialog = 'block';
 
@@ -212,8 +269,8 @@ categorydetails(number: string){
       left: '100'
     };
     this.dialog.open(AddpromotionComponent,{
+      panelClass: 'addpromotion'
      // data: {dialogTitle: "hello", dialogText: "text"},
-      height: '80%', 
     })
     .afterClosed().subscribe(result => {
     });
@@ -223,14 +280,18 @@ categorydetails(number: string){
   
 
 
-  openDialog(){
+  categoryEditDelete(){
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
     this.dialogConfig.position = {
       'top': '1000',
       left: '100'
     };
-    this.dialog.open(EditdeletedialogComponent,{ panelClass: 'mat-dialog-container' })
+    this.dialog.open(CategoryeditdeleteComponent,{
+
+      panelClass: 'categoryeditdelete'
+
+    })
     .afterClosed().subscribe(result => {
      // this.refresh();
     });
@@ -246,8 +307,8 @@ categorydetails(number: string){
       left: '100'
     };
     this.dialog.open(DiscounteditComponent,{
+      panelClass: 'discountedit'
      // data: {dialogTitle: "hello", dialogText: "text"},
-      height: '80%', 
     })
     .afterClosed().subscribe(result => {
     });
@@ -263,10 +324,8 @@ categorydetails(number: string){
       'top': '100',
       left: '100'
     };
-    this.dialog.open(DiscountdeleteComponent,{
-     // data: {dialogTitle: "hello", dialogText: "text"},
-      height: '80%', 
-      width: '60%'
+    this.dialog.open(DiscountdeleteComponent,{ 
+      panelClass: 'discountdelete'
     })
     .afterClosed().subscribe(result => {
     });

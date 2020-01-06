@@ -97,38 +97,6 @@ mat-form-field{
     margin-left: 10px;
     cursor: pointer;
 }
-#editdelcategory-div{
-    width: 180px;
-    height: 340px;
-    background: #272E34;
-    margin: 30px;
-    text-align: center;
-}
-#categoryname-div{
-    width: 410px;
-    height: 60px;
-    background: #272E34;
-}
-#categorydesc-div{
-    width: 410px;
-    height: 150px;
-    background: #272E34;
-}
-#fontsize-21{
-    font-size: 21px;
-}
-#save-btn{
-    width: 140px;
-    height: 50px;
-    background: #51AF57;
-    border: none;
-}
-#cancel-btn{
-    width: 140px;
-    height: 50px;
-    background: #FF0000;
-    border: none;
-}
 #edit-del-text{
     font-size: 23px;
     margin: 8px;
