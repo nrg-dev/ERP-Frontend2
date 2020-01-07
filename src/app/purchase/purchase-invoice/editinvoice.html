@@ -2,7 +2,7 @@
     <br/>
     <h2 style="text-align: center;">Edit Invoice {{ this.model.invoiceNumber }}</h2>
     <br/>
-    <table>
+    <table class="scroll">
         <thead>
             <tr id="tr-color">
                 <th>No</th>
@@ -18,10 +18,18 @@
         <tbody>
             <tr *ngFor="let list of purchaseEditList">
                 <td>{{ list.sNo }}</td>
-                <td>{{ list.productName }}</td>
-                <td>{{ list.category }}</td>
+                <td>
+                    <select class="form-control" value="{{ list.productName }}">
+                        <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
+                    </select> 
+                  </td>
+                  <td>
+                    <select class="form-control" value="{{ list.category }}">
+                        <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
+                    </select> 
+                  </td>
                 <td>{{ list.addedDate }}</td>
-                <td>{{ list.quantity }}</td>
+                <td><input type="text" value="{{ list.quantity }}" /></td>
                 <td>{{ list.subTotal }}</td>
                 <td>
                     <div id="rowdelete-div" (click)="deletePurchaseInvoice()">
@@ -31,5 +39,16 @@
             </tr>
         </tbody>
     </table>
-    
+    <br/> <br/>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <div class="radio-toolbar">
+                <label id="checkIn-butn" (click)="saveInvoice()">Save</label>
+                <label id="checkOut-butn" (click)="cancelInvoice()">Cancel</label>
+            </div>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+    <br/> <br/>
 </div>

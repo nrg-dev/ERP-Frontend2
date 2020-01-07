@@ -4,7 +4,7 @@
       <div class="tab">
         <a class="tablink" routerLink="../purchaseadd" style="width: auto;color:white;">Purchase Order</a>
         <a class="tablink" style="border-bottom: 3px solid #007bff;width: auto;color:white;">Purchase Invoice</a>
-        <a class="tablink" routerLink="../purchaseadd" style="width: auto;color:white;">Purchase Return</a>
+        <a class="tablink" routerLink="../purchase-return" style="width: auto;color:white;">Purchase Return</a>
         <a class="tablink" routerLink="../purchaseadd" style="width: auto;color:white;">Purchase Report</a>
       </div>
 
@@ -86,15 +86,20 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
                 <td mat-cell *matCellDef="let row"> {{row.status}} </td>
               </ng-container>
+              
               <ng-container matColumnDef="Action">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
                 <td mat-cell *matCellDef="let row"> 
                   <div class="row" style="margin: 10px;">
+                    <div id="rowview-div" (click)="viewinvoice(row.invoiceNumber)">
+                      <i class="fa fa-eye" id="rowedit-icon" aria-hidden="true"></i>    
+                    </div>  
+                    &nbsp;&nbsp;&nbsp;
                     <div id="rowedit-div" (click)="editinvoice(row.invoiceNumber)">
                         <i class="fa fa-pencil-square-o" id="rowedit-icon" aria-hidden="true"></i>    
                     </div>  
-                    &nbsp;&nbsp;
-                    <div id="rowview-div"(click)="deletePurchase()">
+                    &nbsp;&nbsp;&nbsp;
+                    <div id="rowdelete-div"(click)="deletePurchase()">
                         <i class="fa fa-trash-o" id="rowedit-icon" aria-hidden="true"></i>    
                     </div>   
                  </div> 

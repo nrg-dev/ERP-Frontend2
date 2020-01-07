@@ -9,6 +9,46 @@ import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
 import { PurchaseService } from '../purchase.service';
 
 @Component({
+  selector: 'viewInvoice',
+  styleUrls: ['./viewInvoice.css'],
+  templateUrl: './viewInvoice.html', 
+})
+export class ViewInvoice {
+  model: any ={};
+  public productList : any;
+  dialogConfig = new MatDialogConfig();
+  isDtInitialized:boolean = false;
+  constructor(
+    private purchaseService: PurchaseService,
+    private dialog: MatDialog,
+    private alertService: AlertService,
+
+    public dialogRef: MatDialogRef<ViewInvoice>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {  
+    alert("Invoice Number ---->"+this.data.invoiceNumber);
+    this.model.invoiceNumber = this.data.invoiceNumber;
+    const purchasedata = require("../../purchasedata.json");
+    this.productList=purchasedata;
+    /* this.purchaseService.get(this.data)
+    .subscribe(
+      data => {
+        this.model = data;
+        console.log("Purchase InvoiceNumber -->"+this.model.invoiceNumber);
+      },
+      error => {
+          alert('Error !!!!');
+      }
+    ); */
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+  
+}
+
+@Component({
   selector: 'editinvoice',
   styleUrls: ['./editinvoice.css'],
   templateUrl: './editinvoice.html', 
@@ -16,7 +56,8 @@ import { PurchaseService } from '../purchase.service';
 export class EditInvoice {
   model: any ={};
   public purchaseEditList : any;
-  public purchaseList : any;
+  public productList : any;
+  public categoryList : any;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
   constructor(
@@ -29,6 +70,8 @@ export class EditInvoice {
   ) {  
     alert("Invoice Number ---->"+this.data.invoiceNumber);
     this.model.invoiceNumber = this.data.invoiceNumber;
+    this.productList = ['Mobile', 'Computer', 'Cloths', 'TV'];
+    this.categoryList = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];
     const purchasedata = require("../../purchasedata.json");
     this.purchaseEditList=purchasedata;
     /* this.purchaseService.get(this.data)
@@ -46,7 +89,6 @@ export class EditInvoice {
   onNoClick(): void {
     this.dialogRef.close();
   }
-
   
   public deletePurchaseInvoice(){
     this.dialogConfig.disableClose = true;
@@ -63,6 +105,15 @@ export class EditInvoice {
       // this.refresh();
     });
   }
+
+  saveInvoice(){
+    alert("-- Save Invoice --");
+  }
+
+  cancelInvoice(){
+    alert("-- Cancel Invoice --");
+  }
+
 }
 
 @Component({
@@ -198,6 +249,23 @@ export class PurchaseInvoiceComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  public viewinvoice(invoiceNumber:string){
+    console.log("Invoice Number  --->"+invoiceNumber);
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+      'top': '1000',
+      left: '100'
+    };
+    this.dialog.open(ViewInvoice,{
+      panelClass: 'viewInvoice',
+      data: "invoiceNumber",
+      height: '80%'
+    }).afterClosed().subscribe(result => {
+      // this.refresh();
+    });
+  }
   
   public editinvoice(invoiceNumber:string){
     console.log("Invoice Number  --->"+invoiceNumber);
@@ -208,6 +276,7 @@ export class PurchaseInvoiceComponent implements OnInit {
       left: '100'
     };
     this.dialog.open(EditInvoice,{
+      panelClass: 'editInvoice',
       data: "invoiceNumber",
       height: '80%'
     }).afterClosed().subscribe(result => {

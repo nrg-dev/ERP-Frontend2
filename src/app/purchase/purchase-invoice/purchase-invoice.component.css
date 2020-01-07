@@ -168,6 +168,13 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
   border-radius: 16px;
 }
 
+#rowdelete-div{
+  height: 30px;
+  width: 30px;
+  background: #dc7218; 
+  border-radius: 16px;
+}
+
 #rowedit-icon{
   margin-left: 8px;
   margin-top: 6px;
