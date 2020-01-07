@@ -4,14 +4,14 @@
     color:white;
 }
 ::ng-deep .discountdelete .mat-dialog-container {
-    background-color: #434F5B;
-    width: 500px;
-    height: 450px;
+    background-color: #5ba95b;
+    width: 400px ;
+    height: 70px ;
     padding: 17px;
     overflow: hidden;
+    margin-top: -305px;
 }
 h2{
     text-align: center;
-    font-size: 30px;
-    margin: 86px;
+    font-size: 25px;
 }

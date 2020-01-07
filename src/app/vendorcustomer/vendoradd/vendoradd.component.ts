@@ -554,7 +554,7 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     this.vendordragAndDrop = false;
   }
   saveCustomer(){
-    console.log("save bank");
+    console.log("save customer");
     this.model.createdPerson=localStorage.getItem("currentusername");
     this.model.currentUser=localStorage.getItem('currentusername');
     console.log('............controller save bank....');

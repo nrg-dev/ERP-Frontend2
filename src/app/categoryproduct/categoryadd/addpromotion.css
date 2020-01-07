@@ -13,7 +13,7 @@
 h2{
     text-align: center;
     font-size: xx-large;
-    color: black;
+    color: white;
     font-weight: bold;
 }  
 .hrline{
@@ -26,7 +26,7 @@ h2{
     height: 10px;
 }
 #dicountinput-box{
-    width: 55px;
+    width: 40px;
     height: 35px;
     text-align: end;
     background: #272E34;
@@ -34,7 +34,7 @@ h2{
     box-shadow: none;
 }
 #qtyinput-box{
-    width: 55px;
+    width: 35px;
     height: 35px;
     background: #272E34;
     border: none;
@@ -45,98 +45,40 @@ h2{
     height: 100%;
 }
 #selectbox-category{
-    width: 50%;
-    height: 35px;
+    width: 100%;
+    height: 80%px;
     border: none;
     color: #636A70;
     background: #272E34;
     box-shadow: none;
+    margin-left: -20px;
 }
 .searchicon2{
     font-family: fontawesome;
     font-size: 20px;
-    width: 50%;
-    height: 30%;
+    width: 100%;
+    height: 80%;
     background: #272E34;
     border: none;
     box-shadow: none;
-}
-#dicountinput-box{
-    width: 55px;
-    height: 35px;
-    text-align: end;
-    background: #272E34;
-    border: none;
-    box-shadow: none;
-}
-#selectbox-category{
-    width: 50%;
-    height: 35px;
-    border: none;
-    color: #636A70;
-    background: #272E34;
-    box-shadow: none;
-}
-.searchicon2{
-    font-family: fontawesome;
-    font-size: 20px;
-    width: 50%;
-    height: 30%;
-    background: #272E34;
-    border: none;
-    box-shadow: none;
-}
-#dicountinput-box{
-    width: 55px;
-    height: 35px;
-    text-align: end;
-    background: #272E34;
-    border: none;
-    box-shadow: none;
-}
-#selectbox-category{
-    width: 57%;
-    height: 35px;
-    border: none;
-    color: #636A70;
-    background: #272E34;
-    box-shadow: none;
-}
-.searchicon2{
-    font-family: fontawesome;
-    font-size: 20px;
-    width: 57%;
-    height: 30%;
-    background: #272E34;
-    border: none;
-    box-shadow: none;
-}
-#dicountinput-box{
-    width: 55px;
-    height: 35px;
-    text-align: end;
-    background: #272E34;
-    border: none;
-    box-shadow: none;
+    margin-left: -20px;
 }
 #freegift-box{
-    width: 170px;
+    width: 125px;
     height: 35px;
-    text-align: end;
     background: #272E34;
     border: none;
     box-shadow: none;
 }
 #others-box{
-    width: 170px;
+    width: 126px;
     height: 35px;
-    text-align: end;
     background: #272E34;
     border: none;
     box-shadow: none;
 }
 #promotion-periodbox{
-    width: 25%;
+    width: 32%;
     height: 35px;
     border: none;
     color: #636A70;

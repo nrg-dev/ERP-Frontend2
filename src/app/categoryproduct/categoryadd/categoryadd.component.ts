@@ -1,7 +1,7 @@
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-
+import {MatExpansionPanel, MatSnackBar, Sort} from '@angular/material';
 
 
 // addnewcategory start
@@ -29,8 +29,8 @@ export class AddnewcategoryComponent {
 // add promostion start
 @Component({
   selector: 'addpromotion',
-  styleUrls: ['../addpromotion.css'],
-  templateUrl: '../addpromotion.html', 
+  styleUrls: ['./addpromotion.css'],
+  templateUrl: './addpromotion.html', 
 })
 export class AddpromotionComponent {
   countryList:any;
@@ -51,8 +51,8 @@ export class AddpromotionComponent {
 // categoryeditdelete start
 @Component({
   selector: 'categoryeditdelete',
-  styleUrls: ['../categoryeditdelete.css'],
-  templateUrl: '../categoryeditdelete.html', 
+  styleUrls: ['./categoryeditdelete.css'],
+  templateUrl: './categoryeditdelete.html', 
 })
 export class CategoryeditdeleteComponent {
   countryList:any;
@@ -73,8 +73,8 @@ export class CategoryeditdeleteComponent {
 //discountedit start
 @Component({
   selector: 'discountedit',
-  styleUrls: ['../discountedit.css'],
-  templateUrl: '../discountedit.html', 
+  styleUrls: ['./discountedit.css'],
+  templateUrl: './discountedit.html', 
 })
 export class DiscounteditComponent {
   countryList:any;
@@ -93,8 +93,8 @@ export class DiscounteditComponent {
 //discountdelete start
 @Component({
   selector: 'discountdelete',
-  styleUrls: ['../discountdelete.css'],
-  templateUrl: '../discountdelete.html', 
+  styleUrls: ['./discountdelete.css'],
+  templateUrl: './discountdelete.html', 
 })
 export class DiscountdeleteComponent {
   countryList:any;
@@ -111,6 +111,102 @@ export class DiscountdeleteComponent {
   }
 }
 //discountdelete end
+
+// addnewproduct start
+@Component({
+  selector: 'addnewproduct',
+  styleUrls: ['./addnewproduct.css'],
+  templateUrl: './addnewproduct.html', 
+})
+export class AddnewproductComponent {
+  countryList:any;
+  priorityList:any;
+  model: any = {};
+  constructor(
+
+    ) {
+     // this.countryList = require("../../../assets/country.json");
+    }
+
+    close() {
+    //this.dialogRef.close();
+  }
+}
+// addnewproduct end
+
+// productview start
+@Component({
+  selector: 'productview',
+  styleUrls: ['./productview.css'],
+  templateUrl: './productview.html', 
+})
+export class ProductviewComponent {
+  countryList:any;
+  priorityList:any;
+  model: any = {};
+  constructor(
+
+    ) {
+     // this.countryList = require("../../../assets/country.json");
+    }
+
+    close() {
+    //this.dialogRef.close();
+  }
+}
+// productview end
+
+// categoryeditdelete start
+@Component({
+  selector: 'productedit',
+  styleUrls: ['./productedit.css'],
+  templateUrl: './productedit.html', 
+})
+export class ProducteditComponent {
+  countryList:any;
+  priorityList:any;
+  model: any = {};
+  categoryeditlist: any =[
+    {
+      number:'01',
+      allproduct:'Resin',
+    },
+    {
+      number:'02',
+      discount:'Carbon Fabric',
+    },
+    {
+      number:'03',
+      freegifts:'Fiber',
+    },
+    {
+      number:'04',
+      fiber:'Brush',
+    },
+    {
+      number:'05',
+      pigmen:'Sandpaper',
+    },
+    {
+      number:'06',
+      brush:'Hardware',
+    },
+    {
+      number:'07',
+      sandpaper:'Accecories',
+    },
+
+  ];
+  constructor() {
+    }
+
+    close() {
+    //this.dialogRef.close();
+  }
+  tempid=null;
+}
+// categoryeditdelete end
+
 
 // Main compoent
 @Component({
@@ -131,6 +227,7 @@ export class CategoryaddComponent implements OnInit {
   public leftdetails=false;
   public discountdetails=false;
   public editdeletediv=false;
+  public fiberdetails=false;
 
   successdialog = 'none';
 
@@ -214,25 +311,30 @@ categorydetails(number: string){
   if(number=='01'){
     this.leftdetails=true;
     this.discountdetails=false;
+    this.fiberdetails=false;
     this.editdeletediv=false;
   }
   if(number=='02'){
     this.discountdetails=true;
+    this.fiberdetails=false;
     this.editdeletediv=false;
   }
   if(number=='03'){
     this.leftdetails=true;
     this.discountdetails=false;
+    this.fiberdetails=false;
     this.editdeletediv=false;
   }
   if(number=='04'){
     this.leftdetails=true;
+    this.fiberdetails=true;
     this.discountdetails=false;
     this.editdeletediv=false;
   }
   if(number=='05'){
     this.leftdetails=true;
     this.discountdetails=false;
+    this.fiberdetails=false;
     this.editdeletediv=false;
   }
   }
@@ -278,8 +380,6 @@ categorydetails(number: string){
   }
 
   
-
-
   categoryEditDelete(){
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
@@ -316,8 +416,6 @@ categorydetails(number: string){
   }
 
   discountDelete(){
-    //this.successdialog = 'block';
-
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
     this.dialogConfig.position = {
@@ -330,6 +428,48 @@ categorydetails(number: string){
     .afterClosed().subscribe(result => {
     });
       
+  }
+
+  addNewProduct(){
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+      'top': '100',
+      left: '100'
+    };
+    this.dialog.open(AddnewproductComponent,{ 
+      panelClass: 'addnewproduct'
+    })
+    .afterClosed().subscribe(result => {
+    }); 
+  }
+
+  productview(){
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+      'top': '100',
+      left: '100'
+    };
+    this.dialog.open(ProductviewComponent,{ 
+      panelClass: 'productview'
+    })
+    .afterClosed().subscribe(result => {
+    }); 
+  }
+
+  productEdit(){
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+      'top': '100',
+      left: '100'
+    };
+    this.dialog.open(ProducteditComponent,{ 
+      panelClass: 'productedit'
+    })
+    .afterClosed().subscribe(result => {
+    }); 
   }
 
   }

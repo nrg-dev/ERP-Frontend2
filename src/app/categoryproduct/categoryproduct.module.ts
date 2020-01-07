@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CategoryaddComponent, AddpromotionComponent, DiscounteditComponent, DiscountdeleteComponent, CategoryeditdeleteComponent, AddnewcategoryComponent } from './categoryadd/categoryadd.component';
+import { CategoryaddComponent, AddpromotionComponent, DiscounteditComponent, DiscountdeleteComponent, CategoryeditdeleteComponent, AddnewcategoryComponent, AddnewproductComponent ,ProductviewComponent, ProducteditComponent} from './categoryadd/categoryadd.component';
 import { Routes, RouterModule } from '@angular/router';
 import { MatDialogModule, MatDialog, MatFormFieldModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 import {
   MatAutocompleteModule,
-  MatBadgeModule,
+  MatBadgeModule, 
   MatBottomSheetModule,
   MatButtonModule,
   MatButtonToggleModule,
@@ -50,7 +50,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AddnewcategoryComponent,CategoryaddComponent,CategoryeditdeleteComponent,AddpromotionComponent,DiscounteditComponent,DiscountdeleteComponent],
+  declarations: [AddnewcategoryComponent,CategoryaddComponent,CategoryeditdeleteComponent,AddpromotionComponent,DiscounteditComponent,DiscountdeleteComponent,AddnewproductComponent,ProductviewComponent,ProducteditComponent],
   imports: [
     MatFormFieldModule,
     MatInputModule,
@@ -97,7 +97,7 @@ const routes: Routes = [
     MatDialogModule,
     CommonModule,RouterModule.forChild(routes) ,
   ],
-  entryComponents: [AddnewcategoryComponent,AddpromotionComponent,CategoryeditdeleteComponent,DiscounteditComponent,DiscountdeleteComponent],
+  entryComponents: [AddnewcategoryComponent,AddpromotionComponent,CategoryeditdeleteComponent,DiscounteditComponent,DiscountdeleteComponent,AddnewproductComponent,ProductviewComponent,ProducteditComponent],
   providers: [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true, direction: 'ltr'}}
   ]

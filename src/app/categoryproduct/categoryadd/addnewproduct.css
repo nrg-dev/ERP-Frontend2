@@ -3,9 +3,9 @@
     font-size:medium;
     color:white;
 }
-::ng-deep .discountedit .mat-dialog-container {
+::ng-deep .addnewproduct .mat-dialog-container {
     background-color: #434F5B;
-    width: 850px;
+    width: 880px;
     height: 630px;
     padding: 17px;
     overflow: hidden;
@@ -21,16 +21,9 @@ h2{
     width: 100%;
 }
 #disedit-icon{
-    font-size: 20px;
-    color: black;
+    font-size: 35px;
+    color: white;
     text-align: center;
-    margin: 5px;
-}
-#editicon-background{
-    width: 30px;
-    height: 30px;
-    background-color: white;
-    border-radius: 15px;
 }
 #editselect-box{
     width: 220px;
@@ -55,11 +48,6 @@ h2{
     background: #272E34;
     border: none;
     box-shadow: none;
-}
-#productcode-box{
-    background-color: #999999;
-    width: 190px;
-    height: 35px;
 }
 #tax-box{
     width: 50px;
@@ -86,57 +74,19 @@ h2{
     border: none;
     box-shadow: none;
 }
-#picture-box{
-    height: 130px;
+#addproductpic-box{
+    height: 100px;
+    width: 110px;
     text-align: center;
     background: #272E34;
     border: none;
     box-shadow: none;
 }
-#chooseimg-box1{
-    width: 80px;
-    height: 60px;
-    text-align: end;
-    background: #272E34;
-    border: none;
-    box-shadow: none;
-}
-#chooseimg-box2{
-    width: 80px;
-    height: 60px;
-    text-align: end;
-    background: #272E34;
-    border: none;
-    box-shadow: none;
-    margin-top: 10px;
-}
-#pictureedit-icon2{
-    font-size: 20px;
-    color: white;
+#addpicture-icon{
+    font-size: 40px;
+    color: #51575C;
     text-align: center;
-    margin: 5px;
-}
-#pictureedit-icon3{
-    font-size: 15px;
-    color: white;
-    text-align: center;
-    margin: 5px;
-}
-#edit-round{
-    width: 40px;
-    height: 40px;
-    background-color: #272E34;
-    border: 2px solid white;
-    border-radius: 35px;
-    margin: 15px 0px 0px 80px;
-}
-#edit-round2{
-    width: 30px;
-    height: 30px;
-    background-color: #272E34;
-    border: 2px solid white;
-    border-radius: 35px;
-    margin: -5px 0px 0px 25px;
+    margin: 30px;
 }
 #save-btn{
     width: 140px;
@@ -150,3 +100,4 @@ h2{
     background: #FF0000;
     border: none;
 }
+

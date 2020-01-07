@@ -19,7 +19,11 @@ table th,td{
 }
 mat-paginator{
     width: 100%;
-    background-color: #181C20;
+    background-color: #1F2429;
+    color: white;
+}
+::ng-deep .mat-select-value,::ng-deep .mat-select-arrow{
+    color: white;
 }
 .mat-elevation-z8{
     height: 250PX;
@@ -33,6 +37,7 @@ mat-form-field{
 .mat-elevation-z8{
     height: 230px;
     overflow-y: scroll;
+    width: 757px;
 }
 
 
@@ -172,21 +177,51 @@ mat-form-field{
     background: #267CB4;
     border-radius: 16px;
 }
+#rowedit-div2{
+    height: 20px;
+    width: 20px;
+    background: #267CB4;
+    border-radius: 16px;
+}
 #rowview-div{
+    height: 20px;
+    width: 20px;
+    background: #6BD052;
+    border-radius: 16px;
+}
+#rowprint-div{
+    height: 20px;
+    width: 20px;
+    background: #FE6601;
+    border-radius: 16px;
+}
+#rowdelete-div{
     height: 30px;
     width: 30px;
     background: #EF6956; 
     border-radius: 16px;
 }
+#rowdelete-div2{
+    height: 20px;
+    width: 20px;
+    background: #EF6956; 
+    border-radius: 16px;
+}
 #rowedit-icon{
-    margin: 5px;
-    font-size: 20px;
+    margin: 4px;
+    font-size: 23px;
+}
+#rowedit-icon2{
+    margin: 3px;
+    font-size: 15px;
 }
 #rowdelete-icon{
-    margin: 5px;
-    font-size: 20px;
+    margin: 4px;
+    font-size: 23px;
+}
+#rowdelete-icon2{
+    margin: 3px;
+    font-size: 15px;
 }
 
- .mat-dialog-container{
-    background: yellow;
-}
+
