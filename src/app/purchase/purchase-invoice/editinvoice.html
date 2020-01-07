@@ -1,1 +1,35 @@
-<p> edit invoice</p>
+<div id="box-dialouge">
+    <br/>
+    <h2 style="text-align: center;">Edit Invoice {{ this.model.invoiceNumber }}</h2>
+    <br/>
+    <table>
+        <thead>
+            <tr id="tr-color">
+                <th>No</th>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>PO Date</th>
+                <th>Quantity</th>
+                <th>Sub Total</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr *ngFor="let list of purchaseEditList">
+                <td>{{ list.sNo }}</td>
+                <td>{{ list.productName }}</td>
+                <td>{{ list.category }}</td>
+                <td>{{ list.addedDate }}</td>
+                <td>{{ list.quantity }}</td>
+                <td>{{ list.subTotal }}</td>
+                <td>
+                    <div id="rowdelete-div" (click)="deletePurchaseInvoice()">
+                        <i class="fa fa-trash-o" id="rowdelete-icon" aria-hidden="true"></i>    
+                    </div>   
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>

@@ -6,9 +6,9 @@
 }
 table {
   display: block;
-  width: 80%;
+  width: 100%;
   padding-left: 10px;
-  height:230px;
+  height:400px;
   overflow-y: auto;
 }
 th{
@@ -56,9 +56,7 @@ h2{
 .tab{
   margin-left: 25px;
 }
-form{
-  border: 1px solid #243642!important;
-}
+
 #labeltext{
   color: #243642;
 }
@@ -81,7 +79,7 @@ form{
 
 #addemployee-div{
   background: #1B2931;
-  height: 650px;
+  height: 880px;
   width: 100%;
   border-radius: 10px;
   margin-left: 10px;
@@ -168,7 +166,7 @@ hr{
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
   #addemployee-div{
     background: #1B2931;
-    height: 680px;
+    height: 880px;
     width: 100%;
     border-radius: 10px;
     /* border: 1px solid black;
@@ -178,7 +176,7 @@ hr{
 @media (min-width: 1025px) and (max-width: 1280px){
   #addemployee-div{
     background: #1B2931;
-    height: 650px;
+    height: 880px;
     width: 100%;
     border-radius: 10px;
     /* border: 1px solid black;
