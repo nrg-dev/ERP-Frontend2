@@ -42,6 +42,7 @@ import {
 import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { FormsModule } from '@angular/forms';
 
 
 const routes: Routes = [
@@ -52,6 +53,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [AddnewcategoryComponent,CategoryaddComponent,CategoryeditdeleteComponent,AddpromotionComponent,DiscounteditComponent,DiscountdeleteComponent,AddnewproductComponent,ProductviewComponent,ProducteditComponent],
   imports: [
+    FormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,

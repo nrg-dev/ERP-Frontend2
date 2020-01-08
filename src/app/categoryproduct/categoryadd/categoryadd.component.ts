@@ -4,6 +4,7 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {MatExpansionPanel, MatSnackBar, Sort} from '@angular/material';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Inject} from '@angular/core';
+import { AlertService } from 'src/app/_services';
 
 
 
@@ -40,13 +41,22 @@ export class AddpromotionComponent {
   priorityList:any;
   model: any = {};
   constructor(
-
+    private alertService: AlertService,
+    public dialogRef: MatDialogRef<AddpromotionComponent>,
     ) {
      // this.countryList = require("../../../assets/country.json");
     }
 
-    close() {
-    //this.dialogRef.close();
+    savePromotion(){
+      this.alertService.success("Saved Successfully");
+     // setTimeout(() => {
+      // this.alertService.clear();
+    // }, 2000);
+    this.dialogRef.close();
+console.log("savepromotion");
+    }
+    close(e) {
+    this.dialogRef.close();
   }
 }
 // add promostion end

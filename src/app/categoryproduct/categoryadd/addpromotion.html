@@ -1,6 +1,7 @@
 <!--Dialouge box start-->
 <div id="box-dialouge">
     <br/>
+    <form name="addpromotion" (ngSubmit)="savePromotion()"> 
     <h2 style="text-align: center;">Add Promotion Product</h2>
     <div class="row">
         <div class="col-lg-2"></div>
@@ -87,15 +88,15 @@
             <div class="row">
                 <div class="col-lg-2"></div>
                 <div class="col-lg-4">
-                    <button id="save-btn">Save</button>
+                    <button id="save-btn" type="submit">Save</button>
                 </div>
                 <div class="col-lg-4">
-                    <button id="cancel-btn">Cancel</button>
+                    <button id="cancel-btn" (click)="close($event); false">Cancel</button>
                 </div>
                 <div class="col-lg-2"></div>
              </div>
-        </div>
-    
-
+        </div>    
+</div>
+</form>  
 </div>
 <!--Dialouge box end-->
