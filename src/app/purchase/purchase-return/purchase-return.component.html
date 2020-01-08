@@ -1,0 +1,161 @@
+<div class="employee-content">
+    <div class="row">
+      <div class="col-lg-11">
+        <div class="tab">
+          <a class="tablink" routerLink="../purchaseadd" style="width: auto;color:white;">Purchase Order</a>
+          <a class="tablink" routerLink="../purchase-invoice" style="width: auto;color:white;">Purchase Invoice</a>
+          <a class="tablink" style="border-bottom: 3px solid #007bff;width: auto;" id="defaultOpen">Purchase Return</a>
+          <a class="tablink" routerLink="../purchaseadd" style="width: auto;color:white;">Purchase Report</a>
+        </div>
+                
+        <div id="addemployee-div">
+          <br/><br/>
+          <div class="group-gap" style="margin: 40px;">
+            <br/><br/>
+            <form name="form">
+                <h5 class="mb-3">Purchase Return  </h5>
+                <br/>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label>Product Category </label>
+                            </div>
+                            <div class="col-lg-1">
+                                <label>:</label>
+                            </div>
+                            <div class="col-lg-7">
+                                <select class="form-control" style="background-color:#1B2931;">
+                                    <option style="text-align:center;">-- Select --</option>
+                                    <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
+                                </select> 
+                            </div>
+                        </div><br/>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label>Product Name </label>
+                            </div>
+                            <div class="col-lg-1">
+                                <label>:</label>
+                            </div>
+                            <div class="col-lg-7">
+                                <select class="form-control" style="background-color:#1B2931;">
+                                    <option>-- Select --</option>
+                                    <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
+                                </select> 
+                            </div>
+                        </div><br/>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label>Quantity </label>
+                            </div>
+                            <div class="col-lg-1">
+                                <label>:</label>
+                            </div>
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" style="background-color:#1B2931;" id="inputBox" placeholder="     ltr/kg/pcs      "/>
+                            </div>
+                        </div><br/>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label>Date </label>
+                            </div>
+                            <div class="col-lg-1">
+                                <label>:</label>
+                            </div>
+                            <div class="col-lg-7">
+                                <input type="date" class="form-control" style="background-color:#1B2931;" id="inputBox" />
+                            </div>
+                        </div><br/>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label>Item Status </label>
+                            </div>
+                            <div class="col-lg-1">
+                                <label>:</label>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="form-group">
+                                    <li>
+                                        <input type="radio"  name="itemStatus" [(ngModel)]="model.itemStatus"  value="damaged"> Damaged                                                
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="itemStatus" [(ngModel)]="model.itemStatus" value="expaired"> Expaired 
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="itemStatus" [(ngModel)]="model.itemStatus"  value="bs"> Bs 
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="itemStatus" [(ngModel)]="model.itemStatus"  value="others"> Others
+                                    </li>
+                                </div>
+                            </div>
+                        </div><br/>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label>Return as </label>
+                            </div>
+                            <div class="col-lg-1">
+                                <label>:</label>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="form-group">
+                                    <li>
+                                        <input type="radio"  name="returnStatus" [(ngModel)]="model.returnStatus"  value="cash"> Cash                                                
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="returnStatus" [(ngModel)]="model.returnStatus" value="Credit/Voucher"> Credit/Voucher 
+                                    </li>
+                                </div>
+                            </div>
+                        </div><br/>
+                        <div class="row">
+                            <div class="radio-toolbar">
+                              <label id="add-butn" (click)="addProduct()">Add Product</label>
+                            </div>
+                          </div>
+                              
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div id="box-dialouge">
+                            <br/>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <h3>Summary</h3>
+                                </div>
+                                <div class="col-lg-2"></div>
+                                <div class="col-lg-4">
+                                    <button id="print-butn">
+                                        <i class="fa fa-print" aria-hidden="true" id="icon-mod"></i>
+                                        <label id="text">Print Page</label>
+                                    </button>
+                                </div>
+                            </div>
+                            <br/>
+                            
+                            <br/> <br/>
+                            <div class="row">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-6">
+                                    <div class="radio-toolbar">
+                                        <label id="checkIn-butn" (click)="savePurchaseReturn()">Save</label>
+                                        <label id="checkOut-butn" (click)="cancelPurchaseReturn()">Cancel</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3"></div>
+                            </div>
+                            <br/> <br/>
+                        </div>
+                        
+                    </div>
+                </div>
+          </form>
+            <!-- Submit Button -->
+          </div>
+        </div>
+      </div>                    
+    </div>
+    <br/><br/><br/>
+  </div>
+  
