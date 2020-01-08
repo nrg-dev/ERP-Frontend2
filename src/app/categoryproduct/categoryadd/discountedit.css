@@ -35,7 +35,6 @@ h2{
 #editselect-box{
     width: 220px;
     height: 35px;
-    text-align: end;
     background: #272E34;
     border: none;
     box-shadow: none;
@@ -43,7 +42,6 @@ h2{
 #name-box{
     width: 220px;
     height: 35px;
-    text-align: end;
     background: #272E34;
     border: none;
     box-shadow: none;
@@ -51,7 +49,6 @@ h2{
 #description-box{
     width: 220px;
     height: 75px;
-    text-align: end;
     background: #272E34;
     border: none;
     box-shadow: none;
@@ -60,25 +57,25 @@ h2{
     background-color: #999999;
     width: 220px;
     height: 35px;
+    color: black;
 }
 #productcode-box2{
     background-color: #999999;
     width: 190px;
     height: 35px;
+    color: black;
 }
 #tax-box{
-    width: 55px;
+    width: 60px;
     height: 35px;
-    text-align: end;
     background: #272E34;
     border: none;
     box-shadow: none;
     margin-left: 85px;
 }
 #margin-box{
-    width: 60px;
+    width: 62px;
     height: 35px;
-    text-align: end;
     background: #272E34;
     border: none;
     box-shadow: none;
@@ -86,7 +83,6 @@ h2{
 #price-box{
     width: 190px;
     height: 35px;
-    text-align: end;
     background: #272E34;
     border: none;
     box-shadow: none;
@@ -101,7 +97,6 @@ h2{
 #chooseimg-box1{
     width: 80px;
     height: 60px;
-    text-align: end;
     background: #272E34;
     border: none;
     box-shadow: none;
@@ -109,7 +104,6 @@ h2{
 #chooseimg-box2{
     width: 80px;
     height: 60px;
-    text-align: end;
     background: #272E34;
     border: none;
     box-shadow: none;

@@ -19,16 +19,16 @@
             </div>
             <br/>
             <div id="categorylist-div">
-             <div *ngFor="let list of categorylist" (click)="categorydetails(list.number)" class="categorylist-alignment" id="{{ list.number }}">
-                <p>{{ list.allproduct }}</p>
-                <p>{{ list.discount }}</p>
-                <p>{{ list.freegifts }}</p>
-                <p>{{ list.fiber }}</p>
-                <p>{{ list.pigmen }}</p>
-                <p>{{ list.brush }}</p>
-                <p>{{ list.sandpaper }}</p>
-                <p>{{ list.hardware }}</p>
-                <p>{{ list.accesories }}</p>
+            <div id="border-bottom">
+                <div *ngFor="let list of masterlist" (click)="categorydetails(list.number)" 
+                class="categorylist-alignment" id="{{ list.number }}">
+                <p>{{ list.name }}</p>
+                </div>
+            </div>
+            <div style="height: 10px;"></div>
+            <div *ngFor="let list of categorylist" (click)="productlist(list.number)" 
+            class="productlists-alignment" id="{{ list.number }}">
+                <p id="productlist-style">{{ list.name }}</p>
               </div> 
             </div>
         </div>
@@ -157,15 +157,14 @@
                         </div>
                     </div>
                     <div class="col-lg-2">
+                    </div>
+                    <div class="col-lg-5">
                         <div class="row" id="button-printpage">
                             <i class="fa fa-print" aria-hidden="true" id="icon-align"></i>
                             &nbsp;&nbsp;
                             <p>Print Page</p>
                         </div>
                     </div>
-                        <div class="col-lg-5">
-                             <input type="search" placeholder="&#xf002; search here" class="searchicon"/>
-                        </div>
                 </div>
 
                 <br/>

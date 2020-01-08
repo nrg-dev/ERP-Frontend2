@@ -28,11 +28,15 @@ h2{
     background: #272E34;
     width: 390px;
     height: 60px;
+    box-shadow: none;
+    border: none;
 }
 #categorydescription-box{
     background: #272E34;
     width: 390px;
     height: 150px;
+    box-shadow: none;
+    border: none;
 }
 #save-btn{
     width: 120px;

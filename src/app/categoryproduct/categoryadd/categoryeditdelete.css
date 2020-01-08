@@ -33,11 +33,15 @@
     width: 410px;
     height: 60px;
     background: #272E34;
+    border: none;
+    box-shadow: none;
 }
 #categorydesc-div{
     width: 410px;
     height: 140px;
     background: #272E34;
+    border: none;
+    box-shadow: none;
 }
 #save-btn{
     width: 140px;

@@ -2,6 +2,9 @@ import {MatDialog, MatDialogConfig} from "@angular/material";
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {MatExpansionPanel, MatSnackBar, Sort} from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Inject} from '@angular/core';
+
 
 
 // addnewcategory start
@@ -56,14 +59,28 @@ export class AddpromotionComponent {
 })
 export class CategoryeditdeleteComponent {
   countryList:any;
-  priorityList:any;
+  categorylist:any;
   model: any = {};
+  tempid=null;
   constructor(
-
+    public dialogRef: MatDialogRef<CategoryeditdeleteComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
     ) {
      // this.countryList = require("../../../assets/country.json");
+    
+    this.categorylist=data;
+    console.log(this.categorylist);
     }
 
+    onChangeCategory(number: string){
+      console.log("Inside OnChange Categoey Edit");
+      if(this.tempid!==null){
+        document.getElementById(this.tempid).style.backgroundColor='#272E34';
+      }
+      this.tempid=number;
+      document.getElementById(this.tempid).style.backgroundColor='#5B6065';
+     }
+    
     close() {
     //this.dialogRef.close();
   }
@@ -166,44 +183,15 @@ export class ProducteditComponent {
   countryList:any;
   priorityList:any;
   model: any = {};
-  categoryeditlist: any =[
-    {
-      number:'01',
-      allproduct:'Resin',
-    },
-    {
-      number:'02',
-      discount:'Carbon Fabric',
-    },
-    {
-      number:'03',
-      freegifts:'Fiber',
-    },
-    {
-      number:'04',
-      fiber:'Brush',
-    },
-    {
-      number:'05',
-      pigmen:'Sandpaper',
-    },
-    {
-      number:'06',
-      brush:'Hardware',
-    },
-    {
-      number:'07',
-      sandpaper:'Accecories',
-    },
-
-  ];
+  tempid=null;
   constructor() {
     }
+   
 
     close() {
     //this.dialogRef.close();
   }
-  tempid=null;
+ 
 }
 // categoryeditdelete end
 
@@ -224,6 +212,7 @@ export class CategoryaddComponent implements OnInit {
  
 
   tempid=null;
+  tempnumber=null;
   public leftdetails=false;
   public discountdetails=false;
   public editdeletediv=false;
@@ -231,42 +220,46 @@ export class CategoryaddComponent implements OnInit {
 
   successdialog = 'none';
 
-  categorylist: any =[
+   // masterlist
+   masterlist:  any =[
   {
     number:'01',
-    allproduct:'All Product',
+    name:'All Product',
   },
   {
     number:'02',
-    discount:'Discount',
+    name:'Discount',
   },
   {
     number:'03',
-    freegifts:'Free Gifts',
+    name:'Free Gifts',
+  },
+];
+// 
+categorylist: any =[
+  {
+    number:'PROD1',
+    name:'Fiber',
   },
   {
-    number:'04',
-    fiber:'Fiber',
+    number:'PROD2',
+    name:'Pigmen',
   },
   {
-    number:'05',
-    pigmen:'Pigmen',
+    number:'PROD3',
+    name:'Brush',
   },
   {
-    number:'06',
-    brush:'Brush',
+    number:'PROD4',
+    name:'Sandpaper',
   },
   {
-    number:'07',
-    sandpaper:'Sandpaper',
+    number:'PROD5',
+    name:'Hardware',
   },
   {
-    number:'08',
-    hardware:'Hardware',
-  },
-  {
-    number:'09',
-    accesories:'Accesories'
+    number:'PROD6',
+    name:'Accesories'
   }
 ];
 
@@ -325,19 +318,45 @@ categorydetails(number: string){
     this.fiberdetails=false;
     this.editdeletediv=false;
   }
-  if(number=='04'){
-    this.leftdetails=true;
+}
+
+productlist(number: string){
+  //alert("----test---");
+  if(this.tempnumber!==null){
+    document.getElementById(this.tempnumber).style.backgroundColor='#272E34';
+  }
+  this.tempnumber=number;
+  document.getElementById(this.tempnumber).style.backgroundColor='#5B6065';
+  this.leftdetails=true;
+
+  if(number=='PROD1'){
     this.fiberdetails=true;
     this.discountdetails=false;
     this.editdeletediv=false;
   }
-  if(number=='05'){
-    this.leftdetails=true;
+  if(number=='PROD2'){
     this.discountdetails=false;
     this.fiberdetails=false;
     this.editdeletediv=false;
   }
+  if(number=='PROD3'){
+    this.discountdetails=false;
+    this.fiberdetails=false;
+    this.editdeletediv=false;
   }
+  if(number=='PROD4'){
+    this.fiberdetails=false;
+    this.discountdetails=false;
+    this.editdeletediv=false;
+  }
+  if(number=='PROD5'){
+    this.discountdetails=false;
+    this.fiberdetails=false;
+    this.editdeletediv=false;
+  }
+}
+
+
   editdelete(){
     this.editdeletediv=true;
     this.discountdetails=false;
@@ -388,7 +407,7 @@ categorydetails(number: string){
       left: '100'
     };
     this.dialog.open(CategoryeditdeleteComponent,{
-
+      data: this.categorylist,
       panelClass: 'categoryeditdelete'
 
     })

@@ -7,24 +7,20 @@
     <div class="row">
         <div class="col-lg-4">
              <div id="editdelcategory-div">
-                    <p>Resin</p>
-                    <p>Carbon Fabric</p>
-                    <p>Fiber</p>
-                    <p>Pigmen</p>
-                    <p>Brush</p>
-                    <p>Sandpaper</p>
-                    <p>Hardware</p>
-                    <p>Accecories</p>
+                <div *ngFor="let list of categorylist" (click)="onChangeCategory(list.number)" 
+                class="productlists-alignment" id="{{ list.number }}">
+                <p>{{ list.name }}</p>
+                </div>
              </div>
          </div>
          <div class="col-lg-7">
              <br/>
              <p id="fontsize-21">Category Name</p>
-             <div id="categoryname-div"></div>
+             <input type="text" id="categoryname-div" />
              <br/>
              <p id="fontsize-21">Category Description</p>
-             <div id="categorydesc-div"></div>
-             <br/>
+             <input type="text" id="categorydesc-div" />
+             <br/><br/>
              <div class="row">
                 <div class="col-lg-6">
                     <button id="save-btn">Save</button>

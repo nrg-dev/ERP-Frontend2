@@ -559,28 +559,25 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     this.model.currentUser=localStorage.getItem('currentusername');
     console.log('............controller save bank....');
     this.customerService.save(this.model)
-              .subscribe(
-                  res => {
-                    console.log('............1 ....');
-                    console.log('return value -->'+res.status);
-                      if(res.status ="success"){
-                        console.log('successfully updated...');
-                        this.alertService.success("Successfully saved ");
-                        setTimeout(() => {
-                         this.alertService.clear();
-                       }, 2000);
-         
-                      }
-                 
-                                   
-                  },
-                  error => {
-                    alert("Server error...");
-  
-                  });
-    
-  
+          .subscribe(
+              res => {
+                console.log('............1 ....');
+                console.log('return value -->'+res.status);
+                  if(res.status ="success"){
+                    console.log('successfully updated...');
+                    this.alertService.success("Successfully saved ");
+                    setTimeout(() => {
+                      this.alertService.clear();
+                    }, 2000);
+      
+                  }
+              
+                                
+              },
+              error => {
+                alert("Server error...");
 
+        });
   }
   customerdelete(){
     this.message="Customer details Deleted Successfully."

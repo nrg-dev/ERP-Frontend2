@@ -50,16 +50,16 @@ h2{
     box-shadow: none;
 }
 #tax-box{
-    width: 50px;
+    width: 71px;
     height: 35px;
     text-align: end;
     background: #272E34;
     border: none;
     box-shadow: none;
-    margin-left: 85px;
+    margin-left: 115px;
 }
 #margin-box{
-    width: 50px;
+    width: 71px;
     height: 35px;
     text-align: end;
     background: #272E34;
@@ -67,7 +67,7 @@ h2{
     box-shadow: none;
 }
 #price-box{
-    width: 190px;
+    width: 220px;
     height: 35px;
     text-align: end;
     background: #272E34;
@@ -87,6 +87,12 @@ h2{
     color: #51575C;
     text-align: center;
     margin: 30px;
+}
+#productcode-box{
+    background-color: #999999;
+    width: 220px;
+    height: 35px;
+    color: black;
 }
 #save-btn{
     width: 140px;
