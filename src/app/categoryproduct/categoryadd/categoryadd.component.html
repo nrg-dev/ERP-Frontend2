@@ -5,13 +5,13 @@
             <br/>
             <div id="adddelete-div">
                 <h2 id="text-category">Category</h2>
-                <div class="row" style="margin-left: 30px;">
-                    <span id="cursor-pointer" (click)="addNewCategory()">
+                <div class="row" id="marginleft-30">
+                    <span id="addfont-size" (click)="addNewCategory()">
                         <i class="fa fa-plus-circle" aria-hidden="true"></i>
                         Add
                     </span>
                     &nbsp; &nbsp;
-                    <span id="cursor-pointer" (click)="categoryEditDelete()">
+                    <span id="editfont-size" (click)="categoryEditDelete()">
                         <i class="fa fa-pencil-square" aria-hidden="true"></i>
                         Edit/Delete
                     </span>
@@ -43,11 +43,11 @@
 
     <!--discount details start-->
             <div *ngIf="discountdetails">
-                <div class="col-lg-12">
+                <div class="col-12 col-sm-12 col-md-12  col-lg-12">
 
                  <br/>
                   <div class="row">
-                        <div class="col-lg-5">
+                        <div class="col-5 col-sm-5 col-md-5  col-lg-5">
                             <h2>Discount Product</h2>
                             <div class="row"  id="editdelete-button">
                                 <span (click)="addpromotion()">
@@ -56,13 +56,13 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="col-lg-2">
+                        <div class="col-2 col-sm-2 col-md-2  col-lg-2">
                         </div>
-                        <div class="col-lg-5">
+                        <div class="col-5 col-sm-5 col-md-5  col-lg-5">
                             <div class="row" id="button-printpage">
                                 <i class="fa fa-print" aria-hidden="true" id="icon-align"></i>
                                 &nbsp;&nbsp;
-                                <p>Print Page</p>
+                                <p id="font-size15">Print Page</p>
                             </div>
                         </div>
                     </div>
@@ -143,11 +143,11 @@
 
         <!--Fiber details start-->  
         <div *ngIf="fiberdetails">
-            <div class="col-lg-12">
+            <div class="col-12 col-sm-12 col-md 12 col-lg-12">
 
              <br/>
               <div class="row">
-                    <div class="col-lg-5">
+                    <div class="col-5 col-sm-5 col-md 5 col-lg-5">
                         <h2>Fiber Product</h2>
                         <div class="row"  id="editdelete-button">
                             <span (click)="addNewProduct()">
@@ -156,13 +156,13 @@
                             </span>
                         </div>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-2 col-sm-2 col-md 2 col-lg-2">
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-5 col-sm-5 col-md 5 col-lg-5">
                         <div class="row" id="button-printpage">
                             <i class="fa fa-print" aria-hidden="true" id="icon-align"></i>
                             &nbsp;&nbsp;
-                            <p>Print Page</p>
+                            <p id="font-size15">Print Page</p>
                         </div>
                     </div>
                 </div>

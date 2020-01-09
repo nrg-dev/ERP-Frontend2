@@ -25,9 +25,6 @@ mat-paginator{
 ::ng-deep .mat-select-value,::ng-deep .mat-select-arrow{
     color: white;
 }
-.mat-elevation-z8{
-    height: 250PX;
-}
 mat-form-field{
     background: white;
     width: 25%;
@@ -37,7 +34,7 @@ mat-form-field{
 .mat-elevation-z8{
     height: 230px;
     overflow-y: scroll;
-    width: 757px;
+    width: 102%;
 }
 
 
@@ -238,5 +235,220 @@ mat-form-field{
     text-align: center;
     cursor: pointer;
 }
+#marginleft-30{
+    margin-left: 30px;
+}
+#addfont-size{
+    cursor: pointer;
+}
+#editfont-size{
+    cursor: pointer;
+}
+/* 90% zoom */
+@media (min-width: 1281px) and (max-width: 1380px) {
 
-
+}
+/* 125% zoom */
+@media (min-width: 1025px) and (max-width: 1280px){
+    #categoryhole-div{
+        background: #434F5B;
+        width: 97%;
+        height: 82%;
+        margin-left: 10px;
+    }
+    #category{
+        width: 100%;
+        height: 81%;
+        background: #333C45;
+    }
+    #leftside-div{
+        width: 100%;
+        height: 81%;
+        background: #333C45;
+    }
+    .mat-elevation-z8{
+        height: 165px;
+        overflow-y: scroll;
+        width: 100%;
+    }
+    #categorylist-div{
+        background: #272E34;
+        color: white;
+        margin-left: 21px;
+        width: 84%;
+        height: 66%;
+        overflow-y: scroll;
+    }
+    #marginleft-30{
+        margin-left: 5px;
+    }
+    #addfont-size{
+        cursor: pointer;
+        font-size: 13px;
+    }
+    #editfont-size{
+        cursor: pointer;
+        font-size: 13px;
+    }
+    h2{
+        font-size: 20px;
+    }
+} 
+/* 150% zoom */
+@media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
+    #categoryhole-div{
+        background: #434F5B;
+        width: 97%;
+        height: 100%;
+        margin-left: 10px;
+    }
+    #category{
+        width: 100%;
+        height: 80%;
+        background: #333C45;
+    }
+    #leftside-div{
+        width: 100%;
+        height: 80%;
+        background: #333C45;
+    }
+    .mat-elevation-z8{
+        height: 100px;
+        overflow-y: scroll;
+        width: 100%;
+    }
+    #categorylist-div{
+        background: #272E34;
+        color: white;
+        margin-left: 21px;
+        width: 84%;
+        height: 60%;
+        overflow-y: scroll;
+    }
+    #adddelete-div{
+        background: #272E34;
+        width: 90%;
+        height: 25%;
+        margin-left: 12px;
+    }
+    h2{
+        font-size: 20px;
+    }
+    #button-printpage{
+        height: 30px;
+        width: 100px;
+        border: 1px solid;
+        margin-top: 10px;
+    }
+    #font-size15{
+        font-size: 13px;
+    }
+} 
+/* 175% zoom */
+@media (min-width: 768px) and (max-width: 810px) and (orientation: landscape) {
+    #categoryhole-div{
+        background: #434F5B;
+        width: 97%;
+        height: 100%;
+        margin-left: 10px;
+    }
+    #category{
+        width: 100%;
+        height: 70%;
+        background: #333C45;
+    }
+    #leftside-div{
+        width: 100%;
+        height: 70%;
+        background: #333C45;
+    }
+    .mat-elevation-z8{
+        height: 50px;
+        overflow-y: scroll;
+        width: 100%;
+    }
+    #categorylist-div{
+        background: #272E34;
+        color: white;
+        margin-left: 21px;
+        width: 84%;
+        height: 60%;
+        overflow-y: scroll;
+    }
+    #adddelete-div{
+        background: #272E34;
+        width: 90%;
+        height: 25%;
+        margin-left: 12px;
+    }
+    h2{
+        font-size: 20px;
+    }
+    #button-printpage{
+        height: 30px;
+        width: 85px;
+        border: 1px solid;
+        margin-top: 10px;
+    }
+    #font-size15{
+        font-size: 10px;
+    }
+} 
+/* 200% zoom */
+@media (min-width: 601px) and (max-width: 767px) {
+    #categoryhole-div{
+        background: #434F5B;
+        width: 97%;
+        height: 120%;
+        margin-left: 10px;
+    }
+    #category{
+        width: 100%;
+        height: 71%;
+        background: #333C45;
+    }
+    #leftside-div{
+        width: 100%;
+        height: 71%;
+        background: #333C45;
+    }
+    .mat-elevation-z8{
+        height: 50px;
+        overflow-y: scroll;
+        width: 100%;
+    }
+    #categorylist-div{
+        background: #272E34;
+        color: white;
+        margin-left: 21px;
+        width: 84%;
+        height: 58%;
+        overflow-y: scroll;
+    }
+    #adddelete-div{
+        background: #272E34;
+        width: 90%;
+        height: 25%;
+        margin-left: 12px;
+    }
+    h2{
+        font-size: 20px;
+    }
+    #button-printpage{
+        height: 30px;
+        width: 85px;
+        border: 1px solid;
+        margin-top: 10px;
+    }
+    #font-size15{
+        font-size: 10px;
+    }
+    #addfont-size{
+        cursor: pointer;
+        font-size: 12px;
+    }
+    #editfont-size{
+        cursor: pointer;
+        font-size: 12px;
+    }
+} 
