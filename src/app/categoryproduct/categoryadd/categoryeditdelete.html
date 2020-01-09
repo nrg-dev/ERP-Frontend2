@@ -1,4 +1,5 @@
 <div id="editdelete-secondlayer" >
+    <form name="addnewcategory" (ngSubmit)="saveCategoryeditdelete()"> 
     <label id="edit-del-text">
         <i class="fa fa-pencil-square" style="font-size: 23px;" aria-hidden="true"></i>
         &nbsp;
@@ -26,10 +27,10 @@
                     <button id="save-btn">Save</button>
                 </div>
                 <div class="col-lg-6">
-                    <button id="cancel-btn">Cancel</button>
+                    <button id="cancel-btn" (click)="close($event); false">Cancel</button>
                 </div>
              </div>
          </div>
     </div>
-
+</form>
 </div>

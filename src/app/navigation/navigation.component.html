@@ -8,7 +8,7 @@
     (click)="drawer.toggle()" color="primary" id="outline-none">
       <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
     </button> -->
-    <alert></alert>
+    
 
     <button id="outline-none" mat-icon-button color='primary' (click) ='sidenav.toggle()'class ='toogleSidenav'[ngClass]="showToggle">
       <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
@@ -18,14 +18,16 @@
   <div class="col-md-2 col-2 col-lg-1">
         <img src="./assets/images/nrg_logo.png" id="nrg-logo-paddding" [routerLink]="['/landingpage']"/>
   </div>
-  <div class="col-md-5 col-3 col-lg-5">
+  <div class="col-md-5 col-3 col-lg-3">
     <input type="text" [(ngModel)]="searchText" autocomplete="on" 
-    placeholder="&#xf002; search here" class="searchicon"/>
-        
-</div>
+    placeholder="&#xf002; search here" class="searchicon"/>  
+  </div>
+  <div class="col-md-1 col-1 col-lg-3">
+    <alert></alert> 
+  </div>
 
 
-  <div class="col-lg-2"></div>
+  <div class="col-lg-1"></div>
 
   <div class="col-2 col-lg-2">
       <div class="dropdown">

@@ -19,13 +19,22 @@ export class AddnewcategoryComponent {
   priorityList:any;
   model: any = {};
   constructor(
+    private alertService: AlertService,
+    public dialogRef: MatDialogRef<AddpromotionComponent>,
 
     ) {
      // this.countryList = require("../../../assets/country.json");
     }
-
-    close() {
-    //this.dialogRef.close();
+    saveNewCategory(){
+      this.alertService.success("Saved Successfully");
+      setTimeout(() => {
+       this.alertService.clear();
+     }, 2000);
+    this.dialogRef.close();
+    console.log("saveNewCategory");
+    }
+    close(e) {
+    this.dialogRef.close();
   }
 }
 // addnewcategory end
@@ -49,9 +58,9 @@ export class AddpromotionComponent {
 
     savePromotion(){
       this.alertService.success("Saved Successfully");
-     // setTimeout(() => {
-      // this.alertService.clear();
-    // }, 2000);
+      setTimeout(() => {
+        this.alertService.clear();
+      }, 2000);
     this.dialogRef.close();
 console.log("savepromotion");
     }
@@ -73,6 +82,7 @@ export class CategoryeditdeleteComponent {
   model: any = {};
   tempid=null;
   constructor(
+    private alertService: AlertService,
     public dialogRef: MatDialogRef<CategoryeditdeleteComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
     ) {
@@ -91,8 +101,16 @@ export class CategoryeditdeleteComponent {
       document.getElementById(this.tempid).style.backgroundColor='#5B6065';
      }
     
-    close() {
-    //this.dialogRef.close();
+     saveCategoryeditdelete(){
+      this.alertService.success("Saved Successfully");
+      setTimeout(() => {
+        this.alertService.clear();
+      }, 2000);
+    this.dialogRef.close();
+    console.log("saveCategoryeditdelete");
+    }
+    close(e) {
+    this.dialogRef.close();
   }
 }
 // categoryeditdelete end
@@ -107,12 +125,23 @@ export class DiscounteditComponent {
   countryList:any;
   priorityList:any;
   model: any = {};
-  constructor() {
+  constructor(
+    private alertService: AlertService,
+    public dialogRef: MatDialogRef<CategoryeditdeleteComponent>,
+  ) {
      // this.countryList = require("../../../assets/country.json");
     }
 
-    close() {
-    //this.dialogRef.close();
+  saveDiscountedit(){
+      this.alertService.success("Saved Successfully");
+      setTimeout(() => {
+        this.alertService.clear();
+      }, 2000);
+    this.dialogRef.close();
+    console.log("saveDiscountedit");
+    }
+    close(e) {
+    this.dialogRef.close();
   }
 }
 //discountedit end
@@ -128,7 +157,8 @@ export class DiscountdeleteComponent {
   priorityList:any;
   model: any = {};
   constructor(
-
+    private alertService: AlertService,
+    public dialogRef: MatDialogRef<CategoryeditdeleteComponent>,
     ) {
      // this.countryList = require("../../../assets/country.json");
     }
@@ -150,13 +180,21 @@ export class AddnewproductComponent {
   priorityList:any;
   model: any = {};
   constructor(
-
+    private alertService: AlertService,
+    public dialogRef: MatDialogRef<CategoryeditdeleteComponent>,
     ) {
      // this.countryList = require("../../../assets/country.json");
     }
-
-    close() {
-    //this.dialogRef.close();
+  saveAddNewProduct(){
+      this.alertService.success("Saved Successfully");
+      setTimeout(() => {
+        this.alertService.clear();
+      }, 2000);
+    this.dialogRef.close();
+    console.log("saveAddNewProduct");
+    }
+    close(e) {
+    this.dialogRef.close();
   }
 }
 // addnewproduct end
@@ -172,18 +210,15 @@ export class ProductviewComponent {
   priorityList:any;
   model: any = {};
   constructor(
-
+    private alertService: AlertService,
+    public dialogRef: MatDialogRef<CategoryeditdeleteComponent>,
     ) {
      // this.countryList = require("../../../assets/country.json");
     }
-
-    close() {
-    //this.dialogRef.close();
-  }
 }
 // productview end
 
-// categoryeditdelete start
+// productedit start
 @Component({
   selector: 'productedit',
   styleUrls: ['./productedit.css'],
@@ -194,16 +229,26 @@ export class ProducteditComponent {
   priorityList:any;
   model: any = {};
   tempid=null;
-  constructor() {
+  constructor(
+    private alertService: AlertService,
+    public dialogRef: MatDialogRef<CategoryeditdeleteComponent>,
+  ) {
     }
    
-
-    close() {
-    //this.dialogRef.close();
+  saveProductEdit(){
+      this.alertService.success("Saved Successfully");
+      setTimeout(() => {
+        this.alertService.clear();
+      }, 2000);
+    this.dialogRef.close();
+    console.log("saveProductEdit");
+    }
+    close(e) {
+    this.dialogRef.close();
   }
  
 }
-// categoryeditdelete end
+// productedit end
 
 
 // Main compoent
@@ -227,6 +272,7 @@ export class CategoryaddComponent implements OnInit {
   public discountdetails=false;
   public editdeletediv=false;
   public fiberdetails=false;
+  public alldetails=false;
 
   successdialog = 'none';
 
@@ -279,6 +325,7 @@ categorylist: any =[
 dataDiscountList=this.discountdata;
 
   constructor(    private dialog: MatDialog,
+    private alertService: AlertService,
     //private dialog: MatDialog,
     ) { 
 
@@ -313,17 +360,20 @@ categorydetails(number: string){
 
   if(number=='01'){
     this.leftdetails=true;
+    this.alldetails=true;
     this.discountdetails=false;
     this.fiberdetails=false;
     this.editdeletediv=false;
   }
   if(number=='02'){
     this.discountdetails=true;
+    this.alldetails=false;
     this.fiberdetails=false;
     this.editdeletediv=false;
   }
   if(number=='03'){
     this.leftdetails=true;
+    this.alldetails=false;
     this.discountdetails=false;
     this.fiberdetails=false;
     this.editdeletediv=false;
@@ -341,25 +391,30 @@ productlist(number: string){
 
   if(number=='PROD1'){
     this.fiberdetails=true;
+    this.alldetails=false;
     this.discountdetails=false;
     this.editdeletediv=false;
   }
   if(number=='PROD2'){
+    this.alldetails=false;
     this.discountdetails=false;
     this.fiberdetails=false;
     this.editdeletediv=false;
   }
   if(number=='PROD3'){
+    this.alldetails=false;
     this.discountdetails=false;
     this.fiberdetails=false;
     this.editdeletediv=false;
   }
   if(number=='PROD4'){
+    this.alldetails=false;
     this.fiberdetails=false;
     this.discountdetails=false;
     this.editdeletediv=false;
   }
   if(number=='PROD5'){
+    this.alldetails=false;
     this.discountdetails=false;
     this.fiberdetails=false;
     this.editdeletediv=false;
@@ -445,18 +500,10 @@ productlist(number: string){
   }
 
   discountDelete(){
-    this.dialogConfig.disableClose = true;
-    this.dialogConfig.autoFocus = true;
-    this.dialogConfig.position = {
-      'top': '100',
-      left: '100'
-    };
-    this.dialog.open(DiscountdeleteComponent,{ 
-      panelClass: 'discountdelete'
-    })
-    .afterClosed().subscribe(result => {
-    });
-      
+    this.alertService.success("deleted Successfully");
+    setTimeout(() => {
+      this.alertService.clear();
+    }, 2000);
   }
 
   addNewProduct(){

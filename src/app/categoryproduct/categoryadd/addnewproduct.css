@@ -6,7 +6,7 @@
 ::ng-deep .addnewproduct .mat-dialog-container {
     background-color: #434F5B;
     width: 880px;
-    height: 630px;
+    height: 586px;
     padding: 17px;
     overflow: hidden;
 }
@@ -56,7 +56,7 @@ h2{
     background: #272E34;
     border: none;
     box-shadow: none;
-    margin-left: 115px;
+    margin-left: 114px;
 }
 #margin-box{
     width: 71px;
