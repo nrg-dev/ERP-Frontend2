@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild ,ElementRef,Inject} from '@angular/core';
-import { Purchase } from 'src/app/_models';
+import { Purchase, User } from 'src/app/_models';
 import { AlertService } from 'src/app/_services';
 import { Router } from '@angular/router';
 import { AlertComponent } from 'src/app/_directives';
@@ -15,7 +15,8 @@ import { PurchaseService } from '../purchase.service';
 })
 export class ViewInvoice {
   model: any ={};
-  public productList : any;
+  purchase: Purchase;
+  public purchaseViewList : any;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
   constructor(
@@ -26,10 +27,10 @@ export class ViewInvoice {
     public dialogRef: MatDialogRef<ViewInvoice>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {  
-    alert("Invoice Number ---->"+this.data.invoiceNumber);
     this.model.invoiceNumber = this.data.invoiceNumber;
     const purchasedata = require("../../purchasedata.json");
-    this.productList=purchasedata;
+    this.purchaseViewList=purchasedata;
+
     /* this.purchaseService.get(this.data)
     .subscribe(
       data => {
@@ -40,6 +41,14 @@ export class ViewInvoice {
           alert('Error !!!!');
       }
     ); */
+  }
+  ngOnInit() {
+    this.purchase.invoiceNumber ="inv001";
+    alert("----- Invoice Number -------"+this.purchase.invoiceNumber);
+    this.purchase.termsDays ="30days";
+    this.purchase.salesPerson ="Alex";
+    this.purchase.orderNumber ="Pur001";
+    this.purchase.netAmount ="15000";
   }
 
   onNoClick(): void {
@@ -68,7 +77,6 @@ export class EditInvoice {
     public dialogRef: MatDialogRef<EditInvoice>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {  
-    alert("Invoice Number ---->"+this.data.invoiceNumber);
     this.model.invoiceNumber = this.data.invoiceNumber;
     this.productList = ['Mobile', 'Computer', 'Cloths', 'TV'];
     this.categoryList = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];

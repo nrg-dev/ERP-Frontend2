@@ -3,6 +3,7 @@
   padding: 0;
   font-family: sans-serif;
   font-size:medium;
+  caret-color: white;
 }
 table {
   display: block;
@@ -138,7 +139,7 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
   font-family: fontawesome;
   background:white;
   color: black;
-  height: 25px;
+  height: 35px;
   outline: 0;
   margin: 10;
   width: 100%;
@@ -147,6 +148,7 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
   text-align:start;
   border-radius: 6px;
   padding: 11px;
+  margin-top: -10px;
 }
 
 .matTable{

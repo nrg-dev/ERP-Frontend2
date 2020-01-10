@@ -112,12 +112,14 @@
                 <tr>
                   <td style="padding-right: 10px;padding: 9px;">
                     <select class="form-control" id="newAttributeCategory" [(ngModel)]="newAttribute.category" name="newAttributeCategory" style="color: black;" >
-                        <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
+                      <option value="--- Select --- "> ---- Select ---- </option>  
+                      <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
                     </select> 
                   </td>
                   <td style="padding-right: 10px;padding: 9px;">
                       <select class="form-control" id="newAttributeName" [(ngModel)]="newAttribute.productName" name="newAttributeName" style="color: black;" >
-                          <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
+                        <option value="--- Select --- "> ---- Select ---- </option>  
+                        <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
                       </select> 
                   </td>
                   <td style="padding-right: 10px;padding: 9px;">
@@ -132,16 +134,21 @@
                   <td style="padding-right: 10px;padding: 9px;">
                     <input class="form-control" type="text" id="newAttributeAmount" [(ngModel)]="newAttribute.netAmount" name="newAttributeAmount"/>
                   </td>
+                  <td style="padding-right: 10px;padding: 9px;background-color:#1B2931;visibility: hidden;">
+                    <button class="romoveButton" (click)="deleteFieldValue(i)" id="Remove"> Remove </button> 
+                  </td>
                 </tr>
                 <tr *ngFor="let model of fieldArray; let i = index">
                   <td style="padding-right: 10px;padding: 9px;">
                     <select class="form-control" [(ngModel)]="model.category" name="{{model.category}}" #category="ngModel" style="color: black;" >
-                        <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
+                      <option value="--- Select --- "> ---- Select ---- </option>   
+                      <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
                     </select> 
                   </td>
                   <td style="padding-right: 10px;padding: 9px;">
                     <select class="form-control" [(ngModel)]="model.productName" name="{{model.productName}}" #productName="ngModel" style="color: black;" >
-                        <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
+                      <option value="--- Select --- "> ---- Select ---- </option>    
+                      <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
                     </select> 
                   </td>
                   <td style="padding-right: 10px;padding: 9px;">

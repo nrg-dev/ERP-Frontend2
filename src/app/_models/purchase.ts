@@ -10,4 +10,8 @@ export class Purchase extends Common {
    netAmount:any;
    status:string;
    purchaseorder:string; 
+   terms:string;
+   salesPerson:string;
+   orderNumber:string;
+   termsDays:string;
 }
