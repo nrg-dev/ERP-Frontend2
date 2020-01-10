@@ -18,7 +18,7 @@ table td{
     border: 2px solid #243C48;
 }
 ::ng-deep .mat-table thead{
-    background: #436d82;
+    background: rgb(47, 71, 86);
 }
 ::ng-deep .mat-table tbody{
     background: #1E2328;
@@ -33,8 +33,8 @@ mat-paginator{
 }
 mat-form-field{
     background: white;
-    width: 25%;
-    height: 47px;
+    width: 40%;
+    height: 44px;
     border-radius: 10px;
 }
 .mat-elevation-z8{
@@ -44,6 +44,35 @@ mat-form-field{
 }
 
 
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    padding: 7px;
+    padding-bottom: 2px;
+    text-align: justify;
+    border-color: 1px solid grey;
+}
+.mat-input-element {
+    font: inherit;
+    font-family: fontawesome;
+    background:white;
+    color: black;
+    height: 35px;
+    outline: 0;
+    margin: 10;
+    width: 100%;
+    max-width: 100%;
+    vertical-align: bottom;
+    text-align:start;
+    border-radius: 6px;
+    padding: 11px;
+    margin-top: -10px;
+}
+  
+.matTable{
+    width: 95%;
+    margin: auto;
+}
 #text-category{
     text-align: center;
     font-weight: bold;

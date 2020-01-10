@@ -1,12 +1,9 @@
-import {MatDialog, MatDialogConfig} from "@angular/material";
-import { Component, OnInit, ViewChild } from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-import {MatExpansionPanel, MatSnackBar, Sort} from '@angular/material';
+import { Component, OnInit, ViewChild ,ElementRef,Inject} from '@angular/core';
+import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { Inject} from '@angular/core';
 import { AlertService } from 'src/app/_services';
-
-
+import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
+import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
 
 // addnewcategory start
 @Component({
@@ -27,10 +24,10 @@ export class AddnewcategoryComponent {
     }
     saveNewCategory(){
       this.alertService.success("Saved Successfully");
+      this.dialogRef.close();
       setTimeout(() => {
-       this.alertService.clear();
-     }, 2000);
-    this.dialogRef.close();
+        this.alertService.clear();
+      }, 2000);
     console.log("saveNewCategory");
     }
     close(e) {
@@ -258,7 +255,9 @@ export class ProducteditComponent {
   styleUrls: ['./categoryadd.component.css']
 })
 export class CategoryaddComponent implements OnInit {
-  
+  public dataDiscountList : any;
+  dialogConfig = new MatDialogConfig();
+  isDtInitialized:boolean = false;
   displayedColumns: string[] = ['Productcode', 'ProductName','Discount','DiscountTime','Qty','Price','editdelete'];
   dataSource: MatTableDataSource<any>;
 
@@ -319,21 +318,19 @@ categorylist: any =[
   }
 ];
 
-
-//dataDiscountList : any = [];
- discountdata = require("../../discountdata.json");
-dataDiscountList=this.discountdata;
-
-  constructor(    private dialog: MatDialog,
+ 
+  constructor(
     private alertService: AlertService,
-    //private dialog: MatDialog,
+    private dialog: MatDialog,
+    private router: Router
     ) { 
-
+      const purchasedata = require("../../discountdata.json");
+      this.dataDiscountList=purchasedata;
 
       this.dataSource = new MatTableDataSource(this.dataDiscountList);
-
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+
       //const users = Array.from({length: 100}, (_, k) => this.createNewUser(k + 1));
 
       // Assign the data to the data source for the table to render
@@ -346,9 +343,14 @@ dataDiscountList=this.discountdata;
         this.dataSource.paginator.firstPage();
       }
     }
+    
   ngOnInit() {
+   
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
     this.leftdetails=true;
   }
+ 
    
 categorydetails(number: string){
   if(this.tempid!==null){
@@ -426,7 +428,6 @@ productlist(number: string){
     this.editdeletediv=true;
     this.discountdetails=false;
   }
-  dialogConfig = new MatDialogConfig();
 
   addNewCategory(){
     //this.successdialog = 'block';

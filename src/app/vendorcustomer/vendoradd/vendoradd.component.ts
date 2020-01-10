@@ -318,13 +318,10 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     this.alertService.success("");
   }
   vendorupdateDetails(){
-    this.message="Vendor detailsupdated Successfully."
-    this.mainmessage="Successfully Saved."
-    this.successdialog = 'block';
+   this.alertService.success("Successfully Saved")
     setTimeout(() => {
-      this.successdialog = 'none';
+      this.alertService.clear();
       this.vendordetails=true;
-      this.vendordetails=false;
       this.vendoreditdetails=false;
       this.customereditdetails=false;
       this.customerdragAndDrop = false;
@@ -357,11 +354,10 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     this.customerdragAndDrop = false;
   }
   vendordelete(){
-    this.message="Vendor DetailsDeleted Successfully."
-    this.mainmessage="Deleted."
-    this.successdialog = 'block';
+    this.alertService.success("Delete Successfully");
     setTimeout(() => {
       this.successdialog = 'none';
+      this.alertService.clear();
       this.vendordetails=true;
       this.vendordragAndDrop=false;
       this.vendoreditdetails=false;
@@ -533,11 +529,9 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     this.alertService.success("");
   }
   customerupdateDetails(){
-    this.message="Customer details saved Successfully."
-    this.mainmessage="Successfully Saved."
-    this.successdialog = 'block';
+    this.alertService.success("Saved Successfully");
     setTimeout(() => {
-      this.successdialog = 'none';
+      this.alertService.clear();
       this.customerdetails = true;
       this.customereditdetails=false;
       this.vendoreditdetails = false;
@@ -554,37 +548,22 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     this.vendordragAndDrop = false;
   }
   saveCustomer(){
-    console.log("save customer");
-    this.model.createdPerson=localStorage.getItem("currentusername");
-    this.model.currentUser=localStorage.getItem('currentusername');
-    console.log('............controller save bank....');
-    this.customerService.save(this.model)
-          .subscribe(
-              res => {
-                console.log('............1 ....');
-                console.log('return value -->'+res.status);
-                  if(res.status ="success"){
-                    console.log('successfully updated...');
-                    this.alertService.success("Successfully saved ");
-                    setTimeout(() => {
-                      this.alertService.clear();
-                    }, 2000);
-      
-                  }
-              
-                                
-              },
-              error => {
-                alert("Server error...");
-
-        });
+    this.alertService.success("Saved Successfully");
+    setTimeout(() => {
+      this.alertService.clear();
+      this.alertService.clear();
+      this.customerdetails = true;
+      this.vendordetails=false;
+      this.vendoreditdetails=false;
+      this.customereditdetails=false;
+      this.customerdragAndDrop = false;
+    }, 2000);
   }
   customerdelete(){
-    this.message="Customer details Deleted Successfully."
-    this.mainmessage="Deleted."
-    this.successdialog = 'block';
+    this.alertService.success("Delete Successfully");
     setTimeout(() => {
       this.successdialog = 'none';
+      this.alertService.clear();
       this.customerdetails = true;
       this.customereditdetails=false;
       this.vendoreditdetails = false;
