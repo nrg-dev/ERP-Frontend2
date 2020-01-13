@@ -1,1 +1,195 @@
-<p>salesreturn works!</p>
+<div class="employee-content">
+    <div class="row">
+      <div class="col-lg-11">
+        <div class="tab">
+            <a class="tablink" routerLink="../salesorder" style="width: auto;color:white;">Sales Order</a>
+            <a class="tablink" routerLink="../salesinvoice" style="width: auto;color:white;">Sales Invoice</a>
+            <a class="tablink" style="border-bottom: 3px solid #007bff;width: auto;" id="defaultOpen">Sales Return</a>
+            <a class="tablink" routerLink="../salesreport" style="width: auto;color:white;">Sales Report</a>
+        </div>
+                
+        <div id="addsales-div">
+          <br/><br/>
+          <div class="group-gap" style="margin: 40px;">
+            <br/><br/>
+            <form name="form">
+                <h5 class="mb-3">Sales Return  </h5>
+                <br/>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label>Customer Name </label>
+                            </div>
+                            <div class="col-lg-1">
+                                <label>:</label>
+                            </div>
+                            <div class="col-lg-7">
+                                <select class="form-control" style="background-color:#1B2931;color: white;" id="customerName" [(ngModel)]="model.customerName" name="{{model.customerName}}" #customerName="ngModel">
+                                    <option style="text-align:center;">-- Select --</option>
+                                    <option *ngFor="let itemcustomer of customerList" value="{{ itemcustomer }}"> {{ itemcustomer }} </option> 
+                                </select> 
+                            </div>
+                        </div><br/>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label>Product Category </label>
+                            </div>
+                            <div class="col-lg-1">
+                                <label>:</label>
+                            </div>
+                            <div class="col-lg-7">
+                                <select class="form-control" style="background-color:#1B2931;color: white;" id="category">
+                                    <option>-- Select --</option>
+                                    <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
+                                </select> 
+                            </div>
+                        </div><br/>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label>Product Name </label>
+                            </div>
+                            <div class="col-lg-1">
+                                <label>:</label>
+                            </div>
+                            <div class="col-lg-7">
+                                <select class="form-control" style="background-color:#1B2931;color: white;" id="productName" [(ngModel)]="model.productName" name="{{model.productName}}" #productName="ngModel">
+                                    <option style="text-align:center;">-- Select --</option>
+                                    <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
+                                </select> 
+                            </div>
+                        </div><br/>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label>Quantity </label>
+                            </div>
+                            <div class="col-lg-1">
+                                <label>:</label>
+                            </div>
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" style="background-color:#1B2931;" id="quantity" placeholder="     ltr/kg/pcs      "/>
+                            </div>
+                        </div><br/>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label>Date </label>
+                            </div>
+                            <div class="col-lg-1">
+                                <label>:</label>
+                            </div>
+                            <div class="col-lg-7">
+                                <input type="date" class="form-control" style="background-color:#1B2931;" id="soDate" />
+                            </div>
+                        </div><br/>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label>Item Status </label>
+                            </div>
+                            <div class="col-lg-1">
+                                <label>:</label>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="form-group">
+                                    <li>
+                                        <input type="radio"  name="itemStatus" id="itemStatus" [(ngModel)]="model.itemStatus"  value="damaged"> Damaged                                                
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="itemStatus" id="itemStatus" [(ngModel)]="model.itemStatus" value="expaired"> Expaired 
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="itemStatus" id="itemStatus" [(ngModel)]="model.itemStatus"  value="bs"> Bs 
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="itemStatus" id="itemStatus" [(ngModel)]="model.itemStatus"  value="others"> Others
+                                    </li>
+                                </div>
+                            </div>
+                        </div><br/>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label>Return as </label>
+                            </div>
+                            <div class="col-lg-1">
+                                <label>:</label>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="form-group">
+                                    <li>
+                                        <input type="radio"  name="returnStatus" id="returnStatus" [(ngModel)]="model.returnStatus"  value="cash"> Cash                                                
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="returnStatus" id="returnStatus" [(ngModel)]="model.returnStatus" value="Credit/Voucher"> Credit/Voucher 
+                                    </li>
+                                </div>
+                            </div>
+                        </div><br/>
+                        <div class="row">
+                            <div class="radio-toolbar">
+                              <label id="add-butn" (click)="addProduct()">Add Product</label>
+                            </div>
+                          </div>
+                              
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div id="box-dialouge">
+                            <br/>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <h3 style="margin-left: 40px;">Summary</h3>
+                                </div>
+                                <div class="col-lg-2"></div>
+                                <div class="col-lg-4">
+                                    <button id="print-butn">
+                                        <i class="fa fa-print" aria-hidden="true" id="icon-mod"></i>
+                                        <label id="text">Print Page</label>
+                                    </button>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <table id="addsalereturntable" class="scroll">
+                                    <thead>
+                                        <tr id="tr-color">
+                                            <th>Date</th>
+                                            <th>Product Name</th>
+                                            <th>Customer</th>
+                                            <th>Qty</th>
+                                            <th>ItemStatus</th>
+                                            <th>Return as</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                        <tr>
+                                            
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br/> <br/>
+                            <div class="row">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-6">
+                                    <div class="radio-toolbar">
+                                        <label id="checkIn-butn" (click)="savePurchaseReturn()">Save</label>
+                                        <label id="checkOut-butn" (click)="cancelPurchaseReturn()">Cancel</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3"></div>
+                            </div>
+                            <br/> <br/>
+                        </div>
+                        
+                    </div>
+                </div>
+          </form>
+            <!-- Submit Button -->
+          </div>
+        </div>
+      </div>                    
+    </div>
+    <br/><br/><br/>
+  </div>
+  

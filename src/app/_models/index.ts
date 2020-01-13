@@ -7,6 +7,7 @@ export * from './vendor';
 export * from './category';
 export * from './product';
 export * from './purchase';
+export * from './sales';
 export * from './usermgt';
 
 

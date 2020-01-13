@@ -28,7 +28,7 @@
                         <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
                     </select> 
                   </td>
-                <td>{{ list.description }}</td>
+                <td><input type="text" value="{{ list.description }}" /></td>
                 <td><input type="text" value="{{ list.quantity }}" /></td>
                 <td>{{ list.unitPrice }}</td>
                 <td>

@@ -6,19 +6,33 @@
     color: white;
 }
 table {
-    display: block;
-    width: 100%;
-    padding-left: 10px;
-    height:400px;
-    overflow-y: auto;
+    table-layout: fixed;
+    width: 90%;
+    height: 370px;
+    border-collapse: collapse;
+    margin-left: 40px;
+    display:block;
+    overflow: auto;
+    background-color: #333C45;
+}
+th,td {
+    padding: 10px;
+    border: 1px solid white;
+    color: white;
+}
+tbody {
+    height: 250px;
+    width:  14.2857%;
+    color: white;
+    border: 1px solid white;
+    text-align: center;
 }
 th{
-    color:#ffffff;
     background-color:#21272D;
 }
-  
 td{
-    background-color:#434F5B;
+    background-color:#333C45;
+    border: 1px solid white;
 }
 .mat-tab-group {
     display: flex;
@@ -78,7 +92,6 @@ hr{
     background-color: #07ab07;
     width: 100px;
     height: 32px;
-    margin: 5px 0 0 120px;
     text-align: center;
 }
 #checkOut-butn{
@@ -94,9 +107,10 @@ hr{
     cursor: pointer;
 }
   
-select,option,#inputBox { 
+select,option,#quantity,#soDate { 
     width: 85%;
     background: #1B2931;
+    color:white;
 }
 input:focus,select:focus{
     color:white;
@@ -119,7 +133,7 @@ input:focus,select:focus{
 }  
   
 #box-dialouge{
-    background: #333C45;
+    background: #434F5B;
     height: auto;
 }
 #rowedit-div{
