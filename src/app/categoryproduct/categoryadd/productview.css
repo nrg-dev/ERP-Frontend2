@@ -125,4 +125,8 @@ h2{
     border: 1px solid;
     margin-top: 10px;
     cursor: pointer;
+    margin-left: 260px;
+}
+#icon-align{
+    margin: 5px;
 }

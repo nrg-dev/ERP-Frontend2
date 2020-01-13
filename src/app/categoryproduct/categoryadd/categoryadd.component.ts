@@ -336,13 +336,7 @@ categorylist: any =[
       // Assign the data to the data source for the table to render
     }
 
-    applyFilter(filterValue: string) {
-      this.dataSource.filter = filterValue.trim().toLowerCase();
-  
-      if (this.dataSource.paginator) {
-        this.dataSource.paginator.firstPage();
-      }
-    }
+   
     
   ngOnInit() {
    
@@ -350,7 +344,13 @@ categorylist: any =[
     this.dataSource.sort = this.sort;
     this.leftdetails=true;
   }
- 
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
    
 categorydetails(number: string){
   if(this.tempid!==null){
