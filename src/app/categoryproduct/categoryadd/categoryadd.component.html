@@ -39,10 +39,10 @@
     <div class="col-12 col-sm-7 col-md-6 col-lg-9">
     <br/>
     <div id="leftside-div">
-        <div *ngIf="leftdetails">
+        <div >
 
     <!--discount details start-->
-            <div *ngIf="discountdetails">
+            <div >
                 <div class="col-12 col-sm-12 col-md-12  col-lg-12">
 
                  <br/>
@@ -129,7 +129,7 @@
 
                             <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
                             <tr mat-row *matRowDef="let row; columns: displayedColumns;">
-</tr>
+                            </tr>
                         </table>
                         
                     </div>  
@@ -170,7 +170,7 @@
                 <mat-form-field style="color: black;">
                     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
                   </mat-form-field>
-                  <mat-paginator [pageSizeOptions]="[1,2,5, 10, 25, 100]"></mat-paginator>
+                  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
                 
                      <div class="mat-elevation-z8">
                     <table mat-table [dataSource]="dataSource" matSort>

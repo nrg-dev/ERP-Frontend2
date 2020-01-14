@@ -25,8 +25,8 @@ export class ViewInvoice {
     private alertService: AlertService,
 
     public dialogRef: MatDialogRef<ViewInvoice>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {  
+    @Inject(MAT_DIALOG_DATA) public data: any) 
+    {  
     this.model.invoiceNumber = this.data.invoiceNumber;
     const purchasedata = require("../../purchasedata.json");
     this.purchaseViewList=purchasedata;

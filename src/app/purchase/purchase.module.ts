@@ -55,9 +55,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [PurchaseaddComponent,
-    //AlertComponent,
-    ViewInvoice,EditInvoice,Status, PurchaseInvoiceComponent,Filter,DeleteDialog, PurchaseReturnComponent],
+  declarations: [PurchaseaddComponent,ViewInvoice,EditInvoice,Status, PurchaseInvoiceComponent,Filter,DeleteDialog, PurchaseReturnComponent],
   imports: [
     CommonModule,
     FormsModule,
