@@ -7,12 +7,14 @@
     cursor: pointer;
 }
 h2{
-    font-size: 25px;
+    font-size: 22px;
 }
+
+/*table css start*/
 table{
     display: block;
     width: 100%;
-    height: 240px;
+    height: 340px;
     overflow-y: auto;
 }
 table th,td{
@@ -27,6 +29,12 @@ tr.mat-header-row{
     background: #171B1E;
 }
 ::ng-deep .mat-table tbody{
+    background: #1E2328;
+}
+.mat-form-field{
+    height: 5px;
+}
+.mat-table{
     background: #1E2328;
 }
 td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
@@ -62,6 +70,8 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
     width: 95%;
     margin: auto;
 }
+/*table css end*/
+
 #text-category{
     text-align: center;
     font-weight: bold;
@@ -69,12 +79,12 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
 #categoryhole-div{
     background: #434F5B;
     width: 97%;
-    height: 80%;
+    height: 100%;
     margin-left: 10px;
 }
 #category{
     width: 100%;
-    height: 92%;
+    height: 85%;
     background: #333C45;
 }
 #adddelete-div{
@@ -94,8 +104,9 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
 }
 #leftside-div{
     width: 100%;
-    height: 92%;
+    height: 85%;
     background: #333C45;
+    display: block;
 }
 .categorylist-alignment{
     text-align: center;
@@ -275,27 +286,6 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
 }
 /* 125% zoom */
 @media (min-width: 1025px) and (max-width: 1280px){
-    #categoryhole-div{
-        background: #434F5B;
-        width: 97%;
-        height: 82%;
-        margin-left: 10px;
-    }
-    #category{
-        width: 100%;
-        height: 81%;
-        background: #333C45;
-    }
-    #leftside-div{
-        width: 100%;
-        height: 81%;
-        background: #333C45;
-    }
-    .mat-elevation-z8{
-        height: 165px;
-        overflow-y: scroll;
-        width: 100%;
-    }
     #categorylist-div{
         background: #272E34;
         color: white;
@@ -321,26 +311,21 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
 } 
 /* 150% zoom */
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
-    #categoryhole-div{
-        background: #434F5B;
-        width: 97%;
-        height: 100%;
-        margin-left: 10px;
-    }
     #category{
         width: 100%;
-        height: 80%;
+        height: 81%;
         background: #333C45;
     }
     #leftside-div{
         width: 100%;
-        height: 80%;
+        height: 81%;
         background: #333C45;
     }
-    .mat-elevation-z8{
-        height: 100px;
-        overflow-y: scroll;
+    table{
+        display: block;
         width: 100%;
+        height: 190px;
+        overflow-y: auto;
     }
     #categorylist-div{
         background: #272E34;
@@ -372,12 +357,6 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
 } 
 /* 175% zoom */
 @media (min-width: 768px) and (max-width: 810px) and (orientation: landscape) {
-    #categoryhole-div{
-        background: #434F5B;
-        width: 97%;
-        height: 100%;
-        margin-left: 10px;
-    }
     #category{
         width: 100%;
         height: 70%;
@@ -388,10 +367,11 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
         height: 70%;
         background: #333C45;
     }
-    .mat-elevation-z8{
-        height: 50px;
-        overflow-y: scroll;
+    table{
+        display: block;
         width: 100%;
+        height: 190px;
+        overflow-y: auto;
     }
     #categorylist-div{
         background: #272E34;
@@ -423,26 +403,21 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
 } 
 /* 200% zoom */
 @media (min-width: 601px) and (max-width: 767px) {
-    #categoryhole-div{
-        background: #434F5B;
-        width: 97%;
-        height: 120%;
-        margin-left: 10px;
-    }
     #category{
         width: 100%;
-        height: 71%;
+        height: 70%;
         background: #333C45;
     }
     #leftside-div{
         width: 100%;
-        height: 71%;
+        height: 70%;
         background: #333C45;
     }
-    .mat-elevation-z8{
-        height: 50px;
-        overflow-y: scroll;
+    table{
+        display: block;
         width: 100%;
+        height: 190px;
+        overflow-y: auto;
     }
     #categorylist-div{
         background: #272E34;

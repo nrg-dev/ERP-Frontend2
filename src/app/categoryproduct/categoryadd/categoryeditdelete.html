@@ -6,7 +6,7 @@
         Edit/Delete Category
     </label >
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-4 col-md-4 col-sm-4 col-lg-4">
              <div id="editdelcategory-div">
                 <div *ngFor="let list of categorylist" (click)="onChangeCategory(list.number)" 
                 class="productlists-alignment" id="{{ list.number }}">
@@ -14,19 +14,19 @@
                 </div>
              </div>
          </div>
-         <div class="col-lg-7">
+         <div class="col-7 col-md-7 col-sm-7 col-lg-7">
              <br/>
-             <p id="fontsize-21">Category Name</p>
+             <p>Category Name</p>
              <input type="text" id="categoryname-div" />
              <br/>
-             <p id="fontsize-21">Category Description</p>
+             <p>Category Description</p>
              <input type="text" id="categorydesc-div" />
              <br/><br/>
              <div class="row">
-                <div class="col-lg-6">
+                <div class="col-6 col-md-6 col-sm-6 col-lg-6">
                     <button id="save-btn">Save</button>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-6 col-md-6 col-sm-6 col-lg-6">
                     <button id="cancel-btn" (click)="close($event); false">Cancel</button>
                 </div>
              </div>

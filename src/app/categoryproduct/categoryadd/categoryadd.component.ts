@@ -258,8 +258,13 @@ export class CategoryaddComponent implements OnInit {
   public dataDiscountList : any;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
+  // Category
   displayedColumns: string[] = ['Productcode', 'ProductName','Discount','DiscountTime','Qty','Price','editdelete'];
   dataSource: MatTableDataSource<any>;
+
+  // Product
+  displayedColumns1: string[] = ['Productcode', 'ProductName','Discount','DiscountTime','Qty','Price','editdelete'];
+  dataSource1: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
   @ViewChild(MatSort,{ static: true }) sort: MatSort;
@@ -268,9 +273,9 @@ export class CategoryaddComponent implements OnInit {
   tempid=null;
   tempnumber=null;
   public leftdetails=false;
-  public discountdetails=false;
+  public discountdetails='none';
   public editdeletediv=false;
-  public fiberdetails=false;
+  public fiberdetails='none';
   public alldetails=false;
 
   successdialog = 'none';
@@ -361,23 +366,22 @@ categorydetails(number: string){
   this.leftdetails=true;
 
   if(number=='01'){
-    this.leftdetails=true;
-    this.alldetails=true;
-    this.discountdetails=false;
-    this.fiberdetails=false;
+    this.alldetails=false;
+    //this.discountdetails=false;
+    this.fiberdetails='none';
     this.editdeletediv=false;
   }
   if(number=='02'){
-    this.discountdetails=true;
+   this.discountdetails='block';
     this.alldetails=false;
-    this.fiberdetails=false;
-    this.editdeletediv=false;
+    this.fiberdetails='none';
+    this.editdeletediv =false;
   }
   if(number=='03'){
     this.leftdetails=true;
     this.alldetails=false;
-    this.discountdetails=false;
-    this.fiberdetails=false;
+    //this.discountdetails=false;
+    //this.fiberdetails=false;
     this.editdeletediv=false;
   }
 }
@@ -392,33 +396,35 @@ productlist(number: string){
   this.leftdetails=true;
 
   if(number=='PROD1'){
-    this.fiberdetails=true;
+    this.fiberdetails='block';
+    this.discountdetails='none';
+
     this.alldetails=false;
-    this.discountdetails=false;
+    //this.discountdetails=false;
     this.editdeletediv=false;
   }
   if(number=='PROD2'){
     this.alldetails=false;
-    this.discountdetails=false;
-    this.fiberdetails=false;
+    //this.discountdetails=false;
+    //this.fiberdetails=false;
     this.editdeletediv=false;
   }
   if(number=='PROD3'){
     this.alldetails=false;
-    this.discountdetails=false;
-    this.fiberdetails=false;
+    //this.discountdetails=false;
+    //this.fiberdetails=false;
     this.editdeletediv=false;
   }
   if(number=='PROD4'){
     this.alldetails=false;
-    this.fiberdetails=false;
-    this.discountdetails=false;
+    //this.fiberdetails=false;
+    //this.discountdetails=false;
     this.editdeletediv=false;
   }
   if(number=='PROD5'){
     this.alldetails=false;
-    this.discountdetails=false;
-    this.fiberdetails=false;
+    //this.discountdetails=false;
+    //this.fiberdetails=false;
     this.editdeletediv=false;
   }
 }
@@ -426,7 +432,7 @@ productlist(number: string){
 
   editdelete(){
     this.editdeletediv=true;
-    this.discountdetails=false;
+   // this.discountdetails=false;
   }
 
   addNewCategory(){
