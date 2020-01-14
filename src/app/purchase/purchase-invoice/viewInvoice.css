@@ -6,6 +6,7 @@
   width: 100%;
   height: 100%;
   margin-top: 20px;
+  color: black;
 } 
 select {
   width: 20%;
@@ -54,6 +55,7 @@ td {
 }
 #thead{
   padding: 3px;
+  width: 10%;
 }
 
 .imageRight{

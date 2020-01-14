@@ -99,7 +99,11 @@ export class EditInvoice {
   }
   
   public deletePurchaseInvoice(){
-    this.dialogConfig.disableClose = true;
+    this.alertService.success("Successfully Deleted.");
+    setTimeout(() => {
+      this.alertService.clear();
+    }, 2000);
+    /*this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
     this.dialogConfig.position = {
       'top': '1000',
@@ -111,11 +115,14 @@ export class EditInvoice {
       height: '80%'
     }).afterClosed().subscribe(result => {
       // this.refresh();
-    });
+    }); */
   }
 
   saveInvoice(){
-    alert("-- Save Invoice --");
+    this.alertService.success("Successfully Saved.");
+    setTimeout(() => {
+      this.alertService.clear();
+    }, 2000);
   }
 
   cancelInvoice(){
@@ -293,7 +300,11 @@ export class PurchaseInvoiceComponent implements OnInit {
   }
 
   public deletePurchase(){
-    this.dialogConfig.disableClose = true;
+    this.alertService.success("Deleted Successfully");
+    setTimeout(() => {
+      this.alertService.clear();
+    }, 2000);
+    /*this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
     this.dialogConfig.position = {
       'top': '1000',
@@ -304,7 +315,7 @@ export class PurchaseInvoiceComponent implements OnInit {
       data: "invoiceNumber",
       height: '80%'
     }).afterClosed().subscribe(result => {
-    });
+    });*/
   }
 
 }

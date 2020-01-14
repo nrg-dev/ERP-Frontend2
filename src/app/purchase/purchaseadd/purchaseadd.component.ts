@@ -67,9 +67,9 @@ export class PurchaseaddComponent  implements OnInit  {
 
   ngOnInit() {
     /* Initiate the form structure */
-    this.vendorList = ['Nisho','Alex','Josni','Mary'];
     this.productList = ['Mobile', 'Computer', 'Cloths', 'TV'];
     this.categoryList = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];
+    this.vendorList = ['Nisho','Alex','Josni','Mary'];
   }
 
   newPurchaseOrder(){
