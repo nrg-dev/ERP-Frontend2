@@ -4,6 +4,7 @@
         <div id="category">
             <br/>
             <div id="adddelete-div">
+                <br/>
                 <h2 id="text-category">Category</h2>
                 <div class="row" id="marginleft-30">
                     <span id="addfont-size" (click)="addNewCategory()">
@@ -81,11 +82,6 @@
                             <ng-container matColumnDef="Productcode">
                                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Itemcode </th>
                                 <td mat-cell *matCellDef="let row"> {{row.Productcode}} </td>
-                            </ng-container>
-                            
-                            <ng-container matColumnDef="ProductName">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header> ItemName </th>
-                                <td mat-cell *matCellDef="let row"> {{row.ProductName}} </td>
                             </ng-container>
                             
                                 <ng-container matColumnDef="Discount">
