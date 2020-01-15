@@ -254,10 +254,14 @@ export class ProducteditComponent {
   templateUrl: './categorytable.html', 
 })
 export class CategorytableComponent {
-  showVar: boolean = true;
-
-    toggleChild(){
-        this.showVar = !this.showVar;
+  countryList:any;
+  priorityList:any;
+  model: any = {};
+  tempid=null;
+  constructor(
+    private alertService: AlertService,
+    public dialogRef: MatDialogRef<CategoryeditdeleteComponent>,
+  ) {
     }
  
 }
@@ -275,7 +279,7 @@ export class CategoryaddComponent implements OnInit {
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
   // Category
-  displayedColumns: string[] = ['Productcode', 'ProductName','Discount','DiscountTime','Qty','Price','editdelete'];
+  displayedColumns: string[] = ['Productcode','Discount','DiscountTime','Qty','Price','editdelete'];
   dataSource: MatTableDataSource<any>;
 
   // Product

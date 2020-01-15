@@ -13,7 +13,6 @@ h2{
 /*table css start*/
 table{
     height: 340px;
-    overflow-y: auto;
 }
 table th,td{
     border: 2px solid #171B1E;
@@ -34,10 +33,11 @@ tr.mat-header-row{
 }
 .mat-table{
     background: #1E2328;
+    width: 100%;
 }
-.mat-elevation-z8{
-    width: 0px;
-}
+::ng-deep .mat-select-value,::ng-deep .mat-select-arrow {
+    color: white;
+  }
 td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
     border-bottom-width: 1px;
     border-bottom-style: solid;
@@ -100,14 +100,12 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
     margin-left: 21px;
     width: 84%;
     height: 70%;
-    overflow-y: scroll;
 
 }
 #leftside-div{
     width: 100%;
     height: 85%;
     background: #333C45;
-    overflow: scroll;
 }
 .categorylist-alignment{
     text-align: center;
@@ -292,7 +290,6 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
         margin-left: 21px;
         width: 84%;
         height: 66%;
-        overflow-y: scroll;
     }
     #marginleft-30{
         margin-left: 25px;
@@ -308,6 +305,12 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
     h2{
         font-size: 20px;
     }
+    #categoryhole-div{
+        background: #434F5B;
+        width: 100%;
+        height: 880px;
+        margin-left: 10px;
+    }
 } 
 /* 150% zoom */
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
@@ -320,11 +323,9 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
         width: 100%;
         height: 81%;
         background: #333C45;
-        overflow: scroll;
     }
     table{
         height: 190px;
-        overflow-y: auto;
     }
     #categorylist-div{
         background: #272E34;
@@ -332,7 +333,6 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
         margin-left: 21px;
         width: 84%;
         height: 60%;
-        overflow-y: scroll;
     }
     #adddelete-div{
         background: #272E34;
@@ -353,6 +353,12 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
     #font-size15{
         font-size: 13px;
     }
+    #categoryhole-div{
+        background: #434F5B;
+        width: 100%;
+        height: 880px;
+        margin-left: 10px;
+    }
 } 
 /* 175% zoom */
 @media (min-width: 768px) and (max-width: 810px) and (orientation: landscape) {
@@ -365,11 +371,9 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
         width: 100%;
         height: 70%;
         background: #333C45;
-        overflow: scroll;
     }
     table{
         height: 190px;
-        overflow-y: auto;
     }
     #categorylist-div{
         background: #272E34;
@@ -377,7 +381,6 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
         margin-left: 21px;
         width: 84%;
         height: 60%;
-        overflow-y: scroll;
     }
     #adddelete-div{
         background: #272E34;
@@ -414,7 +417,6 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
     }
     table{
         height: 190px;
-        overflow-y: auto;
     }
     #categorylist-div{
         background: #272E34;
@@ -422,7 +424,6 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
         margin-left: 21px;
         width: 84%;
         height: 58%;
-        overflow-y: scroll;
     }
     #adddelete-div{
         background: #272E34;
