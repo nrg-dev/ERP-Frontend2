@@ -2,13 +2,13 @@
     <div class="row">
         <div class="col-lg-11">
             <div class="tab">
-                <a class="tablink" routerLink="../salesorder" style="width: auto;color:white;">Sales Order</a>
-                <a class="tablink" routerLink="../salesinvoice" style="width: auto;color:white;">Sales Invoice</a>
-                <a class="tablink" routerLink="../salesreturn" style="width: auto;color:white;">Sales Return</a>
-                <a class="tablink" style="border-bottom: 3px solid #007bff;width: auto;" id="defaultOpen">Sales Report</a>
+                <a class="tablink" routerLink="../purchaseadd" style="width: auto;color:white;">Purchase Order</a>
+                <a class="tablink" routerLink="../purchase-invoice" style="width: auto;color:white;">Purchase Invoice</a>
+                <a class="tablink" routerLink="../purchase-return" style="width: auto;color:white;">Purchase Return</a>
+                <a class="tablink" style="border-bottom: 3px solid #007bff;width: auto;" id="defaultOpen">Purchase Report</a>
             </div>
                     
-            <div id="addsales-div">
+            <div id="addemployee-div">
                 <br/><br/>
                 <div class="group-gap" style="margin: 40px;">
                     <br/>
@@ -16,7 +16,7 @@
                         <div class="col-lg-7">
                             <div class="row">
                                 <div class="col-lg-3">
-                                    <h3>SALES ORDER SALES RETURN OVERALL LIST</h3>
+                                    <h3>PURCHASE ORDER PURCHASE RETURN OVERALL LIST</h3>
                                 </div>
                                 <div class="col-lg-1"></div>
                                 <div class="col-lg-3">
@@ -40,20 +40,20 @@
                                         <td mat-cell *matCellDef="let row" id="middleContent"> {{row.sNo}} </td>
                                     </ng-container>
                                 
-                                    <ng-container matColumnDef="SoInvoice">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> SO Invoice</th>
+                                    <ng-container matColumnDef="PoInvoice">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> PO Invoice</th>
                                         <td mat-cell *matCellDef="let row" id="middleContent"> {{row.invoiceNumber}} </td>
                                     </ng-container>
                                 
 
-                                    <ng-container matColumnDef="soDate">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> SO Date </th>
-                                        <td mat-cell *matCellDef="let row" id="middleContent"> {{row.soDate}} </td>
+                                    <ng-container matColumnDef="poDate">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> PO Date </th>
+                                        <td mat-cell *matCellDef="let row" id="middleContent"> {{row.poDate}} </td>
                                     </ng-container>
 
-                                    <ng-container matColumnDef="customer">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer </th>
-                                        <td mat-cell *matCellDef="let row" id="middleContent"> {{row.customerName}} </td>
+                                    <ng-container matColumnDef="vendor">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Vendor </th>
+                                        <td mat-cell *matCellDef="let row" id="middleContent"> {{row.vendorName}} </td>
                                     </ng-container>
 
                                     <ng-container matColumnDef="Total">
@@ -71,7 +71,7 @@
                                     <div class="empdet-div">
                                         <div class="row">
                                             <div id="sale-details">
-                                                <p class="text">Sales Order Detail</p>
+                                                <p class="text">Purchase Order Detail</p>
                                                 <div class="row" id="salessummary">
                                                     <div class="col-md-5 col-xs-5 col-lg-5">Invoice</div>
                                                     <div class="col-md-1 col-xs-1 col-lg-1">:</div>
@@ -109,9 +109,9 @@
                                         <br/><br/>
                                         <div class="row">
                                             <div id="date-details">
-                                                <p class="text">Sales Order Summary </p>
+                                                <p class="text">Purchase Order Summary </p>
                                                 <div class="row" id="salessummary">
-                                                    <div class="col-md-5 col-xs-5 col-lg-5">Date of SO</div>
+                                                    <div class="col-md-5 col-xs-5 col-lg-5">Date of PO</div>
                                                     <div class="col-md-1 col-xs-1 col-lg-1">:</div>
                                                     <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.empCode }}</div>
                                                 </div>

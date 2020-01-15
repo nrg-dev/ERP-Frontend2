@@ -5,7 +5,7 @@
         <a class="tablink" style="border-bottom: 3px solid #007bff;width: auto;" id="defaultOpen">Purchase Order</a>
         <a class="tablink" routerLink="../purchase-invoice" style="width: auto;color:white;">Purchase Invoice</a>
         <a class="tablink" routerLink="../purchase-return" style="width: auto;color:white;">Purchase Return</a>
-        <a class="tablink" routerLink="../purchaseadd" style="width: auto;color:white;">Purchase Report</a>
+        <a class="tablink" routerLink="../purchasereport" style="width: auto;color:white;">Purchase Report</a>
       </div>
               
       <div id="addemployee-div">
@@ -26,6 +26,7 @@
                 </div>
                 <div class="col-lg-5">
                   <select class="form-control" [(ngModel)]="model.vendorName" name="{{model.vendorName}}" #vendorName="ngModel" style="color: black;width: 185%;" >
+                    <option value="--- Select --- "> ---- Select ---- </option>  
                     <option *ngFor="let itemVendor of vendorList" value="{{ itemVendor }}"> {{ itemVendor }} </option> 
                   </select> 
                 </div>
@@ -102,7 +103,7 @@
             <table cellpadding="0" cellspacing="0" border="0" id="test">
               <thead style="background-color: #3c8dbc;color:white;">
                 <th style="padding-right: 10px;padding: 9px;">Category </th> 
-                <th style="padding-right: 10px;padding: 9px;">Product Name </th> 
+                <th style="padding-right: 10px;padding: 9px;">Item </th> 
                 <th style="padding-right: 10px;padding: 9px;">Description </th> 
                 <th style="padding-right: 10px;padding: 9px;">Quantity</th>
                 <th style="padding-right: 10px;padding: 9px;">Unit Price </th>

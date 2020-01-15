@@ -1,25 +1,27 @@
 import { Component, OnInit, ViewChild ,ElementRef,Inject} from '@angular/core';
-import { Sales, User } from 'src/app/_models';
+import { Purchase, User } from 'src/app/_models';
 import { AlertService } from 'src/app/_services';
 import { Router } from '@angular/router';
 import { AlertComponent } from 'src/app/_directives';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
-import { SalesService } from '../sales.service';
+import { PurchaseService } from '../purchase.service';
+
 
 @Component({
-  selector: 'app-salesreport',
-  templateUrl: './salesreport.component.html',
-  styleUrls: ['./salesreport.component.css']
+  selector: 'app-purchasereport',
+  templateUrl: './purchasereport.component.html',
+  styleUrls: ['./purchasereport.component.css']
 })
-export class SalesreportComponent implements OnInit {
+export class PurchasereportComponent implements OnInit {
+  purchse:Purchase;
   model: any ={};
-  sales:Sales;
   public purchaseList : any;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
-  displayedColumns: string[] = ['No','SoInvoice','soDate','customer','Total'];
+  displayedColumns: string[] = ['No','PoInvoice','poDate','vendor','Total'];
+
   dataSource: MatTableDataSource<any>;
   
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
@@ -28,9 +30,9 @@ export class SalesreportComponent implements OnInit {
     private dialog: MatDialog,
     private router: Router, 
     private alertService: AlertService,
-    private salesService: SalesService
+    private purchaseservice: PurchaseService,
   ) {
-    const purchasedata = require("../../salesreportdata.json");
+    const purchasedata = require("../../purchasereportdata.json");
     this.purchaseList=purchasedata;
 
     this.dataSource = new MatTableDataSource(this.purchaseList);
@@ -50,5 +52,6 @@ export class SalesreportComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
 
 }

@@ -1,12 +1,9 @@
-import {MatDialog, MatDialogConfig} from "@angular/material";
-import { Component, OnInit, ViewChild } from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-import {MatExpansionPanel, MatSnackBar, Sort} from '@angular/material';
+import { Component, OnInit, ViewChild ,ElementRef,Inject} from '@angular/core';
+import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { Inject} from '@angular/core';
 import { AlertService } from 'src/app/_services';
-
-
+import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
+import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
 
 // addnewcategory start
 @Component({
@@ -27,10 +24,10 @@ export class AddnewcategoryComponent {
     }
     saveNewCategory(){
       this.alertService.success("Saved Successfully");
+      this.dialogRef.close();
       setTimeout(() => {
-       this.alertService.clear();
-     }, 2000);
-    this.dialogRef.close();
+        this.alertService.clear();
+      }, 2000);
     console.log("saveNewCategory");
     }
     close(e) {
@@ -258,9 +255,16 @@ export class ProducteditComponent {
   styleUrls: ['./categoryadd.component.css']
 })
 export class CategoryaddComponent implements OnInit {
-  
+  public dataDiscountList : any;
+  dialogConfig = new MatDialogConfig();
+  isDtInitialized:boolean = false;
+  // Category
   displayedColumns: string[] = ['Productcode', 'ProductName','Discount','DiscountTime','Qty','Price','editdelete'];
   dataSource: MatTableDataSource<any>;
+
+  // Product
+  displayedColumns1: string[] = ['Productcode', 'ProductName','Discount','DiscountTime','Qty','Price','editdelete'];
+  dataSource1: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
   @ViewChild(MatSort,{ static: true }) sort: MatSort;
@@ -269,9 +273,9 @@ export class CategoryaddComponent implements OnInit {
   tempid=null;
   tempnumber=null;
   public leftdetails=false;
-  public discountdetails=false;
+  public discountdetails='none';
   public editdeletediv=false;
-  public fiberdetails=false;
+  public fiberdetails='none';
   public alldetails=false;
 
   successdialog = 'none';
@@ -319,35 +323,38 @@ categorylist: any =[
   }
 ];
 
-
-//dataDiscountList : any = [];
- discountdata = require("../../discountdata.json");
-dataDiscountList=this.discountdata;
-
-  constructor(    private dialog: MatDialog,
+ 
+  constructor(
     private alertService: AlertService,
-    //private dialog: MatDialog,
+    private dialog: MatDialog,
+    private router: Router
     ) { 
-
+      const purchasedata = require("../../discountdata.json");
+      this.dataDiscountList=purchasedata;
 
       this.dataSource = new MatTableDataSource(this.dataDiscountList);
-
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+
       //const users = Array.from({length: 100}, (_, k) => this.createNewUser(k + 1));
 
       // Assign the data to the data source for the table to render
     }
 
-    applyFilter(filterValue: string) {
-      this.dataSource.filter = filterValue.trim().toLowerCase();
-  
-      if (this.dataSource.paginator) {
-        this.dataSource.paginator.firstPage();
-      }
-    }
+   
+    
   ngOnInit() {
+   
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
     this.leftdetails=true;
+  }
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
    
 categorydetails(number: string){
@@ -359,23 +366,22 @@ categorydetails(number: string){
   this.leftdetails=true;
 
   if(number=='01'){
-    this.leftdetails=true;
-    this.alldetails=true;
-    this.discountdetails=false;
-    this.fiberdetails=false;
+    this.alldetails=false;
+    //this.discountdetails=false;
+    this.fiberdetails='none';
     this.editdeletediv=false;
   }
   if(number=='02'){
-    this.discountdetails=true;
+   this.discountdetails='block';
     this.alldetails=false;
-    this.fiberdetails=false;
-    this.editdeletediv=false;
+    this.fiberdetails='none';
+    this.editdeletediv =false;
   }
   if(number=='03'){
     this.leftdetails=true;
     this.alldetails=false;
-    this.discountdetails=false;
-    this.fiberdetails=false;
+    //this.discountdetails=false;
+    //this.fiberdetails=false;
     this.editdeletediv=false;
   }
 }
@@ -390,33 +396,35 @@ productlist(number: string){
   this.leftdetails=true;
 
   if(number=='PROD1'){
-    this.fiberdetails=true;
+    this.fiberdetails='block';
+    this.discountdetails='none';
+
     this.alldetails=false;
-    this.discountdetails=false;
+    //this.discountdetails=false;
     this.editdeletediv=false;
   }
   if(number=='PROD2'){
     this.alldetails=false;
-    this.discountdetails=false;
-    this.fiberdetails=false;
+    //this.discountdetails=false;
+    //this.fiberdetails=false;
     this.editdeletediv=false;
   }
   if(number=='PROD3'){
     this.alldetails=false;
-    this.discountdetails=false;
-    this.fiberdetails=false;
+    //this.discountdetails=false;
+    //this.fiberdetails=false;
     this.editdeletediv=false;
   }
   if(number=='PROD4'){
     this.alldetails=false;
-    this.fiberdetails=false;
-    this.discountdetails=false;
+    //this.fiberdetails=false;
+    //this.discountdetails=false;
     this.editdeletediv=false;
   }
   if(number=='PROD5'){
     this.alldetails=false;
-    this.discountdetails=false;
-    this.fiberdetails=false;
+    //this.discountdetails=false;
+    //this.fiberdetails=false;
     this.editdeletediv=false;
   }
 }
@@ -424,9 +432,8 @@ productlist(number: string){
 
   editdelete(){
     this.editdeletediv=true;
-    this.discountdetails=false;
+   // this.discountdetails=false;
   }
-  dialogConfig = new MatDialogConfig();
 
   addNewCategory(){
     //this.successdialog = 'block';

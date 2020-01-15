@@ -5,7 +5,7 @@
           <a class="tablink" routerLink="../purchaseadd" style="width: auto;color:white;">Purchase Order</a>
           <a class="tablink" routerLink="../purchase-invoice" style="width: auto;color:white;">Purchase Invoice</a>
           <a class="tablink" style="border-bottom: 3px solid #007bff;width: auto;" id="defaultOpen">Purchase Return</a>
-          <a class="tablink" routerLink="../purchaseadd" style="width: auto;color:white;">Purchase Report</a>
+          <a class="tablink" routerLink="../purchasereport" style="width: auto;color:white;">Purchase Report</a>
         </div>
                 
         <div id="addemployee-div">
@@ -19,15 +19,29 @@
                     <div class="col-lg-6">
                         <div class="row">
                             <div class="col-lg-4">
+                                <label>Vendor Name </label>
+                            </div>
+                            <div class="col-lg-1">
+                                <label>:</label>
+                            </div>
+                            <div class="col-lg-7">
+                                <select class="form-control" style="background-color:#1B2931;color: white;" id="vendorName" [(ngModel)]="model.vendorName" name="{{model.vendorName}}" #vendorName="ngModel">
+                                    <option style="text-align:center;">-- Select --</option>
+                                    <option *ngFor="let itemvendor of vendorList" value="{{ itemvendor }}"> {{ itemvendor }} </option> 
+                                </select> 
+                            </div>
+                        </div><br/>
+                        <div class="row">
+                            <div class="col-lg-4">
                                 <label>Product Category </label>
                             </div>
                             <div class="col-lg-1">
                                 <label>:</label>
                             </div>
                             <div class="col-lg-7">
-                                <select class="form-control" style="background-color:#1B2931;">
-                                    <option style="text-align:center;">-- Select --</option>
-                                    <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
+                                <select class="form-control" style="background-color:#1B2931;color: white;" id="category">
+                                    <option>-- Select --</option>
+                                    <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
                                 </select> 
                             </div>
                         </div><br/>
@@ -39,9 +53,9 @@
                                 <label>:</label>
                             </div>
                             <div class="col-lg-7">
-                                <select class="form-control" style="background-color:#1B2931;">
-                                    <option>-- Select --</option>
-                                    <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
+                                <select class="form-control" style="background-color:#1B2931;color: white;" id="productName" [(ngModel)]="model.productName" name="{{model.productName}}" #productName="ngModel">
+                                    <option style="text-align:center;">-- Select --</option>
+                                    <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
                                 </select> 
                             </div>
                         </div><br/>
@@ -53,7 +67,7 @@
                                 <label>:</label>
                             </div>
                             <div class="col-lg-7">
-                                <input type="text" class="form-control" style="background-color:#1B2931;" id="inputBox" placeholder="     ltr/kg/pcs      "/>
+                                <input type="text" class="form-control" style="background-color:#1B2931;" id="quantity" placeholder="     ltr/kg/pcs      "/>
                             </div>
                         </div><br/>
                         <div class="row">
@@ -64,7 +78,7 @@
                                 <label>:</label>
                             </div>
                             <div class="col-lg-7">
-                                <input type="date" class="form-control" style="background-color:#1B2931;" id="inputBox" />
+                                <input type="date" class="form-control" style="background-color:#1B2931;" id="poDate" />
                             </div>
                         </div><br/>
                         <div class="row">
@@ -77,16 +91,16 @@
                             <div class="col-lg-7">
                                 <div class="form-group">
                                     <li>
-                                        <input type="radio"  name="itemStatus" [(ngModel)]="model.itemStatus"  value="damaged"> Damaged                                                
+                                        <input type="radio"  name="itemStatus" id="itemStatus" [(ngModel)]="model.itemStatus"  value="damaged"> Damaged                                                
                                     </li>
                                     <li>
-                                        <input type="radio" name="itemStatus" [(ngModel)]="model.itemStatus" value="expaired"> Expaired 
+                                        <input type="radio" name="itemStatus" id="itemStatus" [(ngModel)]="model.itemStatus" value="expaired"> Expaired 
                                     </li>
                                     <li>
-                                        <input type="radio" name="itemStatus" [(ngModel)]="model.itemStatus"  value="bs"> Bs 
+                                        <input type="radio" name="itemStatus" id="itemStatus" [(ngModel)]="model.itemStatus"  value="bs"> Bs 
                                     </li>
                                     <li>
-                                        <input type="radio" name="itemStatus" [(ngModel)]="model.itemStatus"  value="others"> Others
+                                        <input type="radio" name="itemStatus" id="itemStatus" [(ngModel)]="model.itemStatus"  value="others"> Others
                                     </li>
                                 </div>
                             </div>
@@ -101,10 +115,10 @@
                             <div class="col-lg-7">
                                 <div class="form-group">
                                     <li>
-                                        <input type="radio"  name="returnStatus" [(ngModel)]="model.returnStatus"  value="cash"> Cash                                                
+                                        <input type="radio"  name="returnStatus" id="returnStatus" [(ngModel)]="model.returnStatus"  value="cash"> Cash                                                
                                     </li>
                                     <li>
-                                        <input type="radio" name="returnStatus" [(ngModel)]="model.returnStatus" value="Credit/Voucher"> Credit/Voucher 
+                                        <input type="radio" name="returnStatus" id="returnStatus" [(ngModel)]="model.returnStatus" value="Credit/Voucher"> Credit/Voucher 
                                     </li>
                                 </div>
                             </div>
@@ -122,25 +136,36 @@
                             <br/>
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <h3>Summary</h3>
+                                    <h3 style="margin-left: 40px;">Summary</h3>
                                 </div>
                                 <div class="col-lg-2"></div>
                                 <div class="col-lg-4">
                                     <button id="print-butn">
-                                        <i class="fa fa-print" aria-hidden="true" id="icon-mod"></i>
-                                        <label id="text">Print Page</label>
+                                        &nbsp;<i class="fa fa-print" aria-hidden="true" id="icon-mod"></i>&nbsp;
+                                        <label id="text">Print Page</label>&nbsp;
                                     </button>
                                 </div>
                             </div>
                             <br/>
+<<<<<<< HEAD
                             <table class="scroll">
+=======
+                            <div class="row">
+                                <table id="addpurchasereturntable" class="scroll">
+>>>>>>> a5ebcadffd27313c96eee8b897f79ef96e9f3839
                                     <thead>
                                         <tr id="tr-color">
                                             <th>Date</th>
                                             <th>Product Name</th>
+<<<<<<< HEAD
                                             <th>Vendor</th>
                                             <th>Qty</th>
                                             <th>Item Status</th>
+=======
+                                            <th>Customer</th>
+                                            <th>Qty</th>
+                                            <th>ItemStatus</th>
+>>>>>>> a5ebcadffd27313c96eee8b897f79ef96e9f3839
                                             <th>Return as</th>
                                             <th>Action</th>
                                         </tr>
@@ -149,6 +174,7 @@
                                     <tbody>
                                         <tr>
                                             
+<<<<<<< HEAD
                                             <!--<td>
                                                 <div id="rowdelete-div" (click)="deletePurchaseInvoice()">
                                                     <i class="fa fa-trash-o" id="rowdelete-icon" aria-hidden="true"></i>    
@@ -157,6 +183,12 @@
                                         </tr>
                                     </tbody>
                                 </table>
+=======
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+>>>>>>> a5ebcadffd27313c96eee8b897f79ef96e9f3839
                             <br/> <br/>
                             <div class="row">
                                 <div class="col-lg-3"></div>
@@ -180,5 +212,5 @@
       </div>                    
     </div>
     <br/><br/><br/>
-  </div>
+</div>
   

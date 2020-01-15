@@ -5,23 +5,23 @@
   font-size:medium;
 }
 table {
-  display: block;
-  width: 100%;
-  padding-left: 10px;
-  height:400px;
-  overflow-y: auto;
+    width: 100%;
+    padding-left: 10px;
+    height:50%;
+    overflow: auto;
 }
+
 th{
-  color:#ffffff;
-  background-color:#21272D;
+    color:#ffffff;
+    background-color:#21272D;
 }
 
 td{
-  background-color:#434F5B;
+    background-color:#434F5B;
 }
-h3{
+h5{
     color:white;
-    font-size: 20px;
+ 
 }
 #savebtn {
     background-color:#51AF57;
@@ -56,11 +56,11 @@ h2{
 .tab{
   margin-left: 25px;
 }
-textarea{
-  height: 38px;
+form{
+  border: 1px solid #243642!important;
 }
 #labeltext{
-  color: white;
+  color: #243642;
 }
 .tablink {
   float: left;
@@ -81,10 +81,10 @@ textarea{
 
 #addemployee-div{
   background: #1B2931;
-  height: 880px;
-  width: 107%;
+  height: 630px;
+  width: 100%;
   border-radius: 10px;
-  margin-left: 10px;
+  margin-left: 10px;;
   /* border: 1px solid black;
   margin : 0px 15px 30px 20px; */
 }
@@ -96,21 +96,6 @@ a {
   text-decoration: none;
 }
 
-button {
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  opacity: .9;
-  border-radius: 4px;
-}
-.addButton{
-  background-color: #27AE60;
-  padding: 10px 25px;
-}
-.romoveButton{
-  background-color: #174fa6;
-  padding: 10px 15px;
-}
 #date-details{
   width: 100%;
   margin: 0 25px;
@@ -168,8 +153,8 @@ hr{
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
   #addemployee-div{
     background: #1B2931;
-    height: 880px;
-    width: 107%;
+    height: 630px;
+    width: 100%;
     border-radius: 10px;
     /* border: 1px solid black;
     margin : 0px 15px 30px 95px; */
@@ -178,8 +163,8 @@ hr{
 @media (min-width: 1025px) and (max-width: 1280px){
   #addemployee-div{
     background: #1B2931;
-    height: 880px;
-    width: 107%;
+    height: 630px;
+    width: 100%;
     border-radius: 10px;
     /* border: 1px solid black;
     margin : 0px 15px 30px 45px; */

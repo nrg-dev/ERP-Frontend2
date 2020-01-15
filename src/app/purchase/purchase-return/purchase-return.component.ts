@@ -16,7 +16,7 @@ import { PurchaseService } from '../purchase.service';
 export class PurchaseReturnComponent implements OnInit {
 
   model: any ={};
-  public purchaseEditList : any;
+  public vendorList : any;
   public productList : any;
   public categoryList : any;
   dialogConfig = new MatDialogConfig();
@@ -26,12 +26,51 @@ export class PurchaseReturnComponent implements OnInit {
     private dialog: MatDialog,
     private alertService: AlertService
   ) {  
-    this.productList = ['Mobile', 'Computer', 'Cloths', 'TV'];
-    this.categoryList = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];
+  
 
    }
 
   ngOnInit() {
+    this.vendorList = ['Josni', 'Nisho', 'Alex', 'Jeff'];
+    this.productList = ['Mobile', 'Computer', 'Cloths', 'TV'];
+    this.categoryList = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];
   }
 
+  addProduct(){
+    var vendorName=$("#vendorName").val();
+    var productName=$("#productName").val();
+    var category=$("#category").val();
+    var quantity=$("#quantity").val();
+    var poDate=$("#poDate").val();
+    var itemStatus = $("input[id='itemStatus']:checked").val();
+    var returnStatus = $("input[id='returnStatus']:checked").val();
+    var details= "<tr><td style='vertical-align: middle;border:1px solid white;'>" + poDate + "</td><td style='vertical-align: middle;border:1px solid white;'>"+ productName 
+      +"</td><td style='vertical-align: middle;border:1px solid white;'>" + vendorName + "</td><td style='vertical-align: middle;border:1px solid white;'>" + quantity
+      +"</td><td style='vertical-align: middle;border:1px solid white;'>" + itemStatus + "</td><td style='vertical-align: middle;border:1px solid white;'>" + returnStatus 
+      +"</td><td style='border:1px solid white;'>" + '&nbsp;<div style="background: #dc7218;border-radius: 16px;height:30px;width:30px;margin-top: -16px;" (click)="printPurchase()"><i class="fa fa-print" aria-hidden="true"></i></div>'
+      +' &nbsp;<div style="background: #267CB4;border-radius: 16px;height:30px;width:30px;margin-top: -16px;" (click)="editPurchase()"><i class="fa fa-pencil-square-o"></i></div>&nbsp;' 
+      +'<div style="background: #EF6956;border-radius: 16px;height:30px;width:30px;margin-top: -16px;" (click)="deletePurchse()"><i class="fa fa-trash-o"></i></div>' +"</td></tr>";
+
+    $("#addpurchasereturntable").append(details);
+    $("#vendorName").val("");
+    $("#productName").val("");
+    $("#category").val("");
+    $("#quantity").val("");
+    $("#poDate").val("");
+    $('input[type="radio"]').prop('checked', false);
+    $("#itemStatus").val('');
+    $("#returnStatus").val('');
+  }
+
+  printPurchase(){
+
+  }
+
+  editPurchase(){
+    
+  }
+
+  deletePurchse(){
+    
+  }
 }
