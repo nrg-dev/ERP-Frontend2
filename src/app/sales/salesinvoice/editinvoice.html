@@ -1,0 +1,54 @@
+<div id="box-dialouge">
+    <br/>
+    <h2 style="text-align: center;">Edit Invoice {{ this.model.invoiceNumber }}</h2>
+    <br/>
+    <table class="scroll">
+        <thead>
+            <tr id="tr-color">
+                <th>No</th>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Sub Total</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr *ngFor="let list of salesEditList">
+                <td>{{ list.sNo }}</td>
+                <td>
+                    <select class="form-control" value="{{ list.productName }}">
+                        <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
+                    </select> 
+                  </td>
+                  <td>
+                    <select class="form-control" value="{{ list.category }}">
+                        <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
+                    </select> 
+                  </td>
+                <td><input type="text" value="{{ list.description }}" /></td>
+                <td><input type="text" value="{{ list.quantity }}" /></td>
+                <td>{{ list.unitPrice }}</td>
+                <td>
+                    <div id="rowdelete-div" (click)="deleteSalesInvoice()">
+                        <i class="fa fa-trash-o" id="rowdelete-icon" aria-hidden="true"></i>    
+                    </div>   
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br/> <br/>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <div class="radio-toolbar">
+                <label id="checkIn-butn" (click)="saveInvoice()">Save</label>
+                <label id="checkOut-butn" (click)="cancelInvoice()">Cancel</label>
+            </div>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+    <br/> <br/>
+</div>

@@ -52,10 +52,11 @@ export class PurchaseReturnComponent implements OnInit {
       +'<div style="background: #EF6956;border-radius: 16px;height:30px;width:30px;margin-top: -16px;" (click)="deletePurchse()"><i class="fa fa-trash-o"></i></div>' +"</td></tr>";
 
     $("#addpurchasereturntable").append(details);
+    $("#vendorName").val("");
     $("#productName").val("");
     $("#category").val("");
     $("#quantity").val("");
-    $("#soDate").val("");
+    $("#poDate").val("");
     $('input[type="radio"]').prop('checked', false);
     $("#itemStatus").val('');
     $("#returnStatus").val('');

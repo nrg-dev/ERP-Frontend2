@@ -7,16 +7,16 @@
 }
 table {
     table-layout: fixed;
-    width: 90%;
+    width: 93%;
     height: 370px;
     border-collapse: collapse;
-    margin-left: 40px;
-    display:block;
+    margin-left: 20px;
+    display: block;
     overflow: auto;
     background-color: #333C45;
 }
 th,td {
-    padding: 10px;
+    padding: 5px 15px;
     border: 1px solid white;
     color: white;
 }
@@ -71,7 +71,7 @@ td{
 #addemployee-div{
     background: #1B2931;
     height: 880px;
-    width: 100%;
+    width: 107%;
     border-radius: 10px;
     margin-left: 10px;
 }
@@ -107,7 +107,7 @@ hr{
     cursor: pointer;
 }
   
-select,option,#quantity,#soDate { 
+select,option,#quantity,#poDate { 
     width: 85%;
     background: #1B2931;
     color:white;
@@ -135,6 +135,7 @@ input:focus,select:focus{
 #box-dialouge{
     background: #434F5B;
     height: auto;
+    width: 105%;
 }
 #rowedit-div{
   height: 30px;
@@ -172,7 +173,7 @@ input:focus,select:focus{
     #addemployee-div{
       background: #1B2931;
       height: 880px;
-      width: 100%;
+      width: 107%;
       border-radius: 10px;
     }
 }
@@ -180,7 +181,7 @@ input:focus,select:focus{
     #addemployee-div{
       background: #1B2931;
       height: 880px;
-      width: 100%;
+      width: 107%;
       border-radius: 10px;
     }
     

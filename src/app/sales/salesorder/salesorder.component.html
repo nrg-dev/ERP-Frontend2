@@ -26,6 +26,7 @@
                 </div>
                 <div class="col-lg-5">
                 <select class="form-control" [(ngModel)]="model.customerName" name="{{model.customerName}}" #customerName="ngModel" style="color: black;width: 185%;" >
+                        <option value="--- Select --- "> ---- Select ---- </option>  
                         <option *ngFor="let itemCustomer of customerList" value="{{ itemCustomer }}"> {{ itemCustomer }} </option> 
                 </select> 
                 </div>

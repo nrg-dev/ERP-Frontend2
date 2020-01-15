@@ -1,0 +1,22 @@
+<h3>Advanced Filter</h3>
+
+  <div class="row">
+    <label for="priority"><b>Filter Date :</b></label>
+      <input type="date" [(ngModel)]="model.fromdate" #fromdate="ngModel"/>
+      <label for="priority"><b> - </b></label>
+      <input type="date" [(ngModel)]="model.todate" #todate="ngModel"/>
+    </div>
+    <div style="height: 20px;" class="row"></div>
+
+    <div class="row">
+      <label for="priority"><b>Sorted By :</b></label>
+      <select placeholder="Choose" [(ngModel)]="model.sortName" #sortName="ngModel" id="sortName" name="sortName">
+        <option *ngFor="let list of sortedList" value="{{list.name}}">{{list.name}}</option>
+      </select>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button  (click)="apply()" style="width:auto;">Apply</button>
+</div>
+<!--
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+</div> -->

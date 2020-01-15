@@ -26,7 +26,7 @@
                             </div>
                             <div class="col-lg-7">
                                 <select class="form-control" style="background-color:#1B2931;color: white;" id="customerName" [(ngModel)]="model.customerName" name="{{model.customerName}}" #customerName="ngModel">
-                                    <option style="text-align:center;">-- Select --</option>
+                                    <option>-- Select --</option>
                                     <option *ngFor="let itemcustomer of customerList" value="{{ itemcustomer }}"> {{ itemcustomer }} </option> 
                                 </select> 
                             </div>
@@ -54,7 +54,7 @@
                             </div>
                             <div class="col-lg-7">
                                 <select class="form-control" style="background-color:#1B2931;color: white;" id="productName" [(ngModel)]="model.productName" name="{{model.productName}}" #productName="ngModel">
-                                    <option style="text-align:center;">-- Select --</option>
+                                    <option>-- Select --</option>
                                     <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
                                 </select> 
                             </div>

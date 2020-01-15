@@ -44,18 +44,21 @@ import {
 } from '@angular/material';
 import { PurchaseService } from './purchase.service';
 import { PurchaseReturnComponent } from './purchase-return/purchase-return.component';
+import { PurchasereportComponent } from './purchasereport/purchasereport.component';
 
 const routes: Routes = [
   { path: 'purchaseadd', component: PurchaseaddComponent },
   { path: 'purchase-invoice', component: PurchaseInvoiceComponent },
   { path: 'purchase-return', component: PurchaseReturnComponent },
+  { path: 'purchasereport', component: PurchasereportComponent },
+
 
 
 ];
 
 
 @NgModule({
-  declarations: [PurchaseaddComponent,ViewInvoice,EditInvoice,Status, PurchaseInvoiceComponent,Filter,DeleteDialog, PurchaseReturnComponent],
+  declarations: [PurchaseaddComponent,ViewInvoice,EditInvoice,Status, PurchaseInvoiceComponent,Filter,DeleteDialog, PurchaseReturnComponent, PurchasereportComponent],
   imports: [
     CommonModule,
     FormsModule,

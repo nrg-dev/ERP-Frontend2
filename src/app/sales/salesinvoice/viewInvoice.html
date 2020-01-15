@@ -5,11 +5,11 @@
         <table>
             <tr>
               <th scope="row" id="thead">Invoice Number</th>
-              <td id="tdbody">Inv005{{ this.purchase.invoiceNumber }}</td>
+              <td id="tdbody">Inv001{{ this.sales.invoiceNumber }}</td>
             </tr>
             <tr>
               <th scope="row" id="thead">Date</th>
-              <td id="tdbody">15 Jan 2020{{todayDate | date:'longDate'}}</td>
+              <td id="tdbody">12 Jan 2020{{todayDate | date:'longDate'}}</td>
             </tr>
             <tr>
                 <th scope="row" id="thead">Terms</th>
@@ -17,15 +17,15 @@
             </tr>
             <tr>
                 <th scope="row" id="thead">Sales Person</th>
-                <td id="tdbody">Josni    {{ this.purchase.salesPerson }}</td>
+                <td id="tdbody">Alex    {{ this.sales.salesPerson }}</td>
             </tr>
             <tr>
                 <th scope="row" id="thead">Order Number</th>
-                <td id="tdbody">Sale001{{ this.purchase.orderNumber }}</td>
+                <td id="tdbody">Pur001{{ this.sales.orderNumber }}</td>
             </tr>
             <tr>
                 <th scope="row" id="thead">Currency Code</th>
-                <td id="tdbody">20000 USD{{ this.purchase.netAmount }}</td>
+                <td id="tdbody">15000 USD{{ this.sales.netAmount }}</td>
             </tr>
         </table>
     </div>

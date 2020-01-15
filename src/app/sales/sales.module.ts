@@ -4,7 +4,7 @@ import { SalesorderComponent,Status } from './salesorder/salesorder.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LandingpageComponent } from '../landingpage/landingpage.component';
-import { SalesinvoiceComponent } from './salesinvoice/salesinvoice.component';
+import { SalesinvoiceComponent,ViewInvoice, EditInvoice,Filter,DeleteDialog } from './salesinvoice/salesinvoice.component';
 import { SalesreturnComponent } from './salesreturn/salesreturn.component';
 import { SalesreportComponent } from './salesreport/salesreport.component';
 
@@ -55,7 +55,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [SalesorderComponent, SalesinvoiceComponent, SalesreturnComponent, SalesreportComponent,Status],
+  declarations: [SalesorderComponent, SalesinvoiceComponent, SalesreturnComponent, SalesreportComponent,Status,ViewInvoice,EditInvoice,Filter,DeleteDialog],
   imports: [
     CommonModule,
     FormsModule,
@@ -104,7 +104,7 @@ const routes: Routes = [
   //schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [SalesService],
 
-  entryComponents: [Status],
+  entryComponents: [ViewInvoice,EditInvoice,Status,Filter,DeleteDialog],
  
   exports: [RouterModule]
 

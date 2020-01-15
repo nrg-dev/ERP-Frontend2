@@ -5,7 +5,7 @@
         <a class="tablink" style="border-bottom: 3px solid #007bff;width: auto;" id="defaultOpen">Purchase Order</a>
         <a class="tablink" routerLink="../purchase-invoice" style="width: auto;color:white;">Purchase Invoice</a>
         <a class="tablink" routerLink="../purchase-return" style="width: auto;color:white;">Purchase Return</a>
-        <a class="tablink" routerLink="../purchaseadd" style="width: auto;color:white;">Purchase Report</a>
+        <a class="tablink" routerLink="../purchasereport" style="width: auto;color:white;">Purchase Report</a>
       </div>
               
       <div id="addemployee-div">
@@ -26,6 +26,7 @@
                 </div>
                 <div class="col-lg-5">
                   <select class="form-control" [(ngModel)]="model.vendorName" name="{{model.vendorName}}" #vendorName="ngModel" style="color: black;width: 185%;" >
+                    <option value="--- Select --- "> ---- Select ---- </option>  
                     <option *ngFor="let itemVendor of vendorList" value="{{ itemVendor }}"> {{ itemVendor }} </option> 
                   </select> 
                 </div>

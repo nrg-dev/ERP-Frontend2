@@ -17,7 +17,10 @@ th{
   background-color:#436d82;
   width: 25%;
 }
-
+td{
+  background-color:white;
+  width: 25%;
+}
 mat-paginator{
   width: 100%;
   background-color: #1B2931;
@@ -36,10 +39,7 @@ mat-paginator{
   margin: 8px;
   padding-top: 4px;
 }
-td{
-  background-color:white;
-  width: 25%;
-}
+
 h5{
   color:white;
 }
@@ -95,7 +95,7 @@ button {
 #addemployee-div{
   background: #1B2931;
   height: 880px;
-  width: 100%;
+  width: 107%;
   border-radius: 10px;
   margin-left: 10px;
 }
@@ -202,7 +202,7 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
   #addemployee-div{
     background: #1B2931;
     height: 880px;
-    width: 100%;
+    width: 107%;
     border-radius: 10px;
   }
 }
@@ -210,7 +210,7 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
   #addemployee-div{
     background: #1B2931;
     height: 880px;
-    width: 100%;
+    width: 107%;
     border-radius: 10px;
   }
 
