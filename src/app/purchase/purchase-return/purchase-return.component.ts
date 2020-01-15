@@ -49,7 +49,7 @@ export class PurchaseReturnComponent implements OnInit {
       +"</td><td style='vertical-align: middle;border:1px solid white;'>" + itemStatus + "</td><td style='vertical-align: middle;border:1px solid white;'>" + returnStatus 
       +"</td><td style='border:1px solid white;'>" + '&nbsp;<div style="background: #dc7218;border-radius: 16px;height:30px;width:30px;margin-top: -16px;" (click)="printPurchase()"><i class="fa fa-print" aria-hidden="true"></i></div>'
       +' &nbsp;<div style="background: #267CB4;border-radius: 16px;height:30px;width:30px;margin-top: -16px;" (click)="editPurchase()"><i class="fa fa-pencil-square-o"></i></div>&nbsp;' 
-      +'<div style="background: #EF6956;border-radius: 16px;height:30px;width:30px;margin-top: -16px;" (click)="deletePurchse()"><i class="fa fa-trash-o"></i></div>' +"</td></tr>";
+      +'<div style="background: #EF6956;border-radius: 16px;height:30px;width:30px;margin-top: -16px;" onclick="deletePurchase()"><i class="fa fa-trash-o"></i></div>' +"</td></tr>";
 
     $("#addpurchasereturntable").append(details);
     $("#vendorName").val("");
@@ -63,14 +63,21 @@ export class PurchaseReturnComponent implements OnInit {
   }
 
   printPurchase(){
-
+    alert("------ View Purchase ------");
   }
 
   editPurchase(){
-    
+    alert("------ Edit Purchase ------"); 
   }
 
-  deletePurchse(){
-    
+  /*$scope.deletePurchase = function(){
+    alert("------ Delete Purchase ------"); 
+
+  };*/
+
+  deletePurchase(){
+    alert("-------- Delete Purchase Calling -------")
   }
+  
 }
+

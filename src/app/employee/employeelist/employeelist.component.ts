@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild ,ElementRef,Inject} from '@angular/core';
 import { User } from 'src/app/_models';
 import { AlertService } from 'src/app/_services/index';
 import { Router } from '@angular/router';
+import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
+import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
 
 @Component({
   selector: 'app-employeelist',
@@ -25,6 +28,15 @@ export class EmployeelistComponent implements OnInit {
   todayString : string = new Date().toDateString();
   todayISOString : string = new Date().toISOString();
   dtOptions: DataTables.Settings = {};
+
+  dialogConfig = new MatDialogConfig();
+  isDtInitialized:boolean = false;
+  displayedColumns: string[] = ['code','name','rank','contactNumber'];
+
+  dataSource: MatTableDataSource<any>;
+  
+  @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort,{ static: true }) sort: MatSort;
 
  /* employeeList : any = 
    [ 
@@ -104,19 +116,38 @@ export class EmployeelistComponent implements OnInit {
 
   emptempid = null;
 
-  constructor(private router: Router, private alertService: AlertService) { }
-
-  ngOnInit() {
-
+  constructor(
+    private dialog: MatDialog,
+    private router: Router, 
+    private alertService: AlertService
+  ) { 
     const data = require("../employee.json");
     this.employeeList=data;
 
-    this.dtOptions = {
+    this.dataSource = new MatTableDataSource(this.employeeList);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  ngOnInit() {
+
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+
+    /*this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
       processing: true
+    }*/
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
     }
   }
+
 
   employeeDetails(empCode:string){
     if(this.emptempid!==null){
@@ -124,7 +155,7 @@ export class EmployeelistComponent implements OnInit {
       this.emptempid=null;
     } 
     this.emptempid = empCode;
-    document.getElementById(this.emptempid).style.backgroundColor='#2F4756';
+    //document.getElementById(this.emptempid).style.backgroundColor='#2F4756';
     this.empdetails = true;
     this.empeditdetails = false;
     this.absentdiv = false;

@@ -100,17 +100,17 @@
             <br/><br/> -->
             <button (click)="newPurchaseOrder()" class="addButton" id="newPurchaseOrder"> Add Rows </button>
             <br/><br/> 
-            <table cellpadding="0" cellspacing="0" border="0" id="test">
+            <table cellpadding="0" cellspacing="0" border="0" id="test" *ngIf="purchasetable">
               <thead style="background-color: #3c8dbc;color:white;">
                 <th style="padding-right: 10px;padding: 9px;">Category </th> 
                 <th style="padding-right: 10px;padding: 9px;">Item </th> 
                 <th style="padding-right: 10px;padding: 9px;">Description </th> 
-                <th style="padding-right: 10px;padding: 9px;">Quantity</th>
+                <th style="padding-right: 10px;padding: 9  px;">Quantity</th>
                 <th style="padding-right: 10px;padding: 9px;">Unit Price </th>
                 <th style="padding-right: 10px;padding: 9px;">Sub Total</th>
               </thead>
               <tbody>
-                <tr>
+                <!--<tr>
                   <td style="padding-right: 10px;padding: 9px;">
                     <select class="form-control" id="newAttributeCategory" [(ngModel)]="newAttribute.category" name="newAttributeCategory" style="color: black;" >
                       <option value="--- Select --- "> ---- Select ---- </option>  
@@ -138,7 +138,7 @@
                   <td style="padding-right: 10px;padding: 9px;background-color:#1B2931;visibility: hidden;">
                     <button class="romoveButton" (click)="deleteFieldValue(i)" id="Remove"> Remove </button> 
                   </td>
-                </tr>
+                </tr>-->
                 <tr *ngFor="let model of fieldArray; let i = index">
                   <td style="padding-right: 10px;padding: 9px;">
                     <select class="form-control" [(ngModel)]="model.category" name="{{model.category}}" #category="ngModel" style="color: black;" >

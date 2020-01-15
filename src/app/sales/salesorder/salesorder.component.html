@@ -100,7 +100,7 @@
                 <br/><br/> -->
                 <button (click)="newSalesOrder()" class="addButton" id="newSalesOrder"> Add Rows </button>
                 <br/><br/> 
-                <table cellpadding="0" cellspacing="0" border="0" id="test">
+                <table cellpadding="0" cellspacing="0" border="0" id="test" *ngIf="salestable">
                         <thead style="background-color: #3c8dbc;color:white;">
                                 <th style="padding-right: 10px;padding: 9px;">Category </th> 
                                 <th style="padding-right: 10px;padding: 9px;">Item </th> 
@@ -110,63 +110,63 @@
                                 <th style="padding-right: 10px;padding: 9px;">Sub Total</th>
                         </thead>
                 <tbody>
-                <tr>
-                <td style="padding-right: 10px;padding: 9px;">
-                        <select class="form-control" id="newAttributeCategory" [(ngModel)]="newAttribute.category" name="newAttributeCategory" style="color: black;" >
-                        <option value="--- Select --- "> ---- Select ---- </option>  
-                        <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
-                        </select> 
-                </td>
-                <td style="padding-right: 10px;padding: 9px;">
-                        <select class="form-control" id="newAttributeName" [(ngModel)]="newAttribute.productName" name="newAttributeName" style="color: black;" >
-                        <option value="--- Select --- "> ---- Select ---- </option>  
-                        <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
-                        </select> 
-                </td>
-                <td style="padding-right: 10px;padding: 9px;">
-                        <textarea class="form-control" type="text" id="newAttributeDescription" [(ngModel)]="newAttribute.description" name="newAttributeDescription"></textarea>
-                </td>
-                <td style="padding-right: 10px;padding: 9px;">
-                        <input class="form-control" type="text" id="newAttributeQuantity" [(ngModel)]="newAttribute.quantity" name="newAttributeQuantity" />
-                </td>
-                <td style="padding-right: 10px;padding: 9px;">
-                        <input class="form-control" type="text" id="newAttributeUnitPrice" [(ngModel)]="newAttribute.unitPrice" name="newAttributeUnitPrice" />
-                </td>
-                <td style="padding-right: 10px;padding: 9px;">
-                        <input class="form-control" type="text" id="newAttributeAmount" [(ngModel)]="newAttribute.netAmount" name="newAttributeAmount"/>
-                </td>
-                <td style="padding-right: 10px;padding: 9px;background-color:#1B2931;visibility: hidden;">
-                        <button class="romoveButton" (click)="deleteFieldValue(i)" id="Remove"> Remove </button> 
-                </td>
-                </tr>
+                <!--<tr>
+                        <td style="padding-right: 10px;padding: 9px;">
+                                <select class="form-control" id="newAttributeCategory" [(ngModel)]="newAttribute.category" name="newAttributeCategory" style="color: black;" >
+                                <option value="--- Select --- "> ---- Select ---- </option>  
+                                <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
+                                </select> 
+                        </td>
+                        <td style="padding-right: 10px;padding: 9px;">
+                                <select class="form-control" id="newAttributeName" [(ngModel)]="newAttribute.productName" name="newAttributeName" style="color: black;" >
+                                <option value="--- Select --- "> ---- Select ---- </option>  
+                                <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
+                                </select> 
+                        </td>
+                        <td style="padding-right: 10px;padding: 9px;">
+                                <textarea class="form-control" type="text" id="newAttributeDescription" [(ngModel)]="newAttribute.description" name="newAttributeDescription"></textarea>
+                        </td>
+                        <td style="padding-right: 10px;padding: 9px;">
+                                <input class="form-control" type="text" id="newAttributeQuantity" [(ngModel)]="newAttribute.quantity" name="newAttributeQuantity" />
+                        </td>
+                        <td style="padding-right: 10px;padding: 9px;">
+                                <input class="form-control" type="text" id="newAttributeUnitPrice" [(ngModel)]="newAttribute.unitPrice" name="newAttributeUnitPrice" />
+                        </td>
+                        <td style="padding-right: 10px;padding: 9px;">
+                                <input class="form-control" type="text" id="newAttributeAmount" [(ngModel)]="newAttribute.netAmount" name="newAttributeAmount"/>
+                        </td>
+                        <td style="padding-right: 10px;padding: 9px;background-color:#1B2931;visibility: hidden;">
+                                <button class="romoveButton" (click)="deleteFieldValue(i)" id="Remove"> Remove </button> 
+                        </td>
+                </tr>-->
                 <tr *ngFor="let model of fieldArray; let i = index">
-                <td style="padding-right: 10px;padding: 9px;">
-                        <select class="form-control" [(ngModel)]="model.category" name="{{model.category}}" #category="ngModel" style="color: black;" >
-                        <option value="--- Select --- "> ---- Select ---- </option>   
-                        <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
-                        </select> 
-                </td>
-                <td style="padding-right: 10px;padding: 9px;">
-                        <select class="form-control" [(ngModel)]="model.productName" name="{{model.productName}}" #productName="ngModel" style="color: black;" >
-                        <option value="--- Select --- "> ---- Select ---- </option>    
-                        <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
-                        </select> 
-                </td>
-                <td style="padding-right: 10px;padding: 9px;">
-                        <textarea type="text" class="form-control" [(ngModel)]="model.description" #description="ngModel" name="{{model.description}}"></textarea> 
-                </td>
-                <td style="padding-right: 10px;padding: 9px;">
-                        <input type="text" class="form-control" [(ngModel)]="model.quantity" #quantity="ngModel" name="{{model.quantity}}" />
-                </td>
-                <td style="padding-right: 10px;padding: 9px;">
-                        <input type="text" class="form-control" [(ngModel)]="model.unitPrice" #unitPrice="ngModel" name="{{model.unitPrice}}" />
-                </td>
-                <td style="padding-right: 10px;padding: 9px;">
-                        <input type="text" class="form-control" [(ngModel)]="model.netAmount" #netAmount="ngModel" name="{{model.netAmount}}" />
-                </td>
-                <td style="padding-right: 10px;padding: 9px;background-color:#1B2931;">
-                        <button class="romoveButton" (click)="deleteFieldValue(i)" id="Remove"> Remove </button> 
-                </td>
+                        <td style="padding-right: 10px;padding: 9px;">
+                                <select class="form-control" [(ngModel)]="model.category" name="{{model.category}}" #category="ngModel" style="color: black;" >
+                                <option value="--- Select --- "> ---- Select ---- </option>   
+                                <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
+                                </select> 
+                        </td>
+                        <td style="padding-right: 10px;padding: 9px;">
+                                <select class="form-control" [(ngModel)]="model.productName" name="{{model.productName}}" #productName="ngModel" style="color: black;" >
+                                <option value="--- Select --- "> ---- Select ---- </option>    
+                                <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
+                                </select> 
+                        </td>
+                        <td style="padding-right: 10px;padding: 9px;">
+                                <textarea type="text" class="form-control" [(ngModel)]="model.description" #description="ngModel" name="{{model.description}}"></textarea> 
+                        </td>
+                        <td style="padding-right: 10px;padding: 9px;">
+                                <input type="text" class="form-control" [(ngModel)]="model.quantity" #quantity="ngModel" name="{{model.quantity}}" />
+                        </td>
+                        <td style="padding-right: 10px;padding: 9px;">
+                                <input type="text" class="form-control" [(ngModel)]="model.unitPrice" #unitPrice="ngModel" name="{{model.unitPrice}}" />
+                        </td>
+                        <td style="padding-right: 10px;padding: 9px;">
+                                <input type="text" class="form-control" [(ngModel)]="model.netAmount" #netAmount="ngModel" name="{{model.netAmount}}" />
+                        </td>
+                        <td style="padding-right: 10px;padding: 9px;background-color:#1B2931;">
+                                <button class="romoveButton" (click)="deleteFieldValue(i)" id="Remove"> Remove </button> 
+                        </td>
                 </tr>
                         
                 </tbody>

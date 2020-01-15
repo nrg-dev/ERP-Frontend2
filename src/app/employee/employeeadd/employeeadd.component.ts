@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 //import { LandingpageComponent } from '../../landingpage/landingpage.component';
 import { User } from 'src/app/_models';
+import { AlertService } from '../../_services';
 
 
 @Component({
@@ -36,7 +37,9 @@ export class EmployeeaddComponent implements OnInit {
       workHour : 'Work Hour',
       annualLeave : 'Annual Leave',
     }];
-  constructor() {
+  constructor(
+    private alertService:AlertService
+  ) {
    // alert("test");
     //this.notSelected = false;
     //LandingpageComponent.showParent.subscribe(res => {
@@ -52,11 +55,10 @@ export class EmployeeaddComponent implements OnInit {
   }
 
   saveEmployee(){
-    this.mainmessage = "Successfully Saved."
-    this.successdialog = 'block';
+    this.alertService.success("Successfully Saved.");
     setTimeout(() => {
-      this.successdialog = 'none';
-    }, 1500);
+      this.alertService.clear();
+    }, 2000);
   }
 
   cancelEmployee(){

@@ -42,6 +42,7 @@ export class Status {
 export class PurchaseaddComponent  implements OnInit  {
   purchase:Purchase;
   model: any ={};
+  public purchasetable = false;
   headElements = ['#ID', 'Product Name', 'Category Name', 'Quantity'];
   todayNumber: number = Date.now();
   todayDate : Date = new Date();
@@ -66,6 +67,7 @@ export class PurchaseaddComponent  implements OnInit  {
     }
 
   ngOnInit() {
+    this.purchasetable = false;
     /* Initiate the form structure */
     this.productList = ['Mobile', 'Computer', 'Cloths', 'TV'];
     this.categoryList = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];
@@ -73,6 +75,7 @@ export class PurchaseaddComponent  implements OnInit  {
   }
 
   newPurchaseOrder(){
+    this.purchasetable = true;
    // this.newAttribute = {};
     this.fieldArray.push(this.newAttribute);
     this.newAttribute = {};
@@ -82,6 +85,11 @@ export class PurchaseaddComponent  implements OnInit  {
 
   deleteFieldValue(index) {
     this.fieldArray.splice(index, 1);
+    if(this.fieldArray[0]){
+      this.purchasetable = true;
+    }else{
+      this.purchasetable = false;
+    }
   }
   purchsearray: Array<any> = [];
   //purchsearray: Array<Purchase> = [];

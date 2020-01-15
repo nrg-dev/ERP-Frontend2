@@ -42,6 +42,7 @@ export class Status {
 export class SalesorderComponent implements OnInit {
   sales:Sales;
   model: any ={};
+  public salestable = false;
   headElements = ['#ID', 'Product Name', 'Category Name', 'Quantity'];
   todayNumber: number = Date.now();
   todayDate : Date = new Date();
@@ -68,18 +69,25 @@ export class SalesorderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.salestable = false;
     this.customerList = ['Nisho','Alex','Josni','Mary'];
     this.productList = ['Mobile', 'Computer', 'Cloths', 'TV'];
     this.categoryList = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];
   }
 
   newSalesOrder(){
+    this.salestable = true;
      this.fieldArray.push(this.newAttribute);
      this.newAttribute = {}; 
   }
  
   deleteFieldValue(index) {
-     this.fieldArray.splice(index, 1);
+    this.fieldArray.splice(index, 1);
+    if(this.fieldArray[0]){
+      this.salestable = true;
+    }else{
+      this.salestable = false;
+    }
   }
 
   saveSales(){
