@@ -321,7 +321,7 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
    this.alertService.success("Successfully Saved")
     setTimeout(() => {
       this.alertService.clear();
-      this.vendordetails=true;
+      this.vendordetails=false;
       this.vendoreditdetails=false;
       this.vendordragAndDrop=false;
       this.customereditdetails=false;
@@ -338,7 +338,7 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     this.alertService.success("");
   }
   vendordragdropcloseMethod(){
-    this.vendordetails=true;
+    this.vendordetails=false;
     this.vendoreditdetails=false;
     this.vendordragAndDrop=false;
     this.customerdetails = false;
@@ -359,7 +359,7 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     setTimeout(() => {
       this.successdialog = 'none';
       this.alertService.clear();
-      this.vendordetails=true;
+      this.vendordetails=false;
       this.vendordragAndDrop=false;
       this.vendoreditdetails=false;
       this.customerdetails = false;
@@ -522,7 +522,7 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     this.alertService.success("");
   }
   customerdragdropclose(){
-    this.customerdetails=true;
+    this.customerdetails=false;
     this.customereditdetails=false;
     this.vendoreditdetails = false;
     this.vendordragAndDrop = false;
@@ -533,7 +533,7 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     this.alertService.success("Saved Successfully");
     setTimeout(() => {
       this.alertService.clear();
-      this.customerdetails = true;
+      this.customerdetails = false;
       this.customereditdetails=false;
       this.vendoreditdetails = false;
       this.vendordragAndDrop = false;
@@ -553,7 +553,7 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     setTimeout(() => {
       this.alertService.clear();
       this.alertService.clear();
-      this.customerdetails = true;
+      this.customerdetails = false;
       this.vendordetails=false;
       this.vendoreditdetails=false;
       this.customereditdetails=false;
@@ -565,7 +565,7 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     setTimeout(() => {
       this.successdialog = 'none';
       this.alertService.clear();
-      this.customerdetails = true;
+      this.customerdetails = false;
       this.customereditdetails=false;
       this.vendoreditdetails = false;
       this.vendordragAndDrop = false;
