@@ -14,10 +14,13 @@ table {
 }
 th{
   color:#ffffff;
-  background-color:#21272D;
+  background-color:#436d82;
   width: 25%;
 }
-
+td{
+  background-color:white;
+  width: 25%;
+}
 mat-paginator{
   width: 100%;
   background-color: #1B2931;
@@ -26,10 +29,17 @@ mat-paginator{
 ::ng-deep .mat-select-value,::ng-deep .mat-select-arrow {
   color: white;
 }
-td{
-  background-color:white;
-  width: 25%;
+::ng-deep .alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  font-size: smaller;
+  width: 100%;
+  height: 40px;
+  margin: 8px;
+  padding-top: 4px;
 }
+
 h5{
   color:white;
 }
@@ -85,7 +95,7 @@ button {
 #addemployee-div{
   background: #1B2931;
   height: 880px;
-  width: 100%;
+  width: 107%;
   border-radius: 10px;
   margin-left: 10px;
 }
@@ -125,6 +135,9 @@ hr{
   font-size: 18px;
   margin-left: 3px;
 }
+::ng-deep td.mat-cell,::ng-deep  td.mat-footer-cell {
+  border-bottom: 1px solid black;
+}
 
 td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
   border-bottom-width: 1px;
@@ -132,7 +145,6 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
   padding: 7px;
   padding-bottom: 2px;
   text-align: justify;
-  border-color: 1px solid grey;
 }
 .mat-input-element {
   font: inherit;
@@ -166,14 +178,14 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
 #rowview-div{
   height: 30px;
   width: 30px;
-  background: #EF6956; 
+  background: #dc7218; 
   border-radius: 16px;
 }
 
 #rowdelete-div{
   height: 30px;
   width: 30px;
-  background: #dc7218; 
+  background: #EF6956; 
   border-radius: 16px;
 }
 
@@ -183,11 +195,14 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
   color: white;
 }
 
+#middleContent {
+  vertical-align: middle;
+}
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
   #addemployee-div{
     background: #1B2931;
     height: 880px;
-    width: 100%;
+    width: 107%;
     border-radius: 10px;
   }
 }
@@ -195,7 +210,7 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
   #addemployee-div{
     background: #1B2931;
     height: 880px;
-    width: 100%;
+    width: 107%;
     border-radius: 10px;
   }
 

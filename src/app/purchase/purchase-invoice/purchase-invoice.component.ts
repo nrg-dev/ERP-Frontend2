@@ -25,8 +25,8 @@ export class ViewInvoice {
     private alertService: AlertService,
 
     public dialogRef: MatDialogRef<ViewInvoice>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {  
+    @Inject(MAT_DIALOG_DATA) public data: any) 
+    {  
     this.model.invoiceNumber = this.data.invoiceNumber;
     const purchasedata = require("../../purchasedata.json");
     this.purchaseViewList=purchasedata;
@@ -99,7 +99,11 @@ export class EditInvoice {
   }
   
   public deletePurchaseInvoice(){
-    this.dialogConfig.disableClose = true;
+    this.alertService.success("Successfully Deleted.");
+    setTimeout(() => {
+      this.alertService.clear();
+    }, 2000);
+    /*this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
     this.dialogConfig.position = {
       'top': '1000',
@@ -111,11 +115,14 @@ export class EditInvoice {
       height: '80%'
     }).afterClosed().subscribe(result => {
       // this.refresh();
-    });
+    }); */
   }
 
   saveInvoice(){
-    alert("-- Save Invoice --");
+    this.alertService.success("Successfully Saved.");
+    setTimeout(() => {
+      this.alertService.clear();
+    }, 2000);
   }
 
   cancelInvoice(){
@@ -180,8 +187,7 @@ export class PurchaseInvoiceComponent implements OnInit {
   public purchaseList : any;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
-  displayedColumns: string[] = ['Date','Invoice Number','ProductName','name','quantity',
-  'subTotal','deliveryCost','netAmount','status','Action'];
+  displayedColumns: string[] = ['Date','Invoice Number','ProductName','name','quantity','deliveryCost','netAmount','status','Action'];
  
 
   dataSource: MatTableDataSource<any>;
@@ -293,7 +299,11 @@ export class PurchaseInvoiceComponent implements OnInit {
   }
 
   public deletePurchase(){
-    this.dialogConfig.disableClose = true;
+    this.alertService.success("Deleted Successfully");
+    setTimeout(() => {
+      this.alertService.clear();
+    }, 2000);
+    /*this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
     this.dialogConfig.position = {
       'top': '1000',
@@ -304,7 +314,7 @@ export class PurchaseInvoiceComponent implements OnInit {
       data: "invoiceNumber",
       height: '80%'
     }).afterClosed().subscribe(result => {
-    });
+    });*/
   }
 
 }
