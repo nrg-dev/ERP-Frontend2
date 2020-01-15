@@ -323,6 +323,7 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
       this.alertService.clear();
       this.vendordetails=true;
       this.vendoreditdetails=false;
+      this.vendordragAndDrop=false;
       this.customereditdetails=false;
       this.customerdragAndDrop = false;
     }, 1500);

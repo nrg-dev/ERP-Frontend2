@@ -247,6 +247,22 @@ export class ProducteditComponent {
 }
 // productedit end
 
+// categorytable start
+@Component({
+  selector: 'categorytable',
+  styleUrls: ['./categorytable.css'],
+  templateUrl: './categorytable.html', 
+})
+export class CategorytableComponent {
+  showVar: boolean = true;
+
+    toggleChild(){
+        this.showVar = !this.showVar;
+    }
+ 
+}
+// categorytable end
+
 
 // Main compoent
 @Component({
