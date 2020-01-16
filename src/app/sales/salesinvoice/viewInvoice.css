@@ -58,7 +58,7 @@ td {
   width: 10%;
 }
 .biilingdetails{
-  margin: 20px 60px;
+  margin: 20px 80px;
 }
 .imageRight{
   width:300px; 
@@ -66,6 +66,7 @@ td {
 }
 #p-text{
   text-align: right;
+  margin-right: 45px;
 }
 p{
   margin-top: -20px;

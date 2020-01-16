@@ -1,7 +1,7 @@
 <h3>Invoice</h3>
 <br/>
 <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-6" style="margin-left: inherit;">
         <table>
             <tr>
               <th scope="row" id="thead">Invoice Number</th>
@@ -43,7 +43,7 @@
 </div>
 
 <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-6" style="margin-left: inherit;">
         <div class="biilingdetails">
             <p style="font-weight: bold;text-decoration: underline;">Billing To:</p>
             <p>Apple Inc</p>
@@ -68,7 +68,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let list of purchaseViewList">
+            <tr *ngFor="let list of salesViewList">
                 <td>{{ list.quantity }}</td>
                 <td>{{ list.productName }}</td>
                 <td>{{ list.description }}</td>
@@ -121,7 +121,7 @@
 
 
 <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-6" style="margin-left: inherit;">
         <div class="biilingdetails">
             <p>Note :</p>
             <p>Thanks for your business!</p>

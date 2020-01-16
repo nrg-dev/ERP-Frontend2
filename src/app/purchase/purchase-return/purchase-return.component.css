@@ -28,7 +28,8 @@ tbody {
     text-align: center;
 }
 th{
-    background-color:#21272D;
+    /*background-color:#21272D;*/
+    background-color:#033c5f;
 }
 td{
     background-color:#333C45;
@@ -90,13 +91,13 @@ hr{
   
 #checkIn-butn{
     background-color: #07ab07;
-    width: 100px;
+    width: 80px;
     height: 32px;
     text-align: center;
 }
 #checkOut-butn{
     background-color: #d40505;
-    width: 120px;
+    width: 70px;
     height: 32px;
     margin: 5px 0 0 5px;
     text-align: center;

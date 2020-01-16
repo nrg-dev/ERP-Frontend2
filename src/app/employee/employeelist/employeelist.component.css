@@ -57,6 +57,7 @@ a {
     width: 115px;
     margin-top: 7px;
     font-size: 15px;
+    cursor: pointer;
     background: #313F47;
 }
 .searchicon{
@@ -66,6 +67,7 @@ a {
     border: 1px solid #58656A;
     /* background: blanchedalmond;
     color: black; */
+    cursor: pointer;
     width: 50%;
     height: 35px;
     border-radius: 25px;
@@ -106,6 +108,7 @@ td{
     background-color: #1a2932;
     color:white;
     width: 25%;
+    cursor: pointer;
 }
   
 #table-size{
@@ -381,6 +384,25 @@ textarea{
     }
     #empbut{
         margin: -12px; 
+    }
+    #checkIn-butn{
+        background-color: #07ab07;
+        width: 100px;
+        height: 32px;
+        margin: 5px 0 0 30px;
+    }
+    #checkOut-butn{
+        background-color: #d40505;
+        width: 120px;
+        height: 32px;
+        margin: 5px 0 0 5px;
+    }
+    #absentbtn{
+        width: 85%;
+        margin: 5px 55px;
+        height: auto;
+        background-color: #f99704;
+        text-align: center;
     }
 }
 @media (min-width: 1025px) and (max-width: 1280px){

@@ -4,7 +4,7 @@ import { AlertService } from 'src/app/_services';
 import { Router } from '@angular/router';
 import { AlertComponent } from 'src/app/_directives';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
+import {MatDialog, MatDialogConfig, MatTableDataSource} from "@angular/material";
 import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
 import { PurchaseService } from '../purchase.service';
 
@@ -24,8 +24,6 @@ export class PurchasereportComponent implements OnInit {
 
   dataSource: MatTableDataSource<any>;
   
-  @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort,{ static: true }) sort: MatSort;
   constructor(
     private dialog: MatDialog,
     private router: Router, 
@@ -36,14 +34,11 @@ export class PurchasereportComponent implements OnInit {
     this.purchaseList=purchasedata;
 
     this.dataSource = new MatTableDataSource(this.purchaseList);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
 
    }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    
   }
 
   applyFilter(filterValue: string) {

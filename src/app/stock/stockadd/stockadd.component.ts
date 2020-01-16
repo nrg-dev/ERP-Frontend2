@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {  ViewChild, ElementRef } from '@angular/core';
-import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource, MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
-import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
+import { User } from 'src/app/_models';
+import { AlertService } from 'src/app/_services/index';
+import { StockService } from '../stock.service';
 import { Purchase } from 'src/app/_models/purchase';
  
 
@@ -11,35 +11,27 @@ import { Purchase } from 'src/app/_models/purchase';
   styleUrls: ['./stockadd.component.css']
 })
 export class StockaddComponent implements OnInit {
-  displayedColumns: string[] = ['Productcode', 'ProductName','Discount','DiscountTime','Qty','Price','editdelete'];
-  purchase: Purchase;
-  public dataDiscountList : any;
-  isDtInitialized:boolean = false;
+  model: any = {};
+  user:User;
+  stockInList: any ={};
+  viewMode: any = {};
 
-  dataSource: MatTableDataSource<any>;
   
-  @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort,{ static: true }) sort: MatSort;
-  constructor() {
+  constructor(
+    private alertService: AlertService 
+  ) {
     const purchasedata = require("../../discountdata.json");
-      this.dataDiscountList=purchasedata;
+    this.stockInList=purchasedata;
 
-      this.dataSource = new MatTableDataSource(this.dataDiscountList);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
   }
   
-  public polist: string [];  
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-   this.dataSource.sort = this.sort;
+    this.firstTabShow();
   }
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+  
+  firstTabShow(){
+    this.viewMode = 'tab1';
   }
 
 }

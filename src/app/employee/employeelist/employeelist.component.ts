@@ -240,7 +240,11 @@ export class EmployeelistComponent implements OnInit {
   }
 
   setEmployeeUpdate(){    
-    this.mainmessage="Employee Data is Successfully Updated...";
+    this.alertService.success("Successfully Updated.");
+    setTimeout(() => {
+      this.alertService.clear();
+    }, 2000);
+    /*this.mainmessage="Employee Data is Successfully Updated...";
 
     this.empdetails = true;
     this.empeditdetails = false;
@@ -248,7 +252,7 @@ export class EmployeelistComponent implements OnInit {
     this.updatesuccessdialog = 'block';
     setTimeout(() => {
       this.updatesuccessdialog = 'none';
-    }, 1500);
+    }, 1500);*/
   }
 
   cancelEdit(){
@@ -258,7 +262,11 @@ export class EmployeelistComponent implements OnInit {
   }
 
   delete(){
-    this.message="Deleted Successfully."
+    this.alertService.success("Successfully Deleted.");
+    setTimeout(() => {
+      this.alertService.clear();
+    }, 2000);
+    /*this.message="Deleted Successfully."
     this.mainmessage="Deleted."
 
     this.empeditdetails = false;
@@ -267,7 +275,7 @@ export class EmployeelistComponent implements OnInit {
     setTimeout(() => {
       this.successdialog = 'none';
       this.empdetails = false;
-    }, 1500);
+    }, 1500);*/
   }
 
   absent(){
