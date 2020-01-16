@@ -27,14 +27,14 @@
     text-align: center;
 }
 #categoryname-div{
-    width: 410px;
+    width: 100%;
     height: 60px;
     background: #272E34;
     border: none;
     box-shadow: none;
 }
 #categorydesc-div{
-    width: 410px;
+    width: 100%;
     height: 140px;
     background: #272E34;
     border: none;
