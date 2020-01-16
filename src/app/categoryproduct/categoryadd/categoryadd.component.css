@@ -14,7 +14,7 @@ h2{
 table{
     height: 340px;
 }
-table th,td{
+table td{
     border: 2px solid #171B1E;
 }
 .mat-paginator{
@@ -23,7 +23,7 @@ table th,td{
     background: #333C45;
 }
 tr.mat-header-row{
-    background: #171B1E;
+    background: #033c5f;
 }
 ::ng-deep .mat-table tbody{
     background: #1E2328;
