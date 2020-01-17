@@ -27,6 +27,7 @@ import { AlertComponent } from './_directives/index';
 import { AlertService, AuthenticationService,UserService } from './_services/index';
 
 import { MatDialogModule } from '@angular/material';
+import { FontAwesomeModule } from 'fontawesome';
 
 
 const appRoutes: Routes = [
@@ -93,7 +94,8 @@ const appRoutes: Routes = [
     StockModule,
     ReportModule,
     UsermgtModule,
-    MatDialogModule
+    MatDialogModule,
+    //FontAwesomeModule.forRoot() 
   ],
   providers: [AlertService,AuthenticationService,UserService],
   bootstrap: [AppComponent],

@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { StockService } from './stock.service';
 import { StockaddComponent } from './stockadd/stockadd.component';
+
 import { Routes, RouterModule } from '@angular/router';
-import {DataTablesModule} from 'angular-datatables';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { DataTablesModule } from 'angular-datatables';
 import {
   MatAutocompleteModule,
   MatBadgeModule, 
@@ -41,7 +43,9 @@ import {
   MatTreeModule,
 } from '@angular/material';
 
+
 const routes: Routes = [
+
   { path: 'stockadd', component: StockaddComponent },
 
 ];
@@ -50,9 +54,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [StockaddComponent],
   imports: [
-    CommonModule,
     FormsModule,
-    ReactiveFormsModule,
+    CommonModule,MatTabsModule,ReactiveFormsModule,
     MatButtonModule,
     MatInputModule,
     MatRippleModule,
@@ -91,9 +94,9 @@ const routes: Routes = [
     MatTooltipModule,
     MatTreeModule,
     MatPaginatorModule,
-    DataTablesModule.forRoot(),
-    RouterModule.forChild(routes) 
+    DataTablesModule.forRoot(),RouterModule.forChild(routes) 
+  ],
+  providers: [StockService],
 
-  ]
 })
 export class StockModule { }
