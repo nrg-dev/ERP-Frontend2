@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild ,ElementRef, Inject } from '@angular/core';
+import { Component, OnInit, ViewChild ,QueryList ,ElementRef, Inject } from '@angular/core';
 import { User } from 'src/app/_models';
 import { AlertService } from 'src/app/_services/index';
 import { Router } from '@angular/router';
@@ -19,16 +19,20 @@ export class StockaddComponent implements OnInit {
   user:User;
   stock:Stock;
   stockInList: any ={};
+  stockOutList: any ={};
   productList: any ={};
   categoryList: any = {};
   viewMode: any = {};
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
   displayedColumns: string[] = ['Date','Category','ProductCategory','ProductName','Qty','recentStock'];
-
+  
+  displayedColumns1: string[] = ['Date','StockCategory','ProductCategory','ProductName','Qty','RecentStock'];
   dataSource: MatTableDataSource<any>;
+  dataSource1: MatTableDataSource<any>;
   
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
+  @ViewChild(MatPaginator,{ static: true }) paginator1: MatPaginator;
   @ViewChild(MatSort,{ static: true }) sort: MatSort;
 
 
@@ -38,12 +42,22 @@ export class StockaddComponent implements OnInit {
     private alertService: AlertService,
     private stockService: StockService 
   ) {
+
+    
     const stockIndata = require("../../stockIndata.json");
     this.stockInList=stockIndata;
 
     this.dataSource = new MatTableDataSource(this.stockInList);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+
+    const data = require("../../stockOutdata.json");
+    this.stockOutList=data;
+
+    this.dataSource1 = new MatTableDataSource(this.stockOutList);
+    this.dataSource1.paginator = this.paginator1;
+    this.dataSource1.sort = this.sort;
+
 
   }
   
@@ -52,6 +66,9 @@ export class StockaddComponent implements OnInit {
     this.firstTabShow();
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+
+    this.dataSource1.paginator = this.paginator1;
+    this.dataSource1.sort = this.sort;
 
     this.productList = ['Mobile', 'Computer', 'Cloths', 'TV'];
     this.categoryList = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];
@@ -66,5 +83,16 @@ export class StockaddComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  applyStockOutFilter(filterValue: string) {
+    this.dataSource1.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource1.paginator) {
+      this.dataSource1.paginator.firstPage();
+    }
+  }
+
+  saveStockOut(){
+    
   }
 }
