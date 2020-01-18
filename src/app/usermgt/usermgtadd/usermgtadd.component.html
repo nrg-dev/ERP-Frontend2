@@ -1,15 +1,90 @@
+<div class="row">
+        <div class="col-5 col-md-5 col-lg-5">
+                <div class="row">
+                        <div style="width: 20px;"></div> 
+                <div id="green-background">
+                        <i id="user-icon" class="fa fa-user"></i>
+                        <i id="cog-icon" class="fa fa-cogs" aria-hidden="true"></i>
+                </div>
+                        <h2 style="margin: 12px;">User Management System</h2>
+                </div>
 
-<br/><br/>
+                <div id="maindiv">
+                <div style="height: 20px;"></div>
+                        <div class="row">
+                        <div class="col-3 col-md-3 col-lg-3">
+                                <img id="user-img" src="./assets/images/user.png">
+                        </div>
+                        <div class="col-9 col-md-9 col-lg-9">
+                                <p style="margin: 0px;">Welcome</p>
+                                <p id="usename-size">Hendry Mulyana</p>
+                                <p>General Manager</p>
+                        </div>
+                        </div>
 
-<div class="col-lg-3"></div>
-<div class="col-lg-9" >
-        <br/> <br/> <br/>     
-    <div class="content-wrapper">
-            <h2>USER MANAGEMENT MODULE IS WORK IN PROGRESS....</h2>
+                        <div id="masterlist-div">
+                                <div *ngFor="let list of masterlist" (click)="mainlList(list.number)" 
+                                id="{{ list.number }}" class="categorylist-alignment">
+                                <p>{{ list.name }}</p>     
+                                </div>
+                        </div>      
+                </div>
+        </div>
+        <div class="col-7 col-md-7 col-lg-7">
+            <div class="row">
+                <div *ngIf="componentdetails">
+                   <div id="component-div">
+                           <div style="height: 10px;"></div>
+                        <div id="component-div2">
+                           <div class="row">
+                                <div class="component-butn" (click)="emplyeedetails()">
+                                  <div class="row">
+                                        <img style="width: 40px;" src="./assets/images/employee.png" />
+                                        &nbsp; &nbsp; &nbsp; &nbsp;
+                                        <p>Employment</p>
+                                        &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;
+                                        <input type="checkbox" class="checkboxsize">
+                                  </div> 
+                                </div>
+                           </div>
+                        </div>
+                   </div>
+                </div>
+                <div *ngIf="categorydetails" id="category-div">
+                  <div style="height: 10px;"></div>
+                  <div id="category-div2">
+                    <div class="row" style="margin-left: 25px;">
+                      <p>Employee List</p>
+                      &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;
+                      <input type="checkbox" class="checkboxsize">
+                     </div>
 
+                     <div class="row" style="margin-left: 25px;">
+                        <p>Add New Employee</p>
+                        &nbsp; &nbsp; &nbsp;
+                        <input type="checkbox" class="checkboxsize">
+                       </div>
 
-    <div class="line"></div>
+                       <div class="row" style="margin-left: 25px;">
+                        <p>Absence</p>
+                        &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        <input type="checkbox" class="checkboxsize">
+                       </div>
 
-   </div>
-   <div style="height:1000px;"></div>
+                       <div class="row" style="margin-left: 25px;">
+                        <p>Contract Tempelate</p>
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <input type="checkbox" class="checkboxsize">
+                       </div>
+
+                       <div class="row" style="margin-left: 25px;">
+                        <p>Employee Report</p>
+                        &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;
+                        <input type="checkbox" class="checkboxsize">
+                       </div>
+                 </div>
+                </div>
+            </div>
+                
+        </div>
 </div>

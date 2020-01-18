@@ -296,7 +296,7 @@ export class CategoryaddComponent implements OnInit {
   public discountdetails='none';
   public editdeletediv=false;
   public fiberdetails='none';
-  public alldetails=false;
+  public alldetails='none';
 
   successdialog = 'none';
 
@@ -386,20 +386,21 @@ categorydetails(number: string){
   this.leftdetails=true;
 
   if(number=='01'){
-    this.alldetails=false;
+    this.alldetails='block';
     //this.discountdetails=false;
     this.fiberdetails='none';
     this.editdeletediv=false;
   }
   if(number=='02'){
-   this.discountdetails='block';
-    this.alldetails=false;
-    this.fiberdetails='none';
-    this.editdeletediv =false;
+    this.alldetails='none';
+   //this.discountdetails='block';
+    //this.alldetails=false;
+    //this.fiberdetails='none';
+   // this.editdeletediv =false;
   }
   if(number=='03'){
     this.leftdetails=true;
-    this.alldetails=false;
+    this.alldetails='none';
     //this.discountdetails=false;
     //this.fiberdetails=false;
     this.editdeletediv=false;
@@ -416,33 +417,34 @@ productlist(number: string){
   this.leftdetails=true;
 
   if(number=='PROD1'){
-    this.fiberdetails='block';
-    this.discountdetails='none';
+    this.alldetails='none';
+   // this.fiberdetails='block';
+   // this.discountdetails='none';
 
-    this.alldetails=false;
+   // this.alldetails=false;
     //this.discountdetails=false;
-    this.editdeletediv=false;
+   // this.editdeletediv=false;
   }
   if(number=='PROD2'){
-    this.alldetails=false;
+    this.alldetails='none';
     //this.discountdetails=false;
     //this.fiberdetails=false;
     this.editdeletediv=false;
   }
   if(number=='PROD3'){
-    this.alldetails=false;
+    this.alldetails='none';
     //this.discountdetails=false;
     //this.fiberdetails=false;
     this.editdeletediv=false;
   }
   if(number=='PROD4'){
-    this.alldetails=false;
+    this.alldetails='none';
     //this.fiberdetails=false;
     //this.discountdetails=false;
     this.editdeletediv=false;
   }
   if(number=='PROD5'){
-    this.alldetails=false;
+    this.alldetails='none';
     //this.discountdetails=false;
     //this.fiberdetails=false;
     this.editdeletediv=false;
