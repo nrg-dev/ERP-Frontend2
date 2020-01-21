@@ -22,7 +22,7 @@ h2{
     margin: -10px;
 }
 #maindiv{
-    width: 57%;
+    width: 60%;
     height: 70%;
     background: #243641;
     margin: 60px;
@@ -46,35 +46,26 @@ h2{
 }
 #component-div{
     background: #1B2931;
-    height: 500px;
-    width: 320px;
-}
-#component-div2{
-    height: 480px;
-    width: 300px;
-    margin: 0px 0px 0px 11px;
+    height: 100%;
+    width: 100%;
 }
 #category-div{
     background: #243641;
-    height: 500px;
-    width: 300px;
+    height: 100%;
+    width: 100%;
+    margin-left: -30px;
 }
-#category-div2{
-    height: 480px;
-    width: 280px;
-    margin: 0px 0px 0px 10px;
-}
-
-
 input.checkboxsize{
     width: 30px;
     height: 20px;
+    margin: 7px;
 }
 .component-butn{
     background: #1B2931;
     border: none;
     outline: none;
-    margin: 0px 0px 0px 40px;
+    cursor: pointer;
+    margin: 0px 0px 0px 10px;
 }
 #component-butn :active{
     border: 2px solid white;

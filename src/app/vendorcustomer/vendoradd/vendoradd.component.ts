@@ -230,6 +230,28 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     this.vendordragAndDrop = false;
     this.customerdragAndDrop = false;
 
+    var lenth = this.vendorList.lenth;
+    console.log ("vendor Size -->" + this.vendorList.length);
+    console.log ("vendor code -->" + vendorcode);
+    for(let j=0;j<this.vendorList.length;j++){
+      console.log ("Block statement execution no." + j);
+      if(this.vendorList[j].vendorcode==vendorcode)
+        {
+          console.log("Inside if vendor code -->"+vendorcode);
+        this.model.vendorcode = this.vendorList[j].vendorcode;
+        this.model.vendorName = this.vendorList[j].vendorName;
+        this.model.phoneNumber = this.vendorList[j].phoneNumber;
+        this.model.mobileNumber = this.vendorList[j].mobileNumber;
+        this.model.address = this.vendorList[j].address;
+        this.model.country = this.vendorList[j].country;
+        this.model.city = this.vendorList[j].city;
+        this.model.email = this.vendorList[j].email;
+        this.model.lastedit = this.vendorList[j].lastedit;
+        this.model.addeddate = this.vendorList[j].addeddate;
+        break;
+      }
+    }
+/*
     if(vendorcode == "VEN001"){
       this.model.vendorcode = this.vendorList[0].vendorcode;
       this.model.vendorName = this.vendorList[0].vendorName;
@@ -307,7 +329,7 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
       this.model.lastedit = this.vendorList[5].lastedit;
       this.model.addeddate = this.vendorList[5].addeddate;
       this.alertService.success("");
-    }
+    } */
   }
 
   vendoreditDetails(){
@@ -422,6 +444,30 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     this.vendordragAndDrop = false;
     this.customerdragAndDrop = false;
 
+    // this.custList; json list 
+    var lenth = this.custList.lenth;
+    console.log ("Cust Size -->" + this.custList.length);
+    console.log ("Cust code -->" + custcode);
+
+    for (let i = 0; i < this.custList.length; i++) {
+      console.log ("Block statement execution no." + i);
+      if(this.custList[i].custcode==custcode){
+        console.log("Inside if customer code -->"+custcode);
+        this.model.custcode = this.custList[i].custcode;
+        this.model.customerName = this.custList[i].customerName;
+        this.model.phoneNumber = this.custList[i].phoneNumber;
+        this.model.mobileNumber = this.custList[i].mobileNumber;
+        this.model.address = this.custList[i].address;
+        this.model.country = this.custList[i].country;
+        this.model.city = this.custList[i].city;
+        this.model.email = this.custList[i].email;
+        this.model.lastedit = this.custList[i].lastedit;
+        this.model.addeddate = this.custList[i].addeddate;
+        break;
+      }
+
+    }
+/*
     if(custcode == "CUST001"){
       this.model.custcode = this.custList[0].custcode;
       this.model.customerName = this.custList[0].customerName;
@@ -498,8 +544,8 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
       this.model.lastedit = this.custList[5].lastedit;
       this.model.addeddate = this.custList[5].addeddate;
       this.alertService.success("");
-    }
-  }
+    }*/
+  } 
   customerEditDetails(){
     this.customerdetails=false;
     this.customereditdetails=true;
