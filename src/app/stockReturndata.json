@@ -1,20 +1,20 @@
 [
-   { "sNo": "1","id":"001", "addedDate": "01-01-2020","stockReturncategory":"Purchase ","productName":"Apple","category": "Fabric","quantity":"30 meter","currentStatus":"Confirmed","vendorName":"Josni"},
-   { "sNo": "2","id":"002", "addedDate": "02-02-2020","stockReturncategory":"Sales ","productName":"Orange","category": "Cotton","quantity":"20","currentStatus":"On Checking Progress","vendorName":"Nisho"},
-   { "sNo": "3","id":"003", "addedDate": "03-01-2020","stockReturncategory":"Category ","productName":"Grape","category": "Silk","quantity":"10 ","currentStatus":"Pending","vendorName":"Alex"},
-   { "sNo": "4","id":"004", "addedDate": "02-02-2020","stockReturncategory":"Product ","productName":"PineApple","category": "Carbon","quantity":"40","currentStatus":"Confirmed","vendorName":"Jeff"},
-   { "sNo": "5","id":"005", "addedDate": "03-01-2020","stockReturncategory":"Sales ","productName":"Guava","category": "Fabric","quantity":"50","currentStatus":"Finished","vendorName":"John"},
-   { "sNo": "6","id":"006", "addedDate": "01-01-2020","stockReturncategory":"Product ","productName":"Lime","category": "Cotton","quantity":"80","currentStatus":"Pending","vendorName":"Mary"},
-   { "sNo": "7","id":"007", "addedDate": "02-02-2020","stockReturncategory":"Purchase ","productName":"Pomegranate","category": "Fabric","quantity":"60","currentStatus":"Confirmed","vendorName":"Nick"},
-   { "sNo": "8","id":"008", "addedDate": "01-01-2020","stockReturncategory":"Category ","productName":"Orange","category": "Silk","quantity":"100","currentStatus":"On Checking Progress","vendorName":"Jose"},
+   { "sNo": "1","id":"001", "addedDate": "01-01-2020","stockReturncategory":"Purchase ","productName":"Apple","category": "Fabric","quantity":"30 meter","currentStatus":"confirmed","vendorName":"Josni"},
+   { "sNo": "2","id":"002", "addedDate": "02-02-2020","stockReturncategory":"Sales ","productName":"Orange","category": "Cotton","quantity":"20","currentStatus":"checkingProgress","vendorName":"Nisho"},
+   { "sNo": "3","id":"003", "addedDate": "03-01-2020","stockReturncategory":"Category ","productName":"Grape","category": "Silk","quantity":"10 ","currentStatus":"pending","vendorName":"Alex"},
+   { "sNo": "4","id":"004", "addedDate": "02-02-2020","stockReturncategory":"Product ","productName":"PineApple","category": "Carbon","quantity":"40","currentStatus":"confirmed","vendorName":"Jeff"},
+   { "sNo": "5","id":"005", "addedDate": "03-01-2020","stockReturncategory":"Sales ","productName":"Guava","category": "Fabric","quantity":"50","currentStatus":"finished","vendorName":"John"},
+   { "sNo": "6","id":"006", "addedDate": "01-01-2020","stockReturncategory":"Product ","productName":"Lime","category": "Cotton","quantity":"80","currentStatus":"pending","vendorName":"Mary"},
+   { "sNo": "7","id":"007", "addedDate": "02-02-2020","stockReturncategory":"Purchase ","productName":"Pomegranate","category": "Fabric","quantity":"60","currentStatus":"confirmed","vendorName":"Nick"},
+   { "sNo": "8","id":"008", "addedDate": "01-01-2020","stockReturncategory":"Category ","productName":"Orange","category": "Silk","quantity":"100","currentStatus":"shippingProgress","vendorName":"Jose"},
    
-   { "sNo": "9","id":"009", "addedDate": "01-01-2020","stockReturncategory":"Purchase ","productName":"Apple","category": "Carbon","quantity":"30","currentStatus":"On Checking Progress","vendorName":"Kryson"},
-   { "sNo": "10","id":"010", "addedDate": "02-02-2020","stockReturncategory":"Product ","productName":"Orange","category": "Fabric","quantity":"2","currentStatus":"Finished","vendorName":"Denish"},
-   { "sNo": "11","id":"011", "addedDate": "03-01-2020","stockReturncategory":"Category ","productName":"Grape","category": "Cotton","quantity":"10","currentStatus":"Confirmed","vendorName":"Juli"},
-   { "sNo": "12","id":"012", "addedDate": "02-02-2020","stockReturncategory":"Sales ","productName":"PineApple","category": "Silk","quantity":"40","currentStatus":"On Checking Progress","vendorName":"Suji"},
-   { "sNo": "13","id":"013", "addedDate": "03-01-2020","stockReturncategory":"Product ","productName":"Guava","category": "Fabric","quantity":"50","currentStatus":"Pending","vendorName":"Josni"},
-   { "sNo": "14","id":"014", "addedDate": "01-01-2020","stockReturncategory":"Category ","productName":"Lime","category": "Silk","quantity":"80","currentStatus":"Finished","vendorName":"Roch"},
-   { "sNo": "15","id":"015","addedDate": "02-02-2020","stockReturncategory":"Sales ","productName":"Pomegranate","category": "Cotton","quantity":"60","currentStatus":"On Checking Progress","vendorName":"Nisho"},
-   { "sNo": "16","id":"016","addedDate": "01-01-2020","stockReturncategory":"Purchase ","productName":"Orange","category": "Fabric","quantity":"100","currentStatus":"Confirmed","vendorName":"Nanthini"}
+   { "sNo": "9","id":"009", "addedDate": "01-01-2020","stockReturncategory":"Purchase ","productName":"Apple","category": "Carbon","quantity":"30","currentStatus":"checkingProgress","vendorName":"Kryson"},
+   { "sNo": "10","id":"010", "addedDate": "02-02-2020","stockReturncategory":"Product ","productName":"Orange","category": "Fabric","quantity":"2","currentStatus":"finished","vendorName":"Denish"},
+   { "sNo": "11","id":"011", "addedDate": "03-01-2020","stockReturncategory":"Category ","productName":"Grape","category": "Cotton","quantity":"10","currentStatus":"confirmed","vendorName":"Juli"},
+   { "sNo": "12","id":"012", "addedDate": "02-02-2020","stockReturncategory":"Sales ","productName":"PineApple","category": "Silk","quantity":"40","currentStatus":"shippingProgress","vendorName":"Suji"},
+   { "sNo": "13","id":"013", "addedDate": "03-01-2020","stockReturncategory":"Product ","productName":"Guava","category": "Fabric","quantity":"50","currentStatus":"pending","vendorName":"Josni"},
+   { "sNo": "14","id":"014", "addedDate": "01-01-2020","stockReturncategory":"Category ","productName":"Lime","category": "Silk","quantity":"80","currentStatus":"finished","vendorName":"Roch"},
+   { "sNo": "15","id":"015","addedDate": "02-02-2020","stockReturncategory":"Sales ","productName":"Pomegranate","category": "Cotton","quantity":"60","currentStatus":"checkingProgress","vendorName":"Nisho"},
+   { "sNo": "16","id":"016","addedDate": "01-01-2020","stockReturncategory":"Purchase ","productName":"Orange","category": "Fabric","quantity":"100","currentStatus":"confirmed","vendorName":"Nanthini"}
 ]
 

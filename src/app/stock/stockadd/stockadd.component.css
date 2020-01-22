@@ -88,6 +88,7 @@ table {
     overflow-y: auto;
     border-color: 1px solid grey;
     background-color: #243642;
+    margin: 10px;
 }
 #StockOutTable{
     height:330px;
@@ -215,9 +216,40 @@ label,select,input,#textSize{
 
 #return-details{
     width: 85%;
-    height:740px;
+    height: 740px;
     background-color: #243642;
     margin: 0 15px;
+}
+#damage-details{
+    width: 85%;
+    height: 400px;
+    background-color: #243642;
+    margin: 0 15px;
+}
+#add-damage-details{
+    width: 85%;
+    height: 300px;
+    background-color: #243642;
+    margin: 0 15px;
+}
+
+#rowedit-div{
+    height: 30px;
+    width: 30px;
+    background: #dc7218 ;
+    border-radius: 16px;
+}
+#rowview-div{
+    height: 30px;
+    width: 30px;
+    background: #518e51; 
+    border-radius: 16px;
+}
+  
+#rowedit-icon{
+    margin-left: 8px;
+    margin-top: 6px;
+    color: white;
 }
 ::ng-deep .mat-tab-label {
     height: 48px;
@@ -254,6 +286,10 @@ label,select,input,#textSize{
     align-items: center;
     white-space: nowrap;
     position: relative;
+}
+
+#middleContent{
+    vertical-align: middle;
 }
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
     #addstock-div{
