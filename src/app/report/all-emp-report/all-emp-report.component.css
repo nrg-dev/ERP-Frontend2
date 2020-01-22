@@ -1,0 +1,90 @@
+* {
+    font-family: 'Lato',Georgia,Arial,sans-serif;
+    font-size:medium;
+    color:white;
+}
+h2{
+    font-size: 30px;
+    font-weight: bold;
+}
+.mat-table{
+    background: #686868;
+}
+table.mat-table{
+    width: 220px;
+}
+.mat-elevation-z8{
+    width: 210px;
+    height: 300px;
+    margin-left: 35px;
+    background: #686868;
+}
+::ng-deep  .mat-form-field-infix{
+    width: 265px;
+}
+tr:nth-child(even){
+    background-color: #606060;
+}
+tr:nth-child(odd){
+    background-color: #686868;
+}
+tr.mat-row{
+    height: 41px;
+}
+.mat-input-element {
+    font: inherit;
+    font-family: fontawesome;
+    background:white;
+    color: black;
+    height: 35px;
+    outline: 0;
+    margin: 10;
+    width: 100%;
+    max-width: 100%;
+    vertical-align: bottom;
+    text-align:start;
+    border-radius: 6px;
+    padding: 11px;
+    margin-top: -10px;
+}
+::ng-deep .mat-form-field-wrapper{
+    margin-left: 50px;
+}
+
+#background{
+    background-color: #243641;
+    width: 97%;
+    height: 80%;
+    margin: 10px;
+}
+#text-size{
+    font-size: x-large;
+    font-weight: bold;
+}
+#previewemp-box{
+    background: #1B2931;
+    height: 140px;
+}
+#absentcard-box{
+    background: #1B2931;
+    height: 220px;
+}
+#preview-text{
+    font-size: 12px;
+    margin: 6px;
+}
+#emppicture-box{
+    background: #FFFFFF;
+    height: 80px;
+    width: 90%;
+    margin: 6px;
+}
+#Emppic-text{
+    color: #181818;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+#fontsize-11{
+    font-size: 11px;
+}
