@@ -1,164 +1,165 @@
 <div class="row">
-        <div class="col-5 col-md-5 col-lg-5">
-                <div class="row">
-                        <div style="width: 20px;"></div> 
-                <div id="green-background">
-                        <i id="user-icon" class="fa fa-user"></i>
-                        <i id="cog-icon" class="fa fa-cogs" aria-hidden="true"></i>
-                </div>
-                        <h2 style="margin: 12px;">User Management System</h2>
-                </div>
+  <div class="col-5 col-md-5 col-lg-4">
+    <div style="width: 20px;"></div> 
+      <h2 style="margin: 12px;">User Management</h2>
+ <!--    <div class="row">
+   <div id="green-background">
+      <i id="user-icon" class="fa fa-user"></i>
+      <i id="cog-icon" class="fa fa-cogs" aria-hidden="true"></i>
+    </div>
+      
+    </div>-->
 
-                <div id="maindiv">
-                <div style="height: 20px;"></div>
-                        <div class="row">
-                        <div class="col-3 col-md-3 col-lg-3">
-                                <img id="user-img" src="./assets/images/user.png">
-                        </div>
-                        <div class="col-9 col-md-9 col-lg-9">
-                                <p style="margin: 0px;">Welcome</p>
-                                <p id="usename-size">Hendry Mulyana</p>
-                                <p>General Manager</p>
-                        </div>
-                        </div>
-
-                        <div id="masterlist-div">
-                                <div *ngFor="let list of masterlist" (click)="mainlList(list.number)" 
-                                id="{{ list.number }}" class="categorylist-alignment">
-                                <p>{{ list.name }}</p>     
-                                </div>
-                        </div>      
-                </div>
+    <div id="maindiv">
+    <div style="height: 20px;"></div>
+      <div class="row">
+        <div class="col-3 col-md-3 col-lg-3">
+          <img id="user-img" src="./assets/images/user.png">
         </div>
-        <div class="col-7 col-md-7 col-lg-7">
-            <div class="row">
-              <div class="col-6 col-md-6 col-lg-6">
-                <div *ngIf="componentdetails">
-                   <div id="component-div">
-                        <div style="height: 10px;"></div>
-                <!--Employement details-->
-                <div class="component-butn" (click)="emplyeedetails(1)" id="1">
+        <div class="col-9 col-md-9 col-lg-9">
+          <p style="margin: 0px;">Welcome</p>
+          <p id="usename-size">Hendry Mulyana</p>
+          <p>General Manager</p>
+        </div>
+      </div>
+
+      <div id="masterlist-div">
+              <div *ngFor="let list of masterlist" (click)="mainlList(list.number)" 
+              id="{{ list.number }}" class="categorylist-alignment">
+              <p>{{ list.name }}</p>     
+              </div>
+      </div>      
+    </div>
+  </div>
+    <div class="col-7 col-md-7 col-lg-8">
+        <div class="row">
+          <div class="col-6 col-md-6 col-lg-6">
+            <div *ngIf="componentdetails" id="component-div">
+                <div id="component-div2">
+                    <div style="height: 10px;"></div>
+            <!--Employement details-->
+            <div class="component-butn" (click)="emplyeedetails(1)" id="1">
+              <div class="row">
+                <div class="col-3 col-md-4 col-lg-3">
+                  <img style="width: 40px;" src="./assets/images/employee.png" />
+                </div>
+                <div class="col-6 col-md-3 col-lg-6">
+                  <p>Employment</p>
+                </div>
+                <div class="col-3 col-md-5 col-lg-3">
+                  <input type="checkbox" class="checkboxsize">
+                </div>
+              </div> 
+            </div>
+            <div style="height: 10px;"></div>
+            <!--ven&cust details-->
+            <div class="component-butn" (click)="venandcustdetails(2)" id="2">
                   <div class="row">
+                      <div class="col-3 col-md-4 col-lg-3">
+                          <img style="width: 40px;" src="./assets/images/vendor-customer.png" />
+                        </div>
+                        <div class="col-6 col-md-3 col-lg-6">
+                          <p>Vendor&Customer</p>
+                        </div>
+                        <div class="col-3 col-md-5 col-lg-3">
+                          <input type="checkbox" class="checkboxsize">
+                        </div>
+                  </div> 
+              </div>
+              <div style="height: 10px;"></div>
+            <!--category&product details-->
+            <div class="component-butn" (click)="catandproddetails(3)" id="3">
+                <div class="row">
                     <div class="col-3 col-md-4 col-lg-3">
-                      <img style="width: 40px;" src="./assets/images/employee.png" />
+                        <img style="width: 40px;" src="./assets/images/category-product.png" />
                     </div>
                     <div class="col-6 col-md-3 col-lg-6">
-                      <p>Employment</p>
+                        <p>Category&Product</p>
+                    </div>
+                    <div class="col-3 col-md-5 col-lg-3">
+                        <input type="checkbox" class="checkboxsize">
+                    </div>
+                </div> 
+              </div>
+              <div style="height: 10px;"></div>
+            <!--purchase details-->
+            <div class="component-butn" (click)="purchasedetails(4)" id="4">
+              <div class="row">
+                  <div class="col-3 col-md-4 col-lg-3">
+                      <img style="width: 40px;" src="./assets/images/circle-cropped.png" />
+                    </div>
+                    <div class="col-6 col-md-3 col-lg-6">
+                      <p>Purchase</p>
                     </div>
                     <div class="col-3 col-md-5 col-lg-3">
                       <input type="checkbox" class="checkboxsize">
                     </div>
-                  </div> 
-                </div>
-                <br/>
-                <!--ven&cust details-->
-                <div class="component-butn" (click)="venandcustdetails(2)" id="2">
-                      <div class="row">
-                          <div class="col-3 col-md-4 col-lg-3">
-                              <img style="width: 40px;" src="./assets/images/vendor-customer.png" />
-                            </div>
-                            <div class="col-6 col-md-3 col-lg-6">
-                              <p>Vendor&Customer</p>
-                            </div>
-                            <div class="col-3 col-md-5 col-lg-3">
-                              <input type="checkbox" class="checkboxsize">
-                            </div>
-                      </div> 
-                  </div>
-                  <br/>
-                <!--category&product details-->
-                <div class="component-butn" (click)="catandproddetails(3)" id="3">
-                    <div class="row">
-                        <div class="col-3 col-md-4 col-lg-3">
-                            <img style="width: 40px;" src="./assets/images/category-product.png" />
-                        </div>
-                        <div class="col-6 col-md-3 col-lg-6">
-                            <p>Category&Product</p>
-                        </div>
-                        <div class="col-3 col-md-5 col-lg-3">
-                            <input type="checkbox" class="checkboxsize">
-                        </div>
-                    </div> 
-                  </div>
-                  <br/>
-                <!--purchase details-->
-                <div class="component-butn" (click)="purchasedetails(4)" id="4">
-                  <div class="row">
-                      <div class="col-3 col-md-4 col-lg-3">
-                          <img style="width: 40px;" src="./assets/images/circle-cropped.png" />
-                        </div>
-                        <div class="col-6 col-md-3 col-lg-6">
-                          <p>Purchase</p>
-                        </div>
-                        <div class="col-3 col-md-5 col-lg-3">
-                          <input type="checkbox" class="checkboxsize">
-                        </div>
-                    </div> 
-                  </div>
-                  <br/>
-                <!--sales details-->
-                <div class="component-butn" (click)="salesdetails(5)" id="5">
-                  <div class="row">
-                      <div class="col-3 col-md-4 col-lg-3">
-                          <img style="width: 40px;" src="./assets/images/sales.png" />
-                        </div>
-                        <div class="col-6 col-md-3 col-lg-6">
-                          <p>Sales</p>
-                        </div>
-                        <div class="col-3 col-md-5 col-lg-3">
-                          <input type="checkbox" class="checkboxsize">
-                        </div>
-                    </div> 
-                  </div>
-                  <br/>
-                <!--finance details-->
-                <div class="component-butn" (click)="financedetails(6)" id="6">
-                  <div class="row">
-                      <div class="col-3 col-md-4 col-lg-3">
-                          <img style="width: 40px;" src="./assets/images/finance.png" />
-                        </div>
-                        <div class="col-6 col-md-3 col-lg-6">
-                          <p>Finance</p>
-                        </div>
-                        <div class="col-3 col-md-5 col-lg-3">
-                          <input type="checkbox" class="checkboxsize">
-                        </div>
-                    </div> 
-                  </div>
-                  <br/>
-                <!--stock details-->
-                <div class="component-butn" (click)="stockdetails(7)" id="7">
-                  <div class="row">
-                      <div class="col-3 col-md-4 col-lg-3">
-                          <img style="width: 40px;" src="./assets/images/stock.png" />
-                        </div>
-                        <div class="col-6 col-md-3 col-lg-6">
-                          <p>Stock</p>
-                        </div>
-                        <div class="col-3 col-md-5 col-lg-3">
-                          <input type="checkbox" class="checkboxsize">
-                        </div>
-                    </div> 
-                  </div>
-                  <br/>
-                <!--report details-->
-                <div class="component-butn" (click)="reportdetails(8)" id="8">
-                  <div class="row">
-                      <div class="col-3 col-md-4 col-lg-3">
-                          <img style="width: 40px;" src="./assets/images/reports.png" />
-                        </div>
-                        <div class="col-6 col-md-3 col-lg-6">
-                          <p>Report</p>
-                        </div>
-                        <div class="col-3 col-md-5 col-lg-3">
-                          <input type="checkbox" class="checkboxsize">
-                        </div>
-                    </div> 
-                  </div>
+                </div> 
+              </div>
+              <div style="height: 10px;"></div>
+            <!--sales details-->
+            <div class="component-butn" (click)="salesdetails(5)" id="5">
+              <div class="row">
+                  <div class="col-3 col-md-4 col-lg-3">
+                      <img style="width: 40px;" src="./assets/images/sales.png" />
+                    </div>
+                    <div class="col-6 col-md-3 col-lg-6">
+                      <p>Sales</p>
+                    </div>
+                    <div class="col-3 col-md-5 col-lg-3">
+                      <input type="checkbox" class="checkboxsize">
+                    </div>
+                </div> 
+              </div>
+              <div style="height: 10px;"></div>
+            <!--finance details-->
+            <div class="component-butn" (click)="financedetails(6)" id="6">
+              <div class="row">
+                  <div class="col-3 col-md-4 col-lg-3">
+                      <img style="width: 40px;" src="./assets/images/finance.png" />
+                    </div>
+                    <div class="col-6 col-md-3 col-lg-6">
+                      <p>Finance</p>
+                    </div>
+                    <div class="col-3 col-md-5 col-lg-3">
+                      <input type="checkbox" class="checkboxsize">
+                    </div>
+                </div> 
+              </div>
+              <div style="height: 10px;"></div>
+            <!--stock details-->
+            <div class="component-butn" (click)="stockdetails(7)" id="7">
+              <div class="row">
+                  <div class="col-3 col-md-4 col-lg-3">
+                      <img style="width: 40px;" src="./assets/images/stock.png" />
+                    </div>
+                    <div class="col-6 col-md-3 col-lg-6">
+                      <p>Stock</p>
+                    </div>
+                    <div class="col-3 col-md-5 col-lg-3">
+                      <input type="checkbox" class="checkboxsize">
+                    </div>
+                </div> 
+              </div>
+              <div style="height: 10px;"></div>
+            <!--report details-->
+            <div class="component-butn" (click)="reportdetails(8)" id="8">
+              <div class="row">
+                  <div class="col-3 col-md-4 col-lg-3">
+                      <img style="width: 40px;" src="./assets/images/reports.png" />
+                    </div>
+                    <div class="col-6 col-md-3 col-lg-6">
+                      <p>Report</p>
+                    </div>
+                    <div class="col-3 col-md-5 col-lg-3">
+                      <input type="checkbox" class="checkboxsize">
+                    </div>
+                </div> 
+              </div>
 
-            </div>
         </div>
-      </div>
+    </div>
+  </div>
 
         <div class="col-6 col-md-6 col-lg-6">
         <div *ngIf="categorydetails" id="category-div">
