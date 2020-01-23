@@ -1,11 +1,9 @@
 [
-   { "employeeName": "EMPLOYEE1","empcode":"101001","rank":"supervisor","phone":"908762","email":"nisho@gmail.com","join":"20oct","status":"active"},
-   { "employeeName": "EMPLOYEE2","empcode":"101002","rank":"manager","phone":"908762","email":"nisho@gmail.com","join":"20oct","status":"active"},
-   { "employeeName": "EMPLOYEE3","empcode":"101003","rank":"administrator","phone":"908762","email":"nisho@gmail.com","join":"20oct","status":"inactive"},
-   { "employeeName": "EMPLOYEE4","empcode":"101004","rank":"clerk","phone":"908762","email":"nisho@gmail.com","join":"20oct","status":"inactive"},
-   { "employeeName": "EMPLOYEE5","empcode":"101005","rank":"auditor","phone":"908762","email":"nisho@gmail.com","join":"20oct","status":"active"},
-   { "employeeName": "EMPLOYEE6","empcode":"101006","rank":"manager","phone":"908762","email":"nisho@gmail.com","join":"20oct","status":"inactive"}
-   
-
+   { "employeeName": "EMPLOYEE1","empcode":"101001","rank":"supervisor","phone":"908762","email":"nisho@gmail.com","join":"20oct","status":"active" },
+   { "employeeName": "EMPLOYEE2","empcode":"101002","rank":"manager","phone":"908762","email":"nisho@gmail.com","join":"20oct","status":"active" },
+   { "employeeName": "EMPLOYEE3","empcode":"101003","rank":"administrator","phone":"908762","email":"nisho@gmail.com","join":"20oct","status":"inactive" },
+   { "employeeName": "EMPLOYEE4","empcode":"101004","rank":"clerk","phone":"908762","email":"nisho@gmail.com","join":"20oct","status":"inactive" },
+   { "employeeName": "EMPLOYEE5","empcode":"101005","rank":"auditor","phone":"908762","email":"nisho@gmail.com","join":"20oct","status":"active" },
+   { "employeeName": "EMPLOYEE6","empcode":"101006","rank":"manager","phone":"908762","email":"nisho@gmail.com","join":"20oct","status":"inactive" }
 ]
 

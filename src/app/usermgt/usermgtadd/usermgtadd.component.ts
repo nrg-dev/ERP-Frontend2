@@ -57,15 +57,15 @@ export class UsermgtaddComponent implements OnInit {
     this.categorydetails=false;
   }
   if(number=='02'){
-    this.componentdetails=false;
+    this.componentdetails=true;
     this.categorydetails=false;
   }
   if(number=='03'){
-    this.componentdetails=false;
+    this.componentdetails=true;
     this.categorydetails=false;
   }
   if(number=='04'){
-    this.componentdetails=false;
+    this.componentdetails=true;
     this.categorydetails=false;
   }
   }

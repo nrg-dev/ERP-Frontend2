@@ -22,10 +22,10 @@ h2{
     margin: -10px;
 }
 #maindiv{
-    width: 60%;
+    width: 85%;
     height: 70%;
     background: #243641;
-    margin: 60px;
+    margin: 35px;
 }
 #user-img{
     width: 50px;
@@ -46,14 +46,20 @@ h2{
 }
 #component-div{
     background: #1B2931;
-    height: 100%;
+    height: 420px;
     width: 100%;
+}
+#component-div2{
+    background: #1B2931;
+    height: 403px;
+    width: 90%;
+    margin-left: 14px;
 }
 #category-div{
     background: #243641;
-    height: 100%;
+    height: 420px;
     width: 100%;
-    margin-left: -30px;
+    margin-left: -7px;
 }
 input.checkboxsize{
     width: 30px;

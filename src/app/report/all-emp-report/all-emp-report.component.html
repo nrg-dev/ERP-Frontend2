@@ -1,26 +1,34 @@
 <div id="background">
   <div style="height: 10px;"></div>
     <div class="row">
-        <div class="col-5 col-md-5 col-lg-7">
+        <div class="col-7 col-md-7 col-lg-7">
           <div class="row">
               <div class="col-2 col-md-2 col-lg-2">
                  <img style="width: 70px;margin-left: 26px;" src="./assets/images/employee.png" />
               </div>
-              <div class="col-3 col-md-3 col-lg-3">
+              <div class="col-6 col-md-6 col-lg-6">
                 <label id="text-size">Employee Report</label>
              </div>
          </div>
         </div>
+        <div class="col-2 col-md-2 col-lg-2"></div>
+        <div class="col-5 col-md-5 col-lg-3">
+          <div id="back-btn">
+            <label>Back</label>
+          </div>
+        </div>
     </div>
+
   <div class="row">
     <div class="col-4 col-md-4 col-lg-4">
+      <br/><br/>
         <mat-form-field style="color: black;">
             <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Employee Name/Code">
         </mat-form-field>
 
         <div class="mat-elevation-z8">
 
-            <table mat-table [dataSource]="dataSource" matSort>
+          <table mat-table #sortCol1="matSort" [dataSource]="dataSource1" matSort matSortActive="ID" matSortDirection="asc">
             
                 <ng-container matColumnDef="EmployeeName">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
@@ -40,18 +48,17 @@
     </div>
 
 
-    <div class="col-4 col-md-4 col-lg-4">
+    <div class="col-5 col-md-5 col-lg-4">
       <div *ngIf="empPreviewdiv">
         <div id="previewemp-box">
+          <label id="preview-text">PREVIEW EMPLOYEE</label>
             <div class="row">
-              <div class="col-6 col-md-6 col-lg-5">
-                <label id="preview-text">PREVIEW EMPLOYEE</label>
+              <div class="col-5 col-md-5 col-lg-5">
                 <div id="emppicture-box">
                     <p id="Emppic-text">Employee Picture</p>
                 </div>
               </div>
-              <div class="col-6 col-md-6 col-lg-7">
-                <br/>
+              <div class="col-7 col-md-7 col-lg-7">
                 <div class="row" style="height: 15px;">
                    <div class="col-4 col-md-4 col-lg-4">
                      <div class="row">
@@ -140,11 +147,80 @@
             </div>
         </div>
         <div style="height: 10px;"></div>
-        <div id="absentcard-box"></div>
+        <div id="absentcard-box">
+          <div class="row">
+            <div class="col-5 col-md-5 col-lg-5">
+              <p id="absent-text">ABSENT CARD</p>
+            </div>
+            <div class="col-5 col-md-5 col-lg-5">
+               <div class="row" id="button-printpage">
+                <i class="fa fa-print" aria-hidden="true" id="icon-align"></i>
+                &nbsp;&nbsp;
+                <p id="font-size15">Print Page</p>
+               </div>
+             </div>
+            </div>
+            <div style="height: 10px;"></div>
+
+            <div id="sectable-back-color">
+              <div *ngFor="let row of empAbsetList" (click)=empdailyreportcall(row.date) id="{{row.date}}">
+                <div class="row">
+                  <div class="col-4 col-md-4 col-lg-4">
+                    <p id="font-sixe12">Date</p>
+                  </div>
+                  <div class="col-4 col-md-4 col-lg-4">
+                    <p id="font-sixe12">Check In</p>
+                  </div>
+                  <div class="col-4 col-md-4 col-lg-4">
+                    <p id="font-sixe12">Check Out</p>
+                  </div>                
+                </div>
+               
+                <div class="row">
+                  <div class="col-4 col-md-4 col-lg-4">
+                    <p id="font-sixe12">{{row.date}}</p>
+                  </div>
+                  <div class="col-4 col-md-4 col-lg-4">
+                    <p id="font-sixe12">{{row.checkin}}</p>
+                  </div>
+                  <div class="col-4 col-md-4 col-lg-4">
+                    <p id="font-sixe12">{{row.checkout}}</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+            </div>
+
+        </div>
       </div>
     </div>
     
 
-    <div class="col-4 col-md-4 col-lg-4"></div>
- </div>
+    <div class="col-3 col-md-3 col-lg-4">
+      <div id="empreport-backcolor" *ngIf="empreportdetails">
+        <div style="height: 10px;"></div>
+        <p id="absent-text">EMPLOYEE DAILY REPORT </p>
+        <div id="report-datebox">
+          {{this.model.date}}
+        </div>
+        <div style="height: 10px;"></div>
+        <div id="report-detailbox">
+          <p id="font-sixe12">Report 10, October 2019</p>
+          <div style="height: 10px;"></div>
+            <p id="font-sixe12">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, 
+              sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna 
+              aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci 
+              tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. 
+              Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.
+            </p>
+            <div class="row" id="reportbutton-printpage">
+              <i class="fa fa-print" aria-hidden="true" id="icon-align"></i>
+              &nbsp;&nbsp;
+              <p id="font-size15">Print Page</p>
+             </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 </div>
