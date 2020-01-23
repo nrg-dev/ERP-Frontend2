@@ -19,7 +19,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <mat-form-field>
-                                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search Invoice" >
+                                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search " >
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -167,7 +167,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <mat-form-field>
-                                    <input matInput (keyup)="applyStockOutFilter($event.target.value)" placeholder="Search Invoice" >
+                                    <input matInput (keyup)="applyStockOutFilter($event.target.value)" placeholder="Search " >
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -235,7 +235,7 @@
                                         </div>
                                         <div class="col-lg-4">
                                             <mat-form-field>
-                                            <input matInput (keyup)="applyStockReturnFilter($event.target.value)" placeholder="Search Invoice" >
+                                            <input matInput (keyup)="applyStockReturnFilter($event.target.value)" placeholder="Search " >
                                             </mat-form-field>
                                         </div>
                                     </div>
@@ -376,7 +376,7 @@
                                         </div>
                                         <div class="col-lg-4">
                                             <mat-form-field>
-                                            <input matInput (keyup)="applyStockDamageFilter($event.target.value)" placeholder="Search Invoice" >
+                                            <input matInput (keyup)="applyStockDamageFilter($event.target.value)" placeholder="Search " >
                                             </mat-form-field>
                                         </div>
                                     </div>
@@ -549,36 +549,47 @@
                                     <p>Report Overall Stock</p>
                                 </div>
                                 <div class="col-lg-4">
-                                    <button id="print-butn">
+                                    <button id="print-butn" (click)="print()">
                                         &nbsp;<i class="fa fa-print" aria-hidden="true" id="icon-mod"></i> &nbsp;
                                         &nbsp;<label id="text">Print Page</label>
                                     </button>
                                 </div>
                                 <div class="col-lg-3">
                                     <mat-form-field>
-                                    <input matInput (keyup)="applyStockReportFilter($event.target.value)" placeholder="Search Invoice" >
+                                    <input matInput (keyup)="applyStockReportFilter($event.target.value)" placeholder="Search " >
                                     </mat-form-field>
                                 </div>
                             </div>
 
-                            <!-- <div class="row">
-                                <div class="col-lg-6" style="margin-left: 15px;">
-                                    <p>Report Overall Stock</p>
+                            <div class="row">
+                                <div class="col-lg-2" style="margin-left: 15px;">
+                                    <p>Filter : </p>
                                 </div>
-                                <div class="col-lg-6"></div>
+                                <div class="col-lg-3">
+                                    <select class="form-control" style="background-color:#1B2931;color: white;" id="productCategory" [(ngModel)]="model.productCategory" #productCategory="ngModel">
+                                        <option>-- Select --</option>
+                                        <option *ngFor="let itemProCategory of prodCategoryList" value="{{ itemProCategory }}"> {{ itemProCategory }} </option> 
+                                    </select>                                    
+                                </div>
                             </div>
 
                             <div class="row">
-                                <div class="col-lg-6" style="margin-left: 15px;">
-                                    <p>Report Overall Stock</p>
+                                <div class="col-lg-2" style="margin-left: 15px;">
+                                    <p>Sort By : </p>
                                 </div>
-                                <div class="col-lg-6"></div>
-                            </div> -->  
+                                <div class="col-lg-3">
+                                    <input type="date" class="form-control" style="background-color:#1B2931;color: white;" id="stockDate" [(ngModel)]="model.stockDate" name="{{model.stockDate}}" #stockDate="ngModel"/>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="radio-toolbar">
+                                        <label id="checkIn-butn" (click)="searchStockReport()">Search</label>
+                                    </div>
+                                </div>
+                            </div>  
 
-                            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
                             <div class="mat-elevation-z8">
     
-                                <table mat-table #sort5 [dataSource]="dataSource5" matSort>
+                                <table mat-table #sort5 [dataSource]="dataSource5" matSort id="clinicagReport" #clinicagReport>
                                     <ng-container matColumnDef="ItemCode">
                                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Item Code </th>
                                         <td mat-cell *matCellDef="let row" id="middleContent"> {{row.itemCode}} </td>

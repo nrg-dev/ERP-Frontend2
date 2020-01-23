@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChildren ,QueryList ,ElementRef, Inject } from '@angular/core';
+import { Component, OnInit, ViewChildren,ViewChild ,QueryList ,ElementRef, Inject } from '@angular/core';
 import { User } from 'src/app/_models';
 import { AlertService } from 'src/app/_services/index';
 import { Router } from '@angular/router';
@@ -7,7 +7,58 @@ import { Stock } from 'src/app/_models/stock';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
- 
+//import *  as  XLSX from 'xlsx';
+
+@Component({
+  selector: 'viewStock',
+  styleUrls: ['./viewStock.css'],
+  templateUrl: './viewStock.html', 
+})
+export class ViewStock {
+  model: any ={};
+  stock: Stock;
+  public stockViewList : any;
+  dialogConfig = new MatDialogConfig();
+  isDtInitialized:boolean = false;
+  dataSource6: MatTableDataSource<any>;
+  displayColumns6: string[] = ['No','LastAction','Date','Qty+','Qty-','DmgQtyTotal','QtyTotal'];
+  
+  @ViewChildren(MatPaginator) paginator = new QueryList<MatPaginator>();
+  @ViewChildren(MatSort) sort = new QueryList<MatSort>();
+  
+  constructor(
+    private stockService: StockService,
+    private dialog: MatDialog,
+    private alertService: AlertService,
+
+    public dialogRef: MatDialogRef<ViewStock>,
+    @Inject(MAT_DIALOG_DATA) public data: any) 
+    {  
+      const stockdata = require("../../stockViewData.json");
+      this.stockViewList=stockdata;
+      this.dataSource6 = new MatTableDataSource(this.stockViewList);
+    }
+
+  ngOnInit() {
+   
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  applyStockViewFilter(filterValue: string) {
+    this.dataSource6.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource6.paginator) {
+      this.dataSource6.paginator.firstPage();
+    }
+  }
+
+  closeStock(){
+    this.dialogRef.close();
+  }
+  
+}
 
 @Component({
   selector: 'app-stockadd',
@@ -25,9 +76,12 @@ export class StockaddComponent implements OnInit {
   stockReportList: any = {};
   productList: any = {};
   categoryList: any = {};
+  prodCategoryList: any = {};
   viewMode: any = {};
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
+  //@ViewChild('clinicagReport') clinicagReport: ElementRef;  
+
 
   hBColumns: string[] = ['Date','Category','ProductCategory','ProductName','Qty','recentStock'];
   sBColumns: string[] = ['Date','StockCategory','ProductCategory','ProductName','Qty','RecentStock'];
@@ -79,8 +133,6 @@ export class StockaddComponent implements OnInit {
     const stockReportdata = require("../../stockReportdata.json");
     this.stockReportList=stockReportdata;
     this.dataSource5 = new MatTableDataSource(this.stockReportList);
-    this.dataSource5.paginator = this.paginator.toArray()[4];
-    this.dataSource5.sort = this.sort.toArray()[4];
  
   }
   
@@ -97,12 +149,11 @@ export class StockaddComponent implements OnInit {
     this.dataSource4.paginator = this.paginator.toArray()[3];
     this.dataSource4.sort = this.sort.toArray()[3];
 
-    this.dataSource5.paginator = this.paginator.toArray()[4];
-    this.dataSource5.sort = this.sort.toArray()[4];
   }
   ngOnInit() {
     this.productList = ['Mobile', 'Computer', 'Cloths', 'TV'];
     this.categoryList = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];
+    this.prodCategoryList = ['Mobile-Electronic', 'Computer-Manufactorning', 'Cloths-Institue', 'TV-Mining'];
   }
 
   applyFilter(filterValue: string) {
@@ -234,7 +285,31 @@ export class StockaddComponent implements OnInit {
   }
 
   viewStock(){
-    
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+      'top': '1000',
+      left: '100'
+    };
+    this.dialog.open(ViewStock,{
+      panelClass: 'viewStock',
+      data: "id",
+      height: '80%'
+    }).afterClosed().subscribe(result => {
+    });
   }
 
+  searchStockReport(){
+    console.log("Product and Category Name -->"+this.model.productCategory);
+    console.log("Stock Date ------>"+this.model.stockDate);
+
+  }
+
+  print(){
+    //window.print();
+    /*const ws: XLSX.WorkSheet=XLSX.utils.table_to_sheet(this.clinicagReport.nativeElement);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1'); 
+    XLSX.writeFile(wb, 'clinicAgentReport.xlsx'); */
+  }
 }
