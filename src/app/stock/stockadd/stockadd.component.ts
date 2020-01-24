@@ -77,7 +77,6 @@ export class StockaddComponent implements OnInit {
   productList: any = {};
   categoryList: any = {};
   prodCategoryList: any = {};
-  viewMode: any = {};
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
   //@ViewChild('clinicagReport') clinicagReport: ElementRef;  
