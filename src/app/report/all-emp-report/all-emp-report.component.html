@@ -13,7 +13,7 @@
         </div>
         <div class="col-2 col-md-2 col-lg-2"></div>
         <div class="col-5 col-md-5 col-lg-3">
-          <div id="back-btn">
+          <div id="back-btn" routerLink="../allreport">
             <label>Back</label>
           </div>
         </div>
@@ -27,7 +27,6 @@
         </mat-form-field>
 
         <div class="mat-elevation-z8">
-
           <table mat-table #sortCol1="matSort" [dataSource]="dataSource1" matSort matSortActive="ID" matSortDirection="asc">
             
                 <ng-container matColumnDef="EmployeeName">
@@ -45,6 +44,7 @@
                 </tr>
             </table>
         </div>  
+        
     </div>
 
 
