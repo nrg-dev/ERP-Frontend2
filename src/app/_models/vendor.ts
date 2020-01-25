@@ -2,10 +2,14 @@
 
 export class Vendor extends Common {
 
-   id: string; 
-   name: string;
-   empCode: string;
-   rank: string;
-   contactNumber: string;
-   purchaseOrdeData:any;
+   id             :string; 
+   vendorcode     :string;
+   vendorName     :string;
+   phoneNumber 	:string;
+   mobileNumber 	:string;
+   address 		   :string;
+   country 		   :string;
+   city 			   :string;
+   email 		   :string;
+  
 }
