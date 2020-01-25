@@ -133,8 +133,10 @@ export class PurchaseaddComponent  implements OnInit  {
                         
        },
        error => {
-         alert("Server error...");
-
+        this.alertService.success("API server Issue..");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 2000);
        });
 
 

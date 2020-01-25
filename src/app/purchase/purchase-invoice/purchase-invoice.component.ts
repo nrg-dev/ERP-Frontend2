@@ -187,8 +187,9 @@ export class PurchaseInvoiceComponent implements OnInit {
   public purchaseList : any;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
-  displayedColumns: string[] = ['Date','Invoice Number','ProductName','name','quantity','deliveryCost','netAmount','status','Action'];
- 
+  //displayedColumns: string[] = ['Date','Invoice Number','ProductName','name','quantity','deliveryCost','netAmount','status','Action'];
+  displayedColumns: string[] = ['netAmount','Action'];
+
 
   dataSource: MatTableDataSource<any>;
   
@@ -201,23 +202,28 @@ export class PurchaseInvoiceComponent implements OnInit {
     private alertService: AlertService,
     private purchaseservice: PurchaseService,
   ) { 
-    const purchasedata = require("../../purchasedata.json");
+   // const purchasedata = require("../../purchasedata.json");
 
-    this.purchaseList=purchasedata;
+   // this.purchaseList=purchasedata;
 
-    console.log("data3 -->"+this.purchaseList[2].addedDate);
+    //console.log("data3 -->"+this.purchaseList[2].addedDate);
 
 
-    /* 
+    
 
     this.purchaseservice.load().subscribe(res => { 
       this.purchaseList = res;
+      this.dataSource = new MatTableDataSource(this.purchaseList);
+
+      console.log("Size ---->"+this.purchaseList.length);
          //  console.log("data2 -->"+this.purchaseList[1].purchaseorder["vendorName"].values);
-           console.log("data3 -->"+this.purchaseList[2].purchaseorder.category);
-           console.log("speasifc data  -->");
-           console.log("data4 -->"+this.purchaseList[0]);
-           console.log("data5 -->"+this.purchaseList[1]);
-           console.log("data6 -->"+this.purchaseList[2]);
+           console.log("netAmount 1 -->"+this.purchaseList[0].netAmount);
+           console.log("netAmount 2 -->"+this.purchaseList[1].netAmount);
+
+          // console.log("speasifc data  -->");
+          // console.log("data4 -->"+this.purchaseList[0]);
+          // console.log("data5 -->"+this.purchaseList[1]);
+           //console.log("data6 -->"+this.purchaseList[2]);
 
           // console.log("data2 -->"+this.purchaseList[0].purchaseorder);
            //console.log("data3 -->"+this.purchaseList[0].purchaseorder[0]);
@@ -231,7 +237,7 @@ export class PurchaseInvoiceComponent implements OnInit {
         }
     );
  
-*/
+
     this.dataSource = new MatTableDataSource(this.purchaseList);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

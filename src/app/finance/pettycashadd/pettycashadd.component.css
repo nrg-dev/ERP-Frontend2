@@ -218,8 +218,14 @@ label,select,input,#textSize{
 #salessummary{
   margin: 5px;
 }
-#checkIn-butn{
+#save-butn{
   background-color: #07ab07;
+  width: 60px;
+  height: 25px;
+  text-align: center;
+}
+#cancel-butn{
+  background-color: #d40505;
   width: 60px;
   height: 25px;
   text-align: center;
@@ -230,7 +236,7 @@ label,select,input,#textSize{
 }
 
 #return-details{
-  width: 85%;
+  width: 90%;
   height: 740px;
   background-color: #243642;
   margin: 0 15px;
@@ -278,6 +284,40 @@ label,select,input,#textSize{
   margin-top: 6px;
   color: white;
 }
+
+#back-color {
+  border: 1px solid white;
+  height: 50px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  font-size: 12px;
+}
+div#back-color::-webkit-scrollbar {
+  background: lightyellow;
+  width: 3px;
+}
+div#back-color::-webkit-scrollbar-track {
+  background: #655d5db3; 
+}
+/* Handle */
+div#back-color::-webkit-scrollbar-thumb {
+  background: #655d5db3; 
+  border-radius: 10px;
+}
+
+
+#return-details{
+  width: 90%;
+  height: 285px;
+  background-color: #243642;
+  margin: 60px 5px;
+}
+#add-return-details{
+  width: 90%;
+  height: 380px;
+  background-color: #243642;
+  margin: -50px 5px;
+}
 ::ng-deep .mat-tab-label {
   height: 48px;
   padding: 0 24px;
@@ -318,21 +358,72 @@ label,select,input,#textSize{
 #middleContent{
   vertical-align: middle;
 }
+
+#textSize2{
+  background-color:#1B2931;
+  color: white;
+  width: 100%;
+}
+
+#textSize2::-webkit-input-placeholder { 
+  font-size: 8px;
+}
+#add-purchse-details {
+  width: 90%;
+  height: 160px;
+  background-color: #243642;
+  margin: 0px 5px;
+}
+#purchase-details {
+  width: 90%;
+  height: 430px;
+  background-color: #243642;
+  margin: 20px 5px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+#petty-details{
+  width: 95%;
+  height: 285px;
+  background-color: #243642;
+  margin: 0 5px;
+}
+#add-petty-details{
+  width: 95%;
+  height: 350px;
+  background-color: #243642;
+  margin: 0px 5px;
+}
+#medium-size{
+  font-size: 13px;
+}
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
   #addstock-div{
-  background: #1B2931;
-  height: 900px;
-  width: 100%;
-      border-radius: 10px;
-      margin-left: 30px;
+    background: #1B2931;
+    height: 900px;
+    width: 100%;
+    border-radius: 10px;
+    margin-left: 30px;
+  }
+
+  #textSize2{
+    background-color:#1B2931;
+    color: white;
+    width: 140%;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px){
   #addstock-div{
-  background: #1B2931;
-  height: 900px;
-  width: 100%;
-      border-radius: 10px;
-      margin-left: 25px;
+    background: #1B2931;
+    height: 900px;
+    width: 100%;
+    border-radius: 10px;
+    margin-left: 25px;
+  }
+
+  #textSize2{
+    background-color:#1B2931;
+    color: white;
+    width: 160%;
   }
 }
