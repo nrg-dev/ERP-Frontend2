@@ -15,7 +15,7 @@ constructor(private http: HttpClient) { }
 
 // Save 
 save(customer: Customer){
-    console.log('service....');
+    console.log('custome rservice....');
     return this.http.post<Customer>(this.commonURL+'save',customer);
 }
   

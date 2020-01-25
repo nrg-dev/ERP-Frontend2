@@ -506,6 +506,7 @@
 
 <!--vendor Drag and Drop start-->
 <div *ngIf="vendordragAndDrop" id="vencustab" cdkDrag>
+    <form name="form"  (ngSubmit)=" saveVendor()">
     <br/>
     <div class="row">
         <div class="col-md-1 col-1 col-lg-1"></div>
@@ -516,13 +517,15 @@
         <div  class="col-md-6 col-4 col-lg-6">
             <div class="row">
                 <button id="edit-butn1">
-                    <div class="row" (click)="vendorupdateDetails()">
+                    <div class="row">
                         <i class="fa fa-floppy-o" aria-hidden="true" style="margin-top: 5px;"></i>
                         &nbsp;
                         <p>Save</p>
                     </div>
                 </button>
 
+
+           
                 <button id="print-butn">
                 <div class="row" (click)="vendordragdropcloseMethod()">
                     <i class="fa fa-times" aria-hidden="true" id="icon-mod"></i>
@@ -547,42 +550,55 @@
                 <div class="row" id="address">
                     <p class="col-md-4 col-4 col-lg-4" id="text3">Vendor Name</p>
                     <p class="col-md-1 col-1 col-lg-1" >:</p>
-                    <input type="text" id="editinput-box" value="" />
+                    <input type="text" id="editinput-box" [(ngModel)]="model.vendorName" 
+                    #vendorName="ngModel" 
+                    placeholder="Enter Vendor name" name="vendorName" />
                 </div>
                 <div class="row" id="address">
                     <p class="col-md-4 col-4 col-lg-4" id="text3">Phone Number</p>
                     <p class="col-md-1 col-1 col-lg-1" >:</p>
-                    <input type="text" id="editinput-box" value="" />
+                    <input type="text" id="editinput-box" [(ngModel)]="model.phoneNumber" 
+                    #phoneNumber="ngModel" 
+                    placeholder="Enter Phone Number" name="phoneNumber" />
                 </div>
                 <div class="row" id="address">
                     <p class="col-md-4 col-4 col-lg-4" id="text3">Address</p>
                     <p class="col-md-1 col-1 col-lg-1" >:</p>
-                    <input type="text" id="editinput-box" value="" />
+                    <input type="text" id="editinput-box" [(ngModel)]="model.address" 
+                    #address="ngModel" 
+                    placeholder="Enter Address" name="address" />
                 </div>
                 <div class="row" id="address">
                     <p class="col-md-4 col-4 col-lg-4" id="text3">City</p>
                     <p class="col-md-1 col-1 col-lg-1" >:</p>
-                    <input type="text" id="editinput-box" value="" />
+                    <input type="text" id="editinput-box" [(ngModel)]="model.city" 
+                    #city="ngModel" 
+                    placeholder="Enter City" name="city" />
                 </div>
                 <div class="row" id="address">
                     <p class="col-md-4 col-4 col-lg-4" id="text3">EmailAddress</p>
                     <p class="col-md-1 col-1 col-lg-1" >:</p>
-                    <input type="text" id="editinput-box" value="" />
+                    <input type="text" id="editinput-box" [(ngModel)]="model.email" 
+                    #email="ngModel" 
+                    placeholder="Enter Email" name="email"/>
                 </div>
                 <div class="row" id="address">
                     <p class="col-md-4 col-4 col-lg-4" id="text3">Mobile Number</p>
                     <p class="col-md-1 col-1 col-lg-1" >:</p>
-                    <input type="text" id="editinput-box" value="" />
+                    <input type="text" id="editinput-box" [(ngModel)]="model.mobileNumber" 
+                    #mobileNumber="ngModel" 
+                    placeholder="Enter MobileNumber" name="mobileNumber" />
                 </div>
                 <div class="row" id="address">
                     <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
                     <p class="col-md-1 col-1 col-lg-1" >:</p>
-                    <select id="editselect-box" [(ngModel)] ="this.model.country">
+                    <select id="editselect-box" [(ngModel)] ="this.model.country" #country="ngModel">
                         <option  *ngFor="let country of countryList" value={{country}} id="black-color">{{country}}</option>     
                     </select>  
                 </div>
           </div>
         </div>
+    </form>
     </div>
   <!-- vendor Drag and Drop end-->
 
@@ -674,9 +690,9 @@
             <div class="row" id="address">
                 <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
                 <p class="col-md-1 col-1 col-lg-1" >:</p>
-                <select id="editselect-box" [(ngModel)] ="this.model.country" #customerName="ngModel" >
+                <select id="editselect-box" name ="selectedCountry" [(ngModel)]="model.country" required >
                     <option  *ngFor="let country of countryList" value={{country}} id="black-color">{{country}}</option>     
-                 </select>  
+                </select>  
             </div>
         </div>
     </div>

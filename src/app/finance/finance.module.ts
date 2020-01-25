@@ -4,6 +4,7 @@ import { PettycashaddComponent } from './pettycashadd/pettycashadd.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
+import { Finance } from 'src/app/_models/finance';
 import {
   MatAutocompleteModule,
   MatBadgeModule, 
@@ -92,5 +93,6 @@ const routes: Routes = [
     DataTablesModule.forRoot(),
     RouterModule.forChild(routes) 
   ],
+  providers: [Finance],
 })
 export class FinanceModule { }

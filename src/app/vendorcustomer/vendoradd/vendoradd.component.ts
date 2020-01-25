@@ -183,7 +183,7 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
 
   constructor(private router: Router,
      private alertService: AlertService,
-    // private vendorService: VendorService,
+     private vendorService: VendorService,
      private customerService: CustomerService,
 
       
@@ -339,16 +339,40 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     this.customerdragAndDrop = false;
     this.alertService.success("");
   }
-  vendorupdateDetails(){
-   this.alertService.success("Successfully Saved")
+  saveVendor(){
+    this.vendorService.save(this.model)
+    .subscribe(
+      data => {
+        this.vendor =   data;    
+        console.log("Response -->"+this.vendor.status) 
+        if(this.vendor.status=="success"){
+          this.alertService.success("Saved Successfully");
+          setTimeout(() => {
+            this.alertService.clear();
+            this.vendordetails=false;
+            this.vendoreditdetails=false;
+            this.vendordragAndDrop=false;
+            this.customereditdetails=false;
+            this.customerdragAndDrop = false;
+          }, 2000);
+        }
+        if(this.vendor.status=="failure"){
+          this.alertService.success("Server issue");
+        }
+      },
+      error => {
+        this.alertService.success("Serve Error ");
     setTimeout(() => {
+      this.alertService.clear();
       this.alertService.clear();
       this.vendordetails=false;
       this.vendoreditdetails=false;
       this.vendordragAndDrop=false;
       this.customereditdetails=false;
       this.customerdragAndDrop = false;
-    }, 1500);
+    }, 2000);
+      }
+    );  
   }
   vendorcloseMethod(){
     this.vendordetails=true;
@@ -595,7 +619,31 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     this.vendordragAndDrop = false;
   }
   saveCustomer(){
-    this.alertService.success("Saved Successfully");
+    console.log("country name-->"+this.model.country);
+    // call rest ful api 
+    this.customerService.save(this.model)
+    .subscribe(
+      data => {
+        this.customer =   data;    
+        console.log("Response -->"+this.customer.status) 
+        if(this.customer.status=="success"){
+          this.alertService.success("Saved Successfully");
+          setTimeout(() => {
+            this.alertService.clear();
+            this.alertService.clear();
+            this.customerdetails = false;
+            this.vendordetails=false;
+            this.vendoreditdetails=false;
+            this.customereditdetails=false;
+            this.customerdragAndDrop = false;
+          }, 2000);
+        }
+        if(this.customer.status=="failure"){
+          this.alertService.success("Server issue");
+        }
+      },
+      error => {
+        this.alertService.success("Serve Error ");
     setTimeout(() => {
       this.alertService.clear();
       this.alertService.clear();
@@ -605,6 +653,11 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
       this.customereditdetails=false;
       this.customerdragAndDrop = false;
     }, 2000);
+      }
+    );  
+
+
+   
   }
   customerdelete(){
     this.alertService.success("Delete Successfully");
