@@ -188,7 +188,7 @@ export class PurchaseInvoiceComponent implements OnInit {
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
   //displayedColumns: string[] = ['Date','Invoice Number','ProductName','name','quantity','deliveryCost','netAmount','status','Action'];
-  displayedColumns: string[] = ['netAmount','Action'];
+  displayedColumns: string[] = ['invoicenumber','status','invoicedate','vendorname','Action'];
 
 
   dataSource: MatTableDataSource<any>;
@@ -208,29 +208,12 @@ export class PurchaseInvoiceComponent implements OnInit {
 
     //console.log("data3 -->"+this.purchaseList[2].addedDate);
 
-
-    
-
-    this.purchaseservice.load().subscribe(res => { 
+      this.purchaseservice.load().subscribe(res => { 
       this.purchaseList = res;
       this.dataSource = new MatTableDataSource(this.purchaseList);
 
       console.log("Size ---->"+this.purchaseList.length);
-         //  console.log("data2 -->"+this.purchaseList[1].purchaseorder["vendorName"].values);
-           console.log("netAmount 1 -->"+this.purchaseList[0].netAmount);
-           console.log("netAmount 2 -->"+this.purchaseList[1].netAmount);
-
-          // console.log("speasifc data  -->");
-          // console.log("data4 -->"+this.purchaseList[0]);
-          // console.log("data5 -->"+this.purchaseList[1]);
-           //console.log("data6 -->"+this.purchaseList[2]);
-
-          // console.log("data2 -->"+this.purchaseList[0].purchaseorder);
-           //console.log("data3 -->"+this.purchaseList[0].purchaseorder[0]);
-
-          // console.log("data4 -->"+data);
-
-
+  
         },
         error => {
             alert('Error !!!!');

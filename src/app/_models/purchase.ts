@@ -14,4 +14,5 @@ export class Purchase extends Common {
    salesPerson:string;
    orderNumber:string;
    termsDays:string;
+   invoicedate:any;
 }
