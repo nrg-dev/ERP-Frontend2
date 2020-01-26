@@ -397,6 +397,53 @@ div#back-color::-webkit-scrollbar-thumb {
 #medium-size{
   font-size: 13px;
 }
+#financebackground {
+  background-color: #243642;
+  width: 95%;
+  height: 750px;
+  margin-left: 22px;
+}
+#purchase-text{
+  font-weight: bold;
+  height: 3px;
+}
+#date-box1{
+  height: 20px;
+  background: white;
+  width: 35%;
+  margin: 3px;
+}
+#second-h2{
+  width: 7%;
+  height: 1px;
+  background: white;
+  margin: auto;
+}
+#debcred-box{
+  width: 50%;
+  height: 100px;
+  background: #10181C;
+}
+#debcred-box2{
+  width: 50%;
+  height: 100px;
+  background: #151F25;
+}
+#border-bottom{
+  border-bottom: 1px solid;
+  height: 23px;
+}
+#finance-detail{
+  height: 750px;
+  width: 95%;
+  background: #151F25;
+}
+#finance-summarybox{
+  width: 85%;
+  height: 400px;
+  background: #10181C;
+  margin: 70px auto;
+}
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
   #addstock-div{
     background: #1B2931;

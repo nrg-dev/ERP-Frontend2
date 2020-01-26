@@ -25,7 +25,7 @@
                     <label id="labeltext">:</label>
                 </div>
                 <div class="col-lg-5">
-                  <select class="form-control" [(ngModel)]="model.vendorName" name="{{model.vendorName}}" #vendorName="ngModel" style="color: black;width: 185%;" >
+                  <select class="form-control" [(ngModel)]="model.vendorName" #vendorName="ngModel" name="vendorName" style="color: black;width: 185%;" >
                     <option value="--- Select --- "> ---- Select ---- </option>  
                     <option *ngFor="let itemVendor of vendorList" value="{{ itemVendor }}"> {{ itemVendor }} </option> 
                   </select> 
@@ -39,7 +39,7 @@
                       <label id="labeltext">:</label>
                   </div>
                   <div class="col-lg-5">
-                    <p id="purchaseoutput">{{todayDate | date:'longDate'}}</p>
+                    <p id="purchaseoutput" [(ngModel)]="model.poDate" name="poDate" #poDate="ngModel">{{todayDate | date:'longDate'}}</p>
                   </div>
               </div><br/>
             </div>
@@ -72,9 +72,10 @@
                   <div class="col-md-5 col-xs-5 col-lg-5" id="purchasetext">Delivery Charge </div>
                   <div class="col-md-1 col-xs-1 col-lg-1">:</div>
                   <div class="col-md-6 col-xs-6 col-lg-6">
-                    <p id="purchaseoutput">{{todayDate | date:'longDate'}}</p>
+                    <input class="form-control" type="text" id="deliveryCost" [(ngModel)]="this.model.deliveryCost" #deliveryCost="ngModel" style="width: auto;height: 25px;" name="deliveryCost"/>
                   </div>       
                 </div>
+                <br/>
                 <hr>
                 <div class="row">
                   <div class="col-md-5 col-xs-5 col-lg-5" id="purchasetext">TOTAL : </div>

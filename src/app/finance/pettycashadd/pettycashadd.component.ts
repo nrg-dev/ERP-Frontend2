@@ -24,6 +24,7 @@ export class PettycashaddComponent implements OnInit {
   purchaseList: any = {};
   purchaseReturnList: any = {};
   pettyCashList: any = {};
+  financeList: any = {};
 
   productList: any = {};
   categoryList: any = {};
@@ -43,17 +44,21 @@ export class PettycashaddComponent implements OnInit {
   public addPurchaseDiv = false;
   public purchaseReturnDetailsDiv = false;
   public addPurchaseReturnDiv = false;
+  public financedetails = false;
 
   firstColumns: string[] = ['EmployeeName', 'Code', 'Rank', 'BasicSalary', 'OverTime', 'Bonus', 'Total'];
   secondColumns: string[] = ['Date', 'CustomerName', 'Invoice', 'SubTotal', 'DeliveryFee', 'Total'];
   thirdColumns: string[] = ['Date', 'vendorName', 'Invoice', 'SubTotal', 'DeliveryFee', 'Total'];
   fourthColumns: string[] = ['Date','Invoice','Type','SubTotal','DeliveryFee','Total'];
   fifthColumns: string[] = ['Description','Date','Type','From','To','Value'];
+  sixthColumns: string[] = ['Date','Category','Description','Debit','Credit'];
+
   dataSource1: MatTableDataSource<any>;
   dataSource2: MatTableDataSource<any>;
   dataSource3: MatTableDataSource<any>;
   dataSource4: MatTableDataSource<any>;
   dataSource5: MatTableDataSource<any>;
+  dataSource6: MatTableDataSource<any>;
 
   @ViewChildren(MatPaginator) paginator = new QueryList<MatPaginator>();
   @ViewChildren(MatSort) sort = new QueryList<MatSort>();
@@ -91,6 +96,12 @@ export class PettycashaddComponent implements OnInit {
     this.dataSource5 = new MatTableDataSource(this.pettyCashList);
     this.dataSource5.paginator = this.paginator.toArray()[4];
     this.dataSource5.sort = this.sort.toArray()[4]; 
+
+    const financedata = require("../../AllFinanceReporttable .json");
+    this.financeList=financedata;
+    this.dataSource6 = new MatTableDataSource(this.financeList);
+    this.dataSource6.paginator = this.paginator.toArray()[5];
+    this.dataSource6.sort = this.sort.toArray()[5]; 
   }
 
   ngAfterViewInit() {
@@ -108,6 +119,9 @@ export class PettycashaddComponent implements OnInit {
 
     this.dataSource5.paginator = this.paginator.toArray()[4];
     this.dataSource5.sort = this.sort.toArray()[4]; 
+
+    this.dataSource6.paginator = this.paginator.toArray()[5];
+    this.dataSource6.sort = this.sort.toArray()[5]; 
   }
 
   ngOnInit() {
@@ -118,6 +132,7 @@ export class PettycashaddComponent implements OnInit {
     this.addPurchaseDiv = false;
     this.purchaseReturnDetailsDiv = false;
     this.addPurchaseReturnDiv = false;
+    this.financedetails = false;
     this.empNameList = ["Josni", "Adam", "Nisho", "Alex", "Abraham"].sort((a, b) => b < a ? 1 : -1);
     this.customerList = ["Josni", "Jeff", "Nisho", "Alex", "Roch"].sort((a, b) => b < a ? 1 : -1);
     this.vendorList = ["Muthu", "Denish", "Shifon", "Irfan", "Roch"].sort((a, b) => b < a ? 1 : -1);
@@ -269,6 +284,28 @@ export class PettycashaddComponent implements OnInit {
     setTimeout(() => {
       this.alertService.clear();
     }, 2000);
+  }
+
+  applyFinanceFilter(filterValue: string) {
+    this.dataSource6.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource6.paginator) {
+      this.dataSource6.paginator.firstPage();
+    }
+  }
+
+  financedetaildivcall(Date: string){
+    this.financedetails=true;
+    for(let i=0;i<this.financeList.length;i++){
+      if(this.financeList[i].date==Date){
+        this.model.customer = this.financeList[i].customer;
+        this.model.date = this.financeList[i].date;
+        this.model.category = this.financeList[i].category;
+        this.model.description = this.financeList[i].description;
+        this.model.debit = this.financeList[i].debit;
+        this.model.credit = this.financeList[i].credit;
+        this.model.code = this.financeList[i].code;
+      }
+    }
   }
 
 }

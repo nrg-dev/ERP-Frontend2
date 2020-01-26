@@ -95,6 +95,8 @@ export class PurchaseaddComponent  implements OnInit  {
   //purchsearray: Array<Purchase> = [];
 
   savePurchase(){
+    alert("Vendor Name -->"+this.model.vendorName);
+    alert("PO Date -->"+this.model.poDate);
     this.purchsearray = [];
 
    // this.deleteFieldValue(2);
@@ -105,11 +107,8 @@ export class PurchaseaddComponent  implements OnInit  {
 
    // this.newAttribute = {};
    this.purchsearray.push(this.fieldArray);
-   this.purchsearray.push(this.newAttribute);
-
-    //console.log(this.fieldArray);
-    //console.log(this.newAttribute);
-
+   //this.purchsearray.push(this.newAttribute);
+    this.purchsearray.push(this.model.vendorName)
     //this.deleteFieldValue(2);
     console.log(this.purchsearray);
    // this.model.Names = this.fieldArray;
