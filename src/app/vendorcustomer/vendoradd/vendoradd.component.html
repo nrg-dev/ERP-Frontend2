@@ -8,7 +8,7 @@
 </div>
 <br/>
 <div id="hole-divsize">
-<div class="row">
+<div class="row" style="height: 100%;">
     <div class="col-12 col-sm-5 col-md-6  col-lg-5">
         <div class="tab">
             <a class="tablink"  id="vendorstyle" (click)="vendorcust(1)">Vendor</a>
@@ -49,7 +49,7 @@
 	<div id="hole-div">
 			<hr style="margin: 0px;">
 			<div id="curs-pointer">
-				<div *ngFor="let list of custList"  (click)="customerDetails(list.custcode)" id="{{ list.custcode }}">          
+				<div *ngFor="let list of customerList"  (click)="customerDetails(list.custcode)" id="{{ list.custcode }}">          
 					<h3 id="name-text">{{ list.customerName }}</h3>
 					<div class="row" id="details-text">
 							<p id="country-text">country</p>
@@ -592,7 +592,7 @@
                 <div class="row" id="address">
                     <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
                     <p class="col-md-1 col-1 col-lg-1" >:</p>
-                    <select id="editselect-box" [(ngModel)] ="this.model.country" #country="ngModel">
+                    <select id="editselect-box" name ="selectedCountry" [(ngModel)]="model.country" required>
                         <option  *ngFor="let country of countryList" value={{country}} id="black-color">{{country}}</option>     
                     </select>  
                 </div>
