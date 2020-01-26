@@ -35,9 +35,9 @@ export class VendoraddComponent implements OnInit {
   model:any ={};
   customer:Customer;
   vendor:Vendor;
-  vendorList: any = {};
 
-  /*vendorList : any = [ {
+
+  vendorList : any = [ {
     vendorcode:'VEN001',
     vendorName :'PT NRG',
     phoneNumber : '+62 878-2277-7490',
@@ -105,7 +105,7 @@ export class VendoraddComponent implements OnInit {
     addeddate : '1/9/2019'
 },
 
-];*/
+];
 custList : any = [ 
   {
     custcode:'CUST001',
@@ -206,19 +206,6 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     document.getElementById("vendorstyle").style.borderBottom='2px solid #007bff';
     document.getElementById("customerstyle").style.borderBottom='none';
     document.getElementById("vendorstyle").style.fontWeight='bold';
-    this.getAllVendorDetails();
-  }
-
-  getAllVendorDetails(){
-    this.vendorList="";
-    this.vendorService.load()
-    .subscribe(
-      data => {
-        this.vendorList = data;
-      },
-      error => {
-      }
-    );
   }
 
   //Vendor details methos start
