@@ -36,7 +36,7 @@ update(customer: Customer){
 }
 
 // Remove 
-remove(id:number){
-    return this.http.delete<String>(this.commonURL+'remove?id='+id);
+remove(custcode: string){
+    return this.http.delete<Customer>(this.commonURL+'remove?custcode='+custcode);
 }
 }

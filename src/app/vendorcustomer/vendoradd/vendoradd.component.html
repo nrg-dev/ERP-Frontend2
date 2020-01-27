@@ -96,7 +96,7 @@
                             </div>
                          </button>
                          <button id="print-butn">
-                            <div class="row" (click)="vendordelete()">
+                            <div class="row" (click)="vendordelete(this.model.vendorcode)">
                                 <i class="fa fa-trash" aria-hidden="true" id="icon-mod"></i>
                                 <p id="text">Delete</p>
                             </div>
@@ -163,7 +163,7 @@
                         <div class="row" id="addeddate">
                                 <p class="col-md-4 col-4 col-lg-4" id="text3">Added Date</p>
                                 <p class="col-md-1 col-1 col-lg-1">:</p>
-                                <p>{{ this.model.addeddate }}</p>
+                                <p>{{ this.vendor.addeddate }}</p>
                         </div>
                         <div class="row" id="address">
                                 <p class="col-md-4 col-4 col-lg-4" id="text3">Address</p>
@@ -337,25 +337,31 @@
                 <div class="row" id="name">
                     <p class="col-md-4 col-4 col-lg-4" id="text3">Vendor Name</p>
                     <p class="col-md-1 col-1 col-lg-1" >:</p>
-                    <input type="text" id="editinput-box" value="{{ this.model.vendorName }}" />
+                    <input type="text" id="editinput-box" value="{{ this.model.vendorName }}" [(ngModel)]="model.vendorName" 
+                    #vendorName="ngModel" 
+                    placeholder="Enter Vendor name" name="vendorName"/>
                 </div>
                 
                 <div class="row" id="phonenumber">
                     <p class="col-md-4 col-4 col-lg-4" id="text3">Phone Number</p>
                     <p class="col-md-1 col-1 col-lg-1" >:</p>
-                    <input type="text" id="editinput-box" value="{{ this.model.phoneNumber }}" />
+                    <input type="text" id="editinput-box" value="{{ this.model.phoneNumber }}"
+                    [(ngModel)]="model.phoneNumber" #phoneNumber="ngModel" 
+                    placeholder="Enter Vendor phoneNumber" name="phoneNumber" />
                 </div>
                     
                 <div class="row" id="mobilenumber">
                     <p class="col-md-4 col-4 col-lg-4" id="text3">Mobile Number</p>
                     <p class="col-md-1 col-1 col-lg-1" >:</p>
-                    <input type="text" id="editinput-box" value="{{ this.model.mobileNumber }}" />
+                    <input type="text" id="editinput-box" value="{{ this.model.mobileNumber }}" 
+                    [(ngModel)]="model.mobileNumber" #mobileNumber="ngModel" 
+                    placeholder="Enter Vendor mobileNumber" name="mobileNumber" />
                 </div>
                 
                 <div class="row" id="country">
                     <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
                     <p class="col-md-1 col-1 col-lg-1" >:</p>
-                    <select id="editselect-box" [(ngModel)] ="this.model.country"  >
+                    <select id="editselect-box"  name ="selectedCountry" [(ngModel)]="model.country" required>
                         <option  *ngFor="let country of countryList" value={{country}} id="black-color">{{country}}</option>     
                      </select>                 
                 </div>
@@ -363,13 +369,17 @@
                 <div class="row" id="email">
                     <p class="col-md-4 col-4 col-lg-4" id="text3">Email</p>
                     <p class="col-md-1 col-1 col-lg-1" >:</p>
-                    <input type="text" id="editinput-box" value="{{ this.model.email }}" />
+                    <input type="text" id="editinput-box" value="{{ this.model.email }}" 
+                    [(ngModel)]="model.email" #email="ngModel" 
+                    placeholder="Enter Vendor email" name="email"/>
                 </div>
                 
                 <div class="row" id="city">
                     <p class="col-md-4 col-4 col-lg-4" id="text3">City</p>
                     <p class="col-md-1 col-1 col-lg-1" >:</p>
-                    <input type="text" id="editinput-box" value="{{ this.model.city }}" />
+                    <input type="text" id="editinput-box" value="{{ this.model.city }}" 
+                    [(ngModel)]="model.city" #city="ngModel" 
+                    placeholder="Enter Vendor city" name="city"/>
                 </div>
                 
                 <div class="row" id="lastedit">
@@ -387,7 +397,9 @@
                 <div class="row" id="address">
                     <p class="col-md-4 col-4 col-lg-4" id="text3">Address</p>
                     <p class="col-md-1 col-1 col-lg-1" >:</p>
-                    <input type="text" id="editinput-box" value="{{ this.model.address }}" />
+                    <input type="text" id="editinput-box" value="{{ this.model.address }}" 
+                    [(ngModel)]="model.address" #address="ngModel" 
+                    placeholder="Enter Vendor Address" name="address"/>
                 </div>
                 
              </div>
@@ -445,26 +457,32 @@
                 <div class="row" id="name">
                     <p class="col-md-4 col-4 col-lg-4" id="text3">Customer Name</p>
                     <p class="col-md-1 col-1 col-lg-1" >:</p>
-                    <input type="text" id="editinput-box" value="{{ this.model.customerName }}" />
+                    <input type="text" id="editinput-box" value="{{ this.model.customerName }}"
+                    [(ngModel)]="model.customerName" #customerName="ngModel" 
+                    placeholder="Enter customerName" name="customerName" />
                 </div>
                     
                 <div class="row" id="phonenumber">
                     <p class="col-md-4 col-4 col-lg-4" id="text3">Phone Number</p>
                     <p class="col-md-1 col-1 col-lg-1" >:</p>
-                    <input type="text" id="editinput-box" value="{{ this.model.phoneNumber }}" />
+                    <input type="text" id="editinput-box" value="{{ this.model.phoneNumber }}" 
+                    [(ngModel)]="model.phoneNumber" #phoneNumber="ngModel" 
+                    placeholder="Enter phoneNumber" name="phoneNumber"/>
                 </div>
                     
                 <div class="row" id="mobilenumber">
                     <p class="col-md-4 col-4 col-lg-4" id="text3">Mobile Number</p>
                     <p class="col-md-1 col-1 col-lg-1" >:</p>
-                    <input type="text" id="editinput-box" value="{{ this.model.mobileNumber }}" />
+                    <input type="text" id="editinput-box" value="{{ this.model.mobileNumber }}" 
+                    [(ngModel)]="model.mobileNumber" #phoneNumber="ngModel" 
+                    placeholder="Enter mobileNumber" name="mobileNumber"/>
                 </div>
                 
                 <div class="row" id="country">
                     <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
                     <p class="col-md-1 col-1 col-lg-1" >:</p>
 
-                <select id="editselect-box" [(ngModel)] ="this.model.country"  >
+                <select id="editselect-box"  name ="selectedCountry" [(ngModel)]="model.country" required>
                         <option  *ngFor="let country of countryList" value={{country}} id="black-color">{{country}}</option>     
                     </select>
                 </div> 
@@ -472,13 +490,17 @@
                 <div class="row" id="email">
                     <p class="col-md-4 col-4 col-lg-4" id="text3">Email</p>
                     <p class="col-md-1 col-1 col-lg-1" >:</p>
-                    <input type="text" id="editinput-box" value="{{ this.model.email }}" />
+                    <input type="text" id="editinput-box" value="{{ this.model.email }}" 
+                    [(ngModel)]="model.email" #email="ngModel" 
+                    placeholder="Enter email" name="email"/>
                 </div>
                 
                 <div class="row" id="city">
                     <p class="col-md-4 col-4 col-lg-4" id="text3">City</p>
                     <p class="col-md-1 col-1 col-lg-1" >:</p>
-                    <input type="text" id="editinput-box" value="{{ this.model.city }}" />
+                    <input type="text" id="editinput-box" value="{{ this.model.city }}" 
+                    [(ngModel)]="model.city" #city="ngModel" 
+                    placeholder="Enter city" name="city"/>
                 </div>
                 
                 <div class="row" id="lastedit">
@@ -496,7 +518,9 @@
                 <div class="row" id="address">
                     <p class="col-md-4 col-4 col-lg-4" id="text3">Address</p>
                     <p class="col-md-1 col-1 col-lg-1" >:</p>
-                    <input type="text" id="editinput-box" value="{{ this.model.address }}" />
+                    <input type="text" id="editinput-box" value="{{ this.model.address }}" 
+                    [(ngModel)]="model.address" #address="ngModel" 
+                    placeholder="Enter address" name="address"/>
                 </div>
                     
               </div>

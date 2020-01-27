@@ -36,7 +36,7 @@ update(vendor: Vendor){
 } 
 
 // Remove 
-remove(id:number){
-    return this.http.delete<String>(this.commonURL+'remove?id='+id);
+remove(vendorcode:string){
+    return this.http.delete<Vendor>(this.commonURL+'remove?vendorcode='+vendorcode);
 }
 }
