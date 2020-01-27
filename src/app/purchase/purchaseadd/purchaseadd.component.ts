@@ -40,7 +40,7 @@ export class Status {
   styleUrls: ['./purchaseadd.component.css']
 })
 export class PurchaseaddComponent  implements OnInit  {
-  purchase:Purchase;
+  purchase:Purchase = new Purchase;
   model: any ={};
   public purchasetable = false;
   headElements = ['#ID', 'Product Name', 'Category Name', 'Quantity'];
@@ -91,14 +91,24 @@ export class PurchaseaddComponent  implements OnInit  {
       this.purchasetable = false;
     }
   }
-  purchsearray: Array<any> = [];
+ // purchsearray: Array<any> = [];
+  vendorname: Array<any> = [];
   //purchsearray: Array<Purchase> = [];
 
   savePurchase(){
     alert("Vendor Name -->"+this.model.vendorName);
-    alert("PO Date -->"+this.model.poDate);
-    this.purchsearray = [];
-
+    //alert("PO Date -->"+this.model.poDate);
+    //this.purchsearray = [];
+  //  this.vendorname = ['vendorName',this.model.vendorName];
+    //[this.model.vendorName];
+    this.purchase.purchasearray=[];
+    console.log(this.fieldArray);
+    //this.purchase.purchaseorder = this.fieldArray;
+    this.purchase.purchasearray.push(this.fieldArray);
+    console.log("Purchase Array -->");
+    //Object.assign([this.purchase.purchasearray],this.fieldArray);
+    console.log(this.purchase.purchasearray);
+    this.purchase.vendorName = this.model.vendorName;
    // this.deleteFieldValue(2);
 
    // this.newPurchaseOrder();
@@ -106,28 +116,25 @@ export class PurchaseaddComponent  implements OnInit  {
    // this.fieldArray.push(this.newAttribute);
 
    // this.newAttribute = {};
-   this.purchsearray.push(this.fieldArray);
+   //this.purchsearray.push(this.fieldArray);
+  // this.purchsearray.push(this.vendorname);
+  // this.purchsearray.push(this.model.vendorName);
    //this.purchsearray.push(this.newAttribute);
-    //this.purchsearray.push(this.model.vendorName)
     //this.deleteFieldValue(2); 
-    console.log(this.purchsearray);
-   // this.model.Names = this.fieldArray;
 
-
-
-   this.purchaseService.save(this.purchsearray,this.model)
+   this.purchaseService.save(this.purchase)
    .subscribe(
        res => {
          console.log('............1 ....');
-         console.log('value -->'+res.status);
-         if(res.status ="success"){
+         //console.log('value -->'+res.status);
+         //if(res.status ="success"){
           console.log('successfully updated...');
           this.alertService.success("Successfully saved ");
           setTimeout(() => {
            this.alertService.clear();
          }, 2000);
 
-        }
+       // }
       
                         
        },
