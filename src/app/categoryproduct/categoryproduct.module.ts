@@ -43,6 +43,7 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormsModule } from '@angular/forms';
+import { CategoryproductService } from './categoryproduct.service';
 
 
 const routes: Routes = [
@@ -100,8 +101,7 @@ const routes: Routes = [
     CommonModule,RouterModule.forChild(routes) ,
   ],
   entryComponents: [AddnewcategoryComponent,AddpromotionComponent,CategoryeditdeleteComponent,DiscounteditComponent,DiscountdeleteComponent,AddnewproductComponent,ProductviewComponent,ProducteditComponent],
-  providers: [
-  ]
+  providers: [CategoryproductService]
 })
 export class CategoryproductModule { 
   constructor(private dialog: MatDialog) {}

@@ -10,9 +10,9 @@
             </div>
             <br/>
             <label>Category Name</label>
-            <input type="text" id="categoryname-box" />
+            <input type="text"  [(ngModel)]="model.name" #name="ngModel" name="name" id="categoryname-box" />
             <label>Category Description</label>
-            <input type="text" id="categorydescription-box" />
+            <input type="text"   [(ngModel)]="model.description" #description="ngModel" name="description" id="categorydescription-box" />
 
             <br/><br/>
             <div class="row">

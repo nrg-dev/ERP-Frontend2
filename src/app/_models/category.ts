@@ -4,8 +4,7 @@ export class Category extends Common {
 
    id: string; 
    name: string;
-   empCode: string;
-   rank: string;
-   contactNumber: string;
-   purchaseOrdeData:any;
+   description: string;
+   status: string;
+
 }

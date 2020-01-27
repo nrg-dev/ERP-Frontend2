@@ -1,9 +1,12 @@
 import { Component, OnInit, ViewChild ,ElementRef,Inject} from '@angular/core';
 import { Router } from '@angular/router';
+import { Category } from 'src/app/_models';
+
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AlertService } from 'src/app/_services';
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
+import { CategoryproductService } from '../categoryproduct.service';
 
 // addnewcategory start
 @Component({
@@ -15,24 +18,44 @@ export class AddnewcategoryComponent {
   countryList:any;
   priorityList:any;
   model: any = {};
+  category:Category;
   constructor(
     private alertService: AlertService,
+    private categoryproductService:CategoryproductService,
     public dialogRef: MatDialogRef<AddpromotionComponent>,
 
     ) {
      // this.countryList = require("../../../assets/country.json");
     }
     saveNewCategory(){
-      this.alertService.success("Saved Successfully");
-      this.dialogRef.close();
-      setTimeout(() => {
-        this.alertService.clear();
-      }, 2000);
-    console.log("saveNewCategory");
-    }
+    console.log("category name -->"+this.model.name);
+    console.log("category description -->"+this.model.description);
+    this.categoryproductService.save(this.model)
+    .subscribe(
+      data => {
+        this.category =   data;    
+        console.log("Response -->"+this.category.status) 
+        if(this.category.status=="success"){
+          this.alertService.success("Saved Successfully");
+            this.dialogRef.close();
+          setTimeout(() => {
+            this.alertService.clear();
+
+          }, 2000);
+
+        }
+        if(this.category.status=="failure"){
+          this.alertService.error("API Issue");
+        }
+      },
+      error => {
+        this.alertService.error("Serve Error ");
+      }
+    );
+  }
     close(e) {
     this.dialogRef.close();
-  }
+    }
 }
 // addnewcategory end
 
