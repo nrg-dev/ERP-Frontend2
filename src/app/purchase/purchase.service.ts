@@ -13,9 +13,9 @@ constructor(private http: HttpClient) { }
 //*********************Employee************************
 
 // Save 
-save(purchsearray: Array<any>){
-    console.log('service....');
-    return this.http.post<Purchase>(this.commonURL+'save',purchsearray);
+save(purchsearray: Array<any>,purcase:Purchase){
+    console.log('service....'+purcase.vendorName);
+    return this.http.post<Purchase>(this.commonURL+'save',purchsearray+'/'+purcase);
 }
 
 // Load 

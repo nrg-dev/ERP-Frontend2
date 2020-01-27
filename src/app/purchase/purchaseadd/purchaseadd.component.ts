@@ -108,14 +108,14 @@ export class PurchaseaddComponent  implements OnInit  {
    // this.newAttribute = {};
    this.purchsearray.push(this.fieldArray);
    //this.purchsearray.push(this.newAttribute);
-    this.purchsearray.push(this.model.vendorName)
-    //this.deleteFieldValue(2);
+    //this.purchsearray.push(this.model.vendorName)
+    //this.deleteFieldValue(2); 
     console.log(this.purchsearray);
    // this.model.Names = this.fieldArray;
 
 
 
-   this.purchaseService.save(this.purchsearray)
+   this.purchaseService.save(this.purchsearray,this.model)
    .subscribe(
        res => {
          console.log('............1 ....');
