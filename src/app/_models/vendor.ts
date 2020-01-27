@@ -11,5 +11,6 @@ export class Vendor extends Common {
    country 		   :string;
    city 			   :string;
    email 		   :string;
-  
+   addeddate      :Date;
+
 }

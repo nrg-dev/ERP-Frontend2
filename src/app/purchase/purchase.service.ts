@@ -1,6 +1,12 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Purchase } from '../_models';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
+import { User, Common } from '../_models/index';
+import { HttpRequest, HttpEvent} from '@angular/common/http';
+
 
 @Injectable()
 export class PurchaseService {    
@@ -13,9 +19,25 @@ constructor(private http: HttpClient) { }
 //*********************Employee************************
 
 // Save 
-save(purchsearray: Array<any>){
-    console.log('service....');
-    return this.http.post<Purchase>(this.commonURL+'save',purchsearray);
+save(purchase:Purchase){
+   // console.log('Vendor Name ....'+vendorName);
+   /* let formdata: FormData = new FormData();
+    for (var i = 0; i < purchsearray.length; i++) {
+        formdata.append('purchsearray[]', purchsearray[i]);
+    }
+      //formdata.append('purchsearray[]', purchsearray);
+      formdata.append('vendorName', vendorName);
+      const req = new HttpRequest('POST', this.commonURL+"save", formdata, {
+        reportProgress: true,
+        responseType: 'text'
+      });
+      return this.http.request(req); */
+
+    return this.http.post<Purchase>(this.commonURL+'save',purchase);
+    //return this.http.get<Purchase>(this.commonURL+'save?purchsearray='+purchsearray+'&vendorName='+vendorName);
+
+//return this.http.post<any>(this.commonURL+'save?purchsearray='+purchsearray+'&vendorName='+vendorName);
+
 }
 
 // Load 
