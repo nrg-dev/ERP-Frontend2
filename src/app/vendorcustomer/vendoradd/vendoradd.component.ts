@@ -39,7 +39,7 @@ export class VendoraddComponent implements OnInit {
   customerList: any={};
 
 
-
+/*
   vendorList : any = [ {
     vendorcode:'VEN001',
     vendorName :'PT NRG',
@@ -108,7 +108,7 @@ export class VendoraddComponent implements OnInit {
     addeddate : '1/9/2019'
 },
 
-];
+];*/
 custList : any = [ 
   {
     custcode:'CUST001',
@@ -306,6 +306,8 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
             this.customereditdetails=false;
             this.customerdragAndDrop = false;
           }, 2000);
+          this.getAllVendorDetails();
+
         }
         if(this.vendor.status=="failure"){
           this.alertService.success("Server issue");
