@@ -35,8 +35,11 @@ export class VendoraddComponent implements OnInit {
   model:any ={};
   customer:Customer;
   vendor:Vendor;
+  vendorList: any = {};
+  customerList: any={};
 
 
+/*
   vendorList : any = [ {
     vendorcode:'VEN001',
     vendorName :'PT NRG',
@@ -105,7 +108,7 @@ export class VendoraddComponent implements OnInit {
     addeddate : '1/9/2019'
 },
 
-];
+];*/
 custList : any = [ 
   {
     custcode:'CUST001',
@@ -206,6 +209,33 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     document.getElementById("vendorstyle").style.borderBottom='2px solid #007bff';
     document.getElementById("customerstyle").style.borderBottom='none';
     document.getElementById("vendorstyle").style.fontWeight='bold';
+    this.getAllVendorDetails();
+    this.getAllCustomerDetails();
+  }
+
+  getAllVendorDetails(){
+    this.vendorList="";
+    this.vendorService.load()
+    .subscribe(
+      data => {
+        this.vendorList = data;
+      },
+      error => {
+        alert("server error");
+      }
+    );
+  }
+  getAllCustomerDetails(){
+    this.customerList="";
+    this.customerService.load()
+    .subscribe(
+      data => {
+        this.customerList = data;
+      },
+      error => {
+        alert("server error");
+      }
+    )
   }
 
   //Vendor details methos start
@@ -251,85 +281,6 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
         break;
       }
     }
-/*
-    if(vendorcode == "VEN001"){
-      this.model.vendorcode = this.vendorList[0].vendorcode;
-      this.model.vendorName = this.vendorList[0].vendorName;
-      this.model.phoneNumber = this.vendorList[0].phoneNumber;
-      this.model.mobileNumber = this.vendorList[0].mobileNumber;
-      this.model.address = this.vendorList[0].address;
-      this.model.country = this.vendorList[0].country;
-      this.model.city = this.vendorList[0].city;
-      this.model.email = this.vendorList[0].email;
-      this.model.lastedit = this.vendorList[0].lastedit;
-      this.model.addeddate = this.vendorList[0].addeddate;
-      this.alertService.success("");
-
-    }else if(vendorcode == "VEN002"){
-      this.model.vendorcode = this.vendorList[1].vendorcode;
-      this.model.vendorName = this.vendorList[1].vendorName;
-      this.model.phoneNumber = this.vendorList[1].phoneNumber;
-      this.model.mobileNumber = this.vendorList[1].mobileNumber;
-      this.model.country = this.vendorList[1].country;
-      this.model.city = this.vendorList[1].city;
-      this.model.email = this.vendorList[1].email;
-      this.model.lastedit = this.vendorList[1].lastedit;
-      this.model.addeddate = this.vendorList[1].addeddate;
-      this.alertService.success("");
-    }
-    else if(vendorcode == "VEN003"){
-      this.model.vendorcode = this.vendorList[2].vendorcode;
-      this.model.vendorName = this.vendorList[2].vendorName;
-      this.model.phoneNumber = this.vendorList[2].phoneNumber;
-      this.model.mobileNumber = this.vendorList[2].mobileNumber;
-      this.model.address = this.vendorList[2].address;
-      this.model.country = this.vendorList[2].country;
-      this.model.city = this.vendorList[2].city;
-      this.model.email = this.vendorList[2].email;
-      this.model.lastedit = this.vendorList[2].lastedit;
-      this.model.addeddate = this.vendorList[2].addeddate;
-      this.alertService.success("");
-    }
-    else if(vendorcode == "VEN004"){
-      this.model.vendorcode = this.vendorList[3].vendorcode;
-      this.model.vendorName = this.vendorList[3].vendorName;
-      this.model.phoneNumber = this.vendorList[3].phoneNumber;
-      this.model.mobileNumber = this.vendorList[3].mobileNumber;
-      this.model.address = this.vendorList[3].address;
-      this.model.country = this.vendorList[3].country;
-      this.model.city = this.vendorList[3].city;
-      this.model.email = this.vendorList[3].email;
-      this.model.lastedit = this.vendorList[3].lastedit;
-      this.model.addeddate = this.vendorList[3].addeddate;
-      this.alertService.success("");
-    }
-    else if(vendorcode == "VEN005"){
-      this.model.vendorcode = this.vendorList[4].vendorcode;
-      this.model.vendorName = this.vendorList[4].vendorName;
-      this.model.phoneNumber = this.vendorList[4].phoneNumber;
-      this.model.mobileNumber = this.vendorList[4].mobileNumber;
-      this.model.address = this.vendorList[4].address;
-      this.model.country = this.vendorList[4].country;
-      this.model.city = this.vendorList[4].city;
-      this.model.email = this.vendorList[4].email;
-      this.model.lastedit = this.vendorList[4].lastedit;
-      this.model.addeddate = this.vendorList[4].addeddate;
-      this.alertService.success("");
-    }
-
-    else if(vendorcode == "VEN006"){
-      this.model.vendorcode = this.vendorList[5].vendorcode;
-      this.model.vendorName = this.vendorList[5].vendorName;
-      this.model.phoneNumber = this.vendorList[5].phoneNumber;
-      this.model.mobileNumber = this.vendorList[5].mobileNumber;
-      this.model.address = this.vendorList[5].address;
-      this.model.country = this.vendorList[5].country;
-      this.model.city = this.vendorList[5].city;
-      this.model.email = this.vendorList[5].email;
-      this.model.lastedit = this.vendorList[5].lastedit;
-      this.model.addeddate = this.vendorList[5].addeddate;
-      this.alertService.success("");
-    } */
   }
 
   vendoreditDetails(){
@@ -355,6 +306,8 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
             this.customereditdetails=false;
             this.customerdragAndDrop = false;
           }, 2000);
+          this.getAllVendorDetails();
+
         }
         if(this.vendor.status=="failure"){
           this.alertService.success("Server issue");
@@ -469,24 +422,24 @@ countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
     this.customerdragAndDrop = false;
 
     // this.custList; json list 
-    var lenth = this.custList.lenth;
-    console.log ("Cust Size -->" + this.custList.length);
+    var lenth = this.customerList.lenth;
+    console.log ("Cust Size -->" + this.customerList.length);
     console.log ("Cust code -->" + custcode);
 
-    for (let i = 0; i < this.custList.length; i++) {
+    for (let i = 0; i < this.customerList.length; i++) {
       console.log ("Block statement execution no." + i);
-      if(this.custList[i].custcode==custcode){
+      if(this.customerList[i].custcode==custcode){
         console.log("Inside if customer code -->"+custcode);
-        this.model.custcode = this.custList[i].custcode;
-        this.model.customerName = this.custList[i].customerName;
-        this.model.phoneNumber = this.custList[i].phoneNumber;
-        this.model.mobileNumber = this.custList[i].mobileNumber;
-        this.model.address = this.custList[i].address;
-        this.model.country = this.custList[i].country;
-        this.model.city = this.custList[i].city;
-        this.model.email = this.custList[i].email;
-        this.model.lastedit = this.custList[i].lastedit;
-        this.model.addeddate = this.custList[i].addeddate;
+        this.model.custcode = this.customerList[i].custcode;
+        this.model.customerName = this.customerList[i].customerName;
+        this.model.phoneNumber = this.customerList[i].phoneNumber;
+        this.model.mobileNumber = this.customerList[i].mobileNumber;
+        this.model.address = this.customerList[i].address;
+        this.model.country = this.customerList[i].country;
+        this.model.city = this.customerList[i].city;
+        this.model.email = this.customerList[i].email;
+        this.model.lastedit = this.customerList[i].lastedit;
+        this.model.addeddate = this.customerList[i].addeddate;
         break;
       }
 

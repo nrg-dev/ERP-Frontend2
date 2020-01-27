@@ -20,6 +20,7 @@ save(vendor: Vendor){
 
 // Load 
 load(){
+    console.log("Load vendor service..");
     return this.http.get(this.commonURL+'load');
 }
 
