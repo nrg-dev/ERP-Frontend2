@@ -35,7 +35,7 @@ update(category: Category){
 }
 
 // Remove 
-remove(id:number){
-    return this.http.delete<String>(this.commonURL+'remove?id='+id);
+remove(categorycode:string){
+    return this.http.delete<Category>(this.commonURL+'remove?categorycode='+categorycode);
 }
 }

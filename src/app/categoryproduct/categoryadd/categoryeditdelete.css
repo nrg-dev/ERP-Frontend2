@@ -52,3 +52,8 @@
     background: #FF0000;
     border: none;
 }
+#categoryeditdeletetext-row{
+    cursor: pointer;
+    width: 90%;
+    margin: auto;
+}

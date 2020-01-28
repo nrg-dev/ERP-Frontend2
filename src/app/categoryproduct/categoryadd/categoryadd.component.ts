@@ -21,41 +21,39 @@ export class AddnewcategoryComponent {
   category:Category;
   constructor(
     private alertService: AlertService,
-    private categoryproductService:CategoryproductService,
+    private catprodservice: CategoryproductService,
     public dialogRef: MatDialogRef<AddpromotionComponent>,
 
     ) {
      // this.countryList = require("../../../assets/country.json");
     }
     saveNewCategory(){
-    console.log("category name -->"+this.model.name);
-    console.log("category description -->"+this.model.description);
-    this.categoryproductService.save(this.model)
-    .subscribe(
-      data => {
-        this.category =   data;    
-        console.log("Response -->"+this.category.status) 
-        if(this.category.status=="success"){
-          this.alertService.success("Saved Successfully");
-            this.dialogRef.close();
+      this.catprodservice.save(this.model)
+      .subscribe(
+        data => {
+          this.category =   data; 
+          this.dialogRef.close();
+          if(this.category.status=="success"){
+            this.alertService.success("Saved Successfully");
+            setTimeout(() => {
+              this.alertService.clear();
+            }, 2000);
+          } 
+          if(this.category.status=="failure"){
+            this.alertService.success("not saved");
+            setTimeout(() => {
+              this.alertService.clear();
+            }, 2000);
+          }
+        },
+        error => {
+          this.alertService.success("Serve Error ");
           setTimeout(() => {
             this.alertService.clear();
-
           }, 2000);
-
         }
-        if(this.category.status=="failure"){
-          this.alertService.error("API Issue");
-        }
-      },
-      error => {
-        this.alertService.error("Serve Error ");
-      }
-    );
+      );  
   }
-    close(e) {
-    this.dialogRef.close();
-    }
 }
 // addnewcategory end
 
@@ -101,9 +99,11 @@ export class CategoryeditdeleteComponent {
   categorylist:any;
   model: any = {};
   tempid=null;
+  category: Category = new Category;
   constructor(
     private alertService: AlertService,
     public dialogRef: MatDialogRef<CategoryeditdeleteComponent>,
+    private catprodservice: CategoryproductService,
     @Inject(MAT_DIALOG_DATA) public data: any
     ) {
      // this.countryList = require("../../../assets/country.json");
@@ -112,23 +112,57 @@ export class CategoryeditdeleteComponent {
     console.log(this.categorylist);
     }
 
-    onChangeCategory(number: string){
-      console.log("Inside OnChange Categoey Edit");
-      if(this.tempid!==null){
-        document.getElementById(this.tempid).style.backgroundColor='#272E34';
+    onChangeCategory(categorycode: string){
+      for(let i=0;i<this.categorylist.length;i++){
+        if(this.categorylist[i].categorycode==categorycode){
+          this.model.name=this.categorylist[i].name;
+          this.model.description=this.categorylist[i].description;
+        }
       }
-      this.tempid=number;
-      document.getElementById(this.tempid).style.backgroundColor='#5B6065';
      }
     
      saveCategoryeditdelete(){
-      this.alertService.success("Saved Successfully");
-      setTimeout(() => {
-        this.alertService.clear();
-      }, 2000);
-    this.dialogRef.close();
-    console.log("saveCategoryeditdelete");
+      this.catprodservice.update(this.model)
+      .subscribe(
+        data => {
+          this.category =   data;  
+          this.dialogRef.close();
+          this.alertService.success("Saved Successfully");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 2000);
+          this.dialogRef.close();
+          console.log("saveCategoryeditdelete"); 
+        },
+        error => {
+          this.alertService.success("Server Error");
+        }
+        );
     }
+
+    categorydelete(categorycode: string){
+      this.catprodservice.remove(categorycode)
+    .subscribe(
+      data => {
+        this.category =  data;  
+        this.dialogRef.close();
+        if(this.category.status == "Success"){
+          this.alertService.success("Deleted Successfully");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 1500);
+        }else if(this.category.status == "failure"){
+          this.alertService.error("Not Deleted..");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 1500);
+        }
+      },
+      error => {
+        this.alertService.success("Server Error ");
+      }
+    );
+  }
     close(e) {
     this.dialogRef.close();
   }
@@ -299,6 +333,7 @@ export class CategorytableComponent {
 })
 export class CategoryaddComponent implements OnInit {
   public dataDiscountList : any;
+  categorylist: any= {};
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
   // Category
@@ -337,40 +372,13 @@ export class CategoryaddComponent implements OnInit {
     number:'03',
     name:'Free Gifts',
   },
-];
-// 
-categorylist: any =[
-  {
-    number:'PROD1',
-    name:'Fiber',
-  },
-  {
-    number:'PROD2',
-    name:'Pigmen',
-  },
-  {
-    number:'PROD3',
-    name:'Brush',
-  },
-  {
-    number:'PROD4',
-    name:'Sandpaper',
-  },
-  {
-    number:'PROD5',
-    name:'Hardware',
-  },
-  {
-    number:'PROD6',
-    name:'Accesories'
-  }
-];
-
+]; 
  
   constructor(
     private alertService: AlertService,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private catprodservice: CategoryproductService
     ) { 
       const purchasedata = require("../../discountdata.json");
       this.dataDiscountList=purchasedata;
@@ -378,10 +386,6 @@ categorylist: any =[
       this.dataSource = new MatTableDataSource(this.dataDiscountList);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-
-      //const users = Array.from({length: 100}, (_, k) => this.createNewUser(k + 1));
-
-      // Assign the data to the data source for the table to render
     }
 
    
@@ -391,7 +395,22 @@ categorylist: any =[
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.leftdetails=true;
+    this.allcategorylist();
   }
+
+  allcategorylist(){
+    this.categorylist="";
+    this.catprodservice.load()
+    .subscribe(
+      data => {
+        this.categorylist = data;
+      },
+      error => {
+        alert("server error");
+      }
+    );
+  }
+
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
@@ -494,7 +513,9 @@ productlist(number: string){
      // data: {dialogTitle: "hello", dialogText: "text"},
     })
     .afterClosed().subscribe(result => {
-    });
+      this.allcategorylist();
+    }
+    );
   }
 
   addpromotion(){

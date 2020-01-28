@@ -463,6 +463,7 @@ export class VendoraddComponent implements OnInit {
    
   }
   customerdelete(custcode: string){
+    console.log("Remove custcode-->"+this.model.custcode);
     this.customerService.remove(custcode)
     .subscribe(
       data => {
@@ -478,10 +479,10 @@ export class VendoraddComponent implements OnInit {
           this.vendordragAndDrop = false;
           this.customerdragAndDrop = false;
         }, 1500);
+        this.getAllCustomerDetails();
   }else{
     this.alertService.error("Not Deleted..");
   }
-  
 },
 error => {
   this.alertService.success("Server Error ");
