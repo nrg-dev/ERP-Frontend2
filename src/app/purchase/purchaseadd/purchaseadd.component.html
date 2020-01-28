@@ -27,7 +27,8 @@
                 <div class="col-lg-5">
                   <select class="form-control" [(ngModel)]="model.vendorName" #vendorName="ngModel" name="vendorName" style="color: black;width: 185%;" >
                     <option value="--- Select --- "> ---- Select ---- </option>  
-                    <option *ngFor="let itemVendor of vendorList" value="{{ itemVendor }}"> {{ itemVendor }} </option> 
+                    <option *ngFor="let itemVendor of vendorList" value="{{ itemVendor }}"> {{ itemVendor }} </option>                     
+                    
                   </select> 
                 </div>
               </div><br/>
@@ -39,7 +40,7 @@
                       <label id="labeltext">:</label>
                   </div>
                   <div class="col-lg-5">
-                    <p id="purchaseoutput" [(ngModel)]="model.poDate" name="poDate" #poDate="ngModel">{{todayDate | date:'longDate'}}</p>
+                    <p id="purchaseoutput" name="poDate">{{todayDate | date:'longDate'}}</p>
                   </div>
               </div><br/>
             </div>

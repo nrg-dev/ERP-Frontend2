@@ -5,17 +5,17 @@
         <table>
             <tr>
               <th scope="row" id="thead">Invoice Number</th>
-              <td id="tdbody">Inv001{{ this.sales.invoiceNumber }}</td>
+              <td id="tdbody">{{ this.model.invoiceNumber }}</td>
             </tr>
             <tr>
               <th scope="row" id="thead">Date</th>
-              <td id="tdbody">12 Jan 2020{{todayDate | date:'longDate'}}</td>
+              <td id="tdbody">{{ this.model.poDate }}</td>
             </tr>
             <tr>
                 <th scope="row" id="thead">Terms</th>
-                <td id="tdbody">30 Days{{ this.purchase.termsDays }}</td>
+                <td id="tdbody">30 Days</td>
             </tr>
-            <tr>
+            <!-- <tr>
                 <th scope="row" id="thead">Sales Person</th>
                 <td id="tdbody">Alex    {{ this.sales.salesPerson }}</td>
             </tr>
@@ -26,10 +26,10 @@
             <tr>
                 <th scope="row" id="thead">Currency Code</th>
                 <td id="tdbody">15000 USD{{ this.sales.netAmount }}</td>
-            </tr>
+            </tr>  -->
         </table>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6" style="margin-top: -85px;">
         <div class="imageRight">
             <img src="./assets/images/nrg_logo.png" class="imagecenter" />
         </div>
@@ -46,11 +46,11 @@
     <div class="col-lg-6" style="margin-left: inherit;">
         <div class="biilingdetails">
             <p style="font-weight: bold;text-decoration: underline;">Billing To:</p>
-            <p>Apple Inc</p>
-            <p>Tamil Nadu,</p>
-            <p>India - 231212</p>
-            <p>Phone : 999991.</p>
-            <p>test@apple.com</p>
+            <p>{{ this.purchase.vendorName }}</p>
+            <p>{{ this.purchase.vendorCity }},</p>
+            <p>{{ this.purchase.vendorCountry }}</p>
+            <p>Phone : {{ this.purchase.vendorPhone }}.</p>
+            <p>{{ this.purchase.vendorEmail }}</p>
         </div>
     </div>
 
@@ -69,11 +69,11 @@
         </thead>
         <tbody>
             <tr *ngFor="let list of purchaseViewList">
-                <td>{{ list.quantity }}</td>
-                <td>{{ list.productName }}</td>
+                <td>{{ list.qty }}</td>
+                <td>{{ list.itemname }}</td>
                 <td>{{ list.description }}</td>
-                <td>{{ list.unitPrice }}</td>
-                <td>{{ list.netAmount }}</td>
+                <td>{{ list.unitprice }}</td>
+                <td>{{ list.subtotal }}</td>
             </tr>
         </tbody>
       </table>
@@ -87,12 +87,12 @@
             <th scope="row" id="thead">Total</th>
         </tr>
         <tr>
-            <td id="tdbody">9460.00</td>
+            <td id="tdbody">{{ this.model.subTotal }}</td>
             <td id="tdbody">0.0</td>
             <td id="tdbody">0.0</td>
-            <td id="tdbody">9933.00</td>
+            <td id="tdbody">{{ this.model.subTotal }}</td>
         </tr>
-        <tr>
+        <!-- <tr>
             <th scope="row" id="thead">GST</th>
             <th scope="row" id="thead"></th>
             <th scope="row" id="thead"></th>
@@ -103,7 +103,7 @@
             <td id="tdbody">0.0</td>
             <td id="tdbody">0.0</td>
             <td id="tdbody">0.0</td>
-        </tr>
+        </tr> -->
         <tr>
             <th style="border: none"></th>
             <th style="border: none"></th>
@@ -114,7 +114,7 @@
             <td style="border: none"></td>
             <td style="border: none"></td>
             <td style="border: none"></td>
-            <td id="tdbody">9933.00</td>
+            <td id="tdbody">{{ this.model.subTotal }}</td>
         </tr>
     </table>
 </div>

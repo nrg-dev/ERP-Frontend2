@@ -27,30 +27,46 @@ export class ViewInvoice {
     public dialogRef: MatDialogRef<ViewInvoice>,
     @Inject(MAT_DIALOG_DATA) public data: any) 
     {  
-    this.model.invoiceNumber = this.data.invoiceNumber;
-    const purchasedata = require("../../purchasedata.json");
-    this.purchaseViewList=purchasedata;
+      console.log("Invoice -->"+this.data)
+      //const purchasedata = require("../../purchasedata.json");
+      //this.purchaseViewList=purchasedata;
+      let totalCommission = 0.0;
+      this.purchaseService.get(this.data)
+      .subscribe(
+        data => {
+          this.purchaseViewList = data;
+          for(let i=0; i<this.purchaseViewList.length; i++){
+            this.model.invoiceNumber = this.purchaseViewList[0].invoicenumber;
+            this.model.poDate = this.purchaseViewList[0].poDate;
+            this.model.vendorname = this.purchaseViewList[0].vendorname;
+            totalCommission +=  this.purchaseViewList[i].subtotal;
+            this.model.subTotal = totalCommission;
+          }
+          
+          this.vendorDetails(this.model.vendorname);
 
-    /* this.purchaseService.get(this.data)
-    .subscribe(
-      data => {
-        this.model = data;
-        console.log("Purchase InvoiceNumber -->"+this.model.invoiceNumber);
-      },
-      error => {
-          alert('Error !!!!');
-      }
-    ); */
+        },
+        error => {
+            alert('Error !!!!');
+        }
+      ); 
   }
   ngOnInit() {
-    this.purchase.invoiceNumber ="inv001";
-    alert("----- Invoice Number -------"+this.purchase.invoiceNumber);
-    this.purchase.termsDays ="30days";
-    this.purchase.salesPerson ="Alex";
-    this.purchase.orderNumber ="Pur001";
-    this.purchase.netAmount ="15000";
+
   }
 
+  vendorDetails(vendorname: string){
+    this.purchaseService.getVendorDetails(vendorname)
+          .subscribe(
+            data => {
+              this.purchase = data;
+              console.log("Vendor Name -->"+this.purchase.vendorName);
+            },
+            error => {
+                alert('Error !!!!');
+            }
+          ); 
+  }
   onNoClick(): void {
     this.dialogRef.close();
   }
@@ -218,7 +234,7 @@ export class PurchaseInvoiceComponent implements OnInit {
         error => {
             alert('Error !!!!');
         }
-    );
+      );
  
 
     this.dataSource = new MatTableDataSource(this.purchaseList);
@@ -263,7 +279,7 @@ export class PurchaseInvoiceComponent implements OnInit {
     };
     this.dialog.open(ViewInvoice,{
       panelClass: 'viewInvoice',
-      data: "invoiceNumber",
+      data: invoiceNumber,
       height: '80%'
     }).afterClosed().subscribe(result => {
       // this.refresh();
@@ -280,30 +296,52 @@ export class PurchaseInvoiceComponent implements OnInit {
     };
     this.dialog.open(EditInvoice,{
       panelClass: 'editInvoice',
-      data: "invoiceNumber",
+      data: invoiceNumber,
       height: '80%'
     }).afterClosed().subscribe(result => {
       // this.refresh();
     });
   }
 
-  public deletePurchase(){
+  getAllPODetails(){
+    this.purchaseservice.load().subscribe(res => { 
+      this.purchaseList = res;
+      this.dataSource = new MatTableDataSource(this.purchaseList);  
+      },
+      error => {
+          alert('Error !!!!');
+      }
+    );
+  }
+
+  public deletePurchase(invoiceNumber:string){
+    console.log("Invoice Number  --->"+invoiceNumber);
+    this.purchaseservice.remove(invoiceNumber)
+    .subscribe(
+      data => {
+        this.model = data;
+        if(this.model.status == "Success"){
+          this.alertService.success("Deleted Successfully");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 1500);
+          this.getAllPODetails();
+        }else{
+          this.alertService.error("Not Deleted..");
+        }
+        
+      },
+      error => {
+        this.alertService.success("Server Error ");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 1500);
+      }
+      ); 
     this.alertService.success("Deleted Successfully");
     setTimeout(() => {
       this.alertService.clear();
     }, 2000);
-    /*this.dialogConfig.disableClose = true;
-    this.dialogConfig.autoFocus = true;
-    this.dialogConfig.position = {
-      'top': '1000',
-      left: '100'
-    };
-    this.dialog.open(DeleteDialog,{
-      panelClass: 'delete',
-      data: "invoiceNumber",
-      height: '80%'
-    }).afterClosed().subscribe(result => {
-    });*/
   }
 
 }

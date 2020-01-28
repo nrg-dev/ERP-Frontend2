@@ -55,7 +55,7 @@ export class PurchaseaddComponent  implements OnInit  {
 
   productList: any = {};
   categoryList: any = {};
-  vendorList:  any = {};
+  vendorList: any = {};
 
   firstField = true;
   
@@ -69,9 +69,25 @@ export class PurchaseaddComponent  implements OnInit  {
   ngOnInit() {
     this.purchasetable = false;
     /* Initiate the form structure */
+    //this.getVendorList();
     this.productList = ['Mobile', 'Computer', 'Cloths', 'TV'];
     this.categoryList = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];
-    this.vendorList = ['Nisho','Alex','Josni','Mary'];
+    this.vendorList = ['Nisho-VEN1','Alex-VEN2','Josni-VEN3','Mary-VEN4'];
+  }
+
+  getVendorList(){
+    this.vendorList = '';
+    this.purchaseService.loadVendor()
+    .subscribe(
+      data => { 
+        this.vendorList = data;
+        console.log("Vendor Name ---->"+this.vendorList[1].vendorName);
+      },
+      error => {
+          alert('Error !!!!');
+      }
+    );
+ 
   }
 
   newPurchaseOrder(){
@@ -91,38 +107,29 @@ export class PurchaseaddComponent  implements OnInit  {
       this.purchasetable = false;
     }
   }
- // purchsearray: Array<any> = [];
-  vendorname: Array<any> = [];
+  purchasearray: Array<any> = [];
   //purchsearray: Array<Purchase> = [];
 
   savePurchase(){
-    alert("Vendor Name -->"+this.model.vendorName);
+    //alert("Vendor Name -->"+this.model.vendorName);
     //alert("PO Date -->"+this.model.poDate);
     //this.purchsearray = [];
   //  this.vendorname = ['vendorName',this.model.vendorName];
     //[this.model.vendorName];
-    this.purchase.purchasearray=[];
+    //this.purchase.purchasearray=[];
     console.log(this.fieldArray);
     //this.purchase.purchaseorder = this.fieldArray;
-    this.purchase.purchasearray.push(this.fieldArray);
+    //this.purchase.purchasearray.push(this.fieldArray);
     console.log("Purchase Array -->");
     //Object.assign([this.purchase.purchasearray],this.fieldArray);
     console.log(this.purchase.purchasearray);
     this.purchase.vendorName = this.model.vendorName;
-   // this.deleteFieldValue(2);
 
-   // this.newPurchaseOrder();
-    //alert("------ Save savePurchase -------");
-   // this.fieldArray.push(this.newAttribute);
+   this.purchasearray.push(this.fieldArray);
 
-   // this.newAttribute = {};
-   //this.purchsearray.push(this.fieldArray);
-  // this.purchsearray.push(this.vendorname);
-  // this.purchsearray.push(this.model.vendorName);
-   //this.purchsearray.push(this.newAttribute);
     //this.deleteFieldValue(2); 
 
-   this.purchaseService.save(this.purchase)
+   this.purchaseService.save(this.purchasearray)
    .subscribe(
        res => {
          console.log('............1 ....');
@@ -133,7 +140,12 @@ export class PurchaseaddComponent  implements OnInit  {
           setTimeout(() => {
            this.alertService.clear();
          }, 2000);
-
+         this.fieldArray.push('');
+         this.model.productName = '';
+         this.model.description = '';
+         this.model.quantity = '';
+         this.model.unitPrice = '';
+         this.model.netAmount = '';
        // }
       
                         
