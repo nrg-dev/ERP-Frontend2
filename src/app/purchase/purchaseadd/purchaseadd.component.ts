@@ -40,7 +40,9 @@ export class Status {
   styleUrls: ['./purchaseadd.component.css']
 })
 export class PurchaseaddComponent  implements OnInit  {
-  purchase:Purchase = new Purchase;
+  purchase:Purchase = new Purchase();
+//  purchase:Purchase;
+
   model: any ={};
   public purchasetable = false;
   headElements = ['#ID', 'Product Name', 'Category Name', 'Quantity'];
@@ -55,7 +57,7 @@ export class PurchaseaddComponent  implements OnInit  {
 
   productList: any = {};
   categoryList: any = {};
-  vendorList: any = {};
+  vendorList:  any = {};
 
   firstField = true;
   
@@ -69,25 +71,9 @@ export class PurchaseaddComponent  implements OnInit  {
   ngOnInit() {
     this.purchasetable = false;
     /* Initiate the form structure */
-    //this.getVendorList();
     this.productList = ['Mobile', 'Computer', 'Cloths', 'TV'];
     this.categoryList = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];
-    this.vendorList = ['Nisho-VEN1','Alex-VEN2','Josni-VEN3','Mary-VEN4'];
-  }
-
-  getVendorList(){
-    this.vendorList = '';
-    this.purchaseService.loadVendor()
-    .subscribe(
-      data => { 
-        this.vendorList = data;
-        console.log("Vendor Name ---->"+this.vendorList[1].vendorName);
-      },
-      error => {
-          alert('Error !!!!');
-      }
-    );
- 
+    this.vendorList = ['Nisho','Alex','Josni','Mary'];
   }
 
   newPurchaseOrder(){
@@ -107,45 +93,27 @@ export class PurchaseaddComponent  implements OnInit  {
       this.purchasetable = false;
     }
   }
-  purchasearray: Array<any> = [];
-  //purchsearray: Array<Purchase> = [];
-
+  purchasesearcharray: Array<any> = [];
+  vendorname: Array<any> = [];
   savePurchase(){
-    //alert("Vendor Name -->"+this.model.vendorName);
-    //alert("PO Date -->"+this.model.poDate);
-    //this.purchsearray = [];
-  //  this.vendorname = ['vendorName',this.model.vendorName];
-    //[this.model.vendorName];
-    //this.purchase.purchasearray=[];
+    alert("Vendor Name -->"+this.model.vendorName);
+    this.purchasesearcharray=[];
     console.log(this.fieldArray);
-    //this.purchase.purchaseorder = this.fieldArray;
-    //this.purchase.purchasearray.push(this.fieldArray);
-    console.log("Purchase Array -->");
-    //Object.assign([this.purchase.purchasearray],this.fieldArray);
-    console.log(this.purchase.purchasearray);
+    this.purchasesearcharray.push(this.fieldArray);
+    console.log("Purchase Array -->"+this.purchasesearcharray);
+    console.log(this.purchasesearcharray);
     this.purchase.vendorName = this.model.vendorName;
-
-   this.purchasearray.push(this.fieldArray);
-
-    //this.deleteFieldValue(2); 
-
-   this.purchaseService.save(this.purchasearray)
+    this.purchaseService.save(this.purchasesearcharray,this.model.vendorName)
    .subscribe(
        res => {
          console.log('............1 ....');
-         //console.log('value -->'+res.status);
          //if(res.status ="success"){
           console.log('successfully updated...');
           this.alertService.success("Successfully saved ");
           setTimeout(() => {
            this.alertService.clear();
          }, 2000);
-         this.fieldArray.push('');
-         this.model.productName = '';
-         this.model.description = '';
-         this.model.quantity = '';
-         this.model.unitPrice = '';
-         this.model.netAmount = '';
+
        // }
       
                         
@@ -156,13 +124,8 @@ export class PurchaseaddComponent  implements OnInit  {
           this.alertService.clear();
         }, 2000);
        });
+ }
 
-
-
-
-
-
-  }
 
   cancelEmp(){
     alert("------ Cancel Employeee -------");

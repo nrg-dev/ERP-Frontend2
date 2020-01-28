@@ -17,38 +17,21 @@ export class PurchaseService {
 
     constructor(private http: HttpClient) { }
 
-    //*********************Employee************************
+    //*********************Purchase************************
+
     loadVendor(){
         return this.http.get<Purchase>(this.commonURL+'loadVendor'); 
     }
     // Save 
-    save(purchsearray : Array<any>){
-    // console.log('Vendor Name ....'+vendorName);
-    /* let formdata: FormData = new FormData();
-        for (var i = 0; i < purchsearray.length; i++) {
-            formdata.append('purchsearray[]', purchsearray[i]);
-        }
-        //formdata.append('purchsearray[]', purchsearray);
-        formdata.append('vendorName', vendorName);
-        const req = new HttpRequest('POST', this.commonURL+"save", formdata, {
-            reportProgress: true,
-            responseType: 'text'
-        });
-        return this.http.request(req); */
-
-        return this.http.post<any>(this.commonURL+'save',purchsearray);
-        //return this.http.get<Purchase>(this.commonURL+'save?purchsearray='+purchsearray+'&vendorName='+vendorName);
-
-    //return this.http.post<any>(this.commonURL+'save?purchsearray='+purchsearray+'&vendorName='+vendorName);
-
-    }
-
+    // Save 
+save(purchasesearcharray: Array<any>,vendorName:string){
+    purchasesearcharray.push([{vendorname:vendorName,podate:"09-sep-2020"}]);
+    return this.http.post(this.commonURL+'save',purchasesearcharray);
+   }
     // Load 
     load(){
         return this.http.get<Purchase>(this.commonURL+'load');
-
         //         this.httpClient.get(this.baseUrl + '/products').subscribe((res : any[])=>{
-
     }
 
     // get 
