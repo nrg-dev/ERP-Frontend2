@@ -54,6 +54,9 @@ export class AddnewcategoryComponent {
         }
       );  
   }
+  close(e) {
+    this.dialogRef.close();
+  }
 }
 // addnewcategory end
 
