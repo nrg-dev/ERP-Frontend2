@@ -50,6 +50,7 @@ import { FormsModule } from '@angular/forms';
 import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ReportService } from './report.service';
 
 
 const routes: Routes = [
@@ -112,8 +113,10 @@ const routes: Routes = [
     MatPaginatorModule,
     MatDialogModule,
     CommonModule,RouterModule.forChild(routes) ,
-    CommonModule,RouterModule.forChild(routes) 
+   // CommonModule,RouterModule.forChild(routes) 
 
-  ]
+  ],
+  providers: [ReportService],
+
 })
 export class ReportModule { }
