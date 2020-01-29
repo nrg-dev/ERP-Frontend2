@@ -2,10 +2,14 @@
 
 export class Product extends Common {
 
-   id: string; 
-   name: string;
-   empCode: string;
-   rank: string;
-   contactNumber: string;
-   purchaseOrdeData:any;
+   id           : string; 
+   productname  : string;
+   description  : string;
+   vendorname   : string;
+   price        : string;
+   tax          : string;
+   margin       : string;
+   sellingprice : string;
+   category     : string;
+   status       : string;
 }

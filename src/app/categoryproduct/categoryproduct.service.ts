@@ -1,12 +1,14 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Category } from '../_models';
+import { Category, Product } from '../_models';
 
 @Injectable()
 export class CategoryproductService {    
 
 //private commonURL = 'http://35.160.115.237:8095/erp/';
-private commonURL = 'http://localhost:8095/erp/category/';
+private commonURL1 = 'http://localhost:8095/erp/category/';
+private commonURL2 = 'http://localhost:8095/erp/item/';
+
 
 constructor(private http: HttpClient) { }
 
@@ -15,27 +17,37 @@ constructor(private http: HttpClient) { }
 // Save 
 save(category: Category){
     console.log('service....');
-    return this.http.post<Category>(this.commonURL+'save',category);
+    return this.http.post<Category>(this.commonURL1+'save',category);
 }
 
-// Load 
+//producsave
+producsave(product: Product){
+    console.log('product service call....');
+    return this.http.post<Product>(this.commonURL2+'productsave',product);
+}
+
+//category Load 
 load(){
-    return this.http.get(this.commonURL+'load');
+    return this.http.get(this.commonURL1+'load');
 }
-
+//item Load 
+loadItem(){
+    return this.http.get<Product>(this.commonURL2+'load');
+}
 // get 
 get(id:number){
-    return this.http.get<Category>(this.commonURL+'get?id='+id);
+    return this.http.get<Category>(this.commonURL1+'get?id='+id);
 }
 
 // Update 
 update(category: Category){
-    return this.http.put<Category>(this.commonURL+'update',category);
+    return this.http.put<Category>(this.commonURL1+'update',category);
 
 }
 
 // Remove 
 remove(categorycode:string){
-    return this.http.delete<Category>(this.commonURL+'remove?categorycode='+categorycode);
+    return this.http.delete<Category>(this.commonURL1+'remove?categorycode='+categorycode);
 }
+
 }

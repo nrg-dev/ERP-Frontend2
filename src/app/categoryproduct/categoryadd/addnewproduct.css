@@ -28,7 +28,6 @@ h2{
 #editselect-box{
     width: 220px;
     height: 35px;
-    text-align: end;
     background: #272E34;
     border: none;
     box-shadow: none;
@@ -36,7 +35,6 @@ h2{
 #name-box{
     width: 220px;
     height: 35px;
-    text-align: end;
     background: #272E34;
     border: none;
     box-shadow: none;
@@ -44,7 +42,6 @@ h2{
 #description-box{
     width: 220px;
     height: 75px;
-    text-align: end;
     background: #272E34;
     border: none;
     box-shadow: none;
@@ -52,7 +49,6 @@ h2{
 #tax-box{
     width: 71px;
     height: 35px;
-    text-align: end;
     background: #272E34;
     border: none;
     box-shadow: none;
@@ -61,7 +57,6 @@ h2{
 #margin-box{
     width: 71px;
     height: 35px;
-    text-align: end;
     background: #272E34;
     border: none;
     box-shadow: none;
@@ -69,7 +64,6 @@ h2{
 #price-box{
     width: 220px;
     height: 35px;
-    text-align: end;
     background: #272E34;
     border: none;
     box-shadow: none;

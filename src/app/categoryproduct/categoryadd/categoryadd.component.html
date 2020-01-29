@@ -42,7 +42,7 @@
     <div id="leftside-div">
         <div >
 
-    <!--discount details start
+    <!--discount details start -->
 
             <div  [ngStyle]="{'display':discountdetails}" >
                 <div class="col-12 col-sm-12 col-md-12  col-lg-12">
@@ -76,8 +76,8 @@
                     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
                     <div class="mat-elevation-z8">
 
-                        <table mat-table [dataSource]="dataSource" matSort>
-                        
+                        <table mat-table [dataSource]="dataSource1" matSort>
+                    
                             <ng-container matColumnDef="Productcode">
                                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Itemcode </th>
                                 <td mat-cell *matCellDef="let row"> {{row.Productcode}} </td>
@@ -85,9 +85,9 @@
                             
                                 <ng-container matColumnDef="Discount">
                                 <th mat-header-cell *matHeaderCellDef mat-sort-header> discount </th>
-                                <td mat-cell *matCellDef="let "> {{row.discount}} </td>
+                                <td mat-cell *matCellDef="let row"> {{row.discount}} </td>
                             </ng-container>
-
+    
                             <ng-container matColumnDef="DiscountTime">
                                 <th mat-header-cell *matHeaderCellDef mat-sort-header> discounttime </th>
                                 <td mat-cell *matCellDef="let row"> {{row.discounttime}} </td>
@@ -98,12 +98,12 @@
                                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Qty </th>
                                 <td mat-cell *matCellDef="let row"> {{row.qty}} </td>
                             </ng-container>
-
+    
                             <ng-container matColumnDef="Price">
                                 <th mat-header-cell *matHeaderCellDef mat-sort-header> price </th>
                                 <td mat-cell *matCellDef="let row"> {{row.price}} </td>
                             </ng-container>
-
+    
                             <ng-container matColumnDef="editdelete">
                                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
                                 <td mat-cell *matCellDef="let row"> 
@@ -118,9 +118,9 @@
                                 </div> 
                                 </td>
                             </ng-container>
-
-                            <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
-                            <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns1;"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns1">
                             </tr>
                         </table>
                         
@@ -129,7 +129,7 @@
                 </div>
             </div>
 
-       discount details end -->
+     <!--  discount details end -->
             
 
         <!--Fiber details start
@@ -276,31 +276,33 @@
 
                     <table mat-table [dataSource]="dataSource" matSort>
                     
-                        <ng-container matColumnDef="Productcode">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Itemcode </th>
-                            <td mat-cell *matCellDef="let row"> {{row.Productcode}} </td>
-                        </ng-container>
-                        
-                            <ng-container matColumnDef="Discount">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> discount </th>
-                            <td mat-cell *matCellDef="let row"> {{row.discount}} </td>
+                        <ng-container matColumnDef="productname">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> ProductName </th>
+                            <td mat-cell *matCellDef="let row"> {{row.productname}} </td>
                         </ng-container>
 
-                        <ng-container matColumnDef="DiscountTime">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> discounttime </th>
-                            <td mat-cell *matCellDef="let row"> {{row.discounttime}} </td>
-                        </ng-container>
-                        
-                        
-                        <ng-container matColumnDef="Qty">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Qty </th>
-                            <td mat-cell *matCellDef="let row"> {{row.qty}} </td>
+                        <ng-container matColumnDef="description">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+                            <td mat-cell *matCellDef="let row"> {{row.description}} </td>
                         </ng-container>
 
-                        <ng-container matColumnDef="Price">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> price </th>
+                        <ng-container matColumnDef="vendorcode">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> VendorCode </th>
+                            <td mat-cell *matCellDef="let row"> {{row.vendorcode}} </td>
+                        </ng-container>
+                        
+                        
+                        <ng-container matColumnDef="sellingprice">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> SellingPrice </th>
+                            <td mat-cell *matCellDef="let row"> {{row.sellingprice}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="price">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
                             <td mat-cell *matCellDef="let row"> {{row.price}} </td>
                         </ng-container>
+                        
+                        
 
                         <ng-container matColumnDef="editdelete">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
