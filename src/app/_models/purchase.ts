@@ -1,7 +1,7 @@
 ﻿import { Common } from "./common";
 
 export class Purchase extends Common {
-
+   id: string;
    productName: string; 
    category: string;
    vendorName: string;

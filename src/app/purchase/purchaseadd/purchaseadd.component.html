@@ -27,8 +27,7 @@
                 <div class="col-lg-5">
                   <select class="form-control" [(ngModel)]="model.vendorName" #vendorName="ngModel" name="vendorName" style="color: black;width: 185%;" >
                     <option value="--- Select --- "> ---- Select ---- </option>  
-                    <option *ngFor="let itemVendor of vendorList" value="{{ itemVendor }}"> {{ itemVendor }} </option>                     
-                    
+                    <option *ngFor="let itemVendor of vendorList" value="{{ itemVendor.vendorName }}"> {{ itemVendor.vendorName }} </option>                     
                   </select> 
                 </div>
               </div><br/>
@@ -144,14 +143,14 @@
                 <tr *ngFor="let model of fieldArray; let i = index">
                   <td style="padding-right: 10px;padding: 9px;">
                     <select class="form-control" [(ngModel)]="model.category" name="{{model.category}}" #category="ngModel" style="color: black;" >
-                      <option value="--- Select --- "> ---- Select ---- </option>   
-                      <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
+                      <option value="--- Select --- "> ---- Select ---- </option>  
+                      <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory.name }}"> {{ itemcategory.name }} </option>                     
                     </select> 
                   </td>
                   <td style="padding-right: 10px;padding: 9px;">
-                    <select class="form-control" [(ngModel)]="model.productName" name="{{model.productName}}" #productName="ngModel" style="color: black;" >
-                      <option value="--- Select --- "> ---- Select ---- </option>    
-                      <option *ngFor="let item of productList" value="{{ item }}"> {{ item }} </option> 
+                      <select class="form-control" [(ngModel)]="model.productName" name="{{model.productName}}" #productName="ngModel" style="color: black;" (change)="getUnitPrice(model.productName,model.categorycode)">
+                      <option value="--- Select --- "> ---- Select ---- </option>  
+                      <option *ngFor="let item of productList" value="{{ item.name }}"> {{ item.name }} </option>                     
                     </select> 
                   </td>
                   <td style="padding-right: 10px;padding: 9px;">
@@ -161,7 +160,7 @@
                     <input type="text" class="form-control" [(ngModel)]="model.quantity" #quantity="ngModel" name="{{model.quantity}}" />
                   </td>
                   <td style="padding-right: 10px;padding: 9px;">
-                    <input type="text" class="form-control" [(ngModel)]="model.unitPrice" #unitPrice="ngModel" name="{{model.unitPrice}}" />
+                    <input type="text" class="form-control" [(ngModel)]="model.unitPrice" #unitPrice="ngModel" value="{{model.unitPrice}}" />
                   </td>
                   <td style="padding-right: 10px;padding: 9px;">
                     <input type="text" class="form-control" [(ngModel)]="model.netAmount" #netAmount="ngModel" name="{{model.netAmount}}" />

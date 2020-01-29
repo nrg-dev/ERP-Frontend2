@@ -14,6 +14,8 @@ export class PurchaseService {
 
     //private commonURL = 'http://35.160.115.237:8095/erp/';
     private commonURL = 'http://localhost:8095/erp/purchase/';
+    private categoryURL = 'http://localhost:8095/erp/category/';
+    private productURL = 'http://localhost:8095/erp/item/';
 
     constructor(private http: HttpClient) { }
 
@@ -24,10 +26,10 @@ export class PurchaseService {
     }
     // Save 
     // Save 
-save(purchasesearcharray: Array<any>,vendorName:string){
-    purchasesearcharray.push([{vendorname:vendorName,podate:"09-sep-2020"}]);
-    return this.http.post(this.commonURL+'save',purchasesearcharray);
-   }
+    save(purchasesearcharray: Array<any>,vendorName:string){
+        purchasesearcharray.push([{vendorname:vendorName,podate:"09-sep-2020"}]);
+        return this.http.post(this.commonURL+'save',purchasesearcharray);
+    }
     // Load 
     load(){
         return this.http.get<Purchase>(this.commonURL+'load');
@@ -53,5 +55,21 @@ save(purchasesearcharray: Array<any>,vendorName:string){
 
     getVendorDetails(vendorname: string){
         return this.http.get<Purchase>(this.commonURL+'getVendorDetails?vendorname='+vendorname);
+    }
+
+    geteditDetails(id: string){
+        return this.http.get<Purchase>(this.commonURL+'get?id='+id);
+    }
+
+    removePartId(id:string,invoiceNumber:string){
+        return this.http.delete<String>(this.commonURL+'removePartId?id='+id+'&invoiceNumber='+invoiceNumber);
+    }
+
+    loadCategory(){
+        return this.http.get<Purchase>(this.categoryURL+'load');
+    }
+
+    loadItem(){
+        return this.http.get<Purchase>(this.productURL+'load');
     }
 }

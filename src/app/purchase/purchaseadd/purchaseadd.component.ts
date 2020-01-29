@@ -70,10 +70,47 @@ export class PurchaseaddComponent  implements OnInit  {
 
   ngOnInit() {
     this.purchasetable = false;
-    /* Initiate the form structure */
-    this.productList = ['Mobile', 'Computer', 'Cloths', 'TV'];
-    this.categoryList = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];
-    this.vendorList = ['Nisho','Alex','Josni','Mary'];
+    this.getVendorList();
+    this.getcategoryList();
+    this.getProductList();
+  }
+
+  getVendorList(){
+    this.purchaseService.loadVendor()
+    .subscribe(res => { 
+      this.vendorList = res;
+      },
+      error => {
+        alert('Error !!!!');
+      }
+    );
+  }
+
+  getcategoryList(){
+    this.purchaseService.loadCategory()
+    .subscribe(res => { 
+      this.categoryList = res;
+      },
+      error => {
+        alert('Error !!!!');
+      }
+    );
+  }
+
+  getProductList(){
+    this.purchaseService.loadItem()
+    .subscribe(res => { 
+      this.productList = res;
+      },
+      error => {
+        alert('Error !!!!');
+      }
+    );
+  }
+
+  getUnitPrice(productName:string,categorycode:string){
+    alert("Product Name -->"+productName);
+    alert("CategoryCode -->"+categorycode);
   }
 
   newPurchaseOrder(){
@@ -96,7 +133,6 @@ export class PurchaseaddComponent  implements OnInit  {
   purchasesearcharray: Array<any> = [];
   vendorname: Array<any> = [];
   savePurchase(){
-    alert("Vendor Name -->"+this.model.vendorName);
     this.purchasesearcharray=[];
     console.log(this.fieldArray);
     this.purchasesearcharray.push(this.fieldArray);
@@ -113,7 +149,9 @@ export class PurchaseaddComponent  implements OnInit  {
           setTimeout(() => {
            this.alertService.clear();
          }, 2000);
-
+         this.fieldArray = [];
+         this.purchasetable = false;
+         this.model.vendorName = '';
        // }
       
                         

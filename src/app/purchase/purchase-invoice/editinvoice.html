@@ -5,9 +5,8 @@
     <table class="scroll">
         <thead>
             <tr id="tr-color">
-                <th>No</th>
-                <th>Item</th>
                 <th>Category</th>
+                <th>Item</th>
                 <th>Description</th>
                 <th>Quantity</th>
                 <th>Sub Total</th>
@@ -17,22 +16,21 @@
         
         <tbody>
             <tr *ngFor="let list of purchaseEditList">
-                <td>{{ list.sNo }}</td>
                 <td>
-                    <select class="form-control" value="{{ list.productName }}">
-                        <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
-                    </select> 
-                  </td>
-                  <td>
                     <select class="form-control" value="{{ list.category }}">
                         <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
                     </select> 
-                  </td>
-                <td><input type="text" value="{{ list.description }}" /></td>
-                <td><input type="text" value="{{ list.quantity }}" /></td>
-                <td>{{ list.unitPrice }}</td>
+                </td>
                 <td>
-                    <div id="rowdelete-div" (click)="deletePurchaseInvoice()">
+                    <select class="form-control" value="{{ list.itemname }}">
+                        <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
+                    </select> 
+                </td>
+                <td><input type="text" value="{{ list.description }}" /></td>
+                <td><input type="text" value="{{ list.qty }}" /></td>
+                <td>{{ list.subtotal }}</td>
+                <td>
+                    <div id="rowdelete-div" (click)="deletePurchaseInvoice(list.id,model.invoiceNumber)">
                         <i class="fa fa-trash-o" id="rowdelete-icon" aria-hidden="true"></i>    
                     </div>   
                 </td>
@@ -44,7 +42,7 @@
         <div class="col-lg-3"></div>
         <div class="col-lg-6">
             <div class="radio-toolbar">
-                <label id="checkIn-butn" (click)="saveInvoice()">Save</label>
+                <label id="checkIn-butn" (click)="saveInvoice(this.model.invoiceNumber)">Save</label>
                 <label id="checkOut-butn" (click)="cancelInvoice()">Cancel</label>
             </div>
         </div>
