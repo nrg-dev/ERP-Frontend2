@@ -11,5 +11,6 @@ export class Product extends Common {
    margin       : string;
    sellingprice : string;
    category     : string;
+   prodcode     : string;
    status       : string;
 }

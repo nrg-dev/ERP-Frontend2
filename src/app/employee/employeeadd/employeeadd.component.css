@@ -8,7 +8,9 @@
     flex-direction: column;
     font-size: 20px;
 }
-
+input[type="text"]{
+    color: black;
+}
 .mat-tab-label {
     cursor: pointer;
 }

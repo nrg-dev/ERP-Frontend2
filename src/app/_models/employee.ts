@@ -4,19 +4,22 @@ export class Employee extends Common {
 
    id: string; 
    name: string;
-   empCode: string;
+   employeecode: string;
    rank: string;
-   contactNumber: string;
+   phonenumber: string;
    address: string;
-   emailID: string;
+   email: string;
    dob: Date;
    joinDate: Date;
-   contractNumber: string;
-   npwpNumber: string;
-   bpjsNumber: string;
+   contractnumber: string;
+   npwp: string;
+   bpjs: string;
    workHour: string;
    annualLeave: string;
-   monthlySalary: string;
+   monthlysalary: string;
+   status: string;
+   addeddate: string;
+
    absentDeduction: string;
    overtimeSalary: string;
    monthName: string;

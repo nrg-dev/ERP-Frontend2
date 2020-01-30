@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 //import { LandingpageComponent } from '../../landingpage/landingpage.component';
 import { User } from 'src/app/_models';
 import { AlertService } from '../../_services';
+import { EmployeeService } from '../employee.service';
 
 
 @Component({
@@ -19,6 +20,8 @@ export class EmployeeaddComponent implements OnInit {
   successdialog = 'none';
   mainmessage = null;
   rank='Employee Rank';
+  
+
   employeeReg : any = [ 
     {
       name :'Employee Name',
@@ -38,7 +41,8 @@ export class EmployeeaddComponent implements OnInit {
       annualLeave : 'Annual Leave',
     }];
   constructor(
-    private alertService:AlertService
+    private alertService:AlertService,
+    private employeeService:EmployeeService,
   ) {
    // alert("test");
     //this.notSelected = false;
@@ -55,11 +59,22 @@ export class EmployeeaddComponent implements OnInit {
   }
 
   saveEmployee(){
-    this.alertService.success("Successfully Saved.");
+    this.employeeService.save(this.model)
+    .subscribe(
+      data => {
+        this.alertService.success("Successfully Saved.");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 2000);
+      },
+      error => {
+        this.alertService.success("Serve Error ");
     setTimeout(() => {
       this.alertService.clear();
     }, 2000);
-  }
+   }
+  );  
+}
 
   cancelEmployee(){
     this.model.name = '';

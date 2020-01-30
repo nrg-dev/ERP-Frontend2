@@ -29,9 +29,10 @@
              placeholder="Enter category name" name="name"/>
              <br/>
              <p>Category Description</p>
-             <input type="text" id="categorydesc-div" value="{{this.model.description}}"
+             <textarea type="text" id="categorydesc-div" value="{{this.model.description}}"
              [(ngModel)]="model.description" #description="ngModel" 
-             placeholder="Enter category description" name="description"/>
+             placeholder="Enter category description" name="description">
+             </textarea>
              <br/><br/>
              <div class="row">
                 <div class="col-6 col-md-6 col-sm-6 col-lg-6">

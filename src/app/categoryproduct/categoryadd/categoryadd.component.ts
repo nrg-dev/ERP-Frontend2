@@ -146,11 +146,11 @@ export class CategoryeditdeleteComponent {
 
     categorydelete(categorycode: string){
       this.catprodservice.remove(categorycode)
-    .subscribe(
-      data => {
-        this.category =  data;  
-        this.dialogRef.close();
-        if(this.category.status == "Success"){
+      .subscribe(
+        data => {
+          this.category =  data;  
+          this.dialogRef.close();
+          if(this.category.status == "Success"){
           this.alertService.success("Deleted Successfully");
           setTimeout(() => {
             this.alertService.clear();
@@ -218,11 +218,10 @@ export class DiscountdeleteComponent {
     private alertService: AlertService,
     public dialogRef: MatDialogRef<DiscountdeleteComponent>,
     ) {
-     // this.countryList = require("../../../assets/country.json");
     }
 
     close() {
-    //this.dialogRef.close();
+    this.dialogRef.close();
   }
 }
 //discountdelete end
@@ -239,7 +238,7 @@ export class AddnewproductComponent {
   vendornamelist: any = {};
   data: any = {};
   category:Category;
-  product:Product= new Product;
+  product:Product;
   constructor(
     private alertService: AlertService,
     public dialogRef: MatDialogRef<AddnewproductComponent>,
@@ -267,10 +266,6 @@ export class AddnewproductComponent {
           alert("server error");
       }
      );
-    }
-    ngOnInit() {
-      //this.allcategorylist=['Fiber','Electronics','Pigmen','Brush'];
-      //this.vendornamelist=['alex','nisho','josini'];
     }
   saveAddNewProduct(category: string){
     this.catprodservice.producsave(this.model)
@@ -304,6 +299,103 @@ export class AddnewproductComponent {
   }
 }
 // addnewproduct end
+
+//allproduct edit start
+@Component({
+  selector: 'allproductedit',
+  styleUrls: ['./allproductedit.css'],
+  templateUrl: './allproductedit.html', 
+})
+export class AllproducteditComponent {
+  model: any = {};
+  dialogConfig: any;
+  dialog: any;
+  allcategorylist:any= {};
+  vendornamelist: any = {};
+  allproducedittlist: any = {};
+  category:Category;
+  product:Product;
+  constructor(
+    private alertService: AlertService,
+    public dialogRef: MatDialogRef<AllproducteditComponent>,
+    private catprodservice: CategoryproductService,
+    private vendorservice: VendorService,
+    @Inject(MAT_DIALOG_DATA) public data: any
+    ) {
+      this.catprodservice.load()
+      .subscribe(
+         data => {
+           this.allcategorylist = data;
+           console.log("category name"+this.allcategorylist);
+         },
+        error => {
+           alert("server error");
+       }
+      );
+ 
+      this.vendorservice.load()
+      .subscribe(
+         data => {
+           this.vendornamelist = data;
+           console.log("category name"+this.vendornamelist);
+         },
+        error => {
+           alert("server error");
+       }
+      );
+
+       //this.allproductlist="";
+    this.catprodservice.loadItem()
+    .subscribe(
+      data => {
+        this.allproducedittlist = data;
+        console.log("productedit code -->"+this.allproducedittlist[0].prodcode);
+        for(let k=0;k<this.allproducedittlist.length;k++){
+          if(this.allproducedittlist[k].prodcode==this.data){
+            this.model.productname=this.allproducedittlist[k].productname;
+            this.model.description=this.allproducedittlist[k].description;
+            this.model.price=this.allproducedittlist[k].price;
+            this.model.tax=this.allproducedittlist[k].tax;
+            this.model.margin=this.allproducedittlist[k].margin;
+            this.model.sellingprice=this.allproducedittlist[k].sellingprice;
+            this.model.vendorcode=this.allproducedittlist[k].vendorcode;
+            this.model.categorycode=this.allproducedittlist[k].categorycode;
+          }
+        }
+        this.model.prodcode=this.allproducedittlist[0].prodcode;
+      },
+      error => {
+        alert("server error");
+      }
+    );
+     
+  }
+  ngOnInit() {
+  }
+  allproducteditsave(){
+    this.catprodservice.productupdate(this.model)
+    .subscribe(
+      data => {
+        this.product =   data;
+        this.dialogRef.close();
+        this.alertService.success("Saved Successfully");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 2000);
+        this.dialogRef.close();
+        console.log("saveproducteditdelete"); 
+      },
+      error => {
+        this.alertService.success("Server Error");
+      }
+      );
+  }
+
+    close() {
+    this.dialogRef.close();
+  }
+}
+//allproduct edit end
 
 // productview start
 @Component({
@@ -376,6 +468,11 @@ export class CategorytableComponent {
 // categorytable end
 
 
+
+
+
+
+
 // Main compoent
 @Component({
   selector: 'app-categoryadd',
@@ -386,8 +483,10 @@ export class CategoryaddComponent implements OnInit {
  allproductlist : any= {};// Product;  
   product:Product;
   categorylist: any= {};
+  allproducedittlist:any;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
+  model: any = {};
   // All Product
   displayedColumns: string[] = ['productname','description','vendorcode','sellingprice','price','editdelete'];
   dataSource: MatTableDataSource<any>;
@@ -409,7 +508,6 @@ export class CategoryaddComponent implements OnInit {
   public alldetails='none';
 
   successdialog = 'none';
-
    // masterlist
    masterlist:  any =[
   {
@@ -425,6 +523,7 @@ export class CategoryaddComponent implements OnInit {
     name:'Free Gifts',
   },
 ]; 
+  dialogRef: any;
  
   constructor(
     private alertService: AlertService,
@@ -507,11 +606,11 @@ categorydetails(number: string){
     this.editdeletediv=false;
   }
   if(number=='02'){
-    this.alldetails='none';
-   this.discountdetails='block';
-    this.alldetails='none';
-    this.fiberdetails='none';
-    this.editdeletediv =false;
+    //this.alldetails='none';
+   //this.discountdetails='block';
+    //this.alldetails='none';
+   // this.fiberdetails='none';
+    //this.editdeletediv =false;
   }
   if(number=='03'){
     this.leftdetails=true;
@@ -692,6 +791,46 @@ productlist(number: string){
     })
     .afterClosed().subscribe(result => {
     }); 
+  }
+
+  allproducteditcall(prodcode: string){
+    this.dialogConfig.disableClose = true;
+  this.dialogConfig.autoFocus = true;
+  this.dialogConfig.position = {
+    'top': '1000',
+    left: '100'
+  };
+  this.dialog.open(AllproducteditComponent,{
+    panelClass: 'allproductedit',
+    data: prodcode,
+
+  })
+  .afterClosed().subscribe(result => {
+  });
+
+  }
+  allproductdelete(prodcode: string){
+    this.catprodservice.productremove(prodcode)
+      .subscribe(
+        data => {
+          this.product =  data;  
+          this.dialogRef.close();
+          if(this.product.status == "Success"){
+          this.alertService.success("Deleted Successfully");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 1500);
+        }else if(this.product.status == "failure"){
+          this.alertService.error("Not Deleted..");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 1500);
+        }
+      },
+      error => {
+        this.alertService.success("Server Error ");
+      }
+    );
   }
 
   }

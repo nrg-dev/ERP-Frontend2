@@ -42,12 +42,19 @@ get(id:number){
 // Update 
 update(category: Category){
     return this.http.put<Category>(this.commonURL1+'update',category);
-
+}
+// product update 
+productupdate(product: Product){
+    return this.http.put<Product>(this.commonURL2+'update',product);
 }
 
 // Remove 
 remove(categorycode:string){
     return this.http.delete<Category>(this.commonURL1+'remove?categorycode='+categorycode);
+}
+// product Remove 
+productremove(prodcode: string){
+    return this.http.delete<Product>(this.commonURL2+'remove?prodcode='+prodcode);
 }
 
 }

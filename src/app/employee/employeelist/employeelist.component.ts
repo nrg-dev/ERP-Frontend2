@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
+import { EmployeeService } from '../employee.service';
 
 @Component({
   selector: 'app-employeelist',
@@ -119,26 +120,33 @@ export class EmployeelistComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private router: Router, 
-    private alertService: AlertService
+    private alertService: AlertService,
+    private employeeService:EmployeeService,
   ) { 
-    const data = require("../employee.json");
-    this.employeeList=data;
-
     this.dataSource = new MatTableDataSource(this.employeeList);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
   ngOnInit() {
+    this.allemplist();
+  }
 
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-
-    /*this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 5,
-      processing: true
-    }*/
+  allemplist(){
+    //this.allproductlist="";
+    this.employeeService.load()
+    .subscribe(
+      data => {
+        this.employeeList = data;
+        console.log("product code -->"+this.employeeList[0].prodcode);
+        this.dataSource = new MatTableDataSource(this.employeeList);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      },
+      error => {
+        alert("server error");
+      }
+    );
   }
 
   applyFilter(filterValue: string) {
@@ -149,88 +157,36 @@ export class EmployeelistComponent implements OnInit {
   }
 
 
-  employeeDetails(empCode:string){
+  employeeDetails(employeecode:string){
     if(this.emptempid!==null){
       document.getElementById(this.emptempid).style.backgroundColor='#1a2932';
       this.emptempid=null;
     } 
-    this.emptempid = empCode;
     //document.getElementById(this.emptempid).style.backgroundColor='#2F4756';
     this.empdetails = true;
     this.empeditdetails = false;
     this.absentdiv = false;
 
-    if(empCode == "NRG1"){
-      this.model.empCode = this.employeeList[0].empCode;
-      this.model.name = this.employeeList[0].name;
-      this.model.rank = this.employeeList[0].rank;
-      this.model.contactNumber = this.employeeList[0].contactNumber;
-    }else if(empCode == "NRG2"){
-      this.model.empCode = this.employeeList[1].empCode;
-      this.model.name = this.employeeList[1].name;
-      this.model.rank = this.employeeList[1].rank;
-      this.model.contactNumber = this.employeeList[1].contactNumber;
-    }
-    else if(empCode == "NRG3"){
-      this.model.empCode = this.employeeList[2].empCode;
-      this.model.name = this.employeeList[2].name;
-      this.model.rank = this.employeeList[2].rank;
-      this.model.contactNumber = this.employeeList[2].contactNumber;
-    }
-    else if(empCode == "NRG4"){
-      this.model.empCode = this.employeeList[3].empCode;
-      this.model.name = this.employeeList[3].name;
-      this.model.rank = this.employeeList[3].rank;
-      this.model.contactNumber = this.employeeList[3].contactNumber;
-    }else if(empCode == "NRG5"){
-      this.model.empCode = this.employeeList[4].empCode;
-      this.model.name = this.employeeList[4].name;
-      this.model.rank = this.employeeList[4].rank;
-      this.model.contactNumber = this.employeeList[4].contactNumber;
-    }
-    else if(empCode == "NRG6"){
-      this.model.empCode = this.employeeList[5].empCode;
-      this.model.name = this.employeeList[5].name;
-      this.model.rank = this.employeeList[5].rank;
-      this.model.contactNumber = this.employeeList[5].contactNumber;
-    }
-    else if(empCode == "NRG7"){
-      this.model.empCode = this.employeeList[6].empCode;
-      this.model.name = this.employeeList[6].name;
-      this.model.rank = this.employeeList[6].rank;
-      this.model.contactNumber = this.employeeList[6].contactNumber;
-    }
-    else if(empCode == "NRG8"){
-      this.model.empCode = this.employeeList[7].empCode;
-      this.model.name = this.employeeList[7].name;
-      this.model.rank = this.employeeList[7].rank;
-      this.model.contactNumber = this.employeeList[7].contactNumber;
-    }
-    else if(empCode == "NRG9"){
-      this.model.empCode = this.employeeList[8].empCode;
-      this.model.name = this.employeeList[8].name;
-      this.model.rank = this.employeeList[8].rank;
-      this.model.contactNumber = this.employeeList[8].contactNumber;
-    }
-    else if(empCode == "NRG10"){
-      this.model.empCode = this.employeeList[9].empCode;
-      this.model.name = this.employeeList[9].name;
-      this.model.rank = this.employeeList[9].rank;
-      this.model.contactNumber = this.employeeList[9].contactNumber;
+    for(let i=0;i<this.employeeList.length;i++){
+      if(this.employeeList[i].employeecode==employeecode){
+        this.model.employeecode = this.employeeList[i].employeecode;
+        this.model.name = this.employeeList[i].name;
+        this.model.rank = this.employeeList[i].rank;
+        this.model.phonenumber = this.employeeList[i].phonenumber;
+        this.model.address = this.employeeList[i].address;
+        this.model.email = this.employeeList[i].email;
+        this.model.dob = this.employeeList[i].dob;
+        this.model.addeddate = this.employeeList[i].addeddate;
+        this.model.contractnumber = this.employeeList[i].contractnumber;
+        this.model.npwp = this.employeeList[i].npwp;
+        this.model.bpjs = this.employeeList[i].bpjs;
+        this.model.workHour = this.employeeList[i].workHour;
+        this.model.annualLeave = this.employeeList[i].annualLeave;
+        this.model.monthlysalary = this.employeeList[i].monthlysalary;
+      }
     }
 
-    else if(empCode == "NRG11"){
-      this.model.empCode = this.employeeList[10].empCode;
-      this.model.name = this.employeeList[10].name;
-      this.model.rank = this.employeeList[10].rank;
-      this.model.contactNumber = this.employeeList[10].contactNumber;
-    }
-    else if(empCode == "NRG12"){
-      this.model.empCode = this.employeeList[11].empCode;
-      this.model.name = this.employeeList[11].name;
-      this.model.rank = this.employeeList[11].rank;
-      this.model.contactNumber = this.employeeList[11].contactNumber;
-    }
+    
   }
 
   edit(){
