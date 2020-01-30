@@ -16,5 +16,5 @@ export class Purchase extends Common {
    termsDays:string;
    invoicedate:Date;
    purchasearray: any = [];
-   
+   price: string;
 }

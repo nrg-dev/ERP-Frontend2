@@ -14,7 +14,7 @@ export class PurchaseService {
 
     //private commonURL = 'http://35.160.115.237:8095/erp/';
     private commonURL = 'http://localhost:8095/erp/purchase/';
-    private categoryURL = 'http://localhost:8095/erp/category/';
+    private categoryURL = 'http://localhost:8095/erp/category/'; 
     private productURL = 'http://localhost:8095/erp/item/';
 
     constructor(private http: HttpClient) { }
@@ -26,8 +26,8 @@ export class PurchaseService {
     }
     // Save 
     // Save 
-    save(purchasesearcharray: Array<any>,vendorName:string){
-        purchasesearcharray.push([{vendorname:vendorName,podate:"09-sep-2020"}]);
+    save(purchasesearcharray: Array<any>,vendorName:string,deliveryCost:string){
+        purchasesearcharray.push([{vendorname:vendorName,podate:"09-sep-2020",deliveryCost:deliveryCost}]);
         return this.http.post(this.commonURL+'save',purchasesearcharray);
     }
     // Load 
@@ -69,7 +69,13 @@ export class PurchaseService {
         return this.http.get<Purchase>(this.categoryURL+'load');
     }
 
+    //loadItem(category:string){
     loadItem(){
         return this.http.get<Purchase>(this.productURL+'load');
+        //return this.http.get<Purchase>(this.commonURL+'loadItem?category='+category);
+    }
+
+    getUnitPrice(productName:string,category:string){
+        return this.http.get<Purchase>(this.commonURL+'getUnitPrice?productName='+productName+'&category='+category);
     }
 }

@@ -73,6 +73,7 @@ export class PurchaseaddComponent  implements OnInit  {
     this.getVendorList();
     this.getcategoryList();
     this.getProductList();
+    this.model.sNo = 0;
   }
 
   getVendorList(){
@@ -108,22 +109,56 @@ export class PurchaseaddComponent  implements OnInit  {
     );
   }
 
-  getUnitPrice(productName:string,categorycode:string){
-    alert("Product Name -->"+productName);
-    alert("CategoryCode -->"+categorycode);
+  getProductName(category:string){
+   /* this.purchaseService.loadItem(category)
+    .subscribe(res => { 
+      this.productList = res;
+      },
+      error => {
+        alert('Error !!!!');
+      }
+    );*/
+  }
+  unitArray : any = [];
+  i:number=0;
+ public subTotalArray : any = [];
+  j:number=0;
+  getUnitPrice(productName:string,category:string,quantity:number){
+    this.purchaseService.getUnitPrice(productName,category)
+    .subscribe(
+      data => {
+        this.purchase = data; 
+        console.log("Unit Price -->"+this.purchase.price);
+        this.unitArray[this.i] = this.purchase.price;
+        this.subTotalArray[this.j] = quantity*this.unitArray[this.i];
+        console.log("Sub Total -->"+this.subTotalArray[this.j]);
+        this.i++;
+        this.j++;
+      },
+      error => {
+        this.alertService.success("Server Error ");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 1500);
+      }
+    );
+  }
+  getSubTotal(quantity:number,price:number){
+    alert("Qty -->"+quantity);
+    alert("price -->"+price);
+    this.purchase.netAmount = quantity*price;
   }
 
-  newPurchaseOrder(){
+  newPurchaseOrder(sNo: number){
     this.purchasetable = true;
-   // this.newAttribute = {};
     this.fieldArray.push(this.newAttribute);
     this.newAttribute = {};
-    //this.fieldArray.push(this.newAttribute);
-
+    this.model.sNo = sNo+1;
   }
 
   deleteFieldValue(index) {
     this.fieldArray.splice(index, 1);
+    //this.model.sNo = this.fieldArray[index]-1;
     if(this.fieldArray[0]){
       this.purchasetable = true;
     }else{
@@ -139,7 +174,7 @@ export class PurchaseaddComponent  implements OnInit  {
     console.log("Purchase Array -->"+this.purchasesearcharray);
     console.log(this.purchasesearcharray);
     this.purchase.vendorName = this.model.vendorName;
-    this.purchaseService.save(this.purchasesearcharray,this.model.vendorName)
+    this.purchaseService.save(this.purchasesearcharray,this.model.vendorName,this.model.deliveryCost)
    .subscribe(
        res => {
          console.log('............1 ....');
