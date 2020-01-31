@@ -237,6 +237,13 @@ export class VendoraddComponent implements OnInit {
     this.customerdetails = false;
     this.customereditdetails = false;
     this.customerdragAndDrop = false;
+    this.model.vendorName='';
+    this.model.phoneNumber='';
+    this.model.mobileNumber='';
+    this.model.address='';
+    this.model.country='';
+    this.model.city='';
+    this.model.email='';
   }
   vendordelete(vendorcode:string){
     this.vendorService.remove(vendorcode)
@@ -419,6 +426,13 @@ export class VendoraddComponent implements OnInit {
     this.customerdetails = false;
     this.customereditdetails = false;
     this.vendordragAndDrop = false;
+    this.model.customerName='';
+    this.model.phoneNumber='';
+    this.model.mobileNumber='';
+    this.model.address='';
+    this.model.country='';
+    this.model.city='';
+    this.model.email='';
   }
   saveCustomer(){
     console.log("country name-->"+this.model.country);

@@ -35,7 +35,7 @@ update(employee: Employee){
 }
 
 // Remove 
-remove(id:number){
-    return this.http.delete<String>(this.commonURL+'remove?id='+id);
+remove(employeecode:string){
+    return this.http.delete<Employee>(this.commonURL+'remove?employeecode='+employeecode);
 }
 }

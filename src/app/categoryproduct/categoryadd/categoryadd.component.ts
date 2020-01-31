@@ -814,7 +814,6 @@ productlist(number: string){
       .subscribe(
         data => {
           this.product =  data;  
-          this.dialogRef.close();
           if(this.product.status == "Success"){
           this.alertService.success("Deleted Successfully");
           setTimeout(() => {

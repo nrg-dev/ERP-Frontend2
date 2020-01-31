@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { ReportService } from '../report.service';
 
 @Component({
   selector: 'app-all-emp-report',
@@ -22,21 +23,39 @@ export class AllEmpReportComponent implements OnInit {
 
   @ViewChild('sortCol1',{static:false}) sortCol1: MatSort;
   @ViewChild('sortCol2',{static:false}) sortCol2: MatSort;
+  dataSource: any;
+  paginator: any;
+  sort: any;
 
-  constructor() { 
-    const purchasedata = require("../../EmpReportTable.json");
-      this.empDetailsList=purchasedata;
-      this.dataSource1 = new MatTableDataSource(this.empDetailsList);
-      this.dataSource1.sort = this.sortCol1;
-
+  constructor(
+    private  reportService:ReportService,
+  ) { 
     const purchasedata1 = require("../../EmpAbsentcardTable.json");
       this.empAbsetList=purchasedata1;
       this.dataSource2 = new MatTableDataSource(this.empAbsetList);
       this.dataSource2.sort = this.sortCol2;
+
   }
 
   ngOnInit() {
+    this.allemplist();
   }
+  allemplist(){
+    this.reportService.load()
+    .subscribe(
+      data => {
+        this.empDetailsList = data;
+        console.log("employee code -->"+this.empDetailsList[0].employeecode);
+        this.dataSource1 = new MatTableDataSource(this.empDetailsList);
+        this.dataSource1.sort = this.sortCol1;
+      },
+      error => {
+        alert("server error");
+      }
+    );
+  }
+
+
   applyFilter(filterValue: string) {
     this.dataSource1.filter = filterValue.trim().toLowerCase();
 
@@ -45,17 +64,17 @@ export class AllEmpReportComponent implements OnInit {
     }
   }
 
-  absentCardDetails(empcode: string){
+  absentCardDetails(employeecode: string){
     this.empPreviewdiv=true;
     this.empreportdetails=false;
     for(let i=0;i<this.empDetailsList.length;i++){
-      if(this.empDetailsList[i].empcode==empcode){
-        this.model.employeeName = this.empDetailsList[i].employeeName;
-        this.model.empcode = this.empDetailsList[i].empcode;
+      if(this.empDetailsList[i].employeecode==employeecode){
+        this.model.name = this.empDetailsList[i].name;
+        this.model.employeecode = this.empDetailsList[i].employeecode;
         this.model.rank = this.empDetailsList[i].rank;
-        this.model.phone = this.empDetailsList[i].phone;
+        this.model.phonenumber = this.empDetailsList[i].phonenumber;
         this.model.email = this.empDetailsList[i].email;
-        this.model.join = this.empDetailsList[i].join;
+        this.model.addeddate = this.empDetailsList[i].addeddate;
         this.model.status = this.empDetailsList[i].status;
       }
     }

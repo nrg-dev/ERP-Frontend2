@@ -9,7 +9,7 @@ export class Employee extends Common {
    phonenumber: string;
    address: string;
    email: string;
-   dob: Date;
+   dob: string;
    joinDate: Date;
    contractnumber: string;
    npwp: string;

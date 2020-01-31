@@ -18,7 +18,7 @@ table.mat-table{
 }
 .mat-elevation-z8{
     width: 100%;
-    height: 70%;
+    height: 55%;
     margin-left: 8px;
     background: #686868;
     overflow-y: scroll;
@@ -136,7 +136,7 @@ hr{
     margin: auto;
 }
 #empreport-backcolor{
-    height: 96%;
+    height: 76%;
     background: #1B2931;
 }
 #back-btn{

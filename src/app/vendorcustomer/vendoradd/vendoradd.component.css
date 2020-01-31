@@ -66,7 +66,7 @@ a {
 
 #print-butn{
   height: 29px;
-  width: 120px;
+  width: 110px;
   text-align: center;
   border: none;
   background-color: #243641;
@@ -233,13 +233,6 @@ a:hover {
 width: 150px;
 height: 130px;
 margin-left: 240px;
-}
-#text3{
-  font-size: 16px;
-  font-weight: bold;
-}
-#text4{
-  font-size: 16px;
 }
 #curs-pointer{
   cursor: pointer;
@@ -1027,14 +1020,14 @@ margin-left: 240px;
     background: #243641;
     margin : 0px 15px 30px 10px;
     width: 100%;
-    height: 75%;
+    height: 88%;
     border-radius: 10px;
     /* border: 1px solid black; */
   }
 
   .empdet-div{
     background: #243641;
-    height: 75%;
+    height: 97%;
     width: 100%;
     border-radius: 10px;
   }

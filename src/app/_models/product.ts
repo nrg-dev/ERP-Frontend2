@@ -6,6 +6,7 @@ export class Product extends Common {
    productname  : string;
    description  : string;
    vendorname   : string;
+   vendorcode   : string;
    price        : string;
    tax          : string;
    margin       : string;

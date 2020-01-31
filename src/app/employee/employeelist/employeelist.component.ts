@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild ,ElementRef,Inject} from '@angular/core';
-import { User } from 'src/app/_models';
+import { User, Employee } from 'src/app/_models';
 import { AlertService } from 'src/app/_services/index';
 import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
@@ -29,6 +29,7 @@ export class EmployeelistComponent implements OnInit {
   todayString : string = new Date().toDateString();
   todayISOString : string = new Date().toISOString();
   dtOptions: DataTables.Settings = {};
+  employee:Employee;
 
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
@@ -39,83 +40,8 @@ export class EmployeelistComponent implements OnInit {
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
   @ViewChild(MatSort,{ static: true }) sort: MatSort;
 
- /* employeeList : any = 
-   [ 
-    {
-      empCode:'NRG1',
-      name :'Alex Ubalton',
-      rank: 'CTO',
-      contactNumber : '+91 6385662312'
-    },
-    {
-      empCode:'NRG2',
-      name :'Magin',
-      rank: 'CEO',
-      contactNumber : '+61 87654321'
-    },
-    {
-      empCode:'NRG3',
-      name :'Hendry',
-      rank: 'Manager',
-      contactNumber : '+61 43232134',
-    },
-    {
-      empCode:'NRG4',
-      name :'Rema',
-      rank: 'Executive',
-      contactNumber : '+61 43232134'
-    },
-    {
-      empCode:'NRG5',
-      name :'Mahesh Kumar',
-      rank: 'Branch Manager',
-      contactNumber : '+61 43232134'
-    },
-    {
-      empCode:'NRG6',
-      name :'Muth Raj',
-      rank: 'Sales Officer',
-      contactNumber : '+61 43232134'
-    },
-    {
-      empCode:'NRG7',
-      name :'Preethi Thanga',
-      rank: 'Human Resource',
-      contactNumber : '+61 43232134'
-    },
-    {
-      empCode:'NRG8',
-      name :'Danial',
-      rank: 'Engineer',
-      contactNumber : '+61 43232134'
-    },
-    {
-      empCode:'NRG9',
-      name :'Pease RJ',
-      rank: 'Officer',
-      contactNumber : '+61 43232134',
-    },
-    {
-      empCode:'NRG10',
-      name :'Ram Pretheep',
-      rank: 'Project Manager',
-      contactNumber : '+60 43232134'
-    },
-    {
-      empCode:'NRG11',
-      name :'employee 8',
-      rank: 'Branch Manager',
-      contactNumber : '+63 43232134'
-    },
-    {
-      empCode:'NRG12',
-      name :'Jackson Due',
-      rank: 'Senior Manager',
-      contactNumber : '+62 43232134'
-    },
-  ]; */
-
   emptempid = null;
+  
 
   constructor(
     private dialog: MatDialog,
@@ -138,10 +64,10 @@ export class EmployeelistComponent implements OnInit {
     .subscribe(
       data => {
         this.employeeList = data;
-        console.log("product code -->"+this.employeeList[0].prodcode);
+        console.log("employee code -->"+this.employeeList[0].employeecode);
         this.dataSource = new MatTableDataSource(this.employeeList);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       },
       error => {
         alert("server error");
@@ -195,21 +121,24 @@ export class EmployeelistComponent implements OnInit {
     this.absentdiv = false;
   }
 
-  setEmployeeUpdate(){    
+  setEmployeeUpdate(){   
+    this.employeeService.update(this.model) 
+    .subscribe(
+      data => {
+        this.employee =   data;   
     this.alertService.success("Successfully Updated.");
     setTimeout(() => {
       this.alertService.clear();
     }, 2000);
-    /*this.mainmessage="Employee Data is Successfully Updated...";
-
-    this.empdetails = true;
-    this.empeditdetails = false;
-    this.absentdiv = false;
-    this.updatesuccessdialog = 'block';
+  },
+  error => {
+    this.alertService.success("Serve Error ");
     setTimeout(() => {
-      this.updatesuccessdialog = 'none';
-    }, 1500);*/
+      this.alertService.clear();
+    }, 2000);
   }
+  ); 
+}
 
   cancelEdit(){
     this.empdetails = true;
@@ -217,21 +146,30 @@ export class EmployeelistComponent implements OnInit {
     this.absentdiv = false;
   }
 
-  delete(){
-    this.alertService.success("Successfully Deleted.");
-    setTimeout(() => {
+  delete(employeecode: string){
+    this.employeeService.remove(employeecode)
+    .subscribe(
+      data => {
+        this.employee = data;
+        if(this.employee.status == "Success"){
+          this.alertService.success("Deleted Successfully");
+          this.allemplist();
+
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 1500);
+        }else{
+          this.alertService.error("Not Deleted..");
+        }
+        this.allemplist();
+      },
+      error => {
+        this.alertService.success("Server Error ");
+        setTimeout(() => {
       this.alertService.clear();
     }, 2000);
-    /*this.message="Deleted Successfully."
-    this.mainmessage="Deleted."
-
-    this.empeditdetails = false;
-    this.absentdiv = false;
-    this.successdialog = 'block';
-    setTimeout(() => {
-      this.successdialog = 'none';
-      this.empdetails = false;
-    }, 1500);*/
+    }
+    ); 
   }
 
   absent(){

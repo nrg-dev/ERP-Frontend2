@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { User, Common } from '../_models/index';
 import { HttpRequest, HttpEvent} from '@angular/common/http';
+import { Employee } from '../_models';
 
 
 @Injectable()
@@ -14,14 +15,16 @@ export class ReportService {
 
     //private commonURL = 'http://35.160.115.237:8095/erp/';
     private commonURL = 'http://localhost:8095/erp/reports/';
+    private empURL = 'http://localhost:8095/erp/employee/';
 
 
     constructor(private http: HttpClient) { }
 
     //********************* Report ************************
 
-    employeeReport(){
-        return this.http.get<Purchase>(this.commonURL+'employeeReport'); 
+    // Load 
+    load(){
+        return this.http.get(this.empURL+'load');
     }
     
 }

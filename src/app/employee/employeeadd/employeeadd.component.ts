@@ -22,24 +22,6 @@ export class EmployeeaddComponent implements OnInit {
   rank='Employee Rank';
   
 
-  employeeReg : any = [ 
-    {
-      name :'Employee Name',
-      rank:'Employee Rank',
-      phonenumber : 'Phone Number',
-      contractnumber : 'Contract Number ',
-      address : 'Address',
-      country :  'Indonesia',
-      city : 'Jakarta',
-      email : 'Email',
-      emergencynumber : 'Emergency Number',
-      dob : 'Date of Birth',
-      npwp : 'NPWP Number',
-      bpjs : 'BPJS',
-      monthlysalary : 'Monthly Salary',
-      workHour : 'Work Hour',
-      annualLeave : 'Annual Leave',
-    }];
   constructor(
     private alertService:AlertService,
     private employeeService:EmployeeService,
@@ -66,6 +48,18 @@ export class EmployeeaddComponent implements OnInit {
         setTimeout(() => {
           this.alertService.clear();
         }, 2000);
+        this.model.name='';
+        this.model.rank='';
+        this.model.phonenumber='';
+        this.model.address='';
+        this.model.email='';
+        this.model.dob='';
+        this.model.contractnumber='';
+        this.model.npwp='';
+        this.model.bpjs='';
+        this.model.monthlysalary='';
+        this.model.workHour='';
+        this.model.annualLeave='';
       },
       error => {
         this.alertService.success("Serve Error ");
