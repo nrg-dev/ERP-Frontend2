@@ -16,33 +16,39 @@
         
         <tbody>
             <tr *ngFor="let list of purchaseEditList">
-                <td>
-                    <select class="form-control" value="{{ list.category }}">
-                        <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
+                <td id="middleContent">
+                    <select class="form-control" [(ngModel)]="model.category" #category="ngModel" value="{{ list.category }}">
+                        <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory.name }}-{{ itemcategory.categorycode }}"> {{ itemcategory.name }}-{{ itemcategory.categorycode }} </option>                     
                     </select> 
                 </td>
-                <td>
-                    <select class="form-control" value="{{ list.itemname }}">
-                        <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
+                <td id="middleContent">
+                    <select class="form-control" [(ngModel)]="model.itemname" #itemname="ngModel" style="color: black;" 
+                        value="{{ list.itemname }}">
+                        <option *ngFor="let item of productList" value="{{ item.productname }}-{{ item.prodcode }}"> {{ item.productname }}-{{ item.prodcode }} </option> 
                     </select> 
                 </td>
-                <td><input type="text" value="{{ list.description }}" /></td>
-                <td><input type="text" value="{{ list.qty }}" /></td>
-                <td>{{ list.subtotal }}</td>
+                <td id="middleContent"><input type="text" [(ngModel)]="model.description" #description="ngModel" value="{{ list.description }}" /></td>
+                <td id="middleContent"><input type="text" [(ngModel)]="model.qty" #qty="ngModel" value="{{ list.qty }}" /></td>
+                <td id="middleContent"><label style="color: white;" [(ngModel)]="model.subtotal" #subtotal="ngModel">{{ list.subtotal }}</label></td>
                 <td>
-                    <div id="rowdelete-div" (click)="deletePurchaseInvoice(list.id,model.invoiceNumber)">
-                        <i class="fa fa-trash-o" id="rowdelete-icon" aria-hidden="true"></i>    
-                    </div>   
+                    <div class="row" style="margin: 10px;">
+                        <div id="rowedit-div" (click)="updateInvoice()">
+                            <i class="fa fa-check" id="rowdelete-icon" aria-hidden="true"></i>    
+                        </div> &nbsp;&nbsp;&nbsp;
+                        <div id="rowdelete-div" (click)="deletePurchaseInvoice(list.id,model.invoiceNumber)">
+                            <i class="fa fa-trash-o" id="rowdelete-icon" aria-hidden="true"></i>    
+                        </div>   
+                    </div>
                 </td>
             </tr>
         </tbody>
     </table>
     <br/> <br/>
     <div class="row">
-        <div class="col-lg-3"></div>
-        <div class="col-lg-6">
+        <div class="col-lg-5"></div>
+        <div class="col-lg-4">
             <div class="radio-toolbar">
-                <label id="checkIn-butn" (click)="saveInvoice(this.model.invoiceNumber)">Save</label>
+                <!-- <label id="checkIn-butn" (click)="saveInvoice(this.model.invoiceNumber)">Save</label> -->
                 <label id="checkOut-butn" (click)="cancelInvoice()">Cancel</label>
             </div>
         </div>

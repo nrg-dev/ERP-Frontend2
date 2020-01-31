@@ -76,6 +76,7 @@ export class ViewInvoice {
 })
 export class EditInvoice {
   model: any ={};
+  purchase: Purchase;
   public purchaseEditList : any;
   public productList : any;
   public categoryList : any;
@@ -89,13 +90,35 @@ export class EditInvoice {
     public dialogRef: MatDialogRef<EditInvoice>,
     @Inject(MAT_DIALOG_DATA) public data: any)
     {  
+      console.log("Edit Dialog InvoiceNumber -->"+this.data);
       this.model.invoiceNumber = this.data;
       this.editDetails(this.model.invoiceNumber);
       
-      this.productList = ['Mobile', 'Computer', 'Cloths', 'TV'];
-      this.categoryList = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];
+      this.getProductList();
+      this.getcategoryList();
     }
 
+    getcategoryList(){
+      this.purchaseService.loadCategory()
+      .subscribe(res => { 
+        this.categoryList = res;
+        },
+        error => {
+          alert('Error !!!!');
+        }
+      );
+    }
+
+    getProductList(){
+      this.purchaseService.loadItem()
+      .subscribe(res => { 
+        this.productList = res;
+        },
+        error => {
+          alert('Error !!!!');
+        }
+      );
+    }
 
   editDetails(invoiceNumber:string){
     this.purchaseService.geteditDetails(invoiceNumber)
@@ -138,17 +161,45 @@ export class EditInvoice {
     ); 
   }
 
-  saveInvoice(invoiceNumber:string){
-   // alert("Id -->"+id);
-    alert("InvoiceNumber ==>"+invoiceNumber);
-    this.alertService.success("Successfully Saved.");
-    setTimeout(() => {
-      this.alertService.clear();
-    }, 2000);
+  updateInvoice(){
+    this.purchaseService.update(this.model)
+    .subscribe(
+      data => {
+        this.purchase = data; 
+        this.alertService.success("Successfully Updated.");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 2000);
+      },
+      error => {
+        this.alertService.success("Server Error ");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 1500);
+      }
+    );
+    
+  }
+
+  getTotalAmount(productName:string,qty:string,category:string){
+    console.log("productName ==>"+productName);
+    console.log("Qty ==>"+qty);
+    this.purchaseService.getUnitPrice(productName,category)
+    .subscribe(
+      data => {
+        this.purchase = data; 
+      },
+      error => {
+        this.alertService.success("Server Error ");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 1500);
+      }
+    );
   }
 
   cancelInvoice(){
-    alert("-- Cancel Invoice --");
+    this.dialogRef.close();
   }
 
 }

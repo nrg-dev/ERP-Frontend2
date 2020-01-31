@@ -17,10 +17,12 @@ import { PurchaseService } from '../purchase.service';
 export class PurchasereportComponent implements OnInit {
   purchse:Purchase;
   model: any ={};
-  public purchaseList : any;
+  public purchaseList : any = {};
+  public purchaseReportList : any = {} ;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
-  displayedColumns: string[] = ['No','PoInvoice','poDate','vendor','Total'];
+  //displayedColumns: string[] = ['No','PoInvoice','poDate','vendor','Total'];
+  displayedColumns: string[] = ['PoInvoice','poDate','vendor','Total'];
 
   dataSource: MatTableDataSource<any>;
   
@@ -30,10 +32,16 @@ export class PurchasereportComponent implements OnInit {
     private alertService: AlertService,
     private purchaseservice: PurchaseService,
   ) {
-    const purchasedata = require("../../purchasereportdata.json");
-    this.purchaseList=purchasedata;
 
-    this.dataSource = new MatTableDataSource(this.purchaseList);
+    this.purchaseservice.load().subscribe(res => { 
+      this.purchaseList = res;
+      this.dataSource = new MatTableDataSource(this.purchaseList);
+      },
+      error => {
+          alert('Error !!!!');
+      }
+    );
+
 
    }
 
@@ -48,5 +56,38 @@ export class PurchasereportComponent implements OnInit {
     }
   }
 
+  getReportDetails(invoicenumber:number){
+    this.purchaseservice.load().subscribe(res => { 
+      this.purchaseList = res;
+      for(let i=0;i<this.purchaseList.length; i++){
+        if(this.purchaseList[i].invoicenumber == invoicenumber){
+          this.model.invoicenumber = invoicenumber;
+          this.model.invoicedate = this.purchaseList[i].invoicedate;
+          this.model.vendorname = this.purchaseList[i].vendorname;
+          this.model.totalqty = this.purchaseList[i].totalqty;
+          this.model.totalitem = this.purchaseList[i].totalitem;
+          this.model.totalprice = this.purchaseList[i].totalprice;
+          this.model.deliveryprice = this.purchaseList[i].deliveryprice;
+          this.model.totalAmount = this.purchaseList[i].deliveryprice + this.purchaseList[i].totalprice;
+        }
+      }
+      },
+      error => {
+          alert('Error !!!!');
+      }
+    );
+    this.purchaseservice.get(invoicenumber)
+    .subscribe(
+      data => {
+        this.purchaseReportList = data;
+        for(let j=0;j<this.purchaseReportList.length; j++){
+          this.model.itemname = this.purchaseReportList[j].itemname;
+        }
+      },
+      error => {
+          alert('Error !!!!');
+      }
+    );
+  }
 
 }

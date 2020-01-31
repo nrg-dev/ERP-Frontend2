@@ -60,6 +60,10 @@ export class PurchaseaddComponent  implements OnInit  {
   vendorList:  any = {};
 
   firstField = true;
+  unitArray : any = [];
+  i:number=0;
+  public subTotalArray : any = [];
+  j:number=0;
   
   constructor( public fb: FormBuilder,
     private dialog: MatDialog,
@@ -109,29 +113,32 @@ export class PurchaseaddComponent  implements OnInit  {
     );
   }
 
-  getProductName(category:string){
-   /* this.purchaseService.loadItem(category)
+  /*getProductName(category:string){
+    this.purchaseService.loadItem(category)
     .subscribe(res => { 
       this.productList = res;
       },
       error => {
         alert('Error !!!!');
       }
-    );*/
-  }
-  unitArray : any = [];
-  i:number=0;
- public subTotalArray : any = [];
-  j:number=0;
-  getUnitPrice(productName:string,category:string,quantity:number){
+    );
+  }*/
+
+  getUnitPrice(productName:string,category:string,quantity:number,sNo:number){
+    let totalCommission = 0.0;
     this.purchaseService.getUnitPrice(productName,category)
     .subscribe(
       data => {
         this.purchase = data; 
-        console.log("Unit Price -->"+this.purchase.price);
+        console.log("Unit Price back end -->"+this.purchase.price);
+        console.log("Unit Prize initial -->"+this.unitArray[this.i]);
         this.unitArray[this.i] = this.purchase.price;
         this.subTotalArray[this.j] = quantity*this.unitArray[this.i];
-        console.log("Sub Total -->"+this.subTotalArray[this.j]);
+        this.fieldArray[this.i].unitPrice = this.unitArray[this.i];
+        this.fieldArray[this.i].netAmount = this.subTotalArray[this.j];
+        console.log(this.fieldArray);
+        totalCommission +=  this.fieldArray[this.i].netAmount;
+        this.model.subTotal = totalCommission;
         this.i++;
         this.j++;
       },
@@ -154,11 +161,24 @@ export class PurchaseaddComponent  implements OnInit  {
     this.fieldArray.push(this.newAttribute);
     this.newAttribute = {};
     this.model.sNo = sNo+1;
+    this.purchase.id = this.model.sNo;
   }
 
   deleteFieldValue(index) {
     this.fieldArray.splice(index, 1);
-    //this.model.sNo = this.fieldArray[index]-1;
+    console.log("Size -->"+this.fieldArray.length);
+    if(this.fieldArray.length==0){
+      this.fieldArray = [];
+      this.unitArray = [];
+      this.subTotalArray = [];
+      this.model.vendorName = '';
+      this.model.sNo = 0;
+      this.model.subTotal = '';
+      this.model.deliveryCost = '';
+      this.i = 0;
+      this.j = 0;
+    }
+    this.model.sNo = this.fieldArray.length;
     if(this.fieldArray[0]){
       this.purchasetable = true;
     }else{
@@ -185,8 +205,15 @@ export class PurchaseaddComponent  implements OnInit  {
            this.alertService.clear();
          }, 2000);
          this.fieldArray = [];
+         this.unitArray = [];
+         this.subTotalArray = [];
          this.purchasetable = false;
          this.model.vendorName = '';
+         this.model.sNo = 0;
+         this.model.subTotal = '';
+         this.model.deliveryCost = '';
+         this.i = 0;
+         this.j = 0;
        // }
       
                         

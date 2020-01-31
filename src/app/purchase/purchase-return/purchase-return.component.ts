@@ -31,9 +31,42 @@ export class PurchaseReturnComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.vendorList = ['Josni', 'Nisho', 'Alex', 'Jeff'];
-    this.productList = ['Mobile', 'Computer', 'Cloths', 'TV'];
-    this.categoryList = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];
+    this.getVendorList();
+    this.getcategoryList();
+    this.getProductList();
+  }
+
+  getVendorList(){
+    this.purchaseService.loadVendor()
+    .subscribe(res => { 
+      this.vendorList = res;
+      },
+      error => {
+        alert('Error !!!!');
+      }
+    );
+  }
+
+  getcategoryList(){
+    this.purchaseService.loadCategory()
+    .subscribe(res => { 
+      this.categoryList = res;
+      },
+      error => {
+        alert('Error !!!!');
+      }
+    );
+  }
+
+  getProductList(){
+    this.purchaseService.loadItem()
+    .subscribe(res => { 
+      this.productList = res;
+      },
+      error => {
+        alert('Error !!!!');
+      }
+    );
   }
 
   addProduct(){

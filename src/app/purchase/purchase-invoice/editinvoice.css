@@ -27,6 +27,13 @@
   border-radius: 16px;
   color: white;
 }
+#rowedit-div{
+  height: 30px;
+  width: 30px;
+  background: #267CB4; 
+  border-radius: 16px;
+  color: white;
+}
 table {
   table-layout: fixed;
   width: 90%;
@@ -74,4 +81,8 @@ td{
   padding: 4px 11px;
   color:white;
   cursor: pointer;
+}
+
+#middleContent {
+  vertical-align: middle;
 }

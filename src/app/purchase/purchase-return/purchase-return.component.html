@@ -25,9 +25,9 @@
                                 <label>:</label>
                             </div>
                             <div class="col-lg-7">
-                                <select class="form-control" style="background-color:#1B2931;color: white;" id="vendorName" [(ngModel)]="model.vendorName" name="{{model.vendorName}}" #vendorName="ngModel">
-                                    <option style="text-align:center;">-- Select --</option>
-                                    <option *ngFor="let itemvendor of vendorList" value="{{ itemvendor }}"> {{ itemvendor }} </option> 
+                                <select class="form-control" style="background-color:#1B2931;color: white;" id="vendorName" name="{{model.vendorName}}"  [(ngModel)]="model.vendorName" #vendorName="ngModel">
+                                    <option value="--- Select --- "> ---- Select ---- </option>  
+                                    <option *ngFor="let itemVendor of vendorList" value="{{ itemVendor.vendorName }}"> {{ itemVendor.vendorName }} </option>                     
                                 </select> 
                             </div>
                         </div><br/>
@@ -39,9 +39,9 @@
                                 <label>:</label>
                             </div>
                             <div class="col-lg-7">
-                                <select class="form-control" style="background-color:#1B2931;color: white;" id="category">
-                                    <option>-- Select --</option>
-                                    <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
+                                <select class="form-control" style="background-color:#1B2931;color: white;" [(ngModel)]="model.category" name="{{model.category}}" id="category" #category="ngModel">
+                                    <option value="--- Select --- "> -- Select -- </option>  
+                                    <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory.name }}-{{ itemcategory.categorycode }}"> {{ itemcategory.name }}-{{ itemcategory.categorycode }} </option>                     
                                 </select> 
                             </div>
                         </div><br/>
@@ -53,9 +53,9 @@
                                 <label>:</label>
                             </div>
                             <div class="col-lg-7">
-                                <select class="form-control" style="background-color:#1B2931;color: white;" id="productName" [(ngModel)]="model.productName" name="{{model.productName}}" #productName="ngModel">
-                                    <option style="text-align:center;">-- Select --</option>
-                                    <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
+                                <select class="form-control" style="background-color:#1B2931;color: white;" [(ngModel)]="model.productName" name="{{model.productName}}" id="productName" #productName="ngModel">
+                                    <option value="--- Select --- "> -- Select -- </option>  
+                                    <option *ngFor="let item of productList" value="{{ item.productname }}-{{ item.prodcode }}"> {{ item.productname }}-{{ item.prodcode }} </option>                     
                                 </select> 
                             </div>
                         </div><br/>

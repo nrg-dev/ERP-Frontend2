@@ -60,17 +60,17 @@
     <table style="width:100%">
         <thead>
             <tr>
-                <th>Qty</th>
                 <th>ID</th> 
-                <th>SKU/Description</th>
+                <th>Qty</th>
+                <th>Description</th>
                 <th>UnitPrice</th>
                 <th>Amount</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let list of purchaseViewList">
-                <td>{{ list.qty }}</td>
                 <td>{{ list.itemname }}</td>
+                <td>{{ list.qty }}</td>
                 <td>{{ list.description }}</td>
                 <td>{{ list.unitprice }}</td>
                 <td>{{ list.subtotal }}</td>

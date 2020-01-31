@@ -61,13 +61,13 @@
                     <p id="purchaseoutput">{{ model.sNo }} Item</p>
                   </div>       
                 </div>	
-                <div class="row"id="date">
+                <!--<div class="row" id="date">
                   <div class="col-md-5 col-xs-5 col-lg-5" id="purchasetext">Subtotal</div>
                   <div class="col-md-1 col-xs-1 col-lg-1">:</div>
                   <div class="col-md-6 col-xs-6 col-lg-6">
-                    <p id="purchaseoutput">{{todayDate | date:'longDate'}}</p>
+                    <p id="purchaseoutput">{{ this.model.subTotal }}</p>
                   </div>       
-                </div>
+                </div> -->
                 <div class="row">
                   <div class="col-md-5 col-xs-5 col-lg-5" id="purchasetext">Delivery Charge </div>
                   <div class="col-md-1 col-xs-1 col-lg-1">:</div>
@@ -149,7 +149,7 @@
                     </select> 
                   </td>
                   <td style="padding-right: 10px;padding: 9px;">
-                      <select class="form-control" [(ngModel)]="model.productName" name="{{model.productName}}" #productName="ngModel" style="color: black;">
+                    <select class="form-control" [(ngModel)]="model.productName" name="{{model.productName}}" #productName="ngModel" style="color: black;">
                       <option value="--- Select --- "> -- Select -- </option>  
                       <option *ngFor="let item of productList" value="{{ item.productname }}-{{ item.prodcode }}"> {{ item.productname }}-{{ item.prodcode }} </option>                     
                     </select> 
