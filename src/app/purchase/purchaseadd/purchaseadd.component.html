@@ -24,10 +24,10 @@
                 <div class="col-lg-1">
                     <label id="labeltext">:</label>
                 </div>
-                <div class="col-lg-5">
+                <div>
                   <select class="form-control" [(ngModel)]="model.vendorName" #vendorName="ngModel" name="vendorName" style="color: black;width: 185%;" >
-                    <option value="--- Select --- "> ---- Select ---- </option>  
-                    <option *ngFor="let itemVendor of vendorList" value="{{ itemVendor.vendorName }}"> {{ itemVendor.vendorName }} </option>                     
+                    <option *ngFor="let itemVendor of vendorList" 
+                    value="{{ itemVendor.vendorName }}"> {{ itemVendor.vendorName }} </option>                     
                   </select> 
                 </div>
               </div><br/>

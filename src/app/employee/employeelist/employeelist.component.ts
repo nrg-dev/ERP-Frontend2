@@ -59,7 +59,6 @@ export class EmployeelistComponent implements OnInit {
   }
 
   allemplist(){
-    //this.allproductlist="";
     this.employeeService.load()
     .subscribe(
       data => {
@@ -125,10 +124,12 @@ export class EmployeelistComponent implements OnInit {
     this.employeeService.update(this.model) 
     .subscribe(
       data => {
-        this.employee =   data;   
+        this.employee =   data;  
     this.alertService.success("Successfully Updated.");
     setTimeout(() => {
       this.alertService.clear();
+      this.allemplist(); 
+      this.empeditdetails = false;
     }, 2000);
   },
   error => {
@@ -154,7 +155,8 @@ export class EmployeelistComponent implements OnInit {
         if(this.employee.status == "Success"){
           this.alertService.success("Deleted Successfully");
           this.allemplist();
-
+          this.dataSource = new MatTableDataSource(this.employeeList);
+          this.empdetails = false;
           setTimeout(() => {
             this.alertService.clear();
           }, 1500);

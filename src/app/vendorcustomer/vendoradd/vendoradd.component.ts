@@ -318,6 +318,7 @@ export class VendoraddComponent implements OnInit {
 
   //Customer method start
   customerDetails(custcode:string){
+    console.log("customer id-->"+custcode);
     if(this.custtempid!==null){
       document.getElementById(this.custtempid).style.backgroundColor='#243641';
       this.custtempid=null;

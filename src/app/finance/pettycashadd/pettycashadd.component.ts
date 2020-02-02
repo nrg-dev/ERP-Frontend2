@@ -273,6 +273,7 @@ export class PettycashaddComponent implements OnInit {
   }
 
   updatePettyCash(){
+    console.log("update petty cash");
     this.alertService.success("Successfully Updated.");
     setTimeout(() => {
       this.alertService.clear();
@@ -280,6 +281,7 @@ export class PettycashaddComponent implements OnInit {
   }
 
   deletePettyCash(){
+    console.log("deletePettyCash");
     this.alertService.success("Successfully Deleted.");
     setTimeout(() => {
       this.alertService.clear();

@@ -68,7 +68,7 @@ showToggle: string;
     this.menuItems = [
       new MenuItem("DashBoard","/landingpage"),
       new MenuItem("Employment","employeelist"),
-      new MenuItem("TimeSheet","timesheet"),
+      //new MenuItem("TimeSheet","timesheet"),
       new MenuItem("Vendor & Customer","vendoradd"),
       new MenuItem("Category & Product","categoryadd"),
       new MenuItem("Purchase","purchaseadd"),
@@ -87,8 +87,8 @@ showToggle: string;
     this.menuItemsIcons = [
       new MenuItem("./assets/images/dashboard.png","/landingpage"),
       new MenuItem("./assets/images/employee.png","employeelist"),
-      new MenuItem("./assets/images/employee.png","employeelist"),
-     new MenuItem("./assets/images/vendor-customer.png", "Customervendoradd"),
+      //new MenuItem("./assets/images/employee.png","employeelist"),
+      new MenuItem("./assets/images/vendor-customer.png", "Customervendoradd"),
       new MenuItem("./assets/images/category-product.png", "Productcategoryadd"),
       new MenuItem("./assets/images/circle-cropped.png","purchaseadd"),
       new MenuItem("./assets/images/sales.png","salesorder"),

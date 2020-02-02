@@ -100,6 +100,7 @@ a {
   border-radius: 0px;
   width: 40%;
   color: black;
+  font-size: 12px;
 }
 
 #text{
@@ -343,6 +344,7 @@ margin-left: 240px;
 }
 #black-color{
   color: black;
+  font-size: 12px;
 }
 #hole-divsize{
   height: 100%;
