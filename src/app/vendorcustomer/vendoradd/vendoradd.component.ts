@@ -77,7 +77,8 @@ export class VendoraddComponent implements OnInit {
         this.vendorList = data;
       },
       error => {
-        alert("server error");
+        this.alertService.error("Network error: server is temporarily unavailable");
+
       }
     );
   }
@@ -89,8 +90,7 @@ export class VendoraddComponent implements OnInit {
         this.customerList = data;
       },
       error => {
-        alert("server error");
-      }
+        this.alertService.error("Network error: server is temporarily unavailable");      }
     )
   }
 
@@ -166,11 +166,11 @@ export class VendoraddComponent implements OnInit {
 
         }
         if(this.vendor.status=="failure"){
-          this.alertService.success("Server issue");
+          this.alertService.error("Network error: server is temporarily unavailable");;
         }
       },
       error => {
-        this.alertService.success("Serve Error ");
+        this.alertService.error("Network error: server is temporarily unavailable");
     setTimeout(() => {
       this.alertService.clear();
       this.vendordetails=false;
@@ -200,7 +200,7 @@ export class VendoraddComponent implements OnInit {
         this.getAllVendorDetails();
       },
       error => {
-        this.alertService.success("Serve Error ");
+        this.alertService.error("Network error: server is temporarily unavailable");
         setTimeout(() => {
           this.alertService.clear();
           this.vendordetails=false;
@@ -264,12 +264,12 @@ export class VendoraddComponent implements OnInit {
           }, 1500);
           this.getAllVendorDetails();
         }else{
-          this.alertService.error("Not Deleted..");
+          this.alertService.error("Network error: server is temporarily unavailable");
         }
         
       },
       error => {
-        this.alertService.success("Server Error ");
+        this.alertService.error("Network error: server is temporarily unavailable");
         setTimeout(() => {
           this.successdialog = 'none';
           this.alertService.clear();
@@ -457,8 +457,8 @@ export class VendoraddComponent implements OnInit {
           this.getAllCustomerDetails();
         }
         if(this.customer.status=="failure"){
-          this.alertService.success("Server issue");
-        }
+          this.alertService.error("Network error: server is temporarily unavailable");
+                }
       },
       error => {
         this.alertService.success("Serve Error ");
@@ -496,11 +496,11 @@ export class VendoraddComponent implements OnInit {
         }, 1500);
         this.getAllCustomerDetails();
   }else{
-    this.alertService.error("Not Deleted..");
+    this.alertService.error("Network error: server is temporarily unavailable");
   }
 },
 error => {
-  this.alertService.success("Server Error ");
+  this.alertService.error("Network error: server is temporarily unavailable");
   setTimeout(() => {
     this.successdialog = 'none';
     this.alertService.clear();

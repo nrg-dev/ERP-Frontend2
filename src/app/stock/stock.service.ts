@@ -5,9 +5,9 @@ import { Stock } from '../_models';
 @Injectable()
 export class StockService {    
 
-    //private commonURL = 'http://35.160.115.237:8095/erp/';
-    private commonURL = 'http://localhost:8095/erp/sales/';
-
+    public url = require("../apiurl.json");
+    private commonURL = this.url[0].apiurl+'stock/';
+    
     constructor(private http: HttpClient) { }
 
     //********************* Stock ************************

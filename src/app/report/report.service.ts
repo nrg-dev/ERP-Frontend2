@@ -13,10 +13,8 @@ import { Employee } from '../_models';
 @Injectable()
 export class ReportService {    
 
-    //private commonURL = 'http://35.160.115.237:8095/erp/';
-    private commonURL = 'http://localhost:8095/erp/reports/';
-    private empURL = 'http://localhost:8095/erp/employee/';
-
+    public url = require("../apiurl.json");
+    private commonURL = this.url[0].apiurl+'reports/';
 
     constructor(private http: HttpClient) { }
 
@@ -24,7 +22,7 @@ export class ReportService {
 
     // Load 
     load(){
-        return this.http.get(this.empURL+'load');
+        return this.http.get(this.commonURL+'load');
     }
     
 }

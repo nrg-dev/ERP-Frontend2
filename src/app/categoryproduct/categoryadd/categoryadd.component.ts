@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild ,ElementRef,Inject} from '@angular/core';
 import { Router } from '@angular/router';
 import { Category, Product } from 'src/app/_models';
-
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AlertService } from 'src/app/_services';
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
@@ -26,7 +25,6 @@ export class AddnewcategoryComponent {
     public dialogRef: MatDialogRef<AddnewcategoryComponent>,
 
     ) {
-     // this.countryList = require("../../../assets/country.json");
     }
   saveNewCategory(){
     this.catprodservice.save(this.model)
@@ -75,7 +73,6 @@ export class AddpromotionComponent {
     private alertService: AlertService,
     public dialogRef: MatDialogRef<AddpromotionComponent>,
     ) {
-     // this.countryList = require("../../../assets/country.json");
     }
 
     savePromotion(){
@@ -139,7 +136,7 @@ export class CategoryeditdeleteComponent {
           console.log("saveCategoryeditdelete"); 
         },
         error => {
-          this.alertService.success("Server Error");
+          this.alertService.error("Network error: server is temporarily unavailable");
         }
         );
     }
@@ -163,7 +160,7 @@ export class CategoryeditdeleteComponent {
         }
       },
       error => {
-        this.alertService.success("Server Error ");
+        this.alertService.error("Network error: server is temporarily unavailable");
       }
     );
   }
@@ -252,7 +249,9 @@ export class AddnewproductComponent {
           console.log("category name"+this.allcategorylist);
         },
        error => {
-          alert("server error");
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
       }
      );
 
@@ -263,7 +262,9 @@ export class AddnewproductComponent {
           console.log("category name"+this.vendornamelist);
         },
        error => {
-          alert("server error");
+          setTimeout(() => {
+            this.alertService.error("Network error: server is temporarily unavailable");
+          }, 2000);
       }
      );
     }
@@ -287,7 +288,7 @@ export class AddnewproductComponent {
         }
       },
       error => {
-        this.alertService.success("Serve Error ");
+        this.alertService.error("Serve Error ");
         setTimeout(() => {
           this.alertService.clear();
         }, 2000);
@@ -329,7 +330,9 @@ export class AllproducteditComponent {
            console.log("category name"+this.allcategorylist);
          },
         error => {
-           alert("server error");
+          setTimeout(() => {
+            this.alertService.error("Network error: server is temporarily unavailable");
+          }, 2000);
        }
       );
  
@@ -340,7 +343,9 @@ export class AllproducteditComponent {
            console.log("category name"+this.vendornamelist);
          },
         error => {
-           alert("server error");
+          setTimeout(() => {
+            this.alertService.error("Network error: server is temporarily unavailable");
+          }, 2000);
        }
       );
 
@@ -365,7 +370,9 @@ export class AllproducteditComponent {
         this.model.prodcode=this.allproducedittlist[0].prodcode;
       },
       error => {
-        alert("server error");
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
       }
     );
      
@@ -386,7 +393,7 @@ export class AllproducteditComponent {
         console.log("saveproducteditdelete"); 
       },
       error => {
-        this.alertService.success("Server Error");
+        this.alertService.error("Network error: server is temporarily unavailable");
       }
       );
   }
@@ -560,7 +567,9 @@ export class CategoryaddComponent implements OnInit {
        // this.dataSource.sort = this.sort;
       },
       error => {
-        alert("server error");
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
       }
     );
   }
@@ -577,7 +586,9 @@ export class CategoryaddComponent implements OnInit {
       this.dataSource.sort = this.sort;
       },
       error => {
-        alert("server error");
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
       }
     );
   }
@@ -622,7 +633,6 @@ categorydetails(number: string){
 }
 
 productlist(number: string){
-  //alert("----test---");
   if(this.tempnumber!==null){
     document.getElementById(this.tempnumber).style.backgroundColor='#272E34';
   }
@@ -827,7 +837,7 @@ productlist(number: string){
         }
       },
       error => {
-        this.alertService.success("Server Error ");
+        this.alertService.error("Network error: server is temporarily unavailable");
       }
     );
   }

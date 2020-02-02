@@ -40,7 +40,9 @@ export class ViewInvoice {
           }
         },
         error => {
-            alert('Error !!!!');
+          setTimeout(() => {
+            this.alertService.error("Network error: server is temporarily unavailable");
+          }, 2000);
         }
       ); 
       
@@ -59,7 +61,9 @@ export class ViewInvoice {
         console.log("Vendor Name -->"+this.purchase.vendorName);
       },
       error => {
-          alert('Error !!!!');
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
       }
     ); 
   }
@@ -104,7 +108,9 @@ export class EditInvoice {
         this.categoryList = res;
         },
         error => {
-          alert('Error !!!!');
+          setTimeout(() => {
+            this.alertService.error("Network error: server is temporarily unavailable");
+          }, 2000);
         }
       );
     }
@@ -115,8 +121,9 @@ export class EditInvoice {
         this.productList = res;
         },
         error => {
-          alert('Error !!!!');
-        }
+          setTimeout(() => {
+            this.alertService.error("Network error: server is temporarily unavailable");
+          }, 2000);        }
       );
     }
 
@@ -128,7 +135,9 @@ export class EditInvoice {
         console.log("Length -->"+this.purchaseEditList.length);
       },
       error => {
-          alert('Error !!!!');
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
       }
     ); 
   }
@@ -153,7 +162,7 @@ export class EditInvoice {
         
       },
       error => {
-        this.alertService.success("Server Error ");
+        this.alertService.error("Network error: server is temporarily unavailable");
         setTimeout(() => {
           this.alertService.clear();
         }, 1500);
@@ -172,7 +181,7 @@ export class EditInvoice {
         }, 2000);
       },
       error => {
-        this.alertService.success("Server Error ");
+        this.alertService.error("Network error: server is temporarily unavailable");
         setTimeout(() => {
           this.alertService.clear();
         }, 1500);
@@ -190,7 +199,7 @@ export class EditInvoice {
         this.purchase = data; 
       },
       error => {
-        this.alertService.success("Server Error ");
+        this.alertService.error("Network error: server is temporarily unavailable");
         setTimeout(() => {
           this.alertService.clear();
         }, 1500);
@@ -264,7 +273,9 @@ export class PurchaseInvoiceComponent implements OnInit {
           this.dataSource.sort = this.sort;  
       },
       error => {
-          alert('Error !!!!');
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
       }
     );
     
@@ -359,7 +370,7 @@ export class PurchaseInvoiceComponent implements OnInit {
         
       },
       error => {
-        this.alertService.success("Server Error ");
+        this.alertService.error("Network error: server is temporarily unavailable");
         setTimeout(() => {
           this.alertService.clear();
         }, 1500);

@@ -5,9 +5,9 @@ import { Category, Product } from '../_models';
 @Injectable()
 export class CategoryproductService {    
 
-//private commonURL = 'http://35.160.115.237:8095/erp/';
-private commonURL1 = 'http://localhost:8095/erp/category/';
-private commonURL2 = 'http://localhost:8095/erp/item/';
+public url = require("../apiurl.json");
+private commonURL1 = this.url[0].apiurl+'category/';
+private commonURL2 = this.url[0].apiurl+'item/';
 
 
 constructor(private http: HttpClient) { }

@@ -4,10 +4,11 @@ import { Customer } from '../_models';
 import { HttpClientModule } from '@angular/common/http';
 
 @Injectable()
-export class CustomerService {    
+export class CustomerService {   
 
-//private commonURL = 'http://35.160.115.237:8095/erp/';
-private commonURL = 'http://localhost:8095/erp/customer/';
+public url = require("../apiurl.json");
+private commonURL = this.url[0].apiurl+'customer/';
+
 
 constructor(private http: HttpClient) { }
 

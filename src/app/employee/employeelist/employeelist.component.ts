@@ -69,7 +69,7 @@ export class EmployeelistComponent implements OnInit {
         this.dataSource.sort = this.sort;
       },
       error => {
-        alert("server error");
+        this.alertService.error("Network error: server is temporarily unavailable");
       }
     );
   }
@@ -166,7 +166,7 @@ export class EmployeelistComponent implements OnInit {
         this.allemplist();
       },
       error => {
-        this.alertService.success("Server Error ");
+        this.alertService.error("Network error: server is temporarily unavailable");
         setTimeout(() => {
       this.alertService.clear();
     }, 2000);

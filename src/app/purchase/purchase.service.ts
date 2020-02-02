@@ -10,12 +10,13 @@ import { HttpRequest, HttpEvent} from '@angular/common/http';
 
 
 @Injectable()
-export class PurchaseService {    
+export class PurchaseService {  
+   
+    public url = require("../apiurl.json");
+    private commonURL = this.url[0].apiurl+'purchase/';
+    private categoryURL = this.url[0].apiurl+'category/';
+    private productURL = this.url[0].apiurl+'item/';
 
-    //private commonURL = 'http://35.160.115.237:8095/erp/';
-    private commonURL = 'http://localhost:8095/erp/purchase/';
-    private categoryURL = 'http://localhost:8095/erp/category/'; 
-    private productURL = 'http://localhost:8095/erp/item/';
 
     constructor(private http: HttpClient) { }
 

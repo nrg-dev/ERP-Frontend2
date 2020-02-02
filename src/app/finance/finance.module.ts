@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
 import { Finance } from 'src/app/_models/finance';
+
 import {
   MatAutocompleteModule,
   MatBadgeModule, 
@@ -41,6 +42,8 @@ import {
   MatTooltipModule,
   MatTreeModule,
 } from '@angular/material';
+import { Ng2CompleterModule } from 'ng2-completer';
+import { FinanceService } from './finance.service';
 
 const routes: Routes = [
   { path: 'pettycashadd', component: PettycashaddComponent },
@@ -90,9 +93,10 @@ const routes: Routes = [
     MatTooltipModule,
     MatTreeModule,
     MatPaginatorModule,
+    Ng2CompleterModule,
     DataTablesModule.forRoot(),
     RouterModule.forChild(routes) 
   ],
-  providers: [Finance],
+  providers: [FinanceService],
 })
 export class FinanceModule { }

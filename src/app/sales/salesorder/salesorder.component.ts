@@ -112,7 +112,7 @@ export class SalesorderComponent implements OnInit {
                         
        },
        error => {
-         alert("Server error...");
+        this.alertService.error("Network error: server is temporarily unavailable");
 
        });
   }

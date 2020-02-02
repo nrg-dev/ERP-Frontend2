@@ -5,8 +5,8 @@ import { Employee } from '../_models';
 @Injectable()
 export class EmployeeService {    
  
-//private commonURL = 'http://35.160.115.237:8095/erp/';
-private commonURL = 'http://localhost:8095/erp/employee/';
+public url = require("../apiurl.json");
+private commonURL = this.url[0].apiurl+'employee/';
 
 constructor(private http: HttpClient) { }
 

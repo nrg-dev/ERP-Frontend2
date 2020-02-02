@@ -38,7 +38,9 @@ export class PurchasereportComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.purchaseList);
       },
       error => {
-          alert('Error !!!!');
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
       }
     );
 
@@ -73,7 +75,9 @@ export class PurchasereportComponent implements OnInit {
       }
       },
       error => {
-          alert('Error !!!!');
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
       }
     );
     this.purchaseservice.get(invoicenumber)
@@ -85,7 +89,9 @@ export class PurchasereportComponent implements OnInit {
         }
       },
       error => {
-          alert('Error !!!!');
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
       }
     );
   }

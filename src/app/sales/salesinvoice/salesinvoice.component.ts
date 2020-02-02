@@ -88,7 +88,7 @@ export class EditInvoice {
   }
 
   cancelInvoice(){
-    alert("-- Cancel Invoice --");
+    console.log("-- Cancel Invoice --");
   }
 
 }

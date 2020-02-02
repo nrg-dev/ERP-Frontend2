@@ -112,6 +112,10 @@ td{
   margin: 0px 25px;
 }
 
+
+
+
+
 ::ng-deep .mat-select-value,::ng-deep .mat-select-arrow {
   color: white;
 }
@@ -333,7 +337,11 @@ div#back-color::-webkit-scrollbar-thumb {
   position: relative;
   color: white;
 }
-
+::ng-deep .input[type="search"] {
+  background-color: #1B2931;
+  color: white;
+  width: 159%;
+}
 ::ng-deep header-pagination-after,::ng-deep .mat-tab-header-pagination-chevron {
   transform: rotate(-135deg);
   border-color: white;
@@ -365,6 +373,8 @@ div#back-color::-webkit-scrollbar-thumb {
   width: 100%;
 }
 
+
+
 #textSize2::-webkit-input-placeholder { 
   font-size: 8px;
 }
@@ -376,21 +386,20 @@ div#back-color::-webkit-scrollbar-thumb {
 }
 #purchase-details {
   width: 90%;
-  height: 430px;
+  /*height: 430px;*/
   background-color: #243642;
   margin: 20px 5px;
   overflow-y: auto;
   overflow-x: hidden;
 }
 #petty-details{
-  width: 95%;
-  height: 285px;
+  width: 95%; 
   background-color: #243642;
   margin: 0 5px;
 }
 #add-petty-details{
   width: 95%;
-  height: 350px;
+  /*height: 350px;*/
   background-color: #243642;
   margin: 0px 5px;
 }
@@ -400,7 +409,7 @@ div#back-color::-webkit-scrollbar-thumb {
 #financebackground {
   background-color: #243642;
   width: 95%;
-  height: 750px;
+  /*height: 750px;*/
   margin-left: 22px;
 }
 #purchase-text{
@@ -424,6 +433,7 @@ div#back-color::-webkit-scrollbar-thumb {
   height: 100px;
   background: #10181C;
 }
+
 #debcred-box2{
   width: 50%;
   height: 100px;

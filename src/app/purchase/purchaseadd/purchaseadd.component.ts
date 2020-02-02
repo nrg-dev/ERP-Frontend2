@@ -86,7 +86,9 @@ export class PurchaseaddComponent  implements OnInit  {
       this.vendorList = res;
       },
       error => {
-        alert('Error !!!!');
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
       }
     );
   }
@@ -97,7 +99,9 @@ export class PurchaseaddComponent  implements OnInit  {
       this.categoryList = res;
       },
       error => {
-        alert('Error !!!!');
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
       }
     );
   }
@@ -108,7 +112,9 @@ export class PurchaseaddComponent  implements OnInit  {
       this.productList = res;
       },
       error => {
-        alert('Error !!!!');
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
       }
     );
   }
@@ -143,7 +149,7 @@ export class PurchaseaddComponent  implements OnInit  {
         this.j++;
       },
       error => {
-        this.alertService.success("Server Error ");
+        this.alertService.error("Network error: server is temporarily unavailable");
         setTimeout(() => {
           this.alertService.clear();
         }, 1500);
@@ -151,8 +157,8 @@ export class PurchaseaddComponent  implements OnInit  {
     );
   }
   getSubTotal(quantity:number,price:number){
-    alert("Qty -->"+quantity);
-    alert("price -->"+price);
+    console.log("Qty -->"+quantity);
+    console.log("price -->"+price);
     this.purchase.netAmount = quantity*price;
   }
 

@@ -2,12 +2,13 @@ import { Component, OnInit, ViewChildren, ViewChild, QueryList, ElementRef, Inje
 import { User } from 'src/app/_models';
 import { AlertService } from 'src/app/_services/index';
 import { Router } from '@angular/router';
-//import { StockService } from '../stock.service';
 import { Finance } from 'src/app/_models/finance';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource } from "@angular/material";
 import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
 import { runInThisContext } from 'vm';
+import { CompleterService, CompleterData } from 'ng2-completer';
+import { FinanceService } from '../finance.service';
 
 @Component({
   selector: 'app-pettycashadd',
@@ -16,7 +17,7 @@ import { runInThisContext } from 'vm';
 })
 export class PettycashaddComponent implements OnInit {
   model: any = {};
-  user: User = new User();
+  //user: User = new User();
   finance: Finance = new Finance();
   //stock:Stock;
   empList: any = {};
@@ -60,13 +61,40 @@ export class PettycashaddComponent implements OnInit {
   dataSource5: MatTableDataSource<any>;
   dataSource6: MatTableDataSource<any>;
 
+  protected searchStr: string;
+  protected captain: string;
+  protected dataService: CompleterData;
+  public searchData :any=[];
+  /*protected searchData = [
+    { color: 'red', value: '#f00' },
+    { color: 'green', value: '#0f0' },
+    { color: 'blue', value: '#00f' },
+    { color: 'cyan', value: '#0ff' },
+    { color: 'magenta', value: '#f0f' },
+    { color: 'yellow', value: '#ff0' },
+    { color: 'black', value: '#000' }
+  ];*/
+  //protected captains = ['James T. Kirk', 'Benjamin Sisko', 'Jean-Luc Picard', 'Spock', 'Jonathan Archer', 'Hikaru Sulu', 'Christopher Pike', 'Rachel Garrett' ];
+
   @ViewChildren(MatPaginator) paginator = new QueryList<MatPaginator>();
   @ViewChildren(MatSort) sort = new QueryList<MatSort>();
   constructor(
     private dialog: MatDialog,
     private router: Router,
     private alertService: AlertService,
+    private completerService: CompleterService,
+    private financeService:FinanceService,
   ) {
+    this.financeService.loadCustomerVendorName()
+    .subscribe(
+      data => { 
+        this.searchData = data;
+        this.dataService = completerService.local(this.searchData);        
+      },
+      error => {
+        this.alertService.error("Network error: server is temporarily unavailable");
+      }
+    );
     const empReportdata = require("../../EmpReportTable.json");
     this.empList = empReportdata;
     this.dataSource1 = new MatTableDataSource(this.empList);
@@ -90,13 +118,15 @@ export class PettycashaddComponent implements OnInit {
     this.dataSource4 = new MatTableDataSource(this.purchaseReturnList);
     this.dataSource4.paginator = this.paginator.toArray()[3];
     this.dataSource4.sort = this.sort.toArray()[3]; 
-
+    // Load all petty cash
+    this.load();
+/*
     const pettydata = require("../../pettyCashdata.json");
     this.pettyCashList=pettydata;
     this.dataSource5 = new MatTableDataSource(this.pettyCashList);
     this.dataSource5.paginator = this.paginator.toArray()[4];
     this.dataSource5.sort = this.sort.toArray()[4]; 
-
+*/
     const financedata = require("../../AllFinanceReporttable .json");
     this.financeList=financedata;
     this.dataSource6 = new MatTableDataSource(this.financeList);
@@ -123,8 +153,23 @@ export class PettycashaddComponent implements OnInit {
     this.dataSource6.paginator = this.paginator.toArray()[5];
     this.dataSource6.sort = this.sort.toArray()[5]; 
   }
+  
+  load(){
+    this.financeService.load()
+    .subscribe(
+      data => { 
+        this.pettyCashList = data;
+        this.dataSource5 = new MatTableDataSource(this.pettyCashList);
+        this.dataSource5.paginator = this.paginator.toArray()[4];
+        this.dataSource5.sort = this.sort.toArray()[4]; 
+      },
+      error => {
+        this.alertService.error("Network error: server is temporarily unavailable");
+      }
+    );
+  }
+  ngOnInit() {   
 
-  ngOnInit() {
     this.empDetailsDiv = false;
     this.salesDetailsDiv = false;
     this.addSalesDiv = false;
@@ -140,6 +185,8 @@ export class PettycashaddComponent implements OnInit {
     this.categoryList = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];
     this.dateList = ['oct 2019','nov 2019','dec 2019','Jan 2020','Feb 2020','Mar 2020','Apr 2020']; 
     this.typeList = ['Credit','Debit'];
+
+
   }
 
   applyFilter(filterValue: string) {
@@ -246,39 +293,86 @@ export class PettycashaddComponent implements OnInit {
     }
   }
 
-  savePettyCash(){
-    this.alertService.success("Successfully Saved.");
-    setTimeout(() => {
-      this.alertService.clear();
-    }, 2000);
-    this.model.description = '';
-    this.model.addedDate = '';
-    this.model.type = '';
-    this.model.fromPerson = '';
-    this.model.toPerson = '';
-    this.model.totalAmount = '';
+  savePettyCash(error: Response | any){
+    console.log("savePettyCash");
+    console.log("description-->"+this.model.description);
+    console.log("addedDate-->"+this.model.addedDate);
+    console.log("type-->"+this.model.type);
+    console.log("fromPerson-->"+this.model.fromPerson);
+    console.log("toPerson-->"+this.model.toPerson);
+    console.log("totalAmount-->"+this.model.totalAmount);
+    this.financeService.save(this.model)
+      .subscribe(
+        data => {
+          this.alertService.success("Successfully Saved.");
+          setTimeout(() => {
+            this.load();
+            this.alertService.clear();
+            this.model.description = '';
+            this.model.addedDate = '';
+            this.model.type = '';
+            this.model.fromPerson = '';
+            this.model.toPerson = '';
+            this.model.totalAmount = '';
+          }, 1000);
+
+        },
+        error => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 2000);
+        }
+      );
+
+      if (error.status == 0){ //or whatever condition you like to put
+        this.alertService.error("Network error: server is temporarily unavailable");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 2000);        }
+
   }
 
-  pettyDetails(invoiceNumber: string){
+  pettyDetails(_id: string){
+    console.log("petty cash details");  
+      console.log("pettycash code-->"+_id);
     for(let j=0; j<this.pettyCashList.length; j++){
-      if(this.pettyCashList[j].invoiceNumber == invoiceNumber){
+      if(this.pettyCashList[j].id == _id){
         this.finance.description = this.pettyCashList[j].description;
         this.finance.addedDate = this.pettyCashList[j].addedDate;
         this.finance.type = this.pettyCashList[j].type;
         this.finance.fromPerson = this.pettyCashList[j].fromPerson;
         this.finance.toPerson = this.pettyCashList[j].toPerson;
         this.finance.totalAmount = this.pettyCashList[j].totalAmount;
+        this.finance.id = this.pettyCashList[j].id;
+
       }
     }
   }
 
   updatePettyCash(){
     console.log("update petty cash");
-    this.alertService.success("Successfully Updated.");
-    setTimeout(() => {
-      this.alertService.clear();
-    }, 2000);
-  }
+    console.log("pettycash Id-->"+this.finance.id);
+    this.financeService.update(this.finance)
+    .subscribe(
+      data => {
+        this.finance =   data;   
+        this.alertService.success("Successfully Updated");
+        setTimeout(() => {
+          this.alertService.clear();
+
+        }, 2000);
+        this.load();
+      },
+      error => {
+        this.alertService.error("Network error: server is temporarily unavailable");
+        setTimeout(() => {
+          this.alertService.clear();
+
+        }, 2000);
+      }
+      ); 
+     }
 
   deletePettyCash(){
     console.log("deletePettyCash");
@@ -296,6 +390,7 @@ export class PettycashaddComponent implements OnInit {
   }
 
   financedetaildivcall(Date: string){
+    console.log("showing particular petty cash info")
     this.financedetails=true;
     for(let i=0;i<this.financeList.length;i++){
       if(this.financeList[i].date==Date){

@@ -42,7 +42,9 @@ export class PurchaseReturnComponent implements OnInit {
       this.vendorList = res;
       },
       error => {
-        alert('Error !!!!');
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
       }
     );
   }
@@ -53,7 +55,9 @@ export class PurchaseReturnComponent implements OnInit {
       this.categoryList = res;
       },
       error => {
-        alert('Error !!!!');
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
       }
     );
   }
@@ -64,7 +68,9 @@ export class PurchaseReturnComponent implements OnInit {
       this.productList = res;
       },
       error => {
-        alert('Error !!!!');
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
       }
     );
   }

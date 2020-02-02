@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { ReportService } from '../report.service';
+import { AlertService } from 'src/app/_services';
 
 @Component({
   selector: 'app-all-emp-report',
@@ -29,6 +30,7 @@ export class AllEmpReportComponent implements OnInit {
 
   constructor(
     private  reportService:ReportService,
+    private alertService:AlertService,
   ) { 
     const purchasedata1 = require("../../EmpAbsentcardTable.json");
       this.empAbsetList=purchasedata1;
@@ -50,7 +52,9 @@ export class AllEmpReportComponent implements OnInit {
         this.dataSource1.sort = this.sortCol1;
       },
       error => {
-        alert("server error");
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
       }
     );
   }
