@@ -5,6 +5,7 @@
     <table class="scroll">
         <thead>
             <tr id="tr-color">
+                <th>SNO</th>
                 <th>Category</th>
                 <th>Item</th>
                 <th>Description</th>
@@ -15,20 +16,28 @@
         </thead>
         
         <tbody>
-            <tr *ngFor="let list of purchaseEditList">
+            <tr *ngFor="let list of purchaseEditList; let i = index">
+                <td id="middleContent">{{ list.sNo }}</td>
                 <td id="middleContent">
-                    <select class="form-control" [(ngModel)]="model.category" #category="ngModel" value="{{ list.category }}">
-                        <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory.name }}-{{ itemcategory.categorycode }}"> {{ itemcategory.name }}-{{ itemcategory.categorycode }} </option>                     
+                    <select class="form-control" [(ngModel)]="model.category" #category="ngModel">
+                        <option
+                            *ngFor="let option of categoryList; index as i"
+                            [selected]="option === list.category">
+                            {{ option }}
+                        </option>
                     </select> 
                 </td>
                 <td id="middleContent">
-                    <select class="form-control" [(ngModel)]="model.itemname" #itemname="ngModel" style="color: black;" 
-                        value="{{ list.itemname }}">
-                        <option *ngFor="let item of productList" value="{{ item.productname }}-{{ item.prodcode }}"> {{ item.productname }}-{{ item.prodcode }} </option> 
+                    <select class="form-control" [(ngModel)]="model.productname" #productname="ngModel">
+                        <option
+                            *ngFor="let item of productList; index as i"
+                            [selected]="item === list.itemname">
+                            {{ item }}
+                        </option>
                     </select> 
                 </td>
-                <td id="middleContent"><input type="text" [(ngModel)]="model.description" #description="ngModel" value="{{ list.description }}" /></td>
-                <td id="middleContent"><input type="text" [(ngModel)]="model.qty" #qty="ngModel" value="{{ list.qty }}" /></td>
+                <td id="middleContent"><input type="text" id="{{ list.sNo }}" [(ngModel)]="model.description" #description="ngModel" value="{{ list.description }}" /></td>
+                <td id="middleContent"><input type="text" id="{{ list.sNo }}" [(ngModel)]="model.qty" #qty="ngModel" value="{{ list.qty }}" /></td>
                 <td id="middleContent"><label style="color: white;" [(ngModel)]="model.subtotal" #subtotal="ngModel">{{ list.subtotal }}</label></td>
                 <td>
                     <div class="row" style="margin: 10px;">

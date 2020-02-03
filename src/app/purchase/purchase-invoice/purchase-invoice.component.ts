@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild ,ElementRef,Inject} from '@angular/core';
-import { Purchase, User } from 'src/app/_models';
+import { Purchase, User, Category } from 'src/app/_models';
 import { AlertService } from 'src/app/_services';
 import { Router } from '@angular/router';
 import { AlertComponent } from 'src/app/_directives';
@@ -35,6 +35,7 @@ export class ViewInvoice {
           this.purchaseViewList = data;
           for(let i=0; i<this.purchaseViewList.length; i++){
             this.model.invoiceNumber = this.purchaseViewList[0].invoicenumber;
+            this.model.status = this.purchaseViewList[0].status;
             totalCommission +=  this.purchaseViewList[i].subtotal;
             this.model.subTotal = totalCommission;
           }
@@ -97,13 +98,12 @@ export class EditInvoice {
       console.log("Edit Dialog InvoiceNumber -->"+this.data);
       this.model.invoiceNumber = this.data;
       this.editDetails(this.model.invoiceNumber);
-      
       this.getProductList();
       this.getcategoryList();
     }
 
     getcategoryList(){
-      this.purchaseService.loadCategory()
+      this.purchaseService.loadCategoryName()
       .subscribe(res => { 
         this.categoryList = res;
         },
@@ -116,7 +116,7 @@ export class EditInvoice {
     }
 
     getProductList(){
-      this.purchaseService.loadItem()
+      this.purchaseService.loadItemName()
       .subscribe(res => { 
         this.productList = res;
         },
@@ -133,6 +133,14 @@ export class EditInvoice {
       data => {
         this.purchaseEditList = data;
         console.log("Length -->"+this.purchaseEditList.length);
+        //this.model.category=this.p
+        if(this.purchaseEditList.length == 0){
+          console.log("--- No data Found ---");
+        }else{
+          for (let i = 0; i < this.purchaseEditList.length; i++) {
+              //this.users[i] = newItem;
+          }
+        }
       },
       error => {
         setTimeout(() => {
@@ -171,6 +179,7 @@ export class EditInvoice {
   }
 
   updateInvoice(){
+    //alert("Category Name -->"+this.category);
     this.purchaseService.update(this.model)
     .subscribe(
       data => {

@@ -70,10 +70,18 @@ export class PurchaseService {
         return this.http.get<Purchase>(this.categoryURL+'load');
     }
 
+    loadCategoryName(){
+        return this.http.get<Purchase>(this.categoryURL+'loadCategoryName');
+    }
+
     //loadItem(category:string){
     loadItem(){
         return this.http.get<Purchase>(this.productURL+'load');
         //return this.http.get<Purchase>(this.commonURL+'loadItem?category='+category);
+    }
+
+    loadItemName(){
+        return this.http.get<Purchase>(this.productURL+'loadItemName');
     }
 
     getUnitPrice(productName:string,category:string){
