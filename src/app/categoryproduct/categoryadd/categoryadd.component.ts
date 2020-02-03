@@ -7,6 +7,7 @@ import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} f
 import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
 import { CategoryproductService } from '../categoryproduct.service';
 import { VendorService } from 'src/app/vendorcustomer/vendor.service';
+import { Discount } from 'src/app/_models/discount';
 
 // addnewcategory start
 @Component({
@@ -69,19 +70,55 @@ export class AddpromotionComponent {
   countryList:any;
   priorityList:any;
   model: any = {};
+  allcategorylist:any= {};
+  discount:Discount;
+
   constructor(
     private alertService: AlertService,
     public dialogRef: MatDialogRef<AddpromotionComponent>,
+    private catprodservice: CategoryproductService,
     ) {
+      this.catprodservice.load()
+      .subscribe(
+         data => {
+           this.allcategorylist = data;
+           console.log("category name"+this.allcategorylist);
+         },
+        error => {
+         setTimeout(() => {
+           this.alertService.error("Network error: server is temporarily unavailable");
+         }, 2000);
+       }
+      );
+ 
     }
 
     savePromotion(){
-      this.alertService.success("Saved Successfully");
-      setTimeout(() => {
-        this.alertService.clear();
-      }, 2000);
-    this.dialogRef.close();
-console.log("savepromotion");
+      this.catprodservice.addpromotionsave(this.model)
+      .subscribe(
+        data => {
+          this.discount =   data; 
+          this.dialogRef.close();
+          if(this.discount.status=="success"){
+            this.alertService.success("Saved Successfully");
+            setTimeout(() => {
+              this.alertService.clear();
+            }, 2000);
+          } 
+          if(this.discount.status=="failure"){
+            this.alertService.success("not saved");
+            setTimeout(() => {
+              this.alertService.clear();
+            }, 2000);
+          }
+        },
+        error => {
+          this.alertService.error("Serve Error ");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 2000);
+        }
+      ); 
     }
     close(e) {
     this.dialogRef.close();
@@ -491,6 +528,7 @@ export class CategoryaddComponent implements OnInit {
   product:Product;
   categorylist: any= {};
   allproducedittlist:any;
+  alldiscountlist: any= {};
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
   model: any = {};
@@ -553,6 +591,7 @@ export class CategoryaddComponent implements OnInit {
     this.leftdetails=true;
     this.allcategorylist();
     this.allproductList();
+    this.alldiscountList();
   }
 
   allcategorylist(){
@@ -593,6 +632,25 @@ export class CategoryaddComponent implements OnInit {
     );
   }
 
+  alldiscountList(){
+    //this.allproductlist="";
+    this.catprodservice.loadDiscount()
+    .subscribe(
+      data => {
+        this.alldiscountlist = data;
+        console.log("discount code -->"+this.alldiscountlist[0].discountcode);
+        this.dataSource1 = new MatTableDataSource(this.alldiscountlist);
+        this.dataSource1.paginator = this.paginator;
+        this.dataSource1.sort = this.sort;
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    );
+  }
+
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
@@ -617,17 +675,17 @@ categorydetails(number: string){
     this.editdeletediv=false;
   }
   if(number=='02'){
-    //this.alldetails='none';
-   //this.discountdetails='block';
-    //this.alldetails='none';
-   // this.fiberdetails='none';
-    //this.editdeletediv =false;
+    this.alldetails='none';
+   this.discountdetails='block';
+    this.alldetails='none';
+    this.fiberdetails='none';
+    this.editdeletediv =false;
   }
   if(number=='03'){
     this.leftdetails=true;
     this.alldetails='none';
-    //this.discountdetails=false;
-    //this.fiberdetails=false;
+    this.discountdetails='none';
+    this.fiberdetails='block';
     this.editdeletediv=false;
   }
 }
