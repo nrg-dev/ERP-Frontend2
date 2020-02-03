@@ -42,7 +42,7 @@
     <div id="leftside-div">
         <div >
 
-    <!--discount details start 
+    <!-- discount details start -->
 
             <div  [ngStyle]="{'display':discountdetails}" >
                 <div class="col-12 col-sm-12 col-md-12  col-lg-12">
@@ -79,7 +79,7 @@
                         <table mat-table [dataSource]="dataSource1" matSort>
                     
                             <ng-container matColumnDef="Productcode">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Itemcode </th>
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Productcode </th>
                                 <td mat-cell *matCellDef="let row"> {{row.Productcode}} </td>
                             </ng-container>
                             
@@ -90,7 +90,7 @@
     
                             <ng-container matColumnDef="DiscountTime">
                                 <th mat-header-cell *matHeaderCellDef mat-sort-header> discounttime </th>
-                                <td mat-cell *matCellDef="let row"> {{row.discounttime}} </td>
+                                <td mat-cell *matCellDef="let row"> {{row.promotionperiod}} </td>
                             </ng-container>
                             
                             
@@ -127,7 +127,7 @@
                     </div>  
                       
                 </div>
-            </div> -->
+            </div> 
 
      <!--  discount details end -->
             

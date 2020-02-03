@@ -16,8 +16,11 @@
                   </div>
                 
                 <div class="col-7 col-md-7 col-sm-7 col-lg-7">
-                  <select id="selectbox-category">
-                      <option>Select Product Category</option>
+                  <select id="selectbox-category" name ="selectcategory" 
+                  [(ngModel)]="model.categorycode" 
+                  #categorycode="ngModel" required>
+                      <option>---- Select ----</option>
+                      <option *ngFor="let itemcategory of allcategorylist" value="{{itemcategory.name}}-{{itemcategory.categorycode}}"> {{itemcategory.name}}-{{itemcategory.categorycode}} </option>
                   </select>
                 </div>
             </div>
@@ -30,7 +33,10 @@
                   <p>:</p>
                 </div>
                 <div class="col-7 col-md-7 col-sm-7 col-lg-7">
-                  <input type="text" placeholder="&#xf002; search here" class="searchicon2" />
+                  <input type="text" placeholder="&#xf002; search here" class="searchicon2" 
+                  name ="productname" 
+                  [(ngModel)]="model.productname" 
+                  #productname="ngModel"/>
                 </div>
             </div>
         </div>
@@ -41,18 +47,27 @@
               <input type="checkbox" style="margin: 7px;"/>
                   <p>Discount</p>
                   &nbsp;
-                  <input type="text" placeholder="%" id="dicountinput-box"/>
+                  <input type="text" placeholder="%" id="dicountinput-box"
+                  name ="discount" 
+                  [(ngModel)]="model.discount" 
+                  #discount="ngModel"/>
                   &nbsp;&nbsp;&nbsp;
                   <p>Qty</p>
                   &nbsp;
-                  <input type="text" id="qtyinput-box"/>
+                  <input type="text" id="qtyinput-box"
+                  name ="qty" 
+                  [(ngModel)]="model.qty" 
+                  #qty="ngModel"/>
             </div>
 
             <div class="row" style="margin-left: 0px;">
               <input type="checkbox" style="margin: 7px;"/>
                   <p>Free Gift</p>
                   &nbsp;
-                  <input type="text" id="freegift-box" placeholder="Product Free Gift" />
+                  <input type="text" id="freegift-box" placeholder="Product Free Gift" 
+                  name ="freegift" 
+                  [(ngModel)]="model.freegift" 
+                  #freegift="ngModel"/>
             </div>
 
             <div class="row" style="margin-left: 0px;">
@@ -61,7 +76,10 @@
                 </label>
                   <p>others </p>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <input type="text" id="others-box" placeholder="Custom Promotion" />
+                  <input type="text" id="others-box" placeholder="Custom Promotion" 
+                  name ="others" 
+                  [(ngModel)]="model.others" 
+                  #others="ngModel"/>
             </div>
         </div>
 
@@ -75,11 +93,17 @@
                 </div>
                 <div class="col-7 col-md-7 col-sm-7 col-lg-7" style="margin-left: -21px;">
                     <div class="row">
-                        <input type="text" placeholder="xx-xx-xxxx" id="promotion-periodbox"/>
+                        <input type="text" placeholder="xx-xx-xxxx" id="promotion-periodbox"
+                        name ="promotionperiod" 
+                        [(ngModel)]="model.promotionperiod" 
+                        #v="ngModel"/>
                         &nbsp;&nbsp;
                         <hr class="hrline">
                         &nbsp;&nbsp;
-                        <input type="text" placeholder="xx-xx-xxxx" id="promotion-periodbox"/>
+                        <input type="text" placeholder="xx-xx-xxxx" id="promotion-periodbox"
+                        name ="promotionperiod" 
+                        [(ngModel)]="model.promotionperiod" 
+                        #promotionperiod="ngModel"/>
                     </div>
                 </div>
 

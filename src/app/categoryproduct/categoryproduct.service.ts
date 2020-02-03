@@ -1,6 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Category, Product } from '../_models';
+import { Discount } from '../_models/discount';
 
 @Injectable()
 export class CategoryproductService {    
@@ -14,7 +15,7 @@ constructor(private http: HttpClient) { }
 
 //*********************Employee************************
 
-// Save 
+//category Save 
 save(category: Category){
     console.log('service....');
     return this.http.post<Category>(this.commonURL1+'save',category);
@@ -26,6 +27,11 @@ producsave(product: Product){
     return this.http.post<Product>(this.commonURL2+'productsave',product);
 }
 
+//add promotion save
+addpromotionsave(discount:Discount){
+    return this.http.post<Discount>(this.commonURL2+'addpromotionsave',discount);
+}
+
 //category Load 
 load(){
     return this.http.get(this.commonURL1+'load');
@@ -34,6 +40,11 @@ load(){
 loadItem(){
     return this.http.get<Product>(this.commonURL2+'load');
 }
+//discount Load 
+loadDiscount(){
+    return this.http.get<Discount>(this.commonURL2+'discountload');
+}
+
 // get 
 get(id:number){
     return this.http.get<Category>(this.commonURL1+'get?id='+id);

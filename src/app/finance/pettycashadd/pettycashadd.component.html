@@ -1031,8 +1031,8 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-lg-2"></div>
-                                                <div class="col-lg-3">
+                                                <div class="col-lg-5"></div>
+                                                <div class="col-lg-7">
                                                     <div class="radio-toolbar">
                                                         <label id="save-butn" (click)="updatePettyCash()">Save</label>
                                                     </div>
@@ -1066,16 +1066,16 @@
                                                 <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">Date</div>
                                                 <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">:</div>
                                                 <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
-                                                    <input type="date" class="form-control" id="textSize2"
+                                               <mat-form-field id="datebox-align">
+                                                 <!--    <input type="date" class="form-control" id="textSize2"
                                                         [(ngModel)]="model.addedDate" name="addedDate" placeholder="xx/xx/xx"
-                                                        #addedDate="ngModel" /> 
+                                                        #addedDate="ngModel" /> -->
 
-                                              <!--  <mat-form-field>
-                                                    <input matInput class="form-control" id="textSize2" [matDatepicker]="picker1" >
+                                                    <input matInput class="form-control" id="textSize2" [matDatepicker]="picker1">
                                                     <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                                                    <mat-datepicker #picker1></mat-datepicker>
+                                                    <mat-datepicker #picker1 ></mat-datepicker>
                                                     </mat-form-field>
-                                                -->
+                                                
                                                 </div>
                                             </div>
                                             <div class="row" id="salessummary">
@@ -1094,13 +1094,13 @@
                                                 <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">From</div>
                                                 <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">:</div>
                                                 <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
-                                                   <!-- <input type="text" class="form-control" id="textSize2"
+                                                   <!-- <input type="text" class="form-control" 
                                                         [(ngModel)]="model.fromPerson"
                                                         placeholder="Customer/Vendor/Others" #fromPerson="ngModel" />
 -->
                                                         <ng2-completer  placeholder="Customer/Vendor/Others" 
                                                         [(ngModel)]="model.fromPerson" name="fromPerson" #fromPerson="ngModel" [datasource]="dataService" 
-                                                        [minSearchLength]="0"></ng2-completer>
+                                                        [minSearchLength]="0" id="textSize2"></ng2-completer>
 
 
                                                 </div>
@@ -1127,8 +1127,8 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-lg-1"></div>
-                                                <div class="col-lg-3">
+                                                <div class="col-lg-5"></div>
+                                                <div class="col-lg-7">
                                                     <div class="radio-toolbar">
                                                        <!-- <label id="save-butn">Add</label> -->
                                                         <button id="save-butn">Add</button>
