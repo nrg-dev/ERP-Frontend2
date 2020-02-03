@@ -45,6 +45,7 @@ import {
   MatTreeModule,
 } from '@angular/material';
 import { SalesService } from './sales.service';
+import { PurchaseService } from '../purchase/purchase.service';
 
 const routes: Routes = [
       { path: 'salesorder', component: SalesorderComponent },
@@ -102,7 +103,7 @@ const routes: Routes = [
 
   ],
   //schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers: [SalesService],
+  providers: [SalesService,PurchaseService],
 
   entryComponents: [ViewInvoice,EditInvoice,Status,Filter,DeleteDialog],
  

@@ -9,6 +9,7 @@ import { AlertComponent } from 'src/app/_directives';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import { SalesService } from '../sales.service';
+import { PurchaseService } from 'src/app/purchase/purchase.service';
 
 //==== Status 
 @Component({
@@ -62,6 +63,7 @@ export class SalesorderComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     private dialog: MatDialog,
+    private purchaseService:PurchaseService,
     private salesService:SalesService,
     private cd: ChangeDetectorRef, 
     private router: Router, 
@@ -70,10 +72,54 @@ export class SalesorderComponent implements OnInit {
 
   ngOnInit() {
     this.salestable = false;
-    this.customerList = ['Nisho','Alex','Josni','Mary'];
-    this.productList = ['Mobile', 'Computer', 'Cloths', 'TV'];
-    this.categoryList = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];
+    this.getVendorList();
+    this.getcategoryList();
+    this.getProductList();
+
+    //this.customerList = ['Nisho','Alex','Josni','Mary'];
+    //this.productList = ['Mobile', 'Computer', 'Cloths', 'TV'];
+    //this.categoryList = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];
   }
+
+  getVendorList(){
+    this.salesService.loadCustomerList()
+    .subscribe(res => { 
+      this.customerList = res;
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    );
+  }
+
+  getcategoryList(){
+    this.purchaseService.loadCategory()
+    .subscribe(res => { 
+      this.categoryList = res;
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    );
+  }
+
+  getProductList(){
+    this.purchaseService.loadItem()
+    .subscribe(res => { 
+      this.productList = res;
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    );
+  }
+
 
   newSalesOrder(){
     this.salestable = true;

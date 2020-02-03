@@ -1,6 +1,6 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Sales } from '../_models';
+import { Sales, Customer } from '../_models';
 
 @Injectable()
 export class SalesService {    
@@ -12,6 +12,11 @@ constructor(private http: HttpClient) { }
 
 //********************* Sales ************************
 
+// Load customer list data
+loadCustomerList(){
+    return this.http.get<Customer>(this.commonURL+'loadCustomer');
+
+}
 // Save 
 save(salesarray: Array<any>){
     console.log('service....');
@@ -21,9 +26,6 @@ save(salesarray: Array<any>){
 // Load 
 load(){
     return this.http.get<Sales>(this.commonURL+'load');
-
-    //         this.httpClient.get(this.baseUrl + '/products').subscribe((res : any[])=>{
-
 }
 
 // get 
