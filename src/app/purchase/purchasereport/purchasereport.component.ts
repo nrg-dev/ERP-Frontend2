@@ -70,7 +70,7 @@ export class PurchasereportComponent implements OnInit {
           this.model.totalitem = this.purchaseList[i].totalitem;
           this.model.totalprice = this.purchaseList[i].totalprice;
           this.model.deliveryprice = this.purchaseList[i].deliveryprice;
-          this.model.totalAmount = this.purchaseList[i].deliveryprice + this.purchaseList[i].totalprice;
+          this.model.totalAmount = Number.parseInt(this.purchaseList[i].deliveryprice) + Number.parseInt(this.purchaseList[i].totalprice);
         }
       }
       },

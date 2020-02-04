@@ -85,6 +85,8 @@ export class EditInvoice {
   public purchaseEditList : any;
   public productList : any;
   public categoryList : any;
+  public statusList : any;
+  i:number =1;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
   constructor(
@@ -100,6 +102,8 @@ export class EditInvoice {
       this.editDetails(this.model.invoiceNumber);
       this.getProductList();
       this.getcategoryList();
+      this.statusList = ['Pending','Success','On Progress'];
+
     }
 
     getcategoryList(){
@@ -137,9 +141,12 @@ export class EditInvoice {
         if(this.purchaseEditList.length == 0){
           console.log("--- No data Found ---");
         }else{
-          for (let i = 0; i < this.purchaseEditList.length; i++) {
-              //this.users[i] = newItem;
-          }
+          
+         /* this.i= this.i;
+          this.model.sNo = this.i;
+          this.purchaseEditList.push(this.model.sNo);
+
+          this.i++; */
         }
       },
       error => {
@@ -179,7 +186,6 @@ export class EditInvoice {
   }
 
   updateInvoice(){
-    //alert("Category Name -->"+this.category);
     this.purchaseService.update(this.model)
     .subscribe(
       data => {
@@ -187,7 +193,7 @@ export class EditInvoice {
         this.alertService.success("Successfully Updated.");
         setTimeout(() => {
           this.alertService.clear();
-        }, 2000);
+        }, 1000);
       },
       error => {
         this.alertService.error("Network error: server is temporarily unavailable");
