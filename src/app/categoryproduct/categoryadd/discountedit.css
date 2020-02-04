@@ -5,8 +5,8 @@
 }
 ::ng-deep .discountedit .mat-dialog-container {
     background-color: #434F5B;
-    width: 850px;
-    height: 580px;
+    width: 530px;
+    height: 470px;
     padding: 17px;
     overflow: hidden;
 }
@@ -138,13 +138,13 @@ h2{
     margin: -5px 0px 0px 25px;
 }
 #save-btn{
-    width: 140px;
+    width: 110px;
     height: 35px;
     background: #51AF57;
     border: none;
 }
 #cancel-btn{
-    width: 140px;
+    width: 110px;
     height: 35px;
     background: #FF0000;
     border: none;

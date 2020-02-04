@@ -53,7 +53,17 @@ h2{
     box-shadow: none;
     margin-left: -20px;
 }
-.searchicon2{
+#searchicon2{
+    font-family: fontawesome;
+    font-size: 20px;
+    width: 100%;
+    height: 80%;
+    background: #272E34;
+    border: none;
+    box-shadow: none;
+    margin-left: -20px;
+}
+input[type="search"] {
     font-family: fontawesome;
     font-size: 20px;
     width: 100%;
@@ -78,6 +88,14 @@ h2{
     box-shadow: none;
 }
 #promotion-periodbox{
+    width: 31%;
+    height: 35px;
+    border: none;
+    color: #636A70;
+    background: #272E34;
+    box-shadow: none;
+}
+#promotion-periodbox2{
     width: 31%;
     height: 35px;
     border: none;

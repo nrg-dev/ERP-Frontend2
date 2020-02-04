@@ -8,6 +8,7 @@ import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
 import { CategoryproductService } from '../categoryproduct.service';
 import { VendorService } from 'src/app/vendorcustomer/vendor.service';
 import { Discount } from 'src/app/_models/discount';
+import { CompleterData, CompleterService } from 'ng2-completer';
 
 // addnewcategory start
 @Component({
@@ -71,18 +72,35 @@ export class AddpromotionComponent {
   priorityList:any;
   model: any = {};
   allcategorylist:any= {};
+  allitemnamelist:any= {};
   discount:Discount;
+  protected dataService: CompleterData;
 
   constructor(
     private alertService: AlertService,
     public dialogRef: MatDialogRef<AddpromotionComponent>,
     private catprodservice: CategoryproductService,
+    private completerService: CompleterService,
     ) {
       this.catprodservice.load()
       .subscribe(
          data => {
            this.allcategorylist = data;
            console.log("category name"+this.allcategorylist);
+         },
+        error => {
+         setTimeout(() => {
+           this.alertService.error("Network error: server is temporarily unavailable");
+         }, 2000);
+       }
+      );
+
+      //all item load
+      this.catprodservice.loadItemName()
+      .subscribe(
+         data => {
+           this.allitemnamelist = data;
+           this.dataService = completerService.local(this.allitemnamelist);  
          },
         error => {
          setTimeout(() => {
@@ -217,21 +235,71 @@ export class DiscounteditComponent {
   countryList:any;
   priorityList:any;
   model: any = {};
+  alldiscountlist: any={};
+  allcategorylist:any= {};
+  vendornamelist: any = {};
+  discount: Discount;
   constructor(
     private alertService: AlertService,
     public dialogRef: MatDialogRef<DiscounteditComponent>,
+    private catprodservice:CategoryproductService,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-     // this.countryList = require("../../../assets/country.json");
+    this.catprodservice.load()
+     .subscribe(
+        data => {
+          this.allcategorylist = data;
+          console.log("category name"+this.allcategorylist);
+        },
+       error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+     );
+
+    this.catprodservice.loadDiscount()
+    .subscribe(
+      data => {
+        this.alldiscountlist = data;
+        console.log("discountedit code -->"+this.alldiscountlist[0].discountcode);
+        for(let k=0;k<this.alldiscountlist.length;k++){
+          if(this.alldiscountlist[k].discountcode==this.data){
+            this.model.product=this.alldiscountlist[k].product;
+            this.model.discount=this.alldiscountlist[k].discount;
+            this.model.qty=this.alldiscountlist[k].qty;
+            this.model.promotionperiod=this.alldiscountlist[k].promotionperiod;
+            this.model.discountcode=this.alldiscountlist[k].discountcode;
+          }
+        }
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    );
     }
 
   saveDiscountedit(){
-      this.alertService.success("Saved Successfully");
-      setTimeout(() => {
-        this.alertService.clear();
-      }, 2000);
-    this.dialogRef.close();
-    console.log("saveDiscountedit");
+    console.log("category after update"+this.model.discountcode);
+    this.catprodservice.discountupdate(this.model)
+    .subscribe(
+      data => {
+        this.discount =   data;
+        this.dialogRef.close();
+        this.alertService.success("Updated Successfully");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 2000);
+        this.dialogRef.close();
+      },
+      error => {
+        this.alertService.error("Network error: server is temporarily unavailable");
+      }
+      );
     }
+
     close(e) {
     this.dialogRef.close();
   }
@@ -532,13 +600,10 @@ export class CategoryaddComponent implements OnInit {
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
   model: any = {};
+  discount:Discount;
   // All Product
   displayedColumns: string[] = ['productname','description','vendorcode','sellingprice','price','editdelete'];
   dataSource: MatTableDataSource<any>;
-
-  // Product
-  displayedColumns1: string[] = ['Productcode','Discount','DiscountTime','Qty','Price','editdelete'];
-  dataSource1: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
   @ViewChild(MatSort,{ static: true }) sort: MatSort;
@@ -619,7 +684,7 @@ export class CategoryaddComponent implements OnInit {
     .subscribe(
       data => {
         this.allproductlist = data;
-        console.log("product code -->"+this.allproductlist[0].prodcode);
+        console.log("Product length -->"+this.allproductlist.length);
         this.dataSource = new MatTableDataSource(this.allproductlist);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -639,9 +704,6 @@ export class CategoryaddComponent implements OnInit {
       data => {
         this.alldiscountlist = data;
         console.log("discount code -->"+this.alldiscountlist[0].discountcode);
-        this.dataSource1 = new MatTableDataSource(this.alldiscountlist);
-        this.dataSource1.paginator = this.paginator;
-        this.dataSource1.sort = this.sort;
       },
       error => {
         setTimeout(() => {
@@ -794,7 +856,7 @@ productlist(number: string){
     });
   }
 
-  discountEdit(){
+  discountEdit(discountcode:string){
     //this.successdialog = 'block';
 
     this.dialogConfig.disableClose = true;
@@ -804,19 +866,36 @@ productlist(number: string){
       left: '100'
     };
     this.dialog.open(DiscounteditComponent,{
-      panelClass: 'discountedit'
-     // data: {dialogTitle: "hello", dialogText: "text"},
+      panelClass: 'discountedit',
+      data: discountcode,
     })
     .afterClosed().subscribe(result => {
     });
       
   }
 
-  discountDelete(){
-    this.alertService.success("deleted Successfully");
-    setTimeout(() => {
-      this.alertService.clear();
-    }, 2000);
+  discountDelete(discountcode: string){
+    this.catprodservice.discountremove(discountcode)
+      .subscribe(
+        data => {
+          this.discount =  data;  
+          this.dialogRef.close();
+          if(this.discount.status == "Success"){
+          this.alertService.success("Deleted Successfully");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 1500);
+        }else if(this.discount.status == "failure"){
+          this.alertService.error("Not Deleted..");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 1500);
+        }
+      },
+      error => {
+        this.alertService.error("Network error: server is temporarily unavailable");
+      }
+    );
   }
 
   addNewProduct(){

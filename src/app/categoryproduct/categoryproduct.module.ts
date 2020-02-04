@@ -44,6 +44,7 @@ import { CdkTreeModule } from '@angular/cdk/tree';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormsModule } from '@angular/forms';
 import { CategoryproductService } from './categoryproduct.service';
+import { Ng2CompleterModule } from 'ng2-completer';
 
 
 const routes: Routes = [
@@ -99,6 +100,7 @@ const routes: Routes = [
     MatPaginatorModule,
     MatDialogModule,
     CommonModule,RouterModule.forChild(routes) ,
+    Ng2CompleterModule,
   ],
   entryComponents: [AddnewcategoryComponent,AddpromotionComponent,CategoryeditdeleteComponent,DiscounteditComponent,DiscountdeleteComponent,AddnewproductComponent,ProductviewComponent,ProducteditComponent,AllproducteditComponent],
   providers: [CategoryproductService]

@@ -32,6 +32,8 @@ addpromotionsave(discount:Discount){
     return this.http.post<Discount>(this.commonURL2+'addpromotionsave',discount);
 }
 
+
+
 //category Load 
 load(){
     return this.http.get(this.commonURL1+'load');
@@ -40,15 +42,24 @@ load(){
 loadItem(){
     return this.http.get<Product>(this.commonURL2+'load');
 }
+// Load only item name for auto search text box
+loadItemName(){
+    return this.http.get<String>(this.commonURL2+'loadItemName');
+
+}
 //discount Load 
 loadDiscount(){
     return this.http.get<Discount>(this.commonURL2+'discountload');
 }
 
+
+
 // get 
 get(id:number){
     return this.http.get<Category>(this.commonURL1+'get?id='+id);
 }
+
+
 
 // Update 
 update(category: Category){
@@ -58,6 +69,12 @@ update(category: Category){
 productupdate(product: Product){
     return this.http.put<Product>(this.commonURL2+'update',product);
 }
+// Discount update 
+discountupdate(discount: Discount){
+    return this.http.put<Discount>(this.commonURL2+'discountupdate',discount);
+}
+
+
 
 // Remove 
 remove(categorycode:string){
@@ -66,6 +83,10 @@ remove(categorycode:string){
 // product Remove 
 productremove(prodcode: string){
     return this.http.delete<Product>(this.commonURL2+'remove?prodcode='+prodcode);
+}
+// Discount Remove 
+discountremove(discountcode: string){
+    return this.http.delete<Discount>(this.commonURL2+'discountremove?discountcode='+discountcode);
 }
 
 }

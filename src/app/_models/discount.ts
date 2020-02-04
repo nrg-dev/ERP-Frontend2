@@ -8,6 +8,7 @@ export class Discount extends Common {
     others          : string;
     promotionperiod : string;
     discountcode    : string;
+    status          : string;
 
 
 }

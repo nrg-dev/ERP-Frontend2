@@ -68,63 +68,40 @@
                             </div>
                         </div>
                     </div>
+                    <br/>
 
-                    <mat-form-field style="color: black;">
-                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-                    </mat-form-field>
-
-                    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-                    <div class="mat-elevation-z8">
-
-                        <table mat-table [dataSource]="dataSource1" matSort>
-                    
-                            <ng-container matColumnDef="Productcode">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Productcode </th>
-                                <td mat-cell *matCellDef="let row"> {{row.Productcode}} </td>
-                            </ng-container>
-                            
-                                <ng-container matColumnDef="Discount">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header> discount </th>
-                                <td mat-cell *matCellDef="let row"> {{row.discount}} </td>
-                            </ng-container>
-    
-                            <ng-container matColumnDef="DiscountTime">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header> discounttime </th>
-                                <td mat-cell *matCellDef="let row"> {{row.promotionperiod}} </td>
-                            </ng-container>
-                            
-                            
-                            <ng-container matColumnDef="Qty">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Qty </th>
-                                <td mat-cell *matCellDef="let row"> {{row.qty}} </td>
-                            </ng-container>
-    
-                            <ng-container matColumnDef="Price">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header> price </th>
-                                <td mat-cell *matCellDef="let row"> {{row.price}} </td>
-                            </ng-container>
-    
-                            <ng-container matColumnDef="editdelete">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
-                                <td mat-cell *matCellDef="let row"> 
-                                <div class="row" style="margin: -2px;">
-                                    <div id="rowedit-div" (click)="discountEdit()">
-                                    <i class="fa fa-pencil-square-o" id="rowedit-icon" aria-hidden="true"></i>  
-                                    </div>  
-                                    &nbsp;&nbsp;
-                                    <div id="rowdelete-div" (click)="discountDelete()">
-                                        <i class="fa fa-trash-o" id="rowdelete-icon" aria-hidden="true"></i> 
-                                    </div>   
-                                </div> 
-                                </td>
-                            </ng-container>
-    
-                            <tr mat-header-row *matHeaderRowDef="displayedColumns1;"></tr>
-                            <tr mat-row *matRowDef="let row; columns: displayedColumns1">
+                    <table  style="width: 100%;"> 
+                        <thead id="thead-color">
+                            <tr style="height: 55px;">
+                                <th>Product</th>
+                                <th>discount</th>
+                                <th>discounttime</th>
+                                <th>Qty</th>
+                                <th>price</th>
+                                <th>Action</th>
                             </tr>
-                        </table>
-                        
-                    </div>  
+                        </thead>
+                        <tbody *ngFor="let discont of alldiscountlist" id="tbody-color">
+                            <tr style="height: 55px;">
+                                <td>{{discont.productname}}</td>
+                                <td>{{discont.discount}}</td>
+                                <td>{{discont.promotionperiod}}</td>
+                                <td>{{discont.qty}}</td>
+                                <td>{{discont.price}}</td>
+                                <td>
+                                    <div class="row" style="margin: -2px;">
+                                        <div id="rowedit-div" (click)="discountEdit(row.discountcode)">
+                                        <i class="fa fa-pencil-square-o" id="rowedit-icon" aria-hidden="true"></i>  
+                                        </div>  
+                                        &nbsp;&nbsp;
+                                        <div id="rowdelete-div" (click)="discountDelete(row.discountcode)">
+                                            <i class="fa fa-trash-o" id="rowdelete-icon" aria-hidden="true"></i> 
+                                        </div>   
+                                    </div> 
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                       
                 </div>
             </div> 
