@@ -90,11 +90,11 @@
                                 <td>{{discont.price}}</td>
                                 <td>
                                     <div class="row" style="margin: -2px;">
-                                        <div id="rowedit-div" (click)="discountEdit(row.discountcode)">
+                                        <div id="rowedit-div" (click)="discountEdit(discont.discountcode)">
                                         <i class="fa fa-pencil-square-o" id="rowedit-icon" aria-hidden="true"></i>  
                                         </div>  
                                         &nbsp;&nbsp;
-                                        <div id="rowdelete-div" (click)="discountDelete(row.discountcode)">
+                                        <div id="rowdelete-div" (click)="discountDelete(discont.discountcode)">
                                             <i class="fa fa-trash-o" id="rowdelete-icon" aria-hidden="true"></i> 
                                         </div>   
                                     </div> 

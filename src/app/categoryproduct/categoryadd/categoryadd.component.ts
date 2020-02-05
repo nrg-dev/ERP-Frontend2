@@ -112,6 +112,8 @@ export class AddpromotionComponent {
     }
 
     savePromotion(){
+      console.log("discount from date-->"+this.model.fromdate_promotionperiod);
+      console.log("discount to date-->"+this.model.todate_promotionperiod);
       this.catprodservice.addpromotionsave(this.model)
       .subscribe(
         data => {
@@ -257,30 +259,36 @@ export class DiscounteditComponent {
         }, 2000);
       }
      );
+    this.loadDiscount();
 
-    this.catprodservice.loadDiscount()
-    .subscribe(
-      data => {
-        this.alldiscountlist = data;
-        console.log("discountedit code -->"+this.alldiscountlist[0].discountcode);
-        for(let k=0;k<this.alldiscountlist.length;k++){
-          if(this.alldiscountlist[k].discountcode==this.data){
-            this.model.product=this.alldiscountlist[k].product;
-            this.model.discount=this.alldiscountlist[k].discount;
-            this.model.qty=this.alldiscountlist[k].qty;
-            this.model.promotionperiod=this.alldiscountlist[k].promotionperiod;
-            this.model.discountcode=this.alldiscountlist[k].discountcode;
-          }
-        }
-      },
-      error => {
-        setTimeout(() => {
-          this.alertService.error("Network error: server is temporarily unavailable");
-        }, 2000);
-      }
-    );
     }
 
+
+    loadDiscount(){
+      this.catprodservice.loadDiscount()
+      .subscribe(
+        data => {
+          this.alldiscountlist = data;
+          console.log("discountedit code -->"+this.alldiscountlist[0].discountcode);
+          for(let k=0;k<this.alldiscountlist.length;k++){
+            if(this.alldiscountlist[k].discountcode==this.data){
+              this.model.product=this.alldiscountlist[k].product;
+              this.model.discount=this.alldiscountlist[k].discount;
+              this.model.qty=this.alldiscountlist[k].qty;
+              this.model.fromdate_promotionperiod=this.alldiscountlist[k].fromdate_promotionperiod;
+              this.model.todate_promotionperiod=this.alldiscountlist[k].todate_promotionperiod;
+              this.model.promotionperiod=this.model.fromdate_promotionperiod + "-"+ this.model.todate_promotionperiod;
+              this.model.discountcode=this.alldiscountlist[k].discountcode;
+            }
+          }
+        },
+        error => {
+          setTimeout(() => {
+            this.alertService.error("Network error: server is temporarily unavailable");
+          }, 2000);
+        }
+      );
+    }
   saveDiscountedit(){
     console.log("category after update"+this.model.discountcode);
     this.catprodservice.discountupdate(this.model)
@@ -672,6 +680,8 @@ export class CategoryaddComponent implements OnInit {
     this.alldiscountList();
   }
 
+
+
   allcategorylist(){
     this.categorylist="";
     this.catprodservice.load()
@@ -874,6 +884,7 @@ productlist(number: string){
      // data: {dialogTitle: "hello", dialogText: "text"},
     })
     .afterClosed().subscribe(result => {
+      this.alldiscountList();
     });
       
   }
@@ -897,8 +908,9 @@ productlist(number: string){
   }
 
   discountEdit(discountcode:string){
+    console.log("discount code --> "+discountcode);
+    console.log("inside discountEdit ");
     //this.successdialog = 'block';
-
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
     this.dialogConfig.position = {
@@ -915,14 +927,15 @@ productlist(number: string){
   }
 
   discountDelete(discountcode: string){
+    console.log("discount detlete - promotion code -->"+discountcode);
     this.catprodservice.discountremove(discountcode)
       .subscribe(
         data => {
           this.discount =  data;  
-          this.dialogRef.close();
           if(this.discount.status == "Success"){
           this.alertService.success("Deleted Successfully");
           setTimeout(() => {
+            this.alldiscountList();
             this.alertService.clear();
           }, 1500);
         }else if(this.discount.status == "failure"){

@@ -6,7 +6,9 @@ export class Discount extends Common {
     qty             : string;
     freegift        : string;
     others          : string;
-    promotionperiod : string;
+    fromdate_promotionperiod : string;
+    todate_promotionperiod : string;
+    promotionperiod:string;
     discountcode    : string;
     status          : string;
 
