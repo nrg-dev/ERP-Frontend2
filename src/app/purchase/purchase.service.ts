@@ -76,7 +76,9 @@ export class PurchaseService {
 
     //loadItem(category:string){
     loadItem(){
-        return this.http.get<Purchase>(this.productURL+'load');
+        let category="all";
+        //return this.http.get<Purchase>(this.productURL+'load');
+        return this.http.get<Purchase>(this.productURL+'load?category='+category);
         //return this.http.get<Purchase>(this.commonURL+'loadItem?category='+category);
     }
 
