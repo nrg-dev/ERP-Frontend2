@@ -72,7 +72,7 @@ export class SalesorderComponent implements OnInit {
 
   ngOnInit() {
     this.salestable = false;
-    this.getVendorList();
+    this.getCustomerList();
     this.getcategoryList();
     this.getProductList();
 
@@ -81,10 +81,13 @@ export class SalesorderComponent implements OnInit {
     //this.categoryList = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];
   }
 
-  getVendorList(){
+  getCustomerList(){
+    console.log("getCustomerList");
     this.salesService.loadCustomerList()
     .subscribe(res => { 
       this.customerList = res;
+      console.log("customer list size -->"+this.customerList.length);
+
       },
       error => {
         setTimeout(() => {
@@ -95,9 +98,11 @@ export class SalesorderComponent implements OnInit {
   }
 
   getcategoryList(){
-    this.purchaseService.loadCategory()
+    this.purchaseService.loadCategoryName()
     .subscribe(res => { 
       this.categoryList = res;
+      console.log("Category list size -->"+this.categoryList.length);
+
       },
       error => {
         setTimeout(() => {
@@ -108,9 +113,10 @@ export class SalesorderComponent implements OnInit {
   }
 
   getProductList(){
-    this.purchaseService.loadItem()
+    this.purchaseService.loadItemName()
     .subscribe(res => { 
       this.productList = res;
+      console.log("Item list size -->"+this.productList.length);
       },
       error => {
         setTimeout(() => {
