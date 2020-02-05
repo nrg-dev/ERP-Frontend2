@@ -5,7 +5,7 @@
     <div class="col-11 col-md-11 col-sm-11 col-lg-11">
         <div class="row" style="margin-top: 15px;">
             <i class="fa fa-plus-circle" id="disedit-icon" aria-hidden="true"></i> 
-            <h2>Add New Product</h2>
+            <h2>Edit Item</h2>
         </div>
     </div>
     </div>
@@ -20,10 +20,12 @@
             <label>Category :</label>
             </div>
             <div class="col-2 col-md-2 col-sm-2 col-lg-2">
-                <select id="editselect-box"  name ="selectcategory" [(ngModel)]="model.categorycode" 
+                <select id="editselect-box"  name ="selectcategory" 
+                [(ngModel)]="model.categorycode" 
                 #categorycode="ngModel" required>
                     <option value="">---- Select ----</option>
-                    <option *ngFor="let itemcategory of allcategorylist" value="{{itemcategory.name}}-{{itemcategory.categorycode}}"> {{itemcategory.name}}-{{itemcategory.categorycode}} </option>
+                    <option *ngFor="let itemcategory of allcategorylist" [selected]="itemcategory === categorycode"
+                    value="{{itemcategory}}"> {{itemcategory}} </option>
                 </select>
             </div>
         </div>
@@ -62,13 +64,13 @@
             <label>Vendor:</label>
             </div>
             <div class="col-2 col-md-2 col-sm-2 col-lg-2">
-                <select id="editselect-box" name ="vendorcode" name="{{model.price}}"
+                <select id="editselect-box" name ="vendorcode"
                 [(ngModel)]="model.vendorcode"
                 #vendorcode="ngModel" 
                  vendorcode>
                     <option value="">---- Select ----</option>
-                    <option *ngFor="let item of vendornamelist" 
-                    value="{{item.vendorName}}-{{item.vendorcode}}"> {{item.vendorName}}-{{item.vendorcode}} </option>
+                    <option *ngFor="let vendornamecode of vendornamecodelist"  [selected]="vendornamecode === vendorcode"
+                    value="{{vendornamecode}}"> {{vendornamecode}} </option>
                 </select>
             </div>
         </div>

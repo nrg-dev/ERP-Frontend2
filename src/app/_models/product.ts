@@ -4,6 +4,7 @@ export class Product extends Common {
 
    id           : string; 
    productname  : string;
+   prodcode     : string;
    description  : string;
    vendorname   : string;
    vendorcode   : string;
@@ -12,6 +13,6 @@ export class Product extends Common {
    margin       : string;
    sellingprice : string;
    category     : string;
-   prodcode     : string;
    status       : string;
+   selectcategory:string;
 }

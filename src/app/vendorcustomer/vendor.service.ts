@@ -5,8 +5,8 @@ import { Vendor } from '../_models';
 @Injectable()
 export class VendorService {    
 
-//private commonURL = 'http://35.160.115.237:8095/erp/';
-private commonURL = 'http://localhost:8095/erp/vendor/';
+public url = require("../apiurl.json");
+private commonURL = this.url[0].apiurl+'vendor/';
 
 constructor(private http: HttpClient) { }
 
@@ -23,6 +23,14 @@ load(){
     console.log("Load vendor service..");
     return this.http.get(this.commonURL+'load');
 }
+
+// Load 
+loadvendornamecode(){
+    console.log("loadvendornamecode service..");
+    return this.http.get(this.commonURL+'loadvendornamecode');
+}
+
+
 
 // get 
 get(id:number){

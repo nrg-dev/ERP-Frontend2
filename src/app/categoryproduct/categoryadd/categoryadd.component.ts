@@ -417,7 +417,7 @@ export class AllproducteditComponent {
   dialogConfig: any;
   dialog: any;
   allcategorylist:any= {};
-  vendornamelist: any = {};
+  vendornamecodelist: any = {};
   allproducedittlist: any = {};
   category:Category;
   product:Product;
@@ -428,11 +428,11 @@ export class AllproducteditComponent {
     private vendorservice: VendorService,
     @Inject(MAT_DIALOG_DATA) public data: any
     ) {
-      this.catprodservice.load()
+      this.catprodservice.loadCategoryName()
       .subscribe(
          data => {
            this.allcategorylist = data;
-           console.log("category name"+this.allcategorylist);
+           console.log("category name & code -->"+this.allcategorylist);
          },
         error => {
           setTimeout(() => {
@@ -441,11 +441,11 @@ export class AllproducteditComponent {
        }
       );
  
-      this.vendorservice.load()
+      this.vendorservice.loadvendornamecode()
       .subscribe(
          data => {
-           this.vendornamelist = data;
-           console.log("category name"+this.vendornamelist);
+           this.vendornamecodelist = data;
+           console.log("Vendor name & code -->"+this.vendornamecodelist);
          },
         error => {
           setTimeout(() => {
@@ -469,7 +469,19 @@ export class AllproducteditComponent {
             this.model.margin=this.allproducedittlist[k].margin;
             this.model.sellingprice=this.allproducedittlist[k].sellingprice;
             this.model.vendorcode=this.allproducedittlist[k].vendorcode;
+            this.model.vendorname=this.allproducedittlist[k].vendorname;
             this.model.categorycode=this.allproducedittlist[k].categorycode;
+            this.model.categoryname=this.allproducedittlist[k].categoryname;
+            console.log("category name -->"+this.model.categoryname);
+            console.log("category code -->"+this.model.categorycode);
+            this.model.categorycode=this.allproducedittlist[k].categoryname+"-"+this.allproducedittlist[k].categorycode;
+            console.log("category code & name -->"+this.model.categorycode);
+            console.log("vendor name -->"+this.model.vendorname);
+            console.log("vendor code -->"+this.model.vendorcode);
+            this.model.vendorcode=this.allproducedittlist[k].vendorname+"-"+this.allproducedittlist[k].vendorcode;
+            console.log("vendor name & code -->"+this.model.vendorcode);
+
+
           }
         }
         this.model.prodcode=this.allproducedittlist[0].prodcode;

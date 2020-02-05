@@ -38,6 +38,12 @@ addpromotionsave(discount:Discount){
 load(){
     return this.http.get(this.commonURL1+'load');
 }
+
+//category Load 
+loadCategoryName(){
+    return this.http.get(this.commonURL1+'loadCategoryName');
+}
+
 //item Load 
 loadItem(){
     return this.http.get<Product>(this.commonURL2+'load');
