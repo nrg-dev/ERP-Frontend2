@@ -130,6 +130,7 @@ td{
     margin: 8px;
     padding-top: 4px;
 }
+
 ::ng-deep td.mat-cell,::ng-deep  td.mat-footer-cell {
     border-bottom: 1px solid white;
 }
