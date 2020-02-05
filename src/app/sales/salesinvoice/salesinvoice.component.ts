@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild ,ElementRef,Inject} from '@angular/core';
-import { Sales, User } from 'src/app/_models';
+import { Sales, User, Category } from 'src/app/_models';
 import { AlertService } from 'src/app/_services';
 import { Router } from '@angular/router';
 import { AlertComponent } from 'src/app/_directives';
@@ -7,6 +7,7 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
 import { SalesService } from '../sales.service';
+import { PurchaseService } from '../../purchase/purchase.service';
 
 //---------- View Invoice Calling -----------
 @Component({
@@ -28,12 +29,46 @@ export class ViewInvoice {
     public dialogRef: MatDialogRef<ViewInvoice>,
     @Inject(MAT_DIALOG_DATA) public data: any) 
     {  
-    this.model.invoiceNumber = this.data.invoiceNumber;
-    const salesdata = require("../../salesdata.json");
-    this.salesViewList = salesdata;
+      this.model.soDate = this.data.date;
+      let totalCommission = 0.0;
+      this.model.status = this.data.currentStatus;
+      this.salesService.get(this.data.invoice)
+      .subscribe(
+        data => {
+          this.salesViewList = data;
+          for(let i=0; i<this.salesViewList.length; i++){
+            this.model.invoiceNumber = this.salesViewList[0].invoicenumber;
+            totalCommission +=  this.salesViewList[i].subtotal;
+            this.model.subTotal = totalCommission;
+          }
+        },
+        error => {
+          setTimeout(() => {
+            this.alertService.error("Network error: server is temporarily unavailable");
+          }, 2000);
+        }
+      ); 
+      
+      this.model.customername  = this.data.name;       
+      this.customerDetails(this.model.customername);
+  }
+  ngOnInit() {
+
   }
 
-  ngOnInit() {
+  customerDetails(customername: string){
+    this.salesService.getCustomerDetails(customername)
+    .subscribe(
+      data => {
+        this.sales = data;
+        console.log("Vendor Name -->"+this.sales.customerName);
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    ); 
   }
   onNoClick(): void {
     this.dialogRef.close();
@@ -48,74 +83,148 @@ export class ViewInvoice {
 
 export class EditInvoice {
   model: any ={};
+  sales: Sales;
   public salesEditList : any;
   public productList : any;
   public categoryList : any;
+  public statusList : any;
+  i:number =1;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
   constructor(
     private salesService: SalesService,
+    private purchaseService: PurchaseService,
     private dialog: MatDialog,
     private alertService: AlertService,
 
     public dialogRef: MatDialogRef<EditInvoice>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {  
-    this.model.invoiceNumber = this.data.invoiceNumber;
-    this.productList = ['Mobile', 'Computer', 'Cloths', 'TV'];
-    this.categoryList = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];
-    const salesdata = require("../../salesdata.json");
-    this.salesEditList=salesdata;
+    @Inject(MAT_DIALOG_DATA) public data: any)
+    {  
+      console.log("Edit Dialog InvoiceNumber -->"+this.data);
+      this.model.invoiceNumber = this.data.invoice;
+      this.model.currentStatus = this.data.status;
+      this.editDetails(this.model.invoiceNumber);
+      this.getProductList();
+      this.getcategoryList();
+      this.statusList = ['Pending','On Progress','Success'];
+  }
+
+  getcategoryList(){
+    this.purchaseService.loadCategoryName()
+    .subscribe(res => { 
+      this.categoryList = res;
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    );
+  }
+
+  getProductList(){
+    this.purchaseService.loadItemName()
+    .subscribe(res => { 
+      this.productList = res;
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);        }
+    );
+  }
+
+  editDetails(invoiceNumber:string){
+    this.salesService.geteditDetails(invoiceNumber)
+    .subscribe(
+      data => {
+        this.salesEditList = data;
+        console.log("Length -->"+this.salesEditList.length);
+        if(this.salesEditList.length == 0){
+          console.log("--- No data Found ---");
+        }else{
+          
+        }
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    ); 
   }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
-  
-  public deleteSalesInvoice(){
-    this.alertService.success("Successfully Deleted.");
-    setTimeout(() => {
-      this.alertService.clear();
-    }, 2000);
-   
+
+  public deleteSalesInvoice(id:string,invoiceNumber:string){
+    this.salesService.removePartId(id,invoiceNumber)
+    .subscribe(
+      data => {
+        this.model = data;
+        if(this.model.status == "Success"){
+          this.alertService.success("Deleted Successfully");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 1500);
+          this.editDetails(invoiceNumber);
+        }else{
+          this.alertService.error("Not Deleted..");
+        }
+        
+      },
+      error => {
+        this.alertService.error("Network error: server is temporarily unavailable");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 1500);
+      }
+    ); 
   }
 
-  saveInvoice(){
-    this.alertService.success("Successfully Saved.");
-    setTimeout(() => {
-      this.alertService.clear();
-    }, 2000);
+  updateInvoice(){
+    this.salesService.update(this.model)
+    .subscribe(
+      data => {
+        this.sales = data; 
+        this.alertService.success("Successfully Updated.");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 1000);
+      },
+      error => {
+        this.alertService.error("Network error: server is temporarily unavailable");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 1500);
+      }
+    ); 
+  }
+
+  getTotalAmount(productName:string,qty:string,category:string){
+    console.log("productName ==>"+productName);
+    console.log("Qty ==>"+qty);
+    this.salesService.getUnitPrice(productName,category)
+    .subscribe(
+      data => {
+        this.sales = data; 
+      },
+      error => {
+        this.alertService.error("Network error: server is temporarily unavailable");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 1500);
+      }
+    );
   }
 
   cancelInvoice(){
-    console.log("-- Cancel Invoice --");
-  }
-
-}
-//-------- Delete Calling ---------
-@Component({
-  selector: 'deleteDialog',
-  styleUrls: ['./deleteDialog.css'],
-  templateUrl: './deleteDialog.html', 
-})
-export class DeleteDialog {
-  model: any ={};
-  constructor(
-    private salesService: SalesService,
-    private dialog: MatDialog,
-    private alertService: AlertService,
-
-    public dialogRef: MatDialogRef<DeleteDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {  
-    
-  }
-
-  onNoClick(): void {
     this.dialogRef.close();
   }
 
 }
+
 //------ Filter Calling --------
 @Component({
   selector: 'filter',
@@ -150,8 +259,7 @@ export class SalesinvoiceComponent implements OnInit {
   public salesList : any;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
-  displayedColumns: string[] = ['Date','Invoice Number','ProductName','name','quantity','deliveryCost','netAmount','status','Action'];
-
+  displayedColumns: string[] = ['invoicenumber','status','invoicedate','customername','Action'];
   dataSource: MatTableDataSource<any>;
   
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
@@ -162,13 +270,19 @@ export class SalesinvoiceComponent implements OnInit {
     private router: Router, 
     private alertService: AlertService,
     private salesservice: SalesService,
-  ) { 
-    const salesdata = require("../../salesdata.json");
-    this.salesList=salesdata;
-
-    this.dataSource = new MatTableDataSource(this.salesList);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    ) { 
+      this.salesservice.load().subscribe(res => { 
+        this.salesList = res;
+        this.dataSource = new MatTableDataSource(this.salesList);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;  
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    );
   }
 
   ngOnInit() {
@@ -194,8 +308,8 @@ export class SalesinvoiceComponent implements OnInit {
     });
   }  
 
-  public viewinvoice(invoiceNumber:string){
-    console.log("Invoice Number  --->"+invoiceNumber);
+  public viewinvoice(invoiceNumber:string,customerName:string,invoicedate: string,status:string){
+    console.log("View Invoice Number  --->"+invoiceNumber);
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
     this.dialogConfig.position = {
@@ -204,15 +318,15 @@ export class SalesinvoiceComponent implements OnInit {
     };
     this.dialog.open(ViewInvoice,{
       panelClass: 'viewInvoice',
-      data: "invoiceNumber",
+      data: { invoice: invoiceNumber, name: customerName,date: invoicedate,currentStatus:status },
       height: '80%'
     }).afterClosed().subscribe(result => {
       // this.refresh();
     });
   }
 
-  public editinvoice(invoiceNumber:string){
-    console.log("Invoice Number  --->"+invoiceNumber);
+  public editinvoice(invoiceNumber:string,status:string){
+    console.log("Edit Invoice Number  --->"+invoiceNumber);
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
     this.dialogConfig.position = {
@@ -221,18 +335,48 @@ export class SalesinvoiceComponent implements OnInit {
     };
     this.dialog.open(EditInvoice,{
       panelClass: 'editInvoice',
-      data: "invoiceNumber",
+      data: { invoice: invoiceNumber, status: status },
       height: '80%'
     }).afterClosed().subscribe(result => {
       // this.refresh();
     });
   }
 
-  public deleteSale(){
-    this.alertService.success("Deleted Successfully");
-    setTimeout(() => {
-      this.alertService.clear();
-    }, 2000);
+  getAllSODetails(){
+    this.salesservice.load().subscribe(res => { 
+      this.salesList = res;
+      this.dataSource = new MatTableDataSource(this.salesList);  
+      },
+      error => {
+          alert('Error !!!!');
+      }
+    );
+  }
+
+  public deleteSale(invoiceNumber:string){
+    console.log("Delete Invoice Number  --->"+invoiceNumber);
+    this.salesservice.remove(invoiceNumber)
+    .subscribe(
+      data => {
+        this.model = data;
+        if(this.model.status == "Success"){
+          this.alertService.success("Deleted Successfully");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 1500);
+          this.getAllSODetails();
+        }else{
+          this.alertService.error("Not Deleted..");
+        }
+        
+      },
+      error => {
+        this.alertService.error("Network error: server is temporarily unavailable");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 1500);
+      }
+    ); 
   }
 
 }

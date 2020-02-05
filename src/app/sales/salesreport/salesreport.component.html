@@ -36,30 +36,30 @@
                             <!--<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>-->
                             <div class="mat-elevation-z8">
                                 <table mat-table [dataSource]="dataSource" matSort>
-                                    <ng-container matColumnDef="No">
+                                    <!--<ng-container matColumnDef="No">
                                         <th mat-header-cell *matHeaderCellDef> No </th>
                                         <td mat-cell *matCellDef="let row" id="middleContent"> {{row.sNo}} </td>
-                                    </ng-container>
+                                    </ng-container>-->
                                 
                                     <ng-container matColumnDef="SoInvoice">
                                         <th mat-header-cell *matHeaderCellDef> SO Invoice</th>
-                                        <td mat-cell *matCellDef="let row" id="middleContent"> {{row.invoiceNumber}} </td>
+                                        <td mat-cell *matCellDef="let row" id="middleContent" (click)="getReportDetails(row.invoicenumber)" id="{{row.invoicenumber}}"> {{row.invoicenumber}} </td>
                                     </ng-container>
                                 
 
                                     <ng-container matColumnDef="soDate">
                                         <th mat-header-cell *matHeaderCellDef> SO Date </th>
-                                        <td mat-cell *matCellDef="let row" id="middleContent"> {{row.soDate}} </td>
+                                        <td mat-cell *matCellDef="let row" id="middleContent" (click)="getReportDetails(row.invoicenumber)" id="{{row.invoicenumber}}"> {{row.invoicedate}} </td>
                                     </ng-container>
 
                                     <ng-container matColumnDef="customer">
                                         <th mat-header-cell *matHeaderCellDef> Customer </th>
-                                        <td mat-cell *matCellDef="let row" id="middleContent"> {{row.customerName}} </td>
+                                        <td mat-cell *matCellDef="let row" id="middleContent" (click)="getReportDetails(row.invoicenumber)" id="{{row.invoicenumber}}"> {{row.customername}} </td>
                                     </ng-container>
 
                                     <ng-container matColumnDef="Total">
                                         <th mat-header-cell *matHeaderCellDef> Total </th>
-                                        <td mat-cell *matCellDef="let row" id="middleContent"> {{row.subTotal}} </td>
+                                        <td mat-cell *matCellDef="let row" id="middleContent" (click)="getReportDetails(row.invoicenumber)" id="{{row.invoicenumber}}"> {{row.totalprice}} </td>
                                     </ng-container>
 
                                     <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
@@ -76,33 +76,33 @@
                                                 <div class="row" id="salessummary">
                                                     <div class="col-md-5 col-xs-5 col-lg-5">Invoice</div>
                                                     <div class="col-md-1 col-xs-1 col-lg-1">:</div>
-                                                    <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.empCode }}</div>
+                                                    <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.invoicenumber }}</div>
                                                 </div>
                                                 <div class="row" id="salessummary">
                                                     <div class="col-md-5 col-xs-5 col-lg-5">Date</div>
                                                     <div class="col-md-1 col-xs-1 col-lg-1">:</div>
-                                                    <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.empCode }}</div>
+                                                    <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.invoicedate }}</div>
                                                 </div>
                                                 <div class="row" id="salessummary">
-                                                    <div class="col-md-5 col-xs-5 col-lg-5">Vendor</div>
+                                                    <div class="col-md-5 col-xs-5 col-lg-5">Customer</div>
                                                     <div class="col-md-1 col-xs-1 col-lg-1">:</div>
-                                                    <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.empCode }}</div>
+                                                    <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.customername }}</div>
                                                 </div>
                                                 <div class="row" id="salessummary">
                                                     <div class="col-md-5 col-xs-5 col-lg-5">Order List</div>
                                                     <div class="col-md-1 col-xs-1 col-lg-1">:</div>
-                                                    <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.empCode }}</div>
+                                                    <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.itemname }}</div>
                                                 </div>
                                                 <div class="row" id="salessummary">
                                                     <div class="col-md-5 col-xs-5 col-lg-5">Delivery Fee</div>
                                                     <div class="col-md-1 col-xs-1 col-lg-1">:</div>
-                                                    <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.empCode }}</div>
+                                                    <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.deliveryprice }}</div>
                                                 </div>
                                                 <hr>
                                                 <div class="row" id="salessummary">
                                                     <div class="col-md-5 col-xs-5 col-lg-5">Total</div>
                                                     <div class="col-md-1 col-xs-1 col-lg-1">:</div>
-                                                    <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.empCode }}</div>
+                                                    <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.deliveryprice }}</div>
                                                 </div>
                                             </div>
                                             
@@ -114,28 +114,28 @@
                                                 <div class="row" id="salessummary">
                                                     <div class="col-md-5 col-xs-5 col-lg-5">Date of SO</div>
                                                     <div class="col-md-1 col-xs-1 col-lg-1">:</div>
-                                                    <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.empCode }}</div>
+                                                    <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.invoicedate }}</div>
                                                 </div>
                                                 <div class="row" id="salessummary">
                                                     <div class="col-md-5 col-xs-5 col-lg-5">Total Product</div>
                                                     <div class="col-md-1 col-xs-1 col-lg-1">:</div>
-                                                    <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.name }}</div>
+                                                    <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.totalitem }}</div>
                                                 </div>
                                                 <div class="row" id="salessummary">
                                                     <div class="col-md-5 col-xs-5 col-lg-5">Subtotal </div>
                                                     <div class="col-md-1 col-xs-1 col-lg-1">:</div>
-                                                    <div class="col-md-6 col-xs-6 col-lg-5">{{ todayDate | date:'longDate' }}</div>
+                                                    <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.totalprice }}</div>
                                                 </div>
                                                 <div class="row" id="salessummary">
                                                     <div class="col-md-5 col-xs-5 col-lg-5">Delivery Fee</div>
                                                     <div class="col-md-1 col-xs-1 col-lg-1">:</div>
-                                                    <div class="col-md-6 col-xs-6 col-lg-5">{{todayDate | date:'mediumTime'}}</div>
+                                                    <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.deliveryprice }}</div>
                                                 </div>
                                                 <hr>
                                                 <div class="row" id="salessummary">
                                                     <div class="col-md-5 col-xs-5 col-lg-5">Total</div>
                                                     <div class="col-md-1 col-xs-1 col-lg-1">:</div>
-                                                    <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.status }}</div>
+                                                    <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.totalAmount }}</div>
                                                 </div>
                                             </div>
                                         </div>

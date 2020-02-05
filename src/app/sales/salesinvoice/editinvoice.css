@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  font-size: 12px;
 }
 ::ng-deep .editInvoice .mat-dialog-container {
   background-color: #434F5B;
@@ -16,14 +17,21 @@
   height: auto;
 }
 #rowdelete-icon{
-  margin-left: 8px;
-  margin-top: 6px;
+  margin-left: 10px;
+  margin-top: 8px;
   color: white;
 }
 #rowdelete-div{
   height: 30px;
   width: 30px;
   background: #EF6956; 
+  border-radius: 16px;
+  color: white;
+}
+#rowedit-div{
+  height: 30px;
+  width: 30px;
+  background: #267CB4; 
   border-radius: 16px;
   color: white;
 }
@@ -35,7 +43,7 @@ table {
   display:block;
 }
 th, td {
-  padding: 25px;
+  padding: 10px;
   border: 1px solid darkgray;
   color: white;
 }
@@ -59,7 +67,7 @@ td{
   background-color: #07ab07;
   width: 100px;
   height: 32px;
-  margin: 5px 0 0 120px;
+  margin: 5px 0 0 0px;
   text-align: center;
 }
 #checkOut-butn{
@@ -74,4 +82,8 @@ td{
   padding: 4px 11px;
   color:white;
   cursor: pointer;
+}
+
+#middleContent {
+  vertical-align: middle;
 }

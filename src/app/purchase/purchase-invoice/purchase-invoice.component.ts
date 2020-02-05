@@ -28,6 +28,7 @@ export class ViewInvoice {
     @Inject(MAT_DIALOG_DATA) public data: any) 
     {  
       this.model.poDate = this.data.date;
+      this.model.status = this.data.currentStatus;
       let totalCommission = 0.0;
       this.purchaseService.get(this.data.invoice)
       .subscribe(
@@ -35,7 +36,6 @@ export class ViewInvoice {
           this.purchaseViewList = data;
           for(let i=0; i<this.purchaseViewList.length; i++){
             this.model.invoiceNumber = this.purchaseViewList[0].invoicenumber;
-            this.model.status = this.purchaseViewList[0].status;
             totalCommission +=  this.purchaseViewList[i].subtotal;
             this.model.subTotal = totalCommission;
           }
@@ -98,11 +98,12 @@ export class EditInvoice {
     @Inject(MAT_DIALOG_DATA) public data: any)
     {  
       console.log("Edit Dialog InvoiceNumber -->"+this.data);
-      this.model.invoiceNumber = this.data;
+      this.model.invoiceNumber = this.data.invoice;
+      this.model.currentStatus = this.data.status;
       this.editDetails(this.model.invoiceNumber);
       this.getProductList();
       this.getcategoryList();
-      this.statusList = ['Pending','Success','On Progress'];
+      this.statusList = ['Pending','On Progress','Success'];
 
     }
 
@@ -322,7 +323,7 @@ export class PurchaseInvoiceComponent implements OnInit {
     }
   }
 
-  public viewinvoice(invoiceNumber:string,vendorName:string,invoicedate: string){
+  public viewinvoice(invoiceNumber:string,vendorName:string,invoicedate: string,status:string){
     console.log("View Invoice Number  --->"+invoiceNumber);
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
@@ -332,14 +333,14 @@ export class PurchaseInvoiceComponent implements OnInit {
     };
     this.dialog.open(ViewInvoice,{
       panelClass: 'viewInvoice',
-      data: { invoice: invoiceNumber, name: vendorName,date: invoicedate },
+      data: { invoice: invoiceNumber, name: vendorName,date: invoicedate,currentStatus: status },
       height: '80%'
     }).afterClosed().subscribe(result => {
       // this.refresh();
     });
   }
   
-  public editinvoice(invoiceNumber:string){
+  public editinvoice(invoiceNumber:string,status:string){
     console.log("Edit Invoice Number  --->"+invoiceNumber);
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
@@ -349,7 +350,7 @@ export class PurchaseInvoiceComponent implements OnInit {
     };
     this.dialog.open(EditInvoice,{
       panelClass: 'editInvoice',
-      data: invoiceNumber,
+      data: { invoice: invoiceNumber, status: status },
       height: '80%'
     }).afterClosed().subscribe(result => {
       // this.refresh();

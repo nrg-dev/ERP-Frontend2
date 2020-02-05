@@ -25,7 +25,7 @@
                         <label id="labeltext">:</label>
                 </div>
                 <div class="col-lg-5">
-                <select class="form-control" [(ngModel)]="model.customerName" name="{{model.customerName}}" #customerName="ngModel" style="color: black;width: 185%;" >
+                <select class="form-control" [(ngModel)]="model.customerName" name="customerName" #customerName="ngModel" style="color: black;width: 185%;" >
                         <option value="--- Select --- "> ---- Select ---- </option>  
                         <option *ngFor="let itemCustomer of customerList" value="{{ itemCustomer.customerName }}"> {{ itemCustomer.customerName }} </option> 
                 </select> 
@@ -39,7 +39,7 @@
                         <label id="labeltext">:</label>
                 </div>
                 <div class="col-lg-5">
-                        <p id="purchaseoutput">{{todayDate | date:'longDate'}}</p>
+                        <p id="purchaseoutput" name="soDate">{{todayDate | date:'longDate'}}</p>
                 </div>
                 </div><br/>
                 </div>
@@ -58,30 +58,31 @@
                 <div class="col-md-5 col-xs-5 col-lg-5" id="purchasetext">Total Product</div>
                 <div class="col-md-1 col-xs-1 col-lg-1">:</div>
                 <div class="col-md-6 col-xs-6 col-lg-6">
-                        <p id="purchaseoutput">{{todayDate | date:'longDate'}}</p>
+                        <p id="purchaseoutput">{{ model.sNo }} Item</p>
                 </div>       
                 </div>	
-                <div class="row"id="date">
-                <div class="col-md-5 col-xs-5 col-lg-5" id="purchasetext">Subtotal</div>
-                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
-                <div class="col-md-6 col-xs-6 col-lg-6">
-                        <p id="purchaseoutput">{{todayDate | date:'longDate'}}</p>
-                </div>       
-                </div>
+                <!--<div class="row" id="date">
+                  <div class="col-md-5 col-xs-5 col-lg-5" id="purchasetext">Subtotal</div>
+                  <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                  <div class="col-md-6 col-xs-6 col-lg-6">
+                    <p id="purchaseoutput">{{ this.model.subTotal }}</p>
+                  </div>       
+                </div> -->
                 <div class="row">
-                <div class="col-md-5 col-xs-5 col-lg-5" id="purchasetext">Delivery Charge </div>
-                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
-                <div class="col-md-6 col-xs-6 col-lg-6">
-                        <p id="purchaseoutput">{{todayDate | date:'longDate'}}</p>
-                </div>       
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="purchasetext">Delivery Charge </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-6">
+                                <input class="form-control" type="text" id="deliveryCost" [(ngModel)]="this.model.deliveryCost" #deliveryCost="ngModel" style="width: auto;height: 25px;" name="deliveryCost"/>
+                        </div>       
                 </div>
+                <br/>
                 <hr>
                 <div class="row">
-                <div class="col-md-5 col-xs-5 col-lg-5" id="purchasetext">TOTAL : </div>
-                <div class="col-md-1 col-xs-1 col-lg-1">:</div>
-                <div class="col-md-6 col-xs-6 col-lg-6">
-                        <p id="purchaseoutput">{{todayDate | date:'longDate'}}</p>
-                </div>       
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="purchasetext">TOTAL : </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-6 col-xs-6 col-lg-6">
+                                <p id="purchaseoutput">{{todayDate | date:'longDate'}}</p>
+                        </div>       
                 </div>
                 <div class="row">
                 <div class="radio-toolbar">
@@ -98,7 +99,7 @@
                 <!-- <button id="sticky" type="button"  class="btn btn-primary" (click)="editinvoice()">Add </button>  &nbsp; &nbsp; &nbsp; 
                 <button  (click)="getstatus()" class="btn btn-primary" id="savebtn" type="submit" >Save</button>
                 <br/><br/> -->
-                <button (click)="newSalesOrder()" class="addButton" id="newSalesOrder"> Add Rows </button>
+                <button (click)="newSalesOrder(model.sNo)" class="addButton" id="newSalesOrder"> Add Rows </button>
                 <br/><br/> 
                 <table cellpadding="0" cellspacing="0" border="0" id="test" *ngIf="salestable">
                         <thead style="background-color: #3c8dbc;color:white;">
@@ -110,97 +111,40 @@
                                 <th style="padding-right: 10px;padding: 9px;">Sub Total</th>
                         </thead>
                 <tbody>
-                <!--<tr>
-                        <td style="padding-right: 10px;padding: 9px;">
-                                <select class="form-control" id="newAttributeCategory" [(ngModel)]="newAttribute.category" name="newAttributeCategory" style="color: black;" >
-                                <option value="--- Select --- "> ---- Select ---- </option>  
-                                <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
-                                </select> 
-                        </td>
-                        <td style="padding-right: 10px;padding: 9px;">
-                                <select class="form-control" id="newAttributeName" [(ngModel)]="newAttribute.productName" name="newAttributeName" style="color: black;" >
-                                <option value="--- Select --- "> ---- Select ---- </option>  
-                                <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
-                                </select> 
-                        </td>
-                        <td style="padding-right: 10px;padding: 9px;">
-                                <textarea class="form-control" type="text" id="newAttributeDescription" [(ngModel)]="newAttribute.description" name="newAttributeDescription"></textarea>
-                        </td>
-                        <td style="padding-right: 10px;padding: 9px;">
-                                <input class="form-control" type="text" id="newAttributeQuantity" [(ngModel)]="newAttribute.quantity" name="newAttributeQuantity" />
-                        </td>
-                        <td style="padding-right: 10px;padding: 9px;">
-                                <input class="form-control" type="text" id="newAttributeUnitPrice" [(ngModel)]="newAttribute.unitPrice" name="newAttributeUnitPrice" />
-                        </td>
-                        <td style="padding-right: 10px;padding: 9px;">
-                                <input class="form-control" type="text" id="newAttributeAmount" [(ngModel)]="newAttribute.netAmount" name="newAttributeAmount"/>
-                        </td>
-                        <td style="padding-right: 10px;padding: 9px;background-color:#1B2931;visibility: hidden;">
-                                <button class="romoveButton" (click)="deleteFieldValue(i)" id="Remove"> Remove </button> 
-                        </td>
-                </tr>-->
-                <tr *ngFor="let model of fieldArray; let i = index">
-                        <td style="padding-right: 10px;padding: 9px;">
-                                <select class="form-control" [(ngModel)]="model.category" name="{{model.category}}" #category="ngModel" style="color: black;" >
-                                <option value="--- Select --- "> ---- Select ---- </option>   
-                                <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
-                                </select> 
-                        </td>
-                        <td style="padding-right: 10px;padding: 9px;">
-                                <select class="form-control" [(ngModel)]="model.productName" name="{{model.productName}}" #productName="ngModel" style="color: black;" >
-                                <option value="--- Select --- "> ---- Select ---- </option>    
-                                <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
-                                </select> 
-                        </td>
-                        <td style="padding-right: 10px;padding: 9px;">
-                                <textarea type="text" class="form-control" [(ngModel)]="model.description" #description="ngModel" name="{{model.description}}"></textarea> 
-                        </td>
-                        <td style="padding-right: 10px;padding: 9px;">
-                                <input type="text" class="form-control" [(ngModel)]="model.quantity" #quantity="ngModel" name="{{model.quantity}}" />
-                        </td>
-                        <td style="padding-right: 10px;padding: 9px;">
-                                <input type="text" class="form-control" [(ngModel)]="model.unitPrice" #unitPrice="ngModel" name="{{model.unitPrice}}" />
-                        </td>
-                        <td style="padding-right: 10px;padding: 9px;">
-                                <input type="text" class="form-control" [(ngModel)]="model.netAmount" #netAmount="ngModel" name="{{model.netAmount}}" />
-                        </td>
-                        <td style="padding-right: 10px;padding: 9px;background-color:#1B2931;">
-                                <button class="romoveButton" (click)="deleteFieldValue(i)" id="Remove"> Remove </button> 
-                        </td>
-                </tr>
+                        <tr *ngFor="let model of fieldArray; let i = index">
+                                <td style="padding-right: 10px;padding: 9px;">
+                                        <!--<select class="form-control" [(ngModel)]="model.category" name="{{model.category}}" #category="ngModel" style="color: black;" (change)="getProductName(model.category)">-->
+                                        <select class="form-control" [(ngModel)]="model.category" name="{{model.category}}" #category="ngModel" style="color: black;">
+                                                <option value="--- Select --- "> ---- Select ---- </option>  
+                                                <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
+                                        </select> 
+                                </td>
+                                <td style="padding-right: 10px;padding: 9px;">
+                                        <select class="form-control" [(ngModel)]="model.productName" name="{{model.productName}}" #productName="ngModel" style="color: black;">
+                                        <option value="--- Select --- "> -- Select -- </option>  
+                                        <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
+                                        </select> 
+                                </td>
+                                <td style="padding-right: 10px;padding: 9px;">
+                                        <textarea type="text" class="form-control" [(ngModel)]="model.description" #description="ngModel" name="{{model.description}}"></textarea> 
+                                </td>
+                                <td style="padding-right: 10px;padding: 9px;">
+                                        <input class="form-control" [(ngModel)]="model.quantity" #quantity="ngModel" name="{{model.quantity}}" (change)="getUnitPrice(model.productName,model.category,model.quantity)" />
+                                </td>
+                                <td style="padding-right: 10px;padding: 9px;">
+                                        <input class="form-control" id="{{ model.sNo }}" [(ngModel)]="model.unitPrice" #unitPrice="ngModel" value="{{ this.unitArray[i] }}"/>
+                                </td>
+                                <td style="padding-right: 10px;padding: 9px;">
+                                        <input class="form-control" id="{{ model.sNo }}" [(ngModel)]="model.netAmount" #netAmount="ngModel" value="{{ this.subTotalArray[i] }}"/>
+                                </td>
+                                <td style="padding-right: 10px;padding: 9px;background-color:#1B2931;">
+                                        <button class="romoveButton" (click)="deleteFieldValue(i)" id="Remove"> Remove </button> 
+                                </td>
+                        </tr>
                         
                 </tbody>
                 </table> 
-                <!-- <table mdbTable>
-                <thead *ngIf="selected">
-                <tr>
-                <th *ngFor="let head of headElements" scope="col">{{head}} </th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr mdbTableCol *ngFor="let item of addDynamicElement.controls; let i = index">
-                <td scope="row">{{this.model.purchaseOrdeData[i].id}}</td>
-                -- <td><input class="form-control" type="text" [(ngModel)] ="this.model.purchaseOrdeData[i].productname" id="qtd[i]"  [formControlName]="i">
-                --
-                <td>
-                        <select [(ngModel)] ="this.model.purchaseOrdeData[i].productname" class="form-control" [formControlName]="i">
-                        <option  *ngFor="let product of productList" value={{product}} >{{product}}</option>     
-                        </select>
                 
-                </td>
-                <td>
-                        <select [(ngModel)] ="this.model.purchaseOrdeData[i].category" class="form-control" [formControlName]="i">
-                        <option  *ngFor="let category of categoryList" value={{category}} >{{category}}</option>
-                        
-                        </select>
-                        
-                </td>
-                <td><input class="form-control" type="text" [(ngModel)] ="this.model.purchaseOrdeData[i].quantity" [formControlName]="i">
-                </td>
-        
-                </tr>
-                </tbody>
-                </table> -->
         </div>      
         <!-- Submit Button -->
         </div>

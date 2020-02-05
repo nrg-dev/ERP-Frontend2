@@ -205,7 +205,6 @@ export class PurchaseaddComponent  implements OnInit  {
        res => {
          console.log('............1 ....');
          //if(res.status ="success"){
-          console.log('successfully updated...');
           this.alertService.success("Successfully saved ");
           setTimeout(() => {
            this.alertService.clear();
@@ -234,7 +233,7 @@ export class PurchaseaddComponent  implements OnInit  {
 
 
   cancelEmp(){
-    alert("------ Cancel Employeee -------");
+    console.log("------ Cancel Employeee -------");
   }
 
   public getstatus(){
@@ -250,7 +249,7 @@ export class PurchaseaddComponent  implements OnInit  {
       height: '80%'
     }).afterClosed().subscribe(result => {
     // this.refresh();
-    });;
+    });
   }
   //htmlData:any;
   purchaseInvoice(){

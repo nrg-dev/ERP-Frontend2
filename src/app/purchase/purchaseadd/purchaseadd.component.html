@@ -24,7 +24,7 @@
                 <div class="col-lg-1">
                     <label id="labeltext">:</label>
                 </div>
-                <div>
+                <div class="col-lg-5">
                   <select class="form-control" [(ngModel)]="model.vendorName" #vendorName="ngModel" name="vendorName" style="color: black;width: 185%;" >
                     <option *ngFor="let itemVendor of vendorList" 
                     value="{{ itemVendor.vendorName }}"> {{ itemVendor.vendorName }} </option>                     

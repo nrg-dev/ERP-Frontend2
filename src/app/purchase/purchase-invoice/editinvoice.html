@@ -1,15 +1,24 @@
 <div id="box-dialouge">
     <br/>
     <h2 style="text-align: center;font-size: 22px;">Edit Invoice {{ this.model.invoiceNumber }}</h2>
+    <br/>
     <div class="row">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-5">
-            <label style="color: white;">Status : </label>
-            <select class="form-control" name="status" [(ngModel)]="this.model.status" #status="ngModel">
-                <option *ngFor="let statusOpt of statusList;"
-                    [selected]="statusOpt === Pending"> {{ statusOpt }}
-                </option>
-            </select> 
+        <div class="col-lg-1"></div>
+        <div class="col-lg-4">
+            <label style="font-size: 15px;color: white;">Current Status : &nbsp;</label>
+                <label style="font-size: 15px;border: 1px solid #0000e2;border-radius:5px;width: 100px;" [ngStyle]="{'color': (model.currentStatus === 'Success') ? 'green' : (model.currentStatus === 'Pending') ? 'red' : (model.currentStatus === 'On Progress') ? 'yellow' : ''}"> <p style="margin: 3px;">{{ this.model.currentStatus }}</p></label>
+            
+        </div>
+        <div class="col-lg-7">
+            <div class="row">
+                <label style="color: white;font-size: 15px;">Changed Status : &nbsp;</label>
+                <select class="form-control" style="width: 25%;font-size: 12px;" name="status" [(ngModel)]="this.model.status" #status="ngModel">
+                    <option *ngFor="let statusOpt of statusList;"
+                        [selected]="statusOpt === Pending"> {{ statusOpt }}
+                    </option>
+                </select> 
+            </div>
+            
         </div>
     </div>
     <br/>

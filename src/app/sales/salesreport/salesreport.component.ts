@@ -16,10 +16,12 @@ import { SalesService } from '../sales.service';
 export class SalesreportComponent implements OnInit {
   model: any ={};
   sales:Sales;
-  public purchaseList : any;
+  public salesList : any;
+  public salesReportList : any = {} ;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
-  displayedColumns: string[] = ['No','SoInvoice','soDate','customer','Total'];
+  //displayedColumns: string[] = ['No','SoInvoice','soDate','customer','Total'];
+  displayedColumns: string[] = ['SoInvoice','soDate','customer','Total'];
   dataSource: MatTableDataSource<any>;
   
   constructor(
@@ -28,10 +30,16 @@ export class SalesreportComponent implements OnInit {
     private alertService: AlertService,
     private salesService: SalesService
   ) {
-    const purchasedata = require("../../salesreportdata.json");
-    this.purchaseList=purchasedata;
-
-    this.dataSource = new MatTableDataSource(this.purchaseList);
+    this.salesService.load().subscribe(res => { 
+      this.salesList = res;
+      this.dataSource = new MatTableDataSource(this.salesList);
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    );
 
    }
 
@@ -45,5 +53,44 @@ export class SalesreportComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  getReportDetails(invoicenumber:number){
+    this.salesService.load().subscribe(res => { 
+      this.salesList = res;
+      for(let i=0;i<this.salesList.length; i++){
+        if(this.salesList[i].invoicenumber == invoicenumber){
+          this.model.invoicenumber = invoicenumber;
+          this.model.invoicedate = this.salesList[i].invoicedate;
+          this.model.customername = this.salesList[i].customername;
+          this.model.totalqty = this.salesList[i].totalqty;
+          this.model.totalitem = this.salesList[i].totalitem;
+          this.model.totalprice = this.salesList[i].totalprice;
+          this.model.deliveryprice = this.salesList[i].deliveryprice;
+          this.model.totalAmount = Number.parseInt(this.salesList[i].deliveryprice) + Number.parseInt(this.salesList[i].totalprice);
+        }
+      }
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    );
+    this.salesService.get(invoicenumber)
+    .subscribe(
+      data => {
+        this.salesReportList = data;
+        for(let j=0;j<this.salesReportList.length; j++){
+          this.model.itemname = this.salesReportList[j].itemname;
+        }
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    );
+  }
+
 
 }

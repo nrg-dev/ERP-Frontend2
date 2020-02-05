@@ -26,7 +26,6 @@ export class PurchaseService {
         return this.http.get<Purchase>(this.commonURL+'loadVendor'); 
     }
     // Save 
-    // Save 
     save(purchasesearcharray: Array<any>,vendorName:string,deliveryCost:string){
         purchasesearcharray.push([{vendorname:vendorName,podate:"09-sep-2020",deliveryCost:deliveryCost}]);
         return this.http.post(this.commonURL+'save',purchasesearcharray);
@@ -45,7 +44,6 @@ export class PurchaseService {
     // Update 
     update(purchase: Purchase){
         return this.http.put<Purchase>(this.commonURL+'update',purchase);
-
     }
 
     // Remove 
@@ -88,5 +86,9 @@ export class PurchaseService {
 
     getUnitPrice(productName:string,category:string){
         return this.http.get<Purchase>(this.commonURL+'getUnitPrice?productName='+productName+'&category='+category);
+    }
+
+    savePurchaseReturn(myReturnArray: Array<any>){
+        return this.http.post(this.commonURL+'saveReturn',myReturnArray);
     }
 }

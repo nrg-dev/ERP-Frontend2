@@ -41,7 +41,7 @@ export class Status {
   styleUrls: ['./salesorder.component.css']
 })
 export class SalesorderComponent implements OnInit {
-  sales:Sales;
+  sales:Sales = new Sales();
   model: any ={};
   public salestable = false;
   headElements = ['#ID', 'Product Name', 'Category Name', 'Quantity'];
@@ -54,11 +54,16 @@ export class SalesorderComponent implements OnInit {
   fieldArray: Array<any> = [];
   newAttribute: any = {};
   firstField = true;
-  salesarray: Array<any> = [];
 
   productList: any = {};
   categoryList: any = {};
   customerList:  any = {};
+
+  salesarray: Array<any> = [];
+  unitArray : any = [];
+  i:number=0;
+  public subTotalArray : any = [];
+  j:number=0;
 
   constructor(
     public fb: FormBuilder,
@@ -75,10 +80,7 @@ export class SalesorderComponent implements OnInit {
     this.getCustomerList();
     this.getcategoryList();
     this.getProductList();
-
-    //this.customerList = ['Nisho','Alex','Josni','Mary'];
-    //this.productList = ['Mobile', 'Computer', 'Cloths', 'TV'];
-    //this.categoryList = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];
+    this.model.sNo = 0;
   }
 
   getCustomerList(){
@@ -126,15 +128,61 @@ export class SalesorderComponent implements OnInit {
     );
   }
 
-
-  newSalesOrder(){
-    this.salestable = true;
-     this.fieldArray.push(this.newAttribute);
-     this.newAttribute = {}; 
+  getUnitPrice(productName:string,category:string,quantity:number,sNo:number){
+    let totalCommission = 0.0;
+    this.salesService.getUnitPrice(productName,category)
+    .subscribe(
+      data => {
+        this.sales = data; 
+        console.log("Unit Price back end -->"+this.sales.price);
+        console.log("Unit Prize initial -->"+this.unitArray[this.i]);
+        this.unitArray[this.i] = this.sales.price;
+        this.subTotalArray[this.j] = quantity*this.unitArray[this.i];
+        this.fieldArray[this.i].unitPrice = this.unitArray[this.i];
+        this.fieldArray[this.i].netAmount = this.subTotalArray[this.j];
+        console.log(this.fieldArray);
+        totalCommission +=  this.fieldArray[this.i].netAmount;
+        this.model.subTotal = totalCommission;
+        this.i++;
+        this.j++;
+      },
+      error => {
+        this.alertService.error("Network error: server is temporarily unavailable");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 1500);
+      }
+    );
   }
- 
+  getSubTotal(quantity:number,price:number){
+    console.log("Qty -->"+quantity);
+    console.log("price -->"+price);
+    this.sales.netAmount = quantity*price;
+  }
+
+  newSalesOrder(sNo: number){
+    this.salestable = true;
+    this.fieldArray.push(this.newAttribute);
+    this.newAttribute = {};
+    this.model.sNo = sNo+1;
+    this.sales.id = this.model.sNo;
+  }
+
   deleteFieldValue(index) {
     this.fieldArray.splice(index, 1);
+    console.log("Size -->"+this.fieldArray.length);
+    if(this.fieldArray.length==0){
+      this.fieldArray = [];
+      this.unitArray = [];
+      this.subTotalArray = [];
+      this.model.customerName = '';
+      this.model.sNo = 0;
+      this.model.subTotal = '';
+      this.model.deliveryCost = '';
+      this.i = 0;
+      this.j = 0;
+    }
+    this.model.sNo = this.fieldArray.length;
     if(this.fieldArray[0]){
       this.salestable = true;
     }else{
@@ -143,34 +191,47 @@ export class SalesorderComponent implements OnInit {
   }
 
   saveSales(){
-    this.salesarray = [];
+    this.salesarray=[];
+    console.log(this.fieldArray);
     this.salesarray.push(this.fieldArray);
-    this.salesarray.push(this.newAttribute);
+    console.log("Purchase Array -->"+this.salesarray);
     console.log(this.salesarray);
+    this.sales.customerName = this.model.customerName;
 
-   this.salesService.save(this.salesarray)
-   .subscribe(
+    this.salesService.save(this.salesarray,this.model.customerName,this.model.deliveryCost)
+    .subscribe(
        res => {
-         console.log('............1 ....');
-         console.log('value -->'+res.status);
-         if(res.status ="success"){
-          console.log('successfully updated...');
-          this.alertService.success("Successfully saved ");
-          setTimeout(() => {
-           this.alertService.clear();
-         }, 2000);
-
-        }
+          console.log('............1 ....');
+          console.log('value -->'+res.status);
+          //if(res.status ="success"){
+            console.log('successfully updated...');
+            this.alertService.success("Successfully saved ");
+            setTimeout(() => {
+              this.alertService.clear();
+            }, 2000);
+            this.fieldArray = [];
+            this.unitArray = [];
+            this.subTotalArray = [];
+            this.salestable = false;
+            this.model.customerName = '';
+            this.model.sNo = 0;
+            this.model.subTotal = '';
+            this.model.deliveryCost = '';
+            this.i = 0;
+            this.j = 0;
+       // }
                         
        },
        error => {
-        this.alertService.error("Network error: server is temporarily unavailable");
-
+        this.alertService.success("API server Issue..");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 2000);
        });
   }
 
   cancelSales(){
-    alert("------ Cancel Sales -------");
+    console.log("------ Cancel Sales -------");
   }
   
 }

@@ -84,11 +84,9 @@ export class PurchaseReturnComponent implements OnInit {
     var itemStatus = $("input[id='itemStatus']:checked").val();
     var returnStatus = $("input[id='returnStatus']:checked").val();
     var details= "<tr><td style='vertical-align: middle;border:1px solid white;'>" + poDate + "</td><td style='vertical-align: middle;border:1px solid white;'>"+ productName 
+      +"<td style='vertical-align: middle;border:1px solid white;'>"+ category 
       +"</td><td style='vertical-align: middle;border:1px solid white;'>" + vendorName + "</td><td style='vertical-align: middle;border:1px solid white;'>" + quantity
-      +"</td><td style='vertical-align: middle;border:1px solid white;'>" + itemStatus + "</td><td style='vertical-align: middle;border:1px solid white;'>" + returnStatus 
-      +"</td><td style='border:1px solid white;'>" + '&nbsp;<div style="background: #dc7218;border-radius: 16px;height:30px;width:30px;margin-top: -16px;" (click)="printPurchase()"><i class="fa fa-print" aria-hidden="true"></i></div>'
-      +' &nbsp;<div style="background: #267CB4;border-radius: 16px;height:30px;width:30px;margin-top: -16px;" (click)="editPurchase()"><i class="fa fa-pencil-square-o"></i></div>&nbsp;' 
-      +'<div style="background: #EF6956;border-radius: 16px;height:30px;width:30px;margin-top: -16px;" onclick="deletePurchase()"><i class="fa fa-trash-o"></i></div>' +"</td></tr>";
+      +"</td><td style='vertical-align: middle;border:1px solid white;'>" + itemStatus + "</td><td style='vertical-align: middle;border:1px solid white;'>" + returnStatus + "</td>";
 
     $("#addpurchasereturntable").append(details);
     $("#vendorName").val("");
@@ -101,21 +99,53 @@ export class PurchaseReturnComponent implements OnInit {
     $("#returnStatus").val('');
   }
 
+  savePurchaseReturn(){
+    var myReturnArray = [];
+			$("#addpurchasereturntable tr").each(function() {
+				var arrayOfThisRow = [];
+				var tableData = $(this).find('td');
+				if (tableData.length > 0) {
+					tableData.each(function() { 
+					if($(this).text()!=""){
+						arrayOfThisRow.push($(this).text()); 
+					}
+					});
+					myReturnArray.push('['+arrayOfThisRow+']');
+					}
+      });
+      
+      this.purchaseService.savePurchaseReturn(myReturnArray)
+        .subscribe(res => { 
+          this.model = res;
+          console.log("Status -->"+res);
+          this.alertService.success("Successfully Saved..");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 1500);
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    );
+  }
+
   printPurchase(){
-    alert("------ View Purchase ------");
+    console.log("------ View Purchase ------");
   }
 
   editPurchase(){
-    alert("------ Edit Purchase ------"); 
+    console.log("------ Edit Purchase ------"); 
   }
 
   /*$scope.deletePurchase = function(){
-    alert("------ Delete Purchase ------"); 
+    console.log("------ Delete Purchase ------"); 
 
   };*/
 
   deletePurchase(){
-    alert("-------- Delete Purchase Calling -------")
+    console.log("-------- Delete Purchase Calling -------")
   }
   
 }

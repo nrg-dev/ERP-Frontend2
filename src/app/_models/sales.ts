@@ -2,6 +2,7 @@
 
 export class Sales extends Common {
 
+   id: string;
    productName: string; 
    category: string;
    customerName: string;
@@ -14,4 +15,7 @@ export class Sales extends Common {
    salesPerson:string;
    orderNumber:string;
    termsDays:string;
+   invoicedate:Date;
+   salesarray: any = [];
+   price: string;
 }
