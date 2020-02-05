@@ -613,7 +613,7 @@ export class CategoryaddComponent implements OnInit {
   isDtInitialized:boolean = false;
   model: any = {};
   discount:Discount;
-  itemtitle:string="All Product";
+  itemtitle:string="All Items";
   // All Product
   displayedColumns: string[] = ['productname','description','vendorcode','sellingprice','price','editdelete'];
   dataSource: MatTableDataSource<any>;
@@ -732,7 +732,6 @@ export class CategoryaddComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-  // alex
   showCategoryItems(categorycode:string,categoryname:string){
     console.log("Category code -->"+categorycode);
     console.log("Category name -->"+categoryname);
@@ -770,6 +769,7 @@ categorydetails(number: string){
   this.leftdetails=true;
 
   if(number=='01'){
+    this.itemtitle="All Items";
     this.allproductList();
     this.alldetails='block';
     this.discountdetails='none';
@@ -949,6 +949,7 @@ productlist(number: string){
       panelClass: 'addnewproduct',
     })
     .afterClosed().subscribe(result => {
+      this.allproductList();
     }); 
   }
 
@@ -977,6 +978,7 @@ productlist(number: string){
       panelClass: 'productedit'
     })
     .afterClosed().subscribe(result => {
+      this.allproductList();
     }); 
   }
 
@@ -1004,6 +1006,7 @@ productlist(number: string){
           if(this.product.status == "Success"){
           this.alertService.success("Deleted Successfully");
           setTimeout(() => {
+            this.allproductList();
             this.alertService.clear();
           }, 1500);
         }else if(this.product.status == "failure"){
