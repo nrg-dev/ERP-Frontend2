@@ -455,7 +455,7 @@ export class AllproducteditComponent {
       );
 
        //this.allproductlist="";
-    this.catprodservice.loadItem()
+    this.catprodservice.loadItem("all")
     .subscribe(
       data => {
         this.allproducedittlist = data;
@@ -613,6 +613,7 @@ export class CategoryaddComponent implements OnInit {
   isDtInitialized:boolean = false;
   model: any = {};
   discount:Discount;
+  itemtitle:string="All Product";
   // All Product
   displayedColumns: string[] = ['productname','description','vendorcode','sellingprice','price','editdelete'];
   dataSource: MatTableDataSource<any>;
@@ -691,8 +692,7 @@ export class CategoryaddComponent implements OnInit {
   }
 
   allproductList(){
-    //this.allproductlist="";
-    this.catprodservice.loadItem()
+    this.catprodservice.loadItem("all")
     .subscribe(
       data => {
         this.allproductlist = data;
@@ -732,8 +732,36 @@ export class CategoryaddComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-   
+  // alex
+  showCategoryItems(categorycode:string,categoryname:string){
+    console.log("Category code -->"+categorycode);
+    console.log("Category name -->"+categoryname);
+    this.itemtitle=categoryname;
+    console.log("Inside showCategoryItems");
+    this.catprodservice.loadItem(categorycode)
+    .subscribe(
+      data => {
+        this.allproductlist = data;
+        console.log("Product length -->"+this.allproductlist.length);
+        this.dataSource = new MatTableDataSource(this.allproductlist);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    );
+    //this.allproductList();
+    this.alldetails='block';
+    this.discountdetails='none';
+    this.fiberdetails='none';
+    this.editdeletediv=false;
+
+  }
 categorydetails(number: string){
+  console.log("Inside categorydetails");
   if(this.tempid!==null){
     document.getElementById(this.tempid).style.backgroundColor='#272E34';
   }

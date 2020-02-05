@@ -2,6 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Category, Product } from '../_models';
 import { Discount } from '../_models/discount';
+//import { ConsoleReporter } from 'jasmine';
 
 @Injectable()
 export class CategoryproductService {    
@@ -45,8 +46,9 @@ loadCategoryName(){
 }
 
 //item Load 
-loadItem(){
-    return this.http.get<Product>(this.commonURL2+'load');
+loadItem(category:string){
+    console.log("category name or code -->"+category);
+    return this.http.get<Product>(this.commonURL2+'load?category='+category);
 }
 // Load only item name for auto search text box
 loadItemName(){

@@ -27,8 +27,8 @@
                 </div>
             </div>
             <div style="height: 10px;"></div>
-            <div *ngFor="let list of categorylist" (click)="productlist(list.number)" 
-            class="productlists-alignment" id="{{ list.number }}">
+            <div *ngFor="let list of categorylist" (click)="showCategoryItems(list.categorycode,list.name)" 
+            class="productlists-alignment" id="{{ list.categorycode }}">
                 <p id="productlist-style">{{ list.name }}</p>
               </div> 
             </div>
@@ -223,7 +223,7 @@
              <br/>
               <div class="row">
                     <div class="col-5 col-sm-5 col-md 5 col-lg-5">
-                        <h2>All Product</h2>
+                        <h2>{{itemtitle}}</h2>
                         <div class="row"  id="editdelete-button">
                             <span (click)="addNewProduct()">
                                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
