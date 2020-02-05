@@ -1,6 +1,6 @@
 *{
   font-family: 'Lato',Georgia,Arial,sans-serif;
-  font-size:13px;
+  font-size:medium;
   color: white;
 }
 .mat-tab-group {
@@ -84,10 +84,9 @@ color: white;
 table {
   display: block;
   width: 100%;
-  height: 550px;
-  overflow-y: auto;
+  /*height: 550px;*/
   border-color: 1px solid grey;
-  background-color: #243642;
+  background-color: #1B2931;
   margin: 10px;
 }
 #StockOutTable{
@@ -113,6 +112,7 @@ td{
 }
 ::ng-deep .mat-select-value,::ng-deep .mat-select-arrow {
   color: white;
+  width: 30px;
 }
 ::ng-deep .alert-success {
   color: #155724;
@@ -152,9 +152,6 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
   padding: 11px;
   margin-top: -10px;
 }
-::ng-deep .mat-form-field-wrapper{
-  width: 140px;
-}
 .matTable{
   width: 90%;
   margin: auto;
@@ -164,15 +161,30 @@ mat-paginator{
   background-color: #1B2931;
   color: white;
 }
+
+
+
+
 #icon-mod{
   font-size: 18px;
   margin-left: 3px;
 }
-#print-butn1{
+#print-emp-butn{
   border: 1px solid white;
   height: 29px;
-  width: 90px;
+  width: 94px;
   margin-top: 7px;
+  margin-left: 75px;
+  font-size: 15px;
+  cursor: pointer;
+  background: #313F47;
+}
+#print-sales-butn{
+  border: 1px solid white;
+  height: 29px;
+  width: 94px;
+  margin-top: 7px;
+  margin-left: 50px;
   font-size: 15px;
   cursor: pointer;
   background: #313F47;
@@ -246,7 +258,7 @@ label,select,input,#textSize{
   width: 90%;
   height: 600px;
   background-color: #243642;
-  margin: 20px 5px;
+  margin: 20px 22px;
 }
 #add-sales-details{
   width: 90%;
@@ -264,8 +276,6 @@ label,select,input,#textSize{
   height: 390px;
   background-color: #243642;
   margin: 20px 5px;
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 #rowedit-div{
   height: 30px;
@@ -333,18 +343,6 @@ div#back-color::-webkit-scrollbar-thumb {
   white-space: nowrap;
   position: relative;
   color: white;
-}
-::ng-deep .input[type="search"] {
-  background-color: #1B2931;
-  color: white;
-  width: 159%;
-}
-::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
-  height: 0px;
-  background: none;
-}
-::ng-deep .mat-form-field-underline{
-  width: 0%;
 }
 ::ng-deep header-pagination-after,::ng-deep .mat-tab-header-pagination-chevron {
   transform: rotate(-135deg);
@@ -414,10 +412,11 @@ div#back-color::-webkit-scrollbar-thumb {
   font-size: 13px;
 }
 #financebackground {
-  background-color: #243642;
+  background-color: #1B2931;
   width: 95%;
   /*height: 750px;*/
   margin-left: 22px;
+  height: 100%;
 }
 #purchase-text{
   font-weight: bold;
@@ -490,4 +489,9 @@ div#back-color::-webkit-scrollbar-thumb {
     color: white;
     width: 160%;
   }
+}
+#choosedate{
+  background-color:#1B2931;
+  color: white;
+  border: 1px solid #CED4DA;
 }

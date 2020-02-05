@@ -16,11 +16,6 @@
                                                 <p style="padding-left:15px;">Employee Salary List</p>
                                             </div>
                                             <div class="col-lg-4">
-                                                <button id="print-butn">
-                                                    &nbsp;<i class="fa fa-print" aria-hidden="true" id="icon-mod"></i>
-                                                    &nbsp;
-                                                    &nbsp;<label id="text">Print Page</label>
-                                                </button>
                                             </div>
                                             <div class="col-lg-4">
                                                 <mat-form-field>
@@ -38,10 +33,15 @@
                                         <p>Time : </p>
                                     </div>
                                     <div class="col-lg-3">
-                                        <input type="date" class="form-control"
+                                       <input type="date" class="form-control"
                                             style="background-color:#1B2931;color: white;" id="joinDate"
                                             [(ngModel)]="model.joinDate" name="{{model.joinDate}}"
                                             #joinDate="ngModel" />
+                                     <!--    <mat-form-field id="datebox-align">
+                                            <input matInput class="form-control" id="choosedate" [matDatepicker]="picker3">
+                                            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker3 ></mat-datepicker>
+                                        </mat-form-field>-->
                                     </div>
                                 </div>
 
@@ -115,7 +115,8 @@
                                                 </ng-container>
 
                                                 <tr mat-header-row *matHeaderRowDef="firstColumns"></tr>
-                                                <tr mat-row *matRowDef="let row; columns: firstColumns;"></tr>
+                                                <tr mat-row mat-row [ngClass]="table-row" tabindex="1" 
+                                                *matRowDef="let row; columns: firstColumns;"></tr>
                                             </table>
                                         </div>
                                     </div>
@@ -211,8 +212,8 @@
                                             </div><br />
                                             <div class="row">
                                                 <div class="col-lg-1"></div>
-                                                <div class="col-lg-4">
-                                                    <button id="print-butn1">
+                                                <div class="col-lg-11">
+                                                    <button id="print-emp-butn">
                                                         <i class="fa fa-print" aria-hidden="true" id="printicon"></i>
                                                         &nbsp;
                                                         <label id="text">Print Page</label>
@@ -238,11 +239,7 @@
                                                 <p style="padding-left:15px;">Sales List</p>
                                             </div>
                                             <div class="col-lg-4">
-                                                <button id="print-butn">
-                                                    &nbsp;<i class="fa fa-print" aria-hidden="true" id="icon-mod"></i>
-                                                    &nbsp;
-                                                    &nbsp;<label id="text">Print Page</label>
-                                                </button>
+                                                
                                             </div>
                                             <div class="col-lg-4">
                                                 <mat-form-field>
@@ -263,6 +260,11 @@
                                         <input type="date" class="form-control"
                                             style="background-color:#1B2931;color: white;" id="soDate"
                                             [(ngModel)]="model.soDate" name="{{model.soDate}}" #soDate="ngModel" />
+                                     <!--   <mat-form-field id="datebox-align">
+                                            <input matInput class="form-control" id="choosedate" [(ngModel)]="model.soDate" name="{{model.soDate}}" #soDate="ngModel"  [matDatepicker]="picker4">
+                                            <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker4 ></mat-datepicker>
+                                        </mat-form-field>-->
                                     </div>
                                 </div>
 
@@ -336,7 +338,8 @@
                                                 </ng-container>
 
                                                 <tr mat-header-row *matHeaderRowDef="secondColumns"></tr>
-                                                <tr mat-row *matRowDef="let row; columns: secondColumns;"></tr>
+                                                <tr mat-row mat-row [ngClass]="table-row" tabindex="1" 
+                                                 *matRowDef="let row; columns: secondColumns;"></tr>
                                             </table>
                                         </div>
                                     </div>
@@ -421,7 +424,7 @@
                                             <div class="row">
                                                 <div class="col-lg-1"></div>
                                                 <div class="col-lg-3">
-                                                    <button id="print-butn1">
+                                                    <button id="print-sales-butn">
                                                         <i class="fa fa-print" aria-hidden="true" id="printicon"></i>
                                                         &nbsp;
                                                         <label id="text">Print Page</label>
@@ -447,11 +450,7 @@
                                                 <p style="padding-left:15px;">Purchase List</p>
                                             </div>
                                             <div class="col-lg-4">
-                                                <button id="print-butn">
-                                                    &nbsp;<i class="fa fa-print" aria-hidden="true" id="icon-mod"></i>
-                                                    &nbsp;
-                                                    &nbsp;<label id="text">Print Page</label>
-                                                </button>
+                
                                             </div>
                                             <div class="col-lg-4">
                                                 <mat-form-field>
@@ -471,7 +470,13 @@
                                     <div class="col-lg-3">
                                         <input type="date" class="form-control"
                                             style="background-color:#1B2931;color: white;" id="poDate"
-                                            [(ngModel)]="model.poDate" name="{{model.poDate}}" #poDate="ngModel" />
+                                            [(ngModel)]="model.poDate" name="{{model.poDate}}" #poDate="ngModel" /> 
+                                       <!--     <mat-form-field id="datebox-align">
+                                                <input matInput class="form-control" 
+                                                [(ngModel)]="model.poDate" name="{{model.poDate}}" #poDate="ngModel" id="choosedate" [matDatepicker]="picker5">
+                                                <mat-datepicker-toggle matSuffix [for]="picker5"></mat-datepicker-toggle>
+                                                <mat-datepicker #picker5 ></mat-datepicker>
+                                            </mat-form-field>-->
                                     </div>
                                 </div>
 
@@ -545,7 +550,8 @@
                                                 </ng-container>
 
                                                 <tr mat-header-row *matHeaderRowDef="thirdColumns"></tr>
-                                                <tr mat-row *matRowDef="let row; columns: thirdColumns;"></tr>
+                                                <tr mat-row mat-row [ngClass]="table-row" tabindex="1" 
+                                                 *matRowDef="let row; columns: thirdColumns;"></tr>
                                             </table>
                                         </div>
                                     </div>
@@ -623,7 +629,7 @@
                                             <div class="row">
                                                 <div class="col-lg-1"></div>
                                                 <div class="col-lg-3">
-                                                    <button id="print-butn1">
+                                                    <button id="print-sales-butn">
                                                         <i class="fa fa-print" aria-hidden="true" id="printicon"></i>
                                                         &nbsp;
                                                         <label id="text">Print Page</label>
@@ -649,11 +655,11 @@
                                                 <p style="padding-left:15px;">Return List</p>
                                             </div>
                                             <div class="col-lg-4">
-                                                <button id="print-butn">
+                                            <!--    <button id="print-butn">
                                                     &nbsp;<i class="fa fa-print" aria-hidden="true" id="icon-mod"></i>
                                                     &nbsp;
                                                     &nbsp;<label id="text">Print Page</label>
-                                                </button>
+                                                </button>-->
                                             </div>
                                             <div class="col-lg-4">
                                                 <mat-form-field>
@@ -674,6 +680,13 @@
                                         <input type="date" class="form-control"
                                             style="background-color:#1B2931;color: white;" id="soDate"
                                             [(ngModel)]="model.soDate" name="{{model.soDate}}" #soDate="ngModel" />
+                                    <!--    <mat-form-field id="datebox-align">
+                                            <input matInput class="form-control"
+                                            [(ngModel)]="model.soDate" name="{{model.soDate}}" #soDate="ngModel"
+                                             id="choosedate" [matDatepicker]="picker6">
+                                            <mat-datepicker-toggle matSuffix [for]="picker6"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker6 ></mat-datepicker>
+                                        </mat-form-field>-->
                                     </div>
                                 </div>
 
@@ -746,7 +759,8 @@
                                                 </ng-container>
 
                                                 <tr mat-header-row *matHeaderRowDef="fourthColumns"></tr>
-                                                <tr mat-row *matRowDef="let row; columns: fourthColumns;"></tr>
+                                                <tr mat-row mat-row [ngClass]="table-row" tabindex="1" 
+                                                 *matRowDef="let row; columns: fourthColumns;"></tr>
                                             </table>
                                         </div>
                                     </div>
@@ -835,7 +849,7 @@
                                             <div class="row">
                                                 <div class="col-lg-1"></div>
                                                 <div class="col-lg-3">
-                                                    <button id="print-butn1">
+                                                    <button id="print-sales-butn">
                                                         <i class="fa fa-print" aria-hidden="true" id="printicon"></i>
                                                         &nbsp;
                                                         <label id="text">Print Page</label>
@@ -860,11 +874,11 @@
                                                 <p style="padding-left:15px;">Petty Cash List</p>
                                             </div>
                                             <div class="col-lg-4">
-                                                <button id="print-butn">
+                                            <!--    <button id="print-butn">
                                                     &nbsp;<i class="fa fa-print" aria-hidden="true" id="icon-mod"></i>
                                                     &nbsp;
                                                     &nbsp;<label id="text">Print Page</label>
-                                                </button>
+                                                </button>-->
                                             </div>
                                             <div class="col-lg-4">
                                                 <mat-form-field>
@@ -885,6 +899,13 @@
                                         <input type="date" class="form-control"
                                             style="background-color:#1B2931;color: white;" id="soDate"
                                             [(ngModel)]="model.soDate" name="{{model.soDate}}" #soDate="ngModel" />
+                                    <!--    <mat-form-field id="datebox-align">
+                                            <input matInput class="form-control"
+                                            [(ngModel)]="model.soDate" name="{{model.soDate}}" #soDate="ngModel"
+                                             id="choosedate" [matDatepicker]="picker7">
+                                            <mat-datepicker-toggle matSuffix [for]="picker7"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker7 ></mat-datepicker>
+                                        </mat-form-field>-->
                                     </div>
                                 </div>
 
@@ -956,7 +977,8 @@
                                                 </ng-container>
 
                                                 <tr mat-header-row *matHeaderRowDef="fifthColumns"></tr>
-                                                <tr mat-row *matRowDef="let row; columns: fifthColumns;"></tr>
+                                                <tr mat-row mat-row [ngClass]="table-row" tabindex="1"  
+                                                *matRowDef="let row; columns: fifthColumns;"></tr>
                                             </table>
                                         </div>
                                     </div>
@@ -979,13 +1001,18 @@
 
                                                 </div>
                                             </div>
-                                            <div class="row" id="salessummary">
+                                            <div class="row" id="salessummary" style="height: 38px;">
                                                 <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">Date</div>
                                                 <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">:</div>
                                                 <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
-                                                    <input type="date" class="form-control" id="textSize2"
+                                                  <input type="date" class="form-control" id="textSize2"
                                                     name="addedDate" [(ngModel)]="finance.addedDate" value="{{ finance.addedDate }}"
                                                         #addedDate="ngModel" />
+                                                 <!--     <mat-form-field id="datebox-align">
+                                                        <input matInput class="form-control" id="textSize2" [matDatepicker]="picker2">
+                                                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                                        <mat-datepicker #picker2 ></mat-datepicker>
+                                                    </mat-form-field>-->
                                                 </div>
                                             </div>
                                             <div class="row" id="salessummary">
@@ -1062,19 +1089,19 @@
 
                                                 </div>
                                             </div>
-                                            <div class="row" id="salessummary">
+                                            <div class="row" id="salessummary" style="height: 38px;">
                                                 <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">Date</div>
                                                 <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">:</div>
                                                 <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
-                                               <mat-form-field id="datebox-align">
-                                                 <!--    <input type="date" class="form-control" id="textSize2"
+                                              
+                                                     <input type="date" class="form-control" id="textSize2"
                                                         [(ngModel)]="model.addedDate" name="addedDate" placeholder="xx/xx/xx"
-                                                        #addedDate="ngModel" /> -->
-
+                                                        #addedDate="ngModel" /> 
+                                             <!--   <mat-form-field id="datebox-align">
                                                     <input matInput class="form-control" id="textSize2" [matDatepicker]="picker1">
                                                     <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                                                     <mat-datepicker #picker1 ></mat-datepicker>
-                                                    </mat-form-field>
+                                                </mat-form-field>-->
                                                 
                                                 </div>
                                             </div>
@@ -1154,14 +1181,28 @@
                                         <div class="row" style="margin: 2px;">
                                             <div class="col-4 col-md-6 col-lg-7">
                                                 <div class="row">
-                                                    <p id="purchase-text">Date</p>
+                                                    <p id="purchase-text"> Date</p>
                                                     <input type="date" class="form-control" id="date-box1"
                                                         [(ngModel)]="model.joinDate" name="{{model.joinDate}}"
                                                         #joinDate="ngModel" />
-                                                    <hr id="second-h2">
-                                                    <input type="date" class="form-control" id="date-box1"
+                                                    <!--    <mat-form-field id="datebox-align">
+                                                            <input matInput class="form-control" 
+                                                            [(ngModel)]="model.joinDate" name="{{model.joinDate}}" #joinDate="ngModel"
+                                                        id="choosedate" [matDatepicker]="picker8">
+                                                            <mat-datepicker-toggle matSuffix [for]="picker8"></mat-datepicker-toggle>
+                                                            <mat-datepicker #picker8 ></mat-datepicker>
+                                                        </mat-form-field>-->
+                                                  <!--  <hr id="second-h2">-->
+                                                  <input type="date" class="form-control" id="date-box1"
                                                         [(ngModel)]="model.joinDate" name="{{model.joinDate}}"
                                                         #joinDate="ngModel" />
+                                                      <!--    <mat-form-field id="datebox-align">
+                                                            <input matInput class="form-control" 
+                                                            [(ngModel)]="model.joinDate" name="{{model.joinDate}}"
+                                                            #joinDate="ngModel"id="choosedate" [matDatepicker]="picker9">
+                                                            <mat-datepicker-toggle matSuffix [for]="picker9"></mat-datepicker-toggle>
+                                                            <mat-datepicker #picker9 ></mat-datepicker>
+                                                        </mat-form-field>-->
                                                 </div>
                                                 <hr>
                                                 <div class="row" style="margin: auto;">
@@ -1194,7 +1235,7 @@
                                         <br />
                                         <mat-paginator #sort [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
                                         <div class="mat-elevation-z8">
-                                            <table mat-table [dataSource]="dataSource6" matSort style="height: 390px;">
+                                            <table mat-table [dataSource]="dataSource6" matSort style="height: 340px;">
 
                                                 <ng-container matColumnDef="Date">
                                                     <th mat-header-cell *matHeaderCellDef> Date </th>
@@ -1232,7 +1273,8 @@
                                                 </ng-container>
 
                                                 <tr mat-header-row *matHeaderRowDef="sixthColumns;"></tr>
-                                                <tr mat-row *matRowDef="let row; columns: sixthColumns;"></tr>
+                                                <tr mat-row mat-row [ngClass]="table-row" tabindex="1" 
+                                                 *matRowDef="let row; columns: sixthColumns;"></tr>
                                             </table>
                                         </div>
                                     </div>
@@ -1313,7 +1355,7 @@
                                                 <div class="row">
                                                     <div class="col-lg-1"></div>
                                                     <div class="col-lg-3">
-                                                        <button id="print-butn1">
+                                                        <button id="print-sales-butn">
                                                             <i class="fa fa-print" aria-hidden="true"
                                                                 id="printicon"></i> &nbsp;
                                                             <label id="text">Print Page</label>

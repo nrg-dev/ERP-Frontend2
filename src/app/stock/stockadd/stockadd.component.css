@@ -85,9 +85,8 @@ table {
     display: block;
     width: 100%;
     height: 600px;
-    overflow-y: auto;
     border-color: 1px solid grey;
-    background-color: #243642;
+    background-color: #1B2931;
     margin: 10px;
 }
 #StockOutTable{
@@ -152,9 +151,6 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
     border-radius: 6px;
     padding: 11px;
     margin-top: -10px;
-}
-::ng-deep .mat-form-field-wrapper{
-    width: 80%;
 }
 .matTable{
     width: 90%;
