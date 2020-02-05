@@ -37,8 +37,9 @@
                   name ="productname" 
                   [(ngModel)]="model.productname" 
                   #productname="ngModel"/> -->
-                  <ng2-completer  placeholder="&#xf002; search here"  
-                  [(ngModel)]="model.productname" name="productname" #productname="ngModel" [datasource]="dataService" 
+                  <ng2-completer  id="autosearch1" placeholder="&#xf002; search here"  
+                  [(ngModel)]="model.productname" name="productname"
+                   #productname="ngModel" [datasource]="dataService" 
                   [minSearchLength]="0" ></ng2-completer>
                 </div>
             </div>
@@ -96,17 +97,29 @@
                 </div>
                 <div class="col-7 col-md-7 col-sm-7 col-lg-7" style="margin-left: -21px;">
                     <div class="row">
-                        <input type="text" placeholder="xx-xx-xxxx" id="promotion-periodbox"
+                     <!--   <input type="text" placeholder="xx-xx-xxxx" id="promotion-periodbox"
                         name ="promotionperiod" 
                         [(ngModel)]="model.promotionperiod" 
-                        #v="ngModel"/>
+                        #v="ngModel"/> -->
+
+                        <input type="date" class="form-control"
+                        style="background-color:#1B2931;color: white;" id="promotionperiod"
+                        [(ngModel)]="model.promotionperiod" name="{{model.promotionperiod}}"
+                        #promotionperiod="ngModel" />
+
                         &nbsp;&nbsp;
                         <hr class="hrline">
                         &nbsp;&nbsp;
-                        <input type="text" placeholder="xx-xx-xxxx" id="promotion-periodbox2"
+                    <!--    <input type="text" placeholder="xx-xx-xxxx" id="promotion-periodbox2"
                         name ="promotionperiod" 
                         [(ngModel)]="model.promotionperiod" 
-                        #promotionperiod="ngModel"/>
+                        #promotionperiod="ngModel"/> -->
+
+                        <input type="date" class="form-control"
+                        style="background-color:#1B2931;color: white;" id="promotionperiod"
+                        [(ngModel)]="model.promotionperiod" name="{{model.promotionperiod}}"
+                        #promotionperiod="ngModel" />
+
                     </div>
                 </div>
 

@@ -1,8 +1,8 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-  font-size:medium;
+  font-family: 'Lato',Georgia,Arial,sans-serif;
+  font-size:13px;
   caret-color: white;
 }
 table {
@@ -12,6 +12,17 @@ table {
   overflow-y: auto;
   border-color: 1px solid grey;
 }
+
+
+.table-row:focus mat-cell {
+  color:yellow; 
+}
+
+.table-row:focus {
+  background: tomato;
+  outline: none;
+}
+
 th{
   color:#ffffff;
   /*background-color:#436d82;*/
@@ -30,6 +41,7 @@ mat-paginator{
 ::ng-deep .mat-select-value,::ng-deep .mat-select-arrow {
   color: white;
 }
+
 ::ng-deep .alert-success {
   color: #155724;
   background-color: #d4edda;

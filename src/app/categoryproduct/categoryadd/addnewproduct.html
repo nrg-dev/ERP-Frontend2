@@ -22,8 +22,8 @@
             <div class="col-2 col-md-2 col-sm-2 col-lg-2">
                 <select id="editselect-box"  name ="selectcategory" [(ngModel)]="model.categorycode" 
                 #categorycode="ngModel" required>
-                    <option value="">---- Select ----</option>
-                    <option *ngFor="let itemcategory of allcategorylist" value="{{itemcategory.name}}-{{itemcategory.categorycode}}"> {{itemcategory.name}}-{{itemcategory.categorycode}} </option>
+                    <option id="editselect-box" value="">---- Select ----</option>
+                    <option id="editselect-box" *ngFor="let itemcategory of allcategorylist" value="{{itemcategory.name}}-{{itemcategory.categorycode}}"> {{itemcategory.name}}-{{itemcategory.categorycode}} </option>
                 </select>
             </div>
         </div>
@@ -65,8 +65,8 @@
                 <select id="editselect-box" name ="vendorcode" [(ngModel)]="model.vendorcode"
                 #vendorcode="ngModel" 
                  vendorcode>
-                    <option value="">---- Select ----</option>
-                    <option *ngFor="let item of vendornamelist" 
+                    <option id="editselect-box" value="">---- Select ----</option>
+                    <option id="editselect-box" *ngFor="let item of vendornamelist" 
                     value="{{item.vendorName}}-{{item.vendorcode}}"> {{item.vendorName}}-{{item.vendorcode}} </option>
                 </select>
             </div>

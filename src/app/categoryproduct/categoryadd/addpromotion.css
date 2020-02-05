@@ -1,6 +1,6 @@
 * {
     font-family: 'Lato',Georgia,Arial,sans-serif;
-    font-size:medium;
+    font-size:13px;
     color:white;
 }
 ::ng-deep .addpromotion .mat-dialog-container {
@@ -9,6 +9,9 @@
     height: 450px;
     padding: 17px;
     overflow: hidden;
+}
+.autosearch1{
+width: 50px;
 }
 h2{
     text-align: center;

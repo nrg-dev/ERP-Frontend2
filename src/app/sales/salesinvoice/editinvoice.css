@@ -3,6 +3,8 @@
   padding: 0;
   font-family: sans-serif;
   font-size: 12px;
+  font-family: 'Lato',Georgia,Arial,sans-serif;
+  font-size:13px;
 }
 ::ng-deep .editInvoice .mat-dialog-container {
   background-color: #434F5B;

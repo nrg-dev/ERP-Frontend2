@@ -1,6 +1,6 @@
 *{
     font-family: 'Lato',Georgia,Arial,sans-serif;
-    font-size:medium;
+    font-size:13px;
     color: white;
 }
 .mat-tab-group {
@@ -33,6 +33,7 @@ form{
 }
 #labeltext{
     color: white;
+    cursor: text;
 }
 .tablink {
     float: left;
@@ -162,14 +163,16 @@ h3{
 /*Profile Pic End*/
 
 #save-butn{
-    background-color: #07ab07;
+    background-color: #51AF57;
     width: 100px;
     height: 32px;
+    border: none;
 }
 #cancel-butn{
-    background-color: #d40505;
+    background-color: #FF0000;
     width: 100px;
     height: 32px;
+    border: none;
 }
 
 /* Start Dialog Box Styles */

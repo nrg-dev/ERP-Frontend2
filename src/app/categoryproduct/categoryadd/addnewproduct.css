@@ -1,7 +1,8 @@
 *{
     font-family: 'Lato',Georgia,Arial,sans-serif;
-    font-size:medium;
+    /*font-size:medium;*/
     color:white;
+    font-size:13px;
 }
 ::ng-deep .addnewproduct .mat-dialog-container {
     background-color: #434F5B;
@@ -31,6 +32,8 @@ h2{
     background: #272E34;
     border: none;
     box-shadow: none;
+   /* font-size: 12px; */
+
 }
 #name-box{
     width: 220px;
@@ -45,6 +48,7 @@ h2{
     background: #272E34;
     border: none;
     box-shadow: none;
+  /*  font-size:12px; */
 }
 #tax-box{
     width: 71px;

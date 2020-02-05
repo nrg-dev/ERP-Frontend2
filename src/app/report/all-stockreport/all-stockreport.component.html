@@ -71,7 +71,8 @@
                   </ng-container>
       
                   <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  <tr mat-row mat-row [ngClass]="table-row" tabindex="1" 
+                   *matRowDef="let row; columns: displayedColumns;"></tr>
                   </table>
               </div>  
           </div>
