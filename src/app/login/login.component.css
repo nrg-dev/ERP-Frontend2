@@ -1,3 +1,9 @@
+* {
+  font-family: 'Lato',Georgia,Arial,sans-serif;
+  font-size:13px;
+  color:white;
+}
+
 #fixed-heder{
   position: fixed;
   top: 0;

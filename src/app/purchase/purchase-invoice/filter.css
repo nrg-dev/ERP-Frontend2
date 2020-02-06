@@ -1,6 +1,8 @@
 * {
-    font-family: sans-serif;
+  font-family: 'Lato',Georgia,Arial,sans-serif;
+  font-size:13px;
 }
+
 ::ng-deep .mat-dialog-container {
   background-color: white;
   width: 100%;
