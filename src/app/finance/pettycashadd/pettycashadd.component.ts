@@ -63,7 +63,8 @@ export class PettycashaddComponent implements OnInit {
 
   protected searchStr: string;
   protected captain: string;
-  protected dataService: CompleterData;
+  //protected dataService: CompleterData;
+  public dataService: CompleterData;
   public searchData :any=[];
   /*protected searchData = [
     { color: 'red', value: '#f00' },

@@ -74,8 +74,9 @@ export class AddpromotionComponent {
   allcategorylist:any= {};
   allitemnamelist:any= {};
   discount:Discount;
-  protected dataService: CompleterData;
-
+  //protected dataService: CompleterData;
+  public dataService: CompleterData;
+  
   constructor(
     private alertService: AlertService,
     public dialogRef: MatDialogRef<AddpromotionComponent>,
