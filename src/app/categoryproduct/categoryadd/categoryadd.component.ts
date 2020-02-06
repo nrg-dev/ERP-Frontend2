@@ -502,6 +502,35 @@ export class AllproducteditComponent {
     );
      
   }
+
+  saveAddNewProduct(category: string){
+    this.catprodservice.producsave(this.model)
+    .subscribe(
+      data => {
+        this.product =   data; 
+        this.dialogRef.close();
+        if(this.product.status=="success"){
+          this.alertService.success("Saved Successfully");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 2000);
+        } 
+        if(this.product.status=="failure"){
+          this.alertService.success("not saved");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 2000);
+        }
+      },
+      error => {
+        this.alertService.error("Serve Error ");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 2000);
+      }
+    ); 
+    }
+    
   ngOnInit() {
   }
   allproducteditsave(){

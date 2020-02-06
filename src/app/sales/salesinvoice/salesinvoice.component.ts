@@ -233,10 +233,24 @@ export class EditInvoice {
 })
 export class Filter {
   model: any = {};
+  public sortedList: any = {};
   constructor(
     public dialogRef: MatDialogRef<Filter>,
+    private salesservice: SalesService,
+    private alertService: AlertService
     ) {
-      
+      console.log("getCustomerList");
+      this.salesservice.loadCustomerList()
+      .subscribe(res => { 
+        this.sortedList = res;
+        console.log("customer list size -->"+this.sortedList.length);
+  
+        },
+        error => {
+          setTimeout(() => {
+          }, 2000);
+        }
+      );
     }
 
   onNoClick(): void {

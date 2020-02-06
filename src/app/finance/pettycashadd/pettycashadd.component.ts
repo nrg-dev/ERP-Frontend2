@@ -293,7 +293,8 @@ export class PettycashaddComponent implements OnInit {
     }
   }
 
-  savePettyCash(error: Response | any){
+  //savePettyCash(error: Response | any){
+    savePettyCash(){
     console.log("savePettyCash");
     console.log("description-->"+this.model.description);
     console.log("addedDate-->"+this.model.addedDate);
@@ -325,11 +326,12 @@ export class PettycashaddComponent implements OnInit {
         }
       );
 
-      if (error.status == 0){ //or whatever condition you like to put
+      /*if (error.status == 0){ //or whatever condition you like to put
         this.alertService.error("Network error: server is temporarily unavailable");
         setTimeout(() => {
           this.alertService.clear();
-        }, 2000);        }
+        }, 2000);      
+      } */
 
   }
 
@@ -403,6 +405,26 @@ export class PettycashaddComponent implements OnInit {
         this.model.code = this.financeList[i].code;
       }
     }
+  }
+
+  searchStockReport(){
+
+  }
+
+  searchSales(){
+
+  }
+
+  searchPurchase(){
+
+  }
+
+  searchReturn(){
+
+  }
+
+  searchPrettyCash(){
+    
   }
 
 }

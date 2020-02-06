@@ -134,19 +134,9 @@ export class SalesreturnComponent implements OnInit {
     );
   }
 
-  printSale(){
-    console.log("Print Calling");
+  cancelSalesReturn(){
+    console.log("cancelSalesReturn Calling");
   }
 
-  editSales(){
-    console.log("Edit Calling");
-  }
-
-  deleteSales(){ 
-    this.alertService.success("Successfully Deleted ");
-    setTimeout(() => {
-      this.alertService.clear();
-    }, 2000);
-  }
 
 }

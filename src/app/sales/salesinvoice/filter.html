@@ -10,9 +10,10 @@
 
 <div class="row">
   <label for="priority"><b>Sorted By :</b></label>
-  <select placeholder="Choose" [(ngModel)]="model.sortName" #sortName="ngModel" id="sortName" name="sortName">
-    <option *ngFor="let list of sortedList" value="{{list.name}}">{{list.name}}</option>
-  </select>
+  <select placeholder="Choose" id="customerName" [(ngModel)]="model.customerName" name="{{model.customerName}}" #customerName="ngModel">
+    <option>-- Select --</option>
+    <option *ngFor="let itemCustomer of sortedList" value="{{ itemCustomer.customerName }}"> {{ itemCustomer.customerName }} </option> 
+  </select> 
   <div class="col-lg-1"></div>
   <div class="col-lg-5">
     <button (click)="apply()" id="applyButton">Apply</button>

@@ -130,22 +130,14 @@ export class PurchaseReturnComponent implements OnInit {
       }
     );
   }
-
-  printPurchase(){
-    console.log("------ View Purchase ------");
-  }
-
-  editPurchase(){
-    console.log("------ Edit Purchase ------"); 
-  }
-
+  
   /*$scope.deletePurchase = function(){
     console.log("------ Delete Purchase ------"); 
 
   };*/
 
-  deletePurchase(){
-    console.log("-------- Delete Purchase Calling -------")
+  cancelPurchaseReturn(){
+    console.log("-------- cancel PurchaseReturn Calling -------")
   }
   
 }

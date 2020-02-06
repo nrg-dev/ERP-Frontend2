@@ -236,10 +236,24 @@ export class EditInvoice {
 })
 export class Filter {
   model: any = {};
+  public sortedList: any = {};
   constructor(
     public dialogRef: MatDialogRef<Filter>,
+    private purchaseservice: PurchaseService,
+    private alertService: AlertService
     ) {
-      
+      console.log("getVendorList");
+      this.purchaseservice.loadVendor()
+      .subscribe(res => { 
+        this.sortedList = res;
+        console.log("Vendor list size -->"+this.sortedList.length);
+  
+        },
+        error => {
+          setTimeout(() => {
+          }, 2000);
+        }
+      );
     }
 
   onNoClick(): void {
