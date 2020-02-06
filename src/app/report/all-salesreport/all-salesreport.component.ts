@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
+import { ReportService } from '../report.service';
+import { AlertService } from 'src/app/_services';
 
 @Component({
   selector: 'app-all-salesreport',
@@ -7,20 +9,36 @@ import { MatTableDataSource } from '@angular/material';
   styleUrls: ['./all-salesreport.component.css']
 })
 export class AllSalesreportComponent implements OnInit {
-  public purchaseList : any;
+  public salesList : any ={};
   public salesorderhide=false;
   model:any ={};
 
   displayedColumns: string[] = ['No','SoInvoice','soDate','customer','Total'];
   dataSource: MatTableDataSource<any>;
   
-  constructor() { 
-    const purchasedata = require("../../salesreportdata.json");
-    this.purchaseList=purchasedata;
-    this.dataSource = new MatTableDataSource(this.purchaseList);
+  constructor(
+    private  reportService:ReportService,
+    private alertService:AlertService,
+  ) { 
   }
 
   ngOnInit() {
+    this.allsalesreport();
+  }
+
+  allsalesreport(){
+    this.reportService.salesload()
+    .subscribe(
+      data => {
+        this.salesList = data;
+        this.dataSource = new MatTableDataSource(this.salesList);
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    );
   }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -31,12 +49,12 @@ export class AllSalesreportComponent implements OnInit {
   
   salesorderdivcall(invoicenumber: string){
     this.salesorderhide=true;
-    for(let i=0;i<this.purchaseList.length;i++){
-      if(this.purchaseList[i].invoiceNumber==invoicenumber){
-        this.model.invoiceNumber = this.purchaseList[i].invoiceNumber;
-        this.model.soDate = this.purchaseList[i].soDate;
-        this.model.customerName1 = this.purchaseList[i].customerName;
-        this.model.subTotal = this.purchaseList[i].subTotal;
+    for(let i=0;i<this.salesList.length;i++){
+      if(this.salesList[i].invoicenumber==invoicenumber){
+        this.model.invoicenumber = this.salesList[i].invoicenumber;
+        this.model.invoicedate = this.salesList[i].invoicedate;
+        this.model.customername = this.salesList[i].customername;
+        this.model.totalprice = this.salesList[i].totalprice;
       }
     }
   }

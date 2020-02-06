@@ -20,9 +20,17 @@ export class ReportService {
 
     //********************* Report ************************
 
-    // Load 
+    //emp report Load 
     load(){
-        return this.http.get(this.commonURL+'load');
+        return this.http.get(this.commonURL+'employeeReport');
+    }
+     //purchase report Load 
+    purchaseload(){
+        return this.http.get(this.commonURL+'purchaseReport');
+    }
+    //sales report Load 
+    salesload(){
+        return this.http.get(this.commonURL+'salesReport');
     }
     
 }
