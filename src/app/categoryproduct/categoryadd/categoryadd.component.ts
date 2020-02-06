@@ -273,7 +273,7 @@ export class DiscounteditComponent {
           console.log("discountedit code -->"+this.alldiscountlist[0].discountcode);
           for(let k=0;k<this.alldiscountlist.length;k++){
             if(this.alldiscountlist[k].discountcode==this.data){
-              this.model.product=this.alldiscountlist[k].product;
+              this.model.productname=this.alldiscountlist[k].productname;
               this.model.discount=this.alldiscountlist[k].discount;
               this.model.qty=this.alldiscountlist[k].qty;
               this.model.fromdate_promotionperiod=this.alldiscountlist[k].fromdate_promotionperiod;
