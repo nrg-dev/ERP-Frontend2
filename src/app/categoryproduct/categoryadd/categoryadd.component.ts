@@ -539,12 +539,10 @@ export class AllproducteditComponent {
     .subscribe(
       data => {
         this.product =   data;
-        this.dialogRef.close();
         this.alertService.success("Saved Successfully");
         setTimeout(() => {
           this.alertService.clear();
         }, 2000);
-        this.dialogRef.close();
         console.log("saveproducteditdelete"); 
       },
       error => {
