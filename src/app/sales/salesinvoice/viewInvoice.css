@@ -1,5 +1,6 @@
 * {
     font-family: sans-serif;
+    font-size:13px;
 }
 ::ng-deep .viewInvoice .mat-dialog-container {
   background-color: white;

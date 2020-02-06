@@ -60,7 +60,7 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
   height: 35px;
   outline: 0;
   margin: 10;
-  width: 100%;
+  width: 75%;
   max-width: 100%;
   vertical-align: bottom;
   text-align:start;
@@ -86,7 +86,7 @@ h3{
 .mat-tab-group {
   display: flex;
   flex-direction: column;
-  font-size: 20px;
+  font-size: 13px;
 }
 
 .mat-tab-label {
@@ -145,7 +145,7 @@ button {
   background: #313F47;
 }
 #icon-mod{
-  font-size: 18px;
+  font-size: 13px;
   margin-left: 3px;
 }
 
