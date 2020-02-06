@@ -116,7 +116,7 @@ export class StockaddComponent implements OnInit {
     this.dataSource2.paginator = this.paginator.toArray()[1];
     this.dataSource2.sort = this.sort.toArray()[1];
 
-    this.stockService.loadReturn().subscribe(res => { 
+    /*this.stockService.loadReturn().subscribe(res => { 
         this.stockReturnList = res;
         this.dataSource3 = new MatTableDataSource(this.stockReturnList);
         this.dataSource3.paginator = this.paginator.toArray()[2];
@@ -127,13 +127,17 @@ export class StockaddComponent implements OnInit {
           this.alertService.error("Network error: server is temporarily unavailable");
         }, 2000);
       }
-    );
+    );*/
+
+    const stockReturndata = require("../../stockReturndata.json");
+    this.stockReturnList=stockReturndata;
+    this.dataSource3 = new MatTableDataSource(this.stockReturnList);
+    this.dataSource3.paginator = this.paginator.toArray()[2];
+    this.dataSource3.sort = this.sort.toArray()[2]; 
     
  
     const stockDamagedata = require("../../stockDamagedata.json");
     this.stockDamageList=stockDamagedata;
-
-
     this.dataSource4 = new MatTableDataSource(this.stockDamageList);
     this.dataSource4.paginator = this.paginator.toArray()[3];
     this.dataSource4.sort = this.sort.toArray()[3];
@@ -199,20 +203,20 @@ export class StockaddComponent implements OnInit {
     }
   }
 
-  stockReturnDetails(id: string){
+  stockReturnDetails(invoiceNumber: string){
     this.model.addedDate = '';
     this.model.productName = '';
     this.model.category = '';
     this.model.quantity = '';
     for(let j=0; j<this.stockReturnList.length; j++){
-      if(this.stockReturnList[j].id == id){
+      if(this.stockReturnList[j].invoiceNumber == invoiceNumber){
         this.model.addedDate = this.stockReturnList[j].poDate;
         this.model.stockReturncategory = this.stockReturnList[j].returnCategory;
         this.model.productName = this.stockReturnList[j].productName;
         this.model.category = this.stockReturnList[j].category;
         this.model.quantity = this.stockReturnList[j].quantity;
         this.model.currentStatus = this.stockReturnList[j].status;
-        this.model.id = this.stockReturnList[j].id;
+        this.model.invoiceNumber = this.stockReturnList[j].invoiceNumber;
         this.model.vendorName = this.stockReturnList[j].vendorName;
       }
     }
