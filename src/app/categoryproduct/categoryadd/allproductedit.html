@@ -17,7 +17,7 @@
 
         <div class="row">
             <div class="col-4 col-md-4 col-sm-4 col-lg-4">
-            <label>Category :</label>
+            <label id="text-cursor">Category :</label>
             </div>
             <div class="col-2 col-md-2 col-sm-2 col-lg-2">
                 <select id="editselect-box"  name ="selectcategory" 
@@ -33,7 +33,7 @@
         <br/>
         <div class="row">
             <div class="col-4 col-md-4 col-sm-4 col-lg-4">
-                <label>ProductName:</label>
+                <label id="text-cursor">ProductName:</label>
             </div>
             <div class="col-2 col-md-2 col-sm-2 col-lg-2">
                 <input type="text" id="name-box" value="{{model.productname}}" placeholder="Fiber Kevlar Matt"
@@ -47,7 +47,7 @@
         <div 
         class="row">
             <div class="col-4 col-md-4 col-sm-4 col-lg-4">
-                <label>Description:</label>
+                <label id="text-cursor">Description:</label>
             </div>
             <div class="col-2 col-md-2 col-sm-2 col-lg-2">
                 <textarea type="text" id="description-box" value="{{model.description}}"
@@ -61,7 +61,7 @@
         <br/>
         <div class="row">
             <div class="col-4 col-md-4 col-sm-4 col-lg-4">
-            <label>Vendor:</label>
+            <label id="text-cursor">Vendor:</label>
             </div>
             <div class="col-2 col-md-2 col-sm-2 col-lg-2">
                 <select id="editselect-box" name ="vendorcode"
@@ -78,7 +78,7 @@
         <br/>
         <div class="row">
             <div class="col-4 col-md-4 col-sm-4 col-lg-4">
-                <label>Price:</label>
+                <label id="text-cursor">Price:</label>
             </div>
             <div class="col-2 col-md-2 col-sm-2 col-lg-2">
                 <input type="text" id="price-box" value="{{model.price}}"
@@ -92,13 +92,13 @@
         <div class="row">
             <div class="col-12 col-md-12 col-sm-12 col-lg-12">
                 <div class="row">
-                    <label style="margin-left: 20px;">Tax:</label>
+                    <label id="text-cursor" style="margin-left: 20px;">Tax:</label>
                     <input type="text" id="tax-box" value="{{model.tax}}"
                     [(ngModel)]="model.tax" 
                     #tax="ngModel" 
                     placeholder="10%" name="tax"/>
                     &nbsp;&nbsp;&nbsp;
-                    <label>Margin:</label>
+                    <label id="text-cursor">Margin:</label>
                     &nbsp;&nbsp;
                     <input type="text" id="margin-box" value="{{model.margin}}"
                     [(ngModel)]="model.margin" 
@@ -111,7 +111,7 @@
         <br/>
         <div class="row">
             <div class="col-4 col-md-4 col-sm-4 col-lg-4">
-                <label>Sellingprice:</label>
+                <label id="text-cursor">Sellingprice:</label>
             </div>
             <div class="col-2 col-md-2 col-sm-2 col-lg-2">
                 <input type="text" id="productcode-box" value="{{model.sellingprice}}"
@@ -124,7 +124,7 @@
     </div>
 
     <div class="col-5 col-md-5 col-sm-5 col-lg-5">
-          <label>Add Product Picture</label> 
+          <label id="text-cursor">Add Product Picture</label> 
           <div class="row">
             <div id="addproductpic-box">
                 <i class="fa fa-plus-circle" id="addpicture-icon" aria-hidden="true"></i> 

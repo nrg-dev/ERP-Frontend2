@@ -79,6 +79,7 @@ td.mat-cell:first-of-type{
     background: #1B2931;
     height: 145px;
     width: 100%;
+    overflow: scroll;
 }
 #absentcard-box{
     background: #1B2931;
@@ -168,4 +169,24 @@ hr{
     border: 1px solid;
     cursor: pointer;
     margin: auto;
+}
+
+/* width */
+#previewemp-box::-webkit-scrollbar {
+    width: 5px;
+}
+  
+  /* Track */
+#previewemp-box::-webkit-scrollbar-track {
+    background: #1B2931; 
+}
+   
+  /* Handle */
+#previewemp-box::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+  
+  /* Handle on hover */
+#previewemp-box::-webkit-scrollbar-thumb:hover {
+    background: #555; 
 }

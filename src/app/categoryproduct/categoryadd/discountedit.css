@@ -10,6 +10,9 @@
     padding: 17px;
     overflow: hidden;
 }
+#text-cursor{
+    cursor: text;
+}
 h2{
     margin: 3px 3px 3px 5px;
     font-size: 20px;

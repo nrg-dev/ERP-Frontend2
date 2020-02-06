@@ -52,6 +52,7 @@ h2{
     background: #272E34;
     border: none;
     box-shadow: none;
+    font-size: 10px;
 }
 #productcode-box{
     background-color: #999999;
@@ -148,4 +149,7 @@ h2{
     height: 35px;
     background: #FF0000;
     border: none;
+}
+label{
+    cursor: text;
 }

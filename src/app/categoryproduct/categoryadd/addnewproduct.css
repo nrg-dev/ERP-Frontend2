@@ -11,6 +11,9 @@
     padding: 17px;
     overflow: hidden;
 }
+#text-cursor{
+    cursor: text;
+}
 h2{
     margin: 3px 3px 3px 5px;
     font-size: 20px;
@@ -48,6 +51,7 @@ h2{
     background: #272E34;
     border: none;
     box-shadow: none;
+    font-size: 10px;
   /*  font-size:12px; */
 }
 #tax-box{
