@@ -6,7 +6,9 @@
             <div class="col-lg-1"></div>
             <div class="col-lg-4">
                 <label style="font-size: 15px;color: white;">Current Status : &nbsp;</label>
-                <label style="font-size: 15px;border: 1px solid #0000e2;border-radius:5px;width: 100px;" [ngStyle]="{'color': (model.currentStatus === 'Success') ? 'green' : (model.currentStatus === 'Pending') ? 'red' : (model.currentStatus === 'On Progress') ? 'yellow' : ''}"> <p style="margin: 3px;">{{ this.model.currentStatus }}</p></label>
+                <label style="font-size: 15px;border: 1px solid #0000e2;border-radius:5px;width: 100px;" 
+                [ngStyle]="{'color': (model.currentStatus === 'Success') ? 'white' : (model.currentStatus === 'Pending') ? 'white' : (model.currentStatus === 'On Progress') ? 'white' : ''}"> 
+                <p style="margin: 3px;">{{ this.model.currentStatus }}</p></label>
             </div>
             <div class="col-lg-7">
                 <div class="row">
