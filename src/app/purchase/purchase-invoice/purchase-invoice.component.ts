@@ -296,11 +296,11 @@ export class PurchaseInvoiceComponent implements OnInit {
 
     //console.log("data3 -->"+this.purchaseList[2].addedDate);
 
-      this.purchaseservice.load().subscribe(res => { 
-          this.purchaseList = res;
-          this.dataSource = new MatTableDataSource(this.purchaseList);
-          this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort;  
+    this.purchaseservice.load().subscribe(res => { 
+        this.purchaseList = res;
+        this.dataSource = new MatTableDataSource(this.purchaseList);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;  
       },
       error => {
         setTimeout(() => {

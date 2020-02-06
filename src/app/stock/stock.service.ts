@@ -12,8 +12,8 @@ export class StockService {
 
     //********************* Stock ************************
     // Load 
-    load(){
-        return this.http.get<Stock>(this.commonURL+'load');
+    loadReturn(){
+        return this.http.get<Stock>(this.commonURL+'loadStockReturn');
     }
 
 }

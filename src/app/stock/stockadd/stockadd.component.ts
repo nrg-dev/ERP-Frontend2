@@ -81,7 +81,6 @@ export class StockaddComponent implements OnInit {
   isDtInitialized:boolean = false;
   //@ViewChild('clinicagReport') clinicagReport: ElementRef;  
 
-
   hBColumns: string[] = ['Date','Category','ProductCategory','ProductName','Qty','recentStock'];
   sBColumns: string[] = ['Date','StockCategory','ProductCategory','ProductName','Qty','RecentStock'];
   thirdColumns: string[] = ['Date','StockReturnCategory','ProductCategory','ProductName','Qty','currentStatus'];
@@ -116,15 +115,25 @@ export class StockaddComponent implements OnInit {
     this.dataSource2 = new MatTableDataSource(this.stockOutList);
     this.dataSource2.paginator = this.paginator.toArray()[1];
     this.dataSource2.sort = this.sort.toArray()[1];
-  
-    const stockReturndata = require("../../stockReturndata.json");
-    this.stockReturnList=stockReturndata;
-    this.dataSource3 = new MatTableDataSource(this.stockReturnList);
-    this.dataSource3.paginator = this.paginator.toArray()[2];
-    this.dataSource3.sort = this.sort.toArray()[2];
+
+    this.stockService.loadReturn().subscribe(res => { 
+        this.stockReturnList = res;
+        this.dataSource3 = new MatTableDataSource(this.stockReturnList);
+        this.dataSource3.paginator = this.paginator.toArray()[2];
+        this.dataSource3.sort = this.sort.toArray()[2]; 
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    );
+    
  
     const stockDamagedata = require("../../stockDamagedata.json");
     this.stockDamageList=stockDamagedata;
+
+
     this.dataSource4 = new MatTableDataSource(this.stockDamageList);
     this.dataSource4.paginator = this.paginator.toArray()[3];
     this.dataSource4.sort = this.sort.toArray()[3];
@@ -197,12 +206,12 @@ export class StockaddComponent implements OnInit {
     this.model.quantity = '';
     for(let j=0; j<this.stockReturnList.length; j++){
       if(this.stockReturnList[j].id == id){
-        this.model.addedDate = this.stockReturnList[j].addedDate;
-        this.model.stockReturncategory = this.stockReturnList[j].stockReturncategory;
+        this.model.addedDate = this.stockReturnList[j].poDate;
+        this.model.stockReturncategory = this.stockReturnList[j].returnCategory;
         this.model.productName = this.stockReturnList[j].productName;
         this.model.category = this.stockReturnList[j].category;
         this.model.quantity = this.stockReturnList[j].quantity;
-        this.model.currentStatus = this.stockReturnList[j].currentStatus;
+        this.model.currentStatus = this.stockReturnList[j].status;
         this.model.id = this.stockReturnList[j].id;
         this.model.vendorName = this.stockReturnList[j].vendorName;
       }
