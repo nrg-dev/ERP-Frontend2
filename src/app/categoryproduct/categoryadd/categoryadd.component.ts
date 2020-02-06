@@ -551,8 +551,8 @@ export class AllproducteditComponent {
       );
   }
 
-    close() {
-    this.dialogRef.close();
+    close(e) {
+    this.dialogRef.close(e);
   }
 }
 //allproduct edit end
