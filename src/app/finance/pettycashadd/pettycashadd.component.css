@@ -1,7 +1,7 @@
-*{
+* {
   font-family: 'Lato',Georgia,Arial,sans-serif;
-  font-size:medium;
-  color: white;
+  font-size:13px;
+  color:white;
 }
 .mat-tab-group {
   display: flex;
