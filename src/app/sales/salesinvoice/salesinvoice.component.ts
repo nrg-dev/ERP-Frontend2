@@ -168,6 +168,7 @@ export class EditInvoice {
           setTimeout(() => {
             this.alertService.clear();
           }, 1500);
+          this.model.currentStatus = this.data.status;
           this.editDetails(invoiceNumber);
         }else{
           this.alertService.error("Not Deleted..");

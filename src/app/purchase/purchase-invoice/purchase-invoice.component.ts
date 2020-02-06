@@ -142,7 +142,7 @@ export class EditInvoice {
         if(this.purchaseEditList.length == 0){
           console.log("--- No data Found ---");
         }else{
-          
+
          /* this.i= this.i;
           this.model.sNo = this.i;
           this.purchaseEditList.push(this.model.sNo);
@@ -171,6 +171,7 @@ export class EditInvoice {
           setTimeout(() => {
             this.alertService.clear();
           }, 1500);
+          this.model.currentStatus = this.data.status;
           this.editDetails(invoiceNumber);
         }else{
           this.alertService.error("Not Deleted..");
