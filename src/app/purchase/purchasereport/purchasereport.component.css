@@ -44,6 +44,10 @@ td{
   border-bottom: 1px solid white;
 }
 
+::ng-deep .mat-table,::ng-deep thead {
+  width: inherit;
+}
+
 td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
   border-bottom-width: 1px;
   border-bottom-style: solid;

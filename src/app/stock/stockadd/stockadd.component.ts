@@ -116,7 +116,7 @@ export class StockaddComponent implements OnInit {
     this.dataSource2.paginator = this.paginator.toArray()[1];
     this.dataSource2.sort = this.sort.toArray()[1];
 
-    /*this.stockService.loadReturn().subscribe(res => { 
+    this.stockService.loadReturn().subscribe(res => { 
         this.stockReturnList = res;
         this.dataSource3 = new MatTableDataSource(this.stockReturnList);
         this.dataSource3.paginator = this.paginator.toArray()[2];
@@ -127,13 +127,13 @@ export class StockaddComponent implements OnInit {
           this.alertService.error("Network error: server is temporarily unavailable");
         }, 2000);
       }
-    );*/
+    );
 
-    const stockReturndata = require("../../stockReturndata.json");
+    /*const stockReturndata = require("../../stockReturndata.json");
     this.stockReturnList=stockReturndata;
     this.dataSource3 = new MatTableDataSource(this.stockReturnList);
     this.dataSource3.paginator = this.paginator.toArray()[2];
-    this.dataSource3.sort = this.sort.toArray()[2]; 
+    this.dataSource3.sort = this.sort.toArray()[2]; */
     
  
     const stockDamagedata = require("../../stockDamagedata.json");
