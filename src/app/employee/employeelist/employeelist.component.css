@@ -341,7 +341,7 @@ textarea{
     display: none;
 }
   
-.radio-toolbar label {
+.-toolbar label {
     display: inline-block;
     padding: 4px 11px;
     font-family: Arial;

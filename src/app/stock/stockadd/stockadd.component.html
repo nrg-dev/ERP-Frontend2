@@ -376,7 +376,7 @@
                                         </div>
                                         <div class="col-lg-4">
                                             <mat-form-field>
-                                            <input matInput (keyup)="applyStockDamageFilter($event.target.value)" placeholder="Search " >
+                                            <input matInput (keyup)="applyStockDamageFilter($event.target.value)" style="width: 75%;" placeholder="Search " >
                                             </mat-form-field>
                                         </div>
                                     </div>
@@ -387,33 +387,33 @@
                                         <table mat-table #sort3 [dataSource]="dataSource4" matSort>
                                             <ng-container matColumnDef="Date">
                                                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Input Date </th>
-                                                <td mat-cell *matCellDef="let row" (click)="stockDamageDetails(row.id)" id="{{ row.id }}"> {{row.addedDate}} </td>
+                                                <td mat-cell *matCellDef="let row" (click)="stockDamageDetails(row.stockDamageCode)" id="{{ row.stockDamageCode }}"> {{row.stockDate}} </td>
                                             </ng-container>
                                 
                                             <ng-container matColumnDef="ProductCategory">
                                                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Product Category </th>
-                                                <td mat-cell *matCellDef="let row" (click)="stockDamageDetails(row.id)" id="{{ row.id }}"> {{row.category}} </td>
+                                                <td mat-cell *matCellDef="let row" (click)="stockDamageDetails(row.stockDamageCode)" id="{{ row.stockDamageCode }}"> {{row.category}} </td>
                                             </ng-container>
                                 
                                             <ng-container matColumnDef="ProductName">
                                                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Product Name </th>
-                                                <td mat-cell *matCellDef="let row" (click)="stockDamageDetails(row.id)" id="{{ row.id }}"> {{row.productName}} </td>
+                                                <td mat-cell *matCellDef="let row" (click)="stockDamageDetails(row.stockDamageCode)" id="{{ row.stockDamageCode }}"> {{row.productName}} </td>
                                             </ng-container>
                                                 
                                                 
                                             <ng-container matColumnDef="Qty">
                                                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Qty </th>
-                                                <td mat-cell *matCellDef="let row" (click)="stockDamageDetails(row.id)" id="{{ row.id }}"> {{row.quantity}} </td>
+                                                <td mat-cell *matCellDef="let row" (click)="stockDamageDetails(row.stockDamageCode)" id="{{ row.stockDamageCode }}"> {{row.quantity}} </td>
                                             </ng-container>
                                 
-                                            <ng-container matColumnDef="Origin">
+                                            <!-- <ng-container matColumnDef="Origin">
                                                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Origin </th>
-                                                <td mat-cell *matCellDef="let row" (click)="stockDamageDetails(row.id)" id="{{ row.id }}"> {{row.origin}} </td>
-                                            </ng-container>
+                                                <td mat-cell *matCellDef="let row" (click)="stockDamageDetails(row.stockDamageCode)" id="{{ row.stockDamageCode }}"> {{row.origin}} </td>
+                                            </ng-container> -->
 
                                             <ng-container matColumnDef="status">
                                                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-                                                <td mat-cell *matCellDef="let row" (click)="stockDamageDetails(row.id)" id="{{ row.id }}"> {{row.status}} </td>
+                                                <td mat-cell *matCellDef="let row" (click)="stockDamageDetails(row.stockDamageCode)" id="{{ row.stockDamageCode }}"> {{row.currentStatus}} </td>
                                             </ng-container>
             
                                             <tr mat-header-row *matHeaderRowDef="fourthColumns"></tr>
@@ -426,28 +426,26 @@
                                     <div class="row">
                                         <div id="damage-details">
                                             <p class="text">Edit Damage Stock Product </p>
-                                            <br/>
                                             <div class="row" id="salessummary">
                                                 <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">Date</div>
                                                 <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">:</div>
-                                                <div class="col-md-6 col-xs-6 col-lg-6" id="textSize">{{ this.model.addedDate }}</div>
+                                                <div class="col-md-6 col-xs-6 col-lg-6" id="textSize">{{ this.stock.stockDate }}</div>
                                             </div>
                                             <div class="row" id="salessummary">
                                                 <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">Product</div>
                                                 <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">:</div>
-                                                <div class="col-md-6 col-xs-6 col-lg-6" id="textSize">{{ this.model.productName }}</div>
+                                                <div class="col-md-6 col-xs-6 col-lg-6" id="textSize">{{ this.stock.productName }}</div>
                                             </div>
-                                            <div class="row" id="salessummary">
+                                            <!-- <div class="row" id="salessummary">
                                                 <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">Vendor</div>
                                                 <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">:</div>
-                                                <div class="col-md-6 col-xs-6 col-lg-6" id="textSize">{{ this.model.vendorName }}</div>
-                                            </div>
+                                                <div class="col-md-6 col-xs-6 col-lg-6" id="textSize">{{ this.stock.vendorName }}</div>
+                                            </div> -->
                                             <div class="row" id="salessummary">
                                                 <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">Quantity</div>
                                                 <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">:</div>
-                                                <div class="col-md-6 col-xs-6 col-lg-6" id="textSize">{{ this.model.quantity }}</div>
+                                                <div class="col-md-6 col-xs-6 col-lg-6" id="textSize">{{ this.stock.quantity }}</div>
                                             </div>
-                                            <br/>
                                             <div class="row" id="salessummary">
                                                 <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">Status</div>
                                                 <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">:</div>
@@ -458,16 +456,16 @@
                                                 <div class="col-md-7 col-xs-7 col-lg-8" id="textSize">
                                                     <div class="form-group">
                                                         <li>
-                                                            <input type="radio" name="status" id="status" [(ngModel)]="model.status" style="width: 12px;height: 12px;" value="pending"><label>Pending</label>                                                 
+                                                            <input type="radio" name="currentStatus" id="currentStatus" [(ngModel)]="stock.currentStatus" #currentStatus="ngModel" style="width: 12px;height: 12px;" value="Pending"><label>Pending</label>                                                 
                                                         </li>
                                                         <li>
-                                                            <input type="radio" name="status" id="status" [(ngModel)]="model.status" style="width: 12px;height: 12px;" value="Returned to Vendor"> <label>Returned to Vendor </label> 
+                                                            <input type="radio" name="currentStatus" id="currentStatus" [(ngModel)]="stock.currentStatus" #currentStatus="ngModel" style="width: 12px;height: 12px;" value="Returned to Vendor"> <label>Returned to Vendor </label> 
                                                         </li>
                                                         <li>
-                                                            <input type="radio" name="status" id="status" [(ngModel)]="model.status" style="width: 12px;height: 12px;" value="checkingProgress"><label style="font-size: 11px;">On Checking Progress</label>   
+                                                            <input type="radio" name="currentStatus" id="currentStatus" [(ngModel)]="stock.currentStatus" #currentStatus="ngModel" style="width: 12px;height: 12px;" value="On Checking Progress"><label style="font-size: 11px;">On Checking Progress</label>   
                                                         </li>
                                                         <li>
-                                                            <input type="radio" name="status" id="status" [(ngModel)]="model.status" style="width: 12px;height: 12px;" value="Clearence"><label>Clearence</label> 
+                                                            <input type="radio" name="currentStatus" id="currentStatus" [(ngModel)]="stock.currentStatus" #currentStatus="ngModel" style="width: 12px;height: 12px;" value="Clearence"><label>Clearence</label> 
                                                         </li>
                                                     </div>
                                                 </div>
@@ -492,37 +490,60 @@
                                                 <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">Product Category</div>
                                                 <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">:</div>
                                                 <div class="col-md-6 col-xs-6 col-lg-6" id="textSize">
-                                                    <select class="form-control" style="background-color:#1B2931;color: white;" id="category" [(ngModel)]="model.category" name="{{model.category}}" #category="ngModel">
-                                                        <option>-- Select --</option>
-                                                        <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
-                                                    </select> 
+                                                    <select class="form-control" style="background-color:#1B2931;color: white;padding-left: 0px;" [(ngModel)]="model.category" name="{{model.category}}" #category="ngModel">
+                                                        <option value="--- Select --- "> -- Select -- </option>  
+                                                        <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory.name }}-{{ itemcategory.categorycode }}"> {{ itemcategory.name }}-{{ itemcategory.categorycode }} </option>                     
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="row" id="salessummary">
                                                 <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">Product Name</div>
                                                 <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">:</div>
                                                 <div class="col-md-6 col-xs-6 col-lg-6" id="textSize">
-                                                    <select class="form-control" style="background-color:#1B2931;color: white;" id="productName" [(ngModel)]="model.productName" name="{{model.productName}}" #productName="ngModel">
-                                                        <option style="text-align:center;">-- Select --</option>
-                                                        <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
-                                                    </select> 
+                                                    <select class="form-control" style="background-color:#1B2931;color: white;padding-left: 0px;" [(ngModel)]="model.productName" name="{{model.productName}}" #productName="ngModel">
+                                                        <option value="--- Select --- "> -- Select -- </option>  
+                                                        <option *ngFor="let item of productList" value="{{ item.productname }}-{{ item.prodcode }}"> {{ item.productname }}-{{ item.prodcode }} </option>                     
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="row" id="salessummary">
                                                 <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">Quantity</div>
                                                 <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">:</div>
                                                 <div class="col-md-6 col-xs-6 col-lg-6" id="textSize">
-                                                    <input type="text" class="form-control" style="background-color:#1B2931;color: white;" id="quantity" placeholder=" ltr/kg/pcs  " [(ngModel)]="model.quantity" name="{{model.quantity}}" #quantity="ngModel"/> 
+                                                    <input type="text" class="form-control" style="background-color:#1B2931;color: white;padding-left: 0px;" id="quantity" placeholder=" ltr/kg/pcs  " [(ngModel)]="model.quantity" name="{{model.quantity}}" #quantity="ngModel"/> 
                                                 </div>
                                             </div>
                                             <div class="row" id="salessummary">
-                                                <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">Vendor</div>
+                                                <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">Date</div>
                                                 <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">:</div>
                                                 <div class="col-md-6 col-xs-6 col-lg-6" id="textSize">
-                                                    <input type="date" class="form-control" style="background-color:#1B2931;color: white;" id="stockDate" [(ngModel)]="model.stockDate" name="{{model.stockDate}}" #stockDate="ngModel"/>
+                                                    <input type="date" class="form-control" style="background-color:#1B2931;color: white;padding-left: 0px;" id="stockDate" [(ngModel)]="model.stockDate" name="{{model.stockDate}}" #stockDate="ngModel"/>
                                                 </div>
                                             </div>
-                                            <br/>
+                                            <div class="row" id="salessummary">
+                                                <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">Status</div>
+                                                <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">:</div>
+                                                <div class="col-md-6 col-xs-6 col-lg-6"></div>
+                                            </div>
+                                            <div class="row" id="salessummary">
+                                                <div class="col-md-2 col-xs-2 col-lg-3" id="textSize"></div>
+                                                <div class="col-md-7 col-xs-7 col-lg-9" id="textSize">
+                                                    <div class="form-group">
+                                                        <li>
+                                                            <input type="radio" name="currentStatus" id="currentStatus" [(ngModel)]="model.currentStatus" #currentStatus="ngModel" value="Pending"> <label>Pending</label>                                                  
+                                                        </li>
+                                                        <li>
+                                                            <input type="radio" name="currentstatus" id="currentStatus" [(ngModel)]="model.currentStatus" #currentStatus="ngModel" value="Returned to Vendor"> <label>Returned to Vendor </label>  
+                                                        </li>
+                                                        <li>
+                                                            <input type="radio" name="currentStatus" id="currentStatus" [(ngModel)]="model.currentStatus" #currentStatus="ngModel" value="On Checking Progress"> <label style="font-size: 11px;">On Checking Progress</label>
+                                                        </li>
+                                                        <li>
+                                                            <input type="radio" name="currentStatus" id="currentStatus" [(ngModel)]="model.currentStatus" #currentStatus="ngModel" value="Clearence"> <label>Clearence</label> 
+                                                        </li>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="row">
                                                 <div class="col-lg-4"></div>
                                                 <div class="col-lg-4">

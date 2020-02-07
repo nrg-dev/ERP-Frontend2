@@ -7,6 +7,7 @@ import { Stock } from 'src/app/_models/stock';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
+import { PurchaseService } from '../../purchase/purchase.service';
 //import *  as  XLSX from 'xlsx';
 
 @Component({
@@ -68,7 +69,7 @@ export class ViewStock {
 export class StockaddComponent implements OnInit {
   model: any = {};
   user:User;
-  stock:Stock;
+  stock:Stock = new Stock;
   stockInList: any ={};
   stockOutList: any ={};
   stockReturnList: any = {};
@@ -84,7 +85,8 @@ export class StockaddComponent implements OnInit {
   hBColumns: string[] = ['Date','Category','ProductCategory','ProductName','Qty','recentStock'];
   sBColumns: string[] = ['Date','StockCategory','ProductCategory','ProductName','Qty','RecentStock'];
   thirdColumns: string[] = ['Date','StockReturnCategory','ProductCategory','ProductName','Qty','currentStatus'];
-  fourthColumns: string[] = ['Date','ProductCategory','ProductName','Qty','Origin','status']
+  //fourthColumns: string[] = ['Date','ProductCategory','ProductName','Qty','Origin','status']
+  fourthColumns: string[] = ['Date','ProductCategory','ProductName','Qty','status']
   fifthColumns: string[] = ['ItemCode','Category','ProductName','Vendor','ReadyStock','DamagedStock','LastUpdate','Action'];
   
   dataSource1: MatTableDataSource<any>;
@@ -100,7 +102,8 @@ export class StockaddComponent implements OnInit {
     private dialog: MatDialog,
     private router: Router, 
     private alertService: AlertService,
-    private stockService: StockService 
+    private stockService: StockService ,
+    private purchaseService: PurchaseService
   ) {
 
     
@@ -128,19 +131,8 @@ export class StockaddComponent implements OnInit {
         }, 2000);
       }
     );
-
-    /*const stockReturndata = require("../../stockReturndata.json");
-    this.stockReturnList=stockReturndata;
-    this.dataSource3 = new MatTableDataSource(this.stockReturnList);
-    this.dataSource3.paginator = this.paginator.toArray()[2];
-    this.dataSource3.sort = this.sort.toArray()[2]; */
     
- 
-    const stockDamagedata = require("../../stockDamagedata.json");
-    this.stockDamageList=stockDamagedata;
-    this.dataSource4 = new MatTableDataSource(this.stockDamageList);
-    this.dataSource4.paginator = this.paginator.toArray()[3];
-    this.dataSource4.sort = this.sort.toArray()[3];
+    this.stockDamageload();   
 
     const stockReportdata = require("../../stockReportdata.json");
     this.stockReportList=stockReportdata;
@@ -163,9 +155,51 @@ export class StockaddComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.productList = ['Mobile', 'Computer', 'Cloths', 'TV'];
-    this.categoryList = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];
+    this.getProductList();
+    this.getcategoryList();
     this.prodCategoryList = ['Mobile-Electronic', 'Computer-Manufactorning', 'Cloths-Institue', 'TV-Mining'];
+  }
+
+  stockDamageload(){
+    this.stockService.loadDamage().subscribe(res => { 
+        this.stockDamageList = res;
+        this.dataSource4 = new MatTableDataSource(this.stockDamageList);
+        this.dataSource4.paginator = this.paginator.toArray()[3];
+        this.dataSource4.sort = this.sort.toArray()[3];
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    );
+  }
+
+
+  getcategoryList(){
+    this.purchaseService.loadCategory()
+    .subscribe(res => { 
+      this.categoryList = res;
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    );
+  }
+
+  getProductList(){
+    this.purchaseService.loadItem()
+    .subscribe(res => { 
+      this.productList = res;
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    );
   }
 
   applyFilter(filterValue: string) {
@@ -247,35 +281,55 @@ export class StockaddComponent implements OnInit {
     }
   }
 
-  stockDamageDetails(id: string){
-    this.model.addedDate = '';
+  stockDamageDetails(stockDamageCode: string){
+    this.model.stockDate = '';
     this.model.productName = '';
     this.model.category = '';
     this.model.quantity = '';
     for(let j=0; j<this.stockDamageList.length; j++){
-      if(this.stockReturnList[j].id == id){
-        this.model.addedDate = this.stockDamageList[j].addedDate;
-        this.model.productName = this.stockDamageList[j].productName;
-        this.model.quantity = this.stockDamageList[j].quantity;
-        this.model.status = this.stockDamageList[j].status;
-        this.model.id = this.stockDamageList[j].id;
-        this.model.vendorName = this.stockDamageList[j].vendorName;
+      if(this.stockDamageList[j].stockDamageCode == stockDamageCode){
+        this.stock.stockDate = this.stockDamageList[j].stockDate;
+        this.stock.productName = this.stockDamageList[j].productName;
+        this.stock.category = this.stockDamageList[j].category;
+        this.stock.quantity = this.stockDamageList[j].quantity;
+        this.stock.currentStatus = this.stockDamageList[j].currentStatus;
+        this.stock.stockDamageCode = this.stockDamageList[j].stockDamageCode;
+        this.stock.vendorName = this.stockDamageList[j].vendorName;
       }
     }
   }
 
   saveStockDamage(){
-    console.log("Added Date --->"+this.model.addedDate);
-    console.log("product Name --->"+this.model.productName);
-    console.log("Quantity --->"+this.model.quantity);
-    console.log("Status --->"+this.model.status);
-    console.log("Vendor Name --->"+this.model.vendorName);
-    console.log("ID --->"+this.model.id);
-    this.model.addedDate = '';
-    this.model.productName = '';
-    this.model.status = '';
-    this.model.quantity = '';
-    this.model.vendorName = '';
+    console.log("Added Date --->"+this.stock.stockDate);
+    console.log("product Name --->"+this.stock.productName);
+    console.log("Quantity --->"+this.stock.quantity);
+    console.log("Status --->"+this.stock.currentStatus);
+    console.log("ID --->"+this.stock.stockDamageCode);
+    this.stockService.update(this.stock)
+    .subscribe(
+      data => {
+        this.stock = data; 
+        if(this.stock.status=="success"){
+          this.alertService.success("Updated Successfully");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 2000);
+          this.stockDamageload();
+        } 
+        if(this.stock.status=="failure"){
+          this.alertService.success("not Updated");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 2000);
+        }
+      },
+      error => {
+        this.alertService.success("Serve Error ");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 2000);
+      }
+    ); 
   }
 
   addStockDamage(){
@@ -283,10 +337,38 @@ export class StockaddComponent implements OnInit {
     console.log("Product Name -->"+this.model.productName);
     console.log("Quantity -->"+this.model.quantity);
     console.log("Date -->"+this.model.stockDate);
-    this.model.stockDate = '';
-    this.model.productName = '';
-    this.model.category = '';
-    this.model.quantity = '';
+    console.log("Status -------->"+this.model.currentStatus);
+    this.stockService.save(this.model)
+    .subscribe(
+      data => {
+        this.stock =   data; 
+        if(this.stock.status=="success"){
+          this.alertService.success("Saved Successfully");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 2000);
+          this.model.stockDate = '';
+          this.model.productName = '';
+          this.model.category = '';
+          this.model.quantity = '';
+          this.model.currentStatus = '';
+          this.stockDamageload();
+        } 
+        if(this.stock.status=="failure"){
+          this.alertService.success("not saved");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 2000);
+        }
+      },
+      error => {
+        this.alertService.success("Serve Error ");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 2000);
+      }
+    );  
+   
   }
 
   applyStockReportFilter(filterValue: string) {

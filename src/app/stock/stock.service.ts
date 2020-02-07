@@ -16,4 +16,17 @@ export class StockService {
         return this.http.get<Stock>(this.commonURL+'loadStockReturn');
     }
 
+    save(stock: Stock){
+        return this.http.post<Stock>(this.commonURL+'save',stock);
+    }
+
+    // Load 
+    loadDamage(){
+        return this.http.get<Stock>(this.commonURL+'loadStockDamage');
+    }
+    // Update 
+    update(stock: Stock){
+        return this.http.put<Stock>(this.commonURL+'update',stock);
+    }
+
 }

@@ -14,4 +14,7 @@ export class Stock extends Common {
    terms:string;
    orderNumber:string;
    termsDays:string;
+   stockDate: string;
+   currentStatus: string;
+   stockDamageCode: string;
 }

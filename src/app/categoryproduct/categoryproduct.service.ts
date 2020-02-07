@@ -60,14 +60,10 @@ loadDiscount(){
     return this.http.get<Discount>(this.commonURL2+'discountload');
 }
 
-
-
 // get 
 get(id:number){
     return this.http.get<Category>(this.commonURL1+'get?id='+id);
 }
-
-
 
 // Update 
 update(category: Category){
