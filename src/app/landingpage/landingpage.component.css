@@ -1,7 +1,6 @@
 * {
     font-family: 'Lato',Georgia,Arial,sans-serif;
-    font-size:13px;
-    color:white;
+
   }
 
 @media (max-width: 1024px) and (min-width: 810px) and (orientation: landscape){
