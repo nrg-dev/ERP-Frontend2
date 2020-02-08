@@ -119,18 +119,7 @@ export class StockaddComponent implements OnInit {
     this.dataSource2.paginator = this.paginator.toArray()[1];
     this.dataSource2.sort = this.sort.toArray()[1];
 
-    this.stockService.loadReturn().subscribe(res => { 
-        this.stockReturnList = res;
-        this.dataSource3 = new MatTableDataSource(this.stockReturnList);
-        this.dataSource3.paginator = this.paginator.toArray()[2];
-        this.dataSource3.sort = this.sort.toArray()[2]; 
-      },
-      error => {
-        setTimeout(() => {
-          this.alertService.error("Network error: server is temporarily unavailable");
-        }, 2000);
-      }
-    );
+    this.stockReturnLoad();
     
     this.stockDamageload();   
 
@@ -158,6 +147,21 @@ export class StockaddComponent implements OnInit {
     this.getProductList();
     this.getcategoryList();
     this.prodCategoryList = ['Mobile-Electronic', 'Computer-Manufactorning', 'Cloths-Institue', 'TV-Mining'];
+  }
+
+  stockReturnLoad(){
+    this.stockService.loadReturn().subscribe(res => { 
+      this.stockReturnList = res;
+      this.dataSource3 = new MatTableDataSource(this.stockReturnList);
+      this.dataSource3.paginator = this.paginator.toArray()[2];
+      this.dataSource3.sort = this.sort.toArray()[2]; 
+    },
+    error => {
+      setTimeout(() => {
+        this.alertService.error("Network error: server is temporarily unavailable");
+      }, 2000);
+    }
+  );
   }
 
   stockDamageload(){
@@ -244,8 +248,8 @@ export class StockaddComponent implements OnInit {
     this.model.quantity = '';
     for(let j=0; j<this.stockReturnList.length; j++){
       if(this.stockReturnList[j].invoiceNumber == invoiceNumber){
-        this.model.addedDate = this.stockReturnList[j].poDate;
-        this.model.stockReturncategory = this.stockReturnList[j].returnCategory;
+        this.model.stockDate = this.stockReturnList[j].poDate;
+        this.model.returncategory = this.stockReturnList[j].returnCategory;
         this.model.productName = this.stockReturnList[j].productName;
         this.model.category = this.stockReturnList[j].category;
         this.model.quantity = this.stockReturnList[j].quantity;
@@ -257,21 +261,47 @@ export class StockaddComponent implements OnInit {
   }
 
   saveStockReturn(){
-    console.log("Added Date --->"+this.model.addedDate);
-    console.log("stock Returncategory --->"+this.model.stockReturncategory);
+    console.log("Added Date --->"+this.model.stockDate);
+    console.log("stock Returncategory --->"+this.model.returncategory);
     console.log("product Name --->"+this.model.productName);
     console.log("Product category --->"+this.model.category);
     console.log("Quantity --->"+this.model.quantity);
     console.log("current Status --->"+this.model.currentStatus);
     console.log("Vendor Name --->"+this.model.vendorName);
-    console.log("ID --->"+this.model.id);
-    this.model.addedDate = '';
-    this.model.stockReturncategory = '';
-    this.model.productName = '';
-    this.model.category = '';
-    this.model.quantity = '';
-    this.model.currentStatus = '';
-    this.model.vendorName = '';
+    console.log("ID --->"+this.model.invoiceNumber);
+    this.stockService.saveStockReturn(this.model)
+    .subscribe(
+      data => {
+        this.stock = data; 
+        if(this.stock.status=="success"){
+          this.alertService.success("Saved Successfully");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 2000);
+          this.model.stockDate = '';
+          this.model.returncategory = '';
+          this.model.productName = '';
+          this.model.category = '';
+          this.model.quantity = '';
+          this.model.currentStatus = '';
+          this.model.vendorName = '';
+          this.stockReturnLoad();
+        } 
+        if(this.stock.status=="failure"){
+          this.alertService.success("not Saved");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 2000);
+        }
+      },
+      error => {
+        this.alertService.success("Serve Error ");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 2000);
+      }
+    ); 
+    
   }
 
   applyStockDamageFilter(filterValue: string) {
@@ -282,17 +312,13 @@ export class StockaddComponent implements OnInit {
   }
 
   stockDamageDetails(stockDamageCode: string){
-    this.model.stockDate = '';
-    this.model.productName = '';
-    this.model.category = '';
-    this.model.quantity = '';
     for(let j=0; j<this.stockDamageList.length; j++){
       if(this.stockDamageList[j].stockDamageCode == stockDamageCode){
         this.stock.stockDate = this.stockDamageList[j].stockDate;
         this.stock.productName = this.stockDamageList[j].productName;
         this.stock.category = this.stockDamageList[j].category;
         this.stock.quantity = this.stockDamageList[j].quantity;
-        this.stock.currentStatus = this.stockDamageList[j].currentStatus;
+        this.stock.itemStatus = this.stockDamageList[j].currentStatus;
         this.stock.stockDamageCode = this.stockDamageList[j].stockDamageCode;
         this.stock.vendorName = this.stockDamageList[j].vendorName;
       }
@@ -303,8 +329,9 @@ export class StockaddComponent implements OnInit {
     console.log("Added Date --->"+this.stock.stockDate);
     console.log("product Name --->"+this.stock.productName);
     console.log("Quantity --->"+this.stock.quantity);
-    console.log("Status --->"+this.stock.currentStatus);
+    console.log("Status --->"+this.stock.itemStatus);
     console.log("ID --->"+this.stock.stockDamageCode);
+    this.stock.currentStatus = this.stock.itemStatus;
     this.stockService.update(this.stock)
     .subscribe(
       data => {

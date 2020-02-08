@@ -291,7 +291,7 @@
                                             <div class="row" id="salessummary">
                                                 <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">Date</div>
                                                 <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">:</div>
-                                                <div class="col-md-6 col-xs-6 col-lg-6" id="textSize">{{ this.model.addedDate }}</div>
+                                                <div class="col-md-6 col-xs-6 col-lg-6" id="textSize">{{ this.model.stockDate }}</div>
                                             </div>
                                             <div class="row" id="salessummary">
                                                 <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">Category</div>
@@ -456,16 +456,16 @@
                                                 <div class="col-md-7 col-xs-7 col-lg-8" id="textSize">
                                                     <div class="form-group">
                                                         <li>
-                                                            <input type="radio" name="currentStatus" id="currentStatus" [(ngModel)]="stock.currentStatus" #currentStatus="ngModel" style="width: 12px;height: 12px;" value="Pending"><label>Pending</label>                                                 
+                                                            <input type="radio" name="itemStatus" id="itemStatus" [(ngModel)]="stock.itemStatus" #itemStatus="ngModel" style="width: 12px;height: 12px;" value="Pending"><label>Pending</label>                                                 
                                                         </li>
                                                         <li>
-                                                            <input type="radio" name="currentStatus" id="currentStatus" [(ngModel)]="stock.currentStatus" #currentStatus="ngModel" style="width: 12px;height: 12px;" value="Returned to Vendor"> <label>Returned to Vendor </label> 
+                                                            <input type="radio" name="itemStatus" id="itemStatus" [(ngModel)]="stock.itemStatus" #itemStatus="ngModel" style="width: 12px;height: 12px;" value="Returned to Vendor"> <label>Returned to Vendor </label> 
                                                         </li>
                                                         <li>
-                                                            <input type="radio" name="currentStatus" id="currentStatus" [(ngModel)]="stock.currentStatus" #currentStatus="ngModel" style="width: 12px;height: 12px;" value="On Checking Progress"><label style="font-size: 11px;">On Checking Progress</label>   
+                                                            <input type="radio" name="itemStatus" id="itemStatus" [(ngModel)]="stock.itemStatus" #itemStatus="ngModel" style="width: 12px;height: 12px;" value="On Checking Progress"><label style="font-size: 11px;">On Checking Progress</label>   
                                                         </li>
                                                         <li>
-                                                            <input type="radio" name="currentStatus" id="currentStatus" [(ngModel)]="stock.currentStatus" #currentStatus="ngModel" style="width: 12px;height: 12px;" value="Clearence"><label>Clearence</label> 
+                                                            <input type="radio" name="itemStatus" id="itemStatus" [(ngModel)]="stock.itemStatus" #itemStatus="ngModel" style="width: 12px;height: 12px;" value="Clearence"><label>Clearence</label> 
                                                         </li>
                                                     </div>
                                                 </div>
@@ -530,16 +530,16 @@
                                                 <div class="col-md-7 col-xs-7 col-lg-9" id="textSize">
                                                     <div class="form-group">
                                                         <li>
-                                                            <input type="radio" name="currentStatus" id="currentStatus" [(ngModel)]="model.currentStatus" #currentStatus="ngModel" value="Pending"> <label>Pending</label>                                                  
+                                                            <input type="radio"  name="currentStatus" id="currentStatus" [(ngModel)]="model.currentStatus"  value="Pending"> Pending                                                
                                                         </li>
                                                         <li>
-                                                            <input type="radio" name="currentstatus" id="currentStatus" [(ngModel)]="model.currentStatus" #currentStatus="ngModel" value="Returned to Vendor"> <label>Returned to Vendor </label>  
+                                                            <input type="radio" name="currentStatus" id="currentStatus" [(ngModel)]="model.currentStatus" value="Returned to Vendor"> Returned to Vendor 
                                                         </li>
                                                         <li>
-                                                            <input type="radio" name="currentStatus" id="currentStatus" [(ngModel)]="model.currentStatus" #currentStatus="ngModel" value="On Checking Progress"> <label style="font-size: 11px;">On Checking Progress</label>
+                                                            <input type="radio" name="currentStatus" id="currentStatus" [(ngModel)]="model.currentStatus"  value="On Checking Progress"> On Checking Progress 
                                                         </li>
                                                         <li>
-                                                            <input type="radio" name="currentStatus" id="currentStatus" [(ngModel)]="model.currentStatus" #currentStatus="ngModel" value="Clearence"> <label>Clearence</label> 
+                                                            <input type="radio" name="currentStatus" id="currentStatus" [(ngModel)]="model.currentStatus"  value="Clearence"> Clearence
                                                         </li>
                                                     </div>
                                                 </div>
@@ -584,16 +584,26 @@
 
                             <div class="row">
                                 <div class="col-lg-2" style="margin-left: 15px;">
-                                    <p>Filter : </p>
+                                    <p>Filter Category: </p>
                                 </div>
                                 <div class="col-lg-3">
-                                    <select class="form-control" style="background-color:#1B2931;color: white;" id="productCategory" [(ngModel)]="model.productCategory" #productCategory="ngModel">
+                                    <select class="form-control" style="background-color:#1B2931;color: white;" id="category" [(ngModel)]="model.category" #category="ngModel">
                                         <option>-- Select --</option>
-                                        <option *ngFor="let itemProCategory of prodCategoryList" value="{{ itemProCategory }}"> {{ itemProCategory }} </option> 
+                                        <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory.name }}-{{ itemcategory.categorycode }}"> {{ itemcategory.name }}-{{ itemcategory.categorycode }} </option>                     
                                     </select>                                    
                                 </div>
                             </div>
-
+                            <div class="row">
+                                <div class="col-lg-2" style="margin-left: 15px;">
+                                    <p>Filter Product: </p>
+                                </div>
+                                <div class="col-lg-3">
+                                    <select class="form-control" style="background-color:#1B2931;color: white;" id="productName" [(ngModel)]="model.productName" #productName="ngModel">
+                                        <option>-- Select --</option>
+                                        <option *ngFor="let item of productList" value="{{ item.productname }}-{{ item.prodcode }}"> {{ item.productname }}-{{ item.prodcode }} </option>                     
+                                    </select>                                    
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-lg-2" style="margin-left: 15px;">
                                     <p>Sort By : </p>
