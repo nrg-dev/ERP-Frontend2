@@ -142,7 +142,12 @@ export class EditInvoice {
         if(this.purchaseEditList.length == 0){
           console.log("--- No data Found ---");
         }else{
+          for(let i=0;i<this.purchaseEditList.length;i++){
+            console.log("--- category name ---"+this.purchaseEditList[i].category);
+            console.log("--- product name ---"+this.purchaseEditList[i].itemname);
+            console.log("--- s.no ---"+this.purchaseEditList[i].id);
 
+          }
          /* this.i= this.i;
           this.model.sNo = this.i;
           this.purchaseEditList.push(this.model.sNo);

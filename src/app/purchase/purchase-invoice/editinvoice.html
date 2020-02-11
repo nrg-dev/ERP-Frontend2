@@ -1,4 +1,6 @@
 <div id="box-dialouge">
+    <form>
+
     <br/>
     <h2 style="text-align: center;font-size: 22px;">Edit Invoice {{ this.model.invoiceNumber }}</h2>
     <br/>
@@ -23,6 +25,7 @@
         </div>
     </div>
     <br/>
+
     <table class="scroll">
         <thead>
             <tr id="tr-color">
@@ -38,24 +41,31 @@
         
         <tbody>
             <tr *ngFor="let list of purchaseEditList; let i = index">
-                <td id="middleContent">{{ i+1 }}</td>
-                <td id="middleContent">
-                    <select class="form-control" id="{{ list.sNo }}" name="category" [(ngModel)]="model.category" #category="ngModel">
-                        <option *ngFor="let option of categoryList; index as i"
+                <td id="{{ list.id }}">{{ i+1 }}</td>
+                <td id="{{ list.id }}">
+                    <select class="form-control" id="{{ i+1 }}"  name="category" 
+                    [(ngModel)]="list.category" #category="ngModel">
+                        <option id="list.id" *ngFor="let option of categoryList; index as i"
                             [selected]="option === list.category"> {{ option }}
                         </option>
                     </select> 
                 </td>
-                <td id="middleContent">
-                    <select class="form-control" id="{{ list.sNo }}" name="itemname" [(ngModel)]="model.itemname" #itemname="ngModel">
+                <td id=" {{ i+1 }} ">
+                    <select class="form-control" id="{{ i+1 }}" name="itemname" 
+                    [(ngModel)]="list.itemname" #itemname="ngModel">
                         <option *ngFor="let item of productList; index as i"
                             [selected]="item === list.itemname"> {{ item }}
                         </option>
                     </select> 
                 </td>
-                <td id="middleContent"><textarea type="text" id="{{ list.sNo }}" name="description" [(ngModel)]="model.description" #description="ngModel" value="{{ list.description }}"></textarea></td>
-                <td id="middleContent"><input type="text" id="{{ list.sNo }}" name="qty" [(ngModel)]="model.qty" #qty="ngModel" value="{{ list.qty }}" style="width: 70px;" /></td>
-                <td id="middleContent"><label style="color: white;" id="{{ model.sNo }}" name="subtotal" [(ngModel)]="model.subtotal" #subtotal="ngModel">{{ list.subtotal }}</label></td>
+                <td id="{{ i+1 }}"><textarea type="text" id="{{ i+1 }}" name="description" 
+                    [(ngModel)]="list.description" #description="ngModel" value="{{ list.description }}"></textarea></td>
+                
+                <td id="{{ i+1 }}"><input type="text" id="{{ list.id }}" 
+                    name="qty" [(ngModel)]="list.qty" #qty="ngModel" value="{{ list.qty }}" style="width: 70px;" /></td>
+                
+                <td id="{{ list.id }}"><label style="color: white;" id="{{ model.id }}" 
+                    name="subtotal" [(ngModel)]="list.subtotal" #subtotal="ngModel">{{ list.subtotal }}</label></td>
                
                 <td>
                     <div class="row" style="margin: 10px;">
@@ -70,6 +80,7 @@
             </tr>
         </tbody>
     </table>
+
     <br/> <br/>
     <div class="row">
         <div class="col-lg-4"></div>
@@ -82,5 +93,7 @@
         <div class="col-lg-3"></div>
     </div>
     <br/> <br/>
+</form>
+
 </div>
     
