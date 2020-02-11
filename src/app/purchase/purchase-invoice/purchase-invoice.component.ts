@@ -81,7 +81,8 @@ export class ViewInvoice {
 })
 export class EditInvoice {
   model: any ={};
-  purchase: Purchase;
+  purchase: Purchase = new Purchase;
+  purchase1: Purchase = new Purchase;
   public purchaseEditList : any;
   public productList : any;
   public categoryList : any;
@@ -132,6 +133,8 @@ export class EditInvoice {
       );
     }
 
+    public purchaseList:Array<Purchase> = [ ];
+
   editDetails(invoiceNumber:string){
     this.purchaseService.geteditDetails(invoiceNumber)
     .subscribe(
@@ -146,6 +149,19 @@ export class EditInvoice {
             console.log("--- category name ---"+this.purchaseEditList[i].category);
             console.log("--- product name ---"+this.purchaseEditList[i].itemname);
             console.log("--- s.no ---"+this.purchaseEditList[i].id);
+            this.purchase = new Purchase;
+            this.purchase.productName = this.purchaseEditList[i].itemname;
+            this.purchase.category = this.purchaseEditList[i].category;
+            this.purchase.description = this.purchaseEditList[i].description;
+            this.purchase.quantity = this.purchaseEditList[i].qty;
+            this.purchase.netAmount = this.purchaseEditList[i].subtotal;
+            this.purchase.id = this.purchaseEditList[i].id;
+            this.purchaseList.push(this.purchase);
+
+          }
+
+          for(let j=0; j<this.purchaseList.length; j++){
+            console.log("Item Name ------>"+this.purchaseList[j].productName);
 
           }
          /* this.i= this.i;
@@ -193,6 +209,17 @@ export class EditInvoice {
   }
 
   updateInvoice(){
+    this.purchase = new Purchase;
+
+    //const index = this.purchaseList.findIndex((e) => e.id === obj.id);
+
+    for(let j=0; j<this.purchaseList.length; j++){
+      console.log("Edited Category Name ------>"+this.purchaseList[j].category);
+      console.log("Edited Item Name ------>"+this.purchaseList[j].productName);
+      console.log("Edited description ------>"+this.purchaseList[j].description);
+      console.log("Edited quantity ------>"+this.purchaseList[j].quantity);
+      console.log("Edited netAmount ------>"+this.purchaseList[j].netAmount);
+    }
     this.purchaseService.update(this.model)
     .subscribe(
       data => {
@@ -212,13 +239,27 @@ export class EditInvoice {
     
   }
 
-  getTotalAmount(productName:string,qty:string,category:string){
+  getTotalAmount(productName:string,qty:string,category:string,id:string){
+    var index;
     console.log("productName ==>"+productName);
     console.log("Qty ==>"+qty);
+    console.log("category ==>"+category);
+    console.log("Input ID ---->"+id);
+    for (var i = 0; i < this.purchaseList.length ; i++) {
+      console.log("Database ID  -------->"+this.purchaseList[i].id);
+      if (this.purchaseList[i].id === id) {
+        console.log("Index value --->"+i);
+        index = i;
+      }
+    }
     this.purchaseService.getUnitPrice(productName,category)
     .subscribe(
       data => {
         this.purchase = data; 
+        //alert("Unit Prize -->"+this.purchase.price);
+        //this.purchase.price * qty;
+        this.purchaseList[index].netAmount = this.purchase.price;
+        
       },
       error => {
         this.alertService.error("Network error: server is temporarily unavailable");

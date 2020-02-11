@@ -1,10 +1,10 @@
 <div id="box-dialouge">
-    <form>
+    <form name="editPurchaseform" (ngSubmit)="updateInvoice()">
 
     <br/>
     <h2 style="text-align: center;font-size: 22px;">Edit Invoice {{ this.model.invoiceNumber }}</h2>
     <br/>
-    <div class="row">
+   <!-- <div class="row">
         <div class="col-lg-1"></div>
         <div class="col-lg-4">
             <label style="font-size: 15px;color: white;">Current Status : &nbsp;</label>
@@ -23,7 +23,7 @@
             </div>
             
         </div>
-    </div>
+    </div> -->
     <br/>
 
     <table class="scroll">
@@ -40,7 +40,7 @@
         </thead>
         
         <tbody>
-            <tr *ngFor="let list of purchaseEditList; let i = index">
+            <tr *ngFor="let list of purchaseList; let i = index">
                 <td id="{{ list.id }}">{{ i+1 }}</td>
                 <td id="{{ list.id }}">
                     <select class="form-control" id="{{ i+1 }}"  name="category" 
@@ -51,10 +51,10 @@
                     </select> 
                 </td>
                 <td id=" {{ i+1 }} ">
-                    <select class="form-control" id="{{ i+1 }}" name="itemname" 
-                    [(ngModel)]="list.itemname" #itemname="ngModel">
+                    <select class="form-control" id="{{ i+1 }}" name="productName" 
+                    [(ngModel)]="list.productName" #productName="ngModel">
                         <option *ngFor="let item of productList; index as i"
-                            [selected]="item === list.itemname"> {{ item }}
+                            [selected]="item === list.productName"> {{ item }}
                         </option>
                     </select> 
                 </td>
@@ -62,10 +62,10 @@
                     [(ngModel)]="list.description" #description="ngModel" value="{{ list.description }}"></textarea></td>
                 
                 <td id="{{ i+1 }}"><input type="text" id="{{ list.id }}" 
-                    name="qty" [(ngModel)]="list.qty" #qty="ngModel" value="{{ list.qty }}" style="width: 70px;" /></td>
+                    name="quantity" [(ngModel)]="list.quantity" #quantity="ngModel" value="{{ list.quantity }}" style="width: 70px;" (change)="getTotalAmount(list.productName,list.quantity,list.category,list.id)" /></td>
                 
                 <td id="{{ list.id }}"><label style="color: white;" id="{{ model.id }}" 
-                    name="subtotal" [(ngModel)]="list.subtotal" #subtotal="ngModel">{{ list.subtotal }}</label></td>
+                    name="netAmount" [(ngModel)]="list.netAmount" #netAmount="ngModel">{{ list.netAmount }}</label></td>
                
                 <td>
                     <div class="row" style="margin: 10px;">
@@ -86,7 +86,7 @@
         <div class="col-lg-4"></div>
         <div class="col-lg-5">
             <div class="radio-toolbar">
-                <label id="checkIn-butn" (click)="updateInvoice()">Save</label>
+                <button id="checkIn-butn">Save</button>
                 <label id="checkOut-butn" (click)="cancelInvoice()">Cancel</label>
             </div>
         </div>

@@ -21,4 +21,5 @@ export class Purchase extends Common {
    vendorCountry: string;
    vendorPhone: string;
    vendorEmail: string;
+   description: string;
 }
