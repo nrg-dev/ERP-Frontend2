@@ -4,6 +4,8 @@ import { SubMenuItem } from '../subMenuItem.model';
 import { MatSidenav } from '@angular/material/sidenav';
 import { RouterModule, Routes, Router ,ActivatedRoute} from "@angular/router";
 import { BehaviorSubject, Observable } from 'rxjs';
+import { MatTableDataSource, MatPaginator, MatSort, MatCalendar } from '@angular/material';
+import { Moment } from 'moment';
 
 @Component({
   selector: 'app-navigation',
@@ -20,7 +22,18 @@ export class NavigationComponent implements OnInit {
   ];
 menuItems: MenuItem[];
 menuItemsIcons:MenuItem[];
+model:any ={};
+
+displayedColumns: string[] = ['invoicenumber','client','date','status'];
+dataSource: MatTableDataSource<any>;
+allproductlist : any= {};
+
 @ViewChild('sidenav',{ read: true, static: false }) sidenav: MatSidenav;
+@ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
+@ViewChild(MatSort,{ static: true }) sort: MatSort;
+
+@ViewChild('calendar',{ read: true, static: false }) calendar: MatCalendar<Moment>;
+selectedDate: Moment;
 
 showToggle: string;
   mode: string;
@@ -40,6 +53,13 @@ showToggle: string;
       console.log("test 2 -->"+route.children.length);
 
      });
+
+     const salesdata = require(".././salestotaltable.json");
+    this.allproductlist=salesdata;
+    this.dataSource = new MatTableDataSource(this.allproductlist);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    
   }
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -122,7 +142,10 @@ new MenuItem("home","login"),
   showDropdown() {
     document.getElementById("myDropdown").classList.toggle("show");
   }
-
+  dateChanged(date) {
+   // alert(`Selected: ${date}`);
+    this.model.date = date;
+  }
  
  
 
