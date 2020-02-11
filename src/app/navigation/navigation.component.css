@@ -1,7 +1,7 @@
-*{
-  /*font-family: 'Lato',Georgia,Arial,sans-serif;
-  font-size:medium;*/
-  color: white;
+* {
+  font-family: 'Lato',Georgia,Arial,sans-serif;
+  font-size:14px;
+  color:white;
 }
 ::ng-deep .alert-success{
   color: #155724;
@@ -117,108 +117,248 @@ input[type=text]{
 
   *{margin: 0;padding:0px}
 
-  .header{
-      width: 100%;
-      background-color: #0d77b6 !important;
-      height: 60px;
-  }
+.header{
+    width: 100%;
+    background-color: #0d77b6 !important;
+    height: 60px;
+}
 
-  .showLeft{
-      background-color: #182A36 !important;
-      border:1px solid #182A36 !important;
-      text-shadow: none !important;
-      color:#fff !important;
-  }
+.showLeft{
+    background-color: #182A36 !important;
+    border:1px solid #182A36 !important;
+    text-shadow: none !important;
+    color:#fff !important;
+}
 
-  .icons li {
-      background: none repeat scroll 0 0 #fff;
-      height: 7px;
-      width: 7px;
-      line-height: 0;
-      list-style: none outside none;
-      margin-right: 15px;
-      margin-top: 3px;
-      vertical-align: top;
-      border-radius:50%;
-      pointer-events: none;
-  }
+.icons li {
+    background: none repeat scroll 0 0 #fff;
+    height: 7px;
+    width: 7px;
+    line-height: 0;
+    list-style: none outside none;
+    margin-right: 15px;
+    margin-top: 3px;
+    vertical-align: top;
+    border-radius:50%;
+    pointer-events: none;
+}
 
-  .btn-left {
-      left: 0.4em;
-  }
+.btn-left {
+    left: 0.4em;
+}
 
-  .btn-right {
-    margin-left: 220px;
-  }
+.btn-right {
+  margin-left: 220px;
+}
 
-  .btn-left, .btn-right {
-      position: absolute;
-      top: 0.24em;
-  }
+.btn-left, .btn-right {
+    position: absolute;
+    top: 0.24em;
+}
 
-  .dropbtn {
-      background-color: #4CAF50;
-      position: fixed;
-      color: white;
-      font-size: 16px;
-      border: none;
-      cursor: pointer;
-      margin-top: -5px;
-  }
-
-  .dropbtn:hover, .dropbtn:focus {
-      background-color: #3e8e41;
-  }
-
-  .dropdown {
-      position: absolute;
-      display: inline-block;
-      right: 0.4em;
-      top: 33px;
-      width: 300px;
-  }
-
-  .dropdown-content {
-      display: none;
-      position: relative;
-      margin-top: 12px;
-      background-color: #f9f9f9;
-      min-width: 160px;
-      height: 350px;
-      overflow: auto;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 1;
-      border-radius: 6px;
-      right: 20px;
-  }
-
-  .dropdown-content a {
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-  }
-
-  .dropdown a:hover {background-color: #f1f1f1}
-
-  .show {display:block;}
-
-  #div-details{
-    margin-left: 115px;
-  }
-  #black-color{
-    color: black;
-  }
-  #nrg-logo-paddding{
-    height: 155px;
-    margin:-4px 0px 0px -10px;
-    outline: none;
-    cursor: pointer;
-  }
-  .white-hover.active{
-    background-color: white;
+.dropbtn {
+    background-color: #4CAF50;
+    position: fixed;
     color: white;
-  }
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-top: -5px;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+
+.dropdown {
+    position: absolute;
+    display: inline-block;
+    right: 0.4em;
+    top: 33px;
+    width: 300px;
+}
+
+.dropdown-content {
+    display: none;
+    position: relative;
+    margin-top: 12px;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    height: 350px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 6px;
+    right: 20px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #f1f1f1}
+
+.show {display:block;}
+
+#div-details{
+  margin-left: 115px;
+}
+#black-color{
+  color: black;
+}
+#nrg-logo-paddding{
+  height: 155px;
+  margin:-4px 0px 0px -10px;
+  outline: none;
+  cursor: pointer;
+}
+.white-hover.active{
+  background-color: white;
+  color: white;
+}
+
+#sales-box{
+  width: 95%;
+  height: 160px;
+  background: #30CFA6;
+}
+#completeorder-box{
+  width: 95%;
+  height: 160px;
+  background: #B457FD;
+}
+#purchase-box{
+  width: 95%;
+  height: 160px;
+  background: #F89F47;
+}
+#totaleraning-box{
+  width: 95%;
+  height: 160px;
+  background: #78BBF3;
+}
+h3{
+  font-size: 21px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+#textalign-center{
+  text-align: center;
+}
+#fontawe-icons{
+  margin-left: 12px;
+  font-size: 26px;
+}
+#recentupdate-box{
+  width: 96%;
+  height: 154px;
+  background: #434F5B;
+}
+#stock-box{
+  width: 96%;
+  height: 283px;
+  background: #434F5B;
+}
+#recentupdate-detail-box{
+  width: 95%;
+  height: 93px;
+  background: #333C45;
+  margin: 9px;
+  overflow-y: scroll;
+}
+#table-box{
+  width: 95%;
+  height: 220px;
+  margin: 9px;
+  border: 5px solid #3B3B4C;
+  overflow-y: scroll;
+}
+table{
+  height: 260px;
+  width: 100%;
+}
+tr.d0 td {
+  background-color: #3E4954;
+}
+tr.d1 td {
+  background-color: #47525E;
+}
+#datetime-box{
+  width: 100%;
+  height: 100%;
+  background: #434F5B;
+}
+#calendor-box{
+  width: 95%;
+  height: 340px;
+  background: #333C45;
+  margin: auto;
+}
+#date-event-box{
+  width: 100%;
+  height: 340px;
+  background: #333C45;
+}
+#totalsale-box{
+  width: 60%;
+  height: 532px;
+  background: #434F5B;
+}
+#salestable-box{
+  width: 95%;
+  margin: 15px;
+  height: 450px;
+}
+.mat-paginator{
+  background: #434F5B;
+}
+table th{
+  background: #333C45;
+}
+tr:nth-child(odd){
+  background: #3E4954;
+}
+tr:nth-child(even){
+  background: #47525E;
+}
+.mat-elevation-z8{
+  overflow-y: scroll;
+  height: 345px;
+}
+/* calendor css start*/
+::ng-deep .mat-calendar-table-header th{
+  color: white;
+}
+::ng-deep .mat-calendar-body-label{
+  color: white;
+}
+::ng-deep .mat-calendar-body-cell-content{
+  color: white
+}
+::ng-deep .mat-calendar-table-header-divider::after{
+  height: 2px;
+  background: white;
+  margin: auto;
+  width: 95%;
+}
+#date-eventfont{
+  font-size: 21px;
+  text-align: center;
+}
+#date-shown-box{
+  height: 65px;
+}
+#event-box{
+  width: 95%;
+  height: 250px;
+  background: #272E34;
+  margin: 9px;
+  overflow-y: scroll;
+}
+
 
   @media (min-width: 320px) and (max-width: 359px) {
     #nrg-logo-paddding{
