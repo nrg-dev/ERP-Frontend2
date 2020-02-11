@@ -17,4 +17,5 @@ export class Stock extends Common {
    stockDate: string;
    currentStatus: string;
    stockDamageCode: string;
+   itemStatus: string;
 }

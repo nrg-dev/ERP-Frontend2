@@ -125,6 +125,7 @@ export class SalesreturnComponent implements OnInit {
           setTimeout(() => {
             this.alertService.clear();
           }, 1500);
+          window.location.reload();
       },
       error => {
         setTimeout(() => {
