@@ -17,9 +17,12 @@ export class Sales extends Common {
    termsDays:string;
    invoicedate:Date;
    salesarray: any = [];
-   price: string;
+   price: number;
    city: string;
    country: string;
    phoneNumber: string;
    email: string;
+   description: string;  
+   
+   totalAmount:number;
 }

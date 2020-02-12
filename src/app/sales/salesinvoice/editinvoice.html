@@ -1,8 +1,10 @@
 <div id="box-dialouge">
-        <br/>
+    <form name="editSalesform" (ngSubmit)="updateInvoice()">
+
+    <br/>
         <h2 style="text-align: center;font-size: 22px;">Edit Invoice {{ this.model.invoiceNumber }}</h2>
-        <br/>
-        <div class="row">
+    <br/>
+   <!-- <div class="row">
             <div class="col-lg-1"></div>
             <div class="col-lg-4">
                 <label style="font-size: 15px;color: white;">Current Status : &nbsp;</label>
@@ -21,66 +23,83 @@
                 </div>
                 
             </div>
-        </div>
-        <br/>
-        <table class="scroll">
-            <thead>
-                <tr id="tr-color">
-                    <th>SNO</th>
-                    <th>Category</th>
-                    <th>Item</th>
-                    <th>Description</th>
-                    <th>Quantity</th>
-                    <th>Sub Total</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            
-            <tbody>
-                <tr *ngFor="let list of salesEditList; let i = index">
-                    <td id="middleContent">{{ i+1 }}</td>
-                    <td id="middleContent">
-                        <select class="form-control" id="{{ list.sNo }}" name="category" [(ngModel)]="model.category" #category="ngModel">
-                            <option *ngFor="let option of categoryList; index as i"
-                                [selected]="option === list.category"> {{ option }}
-                            </option>
-                        </select> 
-                    </td>
-                    <td id="middleContent">
-                        <select class="form-control" id="{{ list.sNo }}" name="itemname" [(ngModel)]="model.itemname" #itemname="ngModel">
-                            <option *ngFor="let item of productList; index as i"
-                                [selected]="item === list.itemname"> {{ item }}
-                            </option>
-                        </select> 
-                    </td>
-                    <td id="middleContent"><textarea type="text" id="{{ list.sNo }}" name="description" [(ngModel)]="model.description" #description="ngModel" value="{{ list.description }}"></textarea></td>
-                    <td id="middleContent"><input type="text" id="{{ list.sNo }}" name="qty" [(ngModel)]="model.qty" #qty="ngModel" value="{{ list.qty }}" style="width: 70px;" /></td>
-                    <td id="middleContent"><label style="color: white;" id="{{ model.sNo }}" name="subtotal" [(ngModel)]="model.subtotal" #subtotal="ngModel">{{ list.subtotal }}</label></td>
-                   
-                    <td>
-                        <div class="row" style="margin: 10px;">
-                            <!-- <div id="rowedit-div" (click)="updateInvoice()">
+        </div> -->
+    <br/>
+
+    <table class="scroll">
+        <thead>
+            <tr id="tr-color">
+                <th>SNO</th>
+                <th>Category</th>
+                <th>Item</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Sub Total</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr *ngFor="let list of salesList; let i = index">
+                <td id="{{ list.id }}">{{ i+1 }}</td>
+                <td id="{{ list.id }}">
+                    <select class="form-control" id="{{ i+1 }}" name="category" 
+                    [(ngModel)]="list.category" #category="ngModel">
+                        <option id="list.id" *ngFor="let option of categoryList;"
+                            [selected]="option === list.category"> {{ option }}
+                        </option>
+                    </select> 
+                </td>
+                <td id=" {{ i+1 }} ">
+                    <select class="form-control" id="{{ i+1 }}" name="productName" [(ngModel)]="list.productName" 
+                        #productName="ngModel" (change)="getTotalAmount(list.productName,list.quantity,list.category,list.id)">
+                        <option *ngFor="let item of productList;"
+                            [selected]="item === list.productName"> {{ item }}
+                        </option>
+                    </select> 
+                </td>
+
+                <td id="{{ list.id }}"><textarea type="text" id="{{ list.id }}"
+                    name="{{ list.description }}"
+                    [(ngModel)]="list.description" #description="ngModel"></textarea>
+                </td>
+
+                <td id="{{ list.id }}"><input type="text" id="{{ list.id }}" 
+                    name="{{ list.quantity }}" style="width: 70px;" [(ngModel)]="list.quantity" 
+                    #quantity="ngModel" (change)="getTotalAmount(list.productName,list.quantity,list.category,list.id)" />
+                </td> 
+                
+                <td id="{{ list.id }}"><label style="color: white;" id="{{ i+1 }}" name="netAmount" 
+                    [(ngModel)]="list.netAmount" #netAmount="ngModel">{{ list.netAmount }}</label>
+                </td>
+               
+                <td>
+                    <div class="row" style="margin: 10px;">
+                        <!-- <div id="rowedit-div" (click)="updateInvoice()">
                                 <i class="fa fa-check" id="rowdelete-icon" aria-hidden="true"></i>    
                             </div> &nbsp;&nbsp;&nbsp;  -->
-                            <div id="rowdelete-div" (click)="deleteSalesInvoice(list.id,model.invoiceNumber)">
-                                <i class="fa fa-trash-o" id="rowdelete-icon" aria-hidden="true"></i>    
-                            </div>   
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <br/> <br/>
-        <div class="row">
-            <div class="col-lg-4"></div>
-            <div class="col-lg-5">
-                <div class="radio-toolbar">
-                    <label id="checkIn-butn" (click)="updateInvoice()">Save</label>
-                    <label id="checkOut-butn" (click)="cancelInvoice()">Cancel</label>
-                </div>
+                        <div id="rowdelete-div" (click)="deleteSalesInvoice(list.id,model.invoiceNumber)">
+                            <i class="fa fa-trash-o" id="rowdelete-icon" aria-hidden="true"></i>    
+                        </div>   
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br/> <br/>
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-5">
+            <div class="radio-toolbar">
+                <button id="checkIn-butn">Save</button>
+                <label id="checkOut-butn" (click)="cancelInvoice()">Cancel</label>
             </div>
-            <div class="col-lg-3"></div>
         </div>
-        <br/> <br/>
+        <div class="col-lg-3"></div>
     </div>
-        
+    <br/> <br/>
+</form>
+
+</div>
+    

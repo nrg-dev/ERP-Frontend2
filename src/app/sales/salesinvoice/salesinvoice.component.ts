@@ -83,14 +83,18 @@ export class ViewInvoice {
 
 export class EditInvoice {
   model: any ={};
-  sales: Sales;
+  sales: Sales = new Sales;
+  sales1: Sales = new Sales;
   public salesEditList : any;
   public productList : any;
   public categoryList : any;
   public statusList : any;
-  i:number =1;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
+
+  public salesList:Array<Sales> = [ ];
+  saleseditarray: Array<any> = [];
+
   constructor(
     private salesService: SalesService,
     private purchaseService: PurchaseService,
@@ -100,7 +104,6 @@ export class EditInvoice {
     public dialogRef: MatDialogRef<EditInvoice>,
     @Inject(MAT_DIALOG_DATA) public data: any)
     {  
-      console.log("Edit Dialog InvoiceNumber -->"+this.data);
       this.model.invoiceNumber = this.data.invoice;
       this.model.currentStatus = this.data.status;
       this.editDetails(this.model.invoiceNumber);
@@ -144,6 +147,29 @@ export class EditInvoice {
           console.log("--- No data Found ---");
         }else{
           
+          for(let i=0;i<this.salesEditList.length;i++){
+            console.log("--- category name ---"+this.salesEditList[i].category);
+            console.log("--- product name ---"+this.salesEditList[i].itemname);
+            console.log("--- s.no ---"+this.salesEditList[i].id);
+            this.sales = new Sales;
+            this.sales.productName = this.salesEditList[i].itemname;
+            this.sales.category = this.salesEditList[i].category;
+            this.sales.description = this.salesEditList[i].description;
+            this.sales.quantity = this.salesEditList[i].qty;
+            this.sales.netAmount = this.salesEditList[i].subtotal;
+            this.sales.id = this.salesEditList[i].id;
+            this.sales.price = this.salesEditList[i].unitprice;
+            this.sales.invoiceNumber = this.salesEditList[i].invoicenumber;
+            this.sales.soDate = this.salesEditList[i].soDate;
+            this.salesList.push(this.sales);
+          }
+
+          for(let j=0; j<this.salesList.length; j++){
+            console.log("Sales Item Name ------>"+this.salesList[j].productName);
+            console.log("Sales Quantity ------>"+this.salesList[j].quantity);
+            console.log("Sales Description ------>"+this.salesList[j].description);
+          }
+
         }
       },
       error => {
@@ -169,7 +195,7 @@ export class EditInvoice {
             this.alertService.clear();
           }, 1500);
           this.model.currentStatus = this.data.status;
-          this.editDetails(invoiceNumber);
+          this.cancelInvoice();
         }else{
           this.alertService.error("Not Deleted..");
         }
@@ -184,8 +210,58 @@ export class EditInvoice {
     ); 
   }
 
+  getTotalAmount(productName:string,qty:number,category:string,id:string){
+    var index;
+    console.log("Sales productName ==>"+productName);
+    console.log("Sales Qty ==>"+qty);
+    console.log("Sales category ==>"+category);
+    console.log("Sales Input ID ---->"+id);
+    for (var i = 0; i < this.salesList.length ; i++) {
+      console.log("Sales Database ID  -------->"+this.salesList[i].id);
+      if (this.salesList[i].id === id) {
+        console.log("Index value --->"+i);
+        index = i;
+      }
+    }
+    this.salesService.getUnitPrice(productName,category)
+    .subscribe(
+      data => {
+        this.sales = data; 
+        console.log("Get UnitPrice  ----->"+this.sales.price);
+        this.sales.totalAmount = qty * this.sales.price;
+        console.log("Onchange Total Amount  ----->"+this.sales.totalAmount);
+        this.salesList[index].netAmount = this.sales.totalAmount;
+        this.salesList[index].price = this.sales.price;
+        
+      },
+      error => {
+        this.alertService.error("Network error: server is temporarily unavailable");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 1500);
+      }
+    );
+  }
+
   updateInvoice(){
-    this.salesService.update(this.model)
+    this.sales = new Sales;
+    for(let j=0; j<this.salesList.length; j++){
+      console.log("Edited Sales Category Name ------>"+this.salesList[j].category);
+      console.log("Edited Sales Item Name ------>"+this.salesList[j].productName);
+      console.log("Edited Sales description ------>"+this.salesList[j].description);
+      console.log("Edited Sales quantity ------>"+this.salesList[j].quantity);
+      console.log("Edited Sales unitPrice ------>"+this.salesList[j].price);
+      console.log("Edited Sales netAmount ------>"+this.salesList[j].netAmount);
+      console.log("Edited Sales ObjectID ------>"+this.salesList[j].id);
+      console.log("Edited Sales invoiceNumber ------>"+this.salesList[j].invoiceNumber);
+      console.log("Edited Sales SODate ------>"+this.salesList[j].soDate);
+    }
+
+    console.log(this.salesList);
+    this.saleseditarray.push(this.salesList);
+    console.log(this.saleseditarray);
+
+    this.salesService.update(this.saleseditarray)
     .subscribe(
       data => {
         this.sales = data; 
@@ -201,23 +277,6 @@ export class EditInvoice {
         }, 1500);
       }
     ); 
-  }
-
-  getTotalAmount(productName:string,qty:string,category:string){
-    console.log("productName ==>"+productName);
-    console.log("Qty ==>"+qty);
-    this.salesService.getUnitPrice(productName,category)
-    .subscribe(
-      data => {
-        this.sales = data; 
-      },
-      error => {
-        this.alertService.error("Network error: server is temporarily unavailable");
-        setTimeout(() => {
-          this.alertService.clear();
-        }, 1500);
-      }
-    );
   }
 
   cancelInvoice(){
@@ -274,7 +333,7 @@ export class SalesinvoiceComponent implements OnInit {
   public salesList : any;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
-  displayedColumns: string[] = ['invoicenumber','status','invoicedate','customername','Action'];
+  displayedColumns: string[] = ['invoicenumber','status','productName','Qty','invoicedate','customername','Action'];
   dataSource: MatTableDataSource<any>;
   
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
@@ -289,6 +348,8 @@ export class SalesinvoiceComponent implements OnInit {
       this.salesservice.load().subscribe(res => { 
         this.salesList = res;
         this.dataSource = new MatTableDataSource(this.salesList);
+        
+        console.log("Product List -->"+this.salesList[1].productName);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;  
       },

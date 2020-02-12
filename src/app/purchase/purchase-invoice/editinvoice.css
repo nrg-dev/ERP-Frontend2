@@ -69,6 +69,7 @@ td{
   height: 32px;
   margin: 5px 0 0 0px;
   text-align: center;
+  border: 1px solid #07ab07;
 }
 #checkOut-butn{
   background-color: #d40505;

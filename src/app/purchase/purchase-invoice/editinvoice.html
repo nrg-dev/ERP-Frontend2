@@ -43,29 +43,37 @@
             <tr *ngFor="let list of purchaseList; let i = index">
                 <td id="{{ list.id }}">{{ i+1 }}</td>
                 <td id="{{ list.id }}">
-                    <select class="form-control" id="{{ i+1 }}"  name="category" 
+                    <select class="form-control" id="{{ i+1 }}" name="category" 
                     [(ngModel)]="list.category" #category="ngModel">
-                        <option id="list.id" *ngFor="let option of categoryList; index as i"
+                        <option id="list.id" *ngFor="let option of categoryList;"
                             [selected]="option === list.category"> {{ option }}
                         </option>
                     </select> 
                 </td>
                 <td id=" {{ i+1 }} ">
                     <select class="form-control" id="{{ i+1 }}" name="productName" 
-                    [(ngModel)]="list.productName" #productName="ngModel">
-                        <option *ngFor="let item of productList; index as i"
+                    [(ngModel)]="list.productName" 
+                        #productName="ngModel" (change)="getTotalAmount(list.productName,list.quantity,list.category,list.id)">
+                        <option *ngFor="let item of productList;"
                             [selected]="item === list.productName"> {{ item }}
                         </option>
                     </select> 
                 </td>
-                <td id="{{ i+1 }}"><textarea type="text" id="{{ i+1 }}" name="description" 
-                    [(ngModel)]="list.description" #description="ngModel" value="{{ list.description }}"></textarea></td>
+
+                <td id="{{ list.id }}"><textarea type="text" id="{{ list.id }}"
+                    name="{{ list.description }}"
+                    [(ngModel)]="list.description" #description="ngModel"></textarea>
+                </td>
+
+                <td id="{{ list.id }}"><input type="text" id="{{ list.id }}" 
+                    name="{{ list.quantity }}" style="width: 70px;" [(ngModel)]="list.quantity" 
+                    #quantity="ngModel" (change)="getTotalAmount(list.productName,list.quantity,list.category,list.id)" />
+                </td> 
                 
-                <td id="{{ i+1 }}"><input type="text" id="{{ list.id }}" 
-                    name="quantity" [(ngModel)]="list.quantity" #quantity="ngModel" value="{{ list.quantity }}" style="width: 70px;" (change)="getTotalAmount(list.productName,list.quantity,list.category,list.id)" /></td>
-                
-                <td id="{{ list.id }}"><label style="color: white;" id="{{ model.id }}" 
-                    name="netAmount" [(ngModel)]="list.netAmount" #netAmount="ngModel">{{ list.netAmount }}</label></td>
+                <td id="{{ list.id }}"><label style="color: white;" id="{{ i+1 }}" 
+                    name="netAmount" 
+                    [(ngModel)]="list.netAmount" #netAmount="ngModel">{{ list.netAmount }}</label>
+                </td>
                
                 <td>
                     <div class="row" style="margin: 10px;">
