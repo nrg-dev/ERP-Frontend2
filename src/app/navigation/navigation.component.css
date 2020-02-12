@@ -45,8 +45,9 @@
   height: inherit;
   color:white;
 }
-
+/* Don't change the font family*/
 .mat-icon-button .mat-icon, .mat-icon-button i {
+  font-family: 'Material Icons';
   line-height: 24px;
   color: white;
 }
@@ -293,13 +294,13 @@ tr.d1 td {
 }
 #calendor-box{
   width: 95%;
-  height: 340px;
+  height: 360px;
   background: #333C45;
   margin: auto;
 }
 #date-event-box{
   width: 100%;
-  height: 340px;
+  height: 360px;
   background: #333C45;
 }
 #totalsale-box{

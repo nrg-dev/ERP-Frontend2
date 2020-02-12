@@ -29,9 +29,12 @@ dataSource: MatTableDataSource<any>;
 allproductlist : any= {};
 
 @ViewChild('sidenav',{ read: true, static: false }) sidenav: MatSidenav;
-@ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
-@ViewChild(MatSort,{ static: true }) sort: MatSort;
-
+@ViewChild(MatPaginator,{ static: false }) paginator: MatPaginator;
+@ViewChild(MatSort,{ static: false }) sort: MatSort;
+ngAfterViewInit() {
+  this.dataSource.paginator = this.paginator;
+  this.dataSource.sort = this.sort;
+}
 @ViewChild('calendar',{ read: true, static: false }) calendar: MatCalendar<Moment>;
 selectedDate: Moment;
 
