@@ -36,8 +36,8 @@ export class SalesService {
     }
 
     // Update 
-    update(sales: Sales){
-        return this.http.put<Sales>(this.commonURL+'update',sales);
+    update(saleseditarray: Array<any>){
+        return this.http.put<Sales>(this.commonURL+'update',saleseditarray);
     }
 
     // Remove 

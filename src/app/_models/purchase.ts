@@ -16,10 +16,12 @@ export class Purchase extends Common {
    termsDays:string;
    invoicedate:Date;
    purchasearray: any = [];
-   price: string;
+   price: number;
    vendorCity: string;
    vendorCountry: string;
    vendorPhone: string;
    vendorEmail: string;
-   description: string;
+   description: string;  
+   
+   totalAmount:number;
 }

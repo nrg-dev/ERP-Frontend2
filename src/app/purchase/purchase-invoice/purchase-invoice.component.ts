@@ -87,9 +87,13 @@ export class EditInvoice {
   public productList : any;
   public categoryList : any;
   public statusList : any;
-  i:number =1;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
+  public purchaseList:Array<Purchase> = [ ];
+  purchaseeditarray: Array<any> = [];
+
+  public priceArray : any = [];
+  public descriptionArray : any = [];
   constructor(
     private purchaseService: PurchaseService,
     private dialog: MatDialog,
@@ -98,42 +102,39 @@ export class EditInvoice {
     public dialogRef: MatDialogRef<EditInvoice>,
     @Inject(MAT_DIALOG_DATA) public data: any)
     {  
-      console.log("Edit Dialog InvoiceNumber -->"+this.data);
       this.model.invoiceNumber = this.data.invoice;
       this.model.currentStatus = this.data.status;
       this.editDetails(this.model.invoiceNumber);
       this.getProductList();
       this.getcategoryList();
       this.statusList = ['Pending','On Progress','Success'];
-
     }
 
-    getcategoryList(){
-      this.purchaseService.loadCategoryName()
-      .subscribe(res => { 
-        this.categoryList = res;
-        },
-        error => {
-          setTimeout(() => {
-            this.alertService.error("Network error: server is temporarily unavailable");
-          }, 2000);
-        }
-      );
-    }
+  getcategoryList(){
+    this.purchaseService.loadCategoryName()
+    .subscribe(res => { 
+      this.categoryList = res;
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    );
+  }
 
-    getProductList(){
-      this.purchaseService.loadItemName()
-      .subscribe(res => { 
-        this.productList = res;
-        },
-        error => {
-          setTimeout(() => {
-            this.alertService.error("Network error: server is temporarily unavailable");
-          }, 2000);        }
-      );
-    }
-
-    public purchaseList:Array<Purchase> = [ ];
+  getProductList(){
+    this.purchaseService.loadItemName()
+    .subscribe(res => { 
+      this.productList = res;
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);        
+      }
+    );
+  }
 
   editDetails(invoiceNumber:string){
     this.purchaseService.geteditDetails(invoiceNumber)
@@ -156,19 +157,18 @@ export class EditInvoice {
             this.purchase.quantity = this.purchaseEditList[i].qty;
             this.purchase.netAmount = this.purchaseEditList[i].subtotal;
             this.purchase.id = this.purchaseEditList[i].id;
+            this.purchase.price = this.purchaseEditList[i].unitprice;
+            //this.descriptionArray[this.i].unitPrice = this.purchaseEditList[i].description;
+            this.purchase.invoiceNumber = this.purchaseEditList[i].invoicenumber;
+            this.purchase.poDate = this.purchaseEditList[i].poDate;
             this.purchaseList.push(this.purchase);
-
           }
 
           for(let j=0; j<this.purchaseList.length; j++){
             console.log("Item Name ------>"+this.purchaseList[j].productName);
-
+            console.log("Quantity ------>"+this.purchaseList[j].quantity);
+            console.log("Description ------>"+this.purchaseList[j].description);
           }
-         /* this.i= this.i;
-          this.model.sNo = this.i;
-          this.purchaseEditList.push(this.model.sNo);
-
-          this.i++; */
         }
       },
       error => {
@@ -193,7 +193,7 @@ export class EditInvoice {
             this.alertService.clear();
           }, 1500);
           this.model.currentStatus = this.data.status;
-          this.editDetails(invoiceNumber);
+          this.cancelInvoice();
         }else{
           this.alertService.error("Not Deleted..");
         }
@@ -208,38 +208,7 @@ export class EditInvoice {
     ); 
   }
 
-  updateInvoice(){
-    this.purchase = new Purchase;
-
-    //const index = this.purchaseList.findIndex((e) => e.id === obj.id);
-
-    for(let j=0; j<this.purchaseList.length; j++){
-      console.log("Edited Category Name ------>"+this.purchaseList[j].category);
-      console.log("Edited Item Name ------>"+this.purchaseList[j].productName);
-      console.log("Edited description ------>"+this.purchaseList[j].description);
-      console.log("Edited quantity ------>"+this.purchaseList[j].quantity);
-      console.log("Edited netAmount ------>"+this.purchaseList[j].netAmount);
-    }
-    this.purchaseService.update(this.model)
-    .subscribe(
-      data => {
-        this.purchase = data; 
-        this.alertService.success("Successfully Updated.");
-        setTimeout(() => {
-          this.alertService.clear();
-        }, 1000);
-      },
-      error => {
-        this.alertService.error("Network error: server is temporarily unavailable");
-        setTimeout(() => {
-          this.alertService.clear();
-        }, 1500);
-      }
-    );
-    
-  }
-
-  getTotalAmount(productName:string,qty:string,category:string,id:string){
+  getTotalAmount(productName:string,qty:number,category:string,id:string){
     var index;
     console.log("productName ==>"+productName);
     console.log("Qty ==>"+qty);
@@ -256,9 +225,11 @@ export class EditInvoice {
     .subscribe(
       data => {
         this.purchase = data; 
-        //alert("Unit Prize -->"+this.purchase.price);
-        //this.purchase.price * qty;
-        this.purchaseList[index].netAmount = this.purchase.price;
+        console.log("Get UnitPrice  ----->"+this.purchase.price);
+        this.purchase.totalAmount = qty * this.purchase.price;
+        console.log("Onchange Total Amount  ----->"+this.purchase.totalAmount);
+        this.purchaseList[index].netAmount = this.purchase.totalAmount;
+        this.purchaseList[index].price = this.purchase.price;
         
       },
       error => {
@@ -268,6 +239,43 @@ export class EditInvoice {
         }, 1500);
       }
     );
+  }
+
+  updateInvoice(){
+    this.purchase = new Purchase;
+    for(let j=0; j<this.purchaseList.length; j++){
+      console.log("Edited Category Name ------>"+this.purchaseList[j].category);
+      console.log("Edited Item Name ------>"+this.purchaseList[j].productName);
+      console.log("Edited description ------>"+this.purchaseList[j].description);
+      console.log("Edited quantity ------>"+this.purchaseList[j].quantity);
+      console.log("Edited unitPrice ------>"+this.purchaseList[j].price);
+      console.log("Edited netAmount ------>"+this.purchaseList[j].netAmount);
+      console.log("Edited ObjectID ------>"+this.purchaseList[j].id);
+      console.log("Edited invoiceNumber ------>"+this.purchaseList[j].invoiceNumber);
+      console.log("Edited PODate ------>"+this.purchaseList[j].poDate);
+    }
+
+    console.log(this.purchaseList);
+    this.purchaseeditarray.push(this.purchaseList);
+    console.log(this.purchaseeditarray);
+
+    this.purchaseService.update(this.purchaseeditarray)
+    .subscribe(
+      data => {
+        this.purchase = data; 
+        this.alertService.success("Successfully Updated.");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 1000);
+      },
+      error => {
+        this.alertService.error("Network error: server is temporarily unavailable");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 1500);
+      }
+    );
+    
   }
 
   cancelInvoice(){

@@ -42,8 +42,8 @@ export class PurchaseService {
     }
 
     // Update 
-    update(purchase: Purchase){
-        return this.http.put<Purchase>(this.commonURL+'update',purchase);
+    update(purchaseeditarray: Array<any>){
+        return this.http.put<Purchase>(this.commonURL+'update',purchaseeditarray);
     }
 
     // Remove 

@@ -197,7 +197,7 @@ export class PurchaseaddComponent  implements OnInit  {
     this.purchasesearcharray=[];
     console.log(this.fieldArray);
     this.purchasesearcharray.push(this.fieldArray);
-    console.log("Purchase Array -->"+this.purchasesearcharray);
+    console.log("Purchase Array -->");
     console.log(this.purchasesearcharray);
     this.purchase.vendorName = this.model.vendorName;
     this.purchaseService.save(this.purchasesearcharray,this.model.vendorName,this.model.deliveryCost)
