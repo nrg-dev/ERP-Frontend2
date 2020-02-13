@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Customer,Vendor } from 'src/app/_models';
 import { AlertService } from 'src/app/_services/index';
 import { Router } from '@angular/router';
 import { CustomerService } from '../customer.service';
 import { VendorService } from '../vendor.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 
 
 @Component({
@@ -38,6 +39,12 @@ export class VendoraddComponent implements OnInit {
   vendorList: any = {};
   customerList: any={};
 
+  displayedColumns: string[] = ['vendorcode','name','contactnumber','action'];
+  dataSource1: MatTableDataSource<any>;
+
+  @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort,{ static: true }) sort: MatSort;
+  
   countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
 
   constructor(private router: Router,
@@ -62,9 +69,9 @@ export class VendoraddComponent implements OnInit {
     this.vendordragAndDrop = false;
     this.customerdragAndDrop = false;
 
-    document.getElementById("vendorstyle").style.borderBottom='2px solid #007bff';
-    document.getElementById("customerstyle").style.borderBottom='none';
-    document.getElementById("vendorstyle").style.fontWeight='bold';
+    //document.getElementById("vendorstyle").style.borderBottom='2px solid #007bff';
+   // document.getElementById("customerstyle").style.borderBottom='none';
+   // document.getElementById("vendorstyle").style.fontWeight='bold';
     this.getAllVendorDetails();
     this.getAllCustomerDetails();
   }
@@ -75,6 +82,9 @@ export class VendoraddComponent implements OnInit {
     .subscribe(
       data => {
         this.vendorList = data;
+        this.dataSource1 = new MatTableDataSource(this.vendorList);
+        this.dataSource1.paginator = this.paginator;
+        this.dataSource1.sort = this.sort;
       },
       error => {
         this.alertService.error("Network error: server is temporarily unavailable");
@@ -104,7 +114,7 @@ export class VendoraddComponent implements OnInit {
     this.tempid=vendorcode;
     document.getElementById(this.tempid).style.backgroundColor='#2F4756';
     //-- VendorDetails Div Calling --
-    this.vendordetailsstart = true;
+    this.vendordetailsstart = false;
     this.customerdetailsstart = false;
 
     this.vendordetails = true;
@@ -230,8 +240,17 @@ export class VendoraddComponent implements OnInit {
     this.customerdragAndDrop = false;
     this.alertService.success("");
   }
+  test(){
+    //alert("test");
+    this.vendordetailsstart=true;
+    this.vendordragAndDrop=false;
+  }
+  yourFn($event){
+    //alert("test");
+}
   addVendor(){
     this.vendordragAndDrop=true;
+    this.vendordetailsstart = false;
     this.vendordetails=false;
     this.vendoreditdetails=false;
     this.customerdetails = false;
