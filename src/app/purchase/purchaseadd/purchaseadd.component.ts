@@ -41,8 +41,6 @@ export class Status {
 })
 export class PurchaseaddComponent  implements OnInit  {
   purchase:Purchase = new Purchase();
-//  purchase:Purchase;
-
   model: any ={};
   public purchasetable = false;
   headElements = ['#ID', 'Product Name', 'Category Name', 'Quantity'];
@@ -119,55 +117,43 @@ export class PurchaseaddComponent  implements OnInit  {
     );
   }
 
-  /*getProductName(category:string){
-    this.purchaseService.loadItem(category)
-    .subscribe(res => { 
-      this.productList = res;
-      },
-      error => {
-        alert('Error !!!!');
-      }
-    );
-  }*/
-
-  getUnitPrice(productName:string,category:string,quantity:number,sNo:number){
-    let totalCommission = 0.0;
-    this.purchaseService.getUnitPrice(productName,category)
-    .subscribe(
-      data => {
-        this.purchase = data; 
-        console.log("Unit Price back end -->"+this.purchase.price);
-        console.log("Unit Prize initial -->"+this.unitArray[this.i]);
-        this.unitArray[this.i] = this.purchase.price;
-        this.subTotalArray[this.j] = quantity*this.unitArray[this.i];
-        this.fieldArray[this.i].unitPrice = this.unitArray[this.i];
-        this.fieldArray[this.i].netAmount = this.subTotalArray[this.j];
-        console.log(this.fieldArray);
-        totalCommission +=  this.fieldArray[this.i].netAmount;
-        this.model.subTotal = totalCommission;
-        this.i++;
-        this.j++;
-      },
-      error => {
-        this.alertService.error("Network error: server is temporarily unavailable");
-        setTimeout(() => {
-          this.alertService.clear();
-        }, 1500);
-      }
-    );
-  }
-  getSubTotal(quantity:number,price:number){
-    console.log("Qty -->"+quantity);
-    console.log("price -->"+price);
-    this.purchase.netAmount = quantity*price;
+  getSubTotal(productName:string,quantity:string,category:string){
+    console.log("productName -->"+productName);
+    console.log("quantity -->"+quantity);
+    if(quantity == '' || quantity == undefined){
+      console.log("--- No Quantity are available ---");
+    }else{
+      this.purchaseService.getUnitPrice(productName,category)
+      .subscribe(
+        data => {
+          this.purchase = data; 
+          this.model.unitPrice = this.purchase.price;
+          this.model.netAmount = Number.parseInt(quantity) * this.purchase.price;
+          console.log("Price ---->"+this.model.unitPrice +" --netAmount -->"+this.model.netAmount);
+        },
+        error => {
+          
+        }
+      );
+    }
   }
 
-  newPurchaseOrder(sNo: number){
+  addProduct(sNo:number){    
     this.purchasetable = true;
-    this.fieldArray.push(this.newAttribute);
-    this.newAttribute = {};
+    this.fieldArray.push( {vendorName: this.model.vendorName, category: this.model.category,productName: this.model.productName,
+      unitPrice: this.model.unitPrice, quantity: this.model.quantity, netAmount: this.model.netAmount, description: this.model.description } );
+
+    console.log(this.fieldArray);
     this.model.sNo = sNo+1;
     this.purchase.id = this.model.sNo;
+
+    // CLEAR TEXTBOX.
+    this.model.category = null;
+    this.model.productName = null;
+    this.model.quantity = '';
+    this.model.netAmount = '';
+    this.model.unitPrice = '';
+    this.model.description = '';
   }
 
   deleteFieldValue(index) {
@@ -192,7 +178,6 @@ export class PurchaseaddComponent  implements OnInit  {
     }
   }
   purchasesearcharray: Array<any> = [];
-  vendorname: Array<any> = [];
   savePurchase(){
     this.purchasesearcharray=[];
     console.log(this.fieldArray);
@@ -200,7 +185,7 @@ export class PurchaseaddComponent  implements OnInit  {
     console.log("Purchase Array -->");
     console.log(this.purchasesearcharray);
     this.purchase.vendorName = this.model.vendorName;
-    this.purchaseService.save(this.purchasesearcharray,this.model.vendorName,this.model.deliveryCost)
+    this.purchaseService.save(this.purchasesearcharray,this.model.deliveryCost)
    .subscribe(
        res => {
          console.log('............1 ....');

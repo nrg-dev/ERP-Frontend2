@@ -4,25 +4,43 @@
   font-family: sans-serif;
   font-size:13px;
 }
+
 table {
-  display: block;
+  table-layout: fixed;
   width: 100%;
-  padding-left: 10px;
-  height:400px;
-  overflow-y: auto;
+  border-collapse: collapse ;
+  display:block;
 }
-th{
-  color:#ffffff;
-  /*background-color:#21272D;*/
-  background-color:#033c5f;
+th, td {
+  padding: 10px;
+  color: white;
+}
+tbody {
+  height: 250px;
+  overflow-y: auto;   
+  overflow-x: hidden;
+  width:  14.2857%;
+  color: white;
 }
 
+th{
+  color:#ffffff;
+  background-color:#21272D;
+  /*background-color:#033c5f;*/
+  border-left: 1px solid white;
+}
+tr:nth-child(odd){
+  background-color: #434F5B;
+}
+tr:nth-child(even){
+  background-color: #323B44;
+}
 td{
-  background-color:#434F5B;
+  border-left: 1px solid white;
 }
 h3{
     color:white;
-    font-size: 20px;
+    font-size: 18px;
 }
 #savebtn {
     background-color:#51AF57;
@@ -32,6 +50,30 @@ h3{
     position: sticky;
     top: 50px;
     padding: 5px;
+}
+#textColor{
+  background-color:#1B2931;
+  color: white;
+  width: 185%;
+  height: 30px;
+}
+
+#rowdelete-icon{
+  margin-left: 5px;
+  margin-top: 4px;
+  color: white;
+}
+#rowdelete-div{
+  height: 20px;
+  width: 20px;
+  background: #EF6956; 
+  border-radius: 16px;
+  color: white;
+}
+
+#middleContent {
+  vertical-align: middle;
+  text-align: center;
 }
 
 #sticky {

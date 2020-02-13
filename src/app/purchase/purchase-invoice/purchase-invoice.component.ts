@@ -330,9 +330,7 @@ export class PurchaseInvoiceComponent implements OnInit {
   public purchaseList : any;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
-  //displayedColumns: string[] = ['Date','Invoice Number','ProductName','name','quantity','deliveryCost','netAmount','status','Action'];
-  displayedColumns: string[] = ['invoicenumber','status','invoicedate','vendorname','Action'];
-
+  displayedColumns: string[] = ['date','invoicenumber','productName','vendorname','Qty','Subtotal','deliverycost','total','status','Action'];
 
   dataSource: MatTableDataSource<any>;
   

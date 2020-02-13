@@ -26,14 +26,13 @@ export class PurchaseService {
         return this.http.get<Purchase>(this.commonURL+'loadVendor'); 
     }
     // Save 
-    save(purchasesearcharray: Array<any>,vendorName:string,deliveryCost:string){
-        purchasesearcharray.push([{vendorname:vendorName,podate:"09-sep-2020",deliveryCost:deliveryCost}]);
+    save(purchasesearcharray: Array<any>,deliveryCost:string){
+        purchasesearcharray.push([{deliveryCost:deliveryCost}]);
         return this.http.post(this.commonURL+'save',purchasesearcharray);
     }
     // Load 
     load(){
         return this.http.get<Purchase>(this.commonURL+'load');
-        //         this.httpClient.get(this.baseUrl + '/products').subscribe((res : any[])=>{
     }
 
     // get 

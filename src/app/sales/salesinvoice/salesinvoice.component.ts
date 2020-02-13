@@ -333,7 +333,7 @@ export class SalesinvoiceComponent implements OnInit {
   public salesList : any;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
-  displayedColumns: string[] = ['invoicenumber','status','productName','Qty','invoicedate','customername','Action'];
+  displayedColumns: string[] = ['date','invoicenumber','productName','customername','Qty','Subtotal','deliverycost','total','status','Action'];
   dataSource: MatTableDataSource<any>;
   
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
@@ -347,9 +347,9 @@ export class SalesinvoiceComponent implements OnInit {
     ) { 
       this.salesservice.load().subscribe(res => { 
         this.salesList = res;
+        //var ks = $('#keywords').val().split("\n");
+        console.log("Qty List -->"+this.salesList[1].quantity);
         this.dataSource = new MatTableDataSource(this.salesList);
-        
-        console.log("Product List -->"+this.salesList[1].productName);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;  
       },
