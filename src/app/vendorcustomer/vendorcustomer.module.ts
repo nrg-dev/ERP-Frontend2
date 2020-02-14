@@ -14,6 +14,7 @@ import { VendorService } from './vendor.service';
 import { CustomerService } from './customer.service';
 
 import { MatTabsModule } from '@angular/material';
+import { MAT_TABS_CONFIG } from '@angular/material';
 
 import {
   MatAutocompleteModule,
@@ -117,7 +118,8 @@ const routes: Routes = [
     CommonModule,RouterModule.forChild(routes) ,
 
   ],
-  providers: [CustomerService,VendorService],
+  providers: [CustomerService,VendorService,
+    { provide: MAT_TABS_CONFIG, useValue: { animationDuration: '0ms' } }],
 
 })
 export class VendorcustomerModule { }

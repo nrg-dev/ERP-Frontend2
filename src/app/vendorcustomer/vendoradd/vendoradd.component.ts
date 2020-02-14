@@ -23,7 +23,7 @@ export class VendoraddComponent implements OnInit {
   public vendoreditdetails=false;
 
   public vendordetailsstart=false;
-  public customerdetailsstart=false;
+  public customerdetailsstart=true;
 
   public customerdetails=false;
   public customereditdetails=false;
@@ -42,6 +42,9 @@ export class VendoraddComponent implements OnInit {
   displayedColumns: string[] = ['vendorcode','name','contactnumber','action'];
   dataSource1: MatTableDataSource<any>;
 
+  displayedColumns2: string[] = ['customercode','name','contactnumber','action'];
+  dataSource2: MatTableDataSource<any>;
+
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
   @ViewChild(MatSort,{ static: true }) sort: MatSort;
   
@@ -57,14 +60,13 @@ export class VendoraddComponent implements OnInit {
 
   ngOnInit() {
     this.vendordetailsstart = true;
-    this.customerdetailsstart = false;
+    this.customerdetailsstart = true;
 
     this.vendordetails = false;
     this.customerdetails = false;
-    this.customereditdetails=false;
     
     this.vendoreditdetails = false;
-    this.customereditdetails = false;
+    this.customereditdetails=false;
 
     this.vendordragAndDrop = false;
     this.customerdragAndDrop = false;
@@ -98,6 +100,9 @@ export class VendoraddComponent implements OnInit {
     .subscribe(
       data => {
         this.customerList = data;
+        this.dataSource2 = new MatTableDataSource(this.customerList);
+        this.dataSource2.paginator = this.paginator;
+        this.dataSource2.sort = this.sort;
       },
       error => {
         this.alertService.error("Network error: server is temporarily unavailable");      }
@@ -106,13 +111,13 @@ export class VendoraddComponent implements OnInit {
 
   //Vendor details methos start
   vendorDetails(vendorcode:string){
-    if(this.tempid!==null){
-      document.getElementById(this.tempid).style.backgroundColor='#243641';
-      this.tempid=null;
+    //if(this.tempid!==null){
+    //  document.getElementById(this.tempid).style.backgroundColor='#243641';
+    //  this.tempid=null;
 
-    }
-    this.tempid=vendorcode;
-    document.getElementById(this.tempid).style.backgroundColor='#2F4756';
+   // }
+   // this.tempid=vendorcode;
+   // document.getElementById(this.tempid).style.backgroundColor='#2F4756';
     //-- VendorDetails Div Calling --
     this.vendordetailsstart = false;
     this.customerdetailsstart = false;
@@ -150,8 +155,9 @@ export class VendoraddComponent implements OnInit {
   }
 
   vendoreditDetails(){
-    this.vendordetails=false;
     this.vendoreditdetails=true;
+    this.vendordetails=false;
+    this.vendordetailsstart = false;
     this.customereditdetails=false;
     this.customerdragAndDrop = false;
     this.alertService.success("");
@@ -173,6 +179,9 @@ export class VendoraddComponent implements OnInit {
             this.customerdragAndDrop = false;
           }, 2000);
           this.getAllVendorDetails();
+          this.vendordetailsstart = true;
+          this.vendordetails=false;
+          this.vendordragAndDrop = false;
 
         }
         if(this.vendor.status=="failure"){
@@ -208,6 +217,9 @@ export class VendoraddComponent implements OnInit {
           this.customerdragAndDrop = false;
         }, 2000);
         this.getAllVendorDetails();
+        this.vendordetailsstart = true;
+        this.vendoreditdetails=false;
+
       },
       error => {
         this.alertService.error("Network error: server is temporarily unavailable");
@@ -243,7 +255,26 @@ export class VendoraddComponent implements OnInit {
   test(){
     //alert("test");
     this.vendordetailsstart=true;
+    this.vendordetails=false;
+    this.vendoreditdetails=false;
     this.vendordragAndDrop=false;
+  }
+  test2(){
+    this.customerdetailsstart=true;
+    this.customerdragAndDrop = false;
+    this.customerdetails = false;
+    
+  }
+  vendorback(){
+    this.vendordetailsstart=true;
+    this.vendordetails=false;
+    this.vendoreditdetails=false;
+    this.vendordragAndDrop=false;
+  }
+  customerback(){
+    this.customerdetailsstart=true;
+    this.customerdragAndDrop = false;
+    this.customerdetails = false;
   }
   yourFn($event){
     //alert("test");
@@ -337,17 +368,17 @@ export class VendoraddComponent implements OnInit {
 
   //Customer method start
   customerDetails(custcode:string){
-    console.log("customer id-->"+custcode);
-    if(this.custtempid!==null){
-      document.getElementById(this.custtempid).style.backgroundColor='#243641';
-      this.custtempid=null;
+   // console.log("customer id-->"+custcode);
+    //if(this.custtempid!==null){
+     // document.getElementById(this.custtempid).style.backgroundColor='#243641';
+    //  this.custtempid=null;
 
-    }
-    this.custtempid=custcode;
-    document.getElementById(this.custtempid).style.backgroundColor='#2F4756';
+   // }
+  //  this.custtempid=custcode;
+  //  document.getElementById(this.custtempid).style.backgroundColor='#2F4756';
 //customer div calling
     this.vendordetailsstart = false;
-    this.customerdetailsstart = true;
+    this.customerdetailsstart = false;
 
     this.vendordetails = false;
     this.customerdetails = true;
@@ -382,8 +413,9 @@ export class VendoraddComponent implements OnInit {
     }
   } 
   customerEditDetails(){
-    this.customerdetails=false;
     this.customereditdetails=true;
+    this.customerdetailsstart = false;
+    this.customerdetails=false;
     this.vendoreditdetails=false;
     this.alertService.success("");
   }
@@ -425,6 +457,8 @@ export class VendoraddComponent implements OnInit {
       this.customerdragAndDrop = false;
     }, 1500);
     this.getAllCustomerDetails();
+    this.customerdetailsstart = true;
+    this.customereditdetails=false;
   },
   error => {
     this.alertService.success("Serve Error ");
@@ -441,6 +475,7 @@ export class VendoraddComponent implements OnInit {
   }
   addCustomer(){
     this.customerdragAndDrop = true;
+    this.customerdetailsstart = false;
     this.vendordetails=false;
     this.vendoreditdetails=false;
     this.customerdetails = false;
@@ -474,6 +509,8 @@ export class VendoraddComponent implements OnInit {
             this.customerdragAndDrop = false;
           }, 2000);
           this.getAllCustomerDetails();
+          this.customerdetailsstart = true;
+          this.customerdragAndDrop = false;
         }
         if(this.customer.status=="failure"){
           this.alertService.error("Network error: server is temporarily unavailable");
