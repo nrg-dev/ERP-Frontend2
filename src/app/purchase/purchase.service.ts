@@ -27,7 +27,7 @@ export class PurchaseService {
     }
     // Save 
     save(purchasesearcharray: Array<any>,deliveryCost:string){
-        purchasesearcharray.push([{deliveryCost:deliveryCost}]);
+        purchasesearcharray.push([{podate:"09-sep-2020",deliveryCost:deliveryCost}]);
         return this.http.post(this.commonURL+'save',purchasesearcharray);
     }
     // Load 
@@ -87,7 +87,8 @@ export class PurchaseService {
         return this.http.get<Purchase>(this.commonURL+'getUnitPrice?productName='+productName+'&category='+category);
     }
 
-    savePurchaseReturn(myReturnArray: Array<any>){
-        return this.http.post(this.commonURL+'saveReturn',myReturnArray);
+    savePurchaseReturn(returnarray: Array<any>){
+        return this.http.post(this.commonURL+'saveReturn',returnarray);
     }
+    
 }

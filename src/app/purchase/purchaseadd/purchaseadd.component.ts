@@ -44,24 +44,17 @@ export class PurchaseaddComponent  implements OnInit  {
   model: any ={};
   public purchasetable = false;
   headElements = ['#ID', 'Product Name', 'Category Name', 'Quantity'];
-  todayNumber: number = Date.now();
   todayDate : Date = new Date();
-  todayString : string = new Date().toDateString();
-  todayISOString : string = new Date().toISOString();
   dialogConfig = new MatDialogConfig();
 
   fieldArray: Array<any> = [];
-  newAttribute: any = {};
+  purchasesearcharray: Array<any> = [];
 
   productList: any = {};
   categoryList: any = {};
   vendorList:  any = {};
 
   firstField = true;
-  unitArray : any = [];
-  i:number=0;
-  public subTotalArray : any = [];
-  j:number=0;
   
   constructor( public fb: FormBuilder,
     private dialog: MatDialog,
@@ -76,6 +69,8 @@ export class PurchaseaddComponent  implements OnInit  {
     this.getcategoryList();
     this.getProductList();
     this.model.sNo = 0;
+    this.model.deliveryCost = 0;
+    this.model.subTotal = 0;
   }
 
   getVendorList(){
@@ -117,7 +112,7 @@ export class PurchaseaddComponent  implements OnInit  {
     );
   }
 
-  getSubTotal(productName:string,quantity:string,category:string){
+  getNetAmount(productName:string,quantity:string,category:string){
     console.log("productName -->"+productName);
     console.log("quantity -->"+quantity);
     if(quantity == '' || quantity == undefined){
@@ -128,6 +123,7 @@ export class PurchaseaddComponent  implements OnInit  {
         data => {
           this.purchase = data; 
           this.model.unitPrice = this.purchase.price;
+          this.model.vendorName = this.purchase.vendorname+"-"+this.purchase.vendorcode;
           this.model.netAmount = Number.parseInt(quantity) * this.purchase.price;
           console.log("Price ---->"+this.model.unitPrice +" --netAmount -->"+this.model.netAmount);
         },
@@ -140,13 +136,19 @@ export class PurchaseaddComponent  implements OnInit  {
 
   addProduct(sNo:number){    
     this.purchasetable = true;
+    let totalAmount = 0.0;
     this.fieldArray.push( {vendorName: this.model.vendorName, category: this.model.category,productName: this.model.productName,
       unitPrice: this.model.unitPrice, quantity: this.model.quantity, netAmount: this.model.netAmount, description: this.model.description } );
 
     console.log(this.fieldArray);
     this.model.sNo = sNo+1;
     this.purchase.id = this.model.sNo;
-
+    for(let j=0; j<this.fieldArray.length; j++){
+      totalAmount += this.fieldArray[j].netAmount;
+      this.model.subTotal = totalAmount;
+      console.log("Add SUb Total -->"+this.model.subTotal);
+    }
+    
     // CLEAR TEXTBOX.
     this.model.category = null;
     this.model.productName = null;
@@ -161,14 +163,9 @@ export class PurchaseaddComponent  implements OnInit  {
     console.log("Size -->"+this.fieldArray.length);
     if(this.fieldArray.length==0){
       this.fieldArray = [];
-      this.unitArray = [];
-      this.subTotalArray = [];
       this.model.vendorName = '';
       this.model.sNo = 0;
       this.model.subTotal = '';
-      this.model.deliveryCost = '';
-      this.i = 0;
-      this.j = 0;
     }
     this.model.sNo = this.fieldArray.length;
     if(this.fieldArray[0]){
@@ -177,7 +174,7 @@ export class PurchaseaddComponent  implements OnInit  {
       this.purchasetable = false;
     }
   }
-  purchasesearcharray: Array<any> = [];
+
   savePurchase(){
     this.purchasesearcharray=[];
     console.log(this.fieldArray);
@@ -186,26 +183,19 @@ export class PurchaseaddComponent  implements OnInit  {
     console.log(this.purchasesearcharray);
     this.purchase.vendorName = this.model.vendorName;
     this.purchaseService.save(this.purchasesearcharray,this.model.deliveryCost)
-   .subscribe(
-       res => {
-         console.log('............1 ....');
-         //if(res.status ="success"){
+    .subscribe(
+        res => {
+          console.log('............1 ....');
           this.alertService.success("Successfully saved ");
           setTimeout(() => {
            this.alertService.clear();
          }, 2000);
          this.fieldArray = [];
-         this.unitArray = [];
-         this.subTotalArray = [];
          this.purchasetable = false;
          this.model.vendorName = '';
          this.model.sNo = 0;
          this.model.subTotal = '';
-         this.model.deliveryCost = '';
-         this.i = 0;
-         this.j = 0;
-       // }
-      
+         this.model.deliveryCost = '';      
                         
        },
        error => {
@@ -219,6 +209,14 @@ export class PurchaseaddComponent  implements OnInit  {
 
   cancelEmp(){
     console.log("------ Cancel Employeee -------");
+    this.fieldArray = [];
+    this.purchasetable = false;
+    this.model.vendorName = '';
+    this.model.productName = '';
+    this.model.category = '';
+    this.model.sNo = 0;
+    this.model.subTotal = '';
+    this.model.deliveryCost = '';   
   }
 
   public getstatus(){

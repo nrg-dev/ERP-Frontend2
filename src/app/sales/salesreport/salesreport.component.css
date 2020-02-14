@@ -211,6 +211,13 @@ hr{
 .print{
   vertical-align: center;
 }
+
+#orderlist-box {
+  height: 65px;
+  border: 1px solid white;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
   #addsales-div{
     background: #1B2931;

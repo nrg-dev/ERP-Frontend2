@@ -21,6 +21,13 @@ export class PurchaseReturnComponent implements OnInit {
   public categoryList : any;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
+  todayDate : Date = new Date();
+
+  public returntable = false;
+
+  fieldArray: Array<any> = [];
+  returnarray: Array<any> = [];
+
   constructor(
     private purchaseService: PurchaseService,
     private dialog: MatDialog,
@@ -34,6 +41,7 @@ export class PurchaseReturnComponent implements OnInit {
     this.getVendorList();
     this.getcategoryList();
     this.getProductList();
+    this.returntable = false;
   }
 
   getVendorList(){
@@ -76,69 +84,88 @@ export class PurchaseReturnComponent implements OnInit {
   }
 
   addProduct(){
-    var vendorName=$("#vendorName").val();
-    var productName=$("#productName").val();
-    var category=$("#category").val();
-    var quantity=$("#quantity").val();
-    var poDate=$("#poDate").val();
-    var itemStatus = $("input[id='itemStatus']:checked").val();
-    var returnStatus = $("input[id='returnStatus']:checked").val();
-    var details= "<tr><td style='vertical-align: middle;border:1px solid white;'>" + poDate + "</td><td style='vertical-align: middle;border:1px solid white;'>"+ productName 
-      +"<td style='vertical-align: middle;border:1px solid white;'>"+ category 
-      +"</td><td style='vertical-align: middle;border:1px solid white;'>" + vendorName + "</td><td style='vertical-align: middle;border:1px solid white;'>" + quantity
-      +"</td><td style='vertical-align: middle;border:1px solid white;'>" + itemStatus + "</td><td style='vertical-align: middle;border:1px solid white;'>" + returnStatus + "</td>";
+    this.returntable = true;
+    this.fieldArray.push( {vendorName: this.model.vendorName, category: this.model.category,productName: this.model.productName,
+      quantity: this.model.quantity, itemStatus: this.model.itemStatus, returnStatus: this.model.returnStatus } );
+    console.log(this.fieldArray);
 
-    $("#addpurchasereturntable").append(details);
-    $("#vendorName").val("");
-    $("#productName").val("");
-    $("#category").val("");
-    $("#quantity").val("");
-    $("#poDate").val("");
+    this.model.vendorName = null;
+    this.model.category = null;
+    this.model.productName = null;
+    this.model.quantity = '';
+    this.model.netAmount = '';
+    this.model.unitPrice = '';
+    this.model.description = '';
     $('input[type="radio"]').prop('checked', false);
-    $("#itemStatus").val('');
-    $("#returnStatus").val('');
+    $(".itemStatus").val('');
+    $(".returnStatus").val('');
+  }
+
+  deleteFieldValue(index) {
+    this.fieldArray.splice(index, 1);
+    console.log("Size -->"+this.fieldArray.length);
+    if(this.fieldArray.length==0){
+      this.fieldArray = [];
+      this.model.vendorName = '';
+    }
+    if(this.fieldArray[0]){
+      this.returntable = true;
+    }else{
+      this.returntable = false;
+    }    
   }
 
   savePurchaseReturn(){
-    var myReturnArray = [];
-			$("#addpurchasereturntable tr").each(function() {
-				var arrayOfThisRow = [];
-				var tableData = $(this).find('td');
-				if (tableData.length > 0) {
-					tableData.each(function() { 
-					if($(this).text()!=""){
-						arrayOfThisRow.push($(this).text()); 
-					}
-					});
-					myReturnArray.push('['+arrayOfThisRow+']');
-					}
-      });
-      
-      this.purchaseService.savePurchaseReturn(myReturnArray)
-        .subscribe(res => { 
-          this.model = res;
-          console.log("Status -->"+res);
-          this.alertService.success("Successfully Saved..");
-          setTimeout(() => {
-            this.alertService.clear();
-          }, 1500);
-          window.location.reload();
-      },
-      error => {
+    this.returnarray=[];
+    console.log(this.fieldArray);
+    this.returnarray.push(this.fieldArray);
+    console.log("Purchase ReturnArray -->");
+    console.log(this.returnarray);
+    //this.purchase.vendorName = this.model.vendorName;
+    this.purchaseService.savePurchaseReturn(this.returnarray)
+    .subscribe(
+      res => {
+        console.log('............1 ....');
+        this.alertService.success("Successfully saved ");
         setTimeout(() => {
-          this.alertService.error("Network error: server is temporarily unavailable");
+          this.alertService.clear();
         }, 2000);
-      }
-    );
+        this.fieldArray = [];
+        this.returntable = false;
+        this.model.vendorName = null;
+        this.model.category = null;
+        this.model.productName = null;
+        this.model.quantity = '';
+        this.model.netAmount = '';
+        this.model.unitPrice = '';
+        this.model.description = '';
+        $('input[type="radio"]').prop('checked', false);
+        $(".itemStatus").val('');
+        $(".returnStatus").val('');    
+                        
+    },
+    error => {
+        this.alertService.success("API server Issue..");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 2000);
+    });
   }
-  
-  /*$scope.deletePurchase = function(){
-    console.log("------ Delete Purchase ------"); 
-
-  };*/
 
   cancelPurchaseReturn(){
-    console.log("-------- cancel PurchaseReturn Calling -------")
+    console.log("-------- cancel PurchaseReturn Calling -------");
+    this.fieldArray = [];
+    this.returntable = false;
+    this.model.vendorName = null;
+    this.model.category = null;
+    this.model.productName = null;
+    this.model.quantity = '';
+    this.model.netAmount = '';
+    this.model.unitPrice = '';
+    this.model.description = '';
+    $('input[type="radio"]').prop('checked', false);
+    $(".itemStatus").val('');
+    $(".returnStatus").val('');
   }
   
 }

@@ -20,8 +20,8 @@ export class SalesService {
     }
     
     // Save 
-    save(salesarray: Array<any>,customerName:string,deliveryCost:string){
-        salesarray.push([{customername:customerName,sodate:"09-sep-2020",deliveryCost:deliveryCost}]);
+    save(salesarray: Array<any>,deliveryCost:string){
+        salesarray.push([{sodate:"09-sep-2020",deliveryCost:deliveryCost}]);
         return this.http.post<Sales>(this.commonURL+'save',salesarray);
     }
 
@@ -61,7 +61,7 @@ export class SalesService {
         return this.http.get<Sales>(this.commonURL+'getUnitPrice?productName='+productName+'&category='+category);
     }
 
-    saveSalesReturn(myReturnArray: Array<any>){
-        return this.http.post(this.commonURL+'saveReturn',myReturnArray);
+    saveSalesReturn(returnarray: Array<any>){
+        return this.http.post(this.commonURL+'saveReturn',returnarray);
     }
 }

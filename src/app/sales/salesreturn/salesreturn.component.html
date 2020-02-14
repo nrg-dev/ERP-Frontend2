@@ -25,7 +25,7 @@
                                 <label>:</label>
                             </div>
                             <div class="col-lg-7">
-                                <select class="form-control" style="background-color:#1B2931;color: white;" id="customerName" [(ngModel)]="model.customerName" name="{{model.customerName}}" #customerName="ngModel">
+                                <select class="form-control" style="background-color:#1B2931;color: white;" [(ngModel)]="model.customerName" name="customerName" #customerName="ngModel">
                                     <option>-- Select --</option>
                                     <option *ngFor="let itemCustomer of customerList" value="{{ itemCustomer.customerName }}"> {{ itemCustomer.customerName }} </option> 
                                 </select> 
@@ -39,9 +39,9 @@
                                 <label>:</label>
                             </div>
                             <div class="col-lg-7">
-                                <select class="form-control" style="background-color:#1B2931;color: white;" id="category">
-                                    <option>-- Select --</option>
-                                    <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
+                                <select class="form-control" style="background-color:#1B2931;color: white;" [(ngModel)]="model.category" name="category" #category="ngModel">
+                                    <option value="--- Select --- "> -- Select -- </option>  
+                                    <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory.name }}-{{ itemcategory.categorycode }}"> {{ itemcategory.name }}-{{ itemcategory.categorycode }} </option>                     
                                 </select> 
                             </div>
                         </div><br/>
@@ -53,10 +53,10 @@
                                 <label>:</label>
                             </div>
                             <div class="col-lg-7">
-                                <select class="form-control" style="background-color:#1B2931;color: white;" id="productName" [(ngModel)]="model.productName" name="{{model.productName}}" #productName="ngModel">
-                                    <option>-- Select --</option>
+                                <select class="form-control" style="background-color:#1B2931;color: white;" [(ngModel)]="model.productName" name="productName" #productName="ngModel">
+                                    <option value="--- Select --- "> -- Select -- </option>  
                                     <option *ngFor="let item of productList" value="{{ item.productname }}-{{ item.prodcode }}"> {{ item.productname }}-{{ item.prodcode }} </option>                     
-                                </select> 
+                                </select>  
                             </div>
                         </div><br/>
                         <div class="row">
@@ -67,7 +67,7 @@
                                 <label>:</label>
                             </div>
                             <div class="col-lg-7">
-                                <input type="text" class="form-control" style="background-color:#1B2931;" id="quantity" placeholder="     ltr/kg/pcs      "/>
+                                <input type="text" class="form-control" style="background-color:#1B2931;width: 85%;" [(ngModel)]="model.quantity" name="quantity" #quantity="ngModel" placeholder="     ltr/kg/pcs      "/>
                             </div>
                         </div><br/>
                         <div class="row">
@@ -78,7 +78,7 @@
                                 <label>:</label>
                             </div>
                             <div class="col-lg-7">
-                                <input type="date" class="form-control" style="background-color:#1B2931;" id="soDate" />
+                                <input class="form-control" style="background-color:#1B2931;width: 85%;" value="{{ todayDate | date:'dd/MM/yyyy' }}" readonly />
                             </div>
                         </div><br/>
                         <div class="row">
@@ -91,16 +91,16 @@
                             <div class="col-lg-7">
                                 <div class="form-group">
                                     <li>
-                                        <input type="radio"  name="itemStatus" id="itemStatus" [(ngModel)]="model.itemStatus"  value="damaged"> Damaged                                                
+                                        <input type="radio" name="itemStatus" [(ngModel)]="model.itemStatus" #itemStatus="ngModel" value="damaged"> Damaged                                                
                                     </li>
                                     <li>
-                                        <input type="radio" name="itemStatus" id="itemStatus" [(ngModel)]="model.itemStatus" value="expaired"> Expaired 
+                                        <input type="radio" name="itemStatus" [(ngModel)]="model.itemStatus" #itemStatus="ngModel" value="expaired"> Expaired 
                                     </li>
                                     <li>
-                                        <input type="radio" name="itemStatus" id="itemStatus" [(ngModel)]="model.itemStatus"  value="bs"> Bs 
+                                        <input type="radio" name="itemStatus" [(ngModel)]="model.itemStatus" #itemStatus="ngModel" value="bs"> Bs 
                                     </li>
                                     <li>
-                                        <input type="radio" name="itemStatus" id="itemStatus" [(ngModel)]="model.itemStatus"  value="others"> Others
+                                        <input type="radio" name="itemStatus" [(ngModel)]="model.itemStatus" #itemStatus="ngModel" value="others"> Others
                                     </li>
                                 </div>
                             </div>
@@ -115,10 +115,10 @@
                             <div class="col-lg-7">
                                 <div class="form-group">
                                     <li>
-                                        <input type="radio"  name="returnStatus" id="returnStatus" [(ngModel)]="model.returnStatus"  value="cash"> Cash                                                
+                                        <input type="radio" name="returnStatus" [(ngModel)]="model.returnStatus" #returnStatus="ngModel" value="cash"> Cash                                                
                                     </li>
                                     <li>
-                                        <input type="radio" name="returnStatus" id="returnStatus" [(ngModel)]="model.returnStatus" value="Credit/Voucher"> Credit/Voucher 
+                                        <input type="radio" name="returnStatus" [(ngModel)]="model.returnStatus" #returnStatus="ngModel" value="Credit/Voucher"> Credit/Voucher 
                                     </li>
                                 </div>
                             </div>
@@ -131,7 +131,7 @@
                               
                     </div>
                     
-                    <div class="col-lg-6">
+                    <div class="col-lg-6" *ngIf="returntable">
                         <div id="box-dialouge">
                             <br/>
                             <div class="row">
@@ -147,8 +147,8 @@
                                 </div>
                             </div>
                             <br/>
-                            <div class="row">
-                                <table id="addsalereturntable" class="scroll">
+                            <div class="row">         
+                                <table class="scroll">
                                     <thead>
                                         <tr id="tr-color">
                                             <th>Date</th>
@@ -158,13 +158,24 @@
                                             <th>Qty</th>
                                             <th>ItemStatus</th>
                                             <th>Return as</th>
-                                            <!--<th>Action</th>-->
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     
                                     <tbody>
-                                        <tr>
-                                            
+                                        <tr *ngFor="let arr of fieldArray; let i = index">
+                                            <td id="middleContent">{{ todayDate | date:'dd/MM/yyyy' }}</td>
+                                            <td id="middleContent">{{ arr.productName }}</td>
+                                            <td id="middleContent">{{ arr.category }}</td>
+                                            <td id="middleContent">{{ arr.customerName }}</td>
+                                            <td id="middleContent">{{ arr.quantity }}</td>
+                                            <td id="middleContent">{{ arr.itemStatus }}</td>
+                                            <td id="middleContent">{{ arr.returnStatus }}</td>
+                                            <td id="middleContent">
+                                                <div id="rowdelete-div" (click)="deleteFieldValue(i)">
+                                                    <i class="fa fa-trash-o" id="rowdelete-icon" aria-hidden="true"></i>    
+                                                </div> 
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>

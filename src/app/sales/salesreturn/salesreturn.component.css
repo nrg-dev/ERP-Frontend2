@@ -170,6 +170,22 @@ input:focus,select:focus{
     margin-left: 3px;
 }
 
+#rowdelete-div{
+    height: 30px;
+    width: 30px;
+    background: #EF6956; 
+    border-radius: 16px;
+}
+  
+#rowdelete-icon{
+    margin-top: 8px;
+    color: white;
+}
+  
+#middleContent {
+    vertical-align: middle;
+}
+
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
     #addsales-div{
       background: #1B2931;

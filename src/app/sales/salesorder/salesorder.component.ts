@@ -45,25 +45,16 @@ export class SalesorderComponent implements OnInit {
   model: any ={};
   public salestable = false;
   headElements = ['#ID', 'Product Name', 'Category Name', 'Quantity'];
-  todayNumber: number = Date.now();
   todayDate : Date = new Date();
-  todayString : string = new Date().toDateString();
-  todayISOString : string = new Date().toISOString();
   dialogConfig = new MatDialogConfig();
 
   fieldArray: Array<any> = [];
-  newAttribute: any = {};
   firstField = true;
+  salesarray: Array<any> = [];
 
   productList: any = {};
   categoryList: any = {};
   customerList:  any = {};
-
-  salesarray: Array<any> = [];
-  unitArray : any = [];
-  i:number=0;
-  public subTotalArray : any = [];
-  j:number=0;
 
   constructor(
     public fb: FormBuilder,
@@ -81,6 +72,8 @@ export class SalesorderComponent implements OnInit {
     this.getcategoryList();
     this.getProductList();
     this.model.sNo = 0;
+    this.model.deliveryCost = 0;
+    this.model.subTotal = 0;
   }
 
   getCustomerList(){
@@ -128,44 +121,50 @@ export class SalesorderComponent implements OnInit {
     );
   }
 
-  getUnitPrice(productName:string,category:string,quantity:number,sNo:number){
-    let totalCommission = 0.0;
-    this.salesService.getUnitPrice(productName,category)
-    .subscribe(
-      data => {
-        this.sales = data; 
-        console.log("Unit Price back end -->"+this.sales.price);
-        console.log("Unit Prize initial -->"+this.unitArray[this.i]);
-        this.unitArray[this.i] = this.sales.price;
-        this.subTotalArray[this.j] = quantity*this.unitArray[this.i];
-        this.fieldArray[this.i].unitPrice = this.unitArray[this.i];
-        this.fieldArray[this.i].netAmount = this.subTotalArray[this.j];
-        console.log(this.fieldArray);
-        totalCommission +=  this.fieldArray[this.i].netAmount;
-        this.model.subTotal = totalCommission;
-        this.i++;
-        this.j++;
-      },
-      error => {
-        this.alertService.error("Network error: server is temporarily unavailable");
-        setTimeout(() => {
-          this.alertService.clear();
-        }, 1500);
-      }
-    );
-  }
-  getSubTotal(quantity:number,price:number){
-    console.log("Qty -->"+quantity);
-    console.log("price -->"+price);
-    this.sales.netAmount = quantity*price;
+  getNetAmount(productName:string,quantity:string,category:string){
+    console.log("productName -->"+productName);
+    console.log("quantity -->"+quantity);
+    if(quantity == '' || quantity == undefined){
+      console.log("--- No Quantity are available ---");
+    }else{
+      this.salesService.getUnitPrice(productName,category)
+      .subscribe(
+        data => {
+          this.sales = data; 
+          this.model.unitPrice = this.sales.price;
+          this.model.customerName = this.sales.customername+"-"+this.sales.categorycode;
+          this.model.netAmount = Number.parseInt(quantity) * this.sales.price;
+          console.log("Price ---->"+this.model.unitPrice +" --netAmount -->"+this.model.netAmount);
+        },
+        error => {
+          
+        }
+      );
+    }
   }
 
-  newSalesOrder(sNo: number){
+  addProduct(sNo:number){    
     this.salestable = true;
-    this.fieldArray.push(this.newAttribute);
-    this.newAttribute = {};
+    let totalAmount = 0.0;
+    this.fieldArray.push( {customerName: this.model.customerName, category: this.model.category,productName: this.model.productName,
+      unitPrice: this.model.unitPrice, quantity: this.model.quantity, netAmount: this.model.netAmount, description: this.model.description } );
+
+    console.log(this.fieldArray);
     this.model.sNo = sNo+1;
     this.sales.id = this.model.sNo;
+    for(let j=0; j<this.fieldArray.length; j++){
+      totalAmount += this.fieldArray[j].netAmount;
+      this.model.subTotal = totalAmount;
+      console.log("Add SUb Total -->"+this.model.subTotal);
+    }
+    
+    // CLEAR TEXTBOX.
+    this.model.category = null;
+    this.model.productName = null;
+    this.model.quantity = '';
+    this.model.netAmount = '';
+    this.model.unitPrice = '';
+    this.model.description = '';
   }
 
   deleteFieldValue(index) {
@@ -173,14 +172,9 @@ export class SalesorderComponent implements OnInit {
     console.log("Size -->"+this.fieldArray.length);
     if(this.fieldArray.length==0){
       this.fieldArray = [];
-      this.unitArray = [];
-      this.subTotalArray = [];
       this.model.customerName = '';
       this.model.sNo = 0;
       this.model.subTotal = '';
-      this.model.deliveryCost = '';
-      this.i = 0;
-      this.j = 0;
     }
     this.model.sNo = this.fieldArray.length;
     if(this.fieldArray[0]){
@@ -198,28 +192,21 @@ export class SalesorderComponent implements OnInit {
     console.log(this.salesarray);
     this.sales.customerName = this.model.customerName;
 
-    this.salesService.save(this.salesarray,this.model.customerName,this.model.deliveryCost)
+    this.salesService.save(this.salesarray,this.model.deliveryCost)
     .subscribe(
        res => {
           console.log('............1 ....');
-          console.log('value -->'+res.status);
-          //if(res.status ="success"){
             console.log('successfully updated...');
             this.alertService.success("Successfully saved ");
             setTimeout(() => {
               this.alertService.clear();
             }, 2000);
             this.fieldArray = [];
-            this.unitArray = [];
-            this.subTotalArray = [];
             this.salestable = false;
             this.model.customerName = '';
             this.model.sNo = 0;
             this.model.subTotal = '';
             this.model.deliveryCost = '';
-            this.i = 0;
-            this.j = 0;
-       // }
                         
        },
        error => {
@@ -232,6 +219,14 @@ export class SalesorderComponent implements OnInit {
 
   cancelSales(){
     console.log("------ Cancel Sales -------");
+    this.fieldArray = [];
+    this.salestable = false;
+    this.model.customerName = '';
+    this.model.productName = '';
+    this.model.category = '';
+    this.model.sNo = 0;
+    this.model.subTotal = '';
+    this.model.deliveryCost = '';   
   }
   
 }
