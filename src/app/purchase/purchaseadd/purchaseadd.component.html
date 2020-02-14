@@ -17,7 +17,7 @@
               <div class="col-lg-3">    
                 <h3 class="mb-3">Make Purchase Order</h3>
                 <br/>
-                <div class="row">
+                <!-- <div class="row">
                   <div class="col-lg-6">
                       <label id="labeltext">Vendor Name </label>
                   </div>
@@ -29,7 +29,7 @@
                       <option *ngFor="let itemVendor of vendorList" value="{{ itemVendor.vendorName }}"> {{ itemVendor.vendorName }} </option>                     
                     </select> 
                   </div>
-                </div><br/>
+                </div><br/> -->
                 <div class="row">
                   <div class="col-lg-6">
                       <label id="labeltext">Product Category  </label>
@@ -51,8 +51,8 @@
                         <label id="labeltext">:</label>
                     </div>
                     <div class="col-lg-5">
-                        <select [(ngModel)]="model.productName" #productName="ngModel" name="productName"
-                         id="textColor" (change)="getSubTotal(this.model.productName,this.model.quantity,this.model.category)" >
+                        <select [(ngModel)]="model.productName" #productName="ngModel" name="productName" placeholder="     ltr/kg/pcs      "
+                         id="textColor" (change)="getNetAmount(this.model.productName,this.model.quantity,this.model.category)" >
                           <option *ngFor="let item of productList" value="{{ item.productname }}-{{ item.prodcode }}"> {{ item.productname }}-{{ item.prodcode }} </option>                     
                         </select> 
                     </div>
@@ -66,7 +66,7 @@
                     </div>
                     <div class="col-lg-5">
                       <input [(ngModel)]="model.quantity" #quantity="ngModel" name="quantity" 
-                        id="textColor" (change)="getSubTotal(this.model.productName,this.model.quantity,this.model.category)" />
+                        id="textColor" (change)="getNetAmount(this.model.productName,this.model.quantity,this.model.category)" />
                     </div>
                 </div><br/>
                 <div class="row">
@@ -77,7 +77,7 @@
                       <label id="labeltext">:</label>
                   </div>
                   <div class="col-lg-5">
-                    <input type="text" [(ngModel)]="model.poDate" #poDate="ngModel" name="poDate" id="textColor" disabled />
+                    <input type="text" [(ngModel)]="model.poDate" #poDate="ngModel" id="textColor" value="{{ todayDate | date:'dd/MM/yyyy' }}" readonly  />
                   </div>
                 </div><br/>
                 <div class="row">
@@ -102,7 +102,7 @@
                       <div class="col-md-5 col-xs-5 col-lg-5" id="purchasetext">Date of PO</div>
                       <div class="col-md-1 col-xs-1 col-lg-1">:</div>
                       <div class="col-md-6 col-xs-6 col-lg-6">
-                        <p id="purchaseoutput">{{ model.poDate }}</p>
+                        <p id="purchaseoutput">{{ todayDate | date:'dd/MM/yyyy' }}</p>
                       </div>       
                   </div>	
                   <div class="row"id="date">
@@ -112,18 +112,18 @@
                       <p id="purchaseoutput">{{ model.sNo }} Item</p>
                     </div>       
                   </div>	
-                  <!--<div class="row" id="date">
+                  <div class="row" id="date">
                     <div class="col-md-5 col-xs-5 col-lg-5" id="purchasetext">Subtotal</div>
                     <div class="col-md-1 col-xs-1 col-lg-1">:</div>
                     <div class="col-md-6 col-xs-6 col-lg-6">
                       <p id="purchaseoutput">{{ this.model.subTotal }}</p>
                     </div>       
-                  </div> -->
+                  </div>
                   <div class="row">
                     <div class="col-md-5 col-xs-5 col-lg-5" id="purchasetext">Delivery Charge </div>
                     <div class="col-md-1 col-xs-1 col-lg-1">:</div>
                     <div class="col-md-6 col-xs-6 col-lg-6">
-                      <input class="form-control" type="text" id="deliveryCost" [(ngModel)]="this.model.deliveryCost" #deliveryCost="ngModel" style="width: auto;height: 25px;" name="deliveryCost"/>
+                      <input class="form-control" type="text" id="deliveryCost" [(ngModel)]="this.model.deliveryCost" #deliveryCost="ngModel" style="width: auto;height: 25px;" name="deliveryCost" />
                     </div>       
                   </div>
                   <br/>
@@ -132,7 +132,7 @@
                     <div class="col-md-5 col-xs-5 col-lg-5" id="purchasetext">TOTAL : </div>
                     <div class="col-md-1 col-xs-1 col-lg-1">:</div>
                     <div class="col-md-6 col-xs-6 col-lg-6">
-                      <p id="purchaseoutput"></p>
+                      <p id="purchaseoutput">{{ this.model.subTotal -- this.model.deliveryCost }}</p>
                     </div>       
                   </div>
                   <div class="row">
@@ -153,6 +153,7 @@
                 <th style="padding-right: 10px;padding: 9px;">Product Name </th> 
                 <th style="padding-right: 10px;padding: 9px;">Category </th> 
                 <th style="padding-right: 10px;padding: 9px;">Vendor </th> 
+                <th style="padding-right: 10px;padding: 9px;">SO Date </th>  
                 <th style="padding-right: 10px;padding: 9px;">Quantity</th>
                 <th style="padding-right: 10px;padding: 9px;">Description</th>
                 <th style="padding-right: 10px;padding: 9px;">Subtotal </th>
@@ -165,6 +166,7 @@
                     <td id="middleContent">{{ arr.productName }}</td>
                     <td id="middleContent">{{ arr.category }}</td>
                     <td id="middleContent">{{ arr.vendorName }}</td>
+                    <td id="middleContent">{{ todayDate | date:'dd/MM/yyyy' }}</td>
                     <td id="middleContent">{{ arr.quantity }}</td>
                     <td id="middleContent">{{ arr.description }}</td>
                     <td id="middleContent">{{ arr.netAmount }}</td>
@@ -174,35 +176,6 @@
                       </div> 
                     </td>
                 </tr>
-                <!-- <tr *ngFor="let model of fieldArray; let i = index">
-                  <td style="padding-right: 10px;padding: 9px;">
-                    <select class="form-control" [(ngModel)]="model.category" name="{{model.category}}" #category="ngModel" style="color: black;">
-                      <option value="--- Select --- "> -- Select -- </option>  
-                      <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory.name }}-{{ itemcategory.categorycode }}"> {{ itemcategory.name }}-{{ itemcategory.categorycode }} </option>                     
-                    </select> 
-                  </td>
-                  <td style="padding-right: 10px;padding: 9px;">
-                    <select class="form-control" [(ngModel)]="model.productName" name="{{model.productName}}" #productName="ngModel" style="color: black;">
-                      <option value="--- Select --- "> -- Select -- </option>  
-                      <option *ngFor="let item of productList" value="{{ item.productname }}-{{ item.prodcode }}"> {{ item.productname }}-{{ item.prodcode }} </option>                     
-                    </select> 
-                  </td>
-                  <td style="padding-right: 10px;padding: 9px;">
-                    <textarea type="text" class="form-control" [(ngModel)]="model.description" #description="ngModel" name="{{model.description}}"></textarea> 
-                  </td>
-                  <td style="padding-right: 10px;padding: 9px;">
-                    <input class="form-control" [(ngModel)]="model.quantity" #quantity="ngModel" name="{{model.quantity}}" (change)="getUnitPrice(model.productName,model.category,model.quantity)" />
-                  </td>
-                  <td style="padding-right: 10px;padding: 9px;">
-                    <input class="form-control" id="{{ model.sNo }}" [(ngModel)]="model.unitPrice" #unitPrice="ngModel" value="{{ this.unitArray[i] }}"/>
-                  </td>
-                  <td style="padding-right: 10px;padding: 9px;">
-                    <input class="form-control" id="{{ model.sNo }}" [(ngModel)]="model.netAmount" #netAmount="ngModel" value="{{ this.subTotalArray[i] }}"/>
-                  </td>
-                  <td style="padding-right: 10px;padding: 9px;background-color:#1B2931;">
-                      <button class="romoveButton" (click)="deleteFieldValue(i)" id="Remove"> Remove </button> 
-                  </td>
-                </tr> -->
                         
               </tbody>
             </table>

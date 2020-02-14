@@ -22,7 +22,7 @@ export class PurchasereportComponent implements OnInit {
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
   //displayedColumns: string[] = ['No','PoInvoice','poDate','vendor','Total'];
-  displayedColumns: string[] = ['PoInvoice','poDate','vendor','Total'];
+  displayedColumns: string[] = ['No','PoInvoice','poDate','vendor','Total'];
 
   dataSource: MatTableDataSource<any>;
   
@@ -48,7 +48,8 @@ export class PurchasereportComponent implements OnInit {
    }
 
   ngOnInit() {
-    
+    this.model.totalAmount = 0;
+    this.model.deliveryCost = 0;
   }
 
   applyFilter(filterValue: string) {
@@ -58,19 +59,18 @@ export class PurchasereportComponent implements OnInit {
     }
   }
 
-  getReportDetails(invoicenumber:number){
+  getReportDetails(invoiceNumber:string){
     this.purchaseservice.load().subscribe(res => { 
       this.purchaseList = res;
       for(let i=0;i<this.purchaseList.length; i++){
-        if(this.purchaseList[i].invoicenumber == invoicenumber){
-          this.model.invoicenumber = invoicenumber;
-          this.model.invoicedate = this.purchaseList[i].invoicedate;
-          this.model.vendorname = this.purchaseList[i].vendorname;
-          this.model.totalqty = this.purchaseList[i].totalqty;
-          this.model.totalitem = this.purchaseList[i].totalitem;
-          this.model.totalprice = this.purchaseList[i].totalprice;
-          this.model.deliveryprice = this.purchaseList[i].deliveryprice;
-          this.model.totalAmount = Number.parseInt(this.purchaseList[i].deliveryprice) + Number.parseInt(this.purchaseList[i].totalprice);
+        if(this.purchaseList[i].invoiceNumber == invoiceNumber){
+          this.model.invoiceNumber = invoiceNumber;
+          this.model.poDate = this.purchaseList[i].poDate;
+          this.model.vendorName = this.purchaseList[i].vendorName;
+          this.model.productName = this.purchaseList[i].description;
+          this.model.totalItem = this.purchaseList[i].totalItem;
+          this.model.totalAmount = this.purchaseList[i].totalAmount;
+          this.model.deliveryCost = this.purchaseList[i].deliveryCost;
         }
       }
       },
@@ -80,20 +80,7 @@ export class PurchasereportComponent implements OnInit {
         }, 2000);
       }
     );
-    this.purchaseservice.get(invoicenumber)
-    .subscribe(
-      data => {
-        this.purchaseReportList = data;
-        for(let j=0;j<this.purchaseReportList.length; j++){
-          this.model.itemname = this.purchaseReportList[j].itemname;
-        }
-      },
-      error => {
-        setTimeout(() => {
-          this.alertService.error("Network error: server is temporarily unavailable");
-        }, 2000);
-      }
-    );
+   
   }
 
 }

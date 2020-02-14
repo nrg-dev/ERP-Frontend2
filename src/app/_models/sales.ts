@@ -23,6 +23,7 @@ export class Sales extends Common {
    phoneNumber: string;
    email: string;
    description: string;  
-   
+   customername: string;
+   categorycode: string;
    totalAmount:number;
 }

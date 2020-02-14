@@ -21,6 +21,13 @@ export class SalesreturnComponent implements OnInit {
   public categoryList : any;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
+  todayDate : Date = new Date();
+
+  public returntable = false;
+
+  fieldArray: Array<any> = [];
+  returnarray: Array<any> = [];
+
   constructor(
     private salesService: SalesService,
     private purchaseService: PurchaseService,
@@ -34,9 +41,7 @@ export class SalesreturnComponent implements OnInit {
     this.getCustomerList();
     this.getcategoryList();
     this.getProductList();
-    this.customerList = ['Josni', 'Nisho', 'Alex', 'Jeff'];
-    this.productList = ['Mobile', 'Computer', 'Cloths', 'TV'];
-    this.categoryList = ['Electronic', 'Manufactorning', 'Institue', 'Mining'];
+    this.returntable = false;
   }
 
   getCustomerList(){
@@ -53,7 +58,7 @@ export class SalesreturnComponent implements OnInit {
   }
 
   getcategoryList(){
-    this.purchaseService.loadCategoryName()
+    this.purchaseService.loadCategory()
     .subscribe(res => { 
       this.categoryList = res;
       },
@@ -79,64 +84,86 @@ export class SalesreturnComponent implements OnInit {
   }
 
   addProduct(){
-    var customerName=$("#customerName").val();
-    var productName=$("#productName").val();
-    var category=$("#category").val();
-    var quantity=$("#quantity").val();
-    var soDate=$("#soDate").val();
-    var itemStatus = $("input[id='itemStatus']:checked").val();
-    var returnStatus = $("input[id='returnStatus']:checked").val();
+    this.returntable = true;
+    this.fieldArray.push( {customerName: this.model.customerName, category: this.model.category,productName: this.model.productName,
+      quantity: this.model.quantity, itemStatus: this.model.itemStatus, returnStatus: this.model.returnStatus } );
+    console.log(this.fieldArray);
 
-    var details= "<tr><td style='vertical-align: middle;border:1px solid white;'>" + soDate + "</td><td style='vertical-align: middle;border:1px solid white;'>"+ productName 
-      +"<td style='vertical-align: middle;border:1px solid white;'>"+ category 
-      +"</td><td style='vertical-align: middle;border:1px solid white;'>" + customerName + "</td><td style='vertical-align: middle;border:1px solid white;'>" + quantity
-      +"</td><td style='vertical-align: middle;border:1px solid white;'>" + itemStatus + "</td><td style='vertical-align: middle;border:1px solid white;'>" + returnStatus +"</td>";
-    $("#addsalereturntable").append(details);
-    $("#customerName").val("");
-    $("#productName").val("");
-    $("#category").val("");
-    $("#quantity").val("");
-    $("#soDate").val("");
+    this.model.customerName = null;
+    this.model.category = null;
+    this.model.productName = null;
+    this.model.quantity = '';
+    this.model.netAmount = '';
+    this.model.unitPrice = '';
+    this.model.description = '';
     $('input[type="radio"]').prop('checked', false);
-    $("#itemStatus").val('');
-    $("#returnStatus").val('');
+    $(".itemStatus").val('');
+    $(".returnStatus").val('');
+  }
+
+  deleteFieldValue(index) {
+    this.fieldArray.splice(index, 1);
+    console.log("Size -->"+this.fieldArray.length);
+    if(this.fieldArray.length==0){
+      this.fieldArray = [];
+    }
+    if(this.fieldArray[0]){
+      this.returntable = true;
+    }else{
+      this.returntable = false;
+    }    
   }
 
   saveSalesReturn(){
-    var myReturnArray = [];
-			$("#addsalereturntable tr").each(function() {
-				var arrayOfThisRow = [];
-				var tableData = $(this).find('td');
-				if (tableData.length > 0) {
-					tableData.each(function() { 
-					if($(this).text()!=""){
-						arrayOfThisRow.push($(this).text()); 
-					}
-					});
-					myReturnArray.push('['+arrayOfThisRow+']');
-					}
-      });
-      
-      this.salesService.saveSalesReturn(myReturnArray)
-        .subscribe(res => { 
-          this.model = res;
-          console.log("Status -->"+res);
-          this.alertService.success("Successfully Saved..");
-          setTimeout(() => {
-            this.alertService.clear();
-          }, 1500);
-          window.location.reload();
-      },
-      error => {
+    this.returnarray=[];
+    console.log(this.fieldArray);
+    this.returnarray.push(this.fieldArray);
+    console.log("Sales ReturnArray -->");
+    console.log(this.returnarray);
+    this.salesService.saveSalesReturn(this.returnarray)
+    .subscribe(
+      res => {
+        console.log('............1 ....');
+        this.alertService.success("Successfully saved ");
         setTimeout(() => {
-          this.alertService.error("Network error: server is temporarily unavailable");
+          this.alertService.clear();
         }, 2000);
-      }
-    );
+        this.fieldArray = [];
+        this.returntable = false;
+        this.model.customerName = null;
+        this.model.category = null;
+        this.model.productName = null;
+        this.model.quantity = '';
+        this.model.netAmount = '';
+        this.model.unitPrice = '';
+        this.model.description = '';
+        $('input[type="radio"]').prop('checked', false);
+        $(".itemStatus").val('');
+        $(".returnStatus").val('');    
+                        
+    },
+    error => {
+        this.alertService.success("API server Issue..");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 2000);
+    });
   }
 
   cancelSalesReturn(){
-    console.log("cancelSalesReturn Calling");
+    console.log("-------- cancel SalesReturn Calling -------");
+    this.fieldArray = [];
+    this.returntable = false;
+    this.model.customerName = null;
+    this.model.category = null;
+    this.model.productName = null;
+    this.model.quantity = '';
+    this.model.netAmount = '';
+    this.model.unitPrice = '';
+    this.model.description = '';
+    $('input[type="radio"]').prop('checked', false);
+    $(".itemStatus").val('');
+    $(".returnStatus").val('');
   }
 
 
