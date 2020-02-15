@@ -111,14 +111,28 @@ table th,td{
 tr:nth-child(even){
   background-color: #1A2932;
   height: 65px;
+  text-align: center;
 }
 tr:nth-child(odd){
   background-color: #1F303B;
   height: 65px;
+  text-align: center;
 }
 tr.mat-header-row{
   background: #1B2931;
+  height: 50px;
 }
+:host /deep/ .mat-sort-header-container{
+  margin-left: 40px;
+}
+:host /deep/ td.mat-cell:first-of-type{
+  padding-left: 0px;
+}
+:host /deep/ td.mat-cell{
+  border-bottom: none;
+}
+
+
 #rowview-div{
   height: 30px;
   width: 30px;

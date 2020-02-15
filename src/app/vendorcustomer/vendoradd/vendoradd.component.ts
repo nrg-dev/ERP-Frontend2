@@ -154,13 +154,30 @@ export class VendoraddComponent implements OnInit {
     }
   }
 
-  vendoreditDetails(){
+  vendoreditDetails(vendorcode:string){
     this.vendoreditdetails=true;
     this.vendordetails=false;
     this.vendordetailsstart = false;
     this.customereditdetails=false;
     this.customerdragAndDrop = false;
-    this.alertService.success("");
+    for(let j=0;j<this.vendorList.length;j++){
+      console.log ("Block statement execution no." + j);
+      if(this.vendorList[j].vendorcode==vendorcode)
+        {
+          console.log("Inside if vendor code -->"+vendorcode);
+        this.model.vendorcode = this.vendorList[j].vendorcode;
+        this.model.vendorName = this.vendorList[j].vendorName;
+        this.model.phoneNumber = this.vendorList[j].phoneNumber;
+        this.model.mobileNumber = this.vendorList[j].mobileNumber;
+        this.model.address = this.vendorList[j].address;
+        this.model.country = this.vendorList[j].country;
+        this.model.city = this.vendorList[j].city;
+        this.model.email = this.vendorList[j].email;
+        this.model.lastedit = this.vendorList[j].lastedit;
+        this.vendor.addeddate = this.vendorList[j].addeddate;
+        break;
+      }
+    }
   }
   saveVendor(){
     this.vendorService.save(this.model)
@@ -263,6 +280,7 @@ export class VendoraddComponent implements OnInit {
     this.customerdetailsstart=true;
     this.customerdragAndDrop = false;
     this.customerdetails = false;
+    this.customereditdetails = false;
     
   }
   vendorback(){
@@ -275,6 +293,7 @@ export class VendoraddComponent implements OnInit {
     this.customerdetailsstart=true;
     this.customerdragAndDrop = false;
     this.customerdetails = false;
+    this.customereditdetails = false;
   }
   yourFn($event){
     //alert("test");
@@ -313,6 +332,10 @@ export class VendoraddComponent implements OnInit {
             this.customerdragAndDrop = false;
           }, 1500);
           this.getAllVendorDetails();
+          this.vendordetailsstart=true;
+          this.vendordetails=false;
+          this.vendoreditdetails=false;
+          this.vendordragAndDrop=false;
         }else{
           this.alertService.error("Network error: server is temporarily unavailable");
         }
@@ -412,12 +435,29 @@ export class VendoraddComponent implements OnInit {
 
     }
   } 
-  customerEditDetails(){
+  customerEditDetails(custcode: string){
     this.customereditdetails=true;
     this.customerdetailsstart = false;
     this.customerdetails=false;
     this.vendoreditdetails=false;
-    this.alertService.success("");
+    for (let i = 0; i < this.customerList.length; i++) {
+      console.log ("Block statement execution no." + i);
+      if(this.customerList[i].custcode==custcode){
+        console.log("Inside if customer code -->"+custcode);
+        this.model.custcode = this.customerList[i].custcode;
+        this.model.customerName = this.customerList[i].customerName;
+        this.model.phoneNumber = this.customerList[i].phoneNumber;
+        this.model.mobileNumber = this.customerList[i].mobileNumber;
+        this.model.address = this.customerList[i].address;
+        this.model.country = this.customerList[i].country;
+        this.model.city = this.customerList[i].city;
+        this.model.email = this.customerList[i].email;
+        this.model.lastedit = this.customerList[i].lastedit;
+        this.model.addeddate = this.customerList[i].addeddate;
+        break;
+      }
+
+    }
   }
   customercloseMethod(){
     this.customerdetails=true;
@@ -551,6 +591,9 @@ export class VendoraddComponent implements OnInit {
           this.customerdragAndDrop = false;
         }, 1500);
         this.getAllCustomerDetails();
+        this.customerdetailsstart = true;
+        this.customereditdetails=false;
+        this.customerdetails=false;
   }else{
     this.alertService.error("Network error: server is temporarily unavailable");
   }

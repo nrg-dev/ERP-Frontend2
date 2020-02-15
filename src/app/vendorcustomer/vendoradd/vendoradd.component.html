@@ -32,7 +32,7 @@
 
                                 &nbsp;&nbsp;
                                 <mat-form-field style="color: black;">
-                                  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                                  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search Vendor">
                                 </mat-form-field>
 
                               </div>
@@ -71,7 +71,7 @@
                                         <i class="fa fa-print" id="row-icon" aria-hidden="true"></i>    
                                     </div>  
                                     &nbsp;
-                                    <div id="rowedit-div2" (click)="vendoreditDetails()">
+                                    <div id="rowedit-div2" (click)="vendoreditDetails(row.vendorcode)">
                                         <i class="fa fa-pencil-square-o" id="row-icon" aria-hidden="true"></i>    
                                     </div>  
                                     &nbsp;
@@ -316,7 +316,7 @@
                     <div  class="col-md-6 col-4 col-lg-6">
                         <div class="row">
                         <button id="delete-btn">
-                            <div class="row" (click)="vendorcloseMethod()">
+                            <div class="row" (click)="vendordelete(this.model.vendorcode)">
                               <i class="fa fa-trash" aria-hidden="true" id="icon-mod"></i>
                                 &nbsp;
                                 <p>Delete</p>
@@ -494,7 +494,7 @@
 
                     &nbsp;&nbsp;
                     <mat-form-field style="color: black;">
-                      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search Employee">
                     </mat-form-field>
 
                   </div>
@@ -533,7 +533,7 @@
                             <i class="fa fa-print" id="row-icon" aria-hidden="true"></i>    
                         </div>  
                         &nbsp;
-                        <div id="rowedit-div2" (click)="customerEditDetails()">
+                        <div id="rowedit-div2" (click)="customerEditDetails(row.custcode)">
                             <i class="fa fa-pencil-square-o" id="row-icon" aria-hidden="true"></i>    
                         </div>  
                         &nbsp;
@@ -554,7 +554,7 @@
        <!--Customer details end-->
 
        <!--customer ADD start-->
-          <div *ngIf="customerdragAndDrop" id="vencustab" cdkDrag>
+          <div *ngIf="customerdragAndDrop" id="vencustab" >
             <form name="form"  (ngSubmit)=" saveCustomer()">
 
               <br/>
@@ -787,7 +787,7 @@
             <div  class="col-md-6 col-4 col-lg-6">
                 <div class="row">
                 <button id="delete-btn">
-                    <div class="row" (click)="vendorcloseMethod()">
+                    <div class="row" (click)="customerdelete(this.model.custcode)">
                       <i class="fa fa-trash" aria-hidden="true" id="icon-mod"></i>
                         &nbsp;
                         <p>Delete</p>
@@ -916,7 +916,7 @@
         <div class="col-5 col-md-5 col-lg-4"></div>
           <div class="col-2 col-md-2 col-lg-3">
            <button id="button-back">
-              <div class="row" (click)="vendorback()">
+              <div class="row" (click)="customerback()">
                   <i class="fa fa-pencil-square-o" aria-hidden="true" style="margin-top: 5px;"></i>
                   &nbsp;
                   <p>Back</p>
