@@ -170,14 +170,14 @@ tr.mat-header-row{
   margin: 5px;
 }
 #save-btn{
-  width: 120px;
+  width: 90px;
   height: 30px;
   background: #51AF57;
   border: none;
   outline: none;
 }
 #delete-btn{
-  width: 120px;
+  width: 90px;
   height: 30px;
   background: #C1272D;
   border: none;
