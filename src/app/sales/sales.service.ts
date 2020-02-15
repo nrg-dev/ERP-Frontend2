@@ -64,4 +64,8 @@ export class SalesService {
     saveSalesReturn(returnarray: Array<any>){
         return this.http.post(this.commonURL+'saveReturn',returnarray);
     }
+
+    loadCustomerName(){
+        return this.http.get(this.commonURL+'loadCustomerName');
+    }
 }

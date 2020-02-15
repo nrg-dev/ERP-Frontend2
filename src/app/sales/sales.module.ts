@@ -46,6 +46,7 @@ import {
 } from '@angular/material';
 import { SalesService } from './sales.service';
 import { PurchaseService } from '../purchase/purchase.service';
+import { Ng2CompleterModule } from 'ng2-completer';
 
 const routes: Routes = [
       { path: 'salesorder', component: SalesorderComponent },
@@ -99,6 +100,7 @@ const routes: Routes = [
     MatTooltipModule,
     MatTreeModule,
     MatPaginatorModule,
+    Ng2CompleterModule,
     RouterModule.forChild(routes) 
 
   ],

@@ -29,7 +29,7 @@
                                 <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
                           </select> 
                         </div>
-                      </div>
+                      </div><br/>
                       <div class="row">
                           <div class="col-lg-6">
                               <label id="labeltext">Product Name </label>
@@ -43,7 +43,7 @@
                                <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option>
                               </select> 
                           </div>
-                      </div>
+                      </div><br/>
                       <div class="row">
                           <div class="col-lg-6">
                               <label id="labeltext">Quantity </label>
@@ -68,6 +68,25 @@
                         </div>
                       </div><br/>
                       <div class="row">
+                        <div class="col-lg-6">
+                            <label id="labeltext">Customer Name </label>
+                        </div>
+                        <div class="col-lg-1">
+                            <label id="labeltext">:</label>
+                        </div>
+                        <div class="col-lg-5">
+                          <ng2-completer placeholder="Customer name" 
+                            [(ngModel)]="model.customerName" name="customerName" #customerName="ngModel" [datasource]="dataService" 
+                            [minSearchLength]="0" id="textSize2"></ng2-completer>
+                          <!-- <select [(ngModel)]="model.customerName" #customerName="ngModel" name="customerName" id="textColor">
+                            <option *ngFor="let itemCustomer of customerList" value="{{ itemCustomer.customerName }}"> {{ itemCustomer.customerName }} </option> 
+                          </select> -->  
+                        </div>
+                      </div>
+                      <div *ngIf="ErrorHandle">
+                            <p style="color: red;font-size: 14px;"> {{ErrorMsg}} </p>
+                      </div><br/>
+                      <div class="row">
                           <div class="col-lg-6">
                               <label id="labeltext">Description </label>
                           </div>
@@ -77,20 +96,6 @@
                           <div class="col-lg-5">
                             <textarea type="text" [(ngModel)]="model.description" #description="ngModel" name="description" id="textColor"></textarea> 
                           </div>
-                      </div><br/>
-                      
-                       <div class="row">
-                        <div class="col-lg-6">
-                            <label id="labeltext">Customer Name </label>
-                        </div>
-                        <div class="col-lg-1">
-                            <label id="labeltext">:</label>
-                        </div>
-                        <div class="col-lg-5">
-                          <select [(ngModel)]="model.customerName" #customerName="ngModel" name="customerName" id="textColor">
-                            <option *ngFor="let itemCustomer of customerList" value="{{ itemCustomer.customerName }}"> {{ itemCustomer.customerName }} </option> 
-                          </select>  
-                        </div>
                       </div><br/>
                       <button (click)="addProduct(this.model.sNo)" class="addButton" id="newSalesOrder"> Add Product </button>
                       <br/><br/> 

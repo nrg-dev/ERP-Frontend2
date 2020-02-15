@@ -27,3 +27,8 @@ export class Sales extends Common {
    categorycode: string;
    totalAmount:number;
 }
+
+/*export const TEXT_NO_RESULTS = "No results found";
+export function isNil(value: any) {
+    return typeof value === "undefined" || value === null;
+}*/

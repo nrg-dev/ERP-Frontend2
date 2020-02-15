@@ -10,6 +10,7 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import { SalesService } from '../sales.service';
 import { PurchaseService } from 'src/app/purchase/purchase.service';
+import { CompleterService, CompleterData } from 'ng2-completer';
 
 //==== Status 
 @Component({
@@ -56,6 +57,10 @@ export class SalesorderComponent implements OnInit {
   categoryList: any = {};
   customerList:  any = {};
 
+  public dataService: CompleterData;
+  public searchData :any=[];
+  public ErrorMsg :any;
+  public ErrorHandle = false;
   constructor(
     public fb: FormBuilder,
     private dialog: MatDialog,
@@ -63,33 +68,35 @@ export class SalesorderComponent implements OnInit {
     private salesService:SalesService,
     private cd: ChangeDetectorRef, 
     private router: Router, 
-    private alertService: AlertService
-  ) { }
+    private alertService: AlertService,
+    private completerService: CompleterService
+  ) { 
+    this.salesService.loadCustomerName()
+    .subscribe(
+      customername => { 
+        this.searchData = customername;
+        if (this.searchData == undefined || this.searchData == null) {
+          this.ErrorHandle = true;
+          this.ErrorMsg="No Such Record is Present......."
+        } else {
+          this.ErrorHandle = false;
+          this.dataService = completerService.local(this.searchData); 
+        }  
+      },
+      error => {
+        this.alertService.error("Network error: server is temporarily unavailable");
+      }
+    );
+  }
 
   ngOnInit() {
     this.salestable = false;
-    this.getCustomerList();
+    this.ErrorHandle = false;
     this.getcategoryList();
     this.getProductList();
     this.model.sNo = 0;
     this.model.deliveryCost = 0;
     this.model.subTotal = 0;
-  }
-
-  getCustomerList(){
-    console.log("getCustomerList");
-    this.salesService.loadCustomerList()
-    .subscribe(res => { 
-      this.customerList = res;
-      console.log("customer list size -->"+this.customerList.length);
-
-      },
-      error => {
-        setTimeout(() => {
-          this.alertService.error("Network error: server is temporarily unavailable");
-        }, 2000);
-      }
-    );
   }
 
   getcategoryList(){
@@ -132,7 +139,7 @@ export class SalesorderComponent implements OnInit {
         data => {
           this.sales = data; 
           this.model.unitPrice = this.sales.price;
-          this.model.customerName = this.sales.customername+"-"+this.sales.categorycode;
+          //this.model.customerName = this.sales.customername+"-"+this.sales.customercode;
           this.model.netAmount = Number.parseInt(quantity) * this.sales.price;
           console.log("Price ---->"+this.model.unitPrice +" --netAmount -->"+this.model.netAmount);
         },

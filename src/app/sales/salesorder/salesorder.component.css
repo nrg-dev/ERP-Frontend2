@@ -51,12 +51,6 @@ h3{
     top: 50px;
     padding: 5px;
 }
-#textColor{
-  background-color:#1B2931;
-  color: white;
-  width: 185%;
-  height: 30px;
-}
 
 #rowdelete-icon{
   margin-left: 5px;
@@ -207,16 +201,39 @@ hr{
   font-size: 16px;
   cursor: pointer;
 }
-::placeholder {
+
+#textColor,input{
+  background-color:#1B2931;
   color: white;
+  width: 185%;
+  height: 30px;
 }
 
+::ng-deep .completer-input {
+  display: block;
+  width: 185%;
+  height: 30px;
+  line-height: 1.42857143;
+  color: white;
+  background-color:#1B2931;
+  border-radius: 4px;
+}
+
+:host >>> .completer-dropdown {
+  width: 185% !important;
+  position: relative !important;
+}
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
   #addsales-div{
     background: #1B2931;
     height: 880px;
     width: 107%;
     border-radius: 10px;
+  }
+  #textSize2{
+    background-color:#1B2931;
+    color: white;
+    width: 140%;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px){
@@ -226,5 +243,9 @@ hr{
     width: 107%;
     border-radius: 10px;
   }
-  
+  #textSize2{
+    background-color:#1B2931;
+    color: white;
+    width: 160%;
+  }
 }

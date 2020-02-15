@@ -14,8 +14,8 @@ table {
 }
 th{
   color:#ffffff;
-  /*background-color:#436d82;*/
-  background-color:#033c5f;
+  background-color:#21272D;
+  /*background-color:#033c5f;*/
   width: 25%;
 }
 td{
@@ -169,30 +169,37 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
   margin: auto;
 }
 
+
 #rowedit-div{
-  height: 30px;
-  width: 30px;
+  height: 25px;
+  width: 25px;
   background: #267CB4;
   border-radius: 16px;
+  margin: -25px 0px 0px 32px;
 }
 
 #rowview-div{
-  height: 30px;
-  width: 30px;
+  height: 25px;
+  width: 25px;
   background: #dc7218; 
   border-radius: 16px;
 }
 
 #rowdelete-div{
-  height: 30px;
-  width: 30px;
+  height: 25px;
+  width: 25px;
   background: #EF6956; 
   border-radius: 16px;
+  margin: -45px 0px 0px 63px;
 }
 
 #rowedit-icon{
-  margin-left: 8px;
-  margin-top: 6px;
+  margin: 6px;
+  color: white;
+}
+
+#rowdelete-icon{
+  margin: 6px 6px 6px 7px;
   color: white;
 }
 
