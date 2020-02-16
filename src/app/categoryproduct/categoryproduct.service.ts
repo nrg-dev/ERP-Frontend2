@@ -69,12 +69,13 @@ get(id:number){
 update(category: Category){
     return this.http.put<Category>(this.commonURL1+'update',category);
 }
-// product update 
-productupdate(product: Product){
+// Item update 
+setItem(product: Product){
+    console.log("inside before api edit item service");
     return this.http.put<Product>(this.commonURL2+'update',product);
 }
 // Discount update 
-discountupdate(discount: Discount){
+updateDiscount(discount: Discount){
     return this.http.put<Discount>(this.commonURL2+'discountupdate',discount);
 }
 

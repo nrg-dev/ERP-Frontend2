@@ -28,7 +28,7 @@ export class AddnewcategoryComponent {
 
     ) {
     }
-  saveNewCategory(){
+  saveCategory(){
     this.catprodservice.save(this.model)
     .subscribe(
       data => {
@@ -60,6 +60,88 @@ export class AddnewcategoryComponent {
   }
 }
 // addnewcategory end
+
+
+// categoryeditdelete start
+@Component({
+  selector: 'categoryeditdelete',
+  styleUrls: ['./categoryeditdelete.css'],
+  templateUrl: './categoryeditdelete.html', 
+})
+export class CategoryeditdeleteComponent {
+  countryList:any;
+  categorylist:any;
+  model: any = {};
+  tempid=null;
+  category: Category = new Category;
+  constructor(
+    private alertService: AlertService,
+    public dialogRef: MatDialogRef<CategoryeditdeleteComponent>,
+    private catprodservice: CategoryproductService,
+    @Inject(MAT_DIALOG_DATA) public data: any
+    ) {
+     // this.countryList = require("../../../assets/country.json");
+    
+    this.categorylist=data;
+    console.log(this.categorylist);
+    }
+
+    onChangeCategory(categorycode: string){
+      for(let i=0;i<this.categorylist.length;i++){
+        if(this.categorylist[i].categorycode==categorycode){
+          this.model.name=this.categorylist[i].name;
+          this.model.description=this.categorylist[i].description;
+        }
+      }
+     }
+    
+     saveCategoryeditdelete(){
+      this.catprodservice.update(this.model)
+      .subscribe(
+        data => {
+          this.category =   data;  
+          this.dialogRef.close();
+          this.alertService.success("Saved Successfully");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 2000);
+          this.dialogRef.close();
+          console.log("saveCategoryeditdelete"); 
+        },
+        error => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }
+        );
+    }
+
+    categorydelete(categorycode: string){
+      this.catprodservice.remove(categorycode)
+      .subscribe(
+        data => {
+          this.category =  data;  
+          this.dialogRef.close();
+          if(this.category.status == "Success"){
+          this.alertService.success("Category is Removed Successfully");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 1500);
+        }else if(this.category.status == "failure"){
+          this.alertService.error("Not Deleted..");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 1500);
+        }
+      },
+      error => {
+        this.alertService.error("Network error: server is temporarily unavailable");
+      }
+    );
+  }
+    close() {
+    this.dialogRef.close();
+  }
+}
+// categoryeditdelete end
 
 // add promostion start
 @Component({
@@ -121,7 +203,7 @@ export class AddpromotionComponent {
           this.discount =   data; 
           this.dialogRef.close();
           if(this.discount.status=="success"){
-            this.alertService.success("Saved Successfully");
+            this.alertService.success("Promotion Saved Successfully");
             setTimeout(() => {
               this.alertService.clear();
             }, 2000);
@@ -146,87 +228,6 @@ export class AddpromotionComponent {
   }
 }
 // add promostion end
-
-// categoryeditdelete start
-@Component({
-  selector: 'categoryeditdelete',
-  styleUrls: ['./categoryeditdelete.css'],
-  templateUrl: './categoryeditdelete.html', 
-})
-export class CategoryeditdeleteComponent {
-  countryList:any;
-  categorylist:any;
-  model: any = {};
-  tempid=null;
-  category: Category = new Category;
-  constructor(
-    private alertService: AlertService,
-    public dialogRef: MatDialogRef<CategoryeditdeleteComponent>,
-    private catprodservice: CategoryproductService,
-    @Inject(MAT_DIALOG_DATA) public data: any
-    ) {
-     // this.countryList = require("../../../assets/country.json");
-    
-    this.categorylist=data;
-    console.log(this.categorylist);
-    }
-
-    onChangeCategory(categorycode: string){
-      for(let i=0;i<this.categorylist.length;i++){
-        if(this.categorylist[i].categorycode==categorycode){
-          this.model.name=this.categorylist[i].name;
-          this.model.description=this.categorylist[i].description;
-        }
-      }
-     }
-    
-     saveCategoryeditdelete(){
-      this.catprodservice.update(this.model)
-      .subscribe(
-        data => {
-          this.category =   data;  
-          this.dialogRef.close();
-          this.alertService.success("Saved Successfully");
-          setTimeout(() => {
-            this.alertService.clear();
-          }, 2000);
-          this.dialogRef.close();
-          console.log("saveCategoryeditdelete"); 
-        },
-        error => {
-          this.alertService.error("Network error: server is temporarily unavailable");
-        }
-        );
-    }
-
-    categorydelete(categorycode: string){
-      this.catprodservice.remove(categorycode)
-      .subscribe(
-        data => {
-          this.category =  data;  
-          this.dialogRef.close();
-          if(this.category.status == "Success"){
-          this.alertService.success("Deleted Successfully");
-          setTimeout(() => {
-            this.alertService.clear();
-          }, 1500);
-        }else if(this.category.status == "failure"){
-          this.alertService.error("Not Deleted..");
-          setTimeout(() => {
-            this.alertService.clear();
-          }, 1500);
-        }
-      },
-      error => {
-        this.alertService.error("Network error: server is temporarily unavailable");
-      }
-    );
-  }
-    close(e) {
-    this.dialogRef.close();
-  }
-}
-// categoryeditdelete end
 
 //discountedit start
 @Component({
@@ -290,14 +291,14 @@ export class DiscounteditComponent {
         }
       );
     }
-  saveDiscountedit(){
+  updateDiscount(){
     console.log("category after update"+this.model.discountcode);
-    this.catprodservice.discountupdate(this.model)
+    this.catprodservice.updateDiscount(this.model)
     .subscribe(
       data => {
         this.discount =   data;
         this.dialogRef.close();
-        this.alertService.success("Updated Successfully");
+        this.alertService.success("Discount Updated Successfully");
         setTimeout(() => {
           this.alertService.clear();
         }, 2000);
@@ -389,7 +390,7 @@ export class AddnewproductComponent {
         this.product =   data; 
         this.dialogRef.close();
         if(this.product.status=="success"){
-          this.alertService.success("Saved Successfully");
+          this.alertService.success("New Item Saved Successfully");
           setTimeout(() => {
             this.alertService.clear();
           }, 2000);
@@ -503,9 +504,9 @@ export class AllproducteditComponent {
     );
      
   }
-
-  saveAddNewProduct(category: string){
-    this.catprodservice.producsave(this.model)
+/*
+  setItem(category: string){
+    this.catprodservice.setItem(this.model)
     .subscribe(
       data => {
         this.product =   data; 
@@ -531,15 +532,17 @@ export class AllproducteditComponent {
       }
     ); 
     }
-    
+    */
   ngOnInit() {
   }
-  allproducteditsave(){
-    this.catprodservice.productupdate(this.model)
+  setItem(){
+    console.log("setItem method");
+    this.catprodservice.setItem(this.model)
     .subscribe(
       data => {
         this.product =   data;
-        this.alertService.success("Saved Successfully");
+        this.dialogRef.close();
+        this.alertService.success("Item Updated Successfully");
         setTimeout(() => {
           this.alertService.clear();
         }, 2000);
@@ -551,9 +554,9 @@ export class AllproducteditComponent {
       );
   }
 
-    close(e) {
-    this.dialogRef.close(e);
-  }
+    close() {
+      this.dialogRef.close();
+    }
 }
 //allproduct edit end
 
@@ -635,11 +638,11 @@ export class CategorytableComponent {
 
 // Main compoent
 @Component({
-  selector: 'app-categoryadd',
-  templateUrl: './categoryadd.component.html',
-  styleUrls: ['./categoryadd.component.css']
+  selector: 'app-categoryitem',
+  templateUrl: './categoryitem.component.html',
+  styleUrls: ['./categoryitem.component.css']
 })
-export class CategoryaddComponent implements OnInit {
+export class CategoryItemComponent implements OnInit {
  allproductlist : any= {};// Product;  
   product:Product;
   categorylist: any= {};
@@ -961,7 +964,7 @@ productlist(number: string){
         data => {
           this.discount =  data;  
           if(this.discount.status == "Success"){
-          this.alertService.success("Deleted Successfully");
+          this.alertService.success("Discount Deleted Successfully");
           setTimeout(() => {
             this.alldiscountList();
             this.alertService.clear();
@@ -1045,7 +1048,7 @@ productlist(number: string){
         data => {
           this.product =  data;  
           if(this.product.status == "Success"){
-          this.alertService.success("Deleted Successfully");
+          this.alertService.success("Item Deleted Successfully");
           setTimeout(() => {
             this.allproductList();
             this.alertService.clear();

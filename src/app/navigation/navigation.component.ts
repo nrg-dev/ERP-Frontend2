@@ -93,7 +93,7 @@ showToggle: string;
       new MenuItem("Employment","employeelist"),
       //new MenuItem("TimeSheet","timesheet"),
       new MenuItem("Vendor & Customer","vendoradd"),
-      new MenuItem("Category & Product","categoryadd"),
+      new MenuItem("Category & Product","categoryitem"),
       new MenuItem("Purchase","purchaseadd"),
       new MenuItem("Sales","salesorder"),
       new MenuItem("Finance","pettycashadd"),
