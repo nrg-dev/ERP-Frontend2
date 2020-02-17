@@ -227,11 +227,11 @@ export class EditInvoice {
     .subscribe(
       data => {
         this.sales = data; 
-        console.log("Get UnitPrice  ----->"+this.sales.price);
-        this.sales.totalAmount = qty * this.sales.price;
+        console.log("Get UnitPrice  ----->"+this.sales.sellingprice);
+        this.sales.totalAmount = qty * this.sales.sellingprice;
         console.log("Onchange Total Amount  ----->"+this.sales.totalAmount);
         this.salesList[index].netAmount = this.sales.totalAmount;
-        this.salesList[index].price = this.sales.price;
+        this.salesList[index].price = this.sales.sellingprice;
         
       },
       error => {
@@ -348,7 +348,7 @@ export class SalesinvoiceComponent implements OnInit {
       this.salesservice.load().subscribe(res => { 
         this.salesList = res;
         //var ks = $('#keywords').val().split("\n");
-        console.log("Qty List -->"+this.salesList[1].quantity);
+        //console.log("Qty List -->"+this.salesList[1].quantity);
         this.dataSource = new MatTableDataSource(this.salesList);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;  

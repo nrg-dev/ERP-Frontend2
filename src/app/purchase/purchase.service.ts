@@ -90,5 +90,10 @@ export class PurchaseService {
     savePurchaseReturn(returnarray: Array<any>){
         return this.http.post(this.commonURL+'saveReturn',returnarray);
     }
+
+    loadVendorItem(vendorName:string){
+        return this.http.get<Purchase>(this.commonURL+'loadVendorItem?vendorName='+vendorName);
+    }
+
     
 }

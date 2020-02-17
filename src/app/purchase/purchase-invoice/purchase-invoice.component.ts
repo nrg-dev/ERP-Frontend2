@@ -225,11 +225,11 @@ export class EditInvoice {
     .subscribe(
       data => {
         this.purchase = data; 
-        console.log("Get UnitPrice  ----->"+this.purchase.price);
-        this.purchase.totalAmount = qty * this.purchase.price;
+        console.log("Get UnitPrice  ----->"+this.purchase.sellingprice);
+        this.purchase.totalAmount = qty * this.purchase.sellingprice;
         console.log("Onchange Total Amount  ----->"+this.purchase.totalAmount);
         this.purchaseList[index].netAmount = this.purchase.totalAmount;
-        this.purchaseList[index].price = this.purchase.price;
+        this.purchaseList[index].price = this.purchase.sellingprice;
         
       },
       error => {

@@ -17,6 +17,7 @@ export class Purchase extends Common {
    invoicedate:Date;
    purchasearray: any = [];
    price: number;
+   sellingprice: number;
    vendorCity: string;
    vendorCountry: string;
    vendorPhone: string;

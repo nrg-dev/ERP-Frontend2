@@ -9,6 +9,7 @@ import { CategoryproductService } from '../categoryproduct.service';
 import { VendorService } from 'src/app/vendorcustomer/vendor.service';
 import { Discount } from 'src/app/_models/discount';
 import { CompleterData, CompleterService } from 'ng2-completer';
+import { PercentPipe } from '../../../../node_modules/@angular/common';
 
 // addnewcategory start
 @Component({
@@ -382,8 +383,36 @@ export class AddnewproductComponent {
           }, 2000);
       }
      );
+     this.model.sellingprice = 0;
+  }
+
+  marginPrice:any;
+  taxPrice:any;
+  getSellingPrice(price:string,tax:string,margin:string){
+    console.log("price-->"+price + "--- Tax --->"+tax+"-- Margin ---->"+margin);
+    if(tax == null || tax == undefined){
+      if(margin == null || tax == undefined){
+        this.model.sellingprice = price;
+      }else{
+        this.marginPrice = Number.parseInt(price) * (Number.parseInt(margin)/100);
+        this.model.sellingprice = Number.parseInt(price)+Number.parseInt(this.marginPrice);
+      }
+    }else if(margin == null || tax == undefined){
+      if(tax == null || tax == undefined){
+        this.model.sellingprice = price;
+      }else{
+        this.marginPrice = Number.parseInt(price) * (Number.parseInt(tax)/100);
+        this.model.sellingprice = Number.parseInt(price)+Number.parseInt(this.marginPrice);
+      }
+    }else{
+      this.marginPrice = Number.parseInt(price) * (Number.parseInt(margin)/100);
+      this.taxPrice = Number.parseInt(price) * (Number.parseInt(tax)/100);
+      this.model.sellingprice = Number.parseInt(price)+Number.parseInt(this.marginPrice)+Number.parseInt(this.taxPrice);
     }
+  }
+
   saveAddNewProduct(category: string){
+    console.log("Selling Price -->"+this.model.sellingprice);
     this.catprodservice.producsave(this.model)
     .subscribe(
       data => {
@@ -394,6 +423,7 @@ export class AddnewproductComponent {
           setTimeout(() => {
             this.alertService.clear();
           }, 2000);
+          this.model.sellingprice = 0;
         } 
         if(this.product.status=="failure"){
           this.alertService.success("not saved");

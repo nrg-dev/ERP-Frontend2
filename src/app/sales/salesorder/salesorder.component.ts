@@ -138,9 +138,9 @@ export class SalesorderComponent implements OnInit {
       .subscribe(
         data => {
           this.sales = data; 
-          this.model.unitPrice = this.sales.price;
+          this.model.unitPrice = this.sales.sellingprice;
           //this.model.customerName = this.sales.customername+"-"+this.sales.customercode;
-          this.model.netAmount = Number.parseInt(quantity) * this.sales.price;
+          this.model.netAmount = Number.parseInt(quantity) * this.sales.sellingprice;
           console.log("Price ---->"+this.model.unitPrice +" --netAmount -->"+this.model.netAmount);
         },
         error => {
