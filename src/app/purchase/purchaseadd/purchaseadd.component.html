@@ -53,7 +53,8 @@
                     <div class="col-lg-5">
                         <select [(ngModel)]="model.productName" #productName="ngModel" name="productName" placeholder="     ltr/kg/pcs      "
                          id="textColor" (change)="getNetAmount(this.model.productName,this.model.quantity,this.model.category)" >
-                          <option *ngFor="let item of productList" value="{{ item.productname }}-{{ item.prodcode }}"> {{ item.productname }}-{{ item.prodcode }} </option>                     
+                         <option value ="--- Select ---">--- Select ---</option> 
+                         <option *ngFor="let item of productList" value="{{ item.productname }}-{{ item.prodcode }}"> {{ item.productname }}-{{ item.prodcode }} </option>                     
                         </select> 
                     </div>
                 </div><br/>
@@ -153,7 +154,7 @@
                 <th style="padding-right: 10px;padding: 9px;">Product Name </th> 
                 <th style="padding-right: 10px;padding: 9px;">Category </th> 
                 <th style="padding-right: 10px;padding: 9px;">Vendor </th> 
-                <th style="padding-right: 10px;padding: 9px;">SO Date </th>  
+                <th style="padding-right: 10px;padding: 9px;">PO Date </th>  
                 <th style="padding-right: 10px;padding: 9px;">Quantity</th>
                 <th style="padding-right: 10px;padding: 9px;">Description</th>
                 <th style="padding-right: 10px;padding: 9px;">Subtotal </th>
@@ -170,7 +171,7 @@
                     <td id="middleContent">{{ arr.quantity }}</td>
                     <td id="middleContent">{{ arr.description }}</td>
                     <td id="middleContent">{{ arr.netAmount }}</td>
-                    <td>
+                    <td id="middleContent">
                       <div id="rowdelete-div" (click)="deleteFieldValue(i)">
                           <i class="fa fa-trash-o" id="rowdelete-icon" aria-hidden="true"></i>    
                       </div> 

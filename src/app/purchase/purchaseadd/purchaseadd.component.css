@@ -59,13 +59,12 @@ h3{
 }
 
 #rowdelete-icon{
-  margin-left: 5px;
-  margin-top: 4px;
+  margin-top: 5px;
   color: white;
 }
 #rowdelete-div{
-  height: 20px;
-  width: 20px;
+  height: 25px;
+  width: 25px;
   background: #EF6956; 
   border-radius: 16px;
   color: white;

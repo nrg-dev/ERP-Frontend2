@@ -18,6 +18,7 @@ export class Sales extends Common {
    invoicedate:Date;
    salesarray: any = [];
    price: number;
+   sellingprice: number;
    city: string;
    country: string;
    phoneNumber: string;

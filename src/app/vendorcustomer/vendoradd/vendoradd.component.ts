@@ -42,11 +42,24 @@ export class VendoraddComponent implements OnInit {
   displayedColumns: string[] = ['vendorcode','name','contactnumber','action'];
   dataSource1: MatTableDataSource<any>;
 
+  @ViewChild(MatPaginator,{ static: false }) paginator1: MatPaginator;
+  @ViewChild(MatSort,{ static: false }) sort1: MatSort;
+  
+ 
+
   displayedColumns2: string[] = ['customercode','name','contactnumber','action'];
   dataSource2: MatTableDataSource<any>;
 
-  @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort,{ static: true }) sort: MatSort;
+  @ViewChild(MatPaginator,{ static: false }) paginator2: MatPaginator;
+  @ViewChild(MatSort,{ static: false }) sort2: MatSort;
+
+  ngAfterViewInit() {
+    this.dataSource1.paginator = this.paginator1;
+    this.dataSource1.sort = this.sort1;
+  
+    this.dataSource2.paginator = this.paginator2;
+    this.dataSource2.sort = this.sort2;
+  }
   
   countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
 
@@ -85,8 +98,8 @@ export class VendoraddComponent implements OnInit {
       data => {
         this.vendorList = data;
         this.dataSource1 = new MatTableDataSource(this.vendorList);
-        this.dataSource1.paginator = this.paginator;
-        this.dataSource1.sort = this.sort;
+        this.dataSource1.paginator = this.paginator1;
+        this.dataSource1.sort = this.sort1;
       },
       error => {
         this.alertService.error("Network error: server is temporarily unavailable");
@@ -101,8 +114,8 @@ export class VendoraddComponent implements OnInit {
       data => {
         this.customerList = data;
         this.dataSource2 = new MatTableDataSource(this.customerList);
-        this.dataSource2.paginator = this.paginator;
-        this.dataSource2.sort = this.sort;
+        this.dataSource2.paginator = this.paginator2;
+        this.dataSource2.sort = this.sort2;
       },
       error => {
         this.alertService.error("Network error: server is temporarily unavailable");      }

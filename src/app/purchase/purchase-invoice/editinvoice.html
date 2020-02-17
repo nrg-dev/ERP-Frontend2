@@ -29,10 +29,11 @@
     <table class="scroll">
         <thead>
             <tr id="tr-color">
-                <th>SNO</th>
+                <th>NO.</th>
                 <th>Category</th>
                 <th>Item</th>
                 <th>Description</th>
+                <!-- <th>PO Date</th> -->
                 <th>Quantity</th>
                 <th>Sub Total</th>
                 <th>Action</th>
@@ -64,6 +65,9 @@
                     name="{{ list.description }}"
                     [(ngModel)]="list.description" #description="ngModel"></textarea>
                 </td>
+
+                <!-- <td id="{{ list.id }}"><label style="color: white;" id="{{ list.id }}" name="{{ list.poDate }}"></label>
+                </td>  -->
 
                 <td id="{{ list.id }}"><input type="text" id="{{ list.id }}" 
                     name="{{ list.quantity }}" style="width: 70px;" [(ngModel)]="list.quantity" 

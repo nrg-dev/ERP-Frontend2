@@ -65,25 +65,15 @@ export class PurchaseaddComponent  implements OnInit  {
 
   ngOnInit() {
     this.purchasetable = false;
-    this.getVendorList();
     this.getcategoryList();
-    this.getProductList();
     this.model.sNo = 0;
     this.model.deliveryCost = 0;
     this.model.subTotal = 0;
-  }
+    if(this.model.sNo == 0){
+      this.getProductList();
+    }else{
 
-  getVendorList(){
-    this.purchaseService.loadVendor()
-    .subscribe(res => { 
-      this.vendorList = res;
-      },
-      error => {
-        setTimeout(() => {
-          this.alertService.error("Network error: server is temporarily unavailable");
-        }, 2000);
-      }
-    );
+    }
   }
 
   getcategoryList(){
@@ -122,9 +112,9 @@ export class PurchaseaddComponent  implements OnInit  {
       .subscribe(
         data => {
           this.purchase = data; 
-          this.model.unitPrice = this.purchase.price;
+          this.model.unitPrice = this.purchase.sellingprice;
           this.model.vendorName = this.purchase.vendorname+"-"+this.purchase.vendorcode;
-          this.model.netAmount = Number.parseInt(quantity) * this.purchase.price;
+          this.model.netAmount = Number.parseInt(quantity) * this.purchase.sellingprice;
           console.log("Price ---->"+this.model.unitPrice +" --netAmount -->"+this.model.netAmount);
         },
         error => {
@@ -149,6 +139,11 @@ export class PurchaseaddComponent  implements OnInit  {
       console.log("Add SUb Total -->"+this.model.subTotal);
     }
     
+    if(this.model.sNo == 0){
+      console.log("--- NO Vendor Choose ---");
+    }else{
+      this.getVendorProduct(this.model.vendorName);
+    }
     // CLEAR TEXTBOX.
     this.model.category = null;
     this.model.productName = null;
@@ -158,6 +153,19 @@ export class PurchaseaddComponent  implements OnInit  {
     this.model.description = '';
   }
 
+  getVendorProduct(vendorName: string){
+    console.log("Vendor Name -->"+vendorName);
+    this.purchaseService.loadVendorItem(vendorName)
+    .subscribe(res => { 
+      this.productList = res;
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    );
+  }
   deleteFieldValue(index) {
     this.fieldArray.splice(index, 1);
     console.log("Size -->"+this.fieldArray.length);
@@ -166,6 +174,7 @@ export class PurchaseaddComponent  implements OnInit  {
       this.model.vendorName = '';
       this.model.sNo = 0;
       this.model.subTotal = '';
+      this.getProductList();
     }
     this.model.sNo = this.fieldArray.length;
     if(this.fieldArray[0]){
@@ -196,7 +205,7 @@ export class PurchaseaddComponent  implements OnInit  {
          this.model.sNo = 0;
          this.model.subTotal = '';
          this.model.deliveryCost = '';      
-                        
+         this.getProductList();               
        },
        error => {
         this.alertService.success("API server Issue..");
