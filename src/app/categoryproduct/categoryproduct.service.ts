@@ -55,10 +55,11 @@ loadItemName(){
     return this.http.get<String>(this.commonURL2+'loadItemName');
 
 }
-//discount Load 
-loadDiscount(discount:string){    
-  //  return this.http.get<Discount>(this.commonURL2+'discountload');
-    return this.http.get<Discount>(this.commonURL2+'discountload?discountcode='+discount);
+//discount & free gift Load 
+loadDiscount(discount:string){  
+    console.log("Service "+discount); 
+    //return this.http.get<Discount>(this.commonURL2+'discountload');
+    return this.http.get<Discount>(this.commonURL2+'discountload?discountType='+discount);
 
 }
 

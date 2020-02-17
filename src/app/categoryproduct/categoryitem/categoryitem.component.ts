@@ -196,9 +196,14 @@ export class AddpromotionComponent {
     }
 
     savePromotion(){
+      console.log("Category Name -->"+this.model.categorycode);
+      console.log("Item Name -->"+this.model.productname);
       console.log("discount from date-->"+this.model.fromdate_promotionperiod);
       console.log("discount to date-->"+this.model.todate_promotionperiod);
-      console.log("discount type -->"+this.model.discount);
+      console.log("discount type -->"+this.model.discountType);
+      console.log("discount qty  -->"+this.model.qty);
+      console.log("Free gift  -->"+this.model.freegift);
+      console.log("Other item  -->"+this.model.others);
 
       this.catprodservice.addpromotionsave(this.model)
       .subscribe(
@@ -694,7 +699,7 @@ export class CategoryItemComponent implements OnInit {
   @ViewChild(MatSort,{ static: true }) sort: MatSort;
  
   // Free Gift Data table
-  displayedColumns2: string[] = ['productname'];
+  displayedColumns2: string[] = ['productname','discounttime','action'];
   dataSource2: MatTableDataSource<any>;
   @ViewChild(MatPaginator,{ static: true }) paginator2: MatPaginator;
   @ViewChild(MatSort,{ static: true }) sort2: MatSort;
@@ -750,7 +755,7 @@ export class CategoryItemComponent implements OnInit {
     this.leftdetails=true;
     this.allcategorylist();
     this.allproductList();
-    this.alldiscountList();
+    //this.alldiscountList();
     this.allfreegiftList();
 
   }
@@ -808,6 +813,7 @@ export class CategoryItemComponent implements OnInit {
   }
 
   allfreegiftList(){
+    console.log("free gift");
     let discount="freegift";
     this.catprodservice.loadDiscount(discount)
     .subscribe(
@@ -877,6 +883,7 @@ categorydetails(number: string){
 
   // Discount tab click
   if(number=='02'){
+    this.alldiscountList();
     console.log("Inside discount");
     this.alldetails='none';
    this.discountdetails='block';
@@ -887,6 +894,7 @@ categorydetails(number: string){
 
   // Free gift tab click
   if(number=='03'){
+    this.allfreegiftList();
     console.log("Inside free gift");
     this.dataSource2 = new MatTableDataSource(this.allfreegiftlist);
     this.dataSource2.paginator = this.paginator2;
