@@ -4,7 +4,7 @@
         <mat-tab-group>
           <mat-tab >
             <ng-template mat-tab-label>
-              <span (click)="test()">Vendor </span>
+              <span (click)="test()" id="tab-span-color">Vendor </span>
             </ng-template>
 
             <div class="col-12 col-md-12 col-lg-12"> 
@@ -40,7 +40,16 @@
                           </div>
 
                           <h3>Vendor List</h3>
+                          <div class="row">
+                              <P>Sorted By</P>
+                              &nbsp;
+                              <p>:</p>
+                              <select aria-placeholder="join date" id="selct-joindatebox">
+                                <option>Join Date</option>
+                              </select>
+                          </div>
 
+                        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
                         <div class="mat-elevation-z8">
                           <table mat-table #sortCol1="matSort" [dataSource]="dataSource1" matSort matSortActive="ID" matSortDirection="asc">
                             
@@ -66,15 +75,15 @@
                                     <div id="rowview-div" (click)="vendorDetails(row.vendorcode)">
                                         <i class="fa fa-eye" id="row-icon" aria-hidden="true"></i>    
                                     </div>  
-                                    &nbsp;
+                                    &nbsp;&nbsp; &nbsp;
                                     <div id="rowprint-div" (click)="productprint()">
                                         <i class="fa fa-print" id="row-icon" aria-hidden="true"></i>    
                                     </div>  
-                                    &nbsp;
+                                    &nbsp;&nbsp; &nbsp;
                                     <div id="rowedit-div2" (click)="vendoreditDetails(row.vendorcode)">
                                         <i class="fa fa-pencil-square-o" id="row-icon" aria-hidden="true"></i>    
                                     </div>  
-                                    &nbsp;
+                                    &nbsp;&nbsp; &nbsp;
                                     <div id="rowdelete-div2" (click)="vendordelete(row.vendorcode)">
                                         <i class="fa fa-trash-o" id="row-icon" aria-hidden="true"></i>    
                                     </div>   
@@ -114,7 +123,7 @@
                   </div>
               </div>
 
-              <br/><br/><br/><br/>
+              <br/><br/><br/>
 
               <div class="example-box" id="scrolling">
 
@@ -185,6 +194,19 @@
                 </div>
 
             </form>
+
+            <br/>
+              <div class="row">
+                <div class="col-5 col-md-5 col-lg-5"></div>
+                <div class="col-2 col-md-2 col-lg-2">
+                  <button id="button-back">
+                    <div class="row" (click)="vendorback()">
+                        <p id="backbutton-text">Back</p>
+                    </div>
+                  </button>
+                </div>
+                <div class="col-5 col-md-5 col-lg-5"></div>
+              </div>
             </div>
       <!-- vendor ADD end-->
 
@@ -293,9 +315,7 @@
                 <div class="col-2 col-md-2 col-lg-2">
                   <button id="button-back">
                     <div class="row" (click)="vendorback()">
-                        <i class="fa fa-pencil-square-o" aria-hidden="true" style="margin-top: 5px;"></i>
-                        &nbsp;
-                        <p style="font-weight: bold;">Back</p>
+                        <p id="backbutton-text">Back</p>
                     </div>
                   </button>
                 </div>
@@ -446,9 +466,7 @@
                   <div class="col-2 col-md-2 col-lg-3">
                    <button id="button-back">
                       <div class="row" (click)="vendorback()">
-                          <i class="fa fa-pencil-square-o" aria-hidden="true" style="margin-top: 5px;"></i>
-                          &nbsp;
-                          <p style="font-weight: bold;">Back</p>
+                          <p id="backbutton-text">Back</p>
                       </div>
                    </button>
                   </div>
@@ -466,7 +484,7 @@
 
       <mat-tab >
         <ng-template mat-tab-label>
-          <span (click)="test2()">Customer </span>
+          <span (click)="test2()" id="tab-span-color">Customer </span>
         </ng-template>
 
 
@@ -502,7 +520,16 @@
               </div>
 
               <h3>Customer List</h3>
+              <div class="row">
+                <P>Sorted By</P>
+                &nbsp;
+                <p>:</p>
+                <select aria-placeholder="join date" id="selct-joindatebox">
+                  <option>Join Date</option>
+                </select>
+              </div>
 
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
             <div class="mat-elevation-z8">
               <table mat-table #sortCol1="matSort" [dataSource]="dataSource2" matSort matSortActive="ID" matSortDirection="asc">
                 
@@ -528,15 +555,15 @@
                         <div id="rowview-div" (click)="customerDetails(row.custcode)">
                             <i class="fa fa-eye" id="row-icon" aria-hidden="true"></i>    
                         </div>  
-                        &nbsp;
+                        &nbsp;&nbsp; &nbsp;
                         <div id="rowprint-div" (click)="customerprint()">
                             <i class="fa fa-print" id="row-icon" aria-hidden="true"></i>    
                         </div>  
-                        &nbsp;
+                        &nbsp;&nbsp; &nbsp;
                         <div id="rowedit-div2" (click)="customerEditDetails(row.custcode)">
                             <i class="fa fa-pencil-square-o" id="row-icon" aria-hidden="true"></i>    
                         </div>  
-                        &nbsp;
+                        &nbsp;&nbsp; &nbsp;
                         <div id="rowdelete-div2" (click)="customerdelete(row.custcode)">
                             <i class="fa fa-trash-o" id="row-icon" aria-hidden="true"></i>    
                         </div>   
@@ -576,7 +603,7 @@
                   </div>
               </div>
 
-              <br/><br/><br/><br/>
+              <br/><br/><br/>
 
               <div class="example-box" id="scrolling">
 
@@ -647,6 +674,18 @@
                 </div>
           </form>
 
+          <br/>
+              <div class="row">
+                <div class="col-5 col-md-5 col-lg-5"></div>
+                <div class="col-2 col-md-2 col-lg-2">
+                  <button id="button-back">
+                    <div class="row" (click)="customerback()">
+                        <p id="backbutton-text">Back</p>
+                    </div>
+                  </button>
+                </div>
+                <div class="col-5 col-md-5 col-lg-5"></div>
+              </div>
           </div>
     <!-- customer ADD end-->
 
@@ -764,9 +803,7 @@
           <div class="col-2 col-md-2 col-lg-2">
             <button id="button-back">
               <div class="row" (click)="customerback()">
-                  <i class="fa fa-pencil-square-o" aria-hidden="true" style="margin-top: 5px;"></i>
-                  &nbsp;
-                  <p style="font-weight: bold;">Back</p>
+                  <p id="backbutton-text">Back</p>
               </div>
             </button>
           </div>
@@ -917,9 +954,7 @@
           <div class="col-2 col-md-2 col-lg-3">
            <button id="button-back">
               <div class="row" (click)="customerback()">
-                  <i class="fa fa-pencil-square-o" aria-hidden="true" style="margin-top: 5px;"></i>
-                  &nbsp;
-                  <p style="font-weight: bold;">Back</p>
+                  <p id="backbutton-text">Back</p>
               </div>
            </button>
           </div>
