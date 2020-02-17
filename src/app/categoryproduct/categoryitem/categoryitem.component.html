@@ -216,7 +216,7 @@
 
        Fiber detail end-->    
 
-          <!--All details start-->  
+          <!--All Items data table start-->  
         <div [ngStyle]="{'display':alldetails}">
             <div class="col-12 col-sm-12 col-md 12 col-lg-12">
 
@@ -305,7 +305,67 @@
                 </div>  
             </div>
         </div> 
-        <!--All details end-->    
+        <!--All Item data table details end-->    
+
+           <!--Free gift Items data table start-->  
+           <div [ngStyle]="{'display':freegiftdetails}">
+            <div class="col-12 col-sm-12 col-md 12 col-lg-12">
+
+             <br/>
+              <div class="row">
+                    <div class="col-5 col-sm-5 col-md 5 col-lg-5">
+                        <h2>{{itemtitle}}</h2>
+                        <div class="row"  id="editdelete-button">
+                            <span (click)="addpromotion()">
+                                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                Add
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2 col-sm-2 col-md 2 col-lg-2">
+                    </div>
+                    <div class="col-5 col-sm-5 col-md 5 col-lg-5">
+                        <div class="row" id="button-printpage">
+                            <i class="fa fa-print" aria-hidden="true" id="icon-align"></i>
+                            &nbsp;&nbsp;
+                            <p id="font-size15">Print Page</p>
+                        </div>
+                    </div>
+                </div>
+
+                <br/>
+              
+                <mat-form-field style="color: black;">
+                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                </mat-form-field>
+
+                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                <div class="mat-elevation-z8">
+
+                    <table mat-table [dataSource]="dataSource2" matSort>
+                    
+                        <ng-container matColumnDef="productname">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> ProductName </th>
+                            <td mat-cell *matCellDef="let row"> {{row.productname}} </td>
+                        </ng-container>
+
+                       
+                        
+                   
+                        
+
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns2;"></tr>
+                        <tr mat-row [ngClass]="table-row" tabindex="1" 
+                        *matRowDef="let row; columns: displayedColumns2;">
+                        </tr>
+                    </table>
+                    
+                </div>  
+            </div>
+        </div> 
+        <!--Free gift Item data table details end-->    
+
 
 
         </div>

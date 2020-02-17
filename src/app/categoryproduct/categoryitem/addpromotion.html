@@ -62,7 +62,7 @@
             </div>
 
             <div class="row" style="margin-left: 0px;">
-              <input type="radio" name="radiopromo" style="margin: 7px;"/>
+              <input type="radio" [(ngModel)]="model.discount"  name="radiopromo" style="margin: 7px;"/>
                   <p>Free Gift</p>
                   &nbsp;
                   <input type="text" id="freegift-box" placeholder="Product Free Gift" 
@@ -73,7 +73,7 @@
 
             <div class="row" style="margin-left: 0px;">
                 <label class="checkbox-inline">
-                  <input type="radio" name="radiopromo" style="margin: 7px;"/>
+                  <input type="radio" [(ngModel)]="model.discount" name="radiopromo" style="margin: 7px;"/>
                 </label>
                   <p>others </p>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -118,6 +118,8 @@
                         #todate_promotionperiod="ngModel" />
 
                     </div>
+
+
                 </div>
 
             </div>

@@ -197,6 +197,8 @@ export class AddpromotionComponent {
     savePromotion(){
       console.log("discount from date-->"+this.model.fromdate_promotionperiod);
       console.log("discount to date-->"+this.model.todate_promotionperiod);
+      console.log("discount type -->"+this.model.discount);
+
       this.catprodservice.addpromotionsave(this.model)
       .subscribe(
         data => {
@@ -267,7 +269,8 @@ export class DiscounteditComponent {
 
 
     loadDiscount(){
-      this.catprodservice.loadDiscount()
+      let discount="discount"
+      this.catprodservice.loadDiscount(discount)
       .subscribe(
         data => {
           this.alldiscountlist = data;
@@ -648,6 +651,7 @@ export class CategoryItemComponent implements OnInit {
   categorylist: any= {};
   allproducedittlist:any;
   alldiscountlist: any= {};
+  allfreegiftlist: any= {};
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
   model: any = {};
@@ -656,11 +660,18 @@ export class CategoryItemComponent implements OnInit {
   // All Product
   displayedColumns: string[] = ['productname','description','vendorcode','sellingprice','price','editdelete'];
   dataSource: MatTableDataSource<any>;
-
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
   @ViewChild(MatSort,{ static: true }) sort: MatSort;
  
-
+  // Free Gift Data table
+  displayedColumns2: string[] = ['productname'];
+  dataSource2: MatTableDataSource<any>;
+  @ViewChild(MatPaginator,{ static: true }) paginator2: MatPaginator;
+  @ViewChild(MatSort,{ static: true }) sort2: MatSort;
+  ngAfterViewInit() {
+    this.dataSource2.paginator = this.paginator2;
+    this.dataSource2.sort = this.sort2;
+  }
   tempid=null;
   tempnumber=null;
   public leftdetails=false;
@@ -668,6 +679,7 @@ export class CategoryItemComponent implements OnInit {
   public editdeletediv=false;
   public fiberdetails='none';
   public alldetails='none';
+  public freegiftdetails='none';
 
   successdialog = 'none';
    // masterlist
@@ -709,6 +721,8 @@ export class CategoryItemComponent implements OnInit {
     this.allcategorylist();
     this.allproductList();
     this.alldiscountList();
+    this.allfreegiftList();
+
   }
 
 
@@ -720,9 +734,6 @@ export class CategoryItemComponent implements OnInit {
       data => {
         this.categorylist = data;
         console.log("Category code-->"+this.categorylist[0].categorycode)
-       // this.dataSource = new MatTableDataSource(this.allproductlist);
-       // this.dataSource.paginator = this.paginator;
-       // this.dataSource.sort = this.sort;
       },
       error => {
         setTimeout(() => {
@@ -751,8 +762,8 @@ export class CategoryItemComponent implements OnInit {
   }
 
   alldiscountList(){
-    //this.allproductlist="";
-    this.catprodservice.loadDiscount()
+    let discount="discount";
+    this.catprodservice.loadDiscount(discount)
     .subscribe(
       data => {
         this.alldiscountlist = data;
@@ -766,9 +777,24 @@ export class CategoryItemComponent implements OnInit {
     );
   }
 
+  allfreegiftList(){
+    let discount="freegift";
+    this.catprodservice.loadDiscount(discount)
+    .subscribe(
+      data => {
+        this.allfreegiftlist = data;
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    );
+  }
+
+
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
@@ -796,7 +822,7 @@ export class CategoryItemComponent implements OnInit {
     //this.allproductList();
     this.alldetails='block';
     this.discountdetails='none';
-    this.fiberdetails='none';
+    this.freegiftdetails='none';
     this.editdeletediv=false;
 
   }
@@ -808,27 +834,39 @@ categorydetails(number: string){
   this.tempid=number;
   document.getElementById(this.tempid).style.backgroundColor='#5B6065';
   this.leftdetails=true;
-
+// All item tab click
   if(number=='01'){
+    console.log("Inside all items");
     this.itemtitle="All Items";
     this.allproductList();
     this.alldetails='block';
     this.discountdetails='none';
-    this.fiberdetails='none';
+    this.freegiftdetails='none';
     this.editdeletediv=false;
   }
+
+  // Discount tab click
   if(number=='02'){
+    console.log("Inside discount");
     this.alldetails='none';
    this.discountdetails='block';
     this.alldetails='none';
-    this.fiberdetails='none';
+    this.freegiftdetails='none';
     this.editdeletediv =false;
   }
+
+  // Free gift tab click
   if(number=='03'){
+    console.log("Inside free gift");
+    this.dataSource2 = new MatTableDataSource(this.allfreegiftlist);
+    this.dataSource2.paginator = this.paginator2;
+    this.dataSource2.sort = this.sort2;
+    this.freegiftdetails='block';
+    this.itemtitle="Free Gift";
     this.leftdetails=true;
     this.alldetails='none';
     this.discountdetails='none';
-    this.fiberdetails='block';
+    //this.fiberdetails='block';
     this.editdeletediv=false;
   }
 }
@@ -843,12 +881,6 @@ productlist(number: string){
 
   if(number=='PROD1'){
     this.alldetails='none';
-   // this.fiberdetails='block';
-   // this.discountdetails='none';
-
-   // this.alldetails=false;
-    //this.discountdetails=false;
-   // this.editdeletediv=false;
   }
   if(number=='PROD2'){
     this.alldetails='none';

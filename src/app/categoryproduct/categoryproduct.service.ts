@@ -56,8 +56,10 @@ loadItemName(){
 
 }
 //discount Load 
-loadDiscount(){
-    return this.http.get<Discount>(this.commonURL2+'discountload');
+loadDiscount(discount:string){    
+  //  return this.http.get<Discount>(this.commonURL2+'discountload');
+    return this.http.get<Discount>(this.commonURL2+'discountload?discountcode='+discount);
+
 }
 
 // get 

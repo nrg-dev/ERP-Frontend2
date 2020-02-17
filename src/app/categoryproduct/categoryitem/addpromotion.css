@@ -22,6 +22,19 @@
     margin-left: -20px;
     color:white;
     }
+
+    .promotion-periodbox2 ::ng-deep .mat-form-field {
+        font-family: fontawesome;
+        font-size: 12px;
+        width: 100%;
+        height: 80%;
+        background: #272E34;
+        border: none;
+        box-shadow: none;
+        margin-left: -20px;
+        color:white;
+        }
+
 h2{
     text-align: center;
     font-size: xx-large;
