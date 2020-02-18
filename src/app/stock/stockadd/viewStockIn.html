@@ -1,0 +1,63 @@
+<div id="box-dialouge">
+    <br/>
+    <div class="col-lg-4" style="padding-left: 35px;">
+        <div *ngIf="fullStock">
+            <h2 style="text-align: center;font-size: 22px;"> Full StockIn {{ this.model.invoiceNumber }}</h2>
+        </div>
+        <div *ngIf="partialStock">
+            <h2 style="text-align: center;font-size: 22px;"> Partial StockIn {{ this.model.invoiceNumber }}</h2>
+        </div>
+        <br/>
+    </div>
+    <br/>
+    <table mat-table #sBSort [dataSource]="dataSource6" matSort id="StockOutTable">
+        <ng-container matColumnDef="No">
+            <th mat-header-cell *matHeaderCellDef> No </th>
+            <td mat-cell *matCellDef="let row;let i = index" id="middleContent"> {{ i+1 }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="LastAction">
+            <th mat-header-cell *matHeaderCellDef> Category </th>
+            <td mat-cell *matCellDef="let row" id="middleContent"> {{row.category}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Qty+">
+            <th mat-header-cell *matHeaderCellDef> Item </th>
+            <td mat-cell *matCellDef="let row" id="middleContent"> {{row.productName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Qty-">
+            <th mat-header-cell *matHeaderCellDef> Description </th>
+            <td mat-cell *matCellDef="let row" id="middleContent"> {{row.description}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Date">
+            <th mat-header-cell *matHeaderCellDef> Date </th>
+            <td mat-cell *matCellDef="let row" id="middleContent"> {{row.poDate}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="DmgQtyTotal">
+            <th mat-header-cell *matHeaderCellDef> Quantity </th>
+            <td mat-cell *matCellDef="let row" id="middleContent"> {{row.quantity}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="QtyTotal">
+            <th mat-header-cell *matHeaderCellDef> Sub Total </th>
+            <td mat-cell *matCellDef="let row" id="middleContent"> {{row.netAmount}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayColumns7"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayColumns7;"></tr>
+        
+    </table>
+    <br/> <br/>
+    <div class="row">
+        <div class="col-lg-5"></div>
+        <div class="col-lg-4">
+            <div class="radio-toolbar">
+                <label id="cancel-butn" (click)="closeStock()">Close</label>
+            </div>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+    <br/> <br/>
+</div>

@@ -199,6 +199,14 @@ label,select,input,#textSize{
 #salessummary{
     margin: 5px;
 }
+#viewInvoice-butn{
+    background-color: #07ab07;
+    width: 100px;
+    height: 32px;
+    margin: 5px 0 0 20px;
+    text-align: center;
+    color: white;
+}
 #checkIn-butn{
     background-color: #07ab07;
     width: 60px;

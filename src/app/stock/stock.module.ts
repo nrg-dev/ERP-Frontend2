@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StockService } from './stock.service';
-import { StockaddComponent,ViewStock} from './stockadd/stockadd.component';
+import { StockaddComponent,ViewStock,ViewStockIn} from './stockadd/stockadd.component';
 
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
@@ -52,7 +52,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [StockaddComponent,ViewStock],
+  declarations: [StockaddComponent,ViewStock,ViewStockIn],
   imports: [
     FormsModule,
     CommonModule,MatTabsModule,ReactiveFormsModule,
@@ -97,7 +97,7 @@ const routes: Routes = [
     DataTablesModule.forRoot(),RouterModule.forChild(routes) 
   ],
   providers: [StockService],
-  entryComponents: [ViewStock]
+  entryComponents: [ViewStock,ViewStockIn]
 
 })
 export class StockModule { }

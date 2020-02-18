@@ -24,6 +24,33 @@
                                 </div>
                             </div>
 
+                            <div class="row">
+                                <div class="col-lg-4" style="margin-left: 15px;">
+                                    <label style="font-size: 13px;">Payment Option: </label>
+                                    <div class="form-group" style="margin-left: 15px;">
+                                        <li>
+                                            <input type="radio" name="paymentOption" [(ngModel)]="model.paymentOption" #paymentOption="ngModel" value="PartialStockIn"> Partial StockIn                                                
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="paymentOption" [(ngModel)]="model.paymentOption" #paymentOption="ngModel" value="FullStockIn"> Full StockIn 
+                                        </li>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <label style="font-size: 13px;">Invoice: </label>
+                                    <select class="form-control" style="background-color:#1B2931;color: white;" [(ngModel)]="model.invoiceNumber" name="invoiceNumber" #invoiceNumber="ngModel">
+                                        <option>-- Select --</option>
+                                        <option *ngFor="let iteminvoice of invoiceList" value="{{ iteminvoice }}"> {{ iteminvoice }} </option> 
+                                    </select> 
+                                </div>
+                                <div class="col-lg-4">
+                                    <label style="font-size: 13px;"> </label>
+                                    <div class="radio-toolbar">
+                                        <label for="radio1" id="viewInvoice-butn" (click)="viewInvoice()">View Invoice</label>
+                                    </div>
+                                </div>
+                            </div>
+
                             <mat-paginator #hBpaginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
                             <div class="mat-elevation-z8">
                                 <table mat-table #hBtable [dataSource]="dataSource1" matSort >

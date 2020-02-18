@@ -182,6 +182,7 @@ export class EditInvoice {
 
   onNoClick(): void {
     this.dialogRef.close();
+    window.location.reload();
   }
 
   public deleteSalesInvoice(id:string,invoiceNumber:string){
@@ -281,6 +282,7 @@ export class EditInvoice {
 
   cancelInvoice(){
     this.dialogRef.close();
+    window.location.reload();
   }
 
 }
@@ -373,15 +375,37 @@ export class SalesinvoiceComponent implements OnInit {
     }
   }
 
-  openfilter(): void { 
-    const dialogRef = this.dialog.open(Filter, {
+  openfilter() { 
+    this.salesservice.loadfilterData(this.model)
+    .subscribe(
+      res => { 
+        this.salesList = res;
+        if(this.salesList.length == 0){
+          this.alertService.success("No Data Found");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 1500);
+          this.dataSource = new MatTableDataSource();
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort; 
+        }else{
+          this.dataSource = new MatTableDataSource(this.salesList);  
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;  
+        }     
+      },
+      error => {
+          alert('Error !!!!');
+      }
+    );
+    /*const dialogRef = this.dialog.open(Filter, {
     width: '60%',
     //  data: {name: this.name, animal: this.animal}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-    });
+    });*/
   }  
 
   public viewinvoice(invoiceNumber:string,customerName:string,invoicedate: string,status:string){

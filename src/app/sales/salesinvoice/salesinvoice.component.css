@@ -87,7 +87,7 @@ h2{
 button {
   background-color: #174fa6;
   color: #fff;
-  padding: 10px 25px;
+  padding: 6px 25px;
   border: none;
   cursor: pointer;
   opacity: .9;
@@ -205,6 +205,12 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
 
 #middleContent {
   vertical-align: middle;
+}
+
+#dateBox{
+  background-color:#1B2931;
+  width: 40%;
+  color: white;
 }
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
   #addsales-div{

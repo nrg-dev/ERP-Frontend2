@@ -11,27 +11,40 @@
             <div id="addsales-div">
                 <br/><br/>
                 <div class="group-gap" style="margin: 40px;">
-               <!-- <mat-toolbar style="margin-left: 25px;">Purchase Order Status</mat-toolbar> -->
-               <div class="row">
-                 <div class="col-lg-3">
-                  <div style="height: 10%;"> 
-                    <button (click)="openfilter()" style="width:auto;">Filter</button> &nbsp;
+                <!-- <mat-toolbar style="margin-left: 25px;">Purchase Order Status</mat-toolbar> -->
+                <div class="row">
+                  <div class="col-lg-3">
+                    <!-- <div style="height: 10%;"> 
+                      <button (click)="openfilter()" style="width:auto;">Filter</button> &nbsp;
+                    </div> -->
                   </div>
-                 </div>
-                 <div class="col-lg-1"></div>
-                 <div class="col-lg-4">
-                    <button id="print-butn">
-                      &nbsp;<i class="fa fa-print" aria-hidden="true" id="icon-mod"></i> &nbsp;
-                      &nbsp;<label id="text">Print Page</label>
-                    </button>
-                 </div>
-                 <div class="col-lg-4">
-                  <mat-form-field>
-                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search Invoice" >
-                  </mat-form-field>
-                 </div>
-               </div>
-               
+                  <div class="col-lg-1"></div>
+                  <div class="col-lg-4">
+                      <button id="print-butn">
+                        &nbsp;<i class="fa fa-print" aria-hidden="true" id="icon-mod"></i> &nbsp;
+                        &nbsp;<label id="text">Print Page</label>
+                      </button>
+                  </div>
+                  <div class="col-lg-4">
+                    <mat-form-field>
+                      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search Invoice" >
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-2">
+                        <label style="color: white">Filter Date :</label>
+                    </div>
+                    <div class="col-lg-6">
+                        <input type="date" class="form-control" id="dateBox" [(ngModel)]="model.fromdate" name="fromdate" #fromdate="ngModel" value="{{ xx/xx/xx }}" />
+                        <label style="color: white;">&nbsp; - &nbsp;</label>
+                        <input type="date" class="form-control" id="dateBox" [(ngModel)]="model.todate" name="todate" #todate="ngModel" value="{{ xx/xx/xx }}" />
+                    </div>
+                    <div class="col-lg-3">
+                        <button (click)="openfilter()" style="width:auto;">Filter</button> &nbsp;
+                    </div>
+                  </div>              
                 
                   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
         

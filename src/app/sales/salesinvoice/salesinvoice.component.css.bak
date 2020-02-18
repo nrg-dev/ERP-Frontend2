@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Lato',Georgia,Arial,sans-serif;
+  font-family: sans-serif;
   font-size:13px;
   caret-color: white;
 }
@@ -12,17 +12,6 @@ table {
   overflow-y: auto;
   border-color: 1px solid grey;
 }
-
-
-.table-row:focus mat-cell {
-  color:yellow; 
-}
-
-.table-row:focus {
-  background: tomato;
-  outline: none;
-}
-
 th{
   color:#ffffff;
   background-color:#21272D;
@@ -41,7 +30,6 @@ mat-paginator{
 ::ng-deep .mat-select-value,::ng-deep .mat-select-arrow {
   color: white;
 }
-
 ::ng-deep .alert-success {
   color: #155724;
   background-color: #d4edda;
@@ -99,13 +87,13 @@ h2{
 button {
   background-color: #174fa6;
   color: #fff;
-  padding: 6px 25px;
+  padding: 10px 25px;
   border: none;
   cursor: pointer;
   opacity: .9;
   border-radius: 4px;
 }
-#addemployee-div{
+#addsales-div{
   background: #1B2931;
   height: 880px;
   width: 107%;
@@ -164,8 +152,6 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
   font-family: fontawesome;
   background:white;
   color: black;
-  /*background:#58666E;
-  color: white;*/
   height: 35px;
   outline: 0;
   margin: 10;
@@ -182,6 +168,7 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
   width: 95%;
   margin: auto;
 }
+
 
 #rowedit-div{
   height: 25px;
@@ -219,14 +206,8 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
 #middleContent {
   vertical-align: middle;
 }
-
-#dateBox{
-  background-color:#1B2931;
-  width: 40%;
-  color: white;
-}
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
-  #addemployee-div{
+  #addsales-div{
     background: #1B2931;
     height: 880px;
     width: 107%;
@@ -234,7 +215,7 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px){
-  #addemployee-div{
+  #addsales-div{
     background: #1B2931;
     height: 880px;
     width: 107%;

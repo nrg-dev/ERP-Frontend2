@@ -95,5 +95,8 @@ export class PurchaseService {
         return this.http.get<Purchase>(this.commonURL+'loadVendorItem?vendorName='+vendorName);
     }
 
-    
+    loadfilterData(purchase:Purchase){
+        return this.http.post<Purchase>(this.commonURL+'loadfilterData',purchase);
+    }
+
 }

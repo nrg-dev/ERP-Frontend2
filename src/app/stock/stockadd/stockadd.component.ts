@@ -11,6 +11,49 @@ import { PurchaseService } from '../../purchase/purchase.service';
 //import *  as  XLSX from 'xlsx';
 
 @Component({
+  selector: 'viewStockIn',
+  styleUrls: ['./viewStockIn.css'],
+  templateUrl: './viewStockIn.html', 
+})
+export class ViewStockIn {
+  model: any ={};
+  public productList : any;
+  public statusList : any;
+  dialogConfig = new MatDialogConfig();
+  isDtInitialized:boolean = false;
+  public fullStock = false;
+  public partialStock = false;
+
+  public priceArray : any = [];
+  public descriptionArray : any = [];
+  constructor(
+    private purchaseService: PurchaseService,
+    private dialog: MatDialog,
+    private alertService: AlertService,
+
+    public dialogRef: MatDialogRef<ViewStockIn>,
+    @Inject(MAT_DIALOG_DATA) public data: any)
+    {  
+      this.model.invoiceNumber = this.data.invoice;
+      this.model.stockStatus = this.data.status;
+      if(this.model.stockStatus == "FullStockIn"){
+        this.fullStock = true;
+        this.partialStock = false;
+      }if(this.model.stockStatus == "PartialStockIn"){
+        this.fullStock = false;
+        this.partialStock = true;
+      }
+      //this.editDetails(this.model.invoiceNumber);
+      this.statusList = ['Pending','On Progress','Success'];
+    }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+  
+}
+
+@Component({
   selector: 'viewStock',
   styleUrls: ['./viewStock.css'],
   templateUrl: './viewStock.html', 
@@ -75,6 +118,7 @@ export class StockaddComponent implements OnInit {
   stockReturnList: any = {};
   stockDamageList: any = {};
   stockReportList: any = {};
+  invoiceList: any = {};
   productList: any = {};
   categoryList: any = {};
   prodCategoryList: any = {};
@@ -144,9 +188,42 @@ export class StockaddComponent implements OnInit {
 
   }
   ngOnInit() {
+    this.getInvoiceList();
     this.getProductList();
     this.getcategoryList();
     this.prodCategoryList = ['Mobile-Electronic', 'Computer-Manufactorning', 'Cloths-Institue', 'TV-Mining'];
+  }
+
+  getInvoiceList(){
+    this.stockService.loadInvoice()
+    .subscribe(res => { 
+      this.invoiceList = res;
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    );
+  }
+
+  viewInvoice(){
+    console.log("Payment Option -->"+this.model.paymentOption);
+    console.log("Invoice Number --->"+this.model.invoiceNumber);
+    console.log("Edit Invoice Number  --->"+this.model.invoiceNumber);
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+      'top': '1000',
+      left: '100'
+    };
+    this.dialog.open(ViewStockIn,{
+      panelClass: 'editInvoice',
+      data: { invoice: this.model.invoiceNumber, status: this.model.paymentOption },
+      height: '80%'
+    }).afterClosed().subscribe(result => {
+      // this.refresh();
+    });
   }
 
   stockReturnLoad(){

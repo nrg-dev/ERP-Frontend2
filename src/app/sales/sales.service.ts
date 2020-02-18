@@ -68,4 +68,8 @@ export class SalesService {
     loadCustomerName(){
         return this.http.get(this.commonURL+'loadCustomerName');
     }
+
+    loadfilterData(sales:Sales){
+        return this.http.post<Sales>(this.commonURL+'loadfilterData',sales);
+    }
 }

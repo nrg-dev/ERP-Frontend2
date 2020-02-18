@@ -33,4 +33,8 @@ export class StockService {
         return this.http.put<Stock>(this.commonURL+'update',stock);
     }
 
+    loadInvoice(){
+        return this.http.get<Stock>(this.commonURL+'loadInvoice');
+    }
+
 }
