@@ -91,6 +91,22 @@ export class VendoraddComponent implements OnInit {
     this.getAllCustomerDetails();
   }
 
+  applyFilter(filterValue: string) {
+    this.dataSource1.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource1.paginator) {
+      this.dataSource1.paginator.firstPage();
+    }
+  }
+
+  applyFilter2(filterValue: string) {
+    this.dataSource2.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource2.paginator) {
+      this.dataSource2.paginator.firstPage();
+    }
+  }
+
   getAllVendorDetails(){
     this.vendorList="";
     this.vendorService.load()

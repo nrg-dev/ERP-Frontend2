@@ -5,8 +5,36 @@
           <!--First Tab-->
           <mat-tab >
             <ng-template mat-tab-label>
-              <span (click)="test()">Employee List</span>
+              <span (click)="emplistback()" >
+                <div id="tab-span-color">Employee </div>
+                <div id="tab-span-color">List</div>
+              </span>
             </ng-template>
+
+            <div style="margin: 10px;" *ngIf="employeelist">
+            <div class="row">
+              <div style="height: 20px;width: 100%;"></div>
+              <div class="col-4 col-md-4 col-lg-5"></div>
+              <div class="col-8 col-md-8 col-lg-7">
+                <div class="row">
+
+                  <div class="row" id="button-printpage">
+                    <i class="fa fa-print" aria-hidden="true" id="icon-align"></i>
+                    &nbsp;&nbsp;
+                    <p id="font-size15">Print Page</p>
+                  </div>
+  
+
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <mat-form-field style="color: black;">
+                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search Vendor">
+                  </mat-form-field>
+
+                </div>
+              </div>
+            </div>
+
+            <h3>Customer List</h3>
 
             <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
                     <div class="mat-elevation-z8">
@@ -15,7 +43,7 @@
                 
                             
                             <ng-container matColumnDef="code">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header> #ID </th>
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Employee Code </th>
                                 <td mat-cell *matCellDef="let row" (click)="employeeDetails(row.employeecode)" id="{{ row.employeecode }}"> {{row.employeecode}} </td>
                             </ng-container>
                             
@@ -31,47 +59,495 @@
                             </ng-container>
                 
                             <ng-container matColumnDef="contactNumber">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Number </th>
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Contact Number </th>
                                 <td mat-cell *matCellDef="let row" (click)="employeeDetails(row.employeecode)" id="{{ row.employeecode }}"> {{row.phonenumber}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="action">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+                              <td mat-cell *matCellDef="let row" > 
+                                <div class="row" style="margin-left: 0px;">
+                                  <div id="rowview-div" (click)="employeeDetails(row.employeecode)">
+                                      <i class="fa fa-eye" id="row-icon" aria-hidden="true"></i>    
+                                  </div>  
+                                  &nbsp;&nbsp; &nbsp;
+                                  <div id="rowprint-div" (click)="productprint()">
+                                      <i class="fa fa-print" id="row-icon" aria-hidden="true"></i>    
+                                  </div>  
+                                  &nbsp;&nbsp; &nbsp;
+                                  <div id="rowedit-div2" (click)="vendoreditDetails(row.vendorcode)">
+                                      <i class="fa fa-pencil-square-o" id="row-icon" aria-hidden="true"></i>    
+                                  </div>  
+                                  &nbsp;&nbsp; &nbsp;
+                                  <div id="rowdelete-div2" (click)="vendordelete(row.vendorcode)">
+                                      <i class="fa fa-trash-o" id="row-icon" aria-hidden="true"></i>    
+                                  </div>   
+                              </div>  
+                              </td>
                             </ng-container>
                 
                             <tr mat-header-row  *matHeaderRowDef="displayedColumns;"></tr>
                             <tr mat-row [ngClass]="table-row" tabindex="1" 
                             *matRowDef="let row; columns: displayedColumns;"></tr>
                             </table>
-                            
-                        </div>        
-          </mat-tab>
+                        </div>     
+                      </div>   
 
-           <!--Second Tab-->
-          <mat-tab >
-            <ng-template mat-tab-label>
-              <span (click)="test2()">Add New Employee</span>
-            </ng-template>
-           </mat-tab>
 
-            <!--THird Tab-->
-          <mat-tab >
-            <ng-template mat-tab-label>
-              <span (click)="test2()">Absence</span>
-            </ng-template>
-           </mat-tab>
+                  <!-- Employee View Start -->
+                         <div *ngIf="empdetails" class="scroll-div" id="example-box">
+                          <div id="empview-secong-layer">
+                          <br/> <br/>
+                          <div class="row">
+                              <div class="col-md-3 col-5 col-lg-7">
+                                  <h3>Employee Details</h3>
+                              </div>
+                                  <div  class="col-md-5 col-5 col-lg-5">
+                                  <div class="row">
+                                      <button id="button-printpage">
+                                          <div class="row" (click)="edit()">
+                                              <i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size: 20px;"></i>
+                                              &nbsp;&nbsp;&nbsp;&nbsp;
+                                              <p>Edit</p>
+                                          </div>
+                                      </button>
+              
+                                      &nbsp; &nbsp; &nbsp;
+                                      <button id="button-printpage">
+                                          <div class="row">
+                                              <i class="fa fa-print" aria-hidden="true" style="font-size: 20px;"></i>
+                                              &nbsp;&nbsp;
+                                              <p id="text">Print Page</p>
+                                          </div>
+                                      </button>
+              
+                                  </div>
+                                  </div>
+                              </div>
+              
+                        <!--  <div class="row" id="empbut">
+                              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                              edit button 
+                              <button class='btn btn-info m-r-10px update-product-button' id="empButton" (click)="edit()">
+                                  <span class='glyphicon glyphicon-edit'></span> Edit
+                              delete button 
+                              <button class='btn btn-danger delete-product-button' id="empButton"(click)="delete(model.employeecode)">
+                                  <span class='glyphicon glyphicon-remove'></span> Delete
+                              </button> &nbsp;&nbsp;&nbsp;
+                              <button class='btn btn-primary m-r-10px read-one-product-button' id="empButton" (click)="absent()">
+                                  <span class='glyphicon glyphicon-eye-open'></span> Absent
+                              </button> &nbsp;&nbsp;&nbsp; 
+                          </div><br/>  -->
+                          <br/><br/><br/>
+                        <div class="row">
+                          <div class="col-1 col-md-1 col-lg-1"></div>
+                          <div class="col-3 col-md-3 col-lg-3">
+                            <div>
+                              <div>Employee Photo</div>
+                              <div  id="select-div">
+                              <br/><br/><br/>
+                                <h3 style="color: black;text-align: center;">Employee </h3>
+                                <h3 style="color: black;text-align: center;">Picture</h3>
+                            <!--   <div id="editimg-border">
+                                  <i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size: 21px;margin: 6px;"></i>
+                                </div> -->
+                              </div>
+                          </div>
+                          <br/>
 
-            <!--Fourth Tab-->
-          <mat-tab >
-            <ng-template mat-tab-label>
-              <span (click)="test2()">Contract Tempelate</span>
-            </ng-template>
-           </mat-tab>
+                          <div  id="country">
+                            <div> Name</div>
+                            <div id="textbox-div2">
+                              <div >{{ this.model.name }}</div>
+                            </div>
+                          </div>
 
-            <!--Fifth Tab-->
-          <mat-tab >
-            <ng-template mat-tab-label>
-              <span (click)="test2()">Employee Report</span>
-            </ng-template>
-           </mat-tab>
+                          <div style="height: 10px;"></div>
+                          <div  id="country">
+                            <div >Code Number</div>
+                            <div id="textbox-div2">
+                              <div >{{ this.model.employeecode }}</div>
+                            </div>
+                          </div>
 
-        </mat-tab-group>
+                          <div style="height: 10px;"></div>
+                          <div id="country">
+                            <div>Employee Rank</div>
+                            <div id="textbox-div2">
+                              <div >{{ this.model.rank }}</div>
+                            </div>
+                        </div>
+                      </div>
+
+
+                      <div class="col-4 col-md-4 col-lg-4">
+                          <div  id="country">
+                            <div >Phone</div>
+                            <div id="textbox-div">
+                              <div>{{ this.model.phonenumber }}</div>
+                            </div>
+                          </div>
+
+                          <div style="height: 10px;"></div>
+                          <div id="country">
+                            <div >Address</div>
+                            <div id="textboxaddress-div">
+                              <div >{{ this.model.address }}</div>
+                            </div>
+                          </div>
+
+                          <div style="height: 10px;"></div>
+                          <div  id="country">
+                            <div >E-mail</div>
+                            <div id="textbox-div">
+                              <div >{{ this.model.email }}</div>
+                            </div>
+                          </div>	
+
+                          <div style="height: 10px;"></div>
+                          <div  id="country">
+                            <div >Birthday</div>
+                            <div id="textbox-div">
+                              <div >{{ this.model.dob }}</div>
+                            </div>
+                          </div>	
+
+                          <div style="height: 10px;"></div>
+                          <div  id="country">
+                            <div >Join Since</div>
+                            <div id="textbox-div">
+                              <div >{{ this.model.addeddate }}</div>
+                            </div>
+                          </div>	
+
+                          <div style="height: 10px;"></div>
+                          <div  id="country">
+                            <div >Contract Number</div>
+                            <div id="textbox-div">
+                              <div >{{ this.model.contractnumber }}</div>
+                            </div>
+                          </div>	
+                      </div>
+
+
+                          <div class="col-4 col-md-4 col-lg-4">
+                           
+                            <div  id="country">
+                              <div >NPWP</div>
+                              <div id="textbox-div">
+                                <div >{{ this.model.npwp }}</div>
+                              </div>
+                            </div>
+
+                            <div style="height: 10px;"></div>
+                            <div  id="country">
+                              <div>BPJS</div>
+                              <div id="textbox-div">
+                                <div>{{ this.model.bpjs }}</div>
+                              </div>
+                            </div>
+
+                            <div style="height: 10px;"></div>
+                            <div  id="country">
+                              <div >Monthly Salary</div>
+                              <div id="textbox-div">
+                                <div>{{ this.model.monthlysalary }}</div>
+                              </div>
+                            </div>
+
+                            <div style="height: 10px;"></div>
+                            <div  id="country">
+                              <div >Overtime Salary</div>
+                              <div id="textbox-div">
+                                <div>{{ this.model.overtimeSalary }}</div>
+                              </div>
+                            </div>
+
+                            <div style="height: 10px;"></div>
+                            <div  id="country">
+                              <div >Work Hour</div>
+                              <div id="textbox-div">
+                                <div>{{ this.model.workHour }}</div>
+                              </div>
+                            </div>
+
+                            <div style="height: 10px;"></div>
+                            <div  id="country">
+                              <div >Annual Leave</div>
+                              <div id="textbox-div">
+                                <div>{{ this.model.annualLeave }}</div>
+                              </div>
+                            </div>
+
+                            <div style="height: 10px;"></div>
+                            <div  id="country">
+                              <div>Absent Dedection</div>
+                              <div id="textbox-div">
+                                <div>{{ this.model.absentDeduction }}</div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+  <!-- Employee View End -->
+
+
+
+<!-- Employee Edit Start -->
+        <div *ngIf="empeditdetails" class="scroll-div">
+          <div id="empview-secong-layer">
+            <br/> <br/>
+            <div class="row">
+                <div class="col-md-3 col-5 col-lg-7">
+                    <h3>Edit Employee Details</h3>
+                </div>
+                    <div  class="col-md-5 col-5 col-lg-5">
+                    <div class="row">
+                        <button id="button-printpage">
+                            <div class="row" (click)="edit()">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size: 20px;"></i>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <p>Edit</p>
+                            </div>
+                        </button>
+
+                        &nbsp; &nbsp; &nbsp;
+                        <button id="button-printpage">
+                            <div class="row">
+                                <i class="fa fa-print" aria-hidden="true" style="font-size: 20px;"></i>
+                                &nbsp;&nbsp;
+                                <p id="text">Print Page</p>
+                            </div>
+                        </button>
+
+                    </div>
+                    </div>
+                </div>
+          
+          <br/><br/><br/>
+          <form name="formReg">
+            <div class="row">
+            <div class="col-1 col-md-1 col-lg-1"></div>
+            <div class="col-3 col-md-3 col-lg-3">
+              <div id="country">
+                <div>Employee Photo</div>
+                <div  id="select-div">
+                <br/><br/><br/>
+                  <h3 style="color: black;text-align: center;">Employee </h3>
+                  <h3 style="color: black;text-align: center;">Picture</h3>
+                <div id="editimg-border">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size: 21px;margin: 6px;"></i>
+                  </div> 
+                </div>
+              </div>
+
+              <br/>
+              <div id="country">
+                <!-- <div class="form-group" [ngClass]="{'has-error':empf.submitted && !name.valid}"> -->
+                    <div > Name</div>
+                        <input id="edit-textbox2" type="text" class="form-control" name="name" value="{{ this.model.name }}" 
+                        [(ngModel)]="this.model.name" #name="ngModel" required  />
+                    <!--<div *ngIf="empf.submitted && !name.valid" class="help-block"> Name is required.</div>
+                </div> -->
+            </div>
+
+            <div style="height: 10px;"></div>
+            <div  id="country">
+              <div > Code Number</div>
+              <div id="textbox-nochange-div2">{{ this.model.employeecode }}</div>       
+            </div>
+            
+            <div style="height: 10px;"></div>
+            <div  id="country">
+                <!-- <div class="form-group" [ngClass]="{'has-error':empf.submitted && !rank.valid}"> -->
+                    <div>Employee Rank</div>
+                        <input id="edit-textbox2" type="text" class="form-control" name="rank" value="{{ this.model.rank }}"
+                        [(ngModel)]="this.model.rank" #rank="ngModel" required  />
+                    <!--<div *ngIf="empf.submitted && !rank.valid" class="help-block"> Rank is required.</div>
+                </div>-->
+            </div>  
+          </div>
+
+          <div class="col-4 col-md-4 col-lg-4">
+            <div  id="country">
+              <!--<div class="form-group" [ngClass]="{'has-error':empf.submitted && !contactNumber.valid}">-->
+                  <div >Phone</div>
+                      <input id="edit-textbox" type="text" class="form-control" name="phonenumber" value="{{ this.model.phonenumber }}" 
+                      [(ngModel)]="this.model.phonenumber" #phonenumber="ngModel" required  />
+                  <!--<div *ngIf="empf.submitted && !contactNumber.valid" class="help-block"> Phone is required.</div>
+              </div>-->
+          </div>
+
+          <div style="height: 10px;"></div>
+          <div id="country">
+              <!--<div class="form-group" [ngClass]="{'has-error':empf.submitted && !address.valid}">-->
+                  <div>Address</div>
+                      <textarea id="editaddress-textbox" type="text" class="form-control" name="address" value="{{ this.model.address }}"
+                         [(ngModel)]="this.model.address" #address="ngModel" required  >
+                       </textarea>
+                  <!--<div *ngIf="empf.submitted && !address.valid" class="help-block"> Address is required.</div>
+              </div>-->
+          </div>
+
+          <div style="height: 10px;"></div>
+          <div id="country">
+              <!--<div class="form-group" [ngClass]="{'has-error':empf.submitted && !emailID.valid}">-->
+                  <div>E-mail</div>
+                      <input id="edit-textbox" type="text" class="form-control" name="email" value="{{ this.model.email }}" 
+                      [(ngModel)]="this.model.email" #email="ngModel" required  />
+                  <!--<div *ngIf="empf.submitted && !emailID.valid" class="help-block"> EmailID is required.</div>
+              </div>-->
+          </div>
+
+          <div style="height: 10px;"></div>
+          <div id="country">
+              <!--<div class="form-group" [ngClass]="{'has-error':empf.submitted && !dob.valid}">-->
+                  <div>Birthday</div>
+                      <input id="edit-textbox" type="text" class="form-control" name="dob" value="{{ this.model.dob }}" 
+                      [(ngModel)]="this.model.dob" #dob="ngModel" required  />
+                  <!-- <div *ngIf="empf.submitted && !dob.valid" class="help-block"> Birth is required.</div>
+              </div>-->
+          </div>
+
+          <div style="height: 10px;"></div>
+          <div id="country">
+              <!--<div class="form-group" [ngClass]="{'has-error':empf.submitted && !joinDate.valid}">-->
+                  <div>Join Since</div>
+                      <input id="textbox-nochange-div2" type="text" class="form-control" name="addeddate" value="{{ this.model.addeddate }}" 
+                      [(ngModel)]="this.model.addeddate" #addeddate="ngModel" required  />
+                  <!--<div *ngIf="empf.submitted && !joinDate.valid" class="help-block"> Join Since is required.</div>
+              </div>-->
+          </div>
+
+          <div style="height: 10px;"></div>
+          <div id="country">
+              <!--<div class="form-group" [ngClass]="{'has-error':empf.submitted && !contractNumber.valid}">-->
+                  <div>Contract Number</div>
+                      <input id="edit-textbox" type="text" class="form-control" name="contractnumber" value="{{ this.model.contractnumber }}" 
+                      [(ngModel)]="this.model.contractnumber" #contractnumber="ngModel" required  />
+                  <!--<div *ngIf="empf.submitted && !contractNumber.valid" class="help-block" id="helpblock"> Contract Number is required.</div>
+              </div>-->
+          </div>
+        </div>
+
+
+          <div class="col-4 col-md-4 col-lg-4">
+            <div id="country">
+              <!--<div class="form-group" [ngClass]="{'has-error':empf.submitted && !npwpNumber.valid}">-->
+                  <div>NPWP</div>
+                      <input id="edit-textbox" type="text" class="form-control" name="npwp" value="{{ this.model.npwp }}" 
+                      [(ngModel)]="this.model.npwp" #npwp="ngModel" required  />
+                  <!--<div *ngIf="empf.submitted && !npwpNumber.valid" class="help-block"> NPWP is required.</div>
+              </div>-->
+          </div>
+
+          <div style="height: 10px;"></div>
+          <div id="country">
+              <!--<div class="form-group" [ngClass]="{'has-error':empf.submitted && !bpjsNumber.valid}">-->
+                  <div> BPJS</div>
+                      <input id="edit-textbox" type="text" class="form-control" name="bpjs" value="{{ this.model.bpjs }}" 
+                      [(ngModel)]="this.model.bpjs" #bpjs="ngModel" required  />
+                  <!--<div *ngIf="empf.submitted && !bpjsNumber.valid" class="help-block"> BPJS is required.</div>
+              </div>-->
+          </div>
+
+          <div style="height: 10px;"></div>
+          <div id="country">
+              <!--<div class="form-group" [ngClass]="{'has-error':empf.submitted && !monthlySalaryvalid}">-->
+                  <div>Monthly Salary</div>
+                      <input id="edit-textbox" type="text" class="form-control" name="monthlysalary" value="{{ this.model.monthlysalary }}" 
+                      [(ngModel)]="this.model.monthlysalary" #monthlysalary="ngModel" required  />
+                  <!-- <div *ngIf="empf.submitted && !monthlySalary.valid" class="help-block"> Monthly_Salary is required.</div>
+              </div>-->
+          </div>
+
+          <div style="height: 10px;"></div>
+          <div id="country">
+              <!--<div class="form-group" [ngClass]="{'has-error':empf.submitted && !overtimeSalary.valid}">-->
+                  <div>Overtime Salary</div>
+                      <input id="textbox-nochange-div2" type="text" class="form-control" name="overtimeSalary" value="{{ this.model.overtimeSalary }}" [(ngModel)]="this.model.overtimeSalary" #overtimeSalary="ngModel" required  />
+                  <!--<div *ngIf="empf.submitted && !overtimeSalary.valid" class="help-block"> Overtime_Salary is required.</div>
+              </div>-->
+          </div>
+
+          <div style="height: 10px;"></div>
+          <div id="country">
+              <!--<div class="form-group" [ngClass]="{'has-error':empf.submitted && !workHour.valid}">-->
+                  <div>Work Hour</div>
+                      <input id="edit-textbox" type="text" class="form-control" name="workHour" value="{{ this.model.workHour }}" [(ngModel)]="this.model.workHour" #workHour="ngModel" required  />
+                  <!--<div *ngIf="empf.submitted && !workHour.valid" class="help-block" id="helpblock"> Work_Hour is required.</div>
+              </div>-->
+          </div>	
+
+          <div style="height: 10px;"></div>
+          <div id="country">
+              <!-- <div class="form-group" [ngClass]="{'has-error':empf.submitted && !annualLeave.valid}">-->
+                  <div>Annual Leave</div>
+                      <input id="edit-textbox" type="text" class="form-control" name="annualLeave" value="{{ this.model.annualLeave }}" 
+                      [(ngModel)]="this.model.annualLeave" #annualLeave="ngModel" required  />
+                  <!--<div *ngIf="empf.submitted && !annualLeave.valid" class="help-block"> Annual_Leave is required.</div>
+              </div>-->
+          </div>	
+
+          <div style="height: 10px;"></div>
+          <div id="country">
+              <!--<div class="form-group" [ngClass]="{'has-error':empf.submitted && !absentDeduction.valid}">-->
+                  <div>Absent Dedection</div>
+                      <input id="textbox-nochange-div2" type="text" class="form-control" name="absentDeduction" value="{{ this.model.absentDeduction }}" 
+                      [(ngModel)]="this.model.absentDeduction" #absentDeduction="ngModel" required  />
+                  <!--<div *ngIf="empf.submitted && !absentDeduction.valid" class="help-block" id="helpblock"> Absent Dedection is required.</div>
+              </div>-->
+          </div>	
+          </div>
+        </div>
+    </form>   
+
+  </div>
+</div>     
+<!-- Employee Edit End -->
+
+          
+  </mat-tab>
+
+    <!--Second Tab-->
+  <mat-tab >
+    <ng-template mat-tab-label>
+      <span (click)="addemployeeback()"> 
+        <div id="tab-span-color">Add New </div>
+        <div id="tab-span-color">Employee</div>
+      </span>
+    </ng-template>
+    </mat-tab>
+
+    <!--THird Tab-->
+  <mat-tab >
+    <ng-template mat-tab-label>
+      <span (click)="absenceback()" id="tab-span-color">Absence</span>
+    </ng-template>
+    </mat-tab>
+
+    <!--Fourth Tab-->
+  <mat-tab >
+    <ng-template mat-tab-label>
+      <span (click)="contracttemplateback()">
+        <div id="tab-span-color">Contract</div>
+        <div id="tab-span-color">Tempelate</div>
+      </span>
+    </ng-template>
+    </mat-tab>
+
+    <!--Fifth Tab-->
+  <mat-tab >
+    <ng-template mat-tab-label>
+      <span (click)="empreportback()"> 
+        <div id="tab-span-color">Employee</div>
+        <div id="tab-span-color">Report</div>
+      </span>
+    </ng-template>
+    </mat-tab>
+
+    </mat-tab-group>
     </div>
-   </div>
+  </div>
 </div>

@@ -14,9 +14,15 @@ import { EmployeeService } from '../employee.service';
 })
 export class EmployeedataComponent implements OnInit {
 
+  model: any = {};
   employeeList : any ={};
+  public empdetails = false;
+  public empeditdetails = false;
+  public absentdiv = false;
+  public employeelist= true;
+ 
 
-  displayedColumns: string[] = ['code','name','rank','contactNumber'];
+  displayedColumns: string[] = ['code','name','rank','contactNumber','action'];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
@@ -49,4 +55,48 @@ export class EmployeedataComponent implements OnInit {
     );
   }
 
+  employeeDetails(employeecode:string){
+    this.empdetails = true;
+    this.employeelist=false;
+    this.empeditdetails = false;
+    this.absentdiv = false;
+
+    for(let i=0;i<this.employeeList.length;i++){
+      if(this.employeeList[i].employeecode==employeecode){
+        this.model.employeecode = this.employeeList[i].employeecode;
+        this.model.name = this.employeeList[i].name;
+        this.model.rank = this.employeeList[i].rank;
+        this.model.phonenumber = this.employeeList[i].phonenumber;
+        this.model.address = this.employeeList[i].address;
+        this.model.email = this.employeeList[i].email;
+        this.model.dob = this.employeeList[i].dob;
+        this.model.addeddate = this.employeeList[i].addeddate;
+        this.model.contractnumber = this.employeeList[i].contractnumber;
+        this.model.npwp = this.employeeList[i].npwp;
+        this.model.bpjs = this.employeeList[i].bpjs;
+        this.model.workHour = this.employeeList[i].workHour;
+        this.model.annualLeave = this.employeeList[i].annualLeave;
+        this.model.monthlysalary = this.employeeList[i].monthlysalary;
+      }
+    }
+
+    
+  }
+
+  emplistback(){
+    this.employeelist=true;
+    this.empdetails = false;
+    this.empeditdetails = false;
+  }
+addemployeeback(){}
+absenceback(){}
+contracttemplateback(){}
+empreportback(){}
+
+edit(){
+  this.empeditdetails = true;
+  this.empdetails = false;
+  this.employeelist=false;
+  this.absentdiv = false;
+}
 }
