@@ -107,7 +107,7 @@ const appRoutes: Routes = [
     LoginComponent,
     LandingpageComponent,   
     DashboardComponent,
-    AlertComponent
+    AlertComponent,
   ],
  
   imports: [

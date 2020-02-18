@@ -1,0 +1,77 @@
+<div class="container">
+    <div id="content">
+      <div id="main-content">
+        <mat-tab-group>
+          <!--First Tab-->
+          <mat-tab >
+            <ng-template mat-tab-label>
+              <span (click)="test()">Employee List</span>
+            </ng-template>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                    <div class="mat-elevation-z8">
+
+                            <table mat-table [dataSource]="dataSource" matSort>
+                
+                            
+                            <ng-container matColumnDef="code">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> #ID </th>
+                                <td mat-cell *matCellDef="let row" (click)="employeeDetails(row.employeecode)" id="{{ row.employeecode }}"> {{row.employeecode}} </td>
+                            </ng-container>
+                            
+                            <ng-container matColumnDef="name">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                                <td mat-cell *matCellDef="let row" (click)="employeeDetails(row.employeecode)" id="{{ row.employeecode }}"> {{row.name}} </td>
+                            </ng-container>
+                            
+                
+                            <ng-container matColumnDef="rank">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Rank </th>
+                                <td mat-cell *matCellDef="let row" (click)="employeeDetails(row.employeecode)" id="{{ row.employeecode }}"> {{row.rank}} </td>
+                            </ng-container>
+                
+                            <ng-container matColumnDef="contactNumber">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Number </th>
+                                <td mat-cell *matCellDef="let row" (click)="employeeDetails(row.employeecode)" id="{{ row.employeecode }}"> {{row.phonenumber}} </td>
+                            </ng-container>
+                
+                            <tr mat-header-row  *matHeaderRowDef="displayedColumns;"></tr>
+                            <tr mat-row [ngClass]="table-row" tabindex="1" 
+                            *matRowDef="let row; columns: displayedColumns;"></tr>
+                            </table>
+                            
+                        </div>        
+          </mat-tab>
+
+           <!--Second Tab-->
+          <mat-tab >
+            <ng-template mat-tab-label>
+              <span (click)="test2()">Add New Employee</span>
+            </ng-template>
+           </mat-tab>
+
+            <!--THird Tab-->
+          <mat-tab >
+            <ng-template mat-tab-label>
+              <span (click)="test2()">Absence</span>
+            </ng-template>
+           </mat-tab>
+
+            <!--Fourth Tab-->
+          <mat-tab >
+            <ng-template mat-tab-label>
+              <span (click)="test2()">Contract Tempelate</span>
+            </ng-template>
+           </mat-tab>
+
+            <!--Fifth Tab-->
+          <mat-tab >
+            <ng-template mat-tab-label>
+              <span (click)="test2()">Employee Report</span>
+            </ng-template>
+           </mat-tab>
+
+        </mat-tab-group>
+    </div>
+   </div>
+</div>

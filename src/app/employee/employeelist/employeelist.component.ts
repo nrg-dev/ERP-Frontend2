@@ -34,7 +34,6 @@ export class EmployeelistComponent implements OnInit {
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
   displayedColumns: string[] = ['code','name','rank','contactNumber'];
-
   dataSource: MatTableDataSource<any>;
   
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;

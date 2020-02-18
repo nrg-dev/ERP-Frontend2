@@ -46,6 +46,7 @@ import {
   MatTooltipModule,
   MatTreeModule,
 } from '@angular/material';
+import { EmployeedataComponent } from './employeedata/employeedata.component';
 
 
 const routes: Routes = [
@@ -57,13 +58,14 @@ const routes: Routes = [
   // no used
   { path: 'employeeindex', component: EmployeeindexComponent },
   { path: 'employeereport', component: EmployeereportComponent },
-  { path: 'employeealert', component: EmployeealertComponent }
+  { path: 'employeealert', component: EmployeealertComponent },
+  { path: 'employeedata', component: EmployeedataComponent }
 ];
 
 
 @NgModule({
   declarations: [EmployeeaddComponent, EmployeelistComponent, 
-    EmployeereportComponent, EmployeeindexComponent, EmployeealertComponent, TimesheetComponent],
+    EmployeereportComponent, EmployeeindexComponent, EmployeealertComponent, TimesheetComponent, EmployeedataComponent],
   imports: [
     FormsModule,
     CommonModule,MatTabsModule,ReactiveFormsModule,
