@@ -37,4 +37,12 @@ export class StockService {
         return this.http.get<Stock>(this.commonURL+'loadInvoice');
     }
 
+    //------ Save StockIn Details -----
+    saveStockIn(stockInarray: Array<any>){
+        return this.http.post<Stock>(this.commonURL+'saveStockIn',stockInarray);
+    }
+
+    loadStockIn(){
+        return this.http.get<Stock>(this.commonURL+'loadStockIn');
+    }
 }

@@ -2,6 +2,7 @@
 
 export class Stock extends Common {
 
+   id: string;
    productName: string; 
    category: string;
    customerName: string;
@@ -18,4 +19,6 @@ export class Stock extends Common {
    currentStatus: string;
    stockDamageCode: string;
    itemStatus: string;
+   price: number;
+   description: string;
 }

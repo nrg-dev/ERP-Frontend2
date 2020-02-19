@@ -17,17 +17,21 @@ import { PurchaseService } from '../../purchase/purchase.service';
 })
 export class ViewStockIn {
   model: any ={};
-  public productList : any;
+  stock: Stock = new Stock;
   public statusList : any;
-  dialogConfig = new MatDialogConfig();
-  isDtInitialized:boolean = false;
   public fullStock = false;
   public partialStock = false;
-
+  public stockInList : any;
+  public stockDetList:Array<Stock> = [ ];
+  stockInarray: Array<any> = [];
+  dialogConfig = new MatDialogConfig();
+  isDtInitialized:boolean = false;
+  
   public priceArray : any = [];
   public descriptionArray : any = [];
   constructor(
     private purchaseService: PurchaseService,
+    private stockService: StockService,
     private dialog: MatDialog,
     private alertService: AlertService,
 
@@ -43,12 +47,97 @@ export class ViewStockIn {
         this.fullStock = false;
         this.partialStock = true;
       }
-      //this.editDetails(this.model.invoiceNumber);
+      this.editDetails(this.model.invoiceNumber);
       this.statusList = ['Pending','On Progress','Success'];
     }
 
+    editDetails(invoiceNumber:string){
+      this.purchaseService.geteditDetails(invoiceNumber)
+      .subscribe(
+        data => {
+          this.stockInList = data;
+          console.log("Length -->"+this.stockInList.length);
+          if(this.stockInList.length == 0){
+            console.log("--- No data Found ---");
+          }else{
+            for(let i=0;i<this.stockInList.length;i++){
+              console.log("--- category name ---"+this.stockInList[i].category);
+              console.log("--- product name ---"+this.stockInList[i].itemname);
+              console.log("--- ObjectID ---"+this.stockInList[i].id);
+              this.stock = new Stock;
+              this.stock.productName = this.stockInList[i].itemname;
+              console.log("--- productName ---"+this.stock.productName);
+              this.stock.category = this.stockInList[i].category;
+              this.stock.description = this.stockInList[i].description;
+              this.stock.quantity = this.stockInList[i].qty;
+              this.stock.netAmount = this.stockInList[i].subtotal;
+              this.stock.id = this.stockInList[i].id;
+              this.stock.price = this.stockInList[i].unitprice;
+              this.stock.invoiceNumber = this.stockInList[i].invoicenumber;
+              this.stock.poDate = this.stockInList[i].poDate;
+              this.stockDetList.push(this.stock);
+            }
+  
+            for(let j=0; j<this.stockDetList.length; j++){
+              console.log("Item Name ------>"+this.stockDetList[j].productName);
+              console.log("Quantity ------>"+this.stockDetList[j].quantity);
+              console.log("Description ------>"+this.stockDetList[j].description);
+            }
+          }
+        },
+        error => {
+          setTimeout(() => {
+            this.alertService.error("Network error: server is temporarily unavailable");
+          }, 2000);
+        }
+      ); 
+  }
+
+  saveStockIn(){
+    this.stock = new Stock;
+    for(let j=0; j<this.stockDetList.length; j++){
+      console.log("FullStockIn Category Name ------>"+this.stockDetList[j].category);
+      console.log("FullStockIn Item Name ------>"+this.stockDetList[j].productName);
+      console.log("FullStockIn description ------>"+this.stockDetList[j].description);
+      console.log("FullStockIn quantity ------>"+this.stockDetList[j].quantity);
+      console.log("FullStockIn unitPrice ------>"+this.stockDetList[j].price);
+      console.log("FullStockIn netAmount ------>"+this.stockDetList[j].netAmount);
+      console.log("FullStockIn ObjectID ------>"+this.stockDetList[j].id);
+      console.log("FullStockIn invoiceNumber ------>"+this.stockDetList[j].invoiceNumber);
+      console.log("FullStockIn PODate ------>"+this.stockDetList[j].poDate);
+    }
+
+    console.log(this.stockDetList);
+    this.stockInarray.push(this.stockDetList);
+    console.log(this.stockInarray);
+
+    this.stockService.saveStockIn(this.stockInarray)
+    .subscribe(
+      data => {
+        this.stock = data; 
+        this.alertService.success("Successfully Saved.");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 1000);
+      },
+      error => {
+        this.alertService.error("Network error: server is temporarily unavailable");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 1500);
+      }
+    );
+    
+  }
+
+  cancelInvoice(){
+    this.dialogRef.close();
+    window.location.reload();
+  }
+
   onNoClick(): void {
     this.dialogRef.close();
+    window.location.reload();
   }
   
 }
@@ -150,12 +239,7 @@ export class StockaddComponent implements OnInit {
     private purchaseService: PurchaseService
   ) {
 
-    
-    const stockIndata = require("../../stockIndata.json");
-    this.stockInList=stockIndata;
-    this.dataSource1 = new MatTableDataSource(this.stockInList);
-    this.dataSource1.paginator = this.paginator.toArray()[0];
-    this.dataSource1.sort = this.sort.toArray()[0];
+    this.stockInLoad();    
    
     const data = require("../../stockOutdata.json");
     this.stockOutList=data;
@@ -218,7 +302,7 @@ export class StockaddComponent implements OnInit {
       left: '100'
     };
     this.dialog.open(ViewStockIn,{
-      panelClass: 'editInvoice',
+      panelClass: 'ViewStockIn',
       data: { invoice: this.model.invoiceNumber, status: this.model.paymentOption },
       height: '80%'
     }).afterClosed().subscribe(result => {
@@ -226,19 +310,34 @@ export class StockaddComponent implements OnInit {
     });
   }
 
+  stockInLoad(){
+    this.stockService.loadStockIn().subscribe(res => { 
+        this.stockInList = res;
+        this.dataSource1 = new MatTableDataSource(this.stockInList);
+        this.dataSource1.paginator = this.paginator.toArray()[0];
+        this.dataSource1.sort = this.sort.toArray()[0];
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    );
+  }
+
   stockReturnLoad(){
     this.stockService.loadReturn().subscribe(res => { 
-      this.stockReturnList = res;
-      this.dataSource3 = new MatTableDataSource(this.stockReturnList);
-      this.dataSource3.paginator = this.paginator.toArray()[2];
-      this.dataSource3.sort = this.sort.toArray()[2]; 
-    },
-    error => {
-      setTimeout(() => {
-        this.alertService.error("Network error: server is temporarily unavailable");
-      }, 2000);
-    }
-  );
+        this.stockReturnList = res;
+        this.dataSource3 = new MatTableDataSource(this.stockReturnList);
+        this.dataSource3.paginator = this.paginator.toArray()[2];
+        this.dataSource3.sort = this.sort.toArray()[2]; 
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    );
   }
 
   stockDamageload(){
