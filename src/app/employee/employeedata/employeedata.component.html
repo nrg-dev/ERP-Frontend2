@@ -34,7 +34,7 @@
               </div>
             </div>
 
-            <h3>Customer List</h3>
+            <h3>Employee List</h3>
 
             <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
                     <div class="mat-elevation-z8">
@@ -70,16 +70,16 @@
                                   <div id="rowview-div" (click)="employeeDetails(row.employeecode)">
                                       <i class="fa fa-eye" id="row-icon" aria-hidden="true"></i>    
                                   </div>  
-                                  &nbsp;&nbsp; &nbsp;
+                                  &nbsp;&nbsp; 
                                   <div id="rowprint-div" (click)="productprint()">
                                       <i class="fa fa-print" id="row-icon" aria-hidden="true"></i>    
                                   </div>  
-                                  &nbsp;&nbsp; &nbsp;
-                                  <div id="rowedit-div2" (click)="vendoreditDetails(row.vendorcode)">
+                                  &nbsp;&nbsp; 
+                                  <div id="rowedit-div2" (click)="edit(row.employeecode)">
                                       <i class="fa fa-pencil-square-o" id="row-icon" aria-hidden="true"></i>    
                                   </div>  
-                                  &nbsp;&nbsp; &nbsp;
-                                  <div id="rowdelete-div2" (click)="vendordelete(row.vendorcode)">
+                                  &nbsp;&nbsp; 
+                                  <div id="rowdelete-div2" (click)="delete(row.employeecode)">
                                       <i class="fa fa-trash-o" id="row-icon" aria-hidden="true"></i>    
                                   </div>   
                               </div>  
@@ -298,49 +298,50 @@
         <div *ngIf="empeditdetails" class="scroll-div">
           <div id="empview-secong-layer">
             <br/> <br/>
+            <form name="formReg">
             <div class="row">
                 <div class="col-md-3 col-5 col-lg-7">
                     <h3>Edit Employee Details</h3>
                 </div>
                     <div  class="col-md-5 col-5 col-lg-5">
                     <div class="row">
-                        <button id="button-printpage">
-                            <div class="row" (click)="edit()">
-                                <i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size: 20px;"></i>
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <p>Edit</p>
-                            </div>
-                        </button>
+                      <button id="delete-btn">
+                        <div class="row" (click)="delete(this.model.employeecode)">
+                          <i class="fa fa-trash" aria-hidden="true" style="font-size: 21px;"></i>
+                            &nbsp;&nbsp;
+                            <p>Delete</p>
+                          </div>
+                       </button>
 
                         &nbsp; &nbsp; &nbsp;
-                        <button id="button-printpage">
-                            <div class="row">
-                                <i class="fa fa-print" aria-hidden="true" style="font-size: 20px;"></i>
-                                &nbsp;&nbsp;
-                                <p id="text">Print Page</p>
-                            </div>
-                        </button>
+                        <button id="save-btn">
+                          <div class="row" (click)="setEmployeeUpdate()">
+                            <i class="fa fa-floppy-o" aria-hidden="true" style="font-size: 21px;"></i>
+                            &nbsp; &nbsp;
+                            <p id="text">Save</p>
+                          </div>
+                          </button>
 
-                    </div>
+                     </div>
                     </div>
                 </div>
           
           <br/><br/><br/>
-          <form name="formReg">
+          
             <div class="row">
             <div class="col-1 col-md-1 col-lg-1"></div>
             <div class="col-3 col-md-3 col-lg-3">
-              <div id="country">
+              <div>
                 <div>Employee Photo</div>
-                <div  id="select-div">
-                <br/><br/><br/>
+                <div  id="select-div2">
+                <br/><br/>
                   <h3 style="color: black;text-align: center;">Employee </h3>
                   <h3 style="color: black;text-align: center;">Picture</h3>
                 <div id="editimg-border">
                     <i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size: 21px;margin: 6px;"></i>
-                  </div> 
-                </div>
+                </div> 
               </div>
+            </div>
 
               <br/>
               <div id="country">
@@ -355,7 +356,7 @@
             <div style="height: 10px;"></div>
             <div  id="country">
               <div > Code Number</div>
-              <div id="textbox-nochange-div2">{{ this.model.employeecode }}</div>       
+              <div id="textbox-nochange-div">{{ this.model.employeecode }}</div>       
             </div>
             
             <div style="height: 10px;"></div>
@@ -414,8 +415,9 @@
           <div id="country">
               <!--<div class="form-group" [ngClass]="{'has-error':empf.submitted && !joinDate.valid}">-->
                   <div>Join Since</div>
-                      <input id="textbox-nochange-div2" type="text" class="form-control" name="addeddate" value="{{ this.model.addeddate }}" 
-                      [(ngModel)]="this.model.addeddate" #addeddate="ngModel" required  />
+                      <div id="textbox-nochange-div2"  name="addeddate"[(ngModel)]="this.model.addeddate" #addeddate="ngModel" required >
+                        {{ this.model.addeddate }}
+                      </div>
                   <!--<div *ngIf="empf.submitted && !joinDate.valid" class="help-block"> Join Since is required.</div>
               </div>-->
           </div>
@@ -466,7 +468,9 @@
           <div id="country">
               <!--<div class="form-group" [ngClass]="{'has-error':empf.submitted && !overtimeSalary.valid}">-->
                   <div>Overtime Salary</div>
-                      <input id="textbox-nochange-div2" type="text" class="form-control" name="overtimeSalary" value="{{ this.model.overtimeSalary }}" [(ngModel)]="this.model.overtimeSalary" #overtimeSalary="ngModel" required  />
+                      <div id="textbox-nochange-div2"  name="overtimeSalary" [(ngModel)]="this.model.overtimeSalary" 
+                      #overtimeSalary="ngModel" required >{{ this.model.overtimeSalary }}
+                      </div>
                   <!--<div *ngIf="empf.submitted && !overtimeSalary.valid" class="help-block"> Overtime_Salary is required.</div>
               </div>-->
           </div>
@@ -494,8 +498,9 @@
           <div id="country">
               <!--<div class="form-group" [ngClass]="{'has-error':empf.submitted && !absentDeduction.valid}">-->
                   <div>Absent Dedection</div>
-                      <input id="textbox-nochange-div2" type="text" class="form-control" name="absentDeduction" value="{{ this.model.absentDeduction }}" 
-                      [(ngModel)]="this.model.absentDeduction" #absentDeduction="ngModel" required  />
+                      <div id="textbox-nochange-div2"  name="absentDeduction" [(ngModel)]="this.model.absentDeduction" 
+                      #absentDeduction="ngModel" required >{{ this.model.absentDeduction }}
+                      </div>
                   <!--<div *ngIf="empf.submitted && !absentDeduction.valid" class="help-block" id="helpblock"> Absent Dedection is required.</div>
               </div>-->
           </div>	
@@ -518,6 +523,144 @@
         <div id="tab-span-color">Employee</div>
       </span>
     </ng-template>
+
+    <!--Add employee Start-->
+    <br/><br/>
+    <div class="row">
+      <div class="col-md-3 col-5 col-lg-7">
+          <h3>Add Employee</h3>
+      </div>
+          <div  class="col-md-5 col-5 col-lg-5">
+          <div class="row">
+            <button id="delete-btn">
+              <div class="row" (click)="cancelEmployee()">
+                <i class="fa fa-trash" aria-hidden="true" style="font-size: 21px;"></i>
+                  &nbsp;&nbsp;
+                  <p>Cancel</p>
+                </div>
+             </button>
+
+              &nbsp; &nbsp; &nbsp;
+              <button id="save-btn">
+                <div class="row" (click)="saveEmployee()">
+                  <i class="fa fa-floppy-o" aria-hidden="true" style="font-size: 21px;"></i>
+                  &nbsp; &nbsp;
+                  <p id="text">Save</p>
+                </div>
+                </button>
+
+           </div>
+          </div>
+      </div>
+
+    <br/><br/>
+    <form >    
+    <div class="row">
+      <div class="col-1 col-md-1 col-lg-1"></div>
+        <div class="col-3 col-md-3 col-lg-3">
+          <div>
+            <div>Employee Photo</div>
+              <div  id="select-div2">
+              <br/><br/>
+                <h3 style="color: black;text-align: center;">Employee </h3>
+                <h3 style="color: black;text-align: center;">Picture</h3>
+              <div id="editimg-border">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size: 21px;margin: 6px;"></i>
+              </div> 
+            </div>
+          </div>
+
+          <div style="height: 10px;"></div>
+          <div>
+            <div>Name</div>
+            <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Name"
+              [(ngModel)]="this.model.name" #name="ngModel" name="name" required>
+          </div>
+
+          <div style="height: 10px;"></div>
+          <div>
+            <div>Employee Rank </div>
+            <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Employee Rank" 
+            [(ngModel)]="this.model.rank" #rank="ngModel" name="rank" required>
+          </div>
+        </div>
+  
+        <div class="col-4 col-md-4 col-lg-4">
+          <div>
+            <div>Phone</div>
+            <input type="text" id="box-width" class="form-control" placeholder="Phone number" 
+            [(ngModel)]="this.model.phonenumber" #phonenumber="ngModel" name="phonenumber" required>
+          </div>
+
+          <div style="height: 5px;"></div>
+          <div>
+          <div> Address</div> 
+            <textarea type="text" id="editaddress-textbox" class="form-control" placeholder="Address"
+              [(ngModel)]="this.model.address" #address="ngModel" name="address" required>
+            </textarea>
+          </div>
+
+          <div style="height: 5px;"></div>
+          <div>
+            <div>E-mail</div>
+            <input type="text" id="box-width" class="form-control" placeholder="Email" 
+            [(ngModel)]="this.model.email" #email="ngModel" name="email" required>
+          </div>
+
+          <div style="height: 5px;"></div>
+          <div>
+            <div>Birthday</div>
+            <input type="text" id="box-width" class="form-control" placeholder="Date of Birth" 
+            [(ngModel)]="this.model.dob" #dob="ngModel" name="dob" required>
+          </div>
+
+          <div style="height: 5px;"></div>
+          <div>
+            <div>Contract Number </div>
+            <input type="text" id="box-width" class="form-control" placeholder="Contract Number" 
+            [(ngModel)]="this.model.contractnumber" #contractnumber="ngModel" name="contractnumber" required>
+          </div>
+        </div>
+  
+        <div class="col-4 col-md-4 col-lg-4">
+          <div>
+            <div>NPWP</div>
+            <input type="text" id="box-width" class="form-control" placeholder="NPWP Number" 
+            [(ngModel)]="this.model.npwp" #npwp="ngModel" name="npwp" required>
+          </div>
+  
+          <div style="height: 13px;"></div>
+          <div>
+            <div>BPJS </div>
+            <input type="text" id="box-width" class="form-control" placeholder="BPJS"
+             [(ngModel)]="this.model.bpjs" #bpjs="ngModel" name="bpjs" required>
+          </div>
+  
+          <div style="height: 15px;"></div>
+          <div>
+            <div> Monthly Salary </div>
+            <input type="text" id="box-width" class="form-control" placeholder="Monthly Salary" 
+            [(ngModel)]="this.model.monthlysalary" #monthlysalary="ngModel" name="monthlysalary" required>
+          </div>
+
+          <div style="height: 15px;"></div>
+          <div>
+            <div>Work Hour </div>
+            <input type="text" id="box-width" class="form-control" placeholder="Work Hour" 
+            [(ngModel)]="this.model.workHour" #workHour="ngModel" name="workHour" required>
+          </div>
+  
+          <div style="height: 15px;"></div>
+          <div>
+            <div>Annual Leave </div>
+              <input type="text" id="box-width" class="form-control" placeholder="Annual Leave"
+               [(ngModel)]="this.model.annualLeave" #annualLeave="ngModel" name="annualLeave" required>
+          </div>
+        </div>  
+    </div>  
+  </form>      
+    <!--Add employee End-->
+
     </mat-tab>
 
     <!--THird Tab-->
@@ -525,6 +668,165 @@
     <ng-template mat-tab-label>
       <span (click)="absenceback()" id="tab-span-color">Absence</span>
     </ng-template>
+
+
+    <div class="row">
+      <div class="col-4 col-md-4 col-lg-3">
+        <br/><br/>
+        <mat-form-field style="color: black;">
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Employee Name/Code">
+        </mat-form-field>
+        <br/><br/>
+        <div class="mat-elevation-z8">
+          <table mat-table #sortCol1="matSort" [dataSource]="dataSource1" matSort matSortActive="ID" matSortDirection="asc">
+            
+                <ng-container matColumnDef="EmployeeName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>name</th>
+                    <td mat-cell *matCellDef="let row" (click)="absentCardDetails(row.employeecode)" id="{{row.employeecode}}"> {{row.name}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Empcode">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>employeecode</th>
+                    <td mat-cell *matCellDef="let row" (click)="absentCardDetails(row.employeecode)" id="{{row.employeecode}}"> {{row.employeecode}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns2;"></tr>
+                <tr mat-row mat-row [ngClass]="table-row" tabindex="1" 
+                 *matRowDef="let row; columns: displayedColumns2;">
+                </tr>
+            </table>
+        </div>  
+      </div>
+
+
+      <div class="col-4 col-md-4 col-lg-5">
+        <br/> <br/>
+        <div id="absentcard-box">
+          <div class="row">
+            <div class="col-5 col-md-5 col-lg-6">
+              <p id="absent-text">OCTOBER ABSENT CARD</p>
+            </div>
+            <div class="col-5 col-md-5 col-lg-6">
+              <br/>
+               <div class="row" id="button-printpage">
+                <i class="fa fa-print" aria-hidden="true" style="margin: 5px;"></i>
+                &nbsp;&nbsp;
+                <p id="font-size15">Print Page</p>
+               </div>
+             </div>
+            </div>
+            <div style="height: 10px;"></div>
+
+            <div id="sectable-back-color">
+              <div *ngFor="let row of empAbsetList" (click)=empdailyreportcall(row.date) id="{{row.date}}">
+                <div class="row">
+                  <div class="col-4 col-md-4 col-lg-4">
+                    <p id="font-sixe12">Date</p>
+                  </div>
+                  <div class="col-4 col-md-4 col-lg-4">
+                    <p id="font-sixe12">Check In</p>
+                  </div>
+                  <div class="col-4 col-md-4 col-lg-4">
+                    <p id="font-sixe12">Check Out</p>
+                  </div>                
+                </div>
+               
+                <div class="row">
+                  <div class="col-4 col-md-4 col-lg-4">
+                    <p id="font-sixe12">{{row.date}}</p>
+                  </div>
+                  <div class="col-4 col-md-4 col-lg-4">
+                    <p id="font-sixe12">{{row.checkin}}</p>
+                  </div>
+                  <div class="col-4 col-md-4 col-lg-4">
+                    <p id="font-sixe12">{{row.checkout}}</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+            </div>
+
+        </div>
+      </div>
+
+
+      <div class="col-4 col-md-4 col-lg-4">
+        <br/><br/> 
+            <div class="scroll-div" id="example-box">
+              <div style="height: 10px;"></div>
+                  <div class="row">
+                      <div id="date-details">
+                          <p class="text">SET DATE AND TIME</p>
+                          <p class="datetext"> {{todayDate | date:'longDate'}} </p>
+                          <p class="datetext" id="date">{{todayDate | date:'mediumTime'}}</p>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="radio-toolbar">
+                          <input type="radio" id="radio1" name="radios" value="check In" [(ngModel)]="model.status" #status="ngModel" required />
+                          <label for="radio1" id="checkIn-butn">CHECK IN</label>
+                          
+                          <input type="radio" id="radio2" name="radios" value="check Out" [(ngModel)]="model.status" #status="ngModel" required />
+                          <label for="radio2" id="checkOut-butn">CHECK OUT</label>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="radio-toolbar">
+                          <input type="radio" id="radio3" name="radios" value="absent" [(ngModel)]="model.status" #status="ngModel" required />
+                          <label for="radio3" id="absentbtn">ABSENT</label>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <p id="reason-text">Reason </p>
+                  </div>
+                  <div class="row">
+                      <textarea type="text" id="reason-box"  class="form-control" name="reason" value="{{ this.model.reason }}" [(ngModel)]="this.model.reason" #reason="ngModel" required></textarea>  
+                  </div>
+                  <div class="row">
+                      <p style="margin: 0 3px;color:white;font-size: 10px;">Fill this form if late check in / early check out / absent </p>
+                  </div>
+                  <div class="row">
+                      <div id="date-details2">
+                          <p class="text">PREVIEW DETAIL </p>
+                          <div class="row" id="country">
+                              <div class="col-md-5 col-xs-5 col-lg-5">Employee Code</div>
+                              <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                              <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.employeecode }}</div>
+                          </div>
+                          <div class="row" id="country">
+                              <div class="col-md-5 col-xs-5 col-lg-5">Employee Name</div>
+                              <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                              <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.name }}</div>
+                          </div>
+                          <div class="row" id="country">
+                              <div class="col-md-5 col-xs-5 col-lg-5">Date</div>
+                              <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                              <div class="col-md-6 col-xs-6 col-lg-5">{{ todayDate | date:'longDate' }}</div>
+                          </div>
+                          <div class="row" id="country">
+                              <div class="col-md-5 col-xs-5 col-lg-5">Time</div>
+                              <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                              <div class="col-md-6 col-xs-6 col-lg-5">{{todayDate | date:'mediumTime'}}</div>
+                          </div>
+                          <div class="row" id="country">
+                              <div class="col-md-5 col-xs-5 col-lg-5">Status</div>
+                              <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                              <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.status }}</div>
+                          </div>
+                          <div class="row" id="country">
+                              <div class="col-md-5 col-xs-5 col-lg-5">Reason</div>
+                              <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                              <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.reason }}</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <button id="uploadbtn" (click)="upload(todayDate)">UPLOAD</button>
+                  </div>
+          </div>
+      </div>
+    </div>
+
     </mat-tab>
 
     <!--Fourth Tab-->

@@ -313,6 +313,11 @@ h3{
     height: 32px;
     margin: 5px 0 0 5px;
 }
+#absentcard-box{
+    background: #1B2931;
+    height: 445px;
+    width: 100%;
+  }
 
 #absentbtn{
     width: 85%;
