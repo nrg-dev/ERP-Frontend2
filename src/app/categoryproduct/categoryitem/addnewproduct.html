@@ -22,8 +22,8 @@
             <div class="col-2 col-md-2 col-sm-2 col-lg-2">
                 <select id="editselect-box"  name ="selectcategory" [(ngModel)]="model.categorycode" 
                 #categorycode="ngModel" required>
-                    <option id="editselect-box" value="">---- Select ----</option>
-                    <option id="editselect-box" *ngFor="let itemcategory of allcategorylist" value="{{itemcategory.name}}-{{itemcategory.categorycode}}"> {{itemcategory.name}}-{{itemcategory.categorycode}} </option>
+                <option [ngValue]="undefined" hidden selected> Select Product Category </option>
+                <option id="editselect-box" *ngFor="let itemcategory of allcategorylist" value="{{itemcategory.name}}-{{itemcategory.categorycode}}"> {{itemcategory.name}}-{{itemcategory.categorycode}} </option>
                 </select>
             </div>
         </div>
@@ -31,13 +31,13 @@
         <br/>
         <div class="row">
             <div class="col-4 col-md-4 col-sm-4 col-lg-4">
-                <label id="text-cursor">ProductName:</label>
+                <label id="text-cursor">Product Name:</label>
             </div>
             <div class="col-2 col-md-2 col-sm-2 col-lg-2">
                 <input type="text" id="name-box" placeholder="Fiber Kevlar Matt"
                 [(ngModel)]="model.productname" 
                 #productname="ngModel" 
-                placeholder="Enter productname" name="productname"/>
+                placeholder="Product Name" name="productname"/>
             </div>
         </div>
 
@@ -51,7 +51,7 @@
                 <textarea type="text" id="description-box"
                 [(ngModel)]="model.description" 
                 #description="ngModel" 
-                 placeholder="300 GSM knitted kevlar fiber matt" name="description">
+                 placeholder="Product Description" name="description">
                  </textarea>
             </div>
         </div>
@@ -65,8 +65,8 @@
                 <select id="editselect-box" name ="vendorcode" [(ngModel)]="model.vendorcode"
                 #vendorcode="ngModel" 
                  vendorcode>
-                    <option id="editselect-box" value="">---- Select ----</option>
-                    <option id="editselect-box" *ngFor="let item of vendornamelist" 
+                 <option [ngValue]="undefined" hidden selected> Select Vendor </option>
+                 <option id="editselect-box" *ngFor="let item of vendornamelist" 
                     value="{{item.vendorName}}-{{item.vendorcode}}"> {{item.vendorName}}-{{item.vendorcode}} </option>
                 </select>
             </div>
@@ -81,7 +81,7 @@
                 <input type="text" id="price-box" 
                 [(ngModel)]="model.price" 
                 #price="ngModel" (change)="getSellingPrice(model.price,model.tax,model.margin)"
-                 placeholder="Fiber Kevlar Matt" name="price"/>
+                 placeholder="IDR X.XXX.XXX" name="price"/>
             </div>
         </div>
 
@@ -108,7 +108,7 @@
         <br/>
         <div class="row">
             <div class="col-4 col-md-4 col-sm-4 col-lg-4">
-                <label id="text-cursor">Sellingprice:</label>
+                <label id="text-cursor">Selling Price:</label>
             </div>
             <div class="col-2 col-md-2 col-sm-2 col-lg-2">
                 <input type="text" id="productcode-box"

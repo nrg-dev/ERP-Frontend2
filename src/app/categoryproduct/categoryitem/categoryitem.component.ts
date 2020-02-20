@@ -120,9 +120,9 @@ export class CategoryeditdeleteComponent {
       .subscribe(
         data => {
           this.category =  data;  
-          this.dialogRef.close();
           if(this.category.status == "Success"){
           this.alertService.success("Category is Removed Successfully");
+          this.dialogRef.close();
           setTimeout(() => {
             this.alertService.clear();
           }, 1500);
@@ -1004,7 +1004,7 @@ productlist(number: string){
 
     })
     .afterClosed().subscribe(result => {
-     // this.refresh();
+      this.allcategorylist();
     });
   }
 
