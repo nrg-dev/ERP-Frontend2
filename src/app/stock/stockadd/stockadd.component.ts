@@ -48,7 +48,6 @@ export class ViewStockIn {
         this.partialStock = true;
       }
       this.editDetails(this.model.invoiceNumber);
-      this.statusList = ['Pending','On Progress','Success'];
     }
 
     editDetails(invoiceNumber:string){
@@ -111,7 +110,7 @@ export class ViewStockIn {
     this.stockInarray.push(this.stockDetList);
     console.log(this.stockInarray);
 
-    this.stockService.saveStockIn(this.stockInarray)
+    this.stockService.saveStockIn(this.stockInarray,this.model.stockStatus)
     .subscribe(
       data => {
         this.stock = data; 
@@ -127,7 +126,40 @@ export class ViewStockIn {
         }, 1500);
       }
     );
-    
+  }
+
+  getTotalAmount(productName:string,qty:string,category:string,id:string){
+    var index;
+    console.log("productName ==>"+productName);
+    console.log("Qty ==>"+qty);
+    console.log("category ==>"+category);
+    console.log("Input ID ---->"+id);
+    for (var i = 0; i < this.stockDetList.length ; i++) {
+      console.log("Database ID  -------->"+this.stockDetList[i].id);
+      if (this.stockDetList[i].id === id) {
+        console.log("Index value --->"+i);
+        index = i;
+      }
+    }
+    this.stockService.getUnitPrice(productName,category)
+    .subscribe(
+      data => {
+        this.stock = data; 
+        console.log("Get UnitPrice  ----->"+this.stock.sellingprice);
+        let res = qty.replace(/\D/g, "");
+        this.stock.totalAmount = Number.parseInt(res) * this.stock.sellingprice;
+        console.log("Onchange Total Amount  ----->"+this.stock.totalAmount);
+        this.stockDetList[index].netAmount = this.stock.totalAmount;
+        this.stockDetList[index].price = this.stock.sellingprice;
+        
+      },
+      error => {
+        this.alertService.error("Network error: server is temporarily unavailable");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 1500);
+      }
+    );
   }
 
   cancelInvoice(){
@@ -248,7 +280,6 @@ export class StockaddComponent implements OnInit {
     this.dataSource2.sort = this.sort.toArray()[1];
 
     this.stockReturnLoad();
-    
     this.stockDamageload();   
 
     const stockReportdata = require("../../stockReportdata.json");
@@ -272,14 +303,13 @@ export class StockaddComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.getInvoiceList();
     this.getProductList();
     this.getcategoryList();
     this.prodCategoryList = ['Mobile-Electronic', 'Computer-Manufactorning', 'Cloths-Institue', 'TV-Mining'];
   }
 
-  getInvoiceList(){
-    this.stockService.loadInvoice()
+  getInvoiceList(paymentOption:string){
+    this.stockService.loadInvoice(paymentOption)
     .subscribe(res => { 
       this.invoiceList = res;
       },

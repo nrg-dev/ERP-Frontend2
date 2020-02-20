@@ -140,7 +140,8 @@ export class SalesorderComponent implements OnInit {
           this.sales = data; 
           this.model.unitPrice = this.sales.sellingprice;
           //this.model.customerName = this.sales.customername+"-"+this.sales.customercode;
-          this.model.netAmount = Number.parseInt(quantity) * this.sales.sellingprice;
+          let res = quantity.replace(/\D/g, "");
+          this.model.netAmount = Number.parseInt(res) * this.sales.sellingprice;
           console.log("Price ---->"+this.model.unitPrice +" --netAmount -->"+this.model.netAmount);
         },
         error => {

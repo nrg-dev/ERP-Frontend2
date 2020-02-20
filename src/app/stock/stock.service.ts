@@ -7,7 +7,8 @@ export class StockService {
 
     public url = require("../apiurl.json");
     private commonURL = this.url[0].apiurl+'stock/';
-    
+    private purchaseURL = this.url[0].apiurl+'purchase/';
+
     constructor(private http: HttpClient) { }
 
     //********************* Stock ************************
@@ -33,16 +34,21 @@ export class StockService {
         return this.http.put<Stock>(this.commonURL+'update',stock);
     }
 
-    loadInvoice(){
-        return this.http.get<Stock>(this.commonURL+'loadInvoice');
+    loadInvoice(paymentOption:string){
+        return this.http.get<Stock>(this.commonURL+'loadInvoice?paymentOption='+paymentOption);
     }
 
     //------ Save StockIn Details -----
-    saveStockIn(stockInarray: Array<any>){
+    saveStockIn(stockInarray: Array<any>,stockStatus:string){
+        stockInarray.push([{stockStatus:stockStatus}]);
         return this.http.post<Stock>(this.commonURL+'saveStockIn',stockInarray);
     }
 
     loadStockIn(){
         return this.http.get<Stock>(this.commonURL+'loadStockIn');
+    }
+
+    getUnitPrice(productName:string,category:string){
+        return this.http.get<Stock>(this.purchaseURL+'getUnitPrice?productName='+productName+'&category='+category);
     }
 }

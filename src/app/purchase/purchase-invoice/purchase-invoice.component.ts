@@ -209,7 +209,7 @@ export class EditInvoice {
     ); 
   }
 
-  getTotalAmount(productName:string,qty:number,category:string,id:string){
+  getTotalAmount(productName:string,qty:string,category:string,id:string){
     var index;
     console.log("productName ==>"+productName);
     console.log("Qty ==>"+qty);
@@ -227,7 +227,8 @@ export class EditInvoice {
       data => {
         this.purchase = data; 
         console.log("Get UnitPrice  ----->"+this.purchase.sellingprice);
-        this.purchase.totalAmount = qty * this.purchase.sellingprice;
+        let res = qty.replace(/\D/g, "");
+        this.purchase.totalAmount = Number.parseInt(res) * this.purchase.sellingprice;
         console.log("Onchange Total Amount  ----->"+this.purchase.totalAmount);
         this.purchaseList[index].netAmount = this.purchase.totalAmount;
         this.purchaseList[index].price = this.purchase.sellingprice;

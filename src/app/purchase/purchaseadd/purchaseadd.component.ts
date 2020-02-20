@@ -114,7 +114,8 @@ export class PurchaseaddComponent  implements OnInit  {
           this.purchase = data; 
           this.model.unitPrice = this.purchase.sellingprice;
           this.model.vendorName = this.purchase.vendorname+"-"+this.purchase.vendorcode;
-          this.model.netAmount = Number.parseInt(quantity) * this.purchase.sellingprice;
+          let res = quantity.replace(/\D/g, "");
+          this.model.netAmount = Number.parseInt(res) * this.purchase.sellingprice;
           console.log("Price ---->"+this.model.unitPrice +" --netAmount -->"+this.model.netAmount);
         },
         error => {

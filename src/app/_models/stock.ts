@@ -21,4 +21,6 @@ export class Stock extends Common {
    itemStatus: string;
    price: number;
    description: string;
+   sellingprice: number;
+   totalAmount: number;
 }
