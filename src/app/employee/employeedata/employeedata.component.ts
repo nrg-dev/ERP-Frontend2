@@ -22,6 +22,7 @@ export class EmployeedataComponent implements OnInit {
   public empeditdetails = false;
   public absentdiv = false;
   public employeelist= true;
+  todayDate : Date = new Date();
 
   public empPreviewdiv=false;
   public empreportdetails=false;
@@ -60,6 +61,25 @@ export class EmployeedataComponent implements OnInit {
   ngOnInit() {
     this.allemplist();
   }
+  mainmessage:string;
+  upload(date:Date){
+    if(this.model.status == "absent"){
+      this.mainmessage="Absent Details was Successfully Saved...";
+    }else if(this.model.status == "check In"){
+      this.mainmessage="CheckIn Details was Successfully Saved...";
+    }else if(this.model.status == "check Out"){
+      this.mainmessage="CheckOut Details was Successfully Saved...";
+    }else  if(this.model.status == null){
+      this.mainmessage="Please Choose check in / early check out / absent button.";
+    }
+
+    this.empdetails = false;
+    this.empeditdetails = false;
+    setTimeout(() => {
+      this.absentdiv = false;
+    }, 1500);
+  }
+
   
   allemplist(){
     this.employeeService.load()

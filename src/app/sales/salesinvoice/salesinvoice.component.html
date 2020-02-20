@@ -37,9 +37,9 @@
                         <label style="color: white">Filter Date :</label>
                     </div>
                     <div class="col-lg-6">
-                        <input type="date" class="form-control" id="dateBox" [(ngModel)]="model.fromdate" name="fromdate" #fromdate="ngModel" value="{{ xx/xx/xx }}" />
+                        <input type="date" class="form-control" id="dateBox" [(ngModel)]="model.fromdate" name="fromdate" #fromdate="ngModel" />
                         <label style="color: white;">&nbsp; - &nbsp;</label>
-                        <input type="date" class="form-control" id="dateBox" [(ngModel)]="model.todate" name="todate" #todate="ngModel" value="{{ xx/xx/xx }}" />
+                        <input type="date" class="form-control" id="dateBox" [(ngModel)]="model.todate" name="todate" #todate="ngModel"  />
                     </div>
                     <div class="col-lg-3">
                         <button (click)="openfilter()" style="width:auto;">Filter</button> &nbsp;
