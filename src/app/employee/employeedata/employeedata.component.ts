@@ -22,6 +22,10 @@ export class EmployeedataComponent implements OnInit {
   public empeditdetails = false;
   public absentdiv = false;
   public employeelist= true;
+
+  public empPreviewdiv=false;
+  public empreportdetails=false;
+
  
 
   displayedColumns: string[] = ['code','name','rank','contactNumber','action'];
@@ -34,6 +38,10 @@ export class EmployeedataComponent implements OnInit {
   displayedColumns3: string[] = ['Date','Checkin','Checkout'];
   dataSource2: MatTableDataSource<any>;
   empAbsetList: any;
+
+  displayedColumns4: string[] = ['EmployeeName','Empcode'];
+  dataSource3: MatTableDataSource<any>;
+  empDetailsList1: any;
 
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
   @ViewChild(MatSort,{ static: true }) sort: MatSort;
@@ -63,7 +71,9 @@ export class EmployeedataComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
 
-        this.dataSource1 = new MatTableDataSource(this.empDetailsList);
+        this.dataSource1 = new MatTableDataSource(this.employeeList);
+
+        this.dataSource3 = new MatTableDataSource(this.employeeList);
       },
       error => {
         this.alertService.error("Network error: server is temporarily unavailable");
@@ -72,12 +82,28 @@ export class EmployeedataComponent implements OnInit {
   }
 
   applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+  applyFilter2(filterValue: string) {
     this.dataSource1.filter = filterValue.trim().toLowerCase();
 
     if (this.dataSource1.paginator) {
       this.dataSource1.paginator.firstPage();
     }
   }
+
+  applyFilter3(filterValue: string) {
+    this.dataSource3.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource3.paginator) {
+      this.dataSource3.paginator.firstPage();
+    }
+  }
+
 
   employeeDetails(employeecode:string){
     this.empdetails = true;
@@ -238,6 +264,32 @@ cancelEmployee() {
   this.model.monthlysalary = '';
   this.model.workHour = '';
   this.model.annualLeave = '';
+}
+
+//report
+absentCardDetails(employeecode: string){
+  this.empPreviewdiv=true;
+  this.empreportdetails=false;
+  for(let i=0;i<this.employeeList.length;i++){
+    if(this.employeeList[i].employeecode==employeecode){
+      this.model.name = this.employeeList[i].name;
+      this.model.employeecode = this.employeeList[i].employeecode;
+      this.model.rank = this.employeeList[i].rank;
+      this.model.phonenumber = this.employeeList[i].phonenumber;
+      this.model.email = this.employeeList[i].email;
+      this.model.addeddate = this.employeeList[i].addeddate;
+      this.model.status = this.employeeList[i].status;
+    }
+  }
+}
+
+empdailyreportcall(date: string){
+  this.empreportdetails=true;
+  for(let j=0;j<this.empAbsetList.length;j++){
+    if(this.empAbsetList[j].date==date){
+      this.model.date = this.empAbsetList[j].date;
+    }
+  }
 }
 
 }

@@ -21,6 +21,9 @@
     justify-content: space-between;
     background: none;
   }
+  :host /deep/ .mat-tab-body-content{
+    overflow-x: hidden;
+  }
   :host /deep/ .mat-form-field-appearance-legacy .mat-form-field-wrapper{
     padding-bottom: 1.25em;
     background: #58666E;
@@ -53,7 +56,6 @@
   }
   :host /deep/ .mat-tab-body-wrapper {
     flex: 1 1 auto;
-    height: 600px;
     background: #243641;
   }
   :host /deep/ .mat-tab-label{
@@ -87,7 +89,7 @@
     /*background-color:#243641; */
     padding: 24px;
     box-sizing: border-box;
-    height: 400px;
+    height: 630px;
   }
   #content::before, #main-content::before, #content::after, #main-content::after {
     content: "";
@@ -103,7 +105,7 @@
 
    /* mat tab css End */
 
-   table.mat-table{
+  table.mat-table{
     width: 100%;
   }
   table th,td{
@@ -124,9 +126,9 @@
     height: 50px;
     
   }
-  :host /deep/ .mat-sort-header-container{
+  /*:host /deep/ .mat-sort-header-container{
     margin-left: 40px;
-  }
+  }*/
   :host /deep/ td.mat-cell:first-of-type{
     padding-left: 0px;
   }
@@ -136,7 +138,9 @@
   :host /deep/ .mat-paginator{
     background-color: transparent;
   }
-  
+  :host /deep/ .mat-form-field-infix{
+    width: 100%;
+  }
 
 ::ng-deep .mat-select-value,::ng-deep .mat-select-arrow {
     color: white;
@@ -175,9 +179,6 @@ mat-paginator{
   width: 150px;
   border: 1px solid;
   cursor: pointer;
-}
-.row{
-  margin: 0px;
 }
 #icon-align{
   margin: 5px;
@@ -269,12 +270,12 @@ mat-paginator{
   width: 80%;
   height: 23px;
 }
-#empview-secong-layer{
+/*#empview-secong-layer{
   background: #1B2931;
   width: 95%;
   height: 510px;
   margin: 25px;
-}
+}*/
 #edit-textbox{
   color: black;
   height: 23px;
@@ -313,8 +314,13 @@ mat-paginator{
 }
 #absentcard-box{
   background: #1B2931;
-  height: 500px;
+  height: 472px;
   width: 100%;
+}
+#absentcard-box2{
+  background: #1B2931;
+  width: 100%;
+  height: 260px;
 }
 #absent-text{
   margin: 8px;
@@ -324,7 +330,7 @@ mat-paginator{
 #sectable-back-color{
   background: #1B2931;
   width: 90%;
-  height: 80%;
+  height: 75%;
   margin-left: 15px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -342,7 +348,12 @@ hr{
 
 .scroll-div{
   background: #1B2931;
-  
+}
+.scroll-div2{
+  background: #1B2931;
+  width: 93%;
+  height: 93%;
+  margin: 17px;
 }
 .empdet-div{
   height: 480px;
@@ -352,13 +363,13 @@ hr{
 #date-details{
   width: 100%;
   margin: 0 25px;
-  height:80px;
+  height:72px;
   background-color: #525C62;
 }
 #date-details2{
-  width: 100%;
-  margin: 0 10px;
-  height:auto;
+  width: 80%;
+  margin: auto;
+  height: auto;
   background-color: #999999;
 }
 .text{
@@ -379,13 +390,13 @@ hr{
 #checkIn-butn{
   background-color: #07ab07;
   width: 76px;
-  height: 32px;
-  margin: 5px 0 0 20px;
+  height: 25px;
+  margin: 0px;
 }
 #checkOut-butn{
   background-color: #d40505;
   width: 80px;
-  height: 32px;
+  height: 25px;
   margin: 5px 0 0 5px;
 }
 .radio-toolbar input[type="radio"] {
@@ -393,7 +404,7 @@ hr{
 }
 #absentbtn{
   width: 85%;
-  margin: 5px 45px;
+  margin: 5px 54px;
   height: auto;
   background-color: #f99704;
   text-align: center;
@@ -410,8 +421,132 @@ hr{
   background-color: #1B2931;
 }
 #reason-box{
-  width: 90%;
+  width: 80%;
   margin: auto;
   border-radius: 0px;
 }
+
+
+
+/*Emp Report css Start */
+h2{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#background{
+  background-color: #243641;
+  width: 97%;
+  height: 100%;
+  margin: 10px;
+}
+#text-size{
+  font-size: 16px;
+  font-weight: bold;
+  margin: 5px 0px 0px 0px;
+}
+#previewemp-box{
+  background: #1B2931;
+  height: 145px;
+  width: 100%;
+  overflow: scroll;
+}
+#preview-text{
+  font-size: 12px;
+  margin: 6px;
+}
+#emppicture-box{
+  background: #FFFFFF;
+  height: 80px;
+  width: 90%;
+  margin: 6px;
+}
+#Emppic-text{
+  color: #181818;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+#fontsize-11{
+  font-size: 11px;
+}
+#sectable-back-color2{
+  background: #1B2931;
+  border: 1px solid;
+  width: 90%;
+  height: 68%;
+  margin-left: 15px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  cursor: pointer;
+}
+#absent-text{
+  margin: 8px;
+  font-size: 13px;
+  font-weight: bold;
+}
+#font-sixe12{
+  font-size: 11px;
+  margin-left: 7px;
+}
+hr{
+  background: white;
+  width: 95%;
+  margin: auto;
+}
+#empreport-backcolor{
+  height: 83%;
+  background: #1B2931;
+}
+#back-btn{
+  height: 30px;
+  width: 100px;
+  background: #243641;
+  border: 1px solid white;
+  text-align: center;
+  margin: auto;
+}
+#report-datebox{
+  height: 25px;
+  width: 140px;
+  background: #1B2931;
+  border: 1px solid white;
+  text-align: center;
+  margin: auto;
+  font-size: 12px;
+}
+#report-detailbox{
+  background: #000000;
+  height: 75%;
+  width: 94%;
+  margin: auto;
+}
+#reportbutton-printpage{
+  height: 25px;
+  width: 100px;
+  border: 1px solid;
+  cursor: pointer;
+  margin: auto;
+}
+
+/* width */
+/*#previewemp-box::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+/*#previewemp-box::-webkit-scrollbar-track {
+  background: #1B2931; 
+}
+ 
+/* Handle */
+/*#previewemp-box::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+/*#previewemp-box::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}*/
+
 
