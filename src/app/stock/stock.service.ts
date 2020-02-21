@@ -40,8 +40,11 @@ export class StockService {
 
     //------ Save StockIn Details -----
     saveStockIn(stockInarray: Array<any>,stockStatus:string){
-        stockInarray.push([{stockStatus:stockStatus}]);
-        return this.http.post<Stock>(this.commonURL+'saveStockIn',stockInarray);
+        if(stockStatus == "FullStockIn"){
+            return this.http.post<Stock>(this.commonURL+'saveFullStockIn',stockInarray);
+        }else if(stockStatus == "PartialStockIn"){
+            return this.http.post<Stock>(this.commonURL+'savePartialStockIn',stockInarray);
+        }
     }
 
     loadStockIn(){
@@ -50,5 +53,9 @@ export class StockService {
 
     getUnitPrice(productName:string,category:string){
         return this.http.get<Stock>(this.purchaseURL+'getUnitPrice?productName='+productName+'&category='+category);
+    }
+
+    saveStockOut(stock: Stock){
+        return this.http.post<Stock>(this.commonURL+'saveStockOut',stock);
     }
 }

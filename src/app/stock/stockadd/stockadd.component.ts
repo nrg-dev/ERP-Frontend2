@@ -245,6 +245,10 @@ export class StockaddComponent implements OnInit {
   prodCategoryList: any = {};
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
+  public otherStockOut = false;
+  public notOther = false;
+  public other = true;
+  todayDate : Date = new Date();
   //@ViewChild('clinicagReport') clinicagReport: ElementRef;  
 
   hBColumns: string[] = ['Date','Category','ProductCategory','ProductName','Qty','recentStock'];
@@ -306,6 +310,9 @@ export class StockaddComponent implements OnInit {
     this.getProductList();
     this.getcategoryList();
     this.prodCategoryList = ['Mobile-Electronic', 'Computer-Manufactorning', 'Cloths-Institue', 'TV-Mining'];
+    this.otherStockOut = false;
+    this.other = false;
+    this.notOther = false;
   }
 
   getInvoiceList(paymentOption:string){
@@ -387,7 +394,7 @@ export class StockaddComponent implements OnInit {
 
 
   getcategoryList(){
-    this.purchaseService.loadCategory()
+    this.purchaseService.loadCategoryName()
     .subscribe(res => { 
       this.categoryList = res;
       },
@@ -426,18 +433,52 @@ export class StockaddComponent implements OnInit {
     }
   }
 
+  getStockTextBox(stockOutCategory:string){
+    if(stockOutCategory == "others"){
+      this.otherStockOut = true;
+      this.notOther = false;
+      this.other = true;
+    }else{
+      this.otherStockOut = false;
+      this.notOther = true;
+      this.other = false;
+    }
+  }
+
   saveStockOut(){
+    this.model.stockOutCategory = this.model.stockCategory;
     console.log("stockOut Category --->"+this.model.stockOutCategory);
     console.log("product Name --->"+this.model.productName);
     console.log("Product category --->"+this.model.category);
     console.log("Quantity --->"+this.model.quantity);
     console.log("stockDate --->"+this.model.stockDate);
-    this.model.addedDate = '';
-    this.model.stockOutCategory = '';
-    this.model.productName = '';
-    this.model.category = '';
-    this.model.quantity = '';
-    this.model.stockDate = '';
+    this.stockService.saveStockOut(this.model)
+    .subscribe(
+      data => {
+        this.stock =   data;    
+          console.log("Response -->"+this.stock.status) 
+          if(this.stock.status=="success"){
+            this.alertService.success("Saved Successfully");
+            setTimeout(() => {
+              this.alertService.clear();
+              this.model.addedDate = '';
+              this.model.stockOutCategory = '';
+              this.model.productName = '';
+              this.model.category = '';
+              this.model.quantity = '';
+              this.model.stockDate = '';
+              this.otherStockOut = false;
+              this.notOther = false;
+              this.other = false;
+            }, 2000);
+          }
+        },
+        error => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        setTimeout(() => {
+        }, 2000);
+      }
+    );  
   }
 
   applyStockReturnFilter(filterValue: string) {

@@ -9,6 +9,9 @@
                     <mat-tab label="Stock In" class="matTabLabel">
                         <br/>
                         <div id="mat-tab-body-content">
+                            <div style="margin-left: 15px;">
+                                <p>Stock In Summary</p>
+                            </div>
                             <div class="row">
                                 <div class="col-lg-4"></div>
                                 <div class="col-lg-4">
@@ -102,18 +105,22 @@
                                 <div class="col-lg-3">
                                     <label style="font-size: 13px;">StockOut Category: </label>
                                     
-                                    <div class="form-group" style="margin-left: 15px;">
+                                    <div class="form-group" style="margin-left: 15px;" (change)="getStockTextBox(model.stockOutCategory)">
                                         <li>
-                                            <input type="radio"  name="stockOutCategory" id="stockOutCategory" [(ngModel)]="model.stockOutCategory"  value="sample"> Sample                                                
+                                            <input type="radio" name="stockOutCategory" id="stockOutCategory" [(ngModel)]="model.stockOutCategory" value="sample"> Sample                                                
                                         </li>
                                         <li>
                                             <input type="radio" name="stockOutCategory" id="stockOutCategory" [(ngModel)]="model.stockOutCategory" value="damage"> Damage 
                                         </li>
                                         <li>
-                                            <input type="radio" name="stockOutCategory" id="stockOutCategory" [(ngModel)]="model.stockOutCategory"  value="clearence"> Clearence 
+                                            <input type="radio" name="stockOutCategory" id="stockOutCategory" [(ngModel)]="model.stockOutCategory" value="clearence"> Clearence 
                                         </li>
                                         <li>
-                                            <input type="radio" name="stockOutCategory" id="stockOutCategory" [(ngModel)]="model.stockOutCategory"  value="others"> Others
+                                            <input type="radio" name="stockOutCategory" id="stockOutCategory" [(ngModel)]="model.stockOutCategory" value="others"> Others
+                                        </li>
+                                        <li *ngIf="otherStockOut">
+                                            <input type="text" class="form-control" style="background-color:#1B2931;width: 95%;height: 25px;color: white;" 
+                                            name="stockCategory" [(ngModel)]="model.stockCategory" #stockCategory="ngModel" />
                                         </li>
                                     </div>
                                 </div>
@@ -126,19 +133,19 @@
                                     </select> 
 
                                     <label>Product Name : </label>
-                                    <select class="form-control" style="background-color:#1B2931;color: white;" id="productName" [(ngModel)]="model.productName" name="{{model.productName}}" #productName="ngModel">
+                                    <select class="form-control" style="background-color:#1B2931;color: white;" id="itemname" [(ngModel)]="model.itemname" name="itemname" #itemname="ngModel">
                                         <option style="text-align:center;">-- Select --</option>
-                                        <option *ngFor="let itemproduct of productList" value="{{ itemproduct }}"> {{ itemproduct }} </option> 
+                                        <option *ngFor="let item of productList" value="{{ item.productname }}-{{ item.prodcode }}"> {{ item.productname }}-{{ item.prodcode }} </option>                     
                                     </select> 
 
                                     <div class="row">
                                         <div class="col-lg-5">
                                             <label>Quantity : </label>
-                                            <input type="text" class="form-control" style="background-color:#1B2931;color: white;" id="quantity" placeholder=" ltr/kg/pcs  " [(ngModel)]="model.quantity" name="{{model.quantity}}" #quantity="ngModel"/> 
+                                            <input type="text" class="form-control" style="background-color:#1B2931;color: white;" id="addedqty" placeholder=" ltr/kg/pcs  " [(ngModel)]="model.addedqty" name="addedqty" #addedqty="ngModel"/> 
                                         </div>
                                         <div class="col-lg-7">
                                             <label>Date</label>
-                                            <input type="date" class="form-control" style="background-color:#1B2931;color: white;" id="stockDate" [(ngModel)]="model.stockDate" name="{{model.stockDate}}" #stockDate="ngModel"/>
+                                            <input type="date" style="background-color:#1B2931;color: white;margin-left:-15px;width:-webkit-fill-available;" [(ngModel)]="model.stockDate" #stockDate="ngModel" id="stockDate" value="{{ todayDate | date:'dd/MM/yyyy' }}" readonly  />
                                         </div>
                                     </div>
                                 </div>
@@ -149,7 +156,8 @@
                                             <div class="row" id="salessummary">
                                                 <div class="col-md-5 col-xs-5 col-lg-5" id="textSize">Stock Out Category</div>
                                                 <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">:</div>
-                                                <div class="col-md-6 col-xs-6 col-lg-5" id="textSize">{{ this.model.stockOutCategory }}</div>
+                                                <div class="col-md-6 col-xs-6 col-lg-5" id="textSize" *ngIf="notOther">{{ this.model.stockOutCategory }}</div>
+                                                <div class="col-md-6 col-xs-6 col-lg-5" id="textSize" *ngIf="other">{{ this.model.stockCategory }}</div>
                                             </div>
                                             <div class="row" id="salessummary">
                                                 <div class="col-md-5 col-xs-5 col-lg-5" id="textSize">Product Category </div>
