@@ -4,7 +4,7 @@
   color:white;
 }
 h3{
-  font-size: 22px;
+  font-size: 17px;
   font-weight: bold;
 }
 :host > .container {
@@ -94,9 +94,27 @@ h3{
   height: 70px;
   background: white;
 }
+:host /deep/ td{
+  vertical-align: middle;
+}
+:host /deep/ .mat-select{
+  margin-left: 14px;
+}
+:host /deep/ .mat-select-value{
+  width: 50%;
+  color: white;
+}
 
 
 
+#button-edit{
+  height: 25px;
+  width: 65px;
+  border: 1px solid;
+  cursor: pointer;
+  background: center;
+  outline: none;
+}
 #button-printpage{
   height: 25px;
   width: 100px;
@@ -136,7 +154,7 @@ tr.mat-header-row{
   
 }
 :host /deep/ .mat-sort-header-container{
-  margin-left: 40px;
+  margin-left: 35px;
 }
 :host /deep/ td.mat-cell:first-of-type{
   padding-left: 0px;
@@ -146,6 +164,12 @@ tr.mat-header-row{
 }*/
 :host /deep/ .mat-paginator{
   background-color: transparent;
+}
+:host /deep/ .mat-select-arrow{
+  color: white;
+}
+:host /deep/ .mat-select-value-text{
+  color: white;
 }
 
 
@@ -187,14 +211,14 @@ tr.mat-header-row{
 }
 #save-btn{
   width: 90px;
-  height: 30px;
+  height: 25px;
   background: #51AF57;
   border: none;
   outline: none;
 }
 #delete-btn{
   width: 90px;
-  height: 30px;
+  height: 25px;
   background: #C1272D;
   border: none;
   outline: none;
@@ -242,21 +266,23 @@ tr.mat-header-row{
   color: black;
 }
 #imgedit-detaildiv{
-  width: 100%;
-  height: 115px;
+  width: 110%;
+  height: 130px;
   background: white;
   color: black;
 }
 #vendor-img-text{
   color: black;
   text-align: center;
+  font-size: 15px;
+  font-weight: bold;
 }
 #icon-mod{
   margin: 5px;
 }
 #button-back{
-  height: 25px;
-  width: 75px;
+  height: 22px;
+  width: 90px;
   border: 1px solid;
   cursor: pointer;
   background: center;
@@ -295,4 +321,8 @@ tr.mat-header-row{
   font-weight: bold;
   margin-left: auto;
   margin-right: auto;
+  margin-top: -3px;
+}
+#text3{
+  font-size: 12px;
 }

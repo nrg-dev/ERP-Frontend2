@@ -44,8 +44,8 @@ export class EmployeedataComponent implements OnInit {
   dataSource3: MatTableDataSource<any>;
   empDetailsList1: any;
 
-  @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort,{ static: true }) sort: MatSort;
+  @ViewChild(MatPaginator,{ static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort,{ static: false }) sort: MatSort;
 
   constructor(
     private dialog: MatDialog,
@@ -289,7 +289,7 @@ cancelEmployee() {
 //report
 absentCardDetails(employeecode: string){
   this.empPreviewdiv=true;
-  this.empreportdetails=false;
+  this.empreportdetails=true;
   for(let i=0;i<this.employeeList.length;i++){
     if(this.employeeList[i].employeecode==employeecode){
       this.model.name = this.employeeList[i].name;

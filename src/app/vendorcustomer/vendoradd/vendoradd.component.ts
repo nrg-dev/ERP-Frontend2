@@ -53,13 +53,13 @@ export class VendoraddComponent implements OnInit {
   @ViewChild(MatPaginator,{ static: false }) paginator2: MatPaginator;
   @ViewChild(MatSort,{ static: false }) sort2: MatSort;
 
-  ngAfterViewInit() {
-    this.dataSource1.paginator = this.paginator1;
-    this.dataSource1.sort = this.sort1;
+  //ngAfterViewInit() {
+   // this.dataSource1.paginator = this.paginator1;
+  //  this.dataSource1.sort = this.sort1;
   
-    this.dataSource2.paginator = this.paginator2;
-    this.dataSource2.sort = this.sort2;
-  }
+  //  this.dataSource2.paginator = this.paginator2;
+  //  this.dataSource2.sort = this.sort2;
+ // }
   
   countryList: any = ['India', 'Malaysia', 'Indonesia', 'Singapore'];
 

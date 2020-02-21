@@ -69,7 +69,8 @@
                             <ng-container matColumnDef="action">
                               <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
                               <td mat-cell *matCellDef="let row" > 
-                                <div class="row" style="margin-left: 0px;">
+                                &nbsp;&nbsp; 
+                                <div class="row" style="margin-left: 10px;margin-top: -15px;">
                                   <div id="rowview-div" (click)="employeeDetails(row.employeecode)">
                                       <i class="fa fa-eye" id="row-icon" aria-hidden="true"></i>    
                                   </div>  
@@ -674,7 +675,7 @@
 
 
     <div class="row" style="margin: 0px;">
-      <div class="col-4 col-md-4 col-lg-3">
+      <div class="col-4 col-md-4 col-lg-4">
         <br/>
         <mat-form-field style="color: black;">
             <input matInput (keyup)="applyFilter2($event.target.value)" placeholder="Employee Name/Code">
@@ -702,7 +703,7 @@
       </div>
 
 
-      <div class="col-4 col-md-4 col-lg-5">
+      <div class="col-4 col-md-4 col-lg-4">
         <br/> 
         <div id="absentcard-box">
           <div class="row">
@@ -840,6 +841,9 @@
         <div id="tab-span-color">Tempelate</div>
       </span>
     </ng-template>
+    <br/> <br/> <br/> <br/><br/> <br/>
+      <h3 style="text-align: center;color: black;">WORKING IN PROGRESS</h3>
+
     </mat-tab>
 
     <!--Fifth Tab-->
@@ -855,7 +859,7 @@
       <label id="text-size">Employee Report</label>
       <div style="height: 20px;"></div>
       <div class="row" style="height: 100%;">
-        <div class="col-4 col-md-4 col-lg-3">
+        <div class="col-4 col-md-4 col-lg-4">
             <mat-form-field style="color: black;">
                 <input matInput (keyup)="applyFilter3($event.target.value)" placeholder="Employee Name/Code">
             </mat-form-field>
@@ -884,7 +888,7 @@
         </div>
     
     
-        <div class="col-5 col-md-5 col-lg-5">
+        <div class="col-5 col-md-5 col-lg-4">
           <div *ngIf="empPreviewdiv">
             <div id="previewemp-box">
               <label id="preview-text">PREVIEW EMPLOYEE</label>
@@ -989,6 +993,7 @@
                   <p id="absent-text">ABSENT CARD</p>
                 </div>
                 <div class="col-5 col-md-5 col-lg-5">
+                  <br/>
                    <div class="row" id="button-printpage">
                     <i class="fa fa-print" aria-hidden="true" style="margin: 5px;"></i>
                     &nbsp;&nbsp;

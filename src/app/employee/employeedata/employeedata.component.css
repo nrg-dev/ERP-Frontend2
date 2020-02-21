@@ -69,6 +69,12 @@
   :host /deep/ .mat-tab-group.mat-primary .mat-ink-bar{
     background: none;
   }
+  :host /deep/ .mat-sort-header-container{
+    padding-left: 10px;
+  }
+  :host /deep/ td{
+    vertical-align: middle;
+  }
   .container {
     position: relative;
     width: 100%;
@@ -168,7 +174,7 @@ mat-paginator{
 }
 #button-printpage{
   height: 25px;
-  width: 100px;
+  width: 98px;
   border: 1px solid;
   cursor: pointer;
   background: center;
@@ -297,14 +303,14 @@ mat-paginator{
 }
 #save-btn{
   width: 90px;
-  height: 30px;
+  height: 28px;
   background: #51AF57;
   border: none;
   outline: none;
 }
 #delete-btn{
   width: 90px;
-  height: 30px;
+  height: 28px;
   background: #C1272D;
   border: none;
   outline: none;
@@ -329,9 +335,9 @@ mat-paginator{
 }
 #sectable-back-color{
   background: #1B2931;
-  width: 90%;
+  width: 95%;
   height: 75%;
-  margin-left: 15px;
+  margin: auto;
   overflow-y: scroll;
   overflow-x: hidden;
   cursor: pointer;
@@ -363,7 +369,7 @@ hr{
 #date-details{
   width: 100%;
   margin: 0 25px;
-  height:72px;
+  height:100px;
   background-color: #525C62;
 }
 #date-details2{
@@ -373,10 +379,10 @@ hr{
   background-color: #999999;
 }
 .text{
-  margin : 8px 0 auto;
   text-align: center;
   font-size: 15px;
   font-weight: bold;
+  height: 5px;
 }
 
 .datetext{
@@ -457,25 +463,25 @@ h2{
 }
 #emppicture-box{
   background: #FFFFFF;
-  height: 80px;
-  width: 90%;
+  height: 66px;
+  width: 100%;
   margin: 6px;
 }
 #Emppic-text{
   color: #181818;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: bold;
   text-align: center;
 }
 #fontsize-11{
-  font-size: 11px;
+  font-size: 9px;
 }
 #sectable-back-color2{
   background: #1B2931;
   border: 1px solid;
-  width: 90%;
+  width: 94%;
   height: 68%;
-  margin-left: 15px;
+  margin: auto;
   overflow-y: scroll;
   overflow-x: hidden;
   cursor: pointer;
