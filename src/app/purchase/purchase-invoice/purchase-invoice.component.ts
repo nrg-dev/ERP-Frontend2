@@ -180,7 +180,7 @@ export class EditInvoice {
   }
   onNoClick(): void {
     this.dialogRef.close();
-    window.location.reload();
+   // window.location.reload();
   }
   
   public deletePurchaseInvoice(id:string,invoiceNumber:string){
@@ -266,6 +266,7 @@ export class EditInvoice {
       data => {
         this.purchase = data; 
         this.alertService.success("Successfully Updated.");
+        this.dialogRef.close();
         setTimeout(() => {
           this.alertService.clear();
         }, 1000);
@@ -282,7 +283,7 @@ export class EditInvoice {
 
   cancelInvoice(){
     this.dialogRef.close();
-    window.location.reload();
+    //window.location.reload();
   }
 
 }
@@ -445,6 +446,8 @@ export class PurchaseInvoiceComponent implements OnInit {
       height: '80%'
     }).afterClosed().subscribe(result => {
       // this.refresh();
+
+      this.getAllPODetails();
     });
   }
 
