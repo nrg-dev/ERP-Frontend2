@@ -190,11 +190,11 @@ export class EditInvoice {
         this.model = data;
         if(this.model.status == "Success"){
           this.alertService.success("Deleted Successfully");
+          this.dialogRef.close();
           setTimeout(() => {
             this.alertService.clear();
           }, 1500);
           this.model.currentStatus = this.data.status;
-          this.cancelInvoice();
         }else{
           this.alertService.error("Not Deleted..");
         }

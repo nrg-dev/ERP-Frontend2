@@ -115,6 +115,7 @@ export class ViewStockIn {
       data => {
         this.stock = data; 
         this.alertService.success("Successfully Saved.");
+        this.dialogRef.close();
         setTimeout(() => {
           this.alertService.clear();
         }, 1000);
@@ -249,7 +250,6 @@ export class StockaddComponent implements OnInit {
   public notOther = false;
   public other = true;
   todayDate : Date = new Date();
-  //@ViewChild('clinicagReport') clinicagReport: ElementRef;  
 
   hBColumns: string[] = ['Date','Category','ProductCategory','ProductName','Qty','recentStock'];
   sBColumns: string[] = ['Date','StockCategory','ProductCategory','ProductName','Qty','RecentStock'];
@@ -276,12 +276,7 @@ export class StockaddComponent implements OnInit {
   ) {
 
     this.stockInLoad();    
-   
-    const data = require("../../stockOutdata.json");
-    this.stockOutList=data;
-    this.dataSource2 = new MatTableDataSource(this.stockOutList);
-    this.dataSource2.paginator = this.paginator.toArray()[1];
-    this.dataSource2.sort = this.sort.toArray()[1];
+    this.stockOutLoad();
 
     this.stockReturnLoad();
     this.stockDamageload();   
@@ -343,16 +338,33 @@ export class StockaddComponent implements OnInit {
       data: { invoice: this.model.invoiceNumber, status: this.model.paymentOption },
       height: '80%'
     }).afterClosed().subscribe(result => {
-      // this.refresh();
+       this.stockInLoad();
     });
   }
 
   stockInLoad(){
-    this.stockService.loadStockIn().subscribe(res => { 
+    let status = "StockIn";
+    this.stockService.loadStock(status).subscribe(res => { 
         this.stockInList = res;
         this.dataSource1 = new MatTableDataSource(this.stockInList);
         this.dataSource1.paginator = this.paginator.toArray()[0];
         this.dataSource1.sort = this.sort.toArray()[0];
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    );
+  }
+
+  stockOutLoad(){
+    let status = "StockOut";
+    this.stockService.loadStock(status).subscribe(res => { 
+        this.stockOutList = res;
+        this.dataSource2 = new MatTableDataSource(this.stockOutList);
+        this.dataSource2.paginator = this.paginator.toArray()[1];
+        this.dataSource2.sort = this.sort.toArray()[1];
       },
       error => {
         setTimeout(() => {
@@ -446,12 +458,15 @@ export class StockaddComponent implements OnInit {
   }
 
   saveStockOut(){
-    this.model.stockOutCategory = this.model.stockCategory;
+    if(this.model.stockOutCategory == "others"){
+      this.model.stockOutCategory = "";
+      this.model.stockOutCategory = this.model.stockCategory;
+    }else{
+    }
     console.log("stockOut Category --->"+this.model.stockOutCategory);
-    console.log("product Name --->"+this.model.productName);
+    console.log("product Name --->"+this.model.itemname);
     console.log("Product category --->"+this.model.category);
-    console.log("Quantity --->"+this.model.quantity);
-    console.log("stockDate --->"+this.model.stockDate);
+    console.log("Quantity --->"+this.model.addedqty);
     this.stockService.saveStockOut(this.model)
     .subscribe(
       data => {
@@ -461,15 +476,14 @@ export class StockaddComponent implements OnInit {
             this.alertService.success("Saved Successfully");
             setTimeout(() => {
               this.alertService.clear();
-              this.model.addedDate = '';
               this.model.stockOutCategory = '';
-              this.model.productName = '';
+              this.model.itemname = '';
               this.model.category = '';
-              this.model.quantity = '';
-              this.model.stockDate = '';
+              this.model.addedqty = '';
               this.otherStockOut = false;
               this.notOther = false;
               this.other = false;
+              this.stockOutLoad();
             }, 2000);
           }
         },

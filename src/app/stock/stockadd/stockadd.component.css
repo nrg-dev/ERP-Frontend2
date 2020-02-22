@@ -79,7 +79,7 @@ a {
     margin-left: 10px;
 }
 ::placeholder {
-  color: white;
+  color: grey;
 }
 table {
     display: block;
@@ -91,7 +91,10 @@ table {
 }
 #StockOutTable{
     height:330px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
+
 th{
     color:#ffffff;
     background-color:#033c5f; 

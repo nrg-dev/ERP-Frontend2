@@ -47,8 +47,8 @@ export class StockService {
         }
     }
 
-    loadStockIn(){
-        return this.http.get<Stock>(this.commonURL+'loadStockIn');
+    loadStock(status:string){
+        return this.http.get<Stock>(this.commonURL+'loadStock?status='+status);
     }
 
     getUnitPrice(productName:string,category:string){

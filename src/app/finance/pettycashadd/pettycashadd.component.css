@@ -79,7 +79,7 @@ a {
   margin-left: 10px;
 }
 ::placeholder {
-color: white;
+color: grey;
 }
 table {
   display: block;
