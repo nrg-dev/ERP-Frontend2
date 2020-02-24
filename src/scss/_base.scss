@@ -1,0 +1,34 @@
+$white: white;
+$black: black;
+$main-bg: #2f4756;
+$header-bg: #182a36;
+$login-form-bg: #e1e1e0;
+$login-title-color: #666666;
+
+// font-sizes
+
+$normal: 14;
+$small: 12;
+$large: 24;
+
+@mixin fontSize($size) {
+  font-size: $size + px;
+}
+
+@mixin placeholderColor($color) {
+  ::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: $color;
+    opacity: 1; /* Firefox */
+  }
+
+  //   :-ms-input-placeholder {
+  //     /* Internet Explorer 10-11 */
+  //     color: $color;
+  //   }
+
+  //   ::-ms-input-placeholder {
+  //     /* Microsoft Edge */
+  //     color: $color;
+  //   }
+}
