@@ -180,7 +180,6 @@ export class EditInvoice {
   }
   onNoClick(): void {
     this.dialogRef.close();
-   // window.location.reload();
   }
   
   public deletePurchaseInvoice(id:string,invoiceNumber:string){
@@ -283,7 +282,6 @@ export class EditInvoice {
 
   cancelInvoice(){
     this.dialogRef.close();
-    //window.location.reload();
   }
 
 }

@@ -9,24 +9,6 @@
                     <mat-tab label="Stock In" class="matTabLabel">
                         <br/>
                         <div id="mat-tab-body-content">
-                            <div style="margin-left: 15px;">
-                                <p>Stock In Summary</p>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-4"></div>
-                                <div class="col-lg-4">
-                                    <button id="print-butn">
-                                        &nbsp;<i class="fa fa-print" aria-hidden="true" id="icon-mod"></i> &nbsp;
-                                        &nbsp;<label id="text">Print Page</label>
-                                    </button>
-                                </div>
-                                <div class="col-lg-4">
-                                    <mat-form-field>
-                                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search " >
-                                    </mat-form-field>
-                                </div>
-                            </div>
-
                             <div class="row">
                                 <div class="col-lg-4" style="margin-left: 15px;">
                                     <label style="font-size: 13px;">Payment Option: </label>
@@ -41,7 +23,7 @@
                                 </div>
                                 <div class="col-lg-3">
                                     <label style="font-size: 13px;">Invoice: </label>
-                                    <select class="form-control" style="background-color:#1B2931;color: white;" [(ngModel)]="model.invoiceNumber" name="invoiceNumber" #invoiceNumber="ngModel">
+                                    <select class="form-control" style="background-color:#243641;color: white;" [(ngModel)]="model.invoiceNumber" name="invoiceNumber" #invoiceNumber="ngModel">
                                         <option>-- Select --</option>
                                         <option *ngFor="let iteminvoice of invoiceList" value="{{ iteminvoice }}"> {{ iteminvoice }} </option> 
                                     </select> 
@@ -53,10 +35,27 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div style="margin-left: 15px;">
+                                        <p style="font-size: 16px;">Stock In Summary</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <button id="print-butn">
+                                        &nbsp;<i class="fa fa-print" aria-hidden="true" id="icon-mod"></i> &nbsp;
+                                        &nbsp;<label id="text">Print Page</label>
+                                    </button>
+                                </div>&nbsp;&nbsp;
+                                <div class="col-lg-3">
+                                    <mat-form-field>
+                                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="&nbsp;&nbsp;&nbsp;Search " >
+                                    </mat-form-field>
+                                </div>
+                            </div>
                             <mat-paginator #hBpaginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
                             <div class="mat-elevation-z8">
-                                <table mat-table #hBtable [dataSource]="dataSource1" matSort >
+                                <table mat-table #hBtable [dataSource]="dataSource1" matSort id-="stockIn">
                                     <ng-container matColumnDef="Date">
                                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
                                         <td mat-cell *matCellDef="let row" id="middleContent"> {{row.invoicedate}} </td>
@@ -98,7 +97,7 @@
                     <mat-tab label="Stock Out">
                         <br/>
                         <div id="mat-tab-body-content">
-                            <div style="margin-left: 15px;">
+                            <div style="margin-left: 16px;">
                                 <p>Stock Out Register</p>
                             </div>
                             <div class="row" style="margin-left: 15px;">
@@ -119,7 +118,7 @@
                                             <input type="radio" name="stockOutCategory" id="stockOutCategory" [(ngModel)]="model.stockOutCategory" value="others"> Others
                                         </li>
                                         <li *ngIf="otherStockOut">
-                                            <input type="text" class="form-control" style="background-color:#1B2931;width: 95%;height: 25px;color: white;" 
+                                            <input type="text" class="form-control" style="background-color:#243641;width: 95%;height: 25px;color: white;" 
                                             name="stockCategory" [(ngModel)]="model.stockCategory" #stockCategory="ngModel" />
                                         </li>
                                     </div>
@@ -127,13 +126,13 @@
                                 <div class="col-lg-4">
 
                                     <label>Product Category : </label>
-                                    <select class="form-control" style="background-color:#1B2931;color: white;" id="category" [(ngModel)]="model.category" name="{{model.category}}" #category="ngModel">
+                                    <select class="form-control" style="background-color:#243641;color: white;" id="category" [(ngModel)]="model.category" name="{{model.category}}" #category="ngModel">
                                         <option>-- Select --</option>
                                         <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory }}"> {{ itemcategory }} </option> 
                                     </select> 
 
                                     <label>Product Name : </label>
-                                    <select class="form-control" style="background-color:#1B2931;color: white;" id="itemname" [(ngModel)]="model.itemname" name="itemname" #itemname="ngModel">
+                                    <select class="form-control" style="background-color:#243641;color: white;" id="itemname" [(ngModel)]="model.itemname" name="itemname" #itemname="ngModel">
                                         <option style="text-align:center;">-- Select --</option>
                                         <option *ngFor="let item of productList" value="{{ item.productname }}-{{ item.prodcode }}"> {{ item.productname }}-{{ item.prodcode }} </option>                     
                                     </select> 
@@ -141,11 +140,11 @@
                                     <div class="row">
                                         <div class="col-lg-5">
                                             <label>Quantity : </label>
-                                            <input type="text" class="form-control" style="background-color:#1B2931;color: white;" id="addedqty" placeholder=" ltr/kg/pcs  " [(ngModel)]="model.addedqty" name="addedqty" #addedqty="ngModel"/> 
+                                            <input type="text" class="form-control" style="background-color:#243641;color: white;" id="addedqty" placeholder=" ltr/kg/pcs  " [(ngModel)]="model.addedqty" name="addedqty" #addedqty="ngModel"/> 
                                         </div>
                                         <div class="col-lg-7">
                                             <label>Date</label>
-                                            <input class="form-control" style="background-color:#1B2931;margin-left:-15px;width:-webkit-fill-available;" value="{{ todayDate | date:'dd/MM/yyyy' }}" readonly />
+                                            <input class="form-control" style="background-color:#243641;margin-left:-15px;width:-webkit-fill-available;" value="{{ todayDate | date:'dd/MM/yyyy' }}" readonly />
                                         </div>
                                     </div>
                                 </div>
@@ -193,16 +192,20 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-4"></div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-6">
+                                    <div style="margin-left: 15px;">
+                                        <p style="font-size: 16px;">Stock Out Summary</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
                                     <button id="print-butn">
                                         &nbsp;<i class="fa fa-print" aria-hidden="true" id="icon-mod"></i> &nbsp;
                                         &nbsp;<label id="text">Print Page</label>
                                     </button>
-                                </div>
-                                <div class="col-lg-4">
+                                </div>&nbsp;&nbsp;
+                                <div class="col-lg-3">
                                     <mat-form-field>
-                                    <input matInput (keyup)="applyStockOutFilter($event.target.value)" placeholder="Search " >
+                                            <input matInput (keyup)="applyStockOutFilter($event.target.value)" placeholder="&nbsp;&nbsp;&nbsp;Search " >
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -262,15 +265,15 @@
                                         <div class="col-lg-4">
                                             <p class="text">Stock Return Summary</p>
                                         </div>
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-3">
                                             <button id="print-butn">
                                                 &nbsp;<i class="fa fa-print" aria-hidden="true" id="icon-mod"></i> &nbsp;
                                                 &nbsp;<label id="text">Print Page</label>
                                             </button>
-                                        </div>
-                                        <div class="col-lg-4">
+                                        </div>&nbsp;&nbsp;
+                                        <div class="col-lg-2">
                                             <mat-form-field>
-                                            <input matInput (keyup)="applyStockReturnFilter($event.target.value)" placeholder="Search " >
+                                            <input matInput (keyup)="applyStockReturnFilter($event.target.value)" placeholder="&nbsp;&nbsp;&nbsp;Search " >
                                             </mat-form-field>
                                         </div>
                                     </div>
@@ -278,7 +281,7 @@
                                     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
                                     <div class="mat-elevation-z8">
             
-                                        <table mat-table #sort3 [dataSource]="dataSource3" matSort>
+                                        <table mat-table #sort3 [dataSource]="dataSource3" matSort style="height: 640px;">
                                             <ng-container matColumnDef="Date">
                                                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
                                                 <td mat-cell *matCellDef="let row" (click)="stockReturnDetails(row.invoiceNumber)" id="{{ row.invoiceNumber }}"> {{row.poDate}} </td>
@@ -312,8 +315,8 @@
                                             </ng-container>
             
                                             <tr mat-header-row *matHeaderRowDef="thirdColumns"></tr>
-                                            <tr mat-row *matRowDef="let row; columns: thirdColumns;"></tr>
-                                        </table>         
+                                            <tr mat-row class="table-row" tabindex="1" *matRowDef="let row; columns: thirdColumns;"></tr>
+                                        </table>                                             
                                     </div>  
                                 </div>
                                 
@@ -403,15 +406,15 @@
                                         <div class="col-lg-4">
                                             <p class="text">Damage Stock Summary</p>
                                         </div>
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-3">
                                             <button id="print-butn">
                                                 &nbsp;<i class="fa fa-print" aria-hidden="true" id="icon-mod"></i> &nbsp;
                                                 &nbsp;<label id="text">Print Page</label>
                                             </button>
-                                        </div>
-                                        <div class="col-lg-4">
+                                        </div>&nbsp;&nbsp;
+                                        <div class="col-lg-2">
                                             <mat-form-field>
-                                            <input matInput (keyup)="applyStockDamageFilter($event.target.value)" style="width: 75%;" placeholder="Search " >
+                                            <input matInput (keyup)="applyStockDamageFilter($event.target.value)" style="width: 75%;" placeholder="&nbsp;&nbsp;&nbsp;Search " >
                                             </mat-form-field>
                                         </div>
                                     </div>
@@ -419,7 +422,7 @@
                                     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
                                     <div class="mat-elevation-z8">
             
-                                        <table mat-table #sort3 [dataSource]="dataSource4" matSort>
+                                        <table mat-table #sort3 [dataSource]="dataSource4" matSort style="height: 640px;">
                                             <ng-container matColumnDef="Date">
                                                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Input Date </th>
                                                 <td mat-cell *matCellDef="let row" (click)="stockDamageDetails(row.stockDamageCode)" id="{{ row.stockDamageCode }}"> {{row.stockDate}} </td>
@@ -452,7 +455,7 @@
                                             </ng-container>
             
                                             <tr mat-header-row *matHeaderRowDef="fourthColumns"></tr>
-                                            <tr mat-row *matRowDef="let row; columns: fourthColumns;"></tr>
+                                            <tr mat-row class="table-row" tabindex="1" *matRowDef="let row; columns: fourthColumns;"></tr>
                                         </table>         
                                     </div>  
                                 </div>
@@ -525,7 +528,7 @@
                                                 <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">Product Category</div>
                                                 <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">:</div>
                                                 <div class="col-md-6 col-xs-6 col-lg-6" id="textSize">
-                                                    <select class="form-control" style="background-color:#1B2931;color: white;padding-left: 0px;" [(ngModel)]="model.category" name="{{model.category}}" #category="ngModel">
+                                                    <select class="form-control" style="background-color:#243641;color: white;padding-left: 0px;" [(ngModel)]="model.category" name="{{model.category}}" #category="ngModel">
                                                         <option value="--- Select --- "> -- Select -- </option>  
                                                         <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory.name }}-{{ itemcategory.categorycode }}"> {{ itemcategory.name }}-{{ itemcategory.categorycode }} </option>                     
                                                     </select>
@@ -535,7 +538,7 @@
                                                 <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">Product Name</div>
                                                 <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">:</div>
                                                 <div class="col-md-6 col-xs-6 col-lg-6" id="textSize">
-                                                    <select class="form-control" style="background-color:#1B2931;color: white;padding-left: 0px;" [(ngModel)]="model.productName" name="{{model.productName}}" #productName="ngModel">
+                                                    <select class="form-control" style="background-color:#243641;color: white;padding-left: 0px;" [(ngModel)]="model.productName" name="{{model.productName}}" #productName="ngModel">
                                                         <option value="--- Select --- "> -- Select -- </option>  
                                                         <option *ngFor="let item of productList" value="{{ item.productname }}-{{ item.prodcode }}"> {{ item.productname }}-{{ item.prodcode }} </option>                     
                                                     </select>
@@ -545,14 +548,14 @@
                                                 <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">Quantity</div>
                                                 <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">:</div>
                                                 <div class="col-md-6 col-xs-6 col-lg-6" id="textSize">
-                                                    <input type="text" class="form-control" style="background-color:#1B2931;color: white;padding-left: 0px;" id="quantity" placeholder=" ltr/kg/pcs  " [(ngModel)]="model.quantity" name="{{model.quantity}}" #quantity="ngModel"/> 
+                                                    <input type="text" class="form-control" style="background-color:#243641;color: white;padding-left: 0px;" id="quantity" placeholder=" ltr/kg/pcs  " [(ngModel)]="model.quantity" name="{{model.quantity}}" #quantity="ngModel"/> 
                                                 </div>
                                             </div>
                                             <div class="row" id="salessummary">
                                                 <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">Date</div>
                                                 <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">:</div>
                                                 <div class="col-md-6 col-xs-6 col-lg-6" id="textSize">
-                                                    <input type="date" class="form-control" style="background-color:#1B2931;color: white;padding-left: 0px;" id="stockDate" [(ngModel)]="model.stockDate" name="{{model.stockDate}}" #stockDate="ngModel"/>
+                                                    <input type="date" class="form-control" style="background-color:#243641;color: white;padding-left: 0px;" id="stockDate" [(ngModel)]="model.stockDate" name="{{model.stockDate}}" #stockDate="ngModel"/>
                                                 </div>
                                             </div>
                                             <div class="row" id="salessummary">
@@ -601,18 +604,20 @@
                         <br/>
                         <div id="mat-tab-body-content">
                             <div class="row">
-                                <div class="col-lg-4" style="margin-left: 15px;">
-                                    <p>Report Overall Stock</p>
+                                <div class="col-lg-6">
+                                    <div style="margin-left: 15px;">
+                                        <p style="font-size: 16px;">Report Overall Stock</p>
+                                    </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-2">
                                     <button id="print-butn" (click)="print()">
                                         &nbsp;<i class="fa fa-print" aria-hidden="true" id="icon-mod"></i> &nbsp;
                                         &nbsp;<label id="text">Print Page</label>
                                     </button>
-                                </div>
+                                </div>&nbsp;&nbsp;
                                 <div class="col-lg-3">
                                     <mat-form-field>
-                                    <input matInput (keyup)="applyStockReportFilter($event.target.value)" placeholder="Search " >
+                                        <input matInput (keyup)="applyStockReportFilter($event.target.value)" placeholder="&nbsp;&nbsp;&nbsp;Search " >
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -622,7 +627,7 @@
                                     <p>Filter Category: </p>
                                 </div>
                                 <div class="col-lg-3">
-                                    <select class="form-control" style="background-color:#1B2931;color: white;" id="category" [(ngModel)]="model.category" #category="ngModel">
+                                    <select class="form-control" style="background-color:#243641;color: white;" id="category" [(ngModel)]="model.category" #category="ngModel">
                                         <option>-- Select --</option>
                                         <option *ngFor="let itemcategory of categoryList" value="{{ itemcategory.name }}-{{ itemcategory.categorycode }}"> {{ itemcategory.name }}-{{ itemcategory.categorycode }} </option>                     
                                     </select>                                    
@@ -633,7 +638,7 @@
                                     <p>Filter Product: </p>
                                 </div>
                                 <div class="col-lg-3">
-                                    <select class="form-control" style="background-color:#1B2931;color: white;" id="productName" [(ngModel)]="model.productName" #productName="ngModel">
+                                    <select class="form-control" style="background-color:#243641;color: white;" id="productName" [(ngModel)]="model.productName" #productName="ngModel">
                                         <option>-- Select --</option>
                                         <option *ngFor="let item of productList" value="{{ item.productname }}-{{ item.prodcode }}"> {{ item.productname }}-{{ item.prodcode }} </option>                     
                                     </select>                                    
@@ -644,7 +649,7 @@
                                     <p>Sort By : </p>
                                 </div>
                                 <div class="col-lg-3">
-                                    <input type="date" class="form-control" style="background-color:#1B2931;color: white;" id="stockDate" [(ngModel)]="model.stockDate" name="{{model.stockDate}}" #stockDate="ngModel"/>
+                                    <input type="date" class="form-control" style="background-color:#243641;color: white;" id="stockDate" [(ngModel)]="model.stockDate" name="{{model.stockDate}}" #stockDate="ngModel"/>
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="radio-toolbar">

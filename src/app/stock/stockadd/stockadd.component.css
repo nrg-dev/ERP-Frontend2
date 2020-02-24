@@ -9,6 +9,10 @@
     font-size: 20px;
 }
 
+.mat-tab-group.active {
+    background: #243641;
+}
+
 .mat-tab-label {
     cursor: pointer;
 }
@@ -25,7 +29,7 @@
     border-right: none;
     border-bottom: none;
     cursor: pointer;
-    background: rgb(47, 71, 86);
+    /*background: rgb(47, 71, 86);*/
     font-size: 17px;
     text-align: center;
     width: 20%;
@@ -38,13 +42,13 @@
     border-left: 1px solid grey;
     border-right: none;
     border-bottom: 1px solid black;
-    background: #1B2931;
+    background: #243641;
 }
 #defaultOpen{
     border-left: none;
 }
 #addstock-div{
-    background: #1B2931;
+    background: #243641;
     height: 900px;
     width: 100%;
     border-radius: 10px;
@@ -60,12 +64,12 @@ a {
 
 #print-butn{
     border: 1px solid white;
-    height: 29px;
+    height: 30px;
     width: 115px;
     margin-top: 7px;
     font-size: 15px;
     cursor: pointer;
-    background: #313F47;
+    background: #364046;
 }
 .searchicon{
     font-family: fontawesome;
@@ -81,29 +85,53 @@ a {
 ::placeholder {
   color: grey;
 }
+
+::-webkit-scrollbar-track
+{
+    background-color: #BFD0DF;
+}
+
+::-webkit-scrollbar
+{
+    width: 8px;
+    background-color: #BFD0DF;
+}
+
+::-webkit-scrollbar-thumb
+{
+    width: 3px;
+    background-color: #757F88;
+}
 table {
     display: block;
-    width: 100%;
-    height: 600px;
+    width: 97%;
+    height: 525px;
     border-color: 1px solid grey;
     background-color: #1B2931;
     margin: 10px;
+    overflow-y: scroll;
 }
 #StockOutTable{
-    height:330px;
+    height:370px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
-
 th{
     color:#ffffff;
-    background-color:#033c5f; 
-    color: white;
+    background: #1B2931;
+    border-left: 1px solid #171B1E;
+    border-bottom: none;
     width: 25%;
 }
+tr:nth-child(odd){
+    background-color: #1F303B;
+}
+tr:nth-child(even){
+    background-color: #1A2932;
+}
 td{
-    background-color: #1a2932;
-    border: 2px solid #171B1E;
+    border-left: 1px solid #171B1E;
+    border-bottom: none;
     color:white;
     width: 25%;
     cursor: pointer;
@@ -142,12 +170,12 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
 .mat-input-element {
     font: inherit;
     font-family: fontawesome;
-    background:white;
-    color: black;
+    background:#58666E;
+    color: white;
     height: 35px;
     outline: 0;
     margin: 10;
-    width: 100%;
+    width: 75%;
     max-width: 100%;
     vertical-align: bottom;
     text-align:start;
@@ -155,13 +183,19 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
     padding: 11px;
     margin-top: -10px;
 }
+::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple {
+    background-color: #243641 !important;
+}
+::ng-deep .mat-form-field-empty.mat-form-field-label {
+    color: white;
+}
 .matTable{
     width: 90%;
     margin: auto;
 }
 mat-paginator{
     width: 100%;
-    background-color: #1B2931;
+    background-color: #243641;
     color: white;
 }
 #icon-mod{
@@ -196,7 +230,7 @@ label,select,input,#textSize{
 #date-details{
     width: 85%;
     height:auto;
-    background-color: #243642;
+    background-color: #1B2931;
     margin: 0 15px;
 }
 #salessummary{
@@ -211,7 +245,7 @@ label,select,input,#textSize{
     color: white;
 }
 #checkIn-butn{
-    background-color: #07ab07;
+    background-color: #8CC63F;
     width: 60px;
     height: 25px;
     text-align: center;
@@ -224,19 +258,19 @@ label,select,input,#textSize{
 #return-details{
     width: 85%;
     height: 740px;
-    background-color: #243642;
+    background-color: #1B2931;
     margin: 0 15px;
 }
 #damage-details{
     width: 85%;
     height: 400px;
-    background-color: #243642;
+    background-color: #1B2931;
     margin: 0 15px;
 }
 #add-damage-details{
     width: 85%;
     height: 390px;
-    background-color: #243642;
+    background-color: #1B2931;
     margin: 0 15px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -287,7 +321,13 @@ label,select,input,#textSize{
     position: relative;
     color: white;
 }
-
+.table-row:focus {
+    border: 2px solid grey;
+}
+.table-row:focus mat-cell {
+    border: 2px solid grey;
+}
+    
 ::ng-deep header-pagination-after,::ng-deep .mat-tab-header-pagination-chevron {
     transform: rotate(-135deg);
     border-color: white;
@@ -314,7 +354,7 @@ label,select,input,#textSize{
 }
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
     #addstock-div{
-		background: #1B2931;
+		background: #243641;
 		height: 900px;
 		width: 100%;
         border-radius: 10px;
@@ -323,7 +363,8 @@ label,select,input,#textSize{
 }
 @media (min-width: 1025px) and (max-width: 1280px){
     #addstock-div{
-		background: #1B2931;
+        /*background: #1B2931;*/
+        background: #243641;
 		height: 900px;
 		width: 100%;
         border-radius: 10px;

@@ -165,12 +165,10 @@ export class ViewStockIn {
 
   cancelInvoice(){
     this.dialogRef.close();
-    window.location.reload();
   }
 
   onNoClick(): void {
     this.dialogRef.close();
-    window.location.reload();
   }
   
 }
