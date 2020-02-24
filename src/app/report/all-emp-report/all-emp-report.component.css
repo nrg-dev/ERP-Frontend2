@@ -18,7 +18,7 @@ table.mat-table{
 }
 .mat-elevation-z8{
     width: 100%;
-    height: 55%;
+    height: 60%;
     margin-left: 8px;
     background: #686868;
     overflow-y: scroll;
@@ -37,6 +37,9 @@ tr.mat-row{
     height: 47px;
     cursor: pointer;
 }
+:host /deep/ td{
+    vertical-align: middle;
+  }
 .mat-input-element {
     font: inherit;
     font-family: fontawesome;
@@ -83,7 +86,7 @@ td.mat-cell:first-of-type{
 }
 #absentcard-box{
     background: #1B2931;
-    height: 290px;
+    height: 300px;
     width: 100%;
 }
 #preview-text{
@@ -110,13 +113,13 @@ td.mat-cell:first-of-type{
     width: 100px;
     border: 1px solid;
     cursor: pointer;
-    margin: 10px 0px 0px 35px;
+    margin: 10px 0px 0px 0px;
 }
 #sectable-back-color{
     background: #1B2931;
     border: 1px solid;
     width: 90%;
-    height: 71%;
+    height: 68%;
     margin-left: 15px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -137,20 +140,20 @@ hr{
     margin: auto;
 }
 #empreport-backcolor{
-    height: 76%;
+    height: 77%;
     background: #1B2931;
 }
 #back-btn{
-    height: 30px;
-    width: 100px;
+    height: 22px;
+    width: 75px;
     background: #243641;
     border: 1px solid white;
     text-align: center;
     margin: auto;
 }
 #report-datebox{
-    height: 25px;
-    width: 140px;
+    height: 20px;
+    width: 120px;
     background: #1B2931;
     border: 1px solid white;
     text-align: center;
@@ -170,23 +173,16 @@ hr{
     cursor: pointer;
     margin: auto;
 }
-
-/* width */
-#previewemp-box::-webkit-scrollbar {
-    width: 5px;
+#selct-joindatebox{
+    background: #20303A;
+    width: 40%;
+    height: 22px;
+    box-shadow: none;
+    border: 1px solid;
+    margin-left: 7px;
+    font-size: xx-small;
 }
-  
-  /* Track */
-#previewemp-box::-webkit-scrollbar-track {
-    background: #1B2931; 
-}
-   
-  /* Handle */
-#previewemp-box::-webkit-scrollbar-thumb {
-    background: #888; 
-}
-  
-  /* Handle on hover */
-#previewemp-box::-webkit-scrollbar-thumb:hover {
-    background: #555; 
+#absentedit-icon{
+    margin-top: 20px;
+    font-size: 10px;
 }

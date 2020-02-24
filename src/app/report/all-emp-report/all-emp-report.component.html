@@ -147,10 +147,10 @@
         <div style="height: 10px;"></div>
         <div id="absentcard-box">
           <div class="row">
-            <div class="col-5 col-md-5 col-lg-5">
+            <div class="col-5 col-md-5 col-lg-6">
               <p id="absent-text">ABSENT CARD</p>
             </div>
-            <div class="col-5 col-md-5 col-lg-5">
+            <div class="col-5 col-md-5 col-lg-6">
                <div class="row" id="button-printpage">
                 <i class="fa fa-print" aria-hidden="true" style="margin: 5px;"></i>
                 &nbsp;&nbsp;
@@ -158,7 +158,18 @@
                </div>
              </div>
             </div>
-            <div style="height: 10px;"></div>
+
+            <div style="height: 15px;"></div>
+            <div class="row" style="margin-left: 20px;height: 30px;">
+              <P>Time</P>
+              &nbsp;
+              <p>:</p>
+              <select aria-placeholder="join date" id="selct-joindatebox">
+                <option>October 2019</option>
+                <option>July 2019</option>
+                <option>may 2019</option>
+              </select>
+              </div>
 
             <div id="sectable-back-color">
               <div *ngFor="let row of empAbsetList" (click)=empdailyreportcall(row.date) id="{{row.date}}">
@@ -182,7 +193,11 @@
                     <p id="font-sixe12">{{row.checkin}}</p>
                   </div>
                   <div class="col-4 col-md-4 col-lg-4">
-                    <p id="font-sixe12">{{row.checkout}}</p>
+                    <div class="row" style="margin: 0px;">
+                      <p id="font-sixe12">{{row.checkout}}</p>
+                      &nbsp;&nbsp;
+                      <i class="fa fa-pencil-square-o" id="absentedit-icon" aria-hidden="true"></i>
+                    </div>
                   </div>
                 </div>
                 <hr>
@@ -212,7 +227,7 @@
               Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.
             </p>
             <div class="row" id="reportbutton-printpage">
-              <i class="fa fa-print" aria-hidden="true" id="icon-align"></i>
+              <i class="fa fa-print" aria-hidden="true" style="margin: 5px;"></i>
               &nbsp;&nbsp;
               <p id="font-size15">Print Page</p>
              </div>

@@ -6,13 +6,13 @@
             <div id="adddelete-div">
                 <br/>
                 <h2 id="text-category">Category</h2>
-                <div class="row" id="marginleft-30">
-                    <span id="addfont-size" (click)="addNewCategory()">
+                <div class="row" >
+                    <span id="addfont-size" (click)="addNewCategory()" style="margin-left: auto;">
                         <i class="fa fa-plus-circle" aria-hidden="true"></i>
                         Add
                     </span>
                     &nbsp; &nbsp;
-                    <span id="editfont-size" (click)="categoryEditDelete()">
+                    <span id="editfont-size" (click)="categoryEditDelete()" style="margin-right: auto;">
                         <i class="fa fa-pencil-square" aria-hidden="true"></i>
                         Edit/Delete
                     </span>
@@ -231,22 +231,21 @@
                             </span>
                         </div>
                     </div>
-                    <div class="col-2 col-sm-2 col-md 2 col-lg-2">
-                    </div>
-                    <div class="col-5 col-sm-5 col-md 5 col-lg-5">
+                    <div class="col-7 col-sm-7 col-md 7 col-lg-7">
+                       <div class="row">
                         <div class="row" id="button-printpage">
                             <i class="fa fa-print" aria-hidden="true" id="icon-align"></i>
-                            &nbsp;&nbsp;
-                            <p id="font-size15">Print Page</p>
+                            <p id="font-size15">Print Page</p>  
                         </div>
+                        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                            <mat-form-field style="color: black;">
+                                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                            </mat-form-field>
+                         </div>
                     </div>
                 </div>
-
-                <br/>
               
-                <mat-form-field style="color: black;">
-                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-                </mat-form-field>
+               
 
                 <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
                 <div class="mat-elevation-z8">
@@ -322,23 +321,23 @@
                             </span>
                         </div>
                     </div>
-                    <div class="col-2 col-sm-2 col-md 2 col-lg-2">
-                    </div>
-                    <div class="col-5 col-sm-5 col-md 5 col-lg-5">
-                        <div class="row" id="button-printpage">
-                            <i class="fa fa-print" aria-hidden="true" id="icon-align"></i>
-                            &nbsp;&nbsp;
-                            <p id="font-size15">Print Page</p>
+                    <div class="col-7 col-sm-7 col-md-7 col-lg-7">
+                        <div class="row">
+                            <div class="row" id="button-printpage">
+                                <i class="fa fa-print" aria-hidden="true" id="icon-align"></i>
+                                &nbsp;&nbsp;
+                                <p id="font-size15">Print Page</p>
+                            </div>
+                            <mat-form-field style="color: black;">
+                                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                            </mat-form-field>            
                         </div>
                     </div>
                 </div>
 
                 <br/>
               
-                <mat-form-field style="color: black;">
-                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-                </mat-form-field>
-
+                
                 <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
                 <div class="mat-elevation-z8">
 
