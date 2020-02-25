@@ -207,7 +207,7 @@
           <br/>
           <div id="stock-box">
             <br/>
-            <h3>Stock</h3>
+            <h3>Stocks</h3>
             <div id="table-box">
               <table>
                 <tr class="d0">
@@ -285,7 +285,7 @@
           <table mat-table [dataSource]="dataSource" matSort>
           
               <ng-container matColumnDef="invoicenumber">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Invoicenumber </th>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Invoice Number </th>
                   <td mat-cell *matCellDef="let row"> {{row.invoicenumber}} </td>
               </ng-container>
 
@@ -304,7 +304,7 @@
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
                   <td mat-cell *matCellDef="let row"> 
                     <label style="font-size: 15px;width: 80px;margin: 5px;text-align: center;" 
-                [ngStyle]="{'background': (row.status === 'completed') ? '#29C0B1' : (row.status === 'delayed') ? '#FBBC06' : (row.status === 'cancel') ? '#FF3366' : ''}"> <p style="margin: 3px;">{{ row.status }}</p></label>
+                [ngStyle]="{'background': (row.status === 'Completed') ? '#29C0B1' : (row.status === 'Delayed') ? '#FBBC06' : (row.status === 'Cancel') ? '#FF3366' : ''}"> <p style="margin: 3px;">{{ row.status }}</p></label>
                   </td>
               </ng-container>
 

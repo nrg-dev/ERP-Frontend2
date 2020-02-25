@@ -40,8 +40,8 @@ tr.mat-header-row{
 .mat-input-element {
     font: inherit;
     font-family: fontawesome;
-    background:white;
-    color: black;
+    background:#58666E;
+    color: white;
     height: 35px;
     outline: 0;
     margin: 10;
@@ -55,6 +55,12 @@ tr.mat-header-row{
 }
 tr.mat-row{
     cursor: pointer;
+}
+::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple {
+    background-color: #1B2931 !important;
+}
+::ng-deep .mat-form-field-empty.mat-form-field-label {
+    color: white;
 }
 
 #salesbackground1{
@@ -75,8 +81,8 @@ tr.mat-row{
     margin: 15px;
 }
 #back-btn{
-    height: 30px;
-    width: 100px;
+    height: 22px;
+    width: 75px;
     background: #243641;
     border: 1px solid white;
     text-align: center;
@@ -92,6 +98,12 @@ tr.mat-row{
     border: 1px solid;
     cursor: pointer;
     margin: auto;
+}
+#button-printpage1{
+    height: 25px;
+    width: 108px;
+    border: 1px solid;
+    cursor: pointer;
 }
 #row-size{
     margin: 7px;

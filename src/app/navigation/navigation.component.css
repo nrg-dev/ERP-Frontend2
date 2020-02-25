@@ -329,6 +329,9 @@ tr:nth-child(even){
   overflow-y: scroll;
   height: 345px;
 }
+:host /deep/ td{
+  vertical-align: middle;
+}
 /* calendor css start*/
 ::ng-deep .mat-calendar-table-header th{
   color: white;
