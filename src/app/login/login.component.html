@@ -1,31 +1,36 @@
 <header class="w-100 d-flex align-items-center justify-content-center">
   <h1 hidden>ERP</h1>
-  <img src="assets/images/nrg_logo.png" class="img-fluid" alt="app logo" />
+  <img src="assets/images/nrg-logo.png" class="img-fluid logo" alt="app logo" />
 </header>
 <div
   class="d-flex align-items-center justify-content-center login-page-main-container"
 >
-  <div class="login-form">
-    <p class="font-lg title text-center">Employement Sign In</p>
-
+  <div class="login-form m-3">
+    <p class="font-lg title text-center mb-4">Employment Sign In</p>
     <form
       name="loginForm"
       (submit)="loginForm.form.valid && login()"
       #loginForm="ngForm"
       novalidate
     >
-      <!-- <label for="userName"><i class="fas fa-user"></i></label> -->
-      <input
-        id="userName"
-        type="text"
-        class="form-control border-0"
-        placeholder="Username/Email"
-        name="currentusername"
-        [(ngModel)]="model.currentusername"
-        #currentusername="ngModel"
-        required
-        autofocus
-      />
+      <div class="row">
+        <label
+          class="m-0 p-0 icon-placeholder text-white d-flex align-items-center justify-content-center"
+          for="userName"
+          ><i class="fas fa-user"></i
+        ></label>
+        <input
+          class="col p-2 m-0 border-0"
+          id="userName"
+          type="text"
+          placeholder="Username/Email"
+          name="currentusername"
+          [(ngModel)]="model.currentusername"
+          #currentusername="ngModel"
+          required
+          autofocus
+        />
+      </div>
       <p
         class="font-sm my-1 text-danger"
         [ngStyle]="{
@@ -35,18 +40,24 @@
       >
         Username is required
       </p>
-      <!-- <label for="password"><i class="fas fa-lock"></i></label> -->
-      <input
-        id="password"
-        class="form-control border-0"
-        type="{{ passwordtype }}"
-        placeholder="Password"
-        id="typebox-with"
-        name="currentpassword"
-        [(ngModel)]="model.currentpassword"
-        #currentpassword="ngModel"
-        required
-      />
+      <div class="row">
+        <label
+          for="password"
+          class="m-0 p-0 icon-placeholder text-white d-flex align-items-center justify-content-center"
+          ><i class="fas fa-lock"></i
+        ></label>
+        <input
+          id="password"
+          class="col p-2 m-0 border-0"
+          type="{{ passwordtype }}"
+          placeholder="Password"
+          id="typebox-with"
+          name="currentpassword"
+          [(ngModel)]="model.currentpassword"
+          #currentpassword="ngModel"
+          required
+        />
+      </div>
       <p
         class="font-sm my-1 text-danger"
         [ngStyle]="{
@@ -56,11 +67,11 @@
       >
         Password is required
       </p>
-      <div class="row m-0 mb-3 mt-1">
+      <div class="row mb-3 mt-1">
         <button class="col-6" type="submit">Sign In</button>
         <div class="col-6 text-right p-0">
-          <input type="checkbox" checked="checked" id="remember" />
-          <label for="remember" class="font-sm cursor-pointer"
+          <input type="checkbox" id="remember" />
+          <label for="remember" class="font-sm cursor-pointer ml-2"
             >Remember me</label
           >
           <p class="d-inline-block font-sm m-0">

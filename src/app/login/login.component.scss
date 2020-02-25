@@ -3,10 +3,14 @@
 header {
   background-color: $header-bg;
   height: 100px;
+
+  .logo {
+    height: 70px;
+  }
 }
 
 .login-page-main-container {
-  height: calc(100vh - 100px);
+  height: 70vh;
 
   .login-form {
     background-color: $login-form-bg;
@@ -31,6 +35,12 @@ header {
     input:not([type="checkbox"]) {
       appearance: none;
       border-radius: 0;
+    }
+
+    .icon-placeholder {
+      background-color: $login-title-color;
+      height: 50px;
+      width: 50px;
     }
   }
 }

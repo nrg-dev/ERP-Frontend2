@@ -1,7 +1,7 @@
 $white: white;
 $black: black;
-$main-bg: #2f4756;
-$header-bg: #182a36;
+$main-bg: #2f4755;
+$header-bg: #1a2a35;
 $login-form-bg: #e1e1e0;
 $login-title-color: #666666;
 
@@ -9,26 +9,32 @@ $login-title-color: #666666;
 
 $normal: 14;
 $small: 12;
-$large: 24;
+$large: 26;
 
 @mixin fontSize($size) {
   font-size: $size + px;
 }
 
-@mixin placeholderColor($color) {
+@mixin formatPlaceHolder() {
   ::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: $color;
+    color: $login-title-color;
     opacity: 1; /* Firefox */
+    opacity: 50%;
+    @include fontSize($small);
   }
 
-  //   :-ms-input-placeholder {
-  //     /* Internet Explorer 10-11 */
-  //     color: $color;
-  //   }
+  :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: $login-title-color;
+    opacity: 50%;
+    @include fontSize($small);
+  }
 
-  //   ::-ms-input-placeholder {
-  //     /* Microsoft Edge */
-  //     color: $color;
-  //   }
+  ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: $login-title-color;
+    opacity: 50%;
+    @include fontSize($small);
+  }
 }
