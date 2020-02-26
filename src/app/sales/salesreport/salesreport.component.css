@@ -1,8 +1,8 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Lato',Georgia,Arial,sans-serif;
-  font-size:13px;
+
+  font-size: 13px;
   color: white;
   caret-color: white;
 }
@@ -12,22 +12,23 @@ table {
   height: 550px;
   overflow-y: auto;
   border-color: 1px solid grey;
-  background-color: #333C45;
+  background-color: #333c45;
 }
-th{
-  color:#ffffff;
+th {
+  color: #ffffff;
   /*background-color:#436d82; */
-  background-color:#033c5f;
+  background-color: #033c5f;
   color: white;
   width: 25%;
 }
-td{
-  background-color: #333C45;
-  color:white;
+td {
+  background-color: #333c45;
+  color: white;
   width: 25%;
   cursor: pointer;
 }
-::ng-deep .mat-select-value,::ng-deep .mat-select-arrow {
+::ng-deep .mat-select-value,
+::ng-deep .mat-select-arrow {
   color: white;
 }
 ::ng-deep .alert-success {
@@ -40,15 +41,19 @@ td{
   margin: 8px;
   padding-top: 4px;
 }
-::ng-deep td.mat-cell,::ng-deep  td.mat-footer-cell {
+::ng-deep td.mat-cell,
+::ng-deep td.mat-footer-cell {
   border-bottom: 1px solid white;
 }
 
-::ng-deep .mat-table,::ng-deep thead {
+::ng-deep .mat-table,
+::ng-deep thead {
   width: inherit;
 }
 
-td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+td.mat-cell,
+td.mat-footer-cell,
+th.mat-header-cell {
   border-bottom-width: 1px;
   border-bottom-style: solid;
   padding: 7px;
@@ -59,7 +64,7 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
 .mat-input-element {
   font: inherit;
   font-family: fontawesome;
-  background:white;
+  background: white;
   color: black;
   height: 35px;
   outline: 0;
@@ -67,23 +72,23 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
   width: 75%;
   max-width: 100%;
   vertical-align: bottom;
-  text-align:start;
+  text-align: start;
   border-radius: 6px;
   padding: 11px;
   margin-top: -10px;
 }
 
-.matTable{
+.matTable {
   width: 95%;
   margin: auto;
 }
-mat-paginator{
+mat-paginator {
   width: 100%;
-  background-color: #1B2931;
+  background-color: #1b2931;
   color: white;
 }
-h3{
-  color:white;
+h3 {
+  color: white;
   font-size: 16px;
   font-weight: bold;
 }
@@ -95,11 +100,11 @@ h3{
 
 .mat-tab-label {
   cursor: pointer;
-} 
-.tab{
+}
+.tab {
   margin-left: 25px;
 }
-#labeltext{
+#labeltext {
   color: white;
 }
 .tablink {
@@ -119,8 +124,8 @@ h3{
   border-bottom: 3px solid #007bff;
 }
 
-#addsales-div{
-  background: #1B2931;
+#addsales-div {
+  background: #1b2931;
   height: 880px;
   width: 107%;
   border-radius: 10px;
@@ -138,77 +143,77 @@ button {
   color: #fff;
   border: none;
   cursor: pointer;
-  opacity: .9;
+  opacity: 0.9;
   border-radius: 4px;
 }
-#print-butn{
+#print-butn {
   border: 1px solid white;
   height: 30px;
   padding-top: 4px;
   margin-top: 10px;
-  background: #313F47;
+  background: #313f47;
 }
-#icon-mod{
+#icon-mod {
   font-size: 13px;
   margin-left: 3px;
 }
 
-.text{
+.text {
   text-align: center;
   padding: 10px;
   margin: -10px 0 auto;
 }
 
-#purchasetext{
+#purchasetext {
   padding-left: 30px;
   font-size: small;
 }
-#purchaseoutput{
+#purchaseoutput {
   font-size: small;
 }
 
-.details-div{
+.details-div {
   height: 550px;
   margin-right: 10px;
 }
-.empdet-div{
-  background-color: #151F25;
+.empdet-div {
+  background-color: #151f25;
   height: 690px;
   border-radius: 10px;
   margin-left: 60px;
 }
-.text{
-  margin : 8px 0 auto;
+.text {
+  margin: 8px 0 auto;
   text-align: center;
   font-size: 18px;
   font-weight: bold;
 }
 
-.datetext{
-  margin : 8px 0 auto;
+.datetext {
+  margin: 8px 0 auto;
   text-align: center;
   font-size: 18px;
 }
-hr{
+hr {
   border-bottom: 1px solid white;
   width: 90%;
   margin: auto;
 }
-#sale-details{
+#sale-details {
   width: 100%;
-  height:auto;
+  height: auto;
   margin: 0 15px;
 }
-#date-details{
+#date-details {
   width: 100%;
-  height:auto;
+  height: auto;
   background-color: #243642;
   margin: 0 15px;
 }
-#salessummary{
+#salessummary {
   margin: 5px 15px;
 }
-.print{
+.print {
   vertical-align: center;
 }
 
@@ -219,19 +224,18 @@ hr{
   overflow-x: hidden;
 }
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
-  #addsales-div{
-    background: #1B2931;
+  #addsales-div {
+    background: #1b2931;
     height: 880px;
     width: 107%;
     border-radius: 10px;
   }
 }
-@media (min-width: 1025px) and (max-width: 1280px){
-  #addsales-div{
-    background: #1B2931;
+@media (min-width: 1025px) and (max-width: 1280px) {
+  #addsales-div {
+    background: #1b2931;
     height: 880px;
     width: 107%;
     border-radius: 10px;
   }
-
 }
