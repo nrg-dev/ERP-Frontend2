@@ -1,6 +1,5 @@
 * {
-  font-family: 'Lato',Georgia,Arial,sans-serif;
-  font-size:13px;
+  font-size: 13px;
 }
 
 ::ng-deep .mat-dialog-container {
@@ -10,7 +9,8 @@
   margin-top: 20px;
   color: white;
 }
-b, strong {
+b,
+strong {
   font-weight: bolder;
   padding-left: 25px;
   padding-right: 25px;
@@ -18,7 +18,7 @@ b, strong {
 
 /* Set a style for all buttons */
 button {
-  background-color:#174FA6;
+  background-color: #174fa6;
   color: white;
   margin: 8px 0;
   border: none;
@@ -27,14 +27,14 @@ button {
   opacity: 0.9;
   border-radius: 4px;
 }
- 
+
 select {
   width: 26%;
   margin-left: 2px;
   height: 37px;
 }
-  
 
-#applyButton{
-  width: 75px;height: 35px;
+#applyButton {
+  width: 75px;
+  height: 35px;
 }

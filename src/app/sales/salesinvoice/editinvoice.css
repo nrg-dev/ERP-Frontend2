@@ -2,69 +2,69 @@
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  font-family: 'Lato',Georgia,Arial,sans-serif;
-  font-size:13px;
+
+  font-size: 13px;
 }
 ::ng-deep .editInvoice .mat-dialog-container {
-  background-color: #434F5B;
+  background-color: #434f5b;
   width: 100%;
   height: 100%;
   margin-top: 20px;
   color: white;
-}  
+}
 
-#box-dialouge{
-  background: #333C45;
+#box-dialouge {
+  background: #333c45;
   height: auto;
 }
-#rowdelete-icon{
+#rowdelete-icon {
   margin-left: 10px;
   margin-top: 8px;
   color: white;
 }
-#rowdelete-div{
+#rowdelete-div {
   height: 30px;
   width: 30px;
-  background: #EF6956; 
+  background: #ef6956;
   border-radius: 16px;
   color: white;
 }
-#rowedit-div{
+#rowedit-div {
   height: 30px;
   width: 30px;
-  background: #267CB4; 
+  background: #267cb4;
   border-radius: 16px;
   color: white;
 }
 table {
   table-layout: fixed;
   width: 90%;
-  border-collapse: collapse ;
+  border-collapse: collapse;
   margin-left: 40px;
-  display:block;
+  display: block;
 }
-th, td {
+th,
+td {
   padding: 10px;
   border: 1px solid darkgray;
   color: white;
 }
 tbody {
   height: 250px;
-  overflow-y: auto;   
+  overflow-y: auto;
   overflow-x: hidden;
-  width:  14.2857%;
+  width: 14.2857%;
   color: white;
-
 }
-th{
-  background-color:#21272D;
-}
-
-td{
-  background-color:#434F5B;
+th {
+  background-color: #21272d;
 }
 
-#checkIn-butn{
+td {
+  background-color: #434f5b;
+}
+
+#checkIn-butn {
   background-color: #07ab07;
   width: 100px;
   height: 32px;
@@ -72,7 +72,7 @@ td{
   text-align: center;
   border: 1px solid #07ab07;
 }
-#checkOut-butn{
+#checkOut-butn {
   background-color: #d40505;
   width: 120px;
   height: 32px;
@@ -82,7 +82,7 @@ td{
 
 .radio-toolbar label {
   padding: 4px 11px;
-  color:white;
+  color: white;
   cursor: pointer;
 }
 

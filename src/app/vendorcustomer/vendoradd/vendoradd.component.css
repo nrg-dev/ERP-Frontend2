@@ -1,9 +1,8 @@
 * {
-  font-family: 'Lato',Georgia,Arial,sans-serif;
-  font-size:13px;
-  color:white;
+  font-size: 13px;
+  color: white;
 }
-h3{
+h3 {
   font-size: 17px;
   font-weight: bold;
 }
@@ -15,19 +14,19 @@ h3{
   justify-content: space-between;
   background: none;
 }
-:host /deep/ .mat-form-field-appearance-legacy .mat-form-field-wrapper{
+:host /deep/ .mat-form-field-appearance-legacy .mat-form-field-wrapper {
   padding-bottom: 1.25em;
-  background: #58666E;
+  background: #58666e;
   border-radius: 7px;
   margin-top: -3px;
   height: 35px;
   width: 100%;
 }
-:host /deep/ .mat-form-field-appearance-legacy .mat-form-field-underline{
+:host /deep/ .mat-form-field-appearance-legacy .mat-form-field-underline {
   height: 0px;
   bottom: unset;
 }
-:host /deep/ .mat-form-field-appearance-legacy .mat-form-field-ripple{
+:host /deep/ .mat-form-field-appearance-legacy .mat-form-field-ripple {
   height: 0px;
   top: 0px;
 }
@@ -43,22 +42,22 @@ h3{
 }
 :host /deep/ .mat-tab-labels {
   flex-direction: column;
-  background: #2D4452;
+  background: #2d4452;
 }
 :host /deep/ .mat-tab-body-wrapper {
   flex: 1 1 auto;
   height: 460px;
   background: #243641;
 }
-:host /deep/ .mat-tab-label{
+:host /deep/ .mat-tab-label {
   height: 100px;
-  background: #2D4452;
+  background: #2d4452;
 }
 :host /deep/ .mat-tab-label-active {
-  background-color: #243641 ;
+  background-color: #243641;
   border-bottom: 1px solid white;
 }
-:host /deep/ .mat-tab-group.mat-primary .mat-ink-bar{
+:host /deep/ .mat-tab-group.mat-primary .mat-ink-bar {
   background: none;
 }
 .container {
@@ -83,52 +82,33 @@ h3{
   box-sizing: border-box;
   height: 400px;
 }
-#content::before, #main-content::before, #content::after, #main-content::after {
+#content::before,
+#main-content::before,
+#content::after,
+#main-content::after {
   content: "";
   display: table;
 }
-#content::after, #main-content::after {
+#content::after,
+#main-content::after {
   clear: both;
 }
-.mat-tab{
+.mat-tab {
   height: 70px;
   background: white;
 }
-:host /deep/ td{
+:host /deep/ td {
   vertical-align: middle;
 }
-:host /deep/ .mat-select{
+:host /deep/ .mat-select {
   margin-left: 14px;
 }
-:host /deep/ .mat-select-value{
+:host /deep/ .mat-select-value {
   width: 50%;
   color: white;
 }
-.mat-input-element {
-  font: inherit;
-  font-family: fontawesome;
-  background:#58666E;
-  color: white;
-  height: 35px;
-  outline: 0;
-  margin: 10;
-  width: 100%;
-  max-width: 100%;
-  vertical-align: bottom;
-  text-align:start;
-  border-radius: 6px;
-  padding: 11px;
-  margin-top: -10px;
-}
-::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple {
-  background-color: #243641 !important;
-}
-::ng-deep .mat-form-field-empty.mat-form-field-label {
-  color: white;
-}
 
-
-#button-edit{
+#button-edit {
   height: 25px;
   width: 65px;
   border: 1px solid;
@@ -136,7 +116,7 @@ h3{
   background: center;
   outline: none;
 }
-#button-printpage{
+#button-printpage {
   height: 25px;
   width: 100px;
   border: 1px solid;
@@ -144,107 +124,106 @@ h3{
   background: center;
   outline: none;
 }
-#button-addnewvendor{
+#button-addnewvendor {
   height: 25px;
   width: 150px;
   border: 1px solid;
   cursor: pointer;
 }
-.row{
+.row {
   margin: 0px;
 }
-table.mat-table{
+table.mat-table {
   width: 100%;
 }
-table th,td{
+table th,
+td {
   border: 2px solid #121b21;
 }
-tr:nth-child(even){
-  background-color: #1A2932;
+tr:nth-child(even) {
+  background-color: #1a2932;
   height: 65px;
   text-align: center;
 }
-tr:nth-child(odd){
-  background-color: #1F303B;
+tr:nth-child(odd) {
+  background-color: #1f303b;
   height: 65px;
   text-align: center;
 }
-tr.mat-header-row{
-  background: #1B2931;
+tr.mat-header-row {
+  background: #1b2931;
   height: 50px;
-  
 }
-:host /deep/ .mat-sort-header-container{
+:host /deep/ .mat-sort-header-container {
   margin-left: 35px;
 }
-:host /deep/ td.mat-cell:first-of-type{
+:host /deep/ td.mat-cell:first-of-type {
   padding-left: 0px;
 }
 /*:host /deep/ td.mat-cell{
   border-bottom: none; 
 }*/
-:host /deep/ .mat-paginator{
+:host /deep/ .mat-paginator {
   background-color: transparent;
 }
-:host /deep/ .mat-select-arrow{
+:host /deep/ .mat-select-arrow {
   color: white;
 }
-:host /deep/ .mat-select-value-text{
+:host /deep/ .mat-select-value-text {
   color: white;
 }
 
-
-#rowview-div{
+#rowview-div {
   height: 30px;
   width: 30px;
-  background: #6BD052;
+  background: #6bd052;
   border-radius: 30px;
   cursor: pointer;
   outline: none;
 }
-#rowprint-div{
+#rowprint-div {
   height: 30px;
   width: 30px;
-  background: #FE6601;
+  background: #fe6601;
   border-radius: 30px;
   cursor: pointer;
 }
-#rowedit-div2{
+#rowedit-div2 {
   height: 30px;
   width: 30px;
-  background: #267CB4;
+  background: #267cb4;
   border-radius: 30px;
   cursor: pointer;
 }
-#rowdelete-div2{
+#rowdelete-div2 {
   height: 30px;
   width: 30px;
-  background: #EF6956; 
+  background: #ef6956;
   border-radius: 30px;
   cursor: pointer;
 }
-#row-icon{
+#row-icon {
   font-size: 20px;
   margin: 5px;
 }
-#icon-align{
+#icon-align {
   margin: 5px;
 }
-#save-btn{
+#save-btn {
   width: 90px;
   height: 25px;
-  background: #51AF57;
+  background: #51af57;
   border: none;
   outline: none;
 }
-#delete-btn{
+#delete-btn {
   width: 90px;
   height: 25px;
-  background: #C1272D;
+  background: #c1272d;
   border: none;
   outline: none;
 }
-#editinput-box{
+#editinput-box {
   height: 30px;
   width: 49%;
   color: black;
@@ -252,7 +231,7 @@ tr.mat-header-row{
   border: none;
   box-shadow: none;
 }
-#editinput-box2{
+#editinput-box2 {
   height: 30px;
   width: 49%;
   color: black;
@@ -260,7 +239,7 @@ tr.mat-header-row{
   border: none;
   box-shadow: none;
 }
-#editselect-box{
+#editselect-box {
   height: 35px;
   border-radius: 0px;
   width: 49%;
@@ -270,7 +249,7 @@ tr.mat-header-row{
   border: none;
   box-shadow: none;
 }
-#editselect-box2{
+#editselect-box2 {
   height: 35px;
   border-radius: 0px;
   width: 49%;
@@ -280,28 +259,28 @@ tr.mat-header-row{
   border: none;
   box-shadow: none;
 }
-#img-detaildiv{
+#img-detaildiv {
   width: 100%;
   height: 170px;
   background: white;
   color: black;
 }
-#imgedit-detaildiv{
+#imgedit-detaildiv {
   width: 110%;
   height: 130px;
   background: white;
   color: black;
 }
-#vendor-img-text{
+#vendor-img-text {
   color: black;
   text-align: center;
   font-size: 15px;
   font-weight: bold;
 }
-#icon-mod{
+#icon-mod {
   margin: 5px;
 }
-#button-back{
+#button-back {
   height: 22px;
   width: 90px;
   border: 1px solid;
@@ -310,40 +289,40 @@ tr.mat-header-row{
   margin: auto;
   outline: none;
 }
-#nochange-box{
+#nochange-box {
   height: 30px;
   width: 49%;
   color: black;
-  background: #4D4D4D;
+  background: #4d4d4d;
 }
-#black-color{
+#black-color {
   color: black;
 }
-#selct-joindatebox{
-  background: #20303A;
+#selct-joindatebox {
+  background: #20303a;
   width: 15%;
   height: 30px;
   box-shadow: none;
   border: 0px;
   margin-left: 7px;
 }
-#tab-span-color{
+#tab-span-color {
   font-size: 18px;
   font-weight: bold;
 }
 
-:host /deep/ mat-header-cell, mat-cell {
+:host /deep/ mat-header-cell,
+mat-cell {
   justify-content: center;
   flex: 0 0 200px;
   border-bottom-width: 1px;
-
 }
-#backbutton-text{
+#backbutton-text {
   font-weight: bold;
   margin-left: auto;
   margin-right: auto;
   margin-top: -3px;
 }
-#text3{
+#text3 {
   font-size: 12px;
 }

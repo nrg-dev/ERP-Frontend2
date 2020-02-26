@@ -1,6 +1,5 @@
 * {
-  font-family: 'Lato',Georgia,Arial,sans-serif;
-  font-size:13px;
+  font-size: 13px;
 }
 
 ::ng-deep .viewInvoice .mat-dialog-container {
@@ -9,23 +8,24 @@
   height: 100%;
   margin-top: 20px;
   color: black;
-} 
+}
 select {
   width: 20%;
   padding-left: 10px;
 }
-b, strong {
+b,
+strong {
   font-weight: bolder;
   padding-left: 25px;
   padding-right: 25px;
 }
-h3{
+h3 {
   text-align: center;
   font-size: 24px;
 }
 /* Set a style for all buttons */
 button {
-  background-color:#174FA6;
+  background-color: #174fa6;
   color: white;
   margin: 8px 0;
   border: none;
@@ -35,7 +35,8 @@ button {
   border-radius: 4px;
 }
 
-table,th {
+table,
+th {
   margin: 20px 80px;
   border: 1px solid black;
   border-collapse: collapse;
@@ -46,31 +47,31 @@ table,th {
 td {
   padding: 5px;
   border-collapse: collapse;
-  border-right: solid 1px black; 
-  border-left: solid 1px black; 
-  width:  14.2857%;
+  border-right: solid 1px black;
+  border-left: solid 1px black;
+  width: 14.2857%;
 }
 
 #tdbody {
-  border-top: solid 1px black; 
-  border-bottom: solid 1px black; 
+  border-top: solid 1px black;
+  border-bottom: solid 1px black;
 }
-#thead{
+#thead {
   padding: 3px;
   width: 10%;
 }
-.biilingdetails{
+.biilingdetails {
   margin: 20px 80px;
 }
-.imageRight{
-  width:300px; 
-  text-align:right;
+.imageRight {
+  width: 300px;
+  text-align: right;
 }
-#p-text{
+#p-text {
   text-align: right;
   margin-right: 45px;
 }
-p{
+p {
   margin-top: -20px;
   font-size: 14px;
 }
