@@ -1,8 +1,8 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Lato',Georgia,Arial,sans-serif;
-  font-size:13px;
+
+  font-size: 13px;
   caret-color: white;
 }
 table {
@@ -13,9 +13,8 @@ table {
   border-color: 1px solid grey;
 }
 
-
 .table-row:focus mat-cell {
-  color:yellow; 
+  color: yellow;
 }
 
 .table-row:focus {
@@ -23,22 +22,23 @@ table {
   outline: none;
 }
 
-th{
-  color:#ffffff;
-  background-color:#21272D;
+th {
+  color: #ffffff;
+  background-color: #21272d;
   /*background-color:#033c5f;*/
   width: 25%;
 }
-td{
-  background-color:white;
+td {
+  background-color: white;
   width: 25%;
 }
-mat-paginator{
+mat-paginator {
   width: 100%;
-  background-color: #1B2931;
+  background-color: #1b2931;
   color: white;
 }
-::ng-deep .mat-select-value,::ng-deep .mat-select-arrow {
+::ng-deep .mat-select-value,
+::ng-deep .mat-select-arrow {
   color: white;
 }
 
@@ -53,11 +53,11 @@ mat-paginator{
   padding-top: 4px;
 }
 
-h5{
-  color:white;
+h5 {
+  color: white;
 }
 
-h2{
+h2 {
   font-size: 30px;
 }
 .mat-tab-group {
@@ -70,13 +70,13 @@ h2{
   cursor: pointer;
 }
 
-.tab{
+.tab {
   margin-left: 25px;
 }
-.border{
-  border: 1px solid #243642!important;
+.border {
+  border: 1px solid #243642 !important;
 }
-#labeltext{
+#labeltext {
   color: #243642;
 }
 .tablink {
@@ -102,11 +102,11 @@ button {
   padding: 6px 25px;
   border: none;
   cursor: pointer;
-  opacity: .9;
+  opacity: 0.9;
   border-radius: 4px;
 }
-#addemployee-div{
-  background: #1B2931;
+#addemployee-div {
+  background: #1b2931;
   height: 880px;
   width: 107%;
   border-radius: 10px;
@@ -120,39 +120,42 @@ a {
   text-decoration: none;
 }
 
-#date-details{
+#date-details {
   width: 100%;
   margin: 0 25px;
-  height:auto;
-  background-color: #151F25;
+  height: auto;
+  background-color: #151f25;
 }
 
-#text{
+#text {
   margin-left: 6px;
   color: white;
 }
 
-hr{
+hr {
   background-color: white;
   width: 85%;
   margin: auto;
 }
-#print-butn{
+#print-butn {
   border: 1px solid white;
   height: 30px;
   padding-top: 4px;
   margin-top: 10px;
-  background: #313F47;
+  background: #313f47;
 }
-#icon-mod{
+#icon-mod {
   font-size: 18px;
   margin-left: 3px;
 }
-::ng-deep td.mat-cell,::ng-deep  td.mat-footer-cell {
+::ng-deep td.mat-cell,
+::ng-deep td.mat-footer-cell {
   border-bottom: 1px solid black;
 }
 
-td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+td.mat-cell,
+td.mat-footer-cell,
+th.mat-header-cell {
   border-bottom-width: 1px;
   border-bottom-style: solid;
   padding: 7px;
@@ -162,7 +165,7 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
 .mat-input-element {
   font: inherit;
   font-family: fontawesome;
-  background:white;
+  background: white;
   color: black;
   /*background:#58666E;
   color: white;*/
@@ -172,46 +175,46 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
   width: 100%;
   max-width: 100%;
   vertical-align: bottom;
-  text-align:start;
+  text-align: start;
   border-radius: 6px;
   padding: 11px;
   margin-top: -10px;
 }
 
-.matTable{
+.matTable {
   width: 95%;
   margin: auto;
 }
 
-#rowedit-div{
+#rowedit-div {
   height: 25px;
   width: 25px;
-  background: #267CB4;
+  background: #267cb4;
   border-radius: 16px;
   margin: -25px 0px 0px 32px;
 }
 
-#rowview-div{
+#rowview-div {
   height: 25px;
   width: 25px;
-  background: #dc7218; 
+  background: #dc7218;
   border-radius: 16px;
 }
 
-#rowdelete-div{
+#rowdelete-div {
   height: 25px;
   width: 25px;
-  background: #EF6956; 
+  background: #ef6956;
   border-radius: 16px;
   margin: -45px 0px 0px 63px;
 }
 
-#rowedit-icon{
+#rowedit-icon {
   margin: 6px;
   color: white;
 }
 
-#rowdelete-icon{
+#rowdelete-icon {
   margin: 6px 6px 6px 7px;
   color: white;
 }
@@ -220,25 +223,24 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
   vertical-align: middle;
 }
 
-#dateBox{
-  background-color:#1B2931;
+#dateBox {
+  background-color: #1b2931;
   width: 40%;
   color: white;
 }
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
-  #addemployee-div{
-    background: #1B2931;
+  #addemployee-div {
+    background: #1b2931;
     height: 880px;
     width: 107%;
     border-radius: 10px;
   }
 }
-@media (min-width: 1025px) and (max-width: 1280px){
-  #addemployee-div{
-    background: #1B2931;
+@media (min-width: 1025px) and (max-width: 1280px) {
+  #addemployee-div {
+    background: #1b2931;
     height: 880px;
     width: 107%;
     border-radius: 10px;
   }
-
 }
