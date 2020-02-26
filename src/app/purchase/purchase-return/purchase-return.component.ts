@@ -31,6 +31,7 @@ export class PurchaseReturnComponent implements OnInit {
   constructor(
     private purchaseService: PurchaseService,
     private dialog: MatDialog,
+    private router: Router, 
     private alertService: AlertService
   ) {  
   
