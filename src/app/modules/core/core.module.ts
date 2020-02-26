@@ -11,9 +11,10 @@ import { RouterModule } from "@angular/router";
 import { FormsModule } from "@angular/forms";
 import { UserAvatarComponent } from "./components/user-avatar/user-avatar.component";
 import { SidebarNavComponent } from "./components/sidebar-nav/sidebar-nav.component";
+import { PlaceholderComponent } from './components/placeholder/placeholder.component';
 
 @NgModule({
-  declarations: [HeaderComponent, UserAvatarComponent, SidebarNavComponent],
+  declarations: [HeaderComponent, UserAvatarComponent, SidebarNavComponent, PlaceholderComponent],
   imports: [
     CommonModule,
     RouterModule,
