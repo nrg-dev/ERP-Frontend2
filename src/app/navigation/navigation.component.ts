@@ -11,6 +11,8 @@ import {
   MatCalendar
 } from "@angular/material";
 import { Moment } from "moment";
+import { widgetData } from "./../shared/components/dashboard-widget/dashboard-widget.component";
+import { dashboardWidgets } from "./../config/dashboard-widgets.config";
 
 @Component({
   selector: "app-navigation",
@@ -18,6 +20,8 @@ import { Moment } from "moment";
   styleUrls: ["./navigation.component.css"]
 })
 export class NavigationComponent implements OnInit {
+  widgets: widgetData[];
+
   searchText: any;
   heroes = [
     { id: 11, name: "CHanaka Nice", country: "India" },
@@ -70,6 +74,8 @@ export class NavigationComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.widgets = dashboardWidgets;
+
     this.getScreenWidth().subscribe(width => {
       if (width < 640) {
         this.showToggle = "show";

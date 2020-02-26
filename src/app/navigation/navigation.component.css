@@ -1,11 +1,3 @@
-::ng-deep .alert-success {
-  color: #155724;
-  background-color: #d4edda;
-  border-color: #c3e6cb;
-  margin: 8px;
-  font-size: medium;
-  text-align: center;
-}
 #outline-none {
   outline: none;
 }
@@ -332,7 +324,7 @@ tr:nth-child(even) {
   overflow-y: scroll;
   height: 345px;
 }
-:host /deep/ td{
+:host /deep/ td {
   vertical-align: middle;
 }
 /* calendor css start*/

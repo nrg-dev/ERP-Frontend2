@@ -71,6 +71,7 @@ import {
   MatTreeModule
 } from "@angular/material";
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
+import { DashboardWidgetComponent } from './shared/components/dashboard-widget/dashboard-widget.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { MatMomentDateModule } from "@angular/material-moment-adapter";
     LoginComponent,
     LandingpageComponent,
     DashboardComponent,
-    AlertComponent
+    AlertComponent,
+    DashboardWidgetComponent
   ],
 
   imports: [
