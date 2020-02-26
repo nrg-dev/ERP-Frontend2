@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
       this.alertService.error(message);
       // this.alertService.success(message);
     } else {
-      this.router.navigate(["/landingpage"]);
+      this.router.navigate(["/"]);
     }
   }
 

@@ -1,0 +1,30 @@
+@import "_base";
+
+header {
+  background-color: $header-bg;
+  height: 70px;
+
+  .logo {
+    width: 100px;
+    left: 50%;
+
+    // margin adjust for using routerLink
+    margin-top: -20px;
+  }
+
+  .search-text-box {
+    width: 20%;
+    padding: 3px 10px;
+    appearance: none;
+    border: none;
+    border-radius: 0.4rem;
+    text-indent: 35px;
+  }
+
+  .search-icon {
+    color: $search-icon-color;
+    position: absolute;
+    top: 28px;
+    left: 35px;
+  }
+}
