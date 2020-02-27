@@ -46,7 +46,7 @@ import {
 
 const routes: Routes = [
 
-  { path: 'stockadd', component: StockaddComponent },
+  { path: '', component: StockaddComponent },
 
 ];
 

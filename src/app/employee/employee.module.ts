@@ -49,7 +49,7 @@ import {
 import { EmployeedataComponent } from "./employeedata/employeedata.component";
 
 const routes: Routes = [
-  { path: "", component: EmployeeaddComponent },
+  { path: "", component: EmployeedataComponent },
   { path: "employeeadd", component: EmployeeaddComponent },
   { path: "employeelist", component: EmployeelistComponent },
   { path: "timesheet", component: TimesheetComponent },

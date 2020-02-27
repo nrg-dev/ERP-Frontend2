@@ -3,7 +3,6 @@ import { RouterModule, Routes, PreloadAllModules } from "@angular/router";
 
 import { LandingpageComponent } from "src/app/landingpage/landingpage.component";
 import { LoginComponent } from "src/app/login/login.component";
-import { EmployeeModule } from "src/app/employee/employee.module";
 
 // Modules for lazyloading
 import { EmployeeModule } from "src/app/employee/employee.module";

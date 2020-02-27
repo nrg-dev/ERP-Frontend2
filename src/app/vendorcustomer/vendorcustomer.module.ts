@@ -55,8 +55,8 @@ import {
 
 
 const routes: Routes = [
-  { path: 'vendoradd', component: VendoraddComponent },
-
+  { path: "", component: VendoraddComponent },
+  { path: "vendoradd", component: VendoraddComponent },
 
 ];
 

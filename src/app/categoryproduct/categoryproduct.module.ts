@@ -47,10 +47,12 @@ import { CategoryproductService } from './categoryproduct.service';
 import { Ng2CompleterModule } from 'ng2-completer';
 
 
+
 const routes: Routes = [
-  { path: 'categoryitem', component: CategoryItemComponent },
+  { path: "", component: CategoryItemComponent },
 
 ];
+
 
 @NgModule({
   declarations: [AddnewcategoryComponent,CategoryItemComponent,CategoryeditdeleteComponent,AddpromotionComponent,DiscounteditComponent,DiscountdeleteComponent,AddnewproductComponent,ProductviewComponent,ProducteditComponent,AllproducteditComponent,CategorytableComponent],
