@@ -11,16 +11,22 @@ import {
   MatCalendar
 } from "@angular/material";
 import { Moment } from "moment";
-import { widgetData } from "./../shared/components/dashboard-widget/dashboard-widget.component";
+
 import { dashboardWidgets } from "./../config/dashboard-widgets.config";
+import { WidgetData } from "../shared/components/dashboard-widget/dashboard-widget.model";
+import { RecentUpdate } from "./navigation.model";
+import { RecentUpdatesMock } from "../config/mock/recent-updates.mock";
+import { StocksMock } from "../config/mock/stocks.mock";
 
 @Component({
   selector: "app-navigation",
   templateUrl: "./navigation.component.html",
-  styleUrls: ["./navigation.component.css"]
+  styleUrls: ["./navigation.component.scss"]
 })
 export class NavigationComponent implements OnInit {
-  widgets: widgetData[];
+  widgets: WidgetData[];
+  recentUpdates: RecentUpdate[];
+  stocks: any;
 
   searchText: any;
   heroes = [
@@ -75,6 +81,8 @@ export class NavigationComponent implements OnInit {
 
   ngOnInit() {
     this.widgets = dashboardWidgets;
+    this.recentUpdates = RecentUpdatesMock;
+    this.stocks = StocksMock;
 
     this.getScreenWidth().subscribe(width => {
       if (width < 640) {

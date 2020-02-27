@@ -1,8 +1,4 @@
-* {
-  font-size: 13px;
-  color: white;
-}
-::ng-deep .allproductedit .mat-dialog-container {
+.allproductedit .mat-dialog-container {
   background-color: #434f5b;
   width: 880px;
   height: 586px;

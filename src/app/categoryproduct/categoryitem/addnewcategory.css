@@ -2,7 +2,7 @@
   font-size: 13px;
   color: white;
 }
-::ng-deep .addnewcategory .mat-dialog-container {
+.addnewcategory .mat-dialog-container {
   background-color: #434f5b;
   width: 550px;
   height: 500px;

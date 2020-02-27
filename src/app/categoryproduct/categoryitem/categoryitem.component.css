@@ -24,19 +24,13 @@ table td {
 tr.mat-header-row {
   background: #033c5f;
 }
-::ng-deep .mat-table tbody {
-  background: #1e2328;
-}
+
 .mat-form-field {
   height: 5px;
 }
 .mat-table {
   background: #1e2328;
   width: 100%;
-}
-::ng-deep .mat-select-value,
-::ng-deep .mat-select-arrow {
-  color: white;
 }
 td.mat-cell,
 td.mat-footer-cell,

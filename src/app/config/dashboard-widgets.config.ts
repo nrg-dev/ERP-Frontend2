@@ -1,29 +1,29 @@
-import { widgetData } from "./../shared/components/dashboard-widget/dashboard-widget.component";
+import { WidgetData } from "../shared/components/dashboard-widget/dashboard-widget.model";
 
-export const dashboardWidgets: widgetData[] = [
+export const dashboardWidgets: WidgetData[] = [
   {
-    bgColor: "#30cfa6",
+    bgClass: "sales",
     title: "Sales",
     icon: "fa-shopping-cart",
     value: "358",
     description: "20% Higher than month"
   },
   {
-    bgColor: "#b457fd",
+    bgClass: "orders",
     title: "Completed Orders",
     icon: "fa-suitcase",
     value: "858",
     description: "70% Higher than month"
   },
   {
-    bgColor: "#f89f47",
+    bgClass: "purchase",
     title: "Purchase",
     icon: "fa-chart-line",
     value: "128",
     description: "20% Higher than month"
   },
   {
-    bgColor: "#78bbf3",
+    bgClass: "earnings",
     title: "Total Earnings",
     icon: "fa-dollar-sign",
     value: "$1000",

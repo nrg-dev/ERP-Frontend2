@@ -1,12 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-
-export interface widgetData {
-  bgColor: string;
-  title: string;
-  icon: string;
-  value: string | number;
-  description: string;
-}
+import { WidgetData } from "./dashboard-widget.model";
 
 @Component({
   selector: "app-dashboard-widget",
@@ -14,7 +7,7 @@ export interface widgetData {
   styleUrls: ["./dashboard-widget.component.scss"]
 })
 export class DashboardWidgetComponent implements OnInit {
-  @Input() param: widgetData;
+  @Input() param: WidgetData;
   constructor() {}
 
   ngOnInit() {}

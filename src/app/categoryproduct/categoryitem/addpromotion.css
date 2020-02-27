@@ -1,8 +1,4 @@
-* {
-  font-size: 13px;
-  color: white;
-}
-::ng-deep .addpromotion .mat-dialog-container {
+.addpromotion .mat-dialog-container {
   background-color: #434f5b;
   width: 500px;
   height: 450px;
@@ -10,7 +6,7 @@
   overflow: hidden;
 }
 
-.autosearch1 ::ng-deep .completer-input {
+.autosearch1 .completer-input {
   font-family: fontawesome;
   font-size: 12px;
   width: 100%;
@@ -22,7 +18,7 @@
   color: white;
 }
 
-.promotion-periodbox2 ::ng-deep .mat-form-field {
+.promotion-periodbox2 .mat-form-field {
   font-family: fontawesome;
   font-size: 12px;
   width: 100%;
