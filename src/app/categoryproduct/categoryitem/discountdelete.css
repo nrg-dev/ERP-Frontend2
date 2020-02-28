@@ -1,8 +1,4 @@
-* {
-  font-size: medium;
-  color: white;
-}
-::ng-deep .discountdelete .mat-dialog-container {
+.discountdelete .mat-dialog-container {
   background-color: #5ba95b;
   width: 400px;
   height: 70px;

@@ -170,6 +170,28 @@ mat-paginator {
   background-color: #243642;
   color: white;
 }
+.mat-input-element {
+  font: inherit;
+  font-family: fontawesome;
+  background:#58666E;
+  color: white;
+  height: 35px;
+  outline: 0;
+  margin: 10;
+  width: 100%;
+  max-width: 100%;
+  vertical-align: bottom;
+  text-align:start;
+  border-radius: 6px;
+  padding: 11px;
+  margin-top: -10px;
+}
+::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple {
+  background-color: #243641 !important;
+}
+::ng-deep .mat-form-field-empty.mat-form-field-label {
+  color: white;
+}
 
 #tab-span-color {
   font-size: 18px;

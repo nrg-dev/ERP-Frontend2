@@ -252,6 +252,109 @@ hr{
 
   font-size: 13px;
   color: white;
+  margin: 0;
+  padding: 0;
+
+  font-size: 13px;
+  color: white;
+}
+table {
+  table-layout: fixed;
+  width: 93%;
+  height: 370px;
+  border-collapse: collapse;
+  margin-left: 20px;
+  display: block;
+  overflow: auto;
+  background-color: #333c45;
+}
+th,
+td {
+  padding: 5px 15px;
+  border: 1px solid white;
+  color: white;
+}
+tbody {
+  height: 250px;
+  width: 14.2857%;
+  color: white;
+  border: 1px solid white;
+  text-align: center;
+}
+th {
+  /*background-color:#21272D;*/
+  background-color: #033c5f;
+}
+td {
+  background-color: #333c45;
+  border: 1px solid white;
+}
+.mat-tab-group {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+
+.mat-tab-label {
+  cursor: pointer;
+}
+
+.tab {
+  margin-left: 25px;
+}
+
+#labeltext {
+  color: #243642;
+}
+.tablink {
+  float: left;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  cursor: pointer;
+  /* padding: 14px 14px; */
+  font-size: 17px;
+  text-align: center;
+  width: 25%;
+  height: 10%;
+}
+
+.tablink.active {
+  border-bottom: 3px solid #007bff;
+}
+
+#addemployee-div {
+  background: #1b2931;
+  height: 880px;
+  width: 107%;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
+a {
+  display: block;
+  text-align: center;
+  padding: 12px 12px;
+  text-decoration: none;
+}
+hr {
+  background-color: white;
+  width: 85%;
+  margin: auto;
+}
+
+#checkIn-butn {
+  background-color: #07ab07;
+  width: 80px;
+  height: 32px;
+  text-align: center;
+}
+#checkOut-butn {
+  background-color: #d40505;
+  width: 70px;
+  height: 32px;
+  margin: 5px 0 0 5px;
+  text-align: center;
 }
 table {
   table-layout: fixed;
@@ -360,11 +463,13 @@ select,option,#quantity,#poDate {
     width: 85%;
     background: #243642;
     color:white;
+  color: white;
 }
 input:focus,
 select:focus {
   color: white;
 }
+
 #add-butn{
     background-color: #27AE60;
     width: 120px;
@@ -409,6 +514,7 @@ select:focus {
     width: 100%;
     padding-left: 25px;
 }
+
 #add-butn {
   background-color: #27ae60;
   width: 150px;
@@ -500,12 +606,4 @@ select:focus {
       width: 100%;
       border-radius: 10px;
     }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  #addemployee-div {
-    background: #1b2931;
-    height: 880px;
-    width: 107%;
-    border-radius: 10px;
-  }
 }

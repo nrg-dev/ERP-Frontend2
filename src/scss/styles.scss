@@ -49,3 +49,20 @@ a:hover {
       sans-serif;
   }
 }
+
+.p-0-important {
+  padding: 0 !important;
+
+  &-l {
+    padding-left: 0 !important;
+  }
+  &-r {
+    padding-right: 0 !important;
+  }
+  &-t {
+    padding-top: 0 !important;
+  }
+  &-b {
+    padding-bottom: 0 !important;
+  }
+}

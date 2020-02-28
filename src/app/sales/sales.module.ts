@@ -1,16 +1,21 @@
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SalesorderComponent,Status } from './salesorder/salesorder.component';
-import { Routes, RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LandingpageComponent } from '../landingpage/landingpage.component';
-import { SalesinvoiceComponent,ViewInvoice, EditInvoice,Filter } from './salesinvoice/salesinvoice.component';
-import { SalesreturnComponent } from './salesreturn/salesreturn.component';
-import { SalesreportComponent } from './salesreport/salesreport.component';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { SalesorderComponent, Status } from "./salesorder/salesorder.component";
+import { Routes, RouterModule } from "@angular/router";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { LandingpageComponent } from "../landingpage/landingpage.component";
+import {
+  SalesinvoiceComponent,
+  ViewInvoice,
+  EditInvoice,
+  Filter
+} from "./salesinvoice/salesinvoice.component";
+import { SalesreturnComponent } from "./salesreturn/salesreturn.component";
+import { SalesreportComponent } from "./salesreport/salesreport.component";
 
 import {
   MatAutocompleteModule,
-  MatBadgeModule, 
+  MatBadgeModule,
   MatBottomSheetModule,
   MatButtonModule,
   MatButtonToggleModule,
@@ -42,22 +47,31 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatTreeModule,
-} from '@angular/material';
-import { SalesService } from './sales.service';
-import { PurchaseService } from '../purchase/purchase.service';
-import { Ng2CompleterModule } from 'ng2-completer';
+  MatTreeModule
+} from "@angular/material";
+import { SalesService } from "./sales.service";
+import { PurchaseService } from "../purchase/purchase.service";
+import { Ng2CompleterModule } from "ng2-completer";
 
 const routes: Routes = [
-      { path: 'salesorder', component: SalesorderComponent },
-      { path: 'salesinvoice', component: SalesinvoiceComponent },
-      { path: 'salesreturn', component: SalesreturnComponent },
-      { path: 'salesreport', component: SalesreportComponent }
+  { path: "", component: SalesorderComponent },
+  { path: "salesorder", component: SalesorderComponent },
+  { path: "salesinvoice", component: SalesinvoiceComponent },
+  { path: "salesreturn", component: SalesreturnComponent },
+  { path: "salesreport", component: SalesreportComponent }
 ];
 
-
 @NgModule({
-  declarations: [SalesorderComponent, SalesinvoiceComponent, SalesreturnComponent, SalesreportComponent,Status,ViewInvoice,EditInvoice,Filter],
+  declarations: [
+    SalesorderComponent,
+    SalesinvoiceComponent,
+    SalesreturnComponent,
+    SalesreportComponent,
+    Status,
+    ViewInvoice,
+    EditInvoice,
+    Filter
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -101,18 +115,13 @@ const routes: Routes = [
     MatTreeModule,
     MatPaginatorModule,
     Ng2CompleterModule,
-    RouterModule.forChild(routes) 
-
+    RouterModule.forChild(routes)
   ],
   //schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers: [SalesService,PurchaseService],
+  providers: [SalesService, PurchaseService],
 
-  entryComponents: [ViewInvoice,EditInvoice,Status,Filter],
- 
+  entryComponents: [ViewInvoice, EditInvoice, Status, Filter],
+
   exports: [RouterModule]
-
 })
-
-
-
-export class SalesModule { }
+export class SalesModule {}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { MenuItem } from "./sidebar-nav.model";
+import { SidenavItems } from "src/app/config/sidenav.config";
 // import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
@@ -9,23 +10,10 @@ import { MenuItem } from "./sidebar-nav.model";
 })
 export class SidebarNavComponent implements OnInit {
   menuItems: MenuItem[];
+  isExpanded: boolean = true;
   constructor() {}
 
   ngOnInit() {
-    this.menuItems = [
-      new MenuItem(
-        "dashboard",
-        "Dashboard",
-        "assets/images/dashboard.png",
-        "/"
-      ),
-      new MenuItem(
-        "dashboard",
-        "Dashboard",
-        "assets/images/dashboard.png",
-        "/"
-      ),
-      new MenuItem("dashboard", "Dashboard", "assets/images/dashboard.png", "/")
-    ];
+    this.menuItems = SidenavItems;
   }
 }

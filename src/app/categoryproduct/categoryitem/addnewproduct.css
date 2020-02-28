@@ -1,9 +1,4 @@
-* {
-  /*font-size:medium;*/
-  color: white;
-  font-size: 13px;
-}
-::ng-deep .addnewproduct .mat-dialog-container {
+.addnewproduct .mat-dialog-container {
   background-color: #434f5b;
   width: 880px;
   height: 586px;

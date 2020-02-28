@@ -56,6 +56,12 @@ tr.mat-header-row {
 tr.mat-row {
   cursor: pointer;
 }
+::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple {
+    background-color: #1B2931 !important;
+}
+::ng-deep .mat-form-field-empty.mat-form-field-label {
+    color: white;
+}
 
 #financebackground1 {
   background-color: #243641;

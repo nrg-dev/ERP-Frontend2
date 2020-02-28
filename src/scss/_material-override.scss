@@ -1,0 +1,58 @@
+/* fallback */
+@import "_base";
+
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+
+.mat-sort-header-button,
+.mat-cell,
+.mat-footer-cell,
+.mat-calendar-arrow,
+.mat-sort-header-button,
+.mat-calendar-table-header th,
+.mat-paginator,
+.mat-paginator-page-size .mat-select-trigger,
+.mat-paginator-icon,
+.mat-select-arrow,
+.mat-calendar-body-label,
+.mat-select-value,
+.mat-calendar-body-cell-content,
+.mat-sort-header-arrow {
+  color: $white !important;
+}
+
+.mat-calendar-arrow {
+  border-top-color: $white;
+}
+
+.mat-button:disabled {
+  opacity: 0.6;
+}
+.mat-table {
+  background: transparent;
+}
+
+.mat-sort-header-container,
+td.mat-cell,
+td.mat-footer-cell,
+th.mat-header-cell {
+  justify-content: center !important;
+  text-align: center;
+}
+
+.mat-header-cell {
+  font-size: inherit;
+}
