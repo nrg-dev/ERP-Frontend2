@@ -23,9 +23,17 @@
   overflow-x: auto;
 }
 
-// .sales {
-
-// }
+.sales {
+  .completed {
+    background-color: $sales-completed;
+  }
+  .delayed {
+    background-color: $sales-delayed;
+  }
+  .canceled {
+    background-color: $sales-canceled;
+  }
+}
 
 #outline-none {
   outline: none;

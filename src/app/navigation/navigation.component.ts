@@ -14,9 +14,10 @@ import { Moment } from "moment";
 
 import { dashboardWidgets } from "./../config/dashboard-widgets.config";
 import { WidgetData } from "../shared/components/dashboard-widget/dashboard-widget.model";
-import { RecentUpdate } from "./navigation.model";
+import { RecentUpdate, Stock, Sale } from "./navigation.model";
 import { RecentUpdatesMock } from "../config/mock/recent-updates.mock";
 import { StocksMock } from "../config/mock/stocks.mock";
+import { SalesMock } from "../config/mock/sales.mock";
 
 @Component({
   selector: "app-navigation",
@@ -26,7 +27,8 @@ import { StocksMock } from "../config/mock/stocks.mock";
 export class NavigationComponent implements OnInit {
   widgets: WidgetData[];
   recentUpdates: RecentUpdate[];
-  stocks: any;
+  stocks: Stock[];
+  sales: MatTableDataSource<Sale>;
 
   searchText: any;
   heroes = [
@@ -38,16 +40,17 @@ export class NavigationComponent implements OnInit {
   model: any = {};
 
   displayedColumns: string[] = ["invoicenumber", "client", "date", "status"];
-  dataSource: MatTableDataSource<any>;
+
   allproductlist: any = {};
 
-  @ViewChild("sidenav", { read: true, static: false }) sidenav: MatSidenav;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
+
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.sales.paginator = this.paginator;
+    this.sales.sort = this.sort;
   }
+
   @ViewChild("calendar", { read: true, static: false }) calendar: MatCalendar<
     Moment
   >;
@@ -62,14 +65,13 @@ export class NavigationComponent implements OnInit {
   public notSelected = true;
   //private count=0;
   static showParent: any;
+
   constructor(private router: Router, public route: ActivatedRoute) {
     //this.count=route.firstChild.children.length;
 
-    const salesdata = require(".././salestotaltable.json");
-    this.allproductlist = salesdata;
-    this.dataSource = new MatTableDataSource(this.allproductlist);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.sales = new MatTableDataSource(SalesMock);
+    this.sales.paginator = this.paginator;
+    this.sales.sort = this.sort;
   }
   @HostListener("window:resize", ["$event"])
   onResize(event) {
@@ -83,6 +85,7 @@ export class NavigationComponent implements OnInit {
     this.widgets = dashboardWidgets;
     this.recentUpdates = RecentUpdatesMock;
     this.stocks = StocksMock;
+    // this.sales = SalesMock;
 
     this.getScreenWidth().subscribe(width => {
       if (width < 640) {
