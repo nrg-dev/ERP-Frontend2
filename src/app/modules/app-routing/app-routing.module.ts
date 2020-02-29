@@ -5,7 +5,7 @@ import { LandingpageComponent } from "src/app/landingpage/landingpage.component"
 import { LoginComponent } from "src/app/login/login.component";
 
 // Modules for lazyloading
-import { EmployeeModule } from "src/app/employee/employee.module";
+import { EmployeeModule } from "src/app/modules/employee/employee.module";
 import { VendorcustomerModule } from "src/app/vendorcustomer/vendorcustomer.module";
 import { CategoryproductModule } from "src/app/categoryproduct/categoryproduct.module";
 import { PurchaseModule } from "src/app/purchase/purchase.module";
@@ -34,7 +34,7 @@ const routes: Routes = [
       {
         path: "employment",
         loadChildren: () =>
-          import("./../../employee/employee.module").then(m => EmployeeModule)
+          import("../employee/employee.module").then(m => EmployeeModule)
       },
       {
         path: "vendor-and-customer",

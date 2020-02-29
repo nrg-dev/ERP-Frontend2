@@ -1,13 +1,15 @@
 <header class="w-100 position-fixed d-flex align-items-center p-4">
   <h1 hidden>ERP</h1>
-  <i class="fas fa-search search-icon" aria-hidden="true"></i>
-  <input
-    class="search-text-box"
-    type="search"
-    [(ngModel)]="searchText"
-    autocomplete="on"
-    placeholder="Search here"
-  />
+  <div class="search-box">
+    <i class="fas fa-search search-icon" aria-hidden="true"></i>
+    <input
+      class="search-text-box"
+      type="search"
+      [(ngModel)]="searchText"
+      autocomplete="on"
+      placeholder="Search here"
+    />
+  </div>
   <a [routerLink]="['/']">
     <img
       src="assets/images/nrg-logo.png"

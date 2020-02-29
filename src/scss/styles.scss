@@ -66,3 +66,22 @@ a:hover {
     padding-bottom: 0 !important;
   }
 }
+
+.search-box {
+  position: relative;
+  .search-text-box {
+    width: 100%;
+    padding: 3px 10px;
+    appearance: none;
+    border: none;
+    border-radius: 0.4rem;
+    text-indent: 30px;
+  }
+
+  .search-icon {
+    color: $search-icon-color;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+  }
+}

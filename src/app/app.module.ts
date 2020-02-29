@@ -16,7 +16,7 @@ import { CustomMaterialModule } from "./core/material.module";
 import { LoginComponent } from "./login/login.component";
 import { LandingpageComponent } from "./landingpage/landingpage.component";
 import { SalesModule } from "./sales/sales.module";
-import { EmployeeModule } from "./employee/employee.module";
+import { EmployeeModule } from "./modules/employee/employee.module";
 import { VendorcustomerModule } from "./vendorcustomer/vendorcustomer.module";
 import { CategoryproductModule } from "./categoryproduct/categoryproduct.module";
 import { PurchaseModule } from "./purchase/purchase.module";
@@ -71,7 +71,7 @@ import {
 } from "@angular/material";
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { DashboardWidgetComponent } from "./shared/components/dashboard-widget/dashboard-widget.component";
-import { DataWidgetComponent } from './shared/components/data-widget/data-widget.component';
+import { DataWidgetComponent } from "./shared/components/data-widget/data-widget.component";
 
 @NgModule({
   declarations: [

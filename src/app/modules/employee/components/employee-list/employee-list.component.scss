@@ -1,0 +1,13 @@
+@import "_base";
+
+button {
+  appearance: none;
+  background-color: transparent;
+  color: $white;
+}
+
+.actions {
+  i {
+    padding: 0 15px;
+  }
+}
