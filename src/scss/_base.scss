@@ -21,6 +21,7 @@ $material-tab-content-bg: #1b2932;
 $material-table-header-bg: #333c45;
 $material-table-odd-bg: #3e4954;
 $material-table-even-bg: #47525e;
+$material-tab-label-separator-border: #58665e;
 $disabled-input-bg: #253844;
 $btn-delete-bg: #c1272c;
 $btn-save-bg: #8cc63f;
@@ -28,7 +29,8 @@ $btn-save-bg: #8cc63f;
 // font-sizes
 $normal: 14;
 $small: 12;
-$large: 26;
+$large: 18;
+$x-large: 26;
 
 @mixin fontSize($size) {
   font-size: $size + px;

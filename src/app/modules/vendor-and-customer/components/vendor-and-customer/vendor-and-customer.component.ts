@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: "app-employee",
-  templateUrl: "./employee.component.html",
-  styleUrls: ["./employee.component.scss"]
+  selector: "app-vendor-and-customer",
+  templateUrl: "./vendor-and-customer.component.html",
+  styleUrls: ["./vendor-and-customer.component.scss"]
 })
-export class EmployeeComponent implements OnInit {
+export class VendorAndCustomerComponent implements OnInit {
   activeTab: number = 0;
 
   constructor() {}

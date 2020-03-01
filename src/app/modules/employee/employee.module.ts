@@ -2,7 +2,6 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
 // Modules
-import { EmployeeRoutingModule } from "./employee-routing.module";
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -39,25 +38,26 @@ import {
   MatTooltipModule,
   MatTreeModule
 } from "@angular/material";
+
+import { EmployeeRoutingModule } from "./employee-routing.module";
 import { DataTablesModule } from "angular-datatables";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 // Services
 import { EmployeeService } from "./services/employee.service";
 
 // Components
-import { EmployeedataComponent } from "./components/employeedata/employeedata.component";
 import { EmployeeComponent } from "./components/employee/employee.component";
 import { EmployeeListComponent } from "./components/employee-list/employee-list.component";
+import { EmployeeDetailComponent } from "./components/employee-detail/employee-detail.component";
 import { EmployeeAddComponent } from "./components/employee-add/employee-add.component";
 import { EmployeeAbsenceComponent } from "./components/employee-absence/employee-absence.component";
 import { EmployeeContractTemplateComponent } from "./components/employee-contract-template/employee-contract-template.component";
 import { EmployeeReportComponent } from "./components/employee-report/employee-report.component";
-import { EmployeeDetailComponent } from "./components/employee-detail/employee-detail.component";
+import { CustomMaterialModule } from "src/app/core/material.module";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
-    EmployeedataComponent,
     EmployeeComponent,
     EmployeeListComponent,
     EmployeeAddComponent,
@@ -67,23 +67,18 @@ import { EmployeeDetailComponent } from "./components/employee-detail/employee-d
     EmployeeDetailComponent
   ],
   imports: [
-    EmployeeRoutingModule,
-    FormsModule,
     CommonModule,
-    MatTabsModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatInputModule,
-    MatRippleModule,
-    MatTableModule,
+    FormsModule,
+    EmployeeRoutingModule,
+    CustomMaterialModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,
+    MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
     MatCheckboxModule,
     MatChipsModule,
-    MatStepperModule,
     MatDatepickerModule,
     MatDividerModule,
     MatExpansionModule,
@@ -104,12 +99,12 @@ import { EmployeeDetailComponent } from "./components/employee-detail/employee-d
     MatSlideToggleModule,
     MatSnackBarModule,
     MatSortModule,
+    MatStepperModule,
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-    MatPaginatorModule,
     DataTablesModule.forRoot()
   ],
   providers: [EmployeeService]

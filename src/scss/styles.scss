@@ -40,6 +40,9 @@ a:hover {
   &lg {
     @include fontSize($large);
   }
+  &x-lg {
+    @include fontSize($x-large);
+  }
   &sm {
     @include fontSize($small);
   }

@@ -1,14 +1,33 @@
-import {NgModule} from "@angular/core";
-import { CommonModule } from '@angular/common';
-import { MatButtonModule } from '@angular/material/button';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { NgModule } from "@angular/core";
+import { MatMomentDateModule } from "@angular/material-moment-adapter";
+
+import {
+  MatDatepickerModule,
+  MatPaginatorModule,
+  MatSidenavModule,
+  MatTableModule,
+  MatTabsModule,
+  MatListModule
+} from "@angular/material";
 
 @NgModule({
-  imports: [CommonModule, MatButtonModule,MatToolbarModule, MatNativeDateModule, MatIconModule, MatSidenavModule, MatListModule],
-  exports: [CommonModule, MatButtonModule, MatToolbarModule, MatNativeDateModule, MatIconModule, MatSidenavModule, MatListModule],
+  imports: [
+    MatDatepickerModule,
+    MatPaginatorModule,
+    MatSidenavModule,
+    MatTableModule,
+    MatTabsModule,
+    MatListModule,
+    MatMomentDateModule
+  ],
+  exports: [
+    MatDatepickerModule,
+    MatPaginatorModule,
+    MatSidenavModule,
+    MatTableModule,
+    MatTabsModule,
+    MatListModule,
+    MatMomentDateModule
+  ]
 })
-export class CustomMaterialModule { }
+export class CustomMaterialModule {}
