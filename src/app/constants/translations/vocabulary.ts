@@ -2,9 +2,9 @@ export const VOCABULARY = {
   name: "Name",
   code: "Code Number",
   rank: "Employee Rank",
-  phone: "Phone",
+  phone: "Phone Number",
   address: "Address",
-  email: "E-Mail",
+  email: "Email Address",
   birth: "Birthday",
   doj: "Join Since",
   contract: "Contract Number",
@@ -15,5 +15,12 @@ export const VOCABULARY = {
   workHour: "Work Hour",
   leave: "Annual Leave",
   absentDedution: "Absent Deduction",
-  photo: "Employee Photo"
+  photo: "Photo",
+  vendorName: "Vendor Name",
+  mobile: "Mobile Number",
+  country: "Country",
+  city: "City",
+  vendorCode: "Vendor Code",
+  lastEdit: "Last Edit",
+  addedDate: "Added Date"
 };

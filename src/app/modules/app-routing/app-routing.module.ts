@@ -28,6 +28,7 @@ const routes: Routes = [
     children: [
       {
         path: "",
+        pathMatch: "full",
         component: LandingpageComponent,
         data: { title: "Landing Component" }
       },

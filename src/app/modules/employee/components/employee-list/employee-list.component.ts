@@ -4,8 +4,7 @@ import {
   ViewChild,
   Input,
   SimpleChanges,
-  OnChanges,
-  ChangeDetectorRef
+  OnChanges
 } from "@angular/core";
 
 import { MatTableDataSource, MatPaginator } from "@angular/material";
