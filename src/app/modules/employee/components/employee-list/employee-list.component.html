@@ -62,8 +62,11 @@
           (click)="toggleEmployeeDetailView(row.employeecode)"
         ></i>
         <i class="fas fa-print" (click)="productprint()"></i>
-        <i class="fas fa-edit" (click)="edit(row.employeecode)"></i>
-        <i class="fas fa-trash" (click)="delete(row.employeecode)"></i>
+        <i
+          class="fas fa-edit"
+          (click)="toggleEmployeeDetailView(row.employeecode, true)"
+        ></i>
+        <i class="fas fa-trash" (click)="deleteEmployee(row.employeecode)"></i>
       </td>
     </ng-container>
 
@@ -80,7 +83,7 @@
 </ng-container>
 <ng-container *ngIf="showDetail">
   <app-employee-detail
-    [employee]="employee"
-    (backNavigation)="toggleEmployeeDetailView()"
+    #employeeDetail
+    [employeeCode]="employee && employee.employeecode"
   ></app-employee-detail>
 </ng-container>

@@ -85,3 +85,15 @@ a:hover {
     left: 8px;
   }
 }
+
+button {
+  appearance: none;
+  border: none;
+}
+.transparent-border {
+  border: 1px solid transparent !important;
+}
+
+.tab-content-bg {
+  background-color: $material-tab-content-bg;
+}

@@ -1,11 +1,17 @@
-<mat-tab-group>
+<mat-tab-group
+  [selectedIndex]="activeTab"
+  (selectedIndexChange)="tabChanged($event)"
+>
   <mat-tab
     ><ng-template mat-tab-label>Employee List</ng-template>
-    <app-employee-list></app-employee-list
+    <app-employee-list [tabChange]="activeTab === 0"></app-employee-list
   ></mat-tab>
   <mat-tab
     ><ng-template mat-tab-label>Add New Employee</ng-template>
-    <app-employee-add></app-employee-add>
+    <app-employee-detail
+      [isAddNew]="activeTab === 1"
+      (cancelAddNewEmployee)="setTabIndex($event)"
+    ></app-employee-detail>
   </mat-tab>
   <mat-tab
     ><ng-template mat-tab-label>Absence</ng-template>
