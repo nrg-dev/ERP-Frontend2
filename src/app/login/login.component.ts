@@ -28,9 +28,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.alertService.clear();
     let message = "Invalid User Name !";
-    console.log(
-      "user name : password" +
-        this.model.currentusername +
+    console.log("user name : password" +this.model.currentusername +
         this.model.currentpassword
     );
     localStorage.setItem("currentusername", this.model.currentusername);

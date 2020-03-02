@@ -124,7 +124,7 @@ export class PurchaseService {
         let category="all";
         //return this.http.get<Purchase>(this.productURL+'load');
        // return this.http.get<Purchase>(this.productURL+'load?category='+category);
-        return this.http.get<Purchase>(`${environment.apiUrl}${API_ENDPOINTS.load}`);
+        return this.http.get<Purchase>(`${environment.apiUrl}${API_ENDPOINTS.load+'?category='+category}`);
 
     }
 
@@ -156,7 +156,7 @@ export class PurchaseService {
 
     loadfilterData(purchase:Purchase){
        // return this.http.post<Purchase>(this.commonURL+'loadfilterData',purchase);
-        return this.http.get<Purchase>(`${environment.apiUrl}${API_ENDPOINTS.loadfilterData}`);
+        return this.http.post<Purchase>(`${environment.apiUrl}${API_ENDPOINTS.loadfilterData}`,purchase);
 
     }
 

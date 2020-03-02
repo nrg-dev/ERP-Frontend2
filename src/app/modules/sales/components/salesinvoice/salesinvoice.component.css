@@ -12,12 +12,26 @@ table {
   overflow-y: auto;
   border-color: 1px solid grey;
 }
-th{
-  color:#ffffff;
-  background-color:#21272D;
+.table-row:focus mat-cell {
+  color: yellow;
+}
+
+.table-row:focus {
+  background: tomato;
+  outline: none;
+}
+
+th {
+  color: #ffffff;
+  background-color: #21272d;
   /*background-color:#033c5f;*/
   width: 25%;
 }
+/* th{
+  color:#ffffff;
+  background-color:#21272D;
+  width: 25%;
+} */
 td{
   background-color:white;
   width: 25%;

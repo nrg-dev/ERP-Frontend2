@@ -27,15 +27,15 @@ export class SalesService {
     save(salesarray: Array<any>,deliveryCost:string){
         salesarray.push([{sodate:"09-sep-2020",deliveryCost:deliveryCost}]);
         //return this.http.post<Sales>(this.commonURL+'save',salesarray);
-        return this.http.get(`${environment.apiUrl}${API_ENDPOINTS.save,salesarray}`);
+        return this.http.post<Sales>(
+            `${environment.apiUrl}${API_ENDPOINTS.save}`,salesarray);  
 
     }
 
     // Load 
     load(){
        // return this.http.get<Sales>(this.commonURL+'load');
-        return this.http.get<Sales>(`${environment.apiUrl}${API_ENDPOINTS.load}`);
-        
+        return this.http.get<Sales>(`${environment.apiUrl}${API_ENDPOINTS.load}`); 
     }
 
     // get 
@@ -53,8 +53,8 @@ export class SalesService {
     // Update 
     update(saleseditarray: Array<any>){
        // return this.http.put<Sales>(this.commonURL+'update',saleseditarray);
-        return this.http.get<Sales>(`${environment.apiUrl}${API_ENDPOINTS.update,saleseditarray}`);
-
+       return this.http.put<Sales>(
+        `${environment.apiUrl}${API_ENDPOINTS.update}`,saleseditarray);  
     }
 
     // Remove 
@@ -90,13 +90,13 @@ export class SalesService {
 
     removePartId(id:string,invoiceNumber:string){
        // return this.http.delete<String>(this.commonURL+'removePartId?id='+id+'&invoiceNumber='+invoiceNumber);
-        return this.http.delete<String>(`${environment.apiUrl}${API_ENDPOINTS.removePartId}`+'?id='+id+'&invoiceNumber='+invoiceNumber);
+        return this.http.delete<String>(`${environment.apiUrl}${API_ENDPOINTS.removePartId+'?id='+id+'&invoiceNumber='+invoiceNumber}`);
 
     }
 
     getUnitPrice(productName:string,category:string){
        // return this.http.get<Sales>(this.commonURL+'getUnitPrice?productName='+productName+'&category='+category);
-        return this.http.delete<Sales>(`${environment.apiUrl}${API_ENDPOINTS.getUnitPrice}`+'?productName='+productName+'&category='+category);
+        return this.http.get<Sales>(`${environment.apiUrl}${API_ENDPOINTS.getUnitPrice+'?productName='+productName+'&category='+category}`);
 
     }
 
