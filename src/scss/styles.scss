@@ -91,7 +91,9 @@ a:hover {
 
 button {
   appearance: none;
-  border: none;
+  background-color: transparent;
+  color: $white;
+  border: 1px solid $white;
 }
 .transparent-border {
   border: 1px solid transparent !important;
@@ -99,4 +101,20 @@ button {
 
 .tab-content-bg {
   background-color: $material-tab-content-bg;
+}
+
+.btn {
+  &-red {
+    background-color: $btn-red-bg;
+  }
+  &-green {
+    background-color: $btn-green-bg;
+  }
+  &-orange {
+    background-color: $btn-orange-bg;
+  }
+}
+
+.overflow-scroll {
+  overflow: scroll;
 }

@@ -15,7 +15,7 @@
         <ng-container [ngSwitch]="true">
           <ng-container *ngSwitchCase="isAddNew">
             <span class="col px-2">
-              <button class="col btn-save transparent-border">
+              <button class="col btn-red transparent-border">
                 <i class="fas fa-save"></i>
                 Save
               </button>
@@ -24,7 +24,7 @@
           <ng-container *ngSwitchCase="isEditMode"
             ><span class="col px-2">
               <button
-                class="col btn-delete transparent-border"
+                class="col btn-red transparent-border"
                 (click)="deleteVendor()"
               >
                 <i class="fas fa-trash"></i>
@@ -32,7 +32,7 @@
               </button>
             </span>
             <span class="col px-2">
-              <button class="col btn-save transparent-border">
+              <button class="col btn-red transparent-border">
                 <i class="fas fa-save"></i>
                 Save
               </button>

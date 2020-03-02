@@ -10,7 +10,10 @@ export class EmployeeComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    // TODO: remove initial set
+    this.activeTab = 2;
+  }
 
   tabChanged(event) {
     this.activeTab = event;

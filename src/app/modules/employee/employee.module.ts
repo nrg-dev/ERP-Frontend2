@@ -55,6 +55,8 @@ import { EmployeeContractTemplateComponent } from "./components/employee-contrac
 import { EmployeeReportComponent } from "./components/employee-report/employee-report.component";
 import { CustomMaterialModule } from "src/app/core/material.module";
 import { FormsModule } from "@angular/forms";
+import { EmployeeCardComponent } from "./components/employee-card/employee-card.component";
+import { EmployeeAbsentCardComponent } from './components/employee-absent-card/employee-absent-card.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,9 @@ import { FormsModule } from "@angular/forms";
     EmployeeAbsenceComponent,
     EmployeeContractTemplateComponent,
     EmployeeReportComponent,
-    EmployeeDetailComponent
+    EmployeeDetailComponent,
+    EmployeeCardComponent,
+    EmployeeAbsentCardComponent
   ],
   imports: [
     CommonModule,

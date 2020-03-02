@@ -1,11 +1,5 @@
 @import "_base";
 
-button {
-  appearance: none;
-  background-color: transparent;
-  color: $white;
-}
-
 textarea,
 input {
   appearance: none;
@@ -34,17 +28,4 @@ textarea {
 .employee-photo {
   width: 220px;
   height: 280px;
-}
-
-button {
-  border: 1px solid $white;
-}
-
-.btn {
-  &-delete {
-    background-color: $btn-delete-bg;
-  }
-  &-save {
-    background-color: $btn-save-bg;
-  }
 }
