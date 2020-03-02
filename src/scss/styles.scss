@@ -118,3 +118,10 @@ button {
 .overflow-scroll {
   overflow: scroll;
 }
+
+input:not([type="checkbox"]),
+textarea {
+  appearance: none !important;
+  border-radius: 0;
+  border: none;
+}

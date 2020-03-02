@@ -32,11 +32,6 @@ header {
       font-family: "RobotoBold";
     }
 
-    input:not([type="checkbox"]) {
-      appearance: none;
-      border-radius: 0;
-    }
-
     .icon-placeholder {
       background-color: $login-title-color;
       height: 50px;

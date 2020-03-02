@@ -22,5 +22,6 @@ export const VOCABULARY = {
   city: "City",
   vendorCode: "Vendor Code",
   lastEdit: "Last Edit",
-  addedDate: "Added Date"
+  addedDate: "Added Date",
+  status: "Status"
 };
