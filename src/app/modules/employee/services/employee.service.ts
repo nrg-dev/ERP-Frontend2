@@ -11,7 +11,7 @@ export class EmployeeService {
   constructor(private http: HttpClient) {}
 
   save(employee: Employee) {
-    console.log("service....");
+    console.log("save employee service");
     return this.http.post<Employee>(
       `${environment.apiUrl}${API_ENDPOINTS.saveEmployee}`,
       employee

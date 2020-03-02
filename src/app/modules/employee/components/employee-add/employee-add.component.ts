@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmployeeService } from '../../services/employee.service';
 
 @Component({
   selector: 'app-employee-add',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeAddComponent implements OnInit {
 
+  model: any = {};
   constructor() { }
 
   ngOnInit() {

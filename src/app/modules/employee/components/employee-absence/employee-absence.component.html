@@ -1,1 +1,153 @@
-<div>ABSENCE</div>
+<div class="row" style="margin: 0px;">
+      <div class="col-4 col-md-4 col-lg-4">
+        <br/>
+        <mat-form-field style="color: black;">
+            <input matInput (keyup)="applyFilter2($event.target.value)" placeholder="Employee Name/Code">
+        </mat-form-field>
+        <br/><br/>
+        <div class="mat-elevation-z8">
+          <table mat-table #sortCol1="matSort" [dataSource]="dataSource" matSort matSortActive="ID" matSortDirection="asc">
+            
+                <ng-container matColumnDef="EmployeeName">
+                    <td mat-cell *matCellDef="let row" (click)="absentCardDetails(row.employeecode)" id="{{row.employeecode}}"> {{row.name}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Empcode">
+                    <td mat-cell *matCellDef="let row" (click)="absentCardDetails(row.employeecode)" id="{{row.employeecode}}"> {{row.employeecode}} </td>
+                </ng-container>
+
+                <tr mat-row mat-row [ngClass]="table-row" tabindex="1" 
+                 *matRowDef="let row; columns: displayedColumns;">
+                </tr>
+            </table>
+        </div>  
+      </div>
+
+
+      <div class="col-4 col-md-4 col-lg-4">
+        <br/> 
+        <div id="absentcard-box">
+          <div class="row">
+            <div class="col-5 col-md-5 col-lg-6">
+              <p id="absent-text">OCTOBER ABSENT CARD</p>
+            </div>
+            <div class="col-5 col-md-5 col-lg-6">
+              <br/>
+               <div class="row" id="button-printpage">
+                <i class="fa fa-print" aria-hidden="true" style="margin: 5px;"></i>
+                &nbsp;&nbsp;
+                <p id="font-size15">Print Page</p>
+               </div>
+             </div>
+            </div>
+            <div style="height: 10px;"></div>
+
+            <div id="sectable-back-color">
+              <div *ngFor="let row of empAbsetList" (click)=empdailyreportcall(row.date) id="{{row.date}}">
+                <div class="row">
+                  <div class="col-4 col-md-4 col-lg-4">
+                    <p id="font-sixe12">Date</p>
+                  </div>
+                  <div class="col-4 col-md-4 col-lg-4">
+                    <p id="font-sixe12">Check In</p>
+                  </div>
+                  <div class="col-4 col-md-4 col-lg-4">
+                    <p id="font-sixe12">Check Out</p>
+                  </div>                
+                </div>
+               
+                <div class="row">
+                  <div class="col-4 col-md-4 col-lg-4">
+                    <p id="font-sixe12">{{row.date}}</p>
+                  </div>
+                  <div class="col-4 col-md-4 col-lg-4">
+                    <p id="font-sixe12">{{row.checkin}}</p>
+                  </div>
+                  <div class="col-4 col-md-4 col-lg-4">
+                    <p id="font-sixe12">{{row.checkout}}</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+            </div>
+
+        </div>
+      </div>
+
+
+      <div class="col-4 col-md-4 col-lg-4">
+        <br/>
+            <div class="scroll-div" id="example-box">
+              <div style="height: 10px;"></div>
+                  <div class="row">
+                      <div id="date-details">
+                          <p class="text">SET DATE AND TIME</p>
+                          <p class="datetext"> {{todayDate | date:'longDate'}} </p>
+                          <p class="datetext" id="date">{{todayDate | date:'mediumTime'}}</p>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="radio-toolbar" style="margin: auto;">
+                          <input type="radio" id="radio1" name="radios" value="check In" [(ngModel)]="model.status" #status="ngModel" required />
+                          <label for="radio1" id="checkIn-butn">CHECK IN</label>
+                          
+                          <input type="radio" id="radio2" name="radios" value="check Out" [(ngModel)]="model.status" #status="ngModel" required />
+                          <label for="radio2" id="checkOut-butn">CHECK OUT</label>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="radio-toolbar">
+                          <input type="radio" id="radio3" name="radios" value="absent" [(ngModel)]="model.status" #status="ngModel" required />
+                          <label for="radio3" id="absentbtn">ABSENT</label>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <p id="reason-text">Reason </p>
+                  </div>
+                  <div class="row">
+                      <textarea type="text" id="reason-box"  class="form-control" name="reason" value="{{ this.model.reason }}" [(ngModel)]="this.model.reason" #reason="ngModel" required></textarea>  
+                  </div>
+                  <div class="row">
+                      <p style="margin: 0 18px;color:white;font-size: 8px;">Fill this form if late check in / early check out / absent </p>
+                  </div>
+                  <div class="row">
+                      <div id="date-details2">
+                          <p class="text">PREVIEW DETAIL </p>
+                          <div class="row" id="country">
+                              <div class="col-md-5 col-xs-5 col-lg-5">Employee Code</div>
+                              <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                              <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.employeecode }}</div>
+                          </div>
+                          <div class="row" id="country">
+                              <div class="col-md-5 col-xs-5 col-lg-5">Employee Name</div>
+                              <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                              <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.name }}</div>
+                          </div>
+                          <div class="row" id="country">
+                              <div class="col-md-5 col-xs-5 col-lg-5">Date</div>
+                              <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                              <div class="col-md-6 col-xs-6 col-lg-5">{{ todayDate | date:'longDate' }}</div>
+                          </div>
+                          <div class="row" id="country">
+                              <div class="col-md-5 col-xs-5 col-lg-5">Time</div>
+                              <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                              <div class="col-md-6 col-xs-6 col-lg-5">{{todayDate | date:'mediumTime'}}</div>
+                          </div>
+                          <div class="row" id="country">
+                              <div class="col-md-5 col-xs-5 col-lg-5">Status</div>
+                              <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                              <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.status }}</div>
+                          </div>
+                          <div class="row" id="country">
+                              <div class="col-md-5 col-xs-5 col-lg-5">Reason</div>
+                              <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                              <div class="col-md-6 col-xs-6 col-lg-5">{{ this.model.reason }}</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <button id="uploadbtn" (click)="upload(todayDate)">UPLOAD</button>
+                  </div>
+          </div>
+      </div>
+    </div>

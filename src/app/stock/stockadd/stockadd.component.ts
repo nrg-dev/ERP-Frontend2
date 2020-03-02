@@ -7,7 +7,7 @@ import { Stock } from 'src/app/_models/stock';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
-import { PurchaseService } from '../../purchase/purchase.service';
+import { PurchaseService } from 'src/app/modules/purchase/services/purchase.service';
 //import *  as  XLSX from 'xlsx';
 
 @Component({

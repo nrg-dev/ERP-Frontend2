@@ -13,11 +13,9 @@ import { AppComponent } from "./app.component";
 
 import { LoginComponent } from "./login/login.component";
 import { LandingpageComponent } from "./landingpage/landingpage.component";
-import { SalesModule } from "./sales/sales.module";
 import { EmployeeModule } from "./modules/employee/employee.module";
 import { VendorcustomerModule } from "./vendorcustomer/vendorcustomer.module";
 import { CategoryproductModule } from "./categoryproduct/categoryproduct.module";
-import { PurchaseModule } from "./purchase/purchase.module";
 import { FinanceModule } from "./finance/finance.module";
 import { StockModule } from "./stock/stock.module";
 import { UsermgtModule } from "./usermgt/usermgt.module";

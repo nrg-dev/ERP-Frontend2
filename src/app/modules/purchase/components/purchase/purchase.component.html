@@ -1,0 +1,23 @@
+<mat-tab-group
+  animationDuration="0ms"
+  [selectedIndex]="activeTab"
+  (selectedIndexChange)="tabChanged($event)"
+>
+  <mat-tab
+    ><ng-template mat-tab-label>Purchase Order</ng-template>
+    <app-purchaseadd></app-purchaseadd>
+    <!-- <app-employee-list [tabChange]="activeTab === 0"></app-employee-list -->
+  </mat-tab>
+  <mat-tab
+    ><ng-template mat-tab-label>Purchase Invoice</ng-template>
+    <app-purchase-invoice></app-purchase-invoice>
+  </mat-tab>
+  <mat-tab
+  ><ng-template mat-tab-label>Purchase Return</ng-template>
+  <app-purchase-return></app-purchase-return>
+</mat-tab>
+<mat-tab
+><ng-template mat-tab-label>Purchase Report</ng-template>
+<app-purchasereport></app-purchasereport>
+</mat-tab>
+</mat-tab-group>
