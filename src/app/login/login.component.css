@@ -188,6 +188,9 @@ span.psw {
   to {transform: scale(1)}
 }
 
+.help-block{
+  color: red;
+}
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
   span.psw {
