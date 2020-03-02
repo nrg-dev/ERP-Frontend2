@@ -30,7 +30,10 @@
 .mat-calendar-body-label,
 .mat-select-value,
 .mat-calendar-body-cell-content,
-.mat-sort-header-arrow {
+.mat-sort-header-arrow,
+.mat-tab-label .mat-tab-label-content,
+.mat-input-element,
+.mat-header-cell {
   color: $white !important;
 }
 
@@ -43,6 +46,20 @@
 }
 .mat-table {
   background: transparent;
+
+  th {
+    background-color: $material-table-header-bg;
+    text-align: center !important;
+    font-family: RobotoBold;
+  }
+  tr {
+    &:nth-child(odd) {
+      background-color: $material-table-odd-bg;
+    }
+    &:nth-child(even) {
+      background-color: $material-table-even-bg;
+    }
+  }
 }
 
 .mat-sort-header-container,
@@ -55,4 +72,29 @@ th.mat-header-cell {
 
 .mat-header-cell {
   font-size: inherit;
+}
+.mat-paginator {
+  background: transparent;
+}
+
+.mat-tab-body-wrapper {
+  background-color: $material-tab-bg;
+  padding: 20px;
+}
+
+.mat-tab-label {
+  border-bottom: 1px solid $material-tab-label-separator-border;
+  opacity: 1 !important;
+  justify-content: flex-start !important;
+  font-family: RobotoBold;
+  @include fontSize($large);
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+
+  &-active {
+    background-color: $material-tab-bg;
+    color: $white;
+  }
 }

@@ -1,6 +1,6 @@
-import { stock } from "src/app/navigation/navigation.model";
+import { Stock } from "src/app/navigation/navigation.model";
 
-export const StocksMock: stock[] = [
+export const StocksMock: Stock[] = [
   {
     item: "Twill 2x2 200 gsm",
     quantity: "24R | 692 M"

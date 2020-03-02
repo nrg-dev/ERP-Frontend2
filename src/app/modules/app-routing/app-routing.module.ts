@@ -5,8 +5,7 @@ import { LandingpageComponent } from "src/app/landingpage/landingpage.component"
 import { LoginComponent } from "src/app/login/login.component";
 
 // Modules for lazyloading
-import { EmployeeModule } from "src/app/employee/employee.module";
-import { VendorcustomerModule } from "src/app/vendorcustomer/vendorcustomer.module";
+import { EmployeeModule } from "src/app/modules/employee/employee.module";
 import { CategoryproductModule } from "src/app/categoryproduct/categoryproduct.module";
 import { PurchaseModule } from "src/app/purchase/purchase.module";
 import { SalesModule } from "src/app/sales/sales.module";
@@ -15,6 +14,7 @@ import { StockModule } from "src/app/stock/stock.module";
 import { ReportModule } from "src/app/report/report.module";
 import { UsermgtModule } from "src/app/usermgt/usermgt.module";
 import { PlaceholderComponent } from "../core/components/placeholder/placeholder.component";
+import { VendorAndCustomerModule } from "../vendor-and-customer/vendor-and-customer.module";
 
 const routes: Routes = [
   {
@@ -28,20 +28,21 @@ const routes: Routes = [
     children: [
       {
         path: "",
+        pathMatch: "full",
         component: LandingpageComponent,
         data: { title: "Landing Component" }
       },
       {
         path: "employment",
         loadChildren: () =>
-          import("./../../employee/employee.module").then(m => EmployeeModule)
+          import("../employee/employee.module").then(m => EmployeeModule)
       },
       {
         path: "vendor-and-customer",
         loadChildren: () =>
-          import("./../../vendorcustomer/vendorcustomer.module").then(
-            m => VendorcustomerModule
-          )
+          import(
+            "./../../modules/vendor-and-customer/vendor-and-customer.module"
+          ).then(m => VendorAndCustomerModule)
       },
       {
         path: "category-and-product",

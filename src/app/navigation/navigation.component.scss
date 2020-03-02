@@ -23,9 +23,17 @@
   overflow-x: auto;
 }
 
-// .sales {
-
-// }
+.sales {
+  .completed {
+    background-color: $sales-completed;
+  }
+  .delayed {
+    background-color: $sales-delayed;
+  }
+  .canceled {
+    background-color: $sales-canceled;
+  }
+}
 
 #outline-none {
   outline: none;
@@ -869,4 +877,7 @@ tr:nth-child(even) {
     border-radius: 20px;
     margin: 20px 0px 0px 2px;
   }
+}
+.router-link-active {
+  background-color: red;
 }

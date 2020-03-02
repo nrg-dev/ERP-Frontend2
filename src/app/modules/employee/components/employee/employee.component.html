@@ -1,0 +1,29 @@
+<mat-tab-group
+  animationDuration="0ms"
+  [selectedIndex]="activeTab"
+  (selectedIndexChange)="tabChanged($event)"
+>
+  <mat-tab
+    ><ng-template mat-tab-label>Employee List</ng-template>
+    <app-employee-list [tabChange]="activeTab === 0"></app-employee-list
+  ></mat-tab>
+  <mat-tab
+    ><ng-template mat-tab-label>Add New Employee</ng-template>
+    <app-employee-detail
+      [isAddNew]="activeTab === 1"
+      (cancelAddNewEmployee)="setTabIndex($event)"
+    ></app-employee-detail>
+  </mat-tab>
+  <mat-tab
+    ><ng-template mat-tab-label>Absence</ng-template>
+    <app-employee-absence></app-employee-absence
+  ></mat-tab>
+  <mat-tab
+    ><ng-template mat-tab-label>Contract Template</ng-template>
+    <app-employee-contract-template></app-employee-contract-template>
+  </mat-tab>
+  <mat-tab
+    ><ng-template mat-tab-label>Employee Report</ng-template>
+    <app-employee-report></app-employee-report
+  ></mat-tab>
+</mat-tab-group>
