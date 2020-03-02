@@ -107,7 +107,9 @@ import { PurchasereportComponent } from './components/purchasereport/purchaserep
     MatTreeModule,
     MatPaginatorModule
   ],
-  providers: [PurchaseService]
+  providers: [PurchaseService],
+  entryComponents: [ViewInvoice,EditInvoice,Status,Filter],
+
 
 })
 export class PurchaseModule {}
