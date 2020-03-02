@@ -1,14 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { StockService } from './stock.service';
-import { StockaddComponent,ViewStock,ViewStockIn} from './stockadd/stockadd.component';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+ 
+import { CustomMaterialModule } from "src/app/core/material.module";
+import { CoreModule } from "../core/core.module";
+import { StockRoutingModule } from './stock-routing.module';
+import { StockService } from './services/stock.service';
 
-import { Routes, RouterModule } from '@angular/router';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-import { DataTablesModule } from 'angular-datatables';
 import {
   MatAutocompleteModule,
-  MatBadgeModule, 
+  MatBadgeModule,
   MatBottomSheetModule,
   MatButtonModule,
   MatButtonToggleModule,
@@ -40,22 +40,27 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatTreeModule,
-} from '@angular/material';
-
-
-const routes: Routes = [
-
-  { path: '', component: StockaddComponent },
-
-];
-
+  MatTreeModule
+} from "@angular/material";
+import { Ng2CompleterModule } from "ng2-completer";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StockComponent } from './components/stock.component';
+import { PurchaseService } from '../purchase/services/purchase.service';
 
 @NgModule({
-  declarations: [StockaddComponent,ViewStock,ViewStockIn],
+  declarations: [
+    StockComponent,
+
+
+  ],
   imports: [
+    CommonModule,
+    StockRoutingModule,
+    CoreModule,
+    CustomMaterialModule,
+    CommonModule,
     FormsModule,
-    CommonModule,MatTabsModule,ReactiveFormsModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatInputModule,
     MatRippleModule,
@@ -94,10 +99,9 @@ const routes: Routes = [
     MatTooltipModule,
     MatTreeModule,
     MatPaginatorModule,
-    DataTablesModule.forRoot(),RouterModule.forChild(routes) 
-  ],
-  providers: [StockService],
-  entryComponents: [ViewStock,ViewStockIn]
+    Ng2CompleterModule,
+  ],  
+  providers: [StockService,PurchaseService],
 
 })
-export class StockModule { }
+export class StockModule {}
