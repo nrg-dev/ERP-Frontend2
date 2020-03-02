@@ -2,12 +2,12 @@ import { Component, OnInit, ViewChildren,ViewChild ,QueryList ,ElementRef, Injec
 import { User } from 'src/app/_models';
 import { AlertService } from 'src/app/_services/index';
 import { Router } from '@angular/router';
-import { StockService } from '../stock.service';
 import { Stock } from 'src/app/_models/stock';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
 import { PurchaseService } from 'src/app/modules/purchase/services/purchase.service';
+import { StockService } from '../../services/stock.service';
 //import *  as  XLSX from 'xlsx';
 
 @Component({
