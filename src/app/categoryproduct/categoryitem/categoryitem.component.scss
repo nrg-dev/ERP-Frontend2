@@ -8,8 +8,23 @@
 h2 {
   font-size: 22px;
 }
+@import "_base";
+.actions {
+  i {
+    cursor: pointer;
+    padding: 0 15px;
+  }
+}
+#thead-color {
+  background: #033c5f;
+  text-align: center;
+}
+#tbody-color {
+  background: #1e2328;
+  text-align: center;
+}
 
-/*table css start*/
+/*table css start
 table {
   height: 340px;
 }
@@ -75,7 +90,7 @@ th.mat-header-cell {
   background: #1e2328;
   text-align: center;
 }
-/*table css end*/
+table css end*/
 
 #text-category {
   text-align: center;

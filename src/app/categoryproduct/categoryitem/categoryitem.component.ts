@@ -678,7 +678,7 @@ export class CategorytableComponent {
 @Component({
   selector: 'app-categoryitem',
   templateUrl: './categoryitem.component.html',
-  styleUrls: ['./categoryitem.component.css']
+  styleUrls: ['./categoryitem.component.scss']
 })
 export class CategoryItemComponent implements OnInit {
  allproductlist : any= {};// Product;  

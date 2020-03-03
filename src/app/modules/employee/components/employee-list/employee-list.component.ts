@@ -11,6 +11,8 @@ import { MatTableDataSource, MatPaginator } from "@angular/material";
 import { EmployeesMock } from "src/app/config/mock/employees.mock";
 import { Employee } from "./employee-list.model";
 import { EmployeeDetailComponent } from "../employee-detail/employee-detail.component";
+import { EmployeeService } from '../../services/employee.service';
+import { AlertService } from "src/app/_services/index";
 
 @Component({
   selector: "app-employee-list",
@@ -32,7 +34,8 @@ export class EmployeeListComponent implements OnInit, OnChanges {
   }
 
   showDetail: boolean = false;
-  employeesDS: Employee[];
+ // employeesDS: Employee[];
+  employeesDS: any = {};
   employees: MatTableDataSource<Employee>;
   employee;
   displayedColumns: string[] = [
@@ -42,11 +45,14 @@ export class EmployeeListComponent implements OnInit, OnChanges {
     "contactNumber",
     "action"
   ];
-  constructor() {}
+  constructor( private employeeService: EmployeeService,
+    private alertService: AlertService,) 
+  {}
 
   ngOnInit() {
-    this.employeesDS = EmployeesMock;
-    this.employees = new MatTableDataSource(this.employeesDS);
+   // this.employeesDS = EmployeesMock;
+   // this.employees = new MatTableDataSource(this.employeesDS);
+   this.allemplist();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -86,5 +92,23 @@ export class EmployeeListComponent implements OnInit, OnChanges {
       employee => employee.employeecode !== employeeCode
     );
     this.employees.data = this.employeesDS;
+  }
+
+  allemplist() {
+    this.employeeService.load().subscribe(
+      data => {
+        this.employeesDS = data;
+
+        console.log("employee code -->" + this.employeesDS[0].employeecode);
+        this.employees = new MatTableDataSource(this.employeesDS);
+        this.employees.paginator = this.paginator;
+
+      },
+      error => {
+        this.alertService.error(
+          "Network error: server is temporarily unavailable"
+        );
+      }
+    );
   }
 }

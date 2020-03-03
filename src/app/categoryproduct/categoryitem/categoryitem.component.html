@@ -247,61 +247,59 @@
               
                
 
+                <table class="w-100 mt-4" mat-table [dataSource]="dataSource" matSort>
+                
+                    <ng-container matColumnDef="productname">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> ProductName </th>
+                        <td mat-cell *matCellDef="let row"> {{row.productname}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="description">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+                        <td mat-cell *matCellDef="let row"> {{row.description}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="vendorcode">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> VendorCode </th>
+                        <td mat-cell *matCellDef="let row"> {{row.vendorcode}} </td>
+                    </ng-container>
+                    
+                    
+                    <ng-container matColumnDef="sellingprice">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> SellingPrice </th>
+                        <td mat-cell *matCellDef="let row"> {{row.sellingprice}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="price">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+                        <td mat-cell *matCellDef="let row"> {{row.price}} </td>
+                    </ng-container>
+                    
+                    
+
+                    <ng-container matColumnDef="editdelete">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+                        <td mat-cell *matCellDef="let row"> 
+                        <div class="row" style="margin: -4px;">
+                            <div id="rowedit-div" (click)="allproducteditcall(row.prodcode)">
+                            <i class="fa fa-pencil-square-o" id="rowedit-icon" aria-hidden="true"></i>  
+                            </div>  
+                            &nbsp;&nbsp;
+                            <div id="rowdelete-div" (click)="allproductdelete(row.prodcode)">
+                                <i class="fa fa-trash-o" id="rowdelete-icon" aria-hidden="true"></i> 
+                            </div>   
+                        </div> 
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+                    <tr mat-row [ngClass]="table-row" tabindex="1" 
+                    *matRowDef="let row; columns: displayedColumns;">
+                    </tr>
+                </table>
+
                 <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-                <div class="mat-elevation-z8">
-
-                    <table mat-table [dataSource]="dataSource" matSort>
                     
-                        <ng-container matColumnDef="productname">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> ProductName </th>
-                            <td mat-cell *matCellDef="let row"> {{row.productname}} </td>
-                        </ng-container>
-
-                        <ng-container matColumnDef="description">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
-                            <td mat-cell *matCellDef="let row"> {{row.description}} </td>
-                        </ng-container>
-
-                        <ng-container matColumnDef="vendorcode">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> VendorCode </th>
-                            <td mat-cell *matCellDef="let row"> {{row.vendorcode}} </td>
-                        </ng-container>
-                        
-                        
-                        <ng-container matColumnDef="sellingprice">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> SellingPrice </th>
-                            <td mat-cell *matCellDef="let row"> {{row.sellingprice}} </td>
-                        </ng-container>
-
-                        <ng-container matColumnDef="price">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
-                            <td mat-cell *matCellDef="let row"> {{row.price}} </td>
-                        </ng-container>
-                        
-                        
-
-                        <ng-container matColumnDef="editdelete">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
-                            <td mat-cell *matCellDef="let row"> 
-                            <div class="row" style="margin: -4px;">
-                                <div id="rowedit-div" (click)="allproducteditcall(row.prodcode)">
-                                <i class="fa fa-pencil-square-o" id="rowedit-icon" aria-hidden="true"></i>  
-                                </div>  
-                                &nbsp;&nbsp;
-                                <div id="rowdelete-div" (click)="allproductdelete(row.prodcode)">
-                                    <i class="fa fa-trash-o" id="rowdelete-icon" aria-hidden="true"></i> 
-                                </div>   
-                            </div> 
-                            </td>
-                        </ng-container>
-
-                        <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
-                        <tr mat-row [ngClass]="table-row" tabindex="1" 
-                        *matRowDef="let row; columns: displayedColumns;">
-                        </tr>
-                    </table>
-                    
-                </div>  
             </div>
         </div> 
         <!--All Item data table details end-->    
@@ -341,7 +339,7 @@
                 <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
                 <div class="mat-elevation-z8">
 
-                    <table mat-table [dataSource]="dataSource2" matSort>
+                    <table class="w-100 mt-4" mat-table [dataSource]="dataSource2" matSort>
                     
                         <ng-container matColumnDef="productname">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header> ProductName </th>
