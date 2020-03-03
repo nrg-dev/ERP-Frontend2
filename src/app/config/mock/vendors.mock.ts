@@ -1,4 +1,4 @@
-import { Vendor } from "../../modules/vendor-and-customer/components/vendor-list/vendor-list.model";
+import { Vendor } from "../../modules/vendor-and-customer/components/vendor-and-customer-list/vendor-and-customer-list.component.model";
 
 export const VendorsMock: Vendor[] = [
   {
