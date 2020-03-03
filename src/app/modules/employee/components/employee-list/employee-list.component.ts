@@ -87,12 +87,12 @@ export class EmployeeListComponent implements OnInit, OnChanges {
     }
   }
 
-  deleteEmployee(employeeCode: string) {
-    this.employeesDS = this.employeesDS.filter(
-      employee => employee.employeecode !== employeeCode
-    );
-    this.employees.data = this.employeesDS;
-  }
+//  deleteEmployee(employeeCode: string) {
+ //   this.employeesDS = this.employeesDS.filter(
+ //     employee => employee.employeecode !== employeeCode
+//    );
+//    this.employees.data = this.employeesDS;
+//  }
 
   allemplist() {
     this.employeeService.load().subscribe(
@@ -111,4 +111,32 @@ export class EmployeeListComponent implements OnInit, OnChanges {
       }
     );
   }
+
+  deleteEmployee(employeecode: string) {
+    this.employeeService.remove(employeecode).subscribe(
+      data => {
+        this.employee = data;
+        if (this.employee.status == "Success") {
+          this.alertService.success("Deleted Successfully");
+          this.allemplist();
+          this.employees = new MatTableDataSource(this.employeesDS);
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 1500);
+        } else {
+          this.alertService.error("Not Deleted..");
+        }
+        this.allemplist();
+      },
+      error => {
+        this.alertService.error(
+          "Network error: server is temporarily unavailable"
+        );
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 2000);
+      }
+    );
+  }
+
 }
