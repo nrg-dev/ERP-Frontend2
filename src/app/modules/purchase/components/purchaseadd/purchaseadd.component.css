@@ -53,6 +53,7 @@ h3{
 }
 #textColor{
   background-color:#1B2931;
+  border: 1px solid white;
   color: white;
   width: 185%;
   height: 30px;
@@ -182,15 +183,14 @@ hr{
 
 #checkIn-butn{
   background-color: #07ab07;
-  width: 100px;
+  padding-top: 4px;
   height: 32px;
-  margin: 5px 0 0 120px;
+  margin: 5px 0 0 75px;
   text-align: center;
   color: white;
 }
 #checkOut-butn{
   background-color: #d40505;
-  width: 120px;
   height: 32px;
   margin: 5px 0 0 5px;
   text-align: center;
