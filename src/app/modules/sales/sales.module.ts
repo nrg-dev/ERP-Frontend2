@@ -47,7 +47,7 @@ import { Ng2CompleterModule } from "ng2-completer";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PurchaseService } from '../purchase/services/purchase.service';
 import { SalesService } from './services/sales.service';
-import { SalesinvoiceComponent } from './components/salesinvoice/salesinvoice.component';
+import { SalesinvoiceComponent, ViewInvoice, EditInvoice, Filter } from './components/salesinvoice/salesinvoice.component';
 import { SalesreturnComponent } from './components/salesreturn/salesreturn.component';
 import { SalesreportComponent } from './components/salesreport/salesreport.component';
 
@@ -56,6 +56,9 @@ import { SalesreportComponent } from './components/salesreport/salesreport.compo
     SalesComponent,
     SalesorderComponent,
     SalesinvoiceComponent,
+    ViewInvoice,
+    EditInvoice,
+    Filter,
     SalesreturnComponent,
     SalesreportComponent,
 
@@ -109,6 +112,7 @@ import { SalesreportComponent } from './components/salesreport/salesreport.compo
     Ng2CompleterModule,
   ],  
   providers: [SalesService, PurchaseService],
+  entryComponents: [ViewInvoice,EditInvoice,Filter],
 
 })
 export class SalesModule {}

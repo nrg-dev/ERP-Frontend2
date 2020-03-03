@@ -88,15 +88,15 @@ export class PurchaseService {
     geteditDetails(id: string){
        // return this.http.get<Purchase>(this.commonURL+'get?id='+id);
         return this.http.get<Purchase>(
-            `${environment.apiUrl}${API_ENDPOINTS.get}`.replace(
-              "{param}",
-              id.toString()
+            `${environment.apiUrl}${API_ENDPOINTS.getPurchase}`.replace(
+                "{param}",
+                id
             )
-          );
+        );
     }
 
     removePartId(id:string,invoiceNumber:string){
-        return this.http.delete<String>(`${environment.apiUrl}${API_ENDPOINTS.removePartId}`+'?id='+id+'&invoiceNumber='+invoiceNumber);
+        return this.http.delete<String>(`${environment.apiUrl}${API_ENDPOINTS.removePartId+'?id='+id+'&invoiceNumber='+invoiceNumber}`);
       //  return this.http.delete<String>(
       //      `${environment.apiUrl}${API_ENDPOINTS.removePartId}`.replace(
       //        "{param}",

@@ -39,15 +39,9 @@ export class SalesService {
     }
 
     // get 
-    get(id:number){
+    get(id:string){
         //return this.http.get<Sales>(this.commonURL+'get?id='+id);
-        return this.http.get<Sales>(
-            `${environment.apiUrl}${API_ENDPOINTS.get}`.replace(
-              "{param}",
-              id.toString()
-            )
-          );
-
+        return this.http.get<Sales>(`${environment.apiUrl}${API_ENDPOINTS.get+'?id='+id}`); 
     }
 
     // Update 
@@ -70,22 +64,12 @@ export class SalesService {
 
     getCustomerDetails(customername: string){
         //return this.http.get<Sales>(this.commonURL+'getCustomerDetails?customername='+customername);
-        return this.http.get<Sales>(
-            `${environment.apiUrl}${API_ENDPOINTS.getCustomerDetails}`.replace(
-              "{param}",
-              customername
-            )
-          );
+        return this.http.get<Sales>(`${environment.apiUrl}${API_ENDPOINTS.getCustomerDetails+'?customername='+customername}`); 
     }
 
     geteditDetails(id: string){
         //return this.http.get<Sales>(this.commonURL+'get?id='+id);
-        return this.http.get<Sales>(
-            `${environment.apiUrl}${API_ENDPOINTS.get}`.replace(
-              "{param}",
-              id
-            )
-          );
+        return this.http.get<Sales>(`${environment.apiUrl}${API_ENDPOINTS.get+'?id='+id}`); 
     }
 
     removePartId(id:string,invoiceNumber:string){
