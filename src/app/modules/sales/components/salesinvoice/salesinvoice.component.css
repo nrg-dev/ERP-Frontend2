@@ -27,13 +27,7 @@ th {
   /*background-color:#033c5f;*/
   width: 25%;
 }
-/* th{
-  color:#ffffff;
-  background-color:#21272D;
-  width: 25%;
-} */
 td{
-  background-color:white;
   width: 25%;
 }
 mat-paginator{

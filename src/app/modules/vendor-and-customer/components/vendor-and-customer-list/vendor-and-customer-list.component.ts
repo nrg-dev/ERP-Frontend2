@@ -11,21 +11,23 @@ import {
 import { MatTableDataSource, MatPaginator } from "@angular/material";
 import { VendorsMock } from "src/app/config/mock/vendors.mock";
 
-import { VendorDetailComponent } from "../vendor-detail/vendor-detail.component";
-import { Vendor } from "./vendor-list.model";
+import { VendorAndCustomerDetailComponent } from "../vendor-and-customer-detail/vendor-and-customer-detail.component";
+import { Vendor } from "./vendor-and-customer-list.component.model";
 
 @Component({
-  selector: "app-vendor-list",
-  templateUrl: "./vendor-list.component.html",
-  styleUrls: ["./vendor-list.component.scss"]
+  selector: "app-vendor-and-customer-list",
+  templateUrl: "./vendor-and-customer-list.component.html",
+  styleUrls: ["./vendor-and-customer-list.component.scss"]
 })
-export class VendorListComponent implements OnInit {
+export class VendorAndCustomerListComponent implements OnInit, OnChanges {
+  @Input() tabChange: boolean = false;
+  @Input() componentType: "string";
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
   // To get the child component reference after *ngIf
-  private vendorDetail: VendorDetailComponent;
-  @ViewChild(VendorDetailComponent, { static: false }) set content(
-    content: VendorDetailComponent
+  private vendorDetail: VendorAndCustomerDetailComponent;
+  @ViewChild(VendorAndCustomerDetailComponent, { static: false }) set content(
+    content: VendorAndCustomerDetailComponent
   ) {
     setTimeout(() => {
       this.vendorDetail = content;
@@ -44,6 +46,15 @@ export class VendorListComponent implements OnInit {
     this.vendors = new MatTableDataSource(this.vendorsDS);
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.tabChange) {
+      this.showDetail = false;
+      if (this.vendors) {
+        this.vendors.paginator = this.paginator;
+      }
+    }
+  }
+
   ngAfterViewInit(): void {
     this.vendors.paginator = this.paginator;
   }
@@ -51,6 +62,7 @@ export class VendorListComponent implements OnInit {
   toggleVendorDetailView(vendorCode?, edit?) {
     this.showDetail = !this.showDetail;
     this.vendor = undefined;
+
     if (vendorCode) {
       const chosenEmployee = this.vendorsDS.filter(
         vendor => vendor.vendorCode === vendorCode
@@ -62,8 +74,14 @@ export class VendorListComponent implements OnInit {
       setTimeout(() => {
         if (edit && this.vendorDetail) {
           this.vendorDetail.isEditMode = true;
-        } else if (edit === "ADD_NEW") {
+          this.vendorDetail.isAddNew = false;
+        }
+      }, 50);
+    } else {
+      setTimeout(() => {
+        if (edit === "ADD_NEW") {
           this.vendorDetail.isAddNew = true;
+          this.vendorDetail.isEditMode = false;
         }
       }, 50);
     }
