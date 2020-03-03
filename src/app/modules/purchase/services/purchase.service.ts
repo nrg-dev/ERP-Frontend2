@@ -96,7 +96,7 @@ export class PurchaseService {
     }
 
     removePartId(id:string,invoiceNumber:string){
-        return this.http.delete<String>('http://localhost:8082/purchase'+'removePartId?id='+id+'&invoiceNumber='+invoiceNumber);
+        return this.http.delete<String>(`${environment.apiUrl}${API_ENDPOINTS.removePartId}`+'?id='+id+'&invoiceNumber='+invoiceNumber);
       //  return this.http.delete<String>(
       //      `${environment.apiUrl}${API_ENDPOINTS.removePartId}`.replace(
       //        "{param}",

@@ -42,11 +42,16 @@ export class StockService {
       //  return this.http.get<Stock>(this.commonURL+'loadStockDamage');
         return this.http.get(`${environment.apiUrl}${API_ENDPOINTS.loadStockDamage}`);
 
+        
+
     }
     // Update 
     update(stock: Stock){
        // return this.http.put<Stock>(this.commonURL+'update',stock);
-        return this.http.get<Stock>(`${environment.apiUrl}${API_ENDPOINTS.update,stock}`);
+        return this.http.put<Stock>(
+          `${environment.apiUrl}${API_ENDPOINTS.update}`,
+          stock
+        );
     }
 
     loadInvoice(paymentOption:string){

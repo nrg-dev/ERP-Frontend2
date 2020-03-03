@@ -11,7 +11,7 @@ export const API_ENDPOINTS = {
   get: `/purchase/loadVendorItem`, 
   getVendorDetails: `/purchase/getVendorDetails`,     
   remove: `/purchase/remove?invoiceNumber={param}`,
-  removePartId: `/purchase/remove?invoiceNumber={param}`,  
+  removePartId: `/purchase/removePartId`,  
   loadCategory: `/category/load`,
   loadCategoryName: `/category/loadCategoryName`,  
   loadItemName: `/item/loadItemName`,

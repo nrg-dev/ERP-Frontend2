@@ -14,7 +14,6 @@ import { AppComponent } from "./app.component";
 import { LoginComponent } from "./login/login.component";
 import { LandingpageComponent } from "./landingpage/landingpage.component";
 import { EmployeeModule } from "./modules/employee/employee.module";
-import { VendorcustomerModule } from "./vendorcustomer/vendorcustomer.module";
 import { CategoryproductModule } from "./categoryproduct/categoryproduct.module";
 import { FinanceModule } from "./finance/finance.module";
 import { UsermgtModule } from "./usermgt/usermgt.module";

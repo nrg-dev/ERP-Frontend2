@@ -9,6 +9,9 @@ import { VendorDetailComponent } from "./components/vendor-detail/vendor-detail.
 import { CustomerListComponent } from "./components/customer-list/customer-list.component";
 import { CustomerDetailComponent } from "./components/customer-detail/customer-detail.component";
 import { CoreModule } from "../core/core.module";
+import { CustomerService } from './services/customer.service';
+import { VendorService } from './services/vendor.service';
+import { MAT_TABS_CONFIG } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,8 @@ import { CoreModule } from "../core/core.module";
     VendorAndCustomerRoutingModule,
     CoreModule,
     CustomMaterialModule
-  ]
+  ],
+  providers: [CustomerService,VendorService,
+    { provide: MAT_TABS_CONFIG, useValue: { animationDuration: '0ms' } }],
 })
 export class VendorAndCustomerModule {}

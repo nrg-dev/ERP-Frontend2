@@ -6,10 +6,10 @@ import { AlertService } from 'src/app/_services';
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
 import { CategoryproductService } from '../categoryproduct.service';
-import { VendorService } from 'src/app/vendorcustomer/vendor.service';
 import { Discount } from 'src/app/_models/discount';
 import { CompleterData, CompleterService } from 'ng2-completer';
 import { PercentPipe } from '../../../../node_modules/@angular/common';
+import { VendorService } from 'src/app/modules/vendor-and-customer/services/vendor.service';
 
 // addnewcategory start
 @Component({
