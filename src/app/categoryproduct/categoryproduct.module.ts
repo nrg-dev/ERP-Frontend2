@@ -45,6 +45,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormsModule } from '@angular/forms';
 import { CategoryproductService } from './categoryproduct.service';
 import { Ng2CompleterModule } from 'ng2-completer';
+import { VendorService } from '../modules/vendor-and-customer/services/vendor.service';
 
 
 
@@ -105,7 +106,7 @@ const routes: Routes = [
     Ng2CompleterModule,
   ],
   entryComponents: [AddnewcategoryComponent,AddpromotionComponent,CategoryeditdeleteComponent,DiscounteditComponent,DiscountdeleteComponent,AddnewproductComponent,ProductviewComponent,ProducteditComponent,AllproducteditComponent],
-  providers: [CategoryproductService]
+  providers: [CategoryproductService,VendorService]
 })
 export class CategoryproductModule { 
   constructor(private dialog: MatDialog) {}
