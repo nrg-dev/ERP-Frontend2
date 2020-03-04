@@ -53,8 +53,6 @@ export class EmployeeDetailComponent implements OnInit, OnChanges {
   }
 
   saveEmployee() {
-    alert("name" + this.model.name);
-    alert("address" + this.model.address);
     this.employeeService.save(this.model).subscribe(
       data => {
         // this.alertService.success("Successfully Saved.");

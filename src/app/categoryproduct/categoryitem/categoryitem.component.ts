@@ -827,7 +827,6 @@ export class CategoryItemComponent implements OnInit {
         console.log("discount code -->"+this.alldiscountlist[0].discountcode);
         this.dataSource3 = new MatTableDataSource(this.alldiscountlist);
         this.dataSource.paginator = this.paginator;
-        alert("hello");
       },
       error => {
         setTimeout(() => {
