@@ -100,6 +100,8 @@ th.mat-header-cell {
 }
 
 .mat-dialog-container {
+  position: absolute;
+  right: 100vw;
   .hide-in-print {
     display: none;
   }
@@ -109,5 +111,10 @@ th.mat-header-cell {
     position: absolute;
     top: 0;
     left: 0;
+    // -webkit-print-color-adjust: exact; // To get the actual print as per the webview
+
+    * {
+      color: $black !important;
+    }
   }
 }

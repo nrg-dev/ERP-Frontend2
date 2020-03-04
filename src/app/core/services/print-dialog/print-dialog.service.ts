@@ -8,10 +8,17 @@ export class PrintDialogService {
   constructor(public dialog: MatDialog) {}
 
   openDialog(template: TemplateRef<any>) {
-    const dialogRef = this.dialog.open(template);
+    const dialogConfig = {
+      hasBackdrop: false
+    };
+    const dialogRef = this.dialog.open(template, dialogConfig);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log("The dialog was closed");
+    setTimeout(() => {
+      window.print();
+    }, 100);
+
+    window.addEventListener("afterprint", () => {
+      dialogRef.close();
     });
   }
 }
