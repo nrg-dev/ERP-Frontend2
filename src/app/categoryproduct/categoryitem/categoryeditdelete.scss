@@ -1,4 +1,8 @@
-.categoryeditdelete .mat-dialog-container {
+* {
+  font-size: 13px;
+  color: white;
+}
+::ng-deep .categoryeditdelete .mat-dialog-container {
   background-color: #434f5b;
   width: 700px;
   height: 480px;

@@ -1,4 +1,8 @@
-.addpromotion .mat-dialog-container {
+* {
+  font-size: 13px;
+  color: white;
+}
+::ng-deep .addpromotion .mat-dialog-container {
   background-color: #434f5b;
   width: 500px;
   height: 450px;
@@ -47,15 +51,15 @@ h2 {
 }
 #dicountinput-box {
   width: 40px;
-  height: 35px;
+  height: 2rem;
   text-align: end;
   background: #272e34;
   border: none;
   box-shadow: none;
 }
 #qtyinput-box {
-  width: 35px;
-  height: 35px;
+  width: 2.3rem;
+  height: 2.1rem;
   background: #272e34;
   border: none;
   box-shadow: none;
@@ -66,7 +70,7 @@ h2 {
 }
 #selectbox-category {
   width: 100%;
-  height: 80%px;
+  height: 1.8rem;
   border: none;
   background: #272e34;
   box-shadow: none;
@@ -82,7 +86,7 @@ h2 {
   box-shadow: none;
   margin-left: -20px;
 }
-input[type="search"] {
+ input[type=search] {
   font-family: fontawesome;
   font-size: 20px;
   width: 100%;
@@ -93,22 +97,22 @@ input[type="search"] {
   margin-left: -20px;
 }
 #freegift-box {
-  width: 120px;
-  height: 35px;
+  width: 7.1rem;
+  height: 2.1rem;
   background: #272e34;
   border: none;
   box-shadow: none;
 }
 #others-box {
-  width: 120px;
-  height: 35px;
+  width: 7.1rem;
+  height: 2.1rem;
   background: #272e34;
   border: none;
   box-shadow: none;
 }
 #promotion-periodbox {
   width: 31%;
-  height: 35px;
+  height: 2.1rem;
   border: none;
   color: #636a70;
   background: #272e34;
@@ -116,7 +120,7 @@ input[type="search"] {
 }
 #promotion-periodbox2 {
   width: 31%;
-  height: 35px;
+  height: 2.1rem;
   border: none;
   color: #636a70;
   background: #272e34;

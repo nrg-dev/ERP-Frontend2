@@ -1,7 +1,3 @@
-* {
-  font-size: 13px;
-  color: white;
-}
 #cursor-pointer {
   cursor: pointer;
 }
@@ -130,11 +126,14 @@ table css end*/
   cursor: pointer;
 }
 #button-printpage {
-  height: 30px;
-  width: 120px;
+  height: 1.5rem;
+  width: 6.1rem;
   border: 1px solid;
   margin-top: 10px;
   cursor: pointer;
+}
+#icon-align{
+  margin: 0.2rem;
 }
 .searchicon {
   font-family: fontawesome;
@@ -299,8 +298,8 @@ table css end*/
     font-size: 20px;
   }
   #button-printpage {
-    height: 30px;
-    width: 100px;
+    height: 1.5rem;
+    width: 6.1rem;
     border: 1px solid;
     margin-top: 10px;
     cursor: pointer;

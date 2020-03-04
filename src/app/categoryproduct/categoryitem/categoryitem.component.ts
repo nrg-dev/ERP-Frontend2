@@ -14,7 +14,7 @@ import { VendorService } from 'src/app/modules/vendor-and-customer/services/vend
 // addnewcategory start
 @Component({
   selector: 'addnewcategory',
-  styleUrls: ['./addnewcategory.css'],
+  styleUrls: ['./addnewcategory.scss'],
   templateUrl: './addnewcategory.html', 
 })
 export class AddnewcategoryComponent {
@@ -66,7 +66,7 @@ export class AddnewcategoryComponent {
 // categoryeditdelete start
 @Component({
   selector: 'categoryeditdelete',
-  styleUrls: ['./categoryeditdelete.css'],
+  styleUrls: ['./categoryeditdelete.scss'],
   templateUrl: './categoryeditdelete.html', 
 })
 export class CategoryeditdeleteComponent {
@@ -147,7 +147,7 @@ export class CategoryeditdeleteComponent {
 // add promostion start
 @Component({
   selector: 'addpromotion',
-  styleUrls: ['./addpromotion.css'],
+  styleUrls: ['./addpromotion.scss'],
   templateUrl: './addpromotion.html', 
 })
 export class AddpromotionComponent {
@@ -350,7 +350,7 @@ export class DiscountdeleteComponent {
 // addnewproduct start
 @Component({
   selector: 'addnewproduct',
-  styleUrls: ['./addnewproduct.css'],
+  styleUrls: ['./addnewproduct.scss'],
   templateUrl: './addnewproduct.html', 
 })
 export class AddnewproductComponent {
@@ -457,7 +457,7 @@ export class AddnewproductComponent {
 //allproduct edit start
 @Component({
   selector: 'allproductedit',
-  styleUrls: ['./allproductedit.css'],
+  styleUrls: ['./allproductedit.scss'],
   templateUrl: './allproductedit.html', 
 })
 export class AllproducteditComponent {
@@ -619,7 +619,7 @@ export class ProductviewComponent {
 // productedit start
 @Component({
   selector: 'productedit',
-  styleUrls: ['./productedit.css'],
+  styleUrls: ['./productedit.scss'],
   templateUrl: './productedit.html', 
 })
 export class ProducteditComponent {
@@ -725,10 +725,10 @@ export class CategoryItemComponent implements OnInit {
     'Action'
   ];
   dataSource3: MatTableDataSource<any>;
-  ngAfterViewInit() {
-    this.dataSource2.paginator = this.paginator2;
-    this.dataSource2.sort = this.sort2;
-  }
+  //ngAfterViewInit() {
+  //  this.dataSource2.paginator = this.paginator2;
+   // this.dataSource2.sort = this.sort2;
+  //}
   tempid=null;
   tempnumber=null;
   public leftdetails=false;
@@ -777,7 +777,7 @@ export class CategoryItemComponent implements OnInit {
     this.leftdetails=true;
     this.allcategorylist();
     this.allproductList();
-    //this.alldiscountList();
+    this.alldiscountList();
     this.allfreegiftList();
 
   }
@@ -825,6 +825,9 @@ export class CategoryItemComponent implements OnInit {
       data => {
         this.alldiscountlist = data;
         console.log("discount code -->"+this.alldiscountlist[0].discountcode);
+        this.dataSource3 = new MatTableDataSource(this.alldiscountlist);
+        this.dataSource.paginator = this.paginator;
+        alert("hello");
       },
       error => {
         setTimeout(() => {

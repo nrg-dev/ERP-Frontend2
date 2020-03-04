@@ -1,4 +1,8 @@
-.allproductedit .mat-dialog-container {
+* {
+  font-size: 13px;
+  color: white;
+}
+::ng-deep .addnewproduct .mat-dialog-container {
   background-color: #434f5b;
   width: 880px;
   height: 586px;
@@ -29,6 +33,7 @@ h2 {
   background: #272e34;
   border: none;
   box-shadow: none;
+  /* font-size: 12px; */
 }
 #name-box {
   width: 220px;
@@ -44,6 +49,7 @@ h2 {
   border: none;
   box-shadow: none;
   font-size: 10px;
+  /*  font-size:12px; */
 }
 #tax-box {
   width: 71px;
@@ -85,7 +91,7 @@ h2 {
   background-color: #999999;
   width: 220px;
   height: 35px;
-  color: black;
+  color: white;
 }
 #save-btn {
   width: 140px;
