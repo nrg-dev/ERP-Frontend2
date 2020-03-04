@@ -145,13 +145,6 @@ table css end*/
   margin-top: 10px;
   color: black;
 }
-#icon-align {
-  margin: 5px;
-}
-#editdelete-button {
-  margin-left: 10px;
-  cursor: pointer;
-}
 #edit-del-text {
   font-size: 23px;
   margin: 8px;
@@ -177,12 +170,6 @@ table css end*/
   height: 92%;
   background: #333c45;
   margin: 23px 0px 0px 15px;
-}
-#icon-font {
-  font-size: 90px;
-  padding-left: 30px;
-  padding-top: 24px;
-  color: white;
 }
 #p-text {
   padding-left: 30px;
@@ -221,64 +208,6 @@ table css end*/
   border: none;
   box-shadow: none;
 }
-#rowedit-div {
-  height: 30px;
-  width: 30px;
-  background: #267cb4;
-  border-radius: 16px;
-  cursor: pointer;
-}
-#rowedit-div2 {
-  height: 20px;
-  width: 20px;
-  background: #267cb4;
-  border-radius: 16px;
-  cursor: pointer;
-}
-#rowview-div {
-  height: 20px;
-  width: 20px;
-  background: #6bd052;
-  border-radius: 16px;
-  cursor: pointer;
-}
-#rowprint-div {
-  height: 20px;
-  width: 20px;
-  background: #fe6601;
-  border-radius: 16px;
-  cursor: pointer;
-}
-#rowdelete-div {
-  height: 30px;
-  width: 30px;
-  background: #ef6956;
-  border-radius: 16px;
-  cursor: pointer;
-}
-#rowdelete-div2 {
-  height: 20px;
-  width: 20px;
-  background: #ef6956;
-  border-radius: 16px;
-  cursor: pointer;
-}
-#rowedit-icon {
-  margin: 4px;
-  font-size: 23px;
-}
-#rowedit-icon2 {
-  margin: 3px;
-  font-size: 15px;
-}
-#rowdelete-icon {
-  margin: 4px;
-  font-size: 23px;
-}
-#rowdelete-icon2 {
-  margin: 3px;
-  font-size: 15px;
-}
 #border-bottom {
   border-bottom: 1px solid white;
   text-align: center;
@@ -296,6 +225,9 @@ table css end*/
 }
 #editfont-size {
   cursor: pointer;
+}
+#editdelete-button{
+  padding: 1rem;
 }
 /* 90% zoom */
 @media (min-width: 1281px) and (max-width: 1380px) {

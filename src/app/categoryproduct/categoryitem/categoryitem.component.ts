@@ -693,16 +693,38 @@ export class CategoryItemComponent implements OnInit {
   discount:Discount;
   itemtitle:string="All Items";
   // All Product
-  displayedColumns: string[] = ['productname','description','vendorcode','sellingprice','price','editdelete'];
+  displayedColumns: string[] = [
+    'productname',
+    'description',
+    'vendorcode',
+    'sellingprice',
+    'price',
+    'editdelete'
+  ];
   dataSource: MatTableDataSource<any>;
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
   @ViewChild(MatSort,{ static: true }) sort: MatSort;
  
   // Free Gift Data table
-  displayedColumns2: string[] = ['productname','discounttime','action'];
+  displayedColumns2: string[] = [
+    'productname',
+    'discounttime'
+    ,'action'
+  ];
   dataSource2: MatTableDataSource<any>;
   @ViewChild(MatPaginator,{ static: true }) paginator2: MatPaginator;
   @ViewChild(MatSort,{ static: true }) sort2: MatSort;
+
+  //Discount Table
+  displayedColumns3: string[] = [
+    'Product',
+    'discount'
+    ,'discounttime',
+    'Qty',
+    'price',
+    'Action'
+  ];
+  dataSource3: MatTableDataSource<any>;
   ngAfterViewInit() {
     this.dataSource2.paginator = this.paginator2;
     this.dataSource2.sort = this.sort2;

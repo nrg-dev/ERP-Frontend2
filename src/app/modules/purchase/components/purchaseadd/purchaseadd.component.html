@@ -1,30 +1,14 @@
-<div class="employee-content">
+<div >
   <div class="row">
-    <div class="col-lg-11">
-     
+    <div class="col-lg-11">   
               
-      <div id="addemployee-div">
-        <br/><br/>
-        <div class="group-gap" style="margin: 40px;">
-          <br/>
+      <div >
+        <div >
           <form name="form">
             <div class="row">
               <div class="col-lg-3">    
                 <h3 class="mb-3">Make Purchase Order</h3>
-                <br/>
-                <!-- <div class="row">
-                  <div class="col-lg-6">
-                      <label id="labeltext">Vendor Name </label>
-                  </div>
-                  <div class="col-lg-1">
-                      <label id="labeltext">:</label>
-                  </div>
-                  <div class="col-lg-5">
-                    <select [(ngModel)]="model.vendorName" #vendorName="ngModel" name="vendorName" id="textColor">
-                      <option *ngFor="let itemVendor of vendorList" value="{{ itemVendor.vendorName }}"> {{ itemVendor.vendorName }} </option>                     
-                    </select> 
-                  </div>
-                </div><br/> -->
+              
                 <div class="row">
                   <div class="col-lg-6">
                       <label id="labeltext">Product Category  </label>
@@ -166,10 +150,12 @@
                     <td id="middleContent">{{ arr.quantity }}</td>
                     <td id="middleContent">{{ arr.description }}</td>
                     <td id="middleContent">{{ arr.netAmount }}</td>
-                    <td id="middleContent">
-                      <div id="rowdelete-div" (click)="deleteFieldValue(i)">
-                          <i class="fa fa-trash-o" id="rowdelete-icon" aria-hidden="true"></i>    
-                      </div> 
+                    <td>
+                          <i
+                          class="fas fa-trash"
+                          (click)="deleteFieldValue(i)"
+                        ></i>
+
                     </td>
                 </tr>
                         
