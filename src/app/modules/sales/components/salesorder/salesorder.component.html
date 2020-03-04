@@ -1,15 +1,15 @@
 <div>
   <div class="row">
     <div class="col-lg-11"> 
-
       <div>
-        <div class="group-gap" style="margin: 40px;">
-          <br />
+        <div>
           <form name="form">
             <div class="row">
-              <div class="col-lg-3">
-                <h3 class="mb-3">Make Sales Order</h3>
-                <br />
+              <div class="col-lg-5">   
+                <div class="col" style="font-size: 14px;">
+                  Make Sales Order
+                </div>               
+                <br/>
                 <div class="row">
                   <div class="col-lg-6">
                     <label id="labeltext">Product Category </label>
@@ -22,8 +22,7 @@
                       [(ngModel)]="model.category"
                       #category="ngModel"
                       name="category"
-                      id="textColor"
-                    >
+                      id="textColor">
                       <option
                         *ngFor="let itemcategory of categoryList"
                         value="{{ itemcategory }}"
@@ -145,7 +144,7 @@
                   <div class="col-lg-5">
                     <textarea
                       type="text"
-                      [(ngModel)]="model.description"
+                      [(ngModel)]="model.description" id="textColor"
                       #description="ngModel"
                       name="description"
                       id="textColor"
@@ -156,14 +155,14 @@
                 <button
                   (click)="addProduct(this.model.sNo)"
                   class="addButton"
-                  id="newSalesOrder"
-                >
+                  id="newSalesOrder">
                   Add Product
                 </button>
                 <br /><br />
               </div>
-              <div class="col-lg-2"></div>
-              <div class="col-lg-7">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-6">
+                <br/>
                 <div id="date-details">
                   <p class="text">Sales Order Summary</p>
                   <div class="row" id="date">
@@ -192,7 +191,7 @@
                     </div>
                     <div class="col-md-1 col-xs-1 col-lg-1">:</div>
                     <div class="col-md-6 col-xs-6 col-lg-6">
-                      <p id="purchaseoutput">{{ model.sNo }} Item</p>
+                      <p id="purchaseoutput">{{ model.totalItem }} Item</p>
                     </div>
                   </div>
                   <div class="row" id="date">
@@ -277,13 +276,7 @@
                   <td id="middleContent">{{ arr.description }}</td>
                   <td id="middleContent">{{ arr.netAmount }}</td>
                   <td id="middleContent">
-                    <div id="rowdelete-div" (click)="deleteFieldValue(i)">
-                      <i
-                        class="fa fa-trash-o"
-                        id="rowdelete-icon"
-                        aria-hidden="true"
-                      ></i>
-                    </div>
+                    <i class="fas fa-trash" (click)="deleteFieldValue(i)"></i>
                   </td>
                 </tr>
               </tbody>

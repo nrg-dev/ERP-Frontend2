@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray,Validators, FormControl } from '@angular/forms';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ChangeDetectorRef, ElementRef, ViewChild } from '@angular/core';
 import { Purchase } from 'src/app/_models';
 import { AlertService } from 'src/app/_services';
 import { Router } from '@angular/router';
-import { AlertComponent } from 'src/app/_directives';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import { PurchaseService } from '../../services/purchase.service';
@@ -56,12 +52,11 @@ export class PurchaseAddComponent  implements OnInit  {
 
   firstField = true;
   
-  constructor( public fb: FormBuilder,
+  constructor( 
     private dialog: MatDialog,
     private purchaseService:PurchaseService,
-    private cd: ChangeDetectorRef, private router: Router, private alertService: AlertService) { 
-
-    }
+    private router: Router, private alertService: AlertService) { 
+  }
 
   ngOnInit() {
     this.purchasetable = false;
@@ -69,6 +64,7 @@ export class PurchaseAddComponent  implements OnInit  {
     this.model.sNo = 0;
     this.model.deliveryCost = 0;
     this.model.subTotal = 0;
+    this.model.totalItem = 0;
     if(this.model.sNo == 0){
       this.getProductList();
     }else{
@@ -128,6 +124,7 @@ export class PurchaseAddComponent  implements OnInit  {
   addProduct(sNo:number){    
     this.purchasetable = true;
     let totalAmount = 0.0;
+    var item = 0;
     this.fieldArray.push( {vendorName: this.model.vendorName, category: this.model.category,productName: this.model.productName,
       unitPrice: this.model.unitPrice, quantity: this.model.quantity, netAmount: this.model.netAmount, description: this.model.description } );
 
@@ -137,7 +134,12 @@ export class PurchaseAddComponent  implements OnInit  {
     for(let j=0; j<this.fieldArray.length; j++){
       totalAmount += this.fieldArray[j].netAmount;
       this.model.subTotal = totalAmount;
-      console.log("Add SUb Total -->"+this.model.subTotal);
+      console.log("Add SubTotal -->"+this.model.subTotal);
+
+      let response = this.fieldArray[j].quantity.replace(/\D/g, "");
+      item += Number.parseInt(response);
+      this.model.totalItem = item;
+      console.log("Add Total Item -->"+this.model.totalItem);
     }
     
     if(this.model.sNo == 0){
@@ -175,6 +177,7 @@ export class PurchaseAddComponent  implements OnInit  {
       this.model.vendorName = '';
       this.model.sNo = 0;
       this.model.subTotal = '';
+      this.model.totalItem = 0;
       this.getProductList();
     }
     this.model.sNo = this.fieldArray.length;
@@ -205,6 +208,7 @@ export class PurchaseAddComponent  implements OnInit  {
          this.model.vendorName = '';
          this.model.sNo = 0;
          this.model.subTotal = '';
+         this.model.totalItem = 0;
          this.model.deliveryCost = '';      
          this.getProductList();               
        },
@@ -225,6 +229,7 @@ export class PurchaseAddComponent  implements OnInit  {
     this.model.productName = '';
     this.model.category = '';
     this.model.sNo = 0;
+    this.model.totalItem = 0;
     this.model.subTotal = '';
     this.model.deliveryCost = '';   
   }

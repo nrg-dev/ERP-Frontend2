@@ -1,11 +1,9 @@
 <div class="employee-content">
   <div class="row">
     <div class="col-lg-11">
-      
-
       <div id="addsales-div">
         <br /><br />
-        <div class="group-gap" style="margin: 40px;">
+        <div>
           <!-- <mat-toolbar style="margin-left: 25px;">Purchase Order Status</mat-toolbar> -->
           <div class="row">
             <div class="col-lg-3">
@@ -37,30 +35,17 @@
 
           <div class="row">
             <div class="col-lg-2">
-              <label style="color: white">Filter Date :</label>
+                <label style="color: white;font-size: 12px;">Filter Date:</label>
             </div>
-            <div class="col-lg-6">
-              <input
-                type="date"
-                class="form-control"
-                id="dateBox"
-                [(ngModel)]="model.fromdate"
-                name="fromdate"
-                #fromdate="ngModel"
-              />
-              <label style="color: white;">&nbsp; - &nbsp;</label>
-              <input
-                type="date"
-                class="form-control"
-                id="dateBox"
-                [(ngModel)]="model.todate"
-                name="todate"
-                #todate="ngModel"
-              />
+            <div class="col-lg-7">
+                <input type="date" id="dateBox"
+                  [(ngModel)]="model.fromdate" name="fromdate" #fromdate="ngModel"  />
+                <label style="color: white;">&nbsp; - &nbsp;</label>
+                <input type="date" id="dateBox"
+                [(ngModel)]="model.todate" name="todate" #todate="ngModel"  />
             </div>
-            <div class="col-lg-3">
-              <button (click)="openfilter()" style="width:auto;">Filter</button>
-              &nbsp;
+            <div class="col-lg-2">
+                <button (click)="openfilter()" style="width:auto;font-size: 12px;border-radius: 4px;">Filter</button> &nbsp;
             </div>
           </div>
 
