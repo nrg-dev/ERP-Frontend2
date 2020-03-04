@@ -327,7 +327,7 @@ export class Filter {
 @Component({
   selector: 'app-salesinvoice',
   templateUrl: './salesinvoice.component.html',
-  styleUrls: ['./salesinvoice.component.css']
+  styleUrls: ['./salesinvoice.component.scss']
 })
 export class SalesinvoiceComponent implements OnInit {
   sales:Sales;

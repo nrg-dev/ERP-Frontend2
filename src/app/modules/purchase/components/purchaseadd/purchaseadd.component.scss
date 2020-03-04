@@ -15,3 +15,18 @@ button {
 button {
   border: 1px solid $white;
 }
+
+textarea {
+  appearance: none;
+  border: none;
+  width: 185%;
+
+  &:disabled {
+    background-color: $material-tab-bg;
+    color: $white;
+  }
+}
+
+textarea {
+  height: 48px;
+}

@@ -1,7 +1,6 @@
  * {
   margin: 0;
   padding: 0;
-
   font-size: 13px;
 }
 table {
@@ -164,22 +163,31 @@ th.mat-header-cell {
 .mat-input-element {
   font: inherit;
   font-family: fontawesome;
-  background: white;
-  color: black;
-  /*background:#58666E;
-  color: white;*/
+  background: #58666e;
+  color: white;
   height: 35px;
   outline: 0;
   margin: 10;
-  width: 100%;
+  width: 75%;
   max-width: 100%;
   vertical-align: bottom;
   text-align: start;
   border-radius: 6px;
   padding: 11px;
-  margin-top: -10px;
+  margin-top: -20px;
 }
-
+::ng-deep td.mat-cell,
+::ng-deep td.mat-footer-cell {
+  border-bottom: 1px solid white;
+}
+::ng-deep .mat-form-field-underline,
+::ng-deep .mat-form-field-ripple {
+  background-color: #243641 !important;
+}
+::ng-deep .mat-form-field-empty.mat-form-field-label {
+  color: white;
+  font-size: 12px;
+}
 .matTable {
   width: 95%;
   margin: auto;

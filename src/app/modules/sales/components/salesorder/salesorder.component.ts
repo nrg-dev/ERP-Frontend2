@@ -95,6 +95,7 @@ export class SalesorderComponent implements OnInit {
     this.getcategoryList();
     this.getProductList();
     this.model.sNo = 0;
+    this.model.totalItem = 0;
     this.model.deliveryCost = 0;
     this.model.subTotal = 0;
   }
@@ -154,6 +155,7 @@ export class SalesorderComponent implements OnInit {
   addProduct(sNo:number){    
     this.salestable = true;
     let totalAmount = 0.0;
+    var item = 0;
     this.fieldArray.push( {customerName: this.model.customerName, category: this.model.category,productName: this.model.productName,
       unitPrice: this.model.unitPrice, quantity: this.model.quantity, netAmount: this.model.netAmount, description: this.model.description } );
 
@@ -164,6 +166,11 @@ export class SalesorderComponent implements OnInit {
       totalAmount += this.fieldArray[j].netAmount;
       this.model.subTotal = totalAmount;
       console.log("Add SUb Total -->"+this.model.subTotal);
+
+      let response = this.fieldArray[j].quantity.replace(/\D/g, "");
+      item += Number.parseInt(response);
+      this.model.totalItem = item;
+      console.log("Add Total Item -->"+this.model.totalItem);
     }
     
     // CLEAR TEXTBOX.
@@ -183,6 +190,7 @@ export class SalesorderComponent implements OnInit {
       this.model.customerName = '';
       this.model.sNo = 0;
       this.model.subTotal = '';
+      this.model.totalItem = 0;
     }
     this.model.sNo = this.fieldArray.length;
     if(this.fieldArray[0]){
@@ -213,6 +221,7 @@ export class SalesorderComponent implements OnInit {
             this.salestable = false;
             this.model.customerName = '';
             this.model.sNo = 0;
+            this.model.totalItem = 0;
             this.model.subTotal = '';
             this.model.deliveryCost = '';
                         
@@ -233,6 +242,7 @@ export class SalesorderComponent implements OnInit {
     this.model.productName = '';
     this.model.category = '';
     this.model.sNo = 0;
+    this.model.totalItem = 0;
     this.model.subTotal = '';
     this.model.deliveryCost = '';   
   }

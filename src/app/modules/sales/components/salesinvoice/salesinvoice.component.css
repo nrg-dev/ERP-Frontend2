@@ -93,10 +93,10 @@ h2{
 }
 
 button {
-  background-color: #174fa6;
+  /*background-color: #174fa6;*/
   color: #fff;
+  border: 1px solid white;
   padding: 6px 25px;
-  border: none;
   cursor: pointer;
   opacity: .9;
   border-radius: 4px;
@@ -158,7 +158,7 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
 .mat-input-element {
   font: inherit;
   font-family: fontawesome;
-  background:white;
+  background:#58666E;
   color: black;
   height: 35px;
   outline: 0;
@@ -171,7 +171,17 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
   padding: 11px;
   margin-top: -10px;
 }
-
+::ng-deep td.mat-cell,
+::ng-deep td.mat-footer-cell {
+  border-bottom: 1px solid #1B2931;
+}
+::ng-deep .mat-form-field-underline,
+::ng-deep .mat-form-field-ripple {
+  background-color: #1B2931 !important;
+}
+::ng-deep .mat-form-field-empty.mat-form-field-label {
+  color: white;
+}
 .matTable{
   width: 95%;
   margin: auto;

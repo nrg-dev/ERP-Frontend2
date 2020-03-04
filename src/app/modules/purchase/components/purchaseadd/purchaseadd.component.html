@@ -6,9 +6,11 @@
         <div >
           <form name="form">
             <div class="row">
-              <div class="col-lg-3">    
-                <h3 class="mb-3">Make Purchase Order</h3>
-              
+              <div class="col-lg-5">   
+                <div class="col" style="font-size: 14px;">
+                  Make Purchase Order
+                </div>               
+                <br/>
                 <div class="row">
                   <div class="col-lg-6">
                       <label id="labeltext">Product Category  </label>
@@ -68,15 +70,16 @@
                         <label id="labeltext">:</label>
                     </div>
                     <div class="col-lg-5">
-                      <textarea type="text" [(ngModel)]="model.description" #description="ngModel" name="description" id="textColor"></textarea> 
+                        <textarea class="form-control" [(ngModel)]="model.description" #description="ngModel" name="description" id="textColor"></textarea>
                     </div>
                 </div><br/>
                 <button (click)="addProduct(this.model.sNo)" class="addButton" id="newPurchaseOrder"> Add Product </button>
                 <br/><br/> 
               </div>
-              <div class="col-lg-2"> </div>
-              <div class="col-lg-7">    
+              <div class="col-lg-1"> </div>
+              <div class="col-lg-6">    
                 <div id="date-details">
+                  <br/>
                   <p class="text">Pucrhase Order Summary</p>
                   <div class="row"id="date">
                       <div class="col-md-5 col-xs-5 col-lg-5" id="purchasetext">Date of PO</div>
@@ -89,7 +92,7 @@
                     <div class="col-md-5 col-xs-5 col-lg-5" id="purchasetext">Total Product</div>
                     <div class="col-md-1 col-xs-1 col-lg-1">:</div>
                     <div class="col-md-6 col-xs-6 col-lg-6">
-                      <p id="purchaseoutput">{{ model.sNo }} Item</p>
+                      <p id="purchaseoutput">{{ this.model.totalItem }} Item</p>
                     </div>       
                   </div>	
                   <div class="row" id="date">
@@ -151,11 +154,7 @@
                     <td id="middleContent">{{ arr.description }}</td>
                     <td id="middleContent">{{ arr.netAmount }}</td>
                     <td>
-                          <i
-                          class="fas fa-trash"
-                          (click)="deleteFieldValue(i)"
-                        ></i>
-
+                        <i class="fas fa-trash" (click)="deleteFieldValue(i)"></i>
                     </td>
                 </tr>
                         
