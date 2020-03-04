@@ -1,4 +1,4 @@
-import { MenuItem } from "../modules/core/components/sidebar-nav/sidebar-nav.model";
+import { MenuItem } from "../core/components/sidebar-nav/sidebar-nav.model";
 
 export const abc = 5;
 

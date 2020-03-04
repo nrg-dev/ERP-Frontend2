@@ -98,3 +98,16 @@ th.mat-header-cell {
     color: $white;
   }
 }
+
+.mat-dialog-container {
+  .hide-in-print {
+    display: none;
+  }
+}
+@media print {
+  .mat-dialog-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

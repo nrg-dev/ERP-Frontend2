@@ -11,13 +11,15 @@ import { HeaderComponent } from "./components/header/header.component";
 import { UserAvatarComponent } from "./components/user-avatar/user-avatar.component";
 import { SidebarNavComponent } from "./components/sidebar-nav/sidebar-nav.component";
 import { PlaceholderComponent } from "./components/placeholder/placeholder.component";
+import { HideInPrintDirective } from "./directives/hide-in-print/hide-in-print.directive";
 
 @NgModule({
   declarations: [
     HeaderComponent,
     UserAvatarComponent,
     SidebarNavComponent,
-    PlaceholderComponent
+    PlaceholderComponent,
+    HideInPrintDirective
   ],
   imports: [
     CommonModule,
@@ -26,6 +28,11 @@ import { PlaceholderComponent } from "./components/placeholder/placeholder.compo
     ReactiveFormsModule,
     CustomMaterialModule
   ],
-  exports: [HeaderComponent, SidebarNavComponent, FormsModule]
+  exports: [
+    HeaderComponent,
+    SidebarNavComponent,
+    FormsModule,
+    HideInPrintDirective
+  ]
 })
 export class CoreModule {}
