@@ -41,6 +41,7 @@ import {
 
 import { EmployeeRoutingModule } from "./employee-routing.module";
 import { DataTablesModule } from "angular-datatables";
+import { CoreModule } from "src/app/core/core.module";
 
 // Services
 import { EmployeeService } from "./services/employee.service";
@@ -56,7 +57,7 @@ import { EmployeeReportComponent } from "./components/employee-report/employee-r
 import { CustomMaterialModule } from "src/app/core/material.module";
 import { FormsModule } from "@angular/forms";
 import { EmployeeCardComponent } from "./components/employee-card/employee-card.component";
-import { EmployeeAbsentCardComponent } from './components/employee-absent-card/employee-absent-card.component';
+import { EmployeeAbsentCardComponent } from "./components/employee-absent-card/employee-absent-card.component";
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { EmployeeAbsentCardComponent } from './components/employee-absent-card/e
     FormsModule,
     EmployeeRoutingModule,
     CustomMaterialModule,
+    CoreModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,

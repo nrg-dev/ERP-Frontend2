@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import {
   MatAutocompleteModule,
-  MatBadgeModule, 
+  MatBadgeModule,
   MatBottomSheetModule,
   MatButtonModule,
   MatButtonToggleModule,
@@ -36,17 +36,25 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatTreeModule,
-} from '@angular/material';
+  MatTreeModule
+} from "@angular/material";
 import { CustomMaterialModule } from "src/app/core/material.module";
-import { CoreModule } from "../core/core.module";
-import { PurchaseRoutingModule } from './purchase-routing.module';
-import { PurchaseComponent } from './components/purchase/purchase.component';
-import { PurchaseAddComponent, Status } from './components/purchaseadd/purchaseadd.component';
-import { PurchaseInvoiceComponent, ViewInvoice, EditInvoice, Filter } from './components/purchase-invoice/purchase-invoice.component';
-import { PurchaseService } from './services/purchase.service';
-import { PurchaseReturnComponent } from './components/purchase-return/purchase-return.component';
-import { PurchasereportComponent } from './components/purchasereport/purchasereport.component';
+import { CoreModule } from "../../core/core.module";
+import { PurchaseRoutingModule } from "./purchase-routing.module";
+import { PurchaseComponent } from "./components/purchase/purchase.component";
+import {
+  PurchaseAddComponent,
+  Status
+} from "./components/purchaseadd/purchaseadd.component";
+import {
+  PurchaseInvoiceComponent,
+  ViewInvoice,
+  EditInvoice,
+  Filter
+} from "./components/purchase-invoice/purchase-invoice.component";
+import { PurchaseService } from "./services/purchase.service";
+import { PurchaseReturnComponent } from "./components/purchase-return/purchase-return.component";
+import { PurchasereportComponent } from "./components/purchasereport/purchasereport.component";
 
 @NgModule({
   declarations: [
@@ -58,8 +66,7 @@ import { PurchasereportComponent } from './components/purchasereport/purchaserep
     Status,
     Filter,
     PurchaseReturnComponent,
-    PurchasereportComponent,
-
+    PurchasereportComponent
   ],
   imports: [
     CommonModule,
@@ -108,8 +115,6 @@ import { PurchasereportComponent } from './components/purchasereport/purchaserep
     MatPaginatorModule
   ],
   providers: [PurchaseService],
-  entryComponents: [ViewInvoice,EditInvoice,Status,Filter],
-
-
+  entryComponents: [ViewInvoice, EditInvoice, Status, Filter]
 })
 export class PurchaseModule {}
