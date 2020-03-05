@@ -34,6 +34,7 @@ export class EmployeeListComponent implements OnInit, OnChanges {
     }, 0);
   }
 
+  searchText: string;
   showDetail: boolean = false;
   // employeesDS: Employee[];
   employeesDS: any = {};
@@ -69,6 +70,17 @@ export class EmployeeListComponent implements OnInit, OnChanges {
 
   ngAfterViewInit(): void {
     this.employees.paginator = this.paginator;
+  }
+
+  searchEmployee() {
+    if (!this.searchText) {
+      this.employees.data = this.employeesDS;
+    } else {
+      const employeeListFilter = this.employeesDS.filter(
+        employee => employee.name.toLowerCase().indexOf(this.searchText) >= 0
+      );
+      this.employees.data = employeeListFilter;
+    }
   }
 
   printPage(data) {
