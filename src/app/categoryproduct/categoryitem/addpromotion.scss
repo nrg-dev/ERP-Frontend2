@@ -9,7 +9,6 @@
   padding: 17px;
   overflow: hidden;
 }
-
 .autosearch1 .completer-input {
   font-family: fontawesome;
   font-size: 12px;
@@ -137,4 +136,7 @@ h2 {
   height: 35px;
   background: #ff0000;
   border: none;
+}
+.search-box-override{
+  position: initial;
 }
