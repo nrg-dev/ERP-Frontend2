@@ -39,7 +39,7 @@ export class Status {
 @Component({
   selector: 'app-salesorder',
   templateUrl: './salesorder.component.html',
-  styleUrls: ['./salesorder.component.css']
+  styleUrls: ['./salesorder.component.scss']
 })
 export class SalesorderComponent implements OnInit {
   sales:Sales = new Sales();
@@ -61,6 +61,8 @@ export class SalesorderComponent implements OnInit {
   public searchData :any=[];
   public ErrorMsg :any;
   public ErrorHandle = false;
+  public nonStock = false;
+  public Stock = false;
   constructor(
     public fb: FormBuilder,
     private dialog: MatDialog,
@@ -98,6 +100,8 @@ export class SalesorderComponent implements OnInit {
     this.model.totalItem = 0;
     this.model.deliveryCost = 0;
     this.model.subTotal = 0;
+    this.nonStock = false;
+    this.Stock = false;
   }
 
   getcategoryList(){
@@ -245,6 +249,17 @@ export class SalesorderComponent implements OnInit {
     this.model.totalItem = 0;
     this.model.subTotal = '';
     this.model.deliveryCost = '';   
+  }
+
+  getStock(){
+    var actType = $('form input[type=radio]:checked').val();
+    if(actType == "non-stock"){
+      this.nonStock = true;
+      this.Stock = false;
+    }else if(actType == "stock"){
+      this.nonStock = false;
+      this.Stock = true;
+    }
   }
   
 }

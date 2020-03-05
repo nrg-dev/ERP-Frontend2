@@ -235,6 +235,7 @@ hr{
   color: white;
   width: 100%;
 }
+
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
   #addsales-div{
     background: #1B2931;

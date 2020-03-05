@@ -2,7 +2,18 @@
   <div class="row">
     <div class="col-lg-11"> 
       <div>
-        <div>
+        <form>
+            <label>Choose Stock Type : </label>
+            <br/><br/>
+            <div class="button-holder">
+              <input type="radio" name="actType" class="regular-radio" 
+                [(ngModel)]="model.actType" value="non-stock" (click)="getStock()" /> &nbsp; Non-Stock &nbsp;&nbsp;&nbsp;
+              <input type="radio" name="actType" class="regular-radio" 
+                [(ngModel)]="model.actType" value="stock" (click)="getStock()" /> &nbsp; Stock
+            </div>
+        </form>
+        <br/>
+        <div *ngIf="nonStock">
           <form name="form">
             <div class="row">
               <div class="col-lg-5">   
@@ -284,6 +295,21 @@
           </div>
           <!-- Submit Button -->
         </div>
+        <!-- Non-Stock Div Calling -->
+        <!-- Stock Calling Div Start -->
+        <div *ngIf="Stock">
+          <form name="form">
+            <div class="row">
+              <div class="col-lg-5">   
+                <div class="col" style="font-size: 14px;">
+                  Make Sales Order
+                </div>               
+                <br/>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- Stock Calling End -->
       </div>
     </div>
   </div>
