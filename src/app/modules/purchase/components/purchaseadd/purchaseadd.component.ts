@@ -33,7 +33,7 @@ export class Status {
 @Component({
   selector: 'app-purchaseadd',
   templateUrl: './purchaseadd.component.html',
-  styleUrls: ['./purchaseadd.component.css']
+  styleUrls: ['./purchaseadd.component.scss']
 })
 export class PurchaseAddComponent  implements OnInit  {
   purchase:Purchase = new Purchase();

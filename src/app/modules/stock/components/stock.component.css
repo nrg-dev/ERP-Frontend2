@@ -187,6 +187,10 @@ th.mat-header-cell {
 ::ng-deep .mat-form-field-ripple {
   background-color: #243641 !important;
 }
+::ng-deep .mat-focused .mat-form-field-label {
+  color: #58666e !important;
+  margin-top: 10px;
+}
 ::ng-deep .mat-form-field-empty.mat-form-field-label {
   color: white;
 }
