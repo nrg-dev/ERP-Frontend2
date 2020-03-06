@@ -15,8 +15,7 @@
             <input
               class="search-text-box"
               type="search"
-              [(ngModel)]="searchText"
-              autocomplete="on"
+              matInput (keyup)="applyFilter($event.target.value)"
               placeholder="Search Employee"
             />
           </div>
