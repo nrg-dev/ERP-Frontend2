@@ -139,4 +139,13 @@ export class EmployeeListComponent implements OnInit, OnChanges {
     );
   }
 
+  
+  applyFilter(filterValue: string) {
+    this.employees.filter = filterValue.trim().toLowerCase();
+
+    if (this.employees.paginator) {
+      this.employees.paginator.firstPage();
+    }
+  }
+
 }
