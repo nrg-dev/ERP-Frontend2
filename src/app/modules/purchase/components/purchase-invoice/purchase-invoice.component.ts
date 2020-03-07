@@ -104,6 +104,7 @@ export class EditInvoice {
     {  
       this.model.invoiceNumber = this.data.invoice;
       this.model.currentStatus = this.data.status;
+      this.model.vendorName = this.data.vendorName;
       this.editDetails(this.model.invoiceNumber);
       this.getProductList();
       this.getcategoryList();
@@ -124,6 +125,17 @@ export class EditInvoice {
   }
 
   getProductList(){
+    /*this.purchaseService.loadVendorItem(vendorName)
+    .subscribe(res => { 
+      this.productList = res;
+      },
+      error => {
+        setTimeout(() => {
+          this.alertService.error("Network error: server is temporarily unavailable");
+        }, 2000);
+      }
+    );*/
+
     this.purchaseService.loadItemName()
     .subscribe(res => { 
       this.productList = res;
@@ -430,7 +442,7 @@ export class PurchaseInvoiceComponent implements OnInit {
     });
   }
   
-  public editinvoice(invoiceNumber:string,status:string){
+  public editinvoice(invoiceNumber:string,status:string,vendorName:string){
     console.log("Edit Invoice Number  --->"+invoiceNumber);
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
@@ -440,7 +452,7 @@ export class PurchaseInvoiceComponent implements OnInit {
     };
     this.dialog.open(EditInvoice,{
       panelClass: 'editInvoice',
-      data: { invoice: invoiceNumber, status: status },
+      data: { invoice: invoiceNumber, status: status, vendorName: vendorName },
       height: '80%'
     }).afterClosed().subscribe(result => {
       // this.refresh();

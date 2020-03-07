@@ -1,63 +1,53 @@
-<div class="employee-content">
-  <div class="row">
-    <div class="col-lg-11">
+<div class="mat-tab-body-content">
+  <div class="employee-content">
+    <div class="row">
+      <div class="col-lg-12">
     
-
-      <div id="addemployee-div">
-        <br/><br/>
-        <div>
-        <!-- <mat-toolbar style="margin-left: 25px;">Purchase Order Status</mat-toolbar> -->        
-        <div class="row">
-          <div class="col-lg-3">
-            <!-- <div style="height: 10%;"> 
-              <button (click)="openfilter()" style="width:auto;">Filter</button> &nbsp;
-            </div> -->
+        <div id="addemployee-div">
+          <br/>
+          <div class="row">
+            <div class="col-lg-4">
+              <p>Purchase Order Status</p>
+              <!-- <div style="height: 10%;"> 
+                <button (click)="openfilter()" style="width:auto;">Filter</button> &nbsp;
+              </div> -->
+            </div>
+            <div class="col-lg-4">
+                <button id="print-butn">
+                  &nbsp;<i class="fa fa-print" aria-hidden="true" id="icon-mod"></i> &nbsp;
+                  &nbsp;<label id="text">Print Page</label>
+                </button>
+            </div>
+            <div class="col-lg-4">
+              <div class="search-box">
+                <i class="fas fa-search search-icon" aria-hidden="true"></i>
+                <input
+                  class="search-text-box" type="search"
+                  (keyup)="applyFilter($event.target.value)"
+                  placeholder="Search Invoice" />
+              </div> 
+            </div>
           </div>
-          <div class="col-lg-1"></div>
-          <div class="col-lg-4">
-              <button id="print-butn">
-                &nbsp;<i class="fa fa-print" aria-hidden="true" id="icon-mod"></i> &nbsp;
-                &nbsp;<label id="text">Print Page</label>
-              </button>
+          <br/>
+          <div class="row">
+            <div class="col-lg-2">
+                <label style="color: white;font-size: 12px;">Filter Date:</label>
+            </div>
+            <div class="col-lg-7">
+                <input type="date" id="dateBox"
+                [(ngModel)]="model.fromdate" name="fromdate" #fromdate="ngModel"  />
+                <label style="color: white;">&nbsp; - &nbsp;</label>
+                <input type="date" id="dateBox"
+                [(ngModel)]="model.todate" name="todate" #todate="ngModel"  />
+            </div>
+            <div class="col-lg-2">
+                <button (click)="openfilter()" style="width:auto;font-size: 12px;border-radius: 4px;">Filter</button> &nbsp;
+            </div>
           </div>
-          <div class="col-lg-4">
-            <!-- <div class="search-box">
-              <i class="fas fa-search search-icon" aria-hidden="true"></i>
-              <input
-                class="search-text-box"
-                type="search"
-                [(ngModel)]="searchText"
-                autocomplete="on"
-                placeholder="Search Invoice"
-              />
-            </div> -->
-            <mat-form-field>
-              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="&nbsp;&nbsp;&nbsp;Search Invoice" >
-            </mat-form-field>
-          </div>
-        </div>
-       
-        <div class="row">
-          <div class="col-lg-2">
-              <label style="color: white;font-size: 12px;">Filter Date:</label>
-          </div>
-          <div class="col-lg-7">
-              <input type="date" id="dateBox"
-               [(ngModel)]="model.fromdate" name="fromdate" #fromdate="ngModel"  />
-              <label style="color: white;">&nbsp; - &nbsp;</label>
-              <input type="date" id="dateBox"
-              [(ngModel)]="model.todate" name="todate" #todate="ngModel"  />
-          </div>
-          <div class="col-lg-2">
-              <button (click)="openfilter()" style="width:auto;font-size: 12px;border-radius: 4px;">Filter</button> &nbsp;
-          </div>
-        </div>
-        
-          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+          <br/>
 
           <div class="mat-elevation-z8">
-
-            <table mat-table [dataSource]="dataSource" matSort>
+            <table mat-table [dataSource]="dataSource" matSort class="ngTable">
 
               <ng-container matColumnDef="date">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Added Date </th>
@@ -111,7 +101,7 @@
                     (click)="viewinvoice(row.invoiceNumber,row.vendorName,row.poDate,row.status)"></i>
                   &nbsp;
                   <i class="fas fa-edit"
-                    (click)="editinvoice(row.invoiceNumber,row.status)"></i>
+                    (click)="editinvoice(row.invoiceNumber,row.status,row.vendorName)"></i>
                   <i class="fas fa-trash" (click)="deletePurchase(row.invoiceNumber)"></i>
                   <!-- <div class="row">
                     <div id="rowview-div" (click)="viewinvoice(row.invoiceNumber,row.vendorName,row.poDate,row.status)">
@@ -125,7 +115,7 @@
                     <div id="rowdelete-div"(click)="deletePurchase(row.invoiceNumber)">
                         <i class="fa fa-trash-o" id="rowdelete-icon" aria-hidden="true"></i>    
                     </div>   
-                 </div> -->
+                </div> -->
                 </td>
               </ng-container>
 
@@ -133,15 +123,13 @@
               <tr mat-row class="table-row" tabindex="1"   
               *matRowDef="let row; columns: displayedColumns;">
               </tr>
-            </table>
-             
-        </div>  
-
+            </table> 
+          </div>  
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
         </div>
-      </div>
 
+      </div>
     </div>
   </div>
+  <br/>
 </div>
-
-<br/><br/><br/>
