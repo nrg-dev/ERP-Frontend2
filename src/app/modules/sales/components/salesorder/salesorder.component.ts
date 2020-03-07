@@ -218,7 +218,7 @@ export class SalesorderComponent implements OnInit {
     .subscribe(
        res => {
           console.log('............1 ....');
-            console.log('successfully updated...');
+            console.log('successfully created...');
             setTimeout(() => {
               this.snackBar.open("Sales Order created Successfully", "dismss", {
                 panelClass: ["success"],
@@ -236,10 +236,12 @@ export class SalesorderComponent implements OnInit {
                         
        },
        error => {
-        this.alertService.success("API server Issue..");
         setTimeout(() => {
-          this.alertService.clear();
-        }, 2000);
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });
        });
   }
 
