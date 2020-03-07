@@ -18,6 +18,7 @@ export class VendorAndCustomerDetailComponent implements OnInit {
   fieldLabels: string[];
   isEditMode: boolean;
   isAddNew: boolean;
+  isAddNewCustomer:boolean;
 
   constructor(private ts: TranslateService) {}
 

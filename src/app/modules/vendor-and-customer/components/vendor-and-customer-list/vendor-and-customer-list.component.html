@@ -9,10 +9,18 @@
         </button>
       </span>
       <span class="col px-2">
-        <button class="col" (click)="toggleVendorDetailView('', 'ADD_NEW')">
-          <i class="fas fa-plus"></i>
-          Add New {{ componentType }}
-        </button>
+        <div *ngIf="componentType === 'Vendor'">
+
+        <button class="col" (click)="toggleVendorDetailView('', 'ADD_NEW')"> 
+          <i class="fas fa-plus"  ></i>
+          Add New {{ componentType }}  </button> 
+        </div>
+        <div *ngIf="componentType === 'Customer'">
+
+          <button class="col" (click)="toggleVendorDetailView('', 'ADD_NEW_CUST')">   <i class="fas fa-plus"  ></i>
+            Add New {{ componentType }} </button>     
+        </div>
+         
       </span>
       <div class="col-5">
         <div class="search-box">
