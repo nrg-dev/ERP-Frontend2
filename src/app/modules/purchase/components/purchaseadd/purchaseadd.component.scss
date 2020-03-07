@@ -131,17 +131,26 @@ hr{
 }
 
 #checkIn-butn{
-  background-color: #07ab07;
-  padding-top: 4px;
-  height: 32px;
-  margin: 5px 0 0 75px;
+  background-color: #27AE60;
+  border: 1px solid #27AE60;
+  height: 25px;
+  position: relative;
+  margin: -20px -50px;
+  width: 85px;
+  top: 50%;
+  left: 50%;
   text-align: center;
   color: white;
 }
 #checkOut-butn{
   background-color: #d40505;
-  height: 32px;
-  margin: 5px 0 0 5px;
+  border: 1px solid #d40505;
+  height: 25px;
+  position: relative;
+  margin: -20px -50px;
+  width: 85px;
+  top: 50%;
+  left: 50%;
   text-align: center;
   color: white;
 }

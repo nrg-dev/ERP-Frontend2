@@ -245,18 +245,17 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="radio-toolbar">
-                      <label
-                        for="radio1"
-                        id="checkIn-butn"
-                        (click)="saveSales()">Save</label>
-                      <label
-                        for="radio2"
-                        id="checkOut-butn"
-                        (click)="cancelSales()">Cancel</label>
-                    </div>
-                  </div>
-                  <br />
+                      <div class="col-md-5 col-xs-5 col-lg-5" id="purchasetext">
+                        <button id="checkIn-butn" (click)="saveSales()"> Save </button>
+                        <!-- <div class="radio-toolbar">
+                          <label for="radio1" id="checkIn-butn" (click)="savePurchase()">Save</label>
+                        </div> -->
+                      </div>
+                      <div class="col-md-1 col-xs-1 col-lg-1"></div>
+                      <div class="col-md-6 col-xs-6 col-lg-6">
+                        <button id="checkOut-butn" (click)="cancelSales()"> Cancel </button>
+                      </div>
+                  </div><br/>
                 </div>
               </div>
             </div>
@@ -287,7 +286,7 @@
                   <td id="middleContent">{{ arr.description }}</td>
                   <td id="middleContent">{{ arr.netAmount }}</td>
                   <td id="middleContent">
-                    <i class="fas fa-trash" (click)="deleteFieldValue(i)"></i>
+                    <i class="fas fa-trash" (click)="deleteFieldValue(i)" style="cursor: pointer;"></i>
                   </td>
                 </tr>
               </tbody>
