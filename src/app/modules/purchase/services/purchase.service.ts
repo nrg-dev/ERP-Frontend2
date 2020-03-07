@@ -39,19 +39,14 @@ export class PurchaseService {
     // Load 
     load(){
         //return this.http.get<Purchase>(this.commonURL+'load');
-        return this.http.get(`${environment.apiUrl}${API_ENDPOINTS.loadPurchase}`);
+        return this.http.get<Purchase>(`${environment.apiUrl}${API_ENDPOINTS.loadPurchase}`);
 
     }
 
     // get 
     get(id:number){
         //return this.http.get<Purchase>(this.commonURL+'get?id='+id);
-        return this.http.get<Purchase>(
-            `${environment.apiUrl}${API_ENDPOINTS.getPurchase}`.replace(
-              "{param}",
-              id.toString()
-            )
-          );
+        return this.http.get<Purchase>(`${environment.apiUrl}${API_ENDPOINTS.getPurchase+'?id='+id}`);
     }
 
     // Update 
@@ -66,56 +61,33 @@ export class PurchaseService {
     // Remove 
     remove(invoiceNumber:string){
        // return this.http.delete<String>(this.commonURL+'remove?invoiceNumber='+invoiceNumber);
-        return this.http.delete<String>(
-            `${environment.apiUrl}${API_ENDPOINTS.remove}`.replace(
-              "{param}",
-              invoiceNumber
-            )
-          );
+       return this.http.delete<String>(`${environment.apiUrl}${API_ENDPOINTS.remove+'?invoiceNumber='+invoiceNumber}`); 
     }
 
 
     getVendorDetails(vendorname: string){
         //return this.http.get<Purchase>(this.commonURL+'getVendorDetails?vendorname='+vendorname);
-        return this.http.get<Purchase>(
-            `${environment.apiUrl}${API_ENDPOINTS.getVendorDetails}`.replace(
-              "{param}",
-              vendorname
-            )
-          );
+        return this.http.get<Purchase>(`${environment.apiUrl}${API_ENDPOINTS.getVendorDetails+'?vendorname='+vendorname}`);
     }
 
     geteditDetails(id: string){
        // return this.http.get<Purchase>(this.commonURL+'get?id='+id);
-        return this.http.get<Purchase>(
-            `${environment.apiUrl}${API_ENDPOINTS.getPurchase}`.replace(
-                "{param}",
-                id
-            )
-        );
+       return this.http.get<Purchase>(`${environment.apiUrl}${API_ENDPOINTS.getPurchase+'?id='+id}`);
     }
 
     removePartId(id:string,invoiceNumber:string){
         return this.http.delete<String>(`${environment.apiUrl}${API_ENDPOINTS.removePartId+'?id='+id+'&invoiceNumber='+invoiceNumber}`);
-      //  return this.http.delete<String>(
-      //      `${environment.apiUrl}${API_ENDPOINTS.removePartId}`.replace(
-      //        "{param}",
-     //         id+
-       //       "{param}",
-        //      invoiceNumber
-        //    )
-       //   );
     }
 
     loadCategory(){
         //return this.http.get<Purchase>(this.categoryURL+'load');
-        return this.http.get(`${environment.apiUrl}${API_ENDPOINTS.loadCategory}`);
+        return this.http.get<Purchase>(`${environment.apiUrl}${API_ENDPOINTS.loadCategory}`);
 
     }
 
     loadCategoryName(){
       //  return this.http.get<Purchase>(this.categoryURL+'loadCategoryName');
-        return this.http.get(`${environment.apiUrl}${API_ENDPOINTS.loadCategoryName}`);
+        return this.http.get<Purchase>(`${environment.apiUrl}${API_ENDPOINTS.loadCategoryName}`);
 
     }
 
