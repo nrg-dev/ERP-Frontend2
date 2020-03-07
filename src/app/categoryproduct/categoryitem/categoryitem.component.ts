@@ -1256,6 +1256,8 @@ productlist(number: string){
 
   })
   .afterClosed().subscribe(result => {
+    this.allproductList();
+
   });
 
   }
