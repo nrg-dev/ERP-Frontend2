@@ -120,3 +120,20 @@ th.mat-header-cell {
     }
   }
 }
+
+.mat-snack-bar-container {
+  background-color: $white;
+  color: $black;
+  &.success {
+    color: $snackbar-success;
+    border: 2px solid $snackbar-success;
+  }
+  &.error {
+    color: $snackbar-error;
+    border: 2px solid $snackbar-error;
+  }
+  &.warning {
+    color: $snackbar-warning;
+    border: 2px solid $snackbar-warning;
+  }
+}

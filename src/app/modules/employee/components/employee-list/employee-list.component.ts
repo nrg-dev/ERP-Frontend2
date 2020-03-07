@@ -8,6 +8,8 @@ import {
 } from "@angular/core";
 
 import { MatTableDataSource, MatPaginator } from "@angular/material";
+import { MatSnackBar } from "@angular/material/snack-bar";
+
 import { EmployeesMock } from "src/app/config/mock/employees.mock";
 import { Employee } from "./employee-list.model";
 import { EmployeeDetailComponent } from "../employee-detail/employee-detail.component";
@@ -34,6 +36,7 @@ export class EmployeeListComponent implements OnInit, OnChanges {
     }, 0);
   }
 
+  searchText: string;
   showDetail: boolean = false;
   // employeesDS: Employee[];
   employeesDS: any = {};
@@ -49,13 +52,32 @@ export class EmployeeListComponent implements OnInit, OnChanges {
   constructor(
     private employeeService: EmployeeService,
     private alertService: AlertService,
-    private printDialogService: PrintDialogService
+    private printDialogService: PrintDialogService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
-    // this.employeesDS = EmployeesMock;
-    // this.employees = new MatTableDataSource(this.employeesDS);
-    this.allemplist();
+    //this.employeesDS = EmployeesMock;
+    //this.employees = new MatTableDataSource(this.employeesDS);
+      this.allemplist();
+    /*this.snackBar.open("Employee list SUCCESS", "dismss", {
+      panelClass: ["success"],
+      verticalPosition: 'top'
+    });
+    setTimeout(() => {
+      this.snackBar.open("Employee list ERROR", "dismss", {
+        panelClass: ["error"],
+        verticalPosition: 'top'
+
+      });
+      setTimeout(() => {
+        this.snackBar.open("Employee list WARNING", "dismss", {
+          panelClass: ["warning"],
+          verticalPosition: 'top'
+
+        });
+      }, 1500);
+    }, 1500);*/
   }
 
   ngOnChanges(changes: SimpleChanges): void {

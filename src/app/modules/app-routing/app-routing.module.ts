@@ -10,11 +10,11 @@ import { CategoryproductModule } from "src/app/categoryproduct/categoryproduct.m
 import { FinanceModule } from "src/app/finance/finance.module";
 import { ReportModule } from "src/app/report/report.module";
 import { UsermgtModule } from "src/app/usermgt/usermgt.module";
-import { PlaceholderComponent } from "../core/components/placeholder/placeholder.component";
+import { PlaceholderComponent } from "../../core/components/placeholder/placeholder.component";
 import { VendorAndCustomerModule } from "../vendor-and-customer/vendor-and-customer.module";
 import { PurchaseModule } from "../purchase/purchase.module";
-import { SalesModule } from '../sales/sales.module';
-import { StockModule } from '../stock/stock.module';
+import { SalesModule } from "../sales/sales.module";
+import { StockModule } from "../stock/stock.module";
 
 const routes: Routes = [
   {
@@ -54,14 +54,14 @@ const routes: Routes = [
       {
         path: "purchase",
         loadChildren: () =>
-           import("./../../modules/purchase/purchase.module").then(m => PurchaseModule)
+          import("./../../modules/purchase/purchase.module").then(
+            m => PurchaseModule
+          )
       },
       {
         path: "sales",
         loadChildren: () =>
-          import(
-            "./../../modules/sales/sales.module"
-          ).then(m => SalesModule)
+          import("./../../modules/sales/sales.module").then(m => SalesModule)
       },
       {
         path: "finance",
@@ -71,7 +71,7 @@ const routes: Routes = [
       {
         path: "stock",
         loadChildren: () =>
-           import("./../../modules/stock/stock.module").then(m => StockModule)
+          import("./../../modules/stock/stock.module").then(m => StockModule)
       },
       {
         path: "report",

@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 // Custom Modules
 import { AppRoutingModule } from "./modules/app-routing/app-routing.module";
-import { CoreModule } from "./modules/core/core.module";
+import { CoreModule } from "./core/core.module";
 import { CustomMaterialModule } from "./core/material.module";
 
 import { AppComponent } from "./app.component";
