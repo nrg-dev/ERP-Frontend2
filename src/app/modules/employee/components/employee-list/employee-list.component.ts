@@ -13,6 +13,7 @@ import { Employee } from "./employee-list.model";
 import { EmployeeDetailComponent } from "../employee-detail/employee-detail.component";
 import { EmployeeService } from '../../services/employee.service';
 import { AlertService } from "src/app/_services/index";
+import { PrintDialogService } from "src/app/core/services/print-dialog/print-dialog.service";
 
 @Component({
   selector: "app-employee-list",
@@ -46,7 +47,9 @@ export class EmployeeListComponent implements OnInit, OnChanges {
     "action"
   ];
   constructor( private employeeService: EmployeeService,
-    private alertService: AlertService,) 
+    private alertService: AlertService,
+    private printDialogService: PrintDialogService
+    ) 
   {}
 
   ngOnInit() {
@@ -66,6 +69,10 @@ export class EmployeeListComponent implements OnInit, OnChanges {
 
   ngAfterViewInit(): void {
     this.employees.paginator = this.paginator;
+  }
+
+  printPage(data) {
+    this.printDialogService.openDialog(data);
   }
 
   toggleEmployeeDetailView(employeeCode?, edit?) {

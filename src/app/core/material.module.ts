@@ -7,7 +7,8 @@ import {
   MatSidenavModule,
   MatTableModule,
   MatTabsModule,
-  MatListModule
+  MatListModule,
+  MatDialogModule
 } from "@angular/material";
 
 @NgModule({
@@ -18,7 +19,8 @@ import {
     MatTableModule,
     MatTabsModule,
     MatListModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    MatDialogModule
   ],
   exports: [
     MatDatepickerModule,
@@ -27,7 +29,8 @@ import {
     MatTableModule,
     MatTabsModule,
     MatListModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    MatDialogModule
   ]
 })
 export class CustomMaterialModule {}
