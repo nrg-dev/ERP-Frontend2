@@ -100,4 +100,12 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
       this.vendors.paginator = this.paginator;
     }, 0);
   }
+
+  applyFilter(filterValue: string) {
+    this.vendors.filter = filterValue.trim().toLowerCase();
+
+    if (this.vendors.paginator) {
+      this.vendors.paginator.firstPage();
+    }
+  }
 }
