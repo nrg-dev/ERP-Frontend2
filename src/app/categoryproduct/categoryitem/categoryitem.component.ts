@@ -36,7 +36,7 @@ export class AddnewcategoryComponent {
         this.dialogRef.close();
         if(this.category.status=="success"){   
           setTimeout(() => {
-            this.snackBar.open("Category Saved Successfully", "dismss", {
+            this.snackBar.open("Category Saved Successfully", "", {
               panelClass: ["success"],
               verticalPosition: 'top'      
             });
@@ -136,8 +136,8 @@ export class CategoryeditdeleteComponent {
           if(this.category.status == "Success"){
           this.dialogRef.close();
           setTimeout(() => {
-            this.snackBar.open("Category is Removed Successfully", "dismss", {
-              panelClass: ["success"],
+            this.snackBar.open("Category is Removed Successfully", "", {
+              panelClass: ["error"],
               verticalPosition: 'top'      
             });
           });
@@ -1174,8 +1174,8 @@ productlist(number: string){
           this.discount =  data;  
           if(this.discount.status == "Success"){
             setTimeout(() => {
-              this.snackBar.open("Discount Deleted Successfully", "dismss", {
-                panelClass: ["success"],
+              this.snackBar.open("Discount Deleted Successfully", "", {
+                panelClass: ["error"],
                 verticalPosition: 'top'      
               });
             });      
@@ -1269,7 +1269,7 @@ productlist(number: string){
           if(this.product.status == "Success"){
             setTimeout(() => {
               this.snackBar.open("Product Deleted Successfully", "", {
-                panelClass: ["success"],
+                panelClass: ["error"],
                 verticalPosition: 'top'      
               });
             });
