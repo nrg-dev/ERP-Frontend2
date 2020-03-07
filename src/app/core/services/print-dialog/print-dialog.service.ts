@@ -9,7 +9,8 @@ export class PrintDialogService {
 
   openDialog(template: TemplateRef<any>) {
     const dialogConfig = {
-      hasBackdrop: false
+      hasBackdrop: false,
+      panelClass: "print-dialog"
     };
     const dialogRef = this.dialog.open(template, dialogConfig);
 
