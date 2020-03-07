@@ -61,15 +61,20 @@ export class EmployeeListComponent implements OnInit, OnChanges {
     this.employees = new MatTableDataSource(this.employeesDS);
     //  this.allemplist();
     this.snackBar.open("Employee list SUCCESS", "dismss", {
-      panelClass: ["success"]
+      panelClass: ["success"],
+      verticalPosition: 'top'
     });
     setTimeout(() => {
       this.snackBar.open("Employee list ERROR", "dismss", {
-        panelClass: ["error"]
+        panelClass: ["error"],
+        verticalPosition: 'top'
+
       });
       setTimeout(() => {
         this.snackBar.open("Employee list WARNING", "dismss", {
-          panelClass: ["warning"]
+          panelClass: ["warning"],
+          verticalPosition: 'top'
+
         });
       }, 1500);
     }, 1500);
