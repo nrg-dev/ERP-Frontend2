@@ -13,6 +13,7 @@ import { VendorsMock } from "src/app/config/mock/vendors.mock";
 
 import { VendorAndCustomerDetailComponent } from "../vendor-and-customer-detail/vendor-and-customer-detail.component";
 import { Vendor } from "./vendor-and-customer-list.component.model";
+import { PrintDialogService } from "src/app/core/services/print-dialog/print-dialog.service";
 
 @Component({
   selector: "app-vendor-and-customer-list",
@@ -39,7 +40,9 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
   vendors: MatTableDataSource<Vendor>;
   vendor;
   displayedColumns: string[] = ["vendorCode", "vendorName", "phone", "action"];
-  constructor() {}
+  constructor(
+    private printDialogService: PrintDialogService
+    ) {}
 
   ngOnInit() {
     this.vendorsDS = VendorsMock;
@@ -57,6 +60,10 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
 
   ngAfterViewInit(): void {
     this.vendors.paginator = this.paginator;
+  }
+
+  printPage(data) {
+    this.printDialogService.openDialog(data);
   }
 
   toggleVendorDetailView(vendorCode?, edit?) {

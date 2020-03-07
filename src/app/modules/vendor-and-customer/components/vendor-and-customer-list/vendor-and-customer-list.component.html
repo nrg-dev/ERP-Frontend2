@@ -3,7 +3,7 @@
     <div class="col-2">{{ componentType }} List</div>
     <div class="row col-10">
       <span class="col px-2">
-        <button class="col">
+        <button class="col" (click)="printPage(CustomerListTable)">
           <i class="fas fa-print"></i>
           Print Page
         </button>
@@ -31,7 +31,7 @@
     <!-- TODO: Add a dropdown -->
     <!-- Sort by: Join Date -->
   </div>
-
+  <ng-container *ngTemplateOutlet="CustomerListTable"></ng-container>
   <table class="w-100 mt-4" mat-table [dataSource]="vendors">
     <ng-container matColumnDef="vendorCode">
       <th mat-header-cell *matHeaderCellDef>{{ componentType }} Code</th>
@@ -80,7 +80,6 @@
       *matRowDef="let row; columns: displayedColumns"
     ></tr>
   </table>
-
   <mat-paginator [pageSizeOptions]="[5, 10]"></mat-paginator>
 </ng-container>
 <ng-container *ngIf="showDetail">
