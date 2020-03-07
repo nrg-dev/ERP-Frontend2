@@ -492,7 +492,7 @@ export class AddnewproductComponent {
         this.dialogRef.close();
         if(this.product.status=="success"){
           setTimeout(() => {
-            this.snackBar.open("Productr saved Successfully", "dismss", {
+            this.snackBar.open("Productr saved Successfully", "", {
               panelClass: ["success"],
               verticalPosition: 'top'      
             });
@@ -668,7 +668,7 @@ export class AllproducteditComponent {
         this.product =   data;
         this.dialogRef.close();
         setTimeout(() => {
-          this.snackBar.open("Product Updated Successfully", "dismss", {
+          this.snackBar.open("Product Updated Successfully", "", {
             panelClass: ["success"],
             verticalPosition: 'top'      
           });
@@ -1268,7 +1268,7 @@ productlist(number: string){
           this.product =  data;  
           if(this.product.status == "Success"){
             setTimeout(() => {
-              this.snackBar.open("Product Deleted Successfully", "dismss", {
+              this.snackBar.open("Product Deleted Successfully", "", {
                 panelClass: ["success"],
                 verticalPosition: 'top'      
               });
