@@ -1,6 +1,9 @@
-# ERP2
+# git
 
-
+git branch -d branch_name : delete the branch
+git branch : display the branchs 
+git merge <branch-name> : merge the branch
+  
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
