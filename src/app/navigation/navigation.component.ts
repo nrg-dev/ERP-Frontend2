@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewChild, HostListener } from "@angular/core";
 import { MenuItem } from "../menuItem.model";
-import { SubMenuItem } from "../subMenuItem.model";
-import { MatSidenav } from "@angular/material/sidenav";
 import { RouterModule, Routes, Router, ActivatedRoute } from "@angular/router";
 import { BehaviorSubject, Observable } from "rxjs";
 import {
@@ -41,7 +39,7 @@ export class NavigationComponent implements OnInit {
 
   displayedColumns: string[] = ["invoicenumber", "client", "date", "status"];
 
-  allproductlist: any = {};
+  allproductlist: any = {}; 
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
@@ -107,13 +105,13 @@ export class NavigationComponent implements OnInit {
       new MenuItem("Category & Product", "categoryitem"),
       new MenuItem("Purchase", "purchaseadd"),
       new MenuItem("Sales", "salesorder"),
-      new MenuItem("Finance", "pettycashadd"),
-      new MenuItem("Stock", "stockadd"),
-      new MenuItem("Report", "allreport"),
-      new MenuItem("User Management", "usermgtadd"),
+     // new MenuItem("Finance", "pettycashadd"),
+     // new MenuItem("Stock", "stockadd"),
+     // new MenuItem("Report", "allreport"),
+     // new MenuItem("User Management", "usermgtadd"),
       new MenuItem("Log Out", "logout"),
 
-      new MenuItem("", "")
+   //   new MenuItem("", "")
     ];
 
     this.menuItemsIcons = [
@@ -127,13 +125,13 @@ export class NavigationComponent implements OnInit {
       ),
       new MenuItem("./assets/images/circle-cropped.png", "purchaseadd"),
       new MenuItem("./assets/images/sales.png", "salesorder"),
-      new MenuItem("./assets/images/finance.png", "pettycashadd"),
-      new MenuItem("./assets/images/stock.png", "stockadd"),
-      new MenuItem("./assets/images/reports.png", "allreport"),
-      new MenuItem("./assets/images/usermgt.png", "usermgtadd"),
+     // new MenuItem("./assets/images/finance.png", "pettycashadd"),
+     // new MenuItem("./assets/images/stock.png", "stockadd"),
+     // new MenuItem("./assets/images/reports.png", "allreport"),
+    //  new MenuItem("./assets/images/usermgt.png", "usermgtadd"),
       new MenuItem("./assets/images/logout.png", "login"),
 
-      new MenuItem("./assets/images/null.png", "")
+    //  new MenuItem("./assets/images/null.png", "")
 
       /*
 new MenuItem("home","/landingpage"),

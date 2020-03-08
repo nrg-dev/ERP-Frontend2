@@ -13,12 +13,6 @@ import { AppComponent } from "./app.component";
 
 import { LoginComponent } from "./login/login.component";
 import { LandingpageComponent } from "./landingpage/landingpage.component";
-import { EmployeeModule } from "./modules/employee/employee.module";
-import { CategoryproductModule } from "./categoryproduct/categoryproduct.module";
-import { FinanceModule } from "./finance/finance.module";
-import { UsermgtModule } from "./usermgt/usermgt.module";
-import { ReportModule } from "./report/report.module";
-import { AlertComponent } from "./_directives/index";
 import {
   AlertService,
   AuthenticationService,
