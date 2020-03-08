@@ -54,11 +54,11 @@ export class EmployeeListComponent implements OnInit, OnChanges {
     private alertService: AlertService,
     private printDialogService: PrintDialogService,
     private snackBar: MatSnackBar
-  ) {}
+  ) {
+
+  }
 
   ngOnInit() {
-    //this.employeesDS = EmployeesMock;
-    //this.employees = new MatTableDataSource(this.employeesDS);
       this.allemplist();
     /*this.snackBar.open("Employee list SUCCESS", "dismss", {
       panelClass: ["success"],

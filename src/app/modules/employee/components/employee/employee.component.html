@@ -9,10 +9,9 @@
   ></mat-tab>
   <mat-tab
     ><ng-template mat-tab-label>Add New Employee</ng-template>
-    <app-employee-detail
-      [isAddNew]="activeTab === 1"
-      (cancelAddNewEmployee)="setTabIndex($event)"
-    ></app-employee-detail>
+    <app-employee-add
+     
+    ></app-employee-add>
   </mat-tab>
  
 </mat-tab-group>
