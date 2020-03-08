@@ -247,7 +247,13 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
   }
 
   backNavigation() {
-    alert("back change");
+    if(this.vendorListshow==true){
+      this.getAllVendorDetails();
+    }
+    else {
+      this.getAllCustomerDetails();
+
+    }  
     this.showDetail = false;
     setTimeout(() => {
       this.vendors.paginator = this.paginator;

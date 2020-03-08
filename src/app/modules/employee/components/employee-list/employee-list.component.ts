@@ -146,31 +146,42 @@ export class EmployeeListComponent implements OnInit, OnChanges {
       data => {
         this.employee = data;
         if (this.employee.status == "Success") {
-          this.alertService.success("Deleted Successfully");
+          setTimeout(() => {
+            this.snackBar.open("Employee is deleted successfully", "", {
+              panelClass: ["error"],
+              verticalPosition: 'top'      
+            });
+          });   
           this.allemplist();
           this.employees = new MatTableDataSource(this.employeesDS);
           setTimeout(() => {
             this.alertService.clear();
           }, 1500);
         } else {
-          this.alertService.error("Not Deleted..");
+          setTimeout(() => {
+            this.snackBar.open("Network error: server is temporarily unavailable", "", {
+              panelClass: ["error"],
+              verticalPosition: 'top'      
+            });
+          });   
+      
         }
         this.allemplist();
       },
       error => {
-        this.alertService.error(
-          "Network error: server is temporarily unavailable"
-        );
         setTimeout(() => {
-          this.alertService.clear();
-        }, 2000);
+          this.snackBar.open("Network error: server is temporarily unavailable", "", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });   
+		
       }
     );
   }
 
   applyFilter(filterValue: string) {
     this.employees.filter = filterValue.trim().toLowerCase();
-
     if (this.employees.paginator) {
       this.employees.paginator.firstPage();
     }
