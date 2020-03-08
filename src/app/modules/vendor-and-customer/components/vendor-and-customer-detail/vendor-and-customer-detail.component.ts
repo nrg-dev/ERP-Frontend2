@@ -5,7 +5,7 @@ import { TranslateService } from "src/app/core/services/translate/translate.serv
 import { Utils } from "src/app/utilities/utilities";
 import { VendorService } from '../../services/vendor.service';
 import { CustomerService } from '../../services/customer.service';
-import { Vendor } from 'src/app/_models';
+import { Vendor,Customer } from 'src/app/_models';
 import { MatSnackBar } from '@angular/material';
 
 @Component({
@@ -20,6 +20,7 @@ export class VendorAndCustomerDetailComponent implements OnInit {
 
 //  vendor: VendorDetail;
   vendor:Vendor = new Vendor;
+  customer:Customer;
 
   fieldLabels: string[];
   isEditMode: boolean;
@@ -59,6 +60,44 @@ export class VendorAndCustomerDetailComponent implements OnInit {
   deleteVendor() {
     this.backNavigation.emit();
   }
+
+  saveCustomer(){
+    console.log("--------Save Customer-----");
+    console.log("country name-->"+this.model.country);
+    // call rest ful api 
+    this.customerService.save(this.model)
+    .subscribe(
+      data => {
+        this.customer =   data;    
+        console.log("Response -->"+this.customer.status) 
+        if(this.customer.status=="success"){
+          setTimeout(() => {
+            this.snackBar.open("Customer created Successfully", "", {
+              panelClass: ["success"],
+              verticalPosition: 'top'      
+            });
+          });
+
+        }
+        if(this.customer.status=="failure"){
+          setTimeout(() => {
+            this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+              panelClass: ["error"],
+              verticalPosition: 'top'      
+            });
+          });                     }
+      },
+      error => {
+        setTimeout(() => {
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });     
+      }
+    ); } 
+
+
   saveVendor(){
     alert("save vendor");
     this.vendorService.save(this.model)

@@ -119,6 +119,7 @@
           </ng-container>
 
           <ng-container *ngSwitchCase="isAddNewCustomer">
+            <form name="form"  (ngSubmit)=" saveCustomer()">
             <span class="col-6 px-2 ml-auto">
               <button class="col btn-green transparent-border">
                 <i class="fas fa-save"></i>
@@ -127,7 +128,6 @@
             </span>
             <br/><br/><br/><br/>
            <!--Customer add start-->
-           <form name="form"  (ngSubmit)=" saveCustomer()">
            <div class="example-box" id="scrolling">
 
             <div class="row">
@@ -189,7 +189,7 @@
               <div class="row">
                   <p class="col col-lg-5">Country</p>
                   <p class="col" >
-                    <select style="width: 100%;" name ="selectedCountry" [(ngModel)]="model.country" required >
+                    <select style="width: 100%;" name ="selectedCountry" [(ngModel)]="model.country" >
                       <option  *ngFor="let country of countryList" value={{country}} id="black-color">{{country}}</option>     
                   </select>  
                   </p> 
