@@ -7,6 +7,12 @@
         </ng-container>
         <ng-container *ngSwitchDefault>
           {{ componentType }} Detail
+
+          <div id="img-detaildiv">
+            <br/> <br/> <br/>
+            <img src="assets/images/bk1.jpg" style="width: 20rem;"
+          />
+          </div>
         </ng-container>
       </ng-container>
     </div>
@@ -21,8 +27,94 @@
                 Save
               </button>
             </span>
+            <br/><br/><br/><br/>
+           <!--Vendor add strat-->
+           <form name="form"  (ngSubmit)=" saveVendor()">
+            <div class="example-box" id="scrolling">
 
-            Hellooooooo vendor....
+                  <div class="row">
+                    <div>
+                        <div class="row" id="address">
+                            <p class="col col-lg-5">Vendor Name</p>
+                            <div class="col" >
+                              <input type="text" id="editinput-box2" [(ngModel)]="model.vendorName" 
+                              #vendorName="ngModel" 
+                              placeholder="Enter Vendor name" name="vendorName" />
+                            </div>
+                        </div>
+                        <div class="row" id="address">
+                            <p class="col col-lg-5">Phone Number</p>
+                            <div class="col">
+                              <input type="text" id="editinput-box2"
+                               [(ngModel)]="model.phoneNumber" 
+                               #phoneNumber="ngModel" 
+                               placeholder="Enter Phone Number" name="phoneNumber" />
+                            </div>
+                            
+                        </div>
+                        <div class="row" id="address">
+                            <p class="col col-lg-5">Address</p>
+                            <div class="col">
+                              <input type="text" id="editinput-box2"
+                              [(ngModel)]="model.address" 
+                              #address="ngModel" 
+                              placeholder="Enter Address" name="address" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <p class="col col-lg-5">City</p>
+                            <div class="col">
+                              <input type="text" id="editinput-box2" 
+                              [(ngModel)]="model.city" 
+                              #city="ngModel" 
+                              placeholder="Enter City" name="city" />
+                            </div> 
+                        </div>
+
+                        <div class="row">
+                            <p class="col col-lg-5">Email Address</p>
+                            <div class="col">
+                              <input type="text" id="editinput-box2" 
+                              [(ngModel)]="model.email" 
+                              #email="ngModel" 
+                              placeholder="Enter Email" name="email"/>
+                            </div>  
+                        </div>
+
+                        <div class="row">
+                            <p class="col-auto">Mobile Number</p>
+                            <div class="col">
+                              <input type="text" id="editinput-box2" 
+                              [(ngModel)]="model.mobileNumber" 
+                              #mobileNumber="ngModel" 
+                              placeholder="Enter Mobile Number" name="mobileNumber" />
+                            </div> 
+                        </div>
+
+                        <div class="row">
+                            <p class="col col-lg-5">Country</p>
+                            <div class="col">
+                              <select id="editselect-box" name ="selectedCountry" 
+                              [(ngModel)]="model.country" required
+                              >
+                              <option  *ngFor="let country of countryList" 
+                                value={{country}} id="black-color"
+                              >{{country}}
+                              </option>     
+                              </select>  
+                            </div>
+                        </div>
+
+                  </div>
+
+                 
+                </div>
+
+              </div>
+
+          </form>
+           <!--Vendor add end-->
 
           </ng-container>
 
@@ -33,7 +125,82 @@
                 Save
               </button>
             </span>
-            Hellooooooo customer....
+            <br/><br/><br/><br/>
+           <!--Customer add start-->
+           <form name="form"  (ngSubmit)=" saveCustomer()">
+           <div class="example-box" id="scrolling">
+
+            <div class="row">
+              <div>
+                <div class="row">
+                  <p class="col col-lg-5">Customer Name</p>
+                  <p class="col" >
+                    <input type="text" id="editinput-box2" value="" [(ngModel)]="model.customerName" 
+                    #customerName="ngModel" 
+                    placeholder="Enter Customer name" name="customerName"/>
+                  </p>  
+              </div>
+
+              <div class="row">
+                  <p class="col col-lg-5">Phone Number</p>
+                  <p class="col" >
+                    <input type="text" id="editinput-box2" [(ngModel)]="model.phoneNumber" 
+                  #phoneNumber="ngModel" 
+                  placeholder="Enter Phone Number" name="phoneNumber" />
+                  </p>       
+              </div>
+
+              <div class="row">
+                  <p class="col col-lg-5">Address</p>
+                  <p class="col" >
+                    <input type="text" id="editinput-box2" [(ngModel)]="model.address" 
+                  #address="ngModel" 
+                  placeholder="Enter Address" name="address"/>
+                  </p>  
+              </div>
+
+              <div class="row">
+                  <p class="col col-lg-5">City</p>
+                  <p class="col" >
+                    <input type="text" id="editinput-box2" [(ngModel)]="model.city" 
+                  #city="ngModel" 
+                  placeholder="Enter City" name="city" />
+                  </p>   
+              </div>
+
+              <div class="row">
+                  <p class="col col-lg-5">Email Address</p>
+                  <p class="col" >
+                    <input type="text" id="editinput-box2" [(ngModel)]="model.email" 
+                    #email="ngModel" 
+                    placeholder="Enter Email" name="email" />
+                  </p>  
+              </div>
+
+              <div class="row">
+                  <p class="col col-lg-5">Mobile Number</p>
+                  <p class="col" >
+                    <input type="text" id="editinput-box2" [(ngModel)]="model.mobileNumber" 
+                  #mobileNumber="ngModel" 
+                  placeholder="Enter Moblie Number" name="mobileNumber" />
+                  </p>
+              </div>
+
+              <div class="row">
+                  <p class="col col-lg-5">Country</p>
+                  <p class="col" >
+                    <select style="width: 100%;" name ="selectedCountry" [(ngModel)]="model.country" required >
+                      <option  *ngFor="let country of countryList" value={{country}} id="black-color">{{country}}</option>     
+                  </select>  
+                  </p> 
+              </div>
+            </div>
+          </div>
+
+        </div>
+  </form>
+
+           <!--Customer add end-->
           </ng-container>
 
 

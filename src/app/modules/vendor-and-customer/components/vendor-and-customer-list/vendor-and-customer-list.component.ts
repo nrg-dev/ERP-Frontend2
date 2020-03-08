@@ -80,14 +80,11 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
     } else {
       setTimeout(() => {
         if (edit === "ADD_NEW") {
-          alert("vendor");
-
           this.vendorDetail.isAddNew = true;
           this.vendorDetail.isAddNewCustomer = false;
           this.vendorDetail.isEditMode = false;
         }
         if (edit === "ADD_NEW_CUST") {
-          alert("customer");
           this.vendorDetail.isAddNewCustomer = true;
           this.vendorDetail.isAddNew = false;
           this.vendorDetail.isEditMode = false;
