@@ -136,7 +136,22 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
 
   toggleVendorDetailView(vendorCode?, edit?) {
     this.showDetail = !this.showDetail;
-    this.vendor = undefined;
+    this.vendor = undefined;  
+
+    if(edit=true){
+      this.vendorDetail.isAddNew = true;
+      this.customer.custcode = "0001";
+      this.customer.customerName = "0001";
+      this.customer.phoneNumber = "0001";
+      this.customer.mobileNumber = "0001";
+      this.customer.address = "0001";
+      this.customer.country = "0001";
+      this.customer.city = "0001";
+      this.customer.email = "0001";
+      this.customer.lastedit = "0001";
+      this.customer.addeddate = "0001";
+
+    }
 
     if (vendorCode) {
       const chosenEmployee = this.vendorsDS.filter(
@@ -148,11 +163,14 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
 
       setTimeout(() => {
         if (edit && this.vendorDetail) {
-          this.vendorDetail.isEditMode = true;
-          this.vendorDetail.isAddNew = false;
+         // this.vendorDetail.isEditMode = true;
+          //this.vendorDetail.isAddNew = false;
         }
       }, 50);
-    } else {
+    }
+    
+    
+    else {
       setTimeout(() => {
         if (edit === "ADD_NEW") {
           this.vendorDetail.isAddNew = true;

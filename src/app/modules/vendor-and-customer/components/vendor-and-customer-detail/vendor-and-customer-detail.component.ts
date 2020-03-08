@@ -21,7 +21,6 @@ export class VendorAndCustomerDetailComponent implements OnInit {
 //  vendor: VendorDetail;
   vendor:Vendor = new Vendor;
   customer:Customer;
-
   fieldLabels: string[];
   isEditMode: boolean;
   isAddNew: boolean;
@@ -64,7 +63,9 @@ export class VendorAndCustomerDetailComponent implements OnInit {
   deleteVendor() {
     this.backNavigation.emit();
   }
-
+updateCustomer(){
+  alert("update customer..");
+}
   saveCustomer(){
     console.log("--------Save Customer-----");
     console.log("country name-->"+this.model.country);
