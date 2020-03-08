@@ -54,12 +54,10 @@ export class EmployeeListComponent implements OnInit, OnChanges {
     private alertService: AlertService,
     private printDialogService: PrintDialogService,
     private snackBar: MatSnackBar
-  ) {
-
-  }
+  ) {}
 
   ngOnInit() {
-      this.allemplist();
+    this.allemplist();
     /*this.snackBar.open("Employee list SUCCESS", "dismss", {
       panelClass: ["success"],
       verticalPosition: 'top'
@@ -82,6 +80,7 @@ export class EmployeeListComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.tabChange) {
+      this.allemplist();
       this.showDetail = false;
       if (this.employees) {
         this.employees.paginator = this.paginator;
@@ -125,10 +124,8 @@ export class EmployeeListComponent implements OnInit, OnChanges {
 
   allemplist() {
     this.employeeService.load().subscribe(
-      data => {
+      (data: Employee[]) => {
         this.employeesDS = data;
-
-        console.log("employee code -->" + this.employeesDS[0].employeecode);
         this.employees = new MatTableDataSource(this.employeesDS);
         this.employees.paginator = this.paginator;
       },
