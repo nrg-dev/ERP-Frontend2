@@ -6,15 +6,15 @@
   <mat-tab
     ><ng-template mat-tab-label>Vendor</ng-template>
     <app-vendor-and-customer-list
-      [componentType]="'Vendor'"
-      [tabChange]="true"
+      [componentType]="activeTab === 0 ? 'Vendor' : ''"
+      [tabChange]="activeTab === 0"
     ></app-vendor-and-customer-list>
   </mat-tab>
   <mat-tab
     ><ng-template mat-tab-label>Customer</ng-template>
     <app-vendor-and-customer-list
-      [componentType]="'Customer'"
-      [tabChange]="true"
+      [componentType]="activeTab === 1 ? 'Customer' : ''"
+      [tabChange]="activeTab === 1"
     ></app-vendor-and-customer-list>
   </mat-tab>
 </mat-tab-group>

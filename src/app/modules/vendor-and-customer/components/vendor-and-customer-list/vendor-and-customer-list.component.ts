@@ -8,11 +8,15 @@ import {
   AfterContentChecked
 } from "@angular/core";
 
-import { MatTableDataSource, MatPaginator, MatSnackBar } from "@angular/material";
+import {
+  MatTableDataSource,
+  MatPaginator,
+  MatSnackBar
+} from "@angular/material";
 import { VendorAndCustomerDetailComponent } from "../vendor-and-customer-detail/vendor-and-customer-detail.component";
 import { Vendor } from "./vendor-and-customer-list.component.model";
-import { VendorService } from '../../services/vendor.service';
-import { CustomerService } from '../../services/customer.service';
+import { VendorService } from "../../services/vendor.service";
+import { CustomerService } from "../../services/customer.service";
 
 @Component({
   selector: "app-vendor-and-customer-list",
@@ -36,28 +40,30 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
 
   showDetail: boolean;
   //vendorsDS: Vendor[];
-   vendorsDS: any = {};
+  vendorsDS: any = {};
   vendors: MatTableDataSource<Vendor>;
-  vendor:Vendor;
+  vendor: Vendor;
   displayedColumns: string[] = ["vendorCode", "vendorName", "phone", "action"];
-  constructor( private vendorService: VendorService,
+  constructor(
+    private vendorService: VendorService,
     private customerService: CustomerService,
-    private snackBar: MatSnackBar) {}
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
-    this.getAllVendorDetails();
-   // this.vendorsDS = this.getAllVendorDetails();
+    // this.getAllVendorDetails();
+    // this.vendorsDS = this.getAllVendorDetails();
     //this.vendors = new MatTableDataSource(this.vendorsDS);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("customer vendor tab -->"+changes.tabChange.currentValue);
-    //load vendor
-    this.getAllVendorDetails();
-    //load customer
-    this.getAllCustomerDetails();
-    if (changes.tabChange) {
+    if (changes.tabChange && changes.componentType.currentValue) {
       this.showDetail = false;
+      if (changes.componentType.currentValue === "Vendor") {
+        this.getAllVendorDetails();
+      } else {
+        this.getAllCustomerDetails();
+      }
       if (this.vendors) {
         this.vendors.paginator = this.paginator;
       }
@@ -68,44 +74,48 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
     this.vendors.paginator = this.paginator;
   }
 
-  getAllVendorDetails(){
-    this.vendorService.load()
-    .subscribe(
+  getAllVendorDetails() {
+    console.log("getAllVendorDetails");
+    this.vendorService.load().subscribe(
       (data: Vendor[]) => {
         this.vendorsDS = data;
         this.vendors = new MatTableDataSource(this.vendorsDS);
         this.vendors.paginator = this.paginator;
-
       },
       error => {
         setTimeout(() => {
-          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-            panelClass: ["error"],
-            verticalPosition: 'top'      
-          });
-        });   
-
+          this.snackBar.open(
+            "Network error: server is temporarily unavailable",
+            "dismss",
+            {
+              panelClass: ["error"],
+              verticalPosition: "top"
+            }
+          );
+        });
       }
     );
   }
 
-  getAllCustomerDetails(){
-    this.customerService.load()
-    .subscribe(
+  getAllCustomerDetails() {
+    console.log("getAllCustomerDetails");
+    this.customerService.load().subscribe(
       (data: Vendor[]) => {
         this.vendorsDS = data;
         this.vendors = new MatTableDataSource(this.vendorsDS);
         this.vendors.paginator = this.paginator;
-
       },
       error => {
         setTimeout(() => {
-          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-            panelClass: ["error"],
-            verticalPosition: 'top'      
-          });
-        });   
-
+          this.snackBar.open(
+            "Network error: server is temporarily unavailable",
+            "dismss",
+            {
+              panelClass: ["error"],
+              verticalPosition: "top"
+            }
+          );
+        });
       }
     );
   }
@@ -140,9 +150,6 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
           this.vendorDetail.isAddNew = false;
           this.vendorDetail.isEditMode = false;
         }
-
-        
-
       }, 50);
     }
   }
