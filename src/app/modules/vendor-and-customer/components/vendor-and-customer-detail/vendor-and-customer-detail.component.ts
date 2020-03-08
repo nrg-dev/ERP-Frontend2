@@ -27,12 +27,16 @@ export class VendorAndCustomerDetailComponent implements OnInit {
   isAddNew: boolean;
   isAddNewCustomer:boolean;
   model:any ={};
+  countryList:any;
 
   constructor(private ts: TranslateService,
     private vendorService: VendorService,
     private customerService: CustomerService,
     private snackBar: MatSnackBar
-    ) {}
+    ) {
+           this.countryList = require("../../../../country.json");
+
+    }
 
   ngOnInit() {}
 

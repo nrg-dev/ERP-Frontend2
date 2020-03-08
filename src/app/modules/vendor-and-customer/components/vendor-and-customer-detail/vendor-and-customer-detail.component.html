@@ -99,8 +99,8 @@
                               [(ngModel)]="model.country" required
                               >
                               <option  *ngFor="let country of countryList" 
-                                value={{country}} id="black-color"
-                              >{{country}}
+                                value={{country.name}} id="black-color"
+                              >{{country.name}}
                               </option>     
                               </select>  
                             </div>
@@ -190,7 +190,7 @@
                   <p class="col col-lg-5">Country</p>
                   <p class="col" >
                     <select style="width: 100%;" name ="selectedCountry" [(ngModel)]="model.country" >
-                      <option  *ngFor="let country of countryList" value={{country}} id="black-color">{{country}}</option>     
+                      <option  *ngFor="let country of countryList" value={{country.name}} id="black-color">{{country.name}}</option>     
                   </select>  
                   </p> 
               </div>
