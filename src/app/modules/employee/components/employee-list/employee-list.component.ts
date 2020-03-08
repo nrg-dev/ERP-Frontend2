@@ -79,6 +79,7 @@ export class EmployeeListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    console.log("employee tab -->"+changes.tabChange.currentValue);
     if (changes.tabChange) {
       this.allemplist();
       this.showDetail = false;

@@ -9,8 +9,6 @@ import {
 } from "@angular/core";
 
 import { MatTableDataSource, MatPaginator, MatSnackBar } from "@angular/material";
-import { VendorsMock } from "src/app/config/mock/vendors.mock";
-
 import { VendorAndCustomerDetailComponent } from "../vendor-and-customer-detail/vendor-and-customer-detail.component";
 import { Vendor } from "./vendor-and-customer-list.component.model";
 import { VendorService } from '../../services/vendor.service';
@@ -53,9 +51,12 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    console.log("customer vendor tab -->"+changes.tabChange.currentValue);
+    //load vendor
+    this.getAllVendorDetails();
+    //load customer
+    this.getAllCustomerDetails();
     if (changes.tabChange) {
-      alert("tab change");
-      this.getAllVendorDetails();
       this.showDetail = false;
       if (this.vendors) {
         this.vendors.paginator = this.paginator;
