@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewChild ,ElementRef,Inject} from '@angular/core';
 import { Purchase, User, Category } from 'src/app/_models';
-import { AlertService } from 'src/app/_services';
 import { Router } from '@angular/router';
-import { AlertComponent } from 'src/app/_directives';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
@@ -22,8 +20,7 @@ export class ViewInvoice {
   constructor(
     private purchaseService: PurchaseService,
     private dialog: MatDialog,
-    private alertService: AlertService,
-
+    private snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<ViewInvoice>,
     @Inject(MAT_DIALOG_DATA) public data: any) 
     {  
@@ -42,8 +39,11 @@ export class ViewInvoice {
         },
         error => {
           setTimeout(() => {
-            this.alertService.error("Network error: server is temporarily unavailable");
-          }, 2000);
+            this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+              panelClass: ["error"],
+              verticalPosition: 'top'      
+            });
+          });  
         }
       ); 
       
@@ -63,8 +63,11 @@ export class ViewInvoice {
       },
       error => {
         setTimeout(() => {
-          this.alertService.error("Network error: server is temporarily unavailable");
-        }, 2000);
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });   
       }
     ); 
   }
@@ -97,13 +100,13 @@ export class EditInvoice {
   constructor(
     private purchaseService: PurchaseService,
     private dialog: MatDialog,
-    private alertService: AlertService,
-
+    private snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<EditInvoice>,
     @Inject(MAT_DIALOG_DATA) public data: any)
     {  
       this.model.invoiceNumber = this.data.invoice;
       this.model.currentStatus = this.data.status;
+      this.model.vendorName = this.data.vendorName;
       this.editDetails(this.model.invoiceNumber);
       this.getProductList();
       this.getcategoryList();
@@ -117,21 +120,38 @@ export class EditInvoice {
       },
       error => {
         setTimeout(() => {
-          this.alertService.error("Network error: server is temporarily unavailable");
-        }, 2000);
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });   
       }
     );
   }
 
   getProductList(){
-    this.purchaseService.loadItemName()
+    /*this.purchaseService.loadVendorItem(vendorName)
     .subscribe(res => { 
       this.productList = res;
       },
       error => {
         setTimeout(() => {
           this.alertService.error("Network error: server is temporarily unavailable");
-        }, 2000);        
+        }, 2000);
+      }
+    );*/
+
+    this.purchaseService.loadItemName()
+    .subscribe(res => { 
+      this.productList = res;
+      },
+      error => {
+        setTimeout(() => {
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });          
       }
     );
   }
@@ -173,8 +193,11 @@ export class EditInvoice {
       },
       error => {
         setTimeout(() => {
-          this.alertService.error("Network error: server is temporarily unavailable");
-        }, 2000);
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });   
       }
     ); 
   }
@@ -188,22 +211,30 @@ export class EditInvoice {
       data => {
         this.model = data;
         if(this.model.status == "Success"){
-          this.alertService.success("Deleted Successfully");
-          this.dialogRef.close();
           setTimeout(() => {
-            this.alertService.clear();
-          }, 1500);
+            this.snackBar.open("Purchase Invoice Deleted Successfully", "dismss", {
+              panelClass: ["success"],
+              verticalPosition: 'top'      
+            });
+          });
           this.model.currentStatus = this.data.status;
         }else{
-          this.alertService.error("Not Deleted..");
+          setTimeout(() => {
+            this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+              panelClass: ["error"],
+              verticalPosition: 'top'      
+            });
+          });   
         }
         
       },
       error => {
-        this.alertService.error("Network error: server is temporarily unavailable");
         setTimeout(() => {
-          this.alertService.clear();
-        }, 1500);
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });   
       }
     ); 
   }
@@ -234,10 +265,12 @@ export class EditInvoice {
         
       },
       error => {
-        this.alertService.error("Network error: server is temporarily unavailable");
         setTimeout(() => {
-          this.alertService.clear();
-        }, 1500);
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });   
       }
     );
   }
@@ -264,17 +297,21 @@ export class EditInvoice {
     .subscribe(
       data => {
         this.purchase = data; 
-        this.alertService.success("Successfully Updated.");
         this.dialogRef.close();
         setTimeout(() => {
-          this.alertService.clear();
-        }, 1000);
+          this.snackBar.open("Purchase Order updated Successfully", "dismss", {
+            panelClass: ["success"],
+            verticalPosition: 'top'      
+          });
+        });
       },
       error => {
-        this.alertService.error("Network error: server is temporarily unavailable");
         setTimeout(() => {
-          this.alertService.clear();
-        }, 1500);
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });   
       }
     );
     
@@ -297,7 +334,6 @@ export class Filter {
   constructor(
     public dialogRef: MatDialogRef<Filter>,
     private purchaseservice: PurchaseService,
-    private alertService: AlertService
     ) {
       console.log("getVendorList");
       this.purchaseservice.loadVendor()
@@ -342,8 +378,9 @@ export class PurchaseInvoiceComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private router: Router, 
-    private alertService: AlertService,
     private purchaseservice: PurchaseService,
+    private snackBar: MatSnackBar
+
   ) { 
    // const purchasedata = require("../../purchasedata.json");
 
@@ -359,8 +396,11 @@ export class PurchaseInvoiceComponent implements OnInit {
       },
       error => {
         setTimeout(() => {
-          this.alertService.error("Network error: server is temporarily unavailable");
-        }, 2000);
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });   
       }
     );
     
@@ -379,10 +419,13 @@ export class PurchaseInvoiceComponent implements OnInit {
       res => { 
         this.purchaseList = res;
         if(this.purchaseList.length == 0){
-          this.alertService.success("No Data Found");
+         
           setTimeout(() => {
-            this.alertService.clear();
-          }, 1500);
+            this.snackBar.open("No Data Found", "dismss", {
+              panelClass: ["warning"],
+              verticalPosition: 'top'      
+            });
+          });   
           this.dataSource = new MatTableDataSource();
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort; 
@@ -393,7 +436,12 @@ export class PurchaseInvoiceComponent implements OnInit {
         } 
       },
       error => {
-          alert('Error !!!!');
+        setTimeout(() => {
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });   
       }
     );
     /*const dialogRef = this.dialog.open(Filter, {
@@ -430,7 +478,7 @@ export class PurchaseInvoiceComponent implements OnInit {
     });
   }
   
-  public editinvoice(invoiceNumber:string,status:string){
+  public editinvoice(invoiceNumber:string,status:string,vendorName:string){
     console.log("Edit Invoice Number  --->"+invoiceNumber);
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
@@ -440,7 +488,7 @@ export class PurchaseInvoiceComponent implements OnInit {
     };
     this.dialog.open(EditInvoice,{
       panelClass: 'editInvoice',
-      data: { invoice: invoiceNumber, status: status },
+      data: { invoice: invoiceNumber, status: status, vendorName: vendorName },
       height: '80%'
     }).afterClosed().subscribe(result => {
       // this.refresh();
@@ -455,7 +503,12 @@ export class PurchaseInvoiceComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.purchaseList);  
       },
       error => {
-          alert('Error !!!!');
+        setTimeout(() => {
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });   
       }
     );
   }
@@ -467,21 +520,31 @@ export class PurchaseInvoiceComponent implements OnInit {
       data => {
         this.model = data;
         if(this.model.status == "Success"){
-          this.alertService.success("Deleted Successfully");
           setTimeout(() => {
-            this.alertService.clear();
-          }, 1500);
+            this.snackBar.open("Invoice deleted Successfully", "dismss", {
+              panelClass: ["success"],
+              verticalPosition: 'top'      
+            });
+          });
+    
           this.getAllPODetails();
         }else{
-          this.alertService.error("Not Deleted..");
+          setTimeout(() => {
+            this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+              panelClass: ["error"],
+              verticalPosition: 'top'      
+            });
+          });   ;
         }
         
       },
       error => {
-        this.alertService.error("Network error: server is temporarily unavailable");
         setTimeout(() => {
-          this.alertService.clear();
-        }, 1500);
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });   
       }
     ); 
   }

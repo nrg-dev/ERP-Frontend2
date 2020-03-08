@@ -8,11 +8,14 @@ import {
 } from "@angular/core";
 
 import { MatTableDataSource, MatPaginator } from "@angular/material";
+import { MatSnackBar } from "@angular/material/snack-bar";
+
 import { EmployeesMock } from "src/app/config/mock/employees.mock";
 import { Employee } from "./employee-list.model";
 import { EmployeeDetailComponent } from "../employee-detail/employee-detail.component";
-import { EmployeeService } from '../../services/employee.service';
+import { EmployeeService } from "../../services/employee.service";
 import { AlertService } from "src/app/_services/index";
+import { PrintDialogService } from "src/app/core/services/print-dialog/print-dialog.service";
 
 @Component({
   selector: "app-employee-list",
@@ -33,8 +36,9 @@ export class EmployeeListComponent implements OnInit, OnChanges {
     }, 0);
   }
 
+  searchText: string;
   showDetail: boolean = false;
- // employeesDS: Employee[];
+  // employeesDS: Employee[];
   employeesDS: any = {};
   employees: MatTableDataSource<Employee>;
   employee;
@@ -45,18 +49,38 @@ export class EmployeeListComponent implements OnInit, OnChanges {
     "contactNumber",
     "action"
   ];
-  constructor( private employeeService: EmployeeService,
-    private alertService: AlertService,) 
-  {}
+  constructor(
+    private employeeService: EmployeeService,
+    private alertService: AlertService,
+    private printDialogService: PrintDialogService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
-   // this.employeesDS = EmployeesMock;
-   // this.employees = new MatTableDataSource(this.employeesDS);
-   this.allemplist();
+    this.allemplist();
+    /*this.snackBar.open("Employee list SUCCESS", "dismss", {
+      panelClass: ["success"],
+      verticalPosition: 'top'
+    });
+    setTimeout(() => {
+      this.snackBar.open("Employee list ERROR", "dismss", {
+        panelClass: ["error"],
+        verticalPosition: 'top'
+
+      });
+      setTimeout(() => {
+        this.snackBar.open("Employee list WARNING", "dismss", {
+          panelClass: ["warning"],
+          verticalPosition: 'top'
+
+        });
+      }, 1500);
+    }, 1500);*/
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.tabChange) {
+      this.allemplist();
       this.showDetail = false;
       if (this.employees) {
         this.employees.paginator = this.paginator;
@@ -66,6 +90,10 @@ export class EmployeeListComponent implements OnInit, OnChanges {
 
   ngAfterViewInit(): void {
     this.employees.paginator = this.paginator;
+  }
+
+  printPage(data) {
+    this.printDialogService.openDialog(data);
   }
 
   toggleEmployeeDetailView(employeeCode?, edit?) {
@@ -87,22 +115,19 @@ export class EmployeeListComponent implements OnInit, OnChanges {
     }
   }
 
-//  deleteEmployee(employeeCode: string) {
- //   this.employeesDS = this.employeesDS.filter(
- //     employee => employee.employeecode !== employeeCode
-//    );
-//    this.employees.data = this.employeesDS;
-//  }
+  //  deleteEmployee(employeeCode: string) {
+  //   this.employeesDS = this.employeesDS.filter(
+  //     employee => employee.employeecode !== employeeCode
+  //    );
+  //    this.employees.data = this.employeesDS;
+  //  }
 
   allemplist() {
     this.employeeService.load().subscribe(
-      data => {
+      (data: Employee[]) => {
         this.employeesDS = data;
-
-        console.log("employee code -->" + this.employeesDS[0].employeecode);
         this.employees = new MatTableDataSource(this.employeesDS);
         this.employees.paginator = this.paginator;
-
       },
       error => {
         this.alertService.error(
@@ -139,7 +164,6 @@ export class EmployeeListComponent implements OnInit, OnChanges {
     );
   }
 
-  
   applyFilter(filterValue: string) {
     this.employees.filter = filterValue.trim().toLowerCase();
 
@@ -147,5 +171,4 @@ export class EmployeeListComponent implements OnInit, OnChanges {
       this.employees.paginator.firstPage();
     }
   }
-
 }

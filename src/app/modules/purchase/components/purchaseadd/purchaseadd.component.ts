@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import { PurchaseService } from '../../services/purchase.service';
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 //==== Status 
 @Component({
@@ -55,7 +56,9 @@ export class PurchaseAddComponent  implements OnInit  {
   constructor( 
     private dialog: MatDialog,
     private purchaseService:PurchaseService,
-    private router: Router, private alertService: AlertService) { 
+    private router: Router, private alertService: AlertService,
+    private snackBar: MatSnackBar
+    ) { 
   }
 
   ngOnInit() {
@@ -79,8 +82,15 @@ export class PurchaseAddComponent  implements OnInit  {
       },
       error => {
         setTimeout(() => {
-          this.alertService.error("Network error: server is temporarily unavailable");
-        }, 2000);
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });
+
+       // setTimeout(() => {
+       //   this.alertService.error("Network error: server is temporarily unavailable");
+      //  }, 2000);
       }
     );
   }
@@ -92,8 +102,11 @@ export class PurchaseAddComponent  implements OnInit  {
       },
       error => {
         setTimeout(() => {
-          this.alertService.error("Network error: server is temporarily unavailable");
-        }, 2000);
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });
       }
     );
   }
@@ -164,8 +177,11 @@ export class PurchaseAddComponent  implements OnInit  {
       },
       error => {
         setTimeout(() => {
-          this.alertService.error("Network error: server is temporarily unavailable");
-        }, 2000);
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });
       }
     );
   }
@@ -199,10 +215,13 @@ export class PurchaseAddComponent  implements OnInit  {
     .subscribe(
         res => {
           console.log('............1 ....');
-          this.alertService.success("Successfully saved ");
           setTimeout(() => {
-           this.alertService.clear();
-         }, 2000);
+          this.snackBar.open("Purchase Order created Successfully", "dismss", {
+            panelClass: ["success"],
+            verticalPosition: 'top'      
+          });
+        });
+
          this.fieldArray = [];
          this.purchasetable = false;
          this.model.vendorName = '';
@@ -212,12 +231,14 @@ export class PurchaseAddComponent  implements OnInit  {
          this.model.deliveryCost = '';      
          this.getProductList();               
        },
-       error => {
-        this.alertService.success("API server Issue..");
+       error => {         
         setTimeout(() => {
-          this.alertService.clear();
-        }, 2000);
-       });
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });
+    });
  }
 
 

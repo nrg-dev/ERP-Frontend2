@@ -1,4 +1,4 @@
-import { MenuItem } from "../modules/core/components/sidebar-nav/sidebar-nav.model";
+import { MenuItem } from "../core/components/sidebar-nav/sidebar-nav.model";
 
 export const abc = 5;
 
@@ -39,7 +39,7 @@ export const SidenavItems: MenuItem[] = [
     icon: "assets/images/sales.png",
     path: "/sales"
   },
-  {
+  /*{
     id: "finance",
     label: "Finance",
     icon: "assets/images/finance.png",
@@ -62,7 +62,7 @@ export const SidenavItems: MenuItem[] = [
     label: "User Management",
     icon: "assets/images/usermgt.png",
     path: "/user-management"
-  },
+  },*/
   {
     id: "logout",
     label: "Log Out",

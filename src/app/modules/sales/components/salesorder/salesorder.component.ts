@@ -11,6 +11,7 @@ import {MatDialog, MatDialogConfig} from "@angular/material";
 import { CompleterService, CompleterData } from 'ng2-completer';
 import { PurchaseService } from 'src/app/modules/purchase/services/purchase.service';
 import { SalesService } from '../../services/sales.service';
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 //==== Status 
 @Component({
@@ -71,7 +72,8 @@ export class SalesorderComponent implements OnInit {
     private cd: ChangeDetectorRef, 
     private router: Router, 
     private alertService: AlertService,
-    private completerService: CompleterService
+    private completerService: CompleterService,
+    private snackBar: MatSnackBar
   ) { 
     this.salesService.loadCustomerName()
     .subscribe(
@@ -216,11 +218,14 @@ export class SalesorderComponent implements OnInit {
     .subscribe(
        res => {
           console.log('............1 ....');
-            console.log('successfully updated...');
-            this.alertService.success("Successfully saved ");
+            console.log('successfully created...');
             setTimeout(() => {
-              this.alertService.clear();
-            }, 2000);
+              this.snackBar.open("Sales Order created Successfully", "dismss", {
+                panelClass: ["success"],
+                verticalPosition: 'top'      
+              });
+            });
+         
             this.fieldArray = [];
             this.salestable = false;
             this.model.customerName = '';
@@ -231,10 +236,12 @@ export class SalesorderComponent implements OnInit {
                         
        },
        error => {
-        this.alertService.success("API server Issue..");
         setTimeout(() => {
-          this.alertService.clear();
-        }, 2000);
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });
        });
   }
 

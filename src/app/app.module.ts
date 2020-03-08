@@ -6,19 +6,13 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 // Custom Modules
 import { AppRoutingModule } from "./modules/app-routing/app-routing.module";
-import { CoreModule } from "./modules/core/core.module";
+import { CoreModule } from "./core/core.module";
 import { CustomMaterialModule } from "./core/material.module";
 
 import { AppComponent } from "./app.component";
 
 import { LoginComponent } from "./login/login.component";
 import { LandingpageComponent } from "./landingpage/landingpage.component";
-import { EmployeeModule } from "./modules/employee/employee.module";
-import { CategoryproductModule } from "./categoryproduct/categoryproduct.module";
-import { FinanceModule } from "./finance/finance.module";
-import { UsermgtModule } from "./usermgt/usermgt.module";
-import { ReportModule } from "./report/report.module";
-import { AlertComponent } from "./_directives/index";
 import {
   AlertService,
   AuthenticationService,

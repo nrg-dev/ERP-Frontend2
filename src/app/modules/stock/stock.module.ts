@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
- 
+
 import { CustomMaterialModule } from "src/app/core/material.module";
-import { CoreModule } from "../core/core.module";
-import { StockRoutingModule } from './stock-routing.module';
-import { StockService } from './services/stock.service';
+import { CoreModule } from "../../core/core.module";
+import { StockRoutingModule } from "./stock-routing.module";
+import { StockService } from "./services/stock.service";
 
 import {
   MatAutocompleteModule,
@@ -43,16 +43,12 @@ import {
   MatTreeModule
 } from "@angular/material";
 import { Ng2CompleterModule } from "ng2-completer";
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { StockComponent } from './components/stock.component';
-import { PurchaseService } from '../purchase/services/purchase.service';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { StockComponent } from "./components/stock.component";
+import { PurchaseService } from "../purchase/services/purchase.service";
 
 @NgModule({
-  declarations: [
-    StockComponent,
-
-
-  ],
+  declarations: [StockComponent],
   imports: [
     CommonModule,
     StockRoutingModule,
@@ -99,9 +95,8 @@ import { PurchaseService } from '../purchase/services/purchase.service';
     MatTooltipModule,
     MatTreeModule,
     MatPaginatorModule,
-    Ng2CompleterModule,
-  ],  
-  providers: [StockService,PurchaseService],
-
+    Ng2CompleterModule
+  ],
+  providers: [StockService, PurchaseService]
 })
 export class StockModule {}
