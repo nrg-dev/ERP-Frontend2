@@ -62,7 +62,7 @@ update(vendor: Vendor){
 // Remove 
 remove(vendorcode:string){
    // return this.http.delete<Vendor>(this.commonURL+'remove?vendorcode='+vendorcode);
-    return this.http.delete<String>(`${environment.apiUrl}${API_ENDPOINTS.remove}`+'?vendorcode='+vendorcode);
+    return this.http.delete<Vendor>(`${environment.apiUrl}${API_ENDPOINTS.remove}`+'?vendorcode='+vendorcode);
 
 }
 }

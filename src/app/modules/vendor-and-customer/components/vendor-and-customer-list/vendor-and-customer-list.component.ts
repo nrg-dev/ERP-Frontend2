@@ -14,9 +14,10 @@ import {
   MatSnackBar
 } from "@angular/material";
 import { VendorAndCustomerDetailComponent } from "../vendor-and-customer-detail/vendor-and-customer-detail.component";
-import { Vendor } from "./vendor-and-customer-list.component.model";
+//import { Vendor } from "./vendor-and-customer-list.component.model";
 import { VendorService } from "../../services/vendor.service";
 import { CustomerService } from "../../services/customer.service";
+import { Customer,Vendor } from 'src/app/_models';
 
 @Component({
   selector: "app-vendor-and-customer-list",
@@ -39,11 +40,19 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
   }
 
   showDetail: boolean;
+  vendorListshow:boolean;
+  customerListshow:boolean;
   //vendorsDS: Vendor[];
   vendorsDS: any = {};
+  customersDS: any = {};
   vendors: MatTableDataSource<Vendor>;
   vendor: Vendor;
   displayedColumns: string[] = ["vendorCode", "vendorName", "phone", "action"];
+
+  customers: MatTableDataSource<Customer>;
+  customer: Customer;
+  displayedColumns2: string[] = ["custcode", "customerName", "phoneNumber", "action"];
+
   constructor(
     private vendorService: VendorService,
     private customerService: CustomerService,
@@ -61,8 +70,13 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
       this.showDetail = false;
       if (changes.componentType.currentValue === "Vendor") {
         this.getAllVendorDetails();
+        this.vendorListshow=true;
+        this.customerListshow=false;
       } else {
         this.getAllCustomerDetails();
+        this.customerListshow=true;
+        this.vendorListshow=false;
+
       }
       if (this.vendors) {
         this.vendors.paginator = this.paginator;
@@ -100,10 +114,10 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
   getAllCustomerDetails() {
     console.log("getAllCustomerDetails");
     this.customerService.load().subscribe(
-      (data: Vendor[]) => {
-        this.vendorsDS = data;
-        this.vendors = new MatTableDataSource(this.vendorsDS);
-        this.vendors.paginator = this.paginator;
+      (data: Customer[]) => {
+        this.customersDS = data;
+        this.customers = new MatTableDataSource(this.customersDS);
+        this.customers.paginator = this.paginator;
       },
       error => {
         setTimeout(() => {
@@ -154,11 +168,82 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
     }
   }
 
-  deleteVendor(vendorCode: number) {
-    this.vendorsDS = this.vendorsDS.filter(
-      vendor => vendor.vendorCode !== vendorCode
-    );
-    this.vendors.data = this.vendorsDS;
+  deleteVendorCustomer(code: string,deleteType:string) {
+    console.log("code -->"+code);
+    console.log("remove type -->"+deleteType);
+    if(deleteType=="vendor"){
+      this.vendorService.remove(code)
+      .subscribe(
+        data => {
+          this.vendor = data;
+          if(this.vendor.status == "Success"){
+            setTimeout(() => {
+              this.snackBar.open("Vendor is detleted successfully", "", {
+                panelClass: ["error"],
+                verticalPosition: 'top'      
+              });
+            });   
+            this.getAllVendorDetails();
+  
+          }else{
+            setTimeout(() => {
+              this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+                panelClass: ["error"],
+                verticalPosition: 'top'      
+              });
+            });             }
+          
+        },
+        error => {
+          setTimeout(() => {
+            this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+              panelClass: ["error"],
+              verticalPosition: 'top'      
+            });
+          });   
+        }
+        ); 
+    }
+    else {
+      this.customerService.remove(code)
+      .subscribe(
+        data => {
+          this.customer = data;
+          if(this.customer.status == "Success"){
+            setTimeout(() => {
+              this.snackBar.open("Customer is detleted successfully", "", {
+                panelClass: ["error"],
+                verticalPosition: 'top'      
+              });
+            });   
+            this.getAllCustomerDetails();
+  
+          }else{
+            setTimeout(() => {
+              this.snackBar.open("Network error: server is temporarily unavailable", "", {
+                panelClass: ["error"],
+                verticalPosition: 'top'      
+              });
+            });             }
+          
+        },
+        error => {
+          setTimeout(() => {
+            this.snackBar.open("Network error: server is temporarily unavailable", "", {
+              panelClass: ["error"],
+              verticalPosition: 'top'      
+            });
+          });   
+        }
+        ); 
+    }
+     	
+	
+
+  //  this.vendorsDS = this.vendorsDS.filter(
+   //   vendor => vendor.vendorCode !== vendorCode
+   // );
+   // this.vendors.data = this.vendorsDS;
   }
 
   backNavigation() {
@@ -170,10 +255,21 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
   }
 
   applyFilter(filterValue: string) {
-    this.vendors.filter = filterValue.trim().toLowerCase();
-
-    if (this.vendors.paginator) {
-      this.vendors.paginator.firstPage();
+    if(this.vendorListshow==true){
+      this.vendors.filter = filterValue.trim().toLowerCase();
+      if (this.vendors.paginator) {
+        this.vendors.paginator.firstPage();
+      }
     }
+    else {
+      this.customers.filter = filterValue.trim().toLowerCase();
+      if (this.customers.paginator) {
+        this.customers.paginator.firstPage();
+      }
+    }
+    //this.vendors.filter = filterValue.trim().toLowerCase();
+    //if (this.vendors.paginator) {
+   //   this.vendors.paginator.firstPage();
+  //  }
   }
 }
