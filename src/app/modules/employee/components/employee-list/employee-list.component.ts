@@ -130,9 +130,12 @@ export class EmployeeListComponent implements OnInit, OnChanges {
         this.employees.paginator = this.paginator;
       },
       error => {
-        this.alertService.error(
-          "Network error: server is temporarily unavailable"
-        );
+        setTimeout(() => {
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });  
       }
     );
   }

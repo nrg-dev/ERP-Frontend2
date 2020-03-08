@@ -8,11 +8,13 @@ import {
   AfterContentChecked
 } from "@angular/core";
 
-import { MatTableDataSource, MatPaginator } from "@angular/material";
+import { MatTableDataSource, MatPaginator, MatSnackBar } from "@angular/material";
 import { VendorsMock } from "src/app/config/mock/vendors.mock";
 
 import { VendorAndCustomerDetailComponent } from "../vendor-and-customer-detail/vendor-and-customer-detail.component";
 import { Vendor } from "./vendor-and-customer-list.component.model";
+import { VendorService } from '../../services/vendor.service';
+import { CustomerService } from '../../services/customer.service';
 
 @Component({
   selector: "app-vendor-and-customer-list",
@@ -35,19 +37,25 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
   }
 
   showDetail: boolean;
-  vendorsDS: Vendor[];
+  //vendorsDS: Vendor[];
+   vendorsDS: any = {};
   vendors: MatTableDataSource<Vendor>;
-  vendor;
+  vendor:Vendor;
   displayedColumns: string[] = ["vendorCode", "vendorName", "phone", "action"];
-  constructor() {}
+  constructor( private vendorService: VendorService,
+    private customerService: CustomerService,
+    private snackBar: MatSnackBar) {}
 
   ngOnInit() {
-    this.vendorsDS = VendorsMock;
-    this.vendors = new MatTableDataSource(this.vendorsDS);
+    this.getAllVendorDetails();
+   // this.vendorsDS = this.getAllVendorDetails();
+    //this.vendors = new MatTableDataSource(this.vendorsDS);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.tabChange) {
+      alert("tab change");
+      this.getAllVendorDetails();
       this.showDetail = false;
       if (this.vendors) {
         this.vendors.paginator = this.paginator;
@@ -57,6 +65,48 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
 
   ngAfterViewInit(): void {
     this.vendors.paginator = this.paginator;
+  }
+
+  getAllVendorDetails(){
+    this.vendorService.load()
+    .subscribe(
+      (data: Vendor[]) => {
+        this.vendorsDS = data;
+        this.vendors = new MatTableDataSource(this.vendorsDS);
+        this.vendors.paginator = this.paginator;
+
+      },
+      error => {
+        setTimeout(() => {
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });   
+
+      }
+    );
+  }
+
+  getAllCustomerDetails(){
+    this.customerService.load()
+    .subscribe(
+      (data: Vendor[]) => {
+        this.vendorsDS = data;
+        this.vendors = new MatTableDataSource(this.vendorsDS);
+        this.vendors.paginator = this.paginator;
+
+      },
+      error => {
+        setTimeout(() => {
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });   
+
+      }
+    );
   }
 
   toggleVendorDetailView(vendorCode?, edit?) {
@@ -81,8 +131,17 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
       setTimeout(() => {
         if (edit === "ADD_NEW") {
           this.vendorDetail.isAddNew = true;
+          this.vendorDetail.isAddNewCustomer = false;
           this.vendorDetail.isEditMode = false;
         }
+        if (edit === "ADD_NEW_CUST") {
+          this.vendorDetail.isAddNewCustomer = true;
+          this.vendorDetail.isAddNew = false;
+          this.vendorDetail.isEditMode = false;
+        }
+
+        
+
       }, 50);
     }
   }
@@ -95,6 +154,7 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
   }
 
   backNavigation() {
+    alert("back change");
     this.showDetail = false;
     setTimeout(() => {
       this.vendors.paginator = this.paginator;
