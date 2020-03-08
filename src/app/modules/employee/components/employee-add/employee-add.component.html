@@ -1,13 +1,22 @@
 
-    <form class="text-center border border-light p-4">
+    <form  name="employeeForm"
+    (submit)="employeeForm.form.valid && saveEmployee()"
+    #employeeForm="ngForm"
+    novalidate
+    class="text-center border border-light p-4">
                
       <br/>
       <div class="form-row mb-4">
           <div class="col">
             <label id="labeltext">Employee Name </label>
-            <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Name"
-             [(ngModel)]="this.model.name" #name="ngModel" name="name" required>
+            <input type="text" id="defaultRegisterFormLastName" 
+            class="form-control" placeholder="Name"
+             [(ngModel)]="this.model.name" 
+             #name="ngModel" name="name"             
+             required>            
           </div>
+         
+
           <div class="col">
             <label id="labeltext">Employee Rank </label>
             <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Employee Rank" 
@@ -80,7 +89,7 @@
       <div class="form-row mb-8">
         <div class="col-2"></div>
         <div class="col">
-          <button id="save-butn" (click)="saveEmployee()">
+          <button id="save-butn">
             Save
           </button>
           
