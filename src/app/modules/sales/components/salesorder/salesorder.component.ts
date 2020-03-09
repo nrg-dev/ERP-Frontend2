@@ -88,7 +88,12 @@ export class SalesorderComponent implements OnInit {
         }  
       },
       error => {
-        this.alertService.error("Network error: server is temporarily unavailable");
+        setTimeout(() => {
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });
       }
     );
   }
@@ -115,8 +120,11 @@ export class SalesorderComponent implements OnInit {
       },
       error => {
         setTimeout(() => {
-          this.alertService.error("Network error: server is temporarily unavailable");
-        }, 2000);
+          this.snackBar.open("Network error: server is temporarily unavailable", "", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });
       }
     );
   }
@@ -129,8 +137,11 @@ export class SalesorderComponent implements OnInit {
       },
       error => {
         setTimeout(() => {
-          this.alertService.error("Network error: server is temporarily unavailable");
-        }, 2000);
+          this.snackBar.open("Network error: server is temporarily unavailable", "", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });
       }
     );
   }
@@ -215,8 +226,8 @@ export class SalesorderComponent implements OnInit {
     console.log(this.fieldArray);
     if(this.fieldArray.length==0){
       setTimeout(() => {
-        this.snackBar.open("Add atleast one product", "dismss", {
-          panelClass: ["info"],
+        this.snackBar.open("Warning: There is No Item/Product is being selected.", "", {
+          panelClass: ["warning"],
           verticalPosition: 'top'      
         });
       });
@@ -232,7 +243,8 @@ export class SalesorderComponent implements OnInit {
           console.log('............1 ....');
             console.log('successfully created...');
             setTimeout(() => {
-              this.snackBar.open("Sales Order created Successfully", "dismss", {
+             // this.snackBar.open("ATTENTION: Sales Order is being generated", "", {
+              this.snackBar.open("Sales Order is being generated", "", {
                 panelClass: ["success"],
                 verticalPosition: 'top'      
               });
