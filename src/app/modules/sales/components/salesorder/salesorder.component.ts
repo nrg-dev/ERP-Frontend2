@@ -188,7 +188,7 @@ export class SalesorderComponent implements OnInit {
     this.model.description = '';
   }
 
-  deleteFieldValue(index) {
+  deleteFieldValue(index,qty:string,amt:number) {
     this.fieldArray.splice(index, 1);
     console.log("Size -->"+this.fieldArray.length);
     if(this.fieldArray.length==0){
@@ -199,6 +199,10 @@ export class SalesorderComponent implements OnInit {
       this.model.totalItem = 0;
     }
     this.model.sNo = this.fieldArray.length;
+    let totqty = qty.replace(/\D/g, "");
+    this.model.totalItem -= Number.parseInt(totqty);
+    this.model.subTotal -= amt;
+
     if(this.fieldArray[0]){
       this.salestable = true;
     }else{
@@ -209,14 +213,22 @@ export class SalesorderComponent implements OnInit {
   saveSales(){
     this.salesarray=[];
     console.log(this.fieldArray);
-    this.salesarray.push(this.fieldArray);
-    console.log("Purchase Array -->"+this.salesarray);
-    console.log(this.salesarray);
-    this.sales.customerName = this.model.customerName;
-
-    this.salesService.save(this.salesarray,this.model.deliveryCost)
-    .subscribe(
-       res => {
+    if(this.fieldArray.length==0){
+      setTimeout(() => {
+        this.snackBar.open("Add atleast one product", "dismss", {
+          panelClass: ["info"],
+          verticalPosition: 'top'      
+        });
+      });
+    }else{
+      this.salesarray.push(this.fieldArray);
+      console.log("Purchase Array -->"+this.salesarray);
+      console.log(this.salesarray);
+      this.sales.customerName = this.model.customerName;
+  
+      this.salesService.save(this.salesarray,this.model.deliveryCost)
+      .subscribe(
+        res => {
           console.log('............1 ....');
             console.log('successfully created...');
             setTimeout(() => {
@@ -225,7 +237,7 @@ export class SalesorderComponent implements OnInit {
                 verticalPosition: 'top'      
               });
             });
-         
+          
             this.fieldArray = [];
             this.salestable = false;
             this.model.customerName = '';
@@ -234,15 +246,16 @@ export class SalesorderComponent implements OnInit {
             this.model.subTotal = '';
             this.model.deliveryCost = '';
                         
-       },
-       error => {
+        },
+        error => {
         setTimeout(() => {
           this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
             panelClass: ["error"],
             verticalPosition: 'top'      
           });
         });
-       });
+      });
+    }
   }
 
   cancelSales(){
