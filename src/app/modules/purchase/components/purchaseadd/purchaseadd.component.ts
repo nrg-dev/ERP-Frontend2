@@ -213,8 +213,8 @@ export class PurchaseAddComponent  implements OnInit  {
     console.log(this.fieldArray);
     if(this.fieldArray.length==0){
       setTimeout(() => {
-        this.snackBar.open("Add atleast one product.", "dismss", {
-          panelClass: ["info"],
+        this.snackBar.open("Warning: There is No Item/Product is being selected.", "", {
+          panelClass: ["warning"],
           verticalPosition: 'top'   
         });
       });
