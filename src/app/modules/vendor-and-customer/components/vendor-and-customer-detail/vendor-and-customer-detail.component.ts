@@ -103,7 +103,6 @@ export class VendorAndCustomerDetailComponent implements OnInit {
 
 
   saveVendor(){
-    alert("save vendor");
     this.vendorService.save(this.model)
     .subscribe(
       data => {
