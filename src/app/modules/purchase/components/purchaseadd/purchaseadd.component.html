@@ -159,7 +159,8 @@
                     <td id="middleContent">{{ arr.description }}</td>
                     <td id="middleContent">{{ arr.netAmount }}</td>
                     <td id="middleContent">
-                        <i class="fas fa-trash" (click)="deleteFieldValue(i)" style="cursor:pointer;"></i>
+                      <i class="fas fa-trash" (click)="deleteFieldValue(i,this.fieldArray[i].quantity,
+                        this.fieldArray[i].netAmount)" style="cursor:pointer;"></i>
                     </td>
                 </tr>
                         

@@ -185,7 +185,7 @@ export class PurchaseAddComponent  implements OnInit  {
       }
     );
   }
-  deleteFieldValue(index) {
+  deleteFieldValue(index,qty:string,amt:number) {
     this.fieldArray.splice(index, 1);
     console.log("Size -->"+this.fieldArray.length);
     if(this.fieldArray.length==0){
@@ -197,6 +197,10 @@ export class PurchaseAddComponent  implements OnInit  {
       this.getProductList();
     }
     this.model.sNo = this.fieldArray.length;
+    let totqty = qty.replace(/\D/g, "");
+    this.model.totalItem -= Number.parseInt(totqty);
+    this.model.subTotal -= amt;
+
     if(this.fieldArray[0]){
       this.purchasetable = true;
     }else{
@@ -207,38 +211,47 @@ export class PurchaseAddComponent  implements OnInit  {
   savePurchase(){
     this.purchasesearcharray=[];
     console.log(this.fieldArray);
-    this.purchasesearcharray.push(this.fieldArray);
-    console.log("Purchase Array -->");
-    console.log(this.purchasesearcharray);
-    this.purchase.vendorName = this.model.vendorName;
-    this.purchaseService.save(this.purchasesearcharray,this.model.deliveryCost)
-    .subscribe(
-        res => {
-          console.log('............1 ....');
+    if(this.fieldArray.length==0){
+      setTimeout(() => {
+        this.snackBar.open("Add atleast one product.", "dismss", {
+          panelClass: ["info"],
+          verticalPosition: 'top'   
+        });
+      });
+    }else{
+      this.purchasesearcharray.push(this.fieldArray);
+      console.log("Purchase Array -->");
+      console.log(this.purchasesearcharray);
+      this.purchase.vendorName = this.model.vendorName;
+      this.purchaseService.save(this.purchasesearcharray,this.model.deliveryCost)
+      .subscribe(
+          res => {
+            console.log('............1 ....');
+            setTimeout(() => {
+            this.snackBar.open("Purchase Order created Successfully", "dismss", {
+              panelClass: ["success"],
+              verticalPosition: 'top'      
+            });
+          });
+  
+           this.fieldArray = [];
+           this.purchasetable = false;
+           this.model.vendorName = '';
+           this.model.sNo = 0;
+           this.model.subTotal = '';
+           this.model.totalItem = 0;
+           this.model.deliveryCost = '';      
+           this.getProductList();               
+         },
+         error => {         
           setTimeout(() => {
-          this.snackBar.open("Purchase Order created Successfully", "dismss", {
-            panelClass: ["success"],
-            verticalPosition: 'top'      
+            this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+              panelClass: ["error"],
+              verticalPosition: 'top'      
+            });
           });
-        });
-
-         this.fieldArray = [];
-         this.purchasetable = false;
-         this.model.vendorName = '';
-         this.model.sNo = 0;
-         this.model.subTotal = '';
-         this.model.totalItem = 0;
-         this.model.deliveryCost = '';      
-         this.getProductList();               
-       },
-       error => {         
-        setTimeout(() => {
-          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-            panelClass: ["error"],
-            verticalPosition: 'top'      
-          });
-        });
-    });
+      });
+    }
  }
 
 
