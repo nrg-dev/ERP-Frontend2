@@ -930,7 +930,7 @@ export class CategoryItemComponent implements OnInit {
     .subscribe(
       data => {
         this.alldiscountlist = data;
-        console.log("discount code -->"+this.alldiscountlist[0].discountcode);
+        console.log("discount code -->"+this.alldiscountlist.discountcode);
         this.dataSource3 = new MatTableDataSource(this.alldiscountlist);
         this.dataSource.paginator = this.paginator;
       },
@@ -965,12 +965,20 @@ export class CategoryItemComponent implements OnInit {
   }
 
 
-  applyFilter(filterValue: string) {
+  allproductFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  freegiftFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
   showCategoryItems(categorycode:string,categoryname:string){
     console.log("Category code -->"+categorycode);
     console.log("Category name -->"+categoryname);

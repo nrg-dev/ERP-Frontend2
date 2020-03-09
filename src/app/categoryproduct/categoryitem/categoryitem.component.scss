@@ -11,13 +11,12 @@ h2 {
     padding: 0 15px;
   }
 }
-#thead-color {
-  background: #033c5f;
-  text-align: center;
+.mat-input-element {
+  background: white;
+  color: black !important;
 }
-#tbody-color {
-  background: #1e2328;
-  text-align: center;
+.search-box{
+  top: 0.6rem;
 }
 
 /*table css start
@@ -127,7 +126,7 @@ table css end*/
 }
 #button-printpage {
   height: 1.7rem;
-  width: 6.9rem;
+  width: 7.3rem;
   border: 1px solid;
   margin-top: 10px;
   cursor: pointer;
