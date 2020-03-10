@@ -5,12 +5,13 @@ import { Employee } from "../../../_models";
 import { environment } from "src/environments/environment";
 
 import { API_ENDPOINTS } from "./../empployee.config";
+import { EmployeeDetail } from "../components/employee-detail/employee-detail.model";
 
 @Injectable()
 export class EmployeeService {
   constructor(private http: HttpClient) {}
 
-  save(employee: Employee) {
+  save(employee: EmployeeDetail) {
     console.log("save employee service");
     return this.http.post<Employee>(
       `${environment.apiUrl}${API_ENDPOINTS.saveEmployee}`,

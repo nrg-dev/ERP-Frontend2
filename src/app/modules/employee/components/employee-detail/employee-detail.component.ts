@@ -14,6 +14,7 @@ import { TranslateService } from "src/app/core/services/translate/translate.serv
 import { EmployeeService } from "../../services/employee.service";
 import { Utils } from "./../../../../utilities/utilities";
 import { PrintDialogService } from "src/app/core/services/print-dialog/print-dialog.service";
+import { MatSnackBar } from "@angular/material";
 
 @Component({
   selector: "app-employee-detail",
@@ -35,7 +36,8 @@ export class EmployeeDetailComponent implements OnInit, OnChanges {
   constructor(
     private ts: TranslateService,
     private employeeService: EmployeeService,
-    private printDialogService: PrintDialogService
+    private printDialogService: PrintDialogService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -57,36 +59,20 @@ export class EmployeeDetailComponent implements OnInit, OnChanges {
   }
 
   saveEmployee() {
-    this.employeeService.save(this.model).subscribe(
-      data => {
-        // this.alertService.success("Successfully Saved.");
-        setTimeout(() => {
-          //this.alertService.clear();
-        }, 2000);
-        this.model.name = "";
-        this.model.rank = "";
-        this.model.phonenumber = "";
-        this.model.address = "";
-        this.model.email = "";
-        this.model.dob = "";
-        this.model.contractnumber = "";
-        this.model.npwp = "";
-        this.model.bpjs = "";
-        this.model.monthlysalary = "";
-        this.model.workHour = "";
-        this.model.annualLeave = "";
+    this.employeeService.save(this.employee).subscribe(
+      success => {
+        this.backToEmployeesList();
+
+        this.snackBar.open("Employee updated successfully", "", {
+          panelClass: ["success"],
+          verticalPosition: "top"
+        });
       },
-      error => {
-        //this.alertService.success("Serve Error ");
-        setTimeout(() => {
-          //this.alertService.clear();
-        }, 2000);
+      err => {
+        console.log(err);
       }
     );
   }
-  // navigateBack() {
-  //   this.toggleEditMode();
-  // }
 
   toggleEditMode() {
     this.isEditMode = !this.isEditMode;

@@ -78,7 +78,10 @@
     <ng-container *ngTemplateOutlet="EmployeeDetail"></ng-container>
     <ng-template #EmployeeDetail>
       <div class="three-column max-height-adjust mt-3">
-        <div *ngFor="let fieldLabel of fieldLabels" class="mb-3 pr-4">
+        <div
+          *ngFor="let fieldLabel of fieldLabels; trackBy: trackByIndex"
+          class="mb-3 pr-4"
+        >
           <div
             *ngIf="
               !(
@@ -99,7 +102,6 @@
               [src]="employee[fieldLabel]"
               alt="Employee Photo"
               class="employee-photo"
-              onerror="this.src = 'assets/images/bk1.jpg'"
             />
 
             <textarea
@@ -108,7 +110,8 @@
               [disabled]="!isAddNew && !isEditMode"
               class="p-1"
               [value]="employee[fieldLabel]"
-              [(ngModel)]="this.model.address"
+              [(ngModel)]="employee[fieldLabel]"
+              [ngModelOptions]="{ standalone: true }"
             >
             </textarea>
 
@@ -132,6 +135,8 @@
                     fieldLabel === 'doj' ||
                     fieldLabel === 'absentDedution')
                 "
+                [(ngModel)]="employee[fieldLabel]"
+                [ngModelOptions]="{ standalone: true }"
                 class="p-1"
               />
             </ng-container>
