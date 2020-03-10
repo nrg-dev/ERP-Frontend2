@@ -100,6 +100,7 @@ h2 {
   height: 2.1rem;
   background: #272e34;
   border: none;
+  border-radius: inherit;
   box-shadow: none;
 }
 #others-box {
@@ -107,6 +108,7 @@ h2 {
   height: 2.1rem;
   background: #272e34;
   border: none;
+  border-radius: inherit;
   box-shadow: none;
 }
 #promotion-periodbox {
@@ -139,4 +141,31 @@ h2 {
 }
 .search-box-override{
   position: initial;
+}
+.regular-radio {
+	-webkit-appearance: none;
+	background-color: #fafafa;
+	border: 1px solid #cacece;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+	padding: 5px;
+	border-radius: 50px;
+	display: inline-block;
+	position: relative;
+}
+
+.regular-radio:checked:after {
+	content: ' ';
+	width: 5px;
+  height: 5px;
+  top: 3px;
+	border-radius: 50px;
+	position: absolute;
+	background: #99a1a7;
+	box-shadow: inset 0px 0px 10px rgba(0,0,0,0.3);
+	text-shadow: 0px;
+	left: 3px;
+	font-size: 12px;
+}
+::placeholder {
+  color: white;
 }

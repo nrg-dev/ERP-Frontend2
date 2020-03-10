@@ -85,7 +85,7 @@
             <div class="col-2 col-md-2 col-sm-2 col-lg-2">
                 <input type="text" id="price-box" value="{{model.price}}"
                 [(ngModel)]="model.price" 
-                #price="ngModel" 
+                #price="ngModel" (change)="getSellingPrice(model.price,model.tax,model.margin)" 
                  placeholder="Fiber Kevlar Matt" name="price"/>
             </div>
         </div>
@@ -97,14 +97,14 @@
                     <label id="text-cursor" style="margin-left: 20px;">Tax:</label>
                     <input type="text" id="tax-box" value="{{model.tax}}"
                     [(ngModel)]="model.tax" 
-                    #tax="ngModel" 
+                    #tax="ngModel" (change)="getSellingPrice(model.price,model.tax,model.margin)" 
                     placeholder="10%" name="tax"/>
                     &nbsp;&nbsp;&nbsp;
                     <label id="text-cursor">Margin:</label>
                     &nbsp;&nbsp;
                     <input type="text" id="margin-box" value="{{model.margin}}"
                     [(ngModel)]="model.margin" 
-                    #margin="ngModel" 
+                    #margin="ngModel" (change)="getSellingPrice(model.price,model.tax,model.margin)" 
                     placeholder="40%" name="margin"/>
                 </div>
             </div>
@@ -119,7 +119,7 @@
                 <input type="text" id="productcode-box" value="{{model.sellingprice}}"
                 [(ngModel)]="model.sellingprice" 
                 #sellingprice="ngModel" 
-                placeholder="IDR 30.000" name="sellingprice"/>
+                placeholder="IDR 30.000" name="sellingprice" readonly />
             </div>
         </div>
 

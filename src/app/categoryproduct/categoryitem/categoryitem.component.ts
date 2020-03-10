@@ -629,6 +629,32 @@ export class AllproducteditComponent {
     );
      
   }
+
+  marginPrice:any;
+  taxPrice:any;
+  getSellingPrice(price:string,tax:string,margin:string){
+    console.log("price-->"+price + "--- Tax --->"+tax+"-- Margin ---->"+margin);
+    if(tax == null || tax == undefined){
+      if(margin == null || tax == undefined){
+        this.model.sellingprice = price;
+      }else{
+        this.marginPrice = Number.parseInt(price) * (Number.parseInt(margin)/100);
+        this.model.sellingprice = Number.parseInt(price)+Number.parseInt(this.marginPrice);
+      }
+    }else if(margin == null || tax == undefined){
+      if(tax == null || tax == undefined){
+        this.model.sellingprice = price;
+      }else{
+        this.marginPrice = Number.parseInt(price) * (Number.parseInt(tax)/100);
+        this.model.sellingprice = Number.parseInt(price)+Number.parseInt(this.marginPrice);
+      }
+    }else{
+      this.marginPrice = Number.parseInt(price) * (Number.parseInt(margin)/100);
+      this.taxPrice = Number.parseInt(price) * (Number.parseInt(tax)/100);
+      this.model.sellingprice = Number.parseInt(price)+Number.parseInt(this.marginPrice)+Number.parseInt(this.taxPrice);
+    }
+  }
+  
 /*
   setItem(category: string){
     this.catprodservice.setItem(this.model)

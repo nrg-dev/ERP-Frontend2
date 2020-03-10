@@ -61,30 +61,26 @@
             <div class="col-4 col-md-4 col-sm-4 col-lg-4"></div>
             <div class="col-8 col-md-8 col-sm-8 col-lg-8">
             <div class="row" style="margin-left: 0px;">
-              <input type="radio"name="radiopromo" style="margin: 7px;"/>
+              <input class="regular-radio" type="radio" name="radiopromo" style="margin: 5px 7px 17px 7px;" />
                   <p>Discount</p>
                   &nbsp;
-                  <input type="text" placeholder="%" id="dicountinput-box"
-                  name ="discount" 
-                  [(ngModel)]="model.discount" 
-                  #discount="ngModel"
-                  />
+                  <input placeholder="%" id="dicountinput-box"
+                    name ="discount" [(ngModel)]="model.discount" 
+                    #discount="ngModel" readonly />
                   &nbsp;&nbsp;&nbsp;
                   <p>Qty</p>
                   &nbsp;
-                  <input type="text" id="qtyinput-box"
-                  name ="qty" 
-                  [(ngModel)]="model.qty" 
-                  #qty="ngModel"
-                  />
+                  <input type="text" id="qtyinput-box" name ="qty" 
+                    [(ngModel)]="model.qty"  #qty="ngModel" />
             </div>
 
             <div class="row" style="margin-left: 0px;">
-              <input type="radio" value="freegift" [(ngModel)]="model.discountType" #discountType="ngModel"
-              name="radiopromo" style="margin: 7px;"/>
+              <input type="radio" class="regular-radio" value="freegift" [(ngModel)]="model.discountType" #discountType="ngModel"
+              name="radiopromo" style="margin: 5px 7px 17px 7px;
+              "/>
                   <p>Free Gift</p>
                   &nbsp;
-                  <input type="text" id="freegift-box" placeholder="Product Free Gift" 
+                  <input type="text" class="regular-radio" id="freegift-box" placeholder="Product Free Gift" 
                   name ="freegift" 
                   [(ngModel)]="model.freegift" 
                   #freegift="ngModel"/>
@@ -92,12 +88,12 @@
 
             <div class="row" style="margin-left: 0px;">
                 <label class="checkbox-inline">
-                  <input type="radio" value="others" [(ngModel)]="model.discountType" #discountType="ngModel"
+                  <input type="radio" class="regular-radio" value="others" [(ngModel)]="model.discountType" #discountType="ngModel"
                   name="radiopromo" style="margin: 7px;"/>
                 </label>
                   <p>others </p>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <input type="text" id="others-box" [(ngModel)]="model.others" #discount="ngModel" placeholder="Custom Promotion" 
+                  <input type="text" id="others-box" class="regular-radio" placeholder="Custom Promotion" 
                   name ="others" 
                   [(ngModel)]="model.others" 
                   #others="ngModel"/>
