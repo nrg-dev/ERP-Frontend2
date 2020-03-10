@@ -218,7 +218,7 @@ export class AddpromotionComponent {
               verticalPosition: 'top'      
             });
           });   
-       }
+        }
       );
  
     }
