@@ -93,5 +93,6 @@
   <app-employee-detail
     #employeeDetail
     [employeeCode]="employee && employee.employeecode"
+    (navigateBack)="toggleEmployeeDetailView()"
   ></app-employee-detail>
 </ng-container>

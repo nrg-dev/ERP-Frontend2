@@ -23,6 +23,7 @@ export class EmployeeDetailComponent implements OnInit, OnChanges {
   @Input() employeeCode: string;
   @Input() isAddNew: boolean = false;
   @Output() cancelAddNewEmployee = new EventEmitter<number>();
+  @Output() navigateBack = new EventEmitter<null>();
 
   employee: EmployeeDetail;
   fieldLabels: string[];
@@ -80,9 +81,9 @@ export class EmployeeDetailComponent implements OnInit, OnChanges {
       }
     );
   }
-  navigateBack() {
-    this.toggleEditMode();
-  }
+  // navigateBack() {
+  //   this.toggleEditMode();
+  // }
 
   toggleEditMode() {
     this.isEditMode = !this.isEditMode;
@@ -95,5 +96,9 @@ export class EmployeeDetailComponent implements OnInit, OnChanges {
 
   cancelAddNew() {
     this.cancelAddNewEmployee.emit(0);
+  }
+
+  backToEmployeesList() {
+    this.navigateBack.emit();
   }
 }
