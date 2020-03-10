@@ -11,7 +11,13 @@
 
     <mat-nav-list>
       <ng-container *ngFor="let menuItem of menuItems">
-        <mat-list-item>
+        <mat-list-item
+          [ngClass]="{
+            active:
+              (!currentPath && menuItem.path === '/') ||
+              menuItem.path === currentPath
+          }"
+        >
           <a
             class="d-flex align-items-center"
             [routerLink]="[menuItem.path]"

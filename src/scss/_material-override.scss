@@ -137,3 +137,9 @@ th.mat-header-cell {
     border: 2px solid $snackbar-warning;
   }
 }
+
+.mat-list-item {
+  &.active {
+    border-bottom: 3px solid white;
+  }
+}
