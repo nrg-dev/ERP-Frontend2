@@ -94,5 +94,6 @@
     #employeeDetail
     [employeeCode]="employee && employee.employeecode"
     (navigateBack)="toggleEmployeeDetailView()"
+    (deleteEmployee)="deleteEmployee($event)"
   ></app-employee-detail>
 </ng-container>
