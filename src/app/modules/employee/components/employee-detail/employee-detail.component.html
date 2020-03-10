@@ -65,7 +65,7 @@
                 </button>
               </span>
               <span class="col px-2">
-                <button class="col">
+                <button class="col" (click)="printPage(EmployeeDetail)">
                   <i class="fas fa-print"></i>
                   Print Page
                 </button>
@@ -75,69 +75,70 @@
         </span>
       </div>
     </div>
-    <div class="three-column max-height-adjust mt-3">
-      <div *ngFor="let fieldLabel of fieldLabels" class="mb-3 pr-4">
-        <div
-          *ngIf="
-            !(
-              isAddNew &&
-              (fieldLabel === 'code' ||
-                fieldLabel === 'doj' ||
-                fieldLabel === 'absentDedution')
-            )
-          "
-          class="mb-1"
-        >
-          {{ ts.translate(fieldLabel) }}
-        </div>
-
-        <!-- Validation for photo and input fields -->
-
-        <ng-container [ngSwitch]="true">
-          <img
-            *ngSwitchCase="fieldLabel === 'photo'"
-            [src]="employee[fieldLabel]"
-            alt="Employee Photo"
-            class="employee-photo"
-            onerror="this.src = 'assets/images/bk1.jpg'"
-          />
-
-          <textarea
-            *ngSwitchCase="fieldLabel === 'address'"
-            [placeholder]="ts.translate(fieldLabel)"
-            [disabled]="!isAddNew && !isEditMode"
-            class="p-1"
-            [value]="employee[fieldLabel]"
-            [(ngModel)]="this.model.address"
-          >
-          </textarea>
-
-          <ng-container *ngSwitchDefault>
-            <input
-              *ngIf="
-                !(
-                  isAddNew &&
-                  (fieldLabel === 'code' ||
-                    fieldLabel === 'doj' ||
-                    fieldLabel === 'absentDedution')
-                )
-              "
-              type="text"
-              [placeholder]="ts.translate(fieldLabel)"
-              [value]="employee[fieldLabel]"
-              [disabled]="
-                !isAddNew &&
-                (!isEditMode ||
-                  fieldLabel === 'code' ||
+    <ng-container *ngTemplateOutlet="EmployeeDetail"></ng-container>
+    <ng-template #EmployeeDetail>
+      <div class="three-column max-height-adjust mt-3">
+        <div *ngFor="let fieldLabel of fieldLabels" class="mb-3 pr-4">
+          <div
+            *ngIf="
+              !(
+                isAddNew &&
+                (fieldLabel === 'code' ||
                   fieldLabel === 'doj' ||
                   fieldLabel === 'absentDedution')
-              "
-              class="p-1"
+              )
+            "
+            class="mb-1"
+          >
+            {{ ts.translate(fieldLabel) }}
+          </div>
+          <!-- Validation for photo and input fields -->
+          <ng-container [ngSwitch]="true">
+            <img
+              *ngSwitchCase="fieldLabel === 'photo'"
+              [src]="employee[fieldLabel]"
+              alt="Employee Photo"
+              class="employee-photo"
+              onerror="this.src = 'assets/images/bk1.jpg'"
             />
+
+            <textarea
+              *ngSwitchCase="fieldLabel === 'address'"
+              [placeholder]="ts.translate(fieldLabel)"
+              [disabled]="!isAddNew && !isEditMode"
+              class="p-1"
+              [value]="employee[fieldLabel]"
+              [(ngModel)]="this.model.address"
+            >
+            </textarea>
+
+            <ng-container *ngSwitchDefault>
+              <input
+                *ngIf="
+                  !(
+                    isAddNew &&
+                    (fieldLabel === 'code' ||
+                      fieldLabel === 'doj' ||
+                      fieldLabel === 'absentDedution')
+                  )
+                "
+                type="text"
+                [placeholder]="ts.translate(fieldLabel)"
+                [value]="employee[fieldLabel]"
+                [disabled]="
+                  !isAddNew &&
+                  (!isEditMode ||
+                    fieldLabel === 'code' ||
+                    fieldLabel === 'doj' ||
+                    fieldLabel === 'absentDedution')
+                "
+                class="p-1"
+              />
+            </ng-container>
           </ng-container>
-        </ng-container>
+        </div>
       </div>
-    </div>
+    </ng-template>
   </div>
 </form>
 <div class="d-flex justify-content-center">

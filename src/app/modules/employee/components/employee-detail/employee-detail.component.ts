@@ -13,6 +13,7 @@ import { EmployeeDetailMock } from "./../../../../config/mock/employee-detail.mo
 import { TranslateService } from "src/app/core/services/translate/translate.service";
 import { EmployeeService } from "../../services/employee.service";
 import { Utils } from "./../../../../utilities/utilities";
+import { PrintDialogService } from "src/app/core/services/print-dialog/print-dialog.service";
 
 @Component({
   selector: "app-employee-detail",
@@ -33,7 +34,8 @@ export class EmployeeDetailComponent implements OnInit, OnChanges {
 
   constructor(
     private ts: TranslateService,
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    private printDialogService: PrintDialogService
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -102,5 +104,9 @@ export class EmployeeDetailComponent implements OnInit, OnChanges {
 
   backToEmployeesList() {
     this.navigateBack.emit();
+  }
+
+  printPage(data) {
+    this.printDialogService.openDialog(data);
   }
 }
