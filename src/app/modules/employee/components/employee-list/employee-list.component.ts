@@ -36,6 +36,7 @@ export class EmployeeListComponent implements OnInit, OnChanges {
     }, 0);
   }
 
+  chosenEmployeeCode: any;
   searchText: string;
   showDetail: boolean = false;
   // employeesDS: Employee[];
@@ -79,7 +80,7 @@ export class EmployeeListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("employee tab -->"+changes.tabChange.currentValue);
+    console.log("employee tab -->" + changes.tabChange.currentValue);
     if (changes.tabChange) {
       this.allemplist();
       this.showDetail = false;
@@ -101,12 +102,7 @@ export class EmployeeListComponent implements OnInit, OnChanges {
     this.showDetail = !this.showDetail;
     this.employee = undefined;
     if (employeeCode) {
-      const chosenEmployee = this.employeesDS.filter(
-        employee => employee.employeecode === employeeCode
-      );
-      if (chosenEmployee.length && chosenEmployee.length > 0) {
-        this.employee = chosenEmployee[0];
-      }
+      this.chosenEmployeeCode = employeeCode;
 
       setTimeout(() => {
         if (edit && this.employeeDetail) {
@@ -132,11 +128,15 @@ export class EmployeeListComponent implements OnInit, OnChanges {
       },
       error => {
         setTimeout(() => {
-          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-            panelClass: ["error"],
-            verticalPosition: 'top'      
-          });
-        });  
+          this.snackBar.open(
+            "Network error: server is temporarily unavailable",
+            "dismss",
+            {
+              panelClass: ["error"],
+              verticalPosition: "top"
+            }
+          );
+        });
       }
     );
   }
@@ -149,9 +149,9 @@ export class EmployeeListComponent implements OnInit, OnChanges {
           setTimeout(() => {
             this.snackBar.open("Employee is deleted successfully", "", {
               panelClass: ["error"],
-              verticalPosition: 'top'      
+              verticalPosition: "top"
             });
-          });   
+          });
           this.allemplist();
           this.employees = new MatTableDataSource(this.employeesDS);
           setTimeout(() => {
@@ -159,23 +159,29 @@ export class EmployeeListComponent implements OnInit, OnChanges {
           }, 1500);
         } else {
           setTimeout(() => {
-            this.snackBar.open("Network error: server is temporarily unavailable", "", {
-              panelClass: ["error"],
-              verticalPosition: 'top'      
-            });
-          });   
-      
+            this.snackBar.open(
+              "Network error: server is temporarily unavailable",
+              "",
+              {
+                panelClass: ["error"],
+                verticalPosition: "top"
+              }
+            );
+          });
         }
         this.allemplist();
       },
       error => {
         setTimeout(() => {
-          this.snackBar.open("Network error: server is temporarily unavailable", "", {
-            panelClass: ["error"],
-            verticalPosition: 'top'      
-          });
-        });   
-		
+          this.snackBar.open(
+            "Network error: server is temporarily unavailable",
+            "",
+            {
+              panelClass: ["error"],
+              verticalPosition: "top"
+            }
+          );
+        });
       }
     );
   }

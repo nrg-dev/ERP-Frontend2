@@ -23,7 +23,7 @@ export class EmployeeService {
     return this.http.get(`${environment.apiUrl}${API_ENDPOINTS.allEmployees}`);
   }
 
-  get(id: number) {
+  get(id) {
     return this.http.get<Employee>(
       `${environment.apiUrl}${API_ENDPOINTS.getEmployee}`.replace(
         "{param}",

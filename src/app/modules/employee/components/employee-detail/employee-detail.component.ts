@@ -41,6 +41,9 @@ export class EmployeeDetailComponent implements OnInit, OnChanges {
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
+    if (changes.employeeCode) {
+      this.getEmployee();
+    }
     if (changes.isAddNew && changes.isAddNew.currentValue) {
       this.employee = Utils.resetFields(this.employee);
     } else {
@@ -50,12 +53,20 @@ export class EmployeeDetailComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.employee = { ...EmployeeDetailMock };
-    this.fieldLabels = Object.keys(this.employee);
+    // this.employee = { ...EmployeeDetailMock };
+  }
 
-    if (this.isAddNew) {
-      this.isEditMode = false;
-    }
+  getEmployee() {
+    this.employeeService.get(this.employeeCode).subscribe(
+      (data: any) => {
+        this.employee = data;
+        this.fieldLabels = Object.keys(this.employee);
+        if (this.isAddNew) {
+          this.isEditMode = false;
+        }
+      },
+      err => console.log(err)
+    );
   }
 
   saveEmployee() {
