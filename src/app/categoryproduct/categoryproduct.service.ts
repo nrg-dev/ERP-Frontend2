@@ -2,6 +2,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Category, Product } from "../_models";
 import { Discount } from "../_models/discount";
+import { API_ENDPOINTS } from "./categoryproduct.config";
 //import { ConsoleReporter } from 'jasmine';
 
 @Injectable()

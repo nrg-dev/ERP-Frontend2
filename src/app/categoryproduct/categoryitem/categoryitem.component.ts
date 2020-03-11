@@ -1,14 +1,14 @@
 import { Component, OnInit, ViewChild ,ElementRef,Inject} from '@angular/core';
 import { Router } from '@angular/router';
-import { Category, Product } from 'src/app/_models';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
-import { CategoryproductService } from '../categoryproduct.service';
-import { Discount } from 'src/app/_models/discount';
 import { CompleterData, CompleterService } from 'ng2-completer';
 import { PercentPipe } from '../../../../node_modules/@angular/common';
 import { VendorService } from 'src/app/modules/vendor-and-customer/services/vendor.service';
+import { CategoryproductService } from '../services/categoryproduct.service';
+import { Category, Product } from 'src/app/_models';
+import { Discount } from 'src/app/_models/discount';
 
 // addnewcategory start
 @Component({
