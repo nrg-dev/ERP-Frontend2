@@ -17,7 +17,7 @@ export class EmployeeAddComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  cancelEmployee(){}
   saveEmployee() {
     this.employeeService.save(this.model)
       .subscribe(

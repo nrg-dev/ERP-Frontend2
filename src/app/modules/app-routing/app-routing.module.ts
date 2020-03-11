@@ -14,7 +14,6 @@ import { PlaceholderComponent } from "../../core/components/placeholder/placehol
 import { VendorAndCustomerModule } from "../vendor-and-customer/vendor-and-customer.module";
 import { PurchaseModule } from "../purchase/purchase.module";
 import { SalesModule } from "../sales/sales.module";
-import { StockModule } from "../stock/stock.module";
 
 const routes: Routes = [
   {
@@ -35,53 +34,54 @@ const routes: Routes = [
       {
         path: "employment",
         loadChildren: () =>
-          import("../employee/employee.module").then(m => EmployeeModule)
+          import("../employee/employee.module").then(
+            (m) => m.EmployeeModule)
       },
       {
         path: "vendor-and-customer",
         loadChildren: () =>
-          import(
-            "./../../modules/vendor-and-customer/vendor-and-customer.module"
-          ).then(m => VendorAndCustomerModule)
+          import("./../../modules/vendor-and-customer/vendor-and-customer.module"
+          ).then(
+            (m) => m.VendorAndCustomerModule)
       },
       {
         path: "category-and-product",
         loadChildren: () =>
           import("./../../categoryproduct/categoryproduct.module").then(
-            m => CategoryproductModule
+            (m) => m.CategoryproductModule
           )
       },
       {
         path: "purchase",
         loadChildren: () =>
           import("./../../modules/purchase/purchase.module").then(
-            m => PurchaseModule
+            (m) => m.PurchaseModule
           )
       },
       {
         path: "sales",
         loadChildren: () =>
-          import("./../../modules/sales/sales.module").then(m => SalesModule)
+          import("./../../modules/sales/sales.module").then(
+            (m) => m.SalesModule)
       },
       {
         path: "finance",
         loadChildren: () =>
-          import("./../../finance/finance.module").then(m => FinanceModule)
+          import("./../../finance/finance.module").then(
+            (m) => m.FinanceModule)
       },
-      {
-        path: "stock",
-        loadChildren: () =>
-          import("./../../modules/stock/stock.module").then(m => StockModule)
-      },
+     
       {
         path: "report",
         loadChildren: () =>
-          import("./../../report/report.module").then(m => ReportModule)
+          import("./../../report/report.module").then(
+            (m) => m.ReportModule)
       },
       {
         path: "user-management",
         loadChildren: () =>
-          import("./../../usermgt/usermgt.module").then(m => UsermgtModule)
+          import("./../../usermgt/usermgt.module").then(
+            (m) => m.UsermgtModule)
       }
     ]
   },

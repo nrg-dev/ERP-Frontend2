@@ -51,7 +51,8 @@ import {
   SalesinvoiceComponent,
   ViewInvoice,
   EditInvoice,
-  Filter
+  Filter,
+  
 } from "./components/salesinvoice/salesinvoice.component";
 import { SalesreturnComponent } from "./components/salesreturn/salesreturn.component";
 import { SalesreportComponent } from "./components/salesreport/salesreport.component";

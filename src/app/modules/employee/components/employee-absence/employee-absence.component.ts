@@ -21,6 +21,7 @@ export class EmployeeAbsenceComponent implements OnInit {
   empDetailsList: any;
   employeeList: any = {};
   model: any = {};
+  searchText:string;
 
   // TODO : Move the models out
   employees: { name: string; code: number }[];

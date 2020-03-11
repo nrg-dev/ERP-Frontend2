@@ -5,7 +5,6 @@ import { ChangeDetectorRef, ElementRef, ViewChild } from '@angular/core';
 import { Sales } from 'src/app/_models';
 import { AlertService } from 'src/app/_services';
 import { Router } from '@angular/router';
-import { AlertComponent } from 'src/app/_directives';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import { CompleterService, CompleterData } from 'ng2-completer';
@@ -13,29 +12,6 @@ import { PurchaseService } from 'src/app/modules/purchase/services/purchase.serv
 import { SalesService } from '../../services/sales.service';
 import { MatSnackBar } from "@angular/material/snack-bar";
 
-//==== Status 
-@Component({
-  selector: 'status',
-  styleUrls: ['./status.css'],
-  templateUrl: './status.html', 
-})
-export class Status {
-
-
-  constructor(
-    public dialogRef: MatDialogRef<Status>,
-    ) {
-
-    }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-  updateDelete(){
-    console.log("updateDelete");
-  }
-}
 
 @Component({
   selector: 'app-salesorder',
