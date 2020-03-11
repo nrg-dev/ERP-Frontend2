@@ -23,17 +23,18 @@
             </div>
             <br/>
             <div id="categorylist-div">
-            <div id="border-bottom">
-                <div *ngFor="let list of masterlist" (click)="categorydetails(list.number)" 
-                class="categorylist-alignment" id="{{ list.number }}">
-                <p>{{ list.name }}</p>
+                <br/>
+                <div id="border-bottom">
+                    <div *ngFor="let list of masterlist" (click)="categorydetails(list.number)" 
+                        class="categorylist-alignment" id="{{ list.number }}">
+                        <p>{{ list.name }}</p>
+                    </div>
                 </div>
-            </div>
-            <div style="height: 10px;"></div>
-            <div *ngFor="let list of categorylist" (click)="showCategoryItems(list.categorycode,list.name)" 
-            class="productlists-alignment" id="{{ list.categorycode }}">
-                <p id="productlist-style">{{ list.name }}</p>
-              </div> 
+                <div style="height: 10px;"></div>
+                <div *ngFor="let list of categorylist" (click)="showCategoryItems(list.categorycode,list.name)" 
+                    class="productlists-alignment" id="{{ list.categorycode }}">
+                    <p id="productlist-style">{{ list.name }}</p>
+                </div> 
             </div>
         </div>
 
