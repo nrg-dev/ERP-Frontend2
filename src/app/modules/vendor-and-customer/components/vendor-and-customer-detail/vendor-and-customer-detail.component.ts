@@ -46,26 +46,28 @@ export class VendorAndCustomerDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.componentType === "Customer") {
-      this.customerService.get(this.vendorCode).subscribe(
-        data => {
-          this.model = data;
-        },
-        err => console.log(err)
-      );
-    } else {
-      this.vendorService.get(this.vendorCode).subscribe(
-        data => {
-          this.model = data;
-        },
-        err => console.log(err)
-      );
+    if (!this.isAddNew && !this.isAddNewCustomer) {
+      if (this.componentType === "Customer") {
+        this.customerService.get(this.vendorCode).subscribe(
+          data => {
+            this.model = data[0];
+          },
+          err => console.log(err)
+        );
+      } else {
+        this.vendorService.get(this.vendorCode).subscribe(
+          data => {
+            this.model = data[0];
+          },
+          err => console.log(err)
+        );
+      }
     }
   }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
-      if (this.isAddNew) {
+      if (this.isAddNew || this.isAddNewCustomer) {
         if (this.componentType === "Customer") {
           this.fieldLabels = Object.keys(this.customer);
           this.vendor = Utils.resetFields(this.customer);

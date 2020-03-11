@@ -40,6 +40,7 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
     }, 0);
   }
 
+  chosenId: any;
   showDetail: boolean;
   vendorListshow: boolean;
   customerListshow: boolean;
@@ -88,10 +89,6 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
         this.vendors.paginator = this.paginator;
       }
     }
-  }
-
-  ngAfterViewInit(): void {
-    this.vendors.paginator = this.paginator;
   }
 
   getAllVendorDetails() {
@@ -145,20 +142,7 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
     this.vendor = undefined;
 
     if (code) {
-      let chosenEmployee;
-      if (this.componentType === "Customer") {
-        chosenEmployee = this.customersDS.filter(
-          customer => customer.custcode === code
-        );
-      } else {
-        chosenEmployee = this.vendorsDS.filter(
-          vendor => vendor.vendorCode === code
-        );
-      }
-
-      if (chosenEmployee.length && chosenEmployee.length > 0) {
-        this.vendor = chosenEmployee[0];
-      }
+      this.chosenId = code;
 
       setTimeout(() => {
         if (edit && this.vendorDetail) {
@@ -276,9 +260,6 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
       this.getAllCustomerDetails();
     }
     this.showDetail = false;
-    setTimeout(() => {
-      this.vendors.paginator = this.paginator;
-    }, 0);
   }
 
   applyFilter(filterValue: string) {

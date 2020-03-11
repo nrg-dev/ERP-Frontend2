@@ -59,7 +59,7 @@ export class EmployeeDetailComponent implements OnInit, OnChanges {
   getEmployee() {
     this.employeeService.get(this.employeeCode).subscribe(
       (data: any) => {
-        this.employee = data;
+        this.employee = data[0];
         this.fieldLabels = Object.keys(this.employee);
         if (this.isAddNew) {
           this.isEditMode = false;
