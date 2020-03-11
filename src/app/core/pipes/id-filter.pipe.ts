@@ -5,6 +5,9 @@ import { Pipe, PipeTransform } from "@angular/core";
 })
 export class IdFilterPipe implements PipeTransform {
   transform(value: string[], ...args: any[]): any {
-    return value.filter(val => val !== "id");
+    if (value && value.length) {
+      return value.filter(val => val !== "id");
+    }
+    return null;
   }
 }

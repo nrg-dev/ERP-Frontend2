@@ -90,10 +90,6 @@ export class EmployeeListComponent implements OnInit, OnChanges {
     }
   }
 
-  ngAfterViewInit(): void {
-    this.employees.paginator = this.paginator;
-  }
-
   printPage(data) {
     this.printDialogService.openDialog(data);
   }
