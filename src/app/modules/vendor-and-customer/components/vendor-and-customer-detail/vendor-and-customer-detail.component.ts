@@ -1,12 +1,19 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  NgZone
+} from "@angular/core";
 import { VendorDetail } from "./vendor-and-customer-detail.model";
 import { VendorDetailMock } from "../../../../config/mock/vendor-detail.mock";
 import { TranslateService } from "src/app/core/services/translate/translate.service";
 import { Utils } from "src/app/utilities/utilities";
-import { VendorService } from '../../services/vendor.service';
-import { CustomerService } from '../../services/customer.service';
-import { Vendor,Customer } from 'src/app/_models';
-import { MatSnackBar } from '@angular/material';
+import { VendorService } from "../../services/vendor.service";
+import { CustomerService } from "../../services/customer.service";
+import { Vendor, Customer } from "src/app/_models";
+import { MatSnackBar } from "@angular/material";
 
 @Component({
   selector: "app-vendor-and-customer-detail",
@@ -18,37 +25,60 @@ export class VendorAndCustomerDetailComponent implements OnInit {
   @Input() componentType: string;
   @Output() backNavigation = new EventEmitter<null>();
 
-//  vendor: VendorDetail;
-  vendor:Vendor = new Vendor;
-  customer:Customer;
+  //  vendor: VendorDetail;
+  vendor: Vendor = new Vendor();
+  customer: Customer = new Customer();
 
   fieldLabels: string[];
   isEditMode: boolean;
   isAddNew: boolean;
-  isAddNewCustomer:boolean;
-  model:any ={};
-  countryList:any;
+  isAddNewCustomer: boolean;
+  model: any = {};
+  countryList: any;
 
-  constructor(private ts: TranslateService,
+  constructor(
+    private ts: TranslateService,
     private vendorService: VendorService,
     private customerService: CustomerService,
     private snackBar: MatSnackBar
-    ) {
-           this.countryList = require("../../../../country.json");
+  ) {
+    this.countryList = require("../../../../country.json");
+  }
 
+  ngOnInit() {
+    if (this.componentType === "Customer") {
+      this.customerService.get(this.vendorCode).subscribe(
+        data => {
+          this.model = data;
+        },
+        err => console.log(err)
+      );
+    } else {
+      this.vendorService.get(this.vendorCode).subscribe(
+        data => {
+          this.model = data;
+        },
+        err => console.log(err)
+      );
     }
-
-  ngOnInit() {}
+  }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
       if (this.isAddNew) {
-       // this.vendor = { ...VendorDetailMock };
-        this.fieldLabels = Object.keys(this.vendor);
-        this.vendor = Utils.resetFields(this.vendor);
+        if (this.componentType === "Customer") {
+          this.fieldLabels = Object.keys(this.customer);
+          this.vendor = Utils.resetFields(this.customer);
+        } else {
+          this.fieldLabels = Object.keys(this.vendor);
+          this.vendor = Utils.resetFields(this.vendor);
+        }
       } else {
-       // this.vendor = { ...VendorDetailMock };
-        this.fieldLabels = Object.keys(this.vendor);
+        if (this.componentType === "Customer") {
+          this.fieldLabels = Object.keys(this.customer);
+        } else {
+          this.fieldLabels = Object.keys(this.vendor);
+        }
       }
     }, 50);
   }
@@ -65,74 +95,88 @@ export class VendorAndCustomerDetailComponent implements OnInit {
     this.backNavigation.emit();
   }
 
-  saveCustomer(){
+  saveCustomer() {
     console.log("--------Save Customer-----");
-    console.log("country name-->"+this.model.country);
-    // call rest ful api 
-    this.customerService.save(this.model)
-    .subscribe(
+    console.log("country name-->" + this.model.country);
+    // call rest ful api
+    this.customerService.save(this.model).subscribe(
       data => {
-        this.customer =   data;    
-        console.log("Response -->"+this.customer.status) 
-        if(this.customer.status=="success"){
+        this.customer = data;
+        console.log("Response -->" + this.customer.status);
+        if (this.customer.status == "success") {
           setTimeout(() => {
             this.snackBar.open("Customer created Successfully", "", {
               panelClass: ["success"],
-              verticalPosition: 'top'      
+              verticalPosition: "top"
             });
           });
-
         }
-        if(this.customer.status=="failure"){
+        if (this.customer.status == "failure") {
           setTimeout(() => {
-            this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-              panelClass: ["error"],
-              verticalPosition: 'top'      
-            });
-          });                     }
+            this.snackBar.open(
+              "Network error: server is temporarily unavailable",
+              "dismss",
+              {
+                panelClass: ["error"],
+                verticalPosition: "top"
+              }
+            );
+          });
+        }
       },
       error => {
         setTimeout(() => {
-          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-            panelClass: ["error"],
-            verticalPosition: 'top'      
-          });
-        });     
+          this.snackBar.open(
+            "Network error: server is temporarily unavailable",
+            "dismss",
+            {
+              panelClass: ["error"],
+              verticalPosition: "top"
+            }
+          );
+        });
       }
-    ); } 
+    );
+  }
 
-
-  saveVendor(){
-    this.vendorService.save(this.model)
-    .subscribe(
+  saveVendor() {
+    this.vendorService.save(this.model).subscribe(
       data => {
-        this.vendor =   data;    
-        console.log("Response -->"+this.vendor.status) 
-        if(this.vendor.status=="success"){
+        this.vendor = data;
+        console.log("Response -->" + this.vendor.status);
+        if (this.vendor.status == "success") {
           setTimeout(() => {
             this.snackBar.open("Sales Order created Successfully", "dismss", {
               panelClass: ["success"],
-              verticalPosition: 'top'      
+              verticalPosition: "top"
             });
           });
-    
-       }
-        if(this.vendor.status=="failure"){
+        }
+        if (this.vendor.status == "failure") {
           setTimeout(() => {
-            this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-              panelClass: ["error"],
-              verticalPosition: 'top'      
-            });
-          });           }
+            this.snackBar.open(
+              "Network error: server is temporarily unavailable",
+              "dismss",
+              {
+                panelClass: ["error"],
+                verticalPosition: "top"
+              }
+            );
+          });
+        }
       },
       error => {
         setTimeout(() => {
-          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-            panelClass: ["error"],
-            verticalPosition: 'top'      
-          });
-        });   
+          this.snackBar.open(
+            "Network error: server is temporarily unavailable",
+            "dismss",
+            {
+              panelClass: ["error"],
+              verticalPosition: "top"
+            }
+          );
+        });
       }
-    );  
+    );
   }
 }
