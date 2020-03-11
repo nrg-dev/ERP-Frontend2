@@ -18,6 +18,7 @@ import { VendorAndCustomerDetailComponent } from "../vendor-and-customer-detail/
 import { VendorService } from "../../services/vendor.service";
 import { CustomerService } from "../../services/customer.service";
 import { Customer, Vendor } from "src/app/_models";
+import { PrintDialogService } from "src/app/core/services/print-dialog/print-dialog.service";
 
 @Component({
   selector: "app-vendor-and-customer-list",
@@ -61,7 +62,8 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
   constructor(
     private vendorService: VendorService,
     private customerService: CustomerService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private printDialogService: PrintDialogService
   ) {}
 
   ngOnInit() {
@@ -295,5 +297,9 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
     //if (this.vendors.paginator) {
     //   this.vendors.paginator.firstPage();
     //  }
+  }
+
+  printPage(data) {
+    this.printDialogService.openDialog(data);
   }
 }

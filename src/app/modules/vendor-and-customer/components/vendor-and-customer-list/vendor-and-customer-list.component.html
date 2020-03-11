@@ -3,7 +3,19 @@
     <div class="col-2">{{ componentType }} List</div>
     <div class="row col-10">
       <span class="col px-2">
-        <button class="col">
+        <button
+          *ngIf="vendorListshow"
+          class="col"
+          (click)="printPage(VendorListTable)"
+        >
+          <i class="fas fa-print"></i>
+          Print Page
+        </button>
+        <button
+          *ngIf="customerListshow"
+          class="col"
+          (click)="printPage(CustomerListTable)"
+        >
           <i class="fas fa-print"></i>
           Print Page
         </button>
@@ -40,112 +52,118 @@
     </div>
   </div>
 
-  <div *ngIf="vendorListshow">
-    <table class="w-100 mt-4" mat-table [dataSource]="vendors">
-      <ng-container matColumnDef="vendorCode">
-        <th mat-header-cell *matHeaderCellDef>{{ componentType }} Code</th>
-        <td mat-cell *matCellDef="let row" id="{{ row.vendorcode }}">
-          {{ row.vendorcode }}
-        </td>
-      </ng-container>
+  <ng-container *ngTemplateOutlet="VendorListTable"></ng-container>
+  <ng-container *ngTemplateOutlet="CustomerListTable"></ng-container>
+  <ng-template #VendorListTable>
+    <div *ngIf="vendorListshow">
+      <table class="w-100 mt-4" mat-table [dataSource]="vendors">
+        <ng-container matColumnDef="vendorCode">
+          <th mat-header-cell *matHeaderCellDef>{{ componentType }} Code</th>
+          <td mat-cell *matCellDef="let row" id="{{ row.vendorcode }}">
+            {{ row.vendorcode }}
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="vendorName">
-        <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td mat-cell *matCellDef="let row" id="{{ row.vendorName }}">
-          {{ row.vendorName }}
-        </td>
-      </ng-container>
+        <ng-container matColumnDef="vendorName">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let row" id="{{ row.vendorName }}">
+            {{ row.vendorName }}
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="phone">
-        <th mat-header-cell *matHeaderCellDef>
-          Contact Number
-        </th>
-        <td mat-cell *matCellDef="let row" id="{{ row.phoneNumber }}">
-          {{ row.phoneNumber }}
-        </td>
-      </ng-container>
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef>
+            Contact Number
+          </th>
+          <td mat-cell *matCellDef="let row" id="{{ row.phoneNumber }}">
+            {{ row.phoneNumber }}
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef>Action</th>
-        <td mat-cell *matCellDef="let row" class="actions">
-          <i
-            class="fas fa-eye"
-            (click)="toggleVendorDetailView(row.vendorcode)"
-          ></i>
-          <i class="fas fa-print" (click)="productprint()"></i>
-          <i
-            class="fas fa-edit"
-            (click)="toggleVendorDetailView(row.vendorcode, true)"
-          ></i>
-          <i
-            class="fas fa-trash"
-            (click)="deleteVendorCustomer(row.vendorcode, 'vendor')"
-          ></i>
-        </td>
-      </ng-container>
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef hideInPrint>Action</th>
+          <td mat-cell *matCellDef="let row" class="actions" hideInPrint>
+            <i
+              class="fas fa-eye"
+              (click)="toggleVendorDetailView(row.vendorcode)"
+            ></i>
+            <i class="fas fa-print" (click)="productprint()"></i>
+            <i
+              class="fas fa-edit"
+              (click)="toggleVendorDetailView(row.vendorcode, true)"
+            ></i>
+            <i
+              class="fas fa-trash"
+              (click)="deleteVendorCustomer(row.vendorcode, 'vendor')"
+            ></i>
+          </td>
+        </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr
-        mat-row
-        [ngClass]="table - row"
-        tabindex="1"
-        *matRowDef="let row; columns: displayedColumns"
-      ></tr>
-    </table>
-  </div>
-  <div *ngIf="customerListshow">
-    <table class="w-100 mt-4" mat-table [dataSource]="customers">
-      <ng-container matColumnDef="custcode">
-        <th mat-header-cell *matHeaderCellDef>{{ componentType }} Code</th>
-        <td mat-cell *matCellDef="let row" id="{{ row.custcode }}">
-          {{ row.custcode }}
-        </td>
-      </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+          mat-row
+          [ngClass]="table - row"
+          tabindex="1"
+          *matRowDef="let row; columns: displayedColumns"
+        ></tr>
+      </table>
+    </div>
+  </ng-template>
+  <ng-template #CustomerListTable>
+    <div *ngIf="customerListshow">
+      <table class="w-100 mt-4" mat-table [dataSource]="customers">
+        <ng-container matColumnDef="custcode">
+          <th mat-header-cell *matHeaderCellDef>{{ componentType }} Code</th>
+          <td mat-cell *matCellDef="let row" id="{{ row.custcode }}">
+            {{ row.custcode }}
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="customerName">
-        <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td mat-cell *matCellDef="let row" id="{{ row.customerName }}">
-          {{ row.customerName }}
-        </td>
-      </ng-container>
+        <ng-container matColumnDef="customerName">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let row" id="{{ row.customerName }}">
+            {{ row.customerName }}
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="phoneNumber">
-        <th mat-header-cell *matHeaderCellDef>
-          Contact Number
-        </th>
-        <td mat-cell *matCellDef="let row" id="{{ row.phoneNumber }}">
-          {{ row.phoneNumber }}
-        </td>
-      </ng-container>
+        <ng-container matColumnDef="phoneNumber">
+          <th mat-header-cell *matHeaderCellDef>
+            Contact Number
+          </th>
+          <td mat-cell *matCellDef="let row" id="{{ row.phoneNumber }}">
+            {{ row.phoneNumber }}
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef>Action</th>
-        <td mat-cell *matCellDef="let row" class="actions">
-          <i
-            class="fas fa-eye"
-            (click)="toggleVendorDetailView(row.custcode)"
-          ></i>
-          <i class="fas fa-print" (click)="productprint()"></i>
-          <i
-            class="fas fa-edit"
-            (click)="toggleVendorDetailView(row.custcode, true)"
-          ></i>
-          <i
-            class="fas fa-trash"
-            (click)="deleteVendorCustomer(row.custcode)"
-          ></i>
-        </td>
-      </ng-container>
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef hideInPrint>Action</th>
+          <td mat-cell *matCellDef="let row" class="actions" hideInPrint>
+            <i
+              class="fas fa-eye"
+              (click)="toggleVendorDetailView(row.custcode)"
+            ></i>
+            <i class="fas fa-print" (click)="productprint()"></i>
+            <i
+              class="fas fa-edit"
+              (click)="toggleVendorDetailView(row.custcode, true)"
+            ></i>
+            <i
+              class="fas fa-trash"
+              (click)="deleteVendorCustomer(row.custcode)"
+            ></i>
+          </td>
+        </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
-      <tr
-        mat-row
-        [ngClass]="table - row"
-        tabindex="1"
-        *matRowDef="let row; columns: displayedColumns2"
-      ></tr>
-    </table>
-  </div>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+        <tr
+          mat-row
+          [ngClass]="table - row"
+          tabindex="1"
+          *matRowDef="let row; columns: displayedColumns2"
+        ></tr>
+      </table>
+    </div>
+  </ng-template>
 
   <mat-paginator [pageSizeOptions]="[5, 10]"></mat-paginator>
 </ng-container>
