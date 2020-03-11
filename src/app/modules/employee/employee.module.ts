@@ -74,7 +74,6 @@ import { EmployeeAbsentCardComponent } from "./components/employee-absent-card/e
   imports: [
     CommonModule,
     FormsModule,
-    CoreModule,
     EmployeeRoutingModule,
     CustomMaterialModule,
     CoreModule,

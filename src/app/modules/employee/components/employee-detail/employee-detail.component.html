@@ -79,7 +79,10 @@
     <ng-template #EmployeeDetail>
       <div class="three-column max-height-adjust mt-3">
         <div
-          *ngFor="let fieldLabel of fieldLabels; trackBy: trackByIndex"
+          *ngFor="
+            let fieldLabel of fieldLabels | idFilter;
+            trackBy: trackByIndex
+          "
           class="mb-3 pr-4"
         >
           <div

@@ -1,5 +1,8 @@
 export const VOCABULARY = {
   name: "Name",
+  id: "ID",
+  addeddate: "Added Date",
+  employeecode: "Employee Code",
   code: "Code Number",
   rank: "Employee Rank",
   phone: "Phone Number",

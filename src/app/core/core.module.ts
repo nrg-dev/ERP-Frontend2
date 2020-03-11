@@ -12,6 +12,7 @@ import { UserAvatarComponent } from "./components/user-avatar/user-avatar.compon
 import { SidebarNavComponent } from "./components/sidebar-nav/sidebar-nav.component";
 import { PlaceholderComponent } from "./components/placeholder/placeholder.component";
 import { HideInPrintDirective } from "./directives/hide-in-print/hide-in-print.directive";
+import { IdFilterPipe } from "./pipes/id-filter.pipe";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HideInPrintDirective } from "./directives/hide-in-print/hide-in-print.d
     UserAvatarComponent,
     SidebarNavComponent,
     PlaceholderComponent,
-    HideInPrintDirective
+    HideInPrintDirective,
+    IdFilterPipe
   ],
   imports: [
     CommonModule,
@@ -32,7 +34,8 @@ import { HideInPrintDirective } from "./directives/hide-in-print/hide-in-print.d
     HeaderComponent,
     SidebarNavComponent,
     FormsModule,
-    HideInPrintDirective
+    HideInPrintDirective,
+    IdFilterPipe
   ]
 })
 export class CoreModule {}
