@@ -43,9 +43,9 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormsModule } from '@angular/forms';
-import { CategoryproductService } from './categoryproduct.service';
 import { Ng2CompleterModule } from 'ng2-completer';
 import { VendorService } from '../modules/vendor-and-customer/services/vendor.service';
+import { CategoryproductService } from './services/categoryproduct.service';
 
 
 
