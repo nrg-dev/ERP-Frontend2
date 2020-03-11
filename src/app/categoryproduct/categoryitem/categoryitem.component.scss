@@ -15,6 +15,19 @@ h2 {
   background: white;
   color: black !important;
 }
+.search-box .search-icon {
+  color: white;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+.search-text-box{
+  background: #757c84;
+  color: white !important;
+}
+::-webkit-input-placeholder{
+  color: white !important;
+}
 .search-box{
   top: 0.6rem;
 }
@@ -227,6 +240,7 @@ table css end*/
 #editdelete-button{
   padding: 1rem;
 }
+
 /* 90% zoom */
 @media (min-width: 1281px) and (max-width: 1380px) {
 }

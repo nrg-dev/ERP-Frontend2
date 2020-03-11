@@ -23,7 +23,7 @@
                     [minSearchLength]="0" ></ng2-completer> -->
 
                   <select id="selectbox-category" name ="selectcategory" 
-                  [(ngModel)]="model.categorycode" 
+                  [(ngModel)]="model.categorycode"
                   #categorycode="ngModel" required>
                       <option>---- Select ----</option>
                       <option *ngFor="let itemcategory of allcategorylist" value="{{itemcategory.name}}-{{itemcategory.categorycode}}"> {{itemcategory.name}}-{{itemcategory.categorycode}} </option>
@@ -45,7 +45,7 @@
                      aria-hidden="true">
                     </i>
                     <ng2-completer
-                      placeholder="Search here"
+                      placeholder="Search Product"
                       [(ngModel)]="model.productname"
                       name="productname"
                       #productname="ngModel"
@@ -60,7 +60,7 @@
                       name="productname"
                       #productname="ngModel"
                       autocomplete="on"
-                      placeholder="Search here"
+                      placeholder="Search Product"
                     /> -->
                   </div>
                 </div>

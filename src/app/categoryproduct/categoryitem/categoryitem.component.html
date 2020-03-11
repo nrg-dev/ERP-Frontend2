@@ -71,15 +71,15 @@
                         </div>
                            
                         <div class="col">
-                        <div class="search-box">
-                            <i class="fas fa-search search-icon" aria-hidden="true"></i>
-                            <input
-                              class="search-text-box"
-                              type="search"
-                              matInput (keyup)="allproductFilter($event.target.value)"
-                              placeholder="Search All Product}"
-                            />
-                          </div>  
+                            <div class="search-box">
+                                <i class="fas fa-search search-icon" aria-hidden="true"></i>
+                                <input
+                                class="search-text-box"
+                                type="search"
+                                (keyup)="allproductFilter($event.target.value)"
+                                placeholder="Search Product"
+                                />
+                            </div>  
                         </div>
                     </div>
                 </div>
@@ -172,7 +172,7 @@
                           class="search-text-box"
                           type="search"
                           matInput (keyup)="allproductFilter($event.target.value)"
-                          placeholder="Search All Product}"
+                          placeholder="Search Product"
                         />
                       </div>  
                     </div>
