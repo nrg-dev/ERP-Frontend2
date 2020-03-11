@@ -8,6 +8,7 @@
     <div class="row">
         <div class="col-4 col-md-4 col-sm-4 col-lg-4">
              <div id="editdelcategory-div">
+                <br/>
                 <div *ngFor="let list of categorylist" (click)="onChangeCategory(list.categorycode)" 
                 class="productlists-alignment" id="{{ list.categorycode }}">
                 <div class="row" id="categoryeditdeletetext-row">
@@ -34,7 +35,7 @@
              name="name"/>   
 
 
-             <br/>
+             <br/><br/><br/>
              <p>Category Description</p>
              <textarea type="text" id="categorydesc-div" value="{{this.model.description}}"
              [(ngModel)]="model.description" #description="ngModel" 
