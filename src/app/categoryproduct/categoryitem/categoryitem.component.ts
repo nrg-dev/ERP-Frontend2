@@ -9,6 +9,7 @@ import { VendorService } from 'src/app/modules/vendor-and-customer/services/vend
 import { CategoryproductService } from '../services/categoryproduct.service';
 import { Category, Product } from 'src/app/_models';
 import { Discount } from 'src/app/_models/discount';
+import { PrintDialogService } from "src/app/core/services/print-dialog/print-dialog.service";
 
 // addnewcategory start
 @Component({
@@ -886,7 +887,8 @@ export class CategoryItemComponent implements OnInit {
     private dialog: MatDialog,
     private router: Router,
     private catprodservice: CategoryproductService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private printDialogService: PrintDialogService
     ) { 
 
       this.dataSource = new MatTableDataSource(this.allproductlist);
@@ -908,7 +910,9 @@ export class CategoryItemComponent implements OnInit {
 
   }
 
-
+  printPage(data) {
+    this.printDialogService.openDialog(data);
+  }
 
   allcategorylist(){
     this.categorylist="";

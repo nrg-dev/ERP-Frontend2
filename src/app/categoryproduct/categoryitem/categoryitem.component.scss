@@ -241,7 +241,10 @@ table css end*/
   padding: 1rem;
   cursor: pointer;
 }
-
+@media print {
+  table th:last-child {display:none}
+  table td:last-child {display:none}
+}
 /* 90% zoom */
 @media (min-width: 1281px) and (max-width: 1380px) {
 }
