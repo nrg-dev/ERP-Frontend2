@@ -29,7 +29,7 @@ export class VendorAndCustomerDetailComponent implements OnInit {
   customer: any = new Customer();
 
   fieldLabels: string[];
-
+  trackByIndex:number;
   isAddNew: boolean;
 
   model: any = {};
