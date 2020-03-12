@@ -89,6 +89,14 @@ export class VendorAndCustomerDetailComponent implements OnInit {
     this.backNavigation.emit();
   }
 
+  save() {
+    if (this.componentType === "Customer") {
+      this.saveCustomer();
+    } else {
+      this.saveVendor();
+    }
+  }
+
   saveCustomer() {
     this.customerService.save(this.model).subscribe(
       data => {
