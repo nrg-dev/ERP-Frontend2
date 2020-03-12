@@ -7,514 +7,129 @@
         </ng-container>
         <ng-container *ngSwitchDefault>
           {{ componentType }} Detail
-
-          <div id="img-detaildiv">
-            <br />
-            <br />
-            <br />
-            <img src="assets/images/bk1.jpg" style="width: 20rem;" />
-          </div>
         </ng-container>
       </ng-container>
     </div>
-    <div class="col px-3">
-      <span class="row m-0">
-        <ng-container [ngSwitch]="true">
-          <ng-container *ngSwitchCase="isAddNew">
-            <form name="form" (ngSubmit)="saveVendor()">
-              <span class="col-6 px-2 ml-auto">
-                <button
-                  class="col btn-green transparent-border"
-                  (click)="saveVendor()"
-                >
-                  <i class="fas fa-save"></i>
-                  Save
-                </button>
-              </span>
-              <br /><br /><br /><br />
-              <!--Vendor add strat-->
-              <div class="example-box" id="scrolling">
-                <div class="row">
-                  <div>
-                    <div class="row" id="address">
-                      <p class="col col-lg-5">Vendor Name</p>
-                      <div class="col">
-                        <input
-                          type="text"
-                          [(ngModel)]="model.vendorName"
-                          #vendorName="ngModel"
-                          placeholder="Enter Vendor name"
-                          name="vendorName"
-                        />
-                      </div>
-                    </div>
-                    <div class="row" id="address">
-                      <p class="col col-lg-5">Phone Number</p>
-                      <div class="col">
-                        <input
-                          type="text"
-                          [(ngModel)]="model.phoneNumber"
-                          #phoneNumber="ngModel"
-                          placeholder="Enter Phone Number"
-                          name="phoneNumber"
-                        />
-                      </div>
-                    </div>
-                    <div class="row" id="address">
-                      <p class="col col-lg-5">Address</p>
-                      <div class="col">
-                        <input
-                          type="text"
-                          [(ngModel)]="model.address"
-                          #address="ngModel"
-                          placeholder="Enter Address"
-                          name="address"
-                        />
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <p class="col col-lg-5">City</p>
-                      <div class="col">
-                        <input
-                          type="text"
-                          [(ngModel)]="model.city"
-                          #city="ngModel"
-                          placeholder="Enter City"
-                          name="city"
-                        />
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <p class="col col-lg-5">Email Address</p>
-                      <div class="col">
-                        <input
-                          type="text"
-                          [(ngModel)]="model.email"
-                          #email="ngModel"
-                          placeholder="Enter Email"
-                          name="email"
-                        />
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <p class="col-auto">Mobile Number</p>
-                      <div class="col">
-                        <input
-                          type="text"
-                          [(ngModel)]="model.mobileNumber"
-                          #mobileNumber="ngModel"
-                          placeholder="Enter Mobile Number"
-                          name="mobileNumber"
-                        />
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <p class="col col-lg-5">Country</p>
-                      <div class="col">
-                        <select
-                          id="editselect-box"
-                          name="selectedCountry"
-                          [(ngModel)]="model.country"
-                          required
-                        >
-                          <option
-                            *ngFor="let country of countryList"
-                            value="{{ country.name }}"
-                            id="black-color"
-                            >{{ country.name }}
-                          </option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </form>
-            <!--Vendor add end-->
-          </ng-container>
-
-          <ng-container *ngSwitchCase="isAddNewCustomer">
-            <form name="form" (ngSubmit)="saveCustomer()">
-              <span class="col-6 px-2 ml-auto">
-                <button
-                  class="col btn-green transparent-border"
-                  (click)="saveCustomer()"
-                >
-                  <i class="fas fa-save"></i>
-                  Save
-                </button>
-              </span>
-              <br /><br /><br /><br />
-              <!--Customer add start-->
-              <div class="example-box" id="scrolling">
-                <div class="row">
-                  <div>
-                    <div class="row">
-                      <p class="col col-lg-5">Customer Name</p>
-                      <p class="col">
-                        <input
-                          type="text"
-                          value=""
-                          [(ngModel)]="model.customerName"
-                          #customerName="ngModel"
-                          placeholder="Enter Customer name"
-                          name="customerName"
-                        />
-                      </p>
-                    </div>
-
-                    <div class="row">
-                      <p class="col col-lg-5">Phone Number</p>
-                      <p class="col">
-                        <input
-                          type="text"
-                          [(ngModel)]="model.phoneNumber"
-                          #phoneNumber="ngModel"
-                          placeholder="Enter Phone Number"
-                          name="phoneNumber"
-                        />
-                      </p>
-                    </div>
-
-                    <div class="row">
-                      <p class="col col-lg-5">Address</p>
-                      <p class="col">
-                        <input
-                          type="text"
-                          [(ngModel)]="model.address"
-                          #address="ngModel"
-                          placeholder="Enter Address"
-                          name="address"
-                        />
-                      </p>
-                    </div>
-
-                    <div class="row">
-                      <p class="col col-lg-5">City</p>
-                      <p class="col">
-                        <input
-                          type="text"
-                          [(ngModel)]="model.city"
-                          #city="ngModel"
-                          placeholder="Enter City"
-                          name="city"
-                        />
-                      </p>
-                    </div>
-
-                    <div class="row">
-                      <p class="col col-lg-5">Email Address</p>
-                      <p class="col">
-                        <input
-                          type="text"
-                          [(ngModel)]="model.email"
-                          #email="ngModel"
-                          placeholder="Enter Email"
-                          name="email"
-                        />
-                      </p>
-                    </div>
-
-                    <div class="row">
-                      <p class="col col-lg-5">Mobile Number</p>
-                      <p class="col">
-                        <input
-                          type="text"
-                          [(ngModel)]="model.mobileNumber"
-                          #mobileNumber="ngModel"
-                          placeholder="Enter Moblie Number"
-                          name="mobileNumber"
-                        />
-                      </p>
-                    </div>
-
-                    <div class="row">
-                      <p class="col col-lg-5">Country</p>
-                      <p class="col">
-                        <select
-                          style="width: 100%;"
-                          name="selectedCountry"
-                          [(ngModel)]="model.country"
-                        >
-                          <option
-                            *ngFor="let country of countryList"
-                            value="{{ country.name }}"
-                            id="black-color"
-                            >{{ country.name }}</option
-                          >
-                        </select>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </form>
-
-            <!--Customer add end-->
-          </ng-container>
-
-          <ng-container *ngSwitchCase="isEditMode"
-            ><span class="col px-2">
-              <button
-                class="col btn-red transparent-border"
-                (click)="deleteVendor()"
-              >
-                <i class="fas fa-trash"></i>
-                Delete
-              </button>
-            </span>
-            <span class="col px-2">
-              <button
-                class="col btn-green transparent-border"
-                (click)="saveCustomer()"
-              >
-                <i class="fas fa-save"></i>
-                Save
-              </button>
-            </span>
-
-            <form name="form" (ngSubmit)="saveCustomer()">
-              <br /><br /><br /><br />
-              <!--Customer add start-->
-              <div class="example-box" id="scrolling">
-                <div class="row">
-                  <div>
-                    <div class="row">
-                      <p class="col col-lg-5">Customer Name</p>
-                      <p class="col">
-                        <input
-                          type="text"
-                          value=""
-                          [(ngModel)]="model.customerName"
-                          #customerName="ngModel"
-                          placeholder="Enter Customer name"
-                          name="customerName"
-                        />
-                      </p>
-                    </div>
-
-                    <div class="row">
-                      <p class="col col-lg-5">Phone Number</p>
-                      <p class="col">
-                        <input
-                          type="text"
-                          [(ngModel)]="model.phoneNumber"
-                          #phoneNumber="ngModel"
-                          placeholder="Enter Phone Number"
-                          name="phoneNumber"
-                        />
-                      </p>
-                    </div>
-
-                    <div class="row">
-                      <p class="col col-lg-5">Address</p>
-                      <p class="col">
-                        <input
-                          type="text"
-                          [(ngModel)]="model.address"
-                          #address="ngModel"
-                          placeholder="Enter Address"
-                          name="address"
-                        />
-                      </p>
-                    </div>
-
-                    <div class="row">
-                      <p class="col col-lg-5">City</p>
-                      <p class="col">
-                        <input
-                          type="text"
-                          [(ngModel)]="model.city"
-                          #city="ngModel"
-                          placeholder="Enter City"
-                          name="city"
-                        />
-                      </p>
-                    </div>
-
-                    <div class="row">
-                      <p class="col col-lg-5">Email Address</p>
-                      <p class="col">
-                        <input
-                          type="text"
-                          [(ngModel)]="model.email"
-                          #email="ngModel"
-                          placeholder="Enter Email"
-                          name="email"
-                        />
-                      </p>
-                    </div>
-
-                    <div class="row">
-                      <p class="col col-lg-5">Mobile Number</p>
-                      <p class="col">
-                        <input
-                          type="text"
-                          [(ngModel)]="model.mobileNumber"
-                          #mobileNumber="ngModel"
-                          placeholder="Enter Moblie Number"
-                          name="mobileNumber"
-                        />
-                      </p>
-                    </div>
-
-                    <div class="row">
-                      <p class="col col-lg-5">Country</p>
-                      <p class="col">
-                        <select
-                          style="width: 100%;"
-                          name="selectedCountry"
-                          [(ngModel)]="model.country"
-                        >
-                          <option
-                            *ngFor="let country of countryList"
-                            value="{{ country.name }}"
-                            id="black-color"
-                            >{{ country.name }}</option
-                          >
-                        </select>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </ng-container>
-
-          <ng-container *ngSwitchDefault>
-            <span class="col px-2">
-              <button class="col" (click)="toggleEditMode()">
-                <i class="fas fa-edit"></i>
-                Edit
-              </button>
-            </span>
-            <span class="col px-2">
-              <button class="col">
-                <i class="fas fa-print"></i>
-                Print Page
-              </button>
-            </span>
-            <form name="form" (ngSubmit)="saveCustomer()">
-              <br /><br /><br /><br />
-              <!--Customer view start-->
-              <div class="example-box" id="scrolling">
-                <div class="row">
-                  <div>
-                    <div class="row">
-                      <p class="col col-lg-5">Customer Name</p>
-                      <p class="col">
-                        <input
-                          type="text"
-                          value=""
-                          [(ngModel)]="model.customerName"
-                          #customerName="ngModel"
-                          placeholder="Enter Customer name"
-                          name="customerName"
-                          disabled
-                        />
-                      </p>
-                    </div>
-
-                    <div class="row">
-                      <p class="col col-lg-5">Phone Number</p>
-                      <p class="col">
-                        <input
-                          type="text"
-                          [(ngModel)]="model.phoneNumber"
-                          #phoneNumber="ngModel"
-                          placeholder="Enter Phone Number"
-                          name="phoneNumber"
-                          disabled
-                        />
-                      </p>
-                    </div>
-
-                    <div class="row">
-                      <p class="col col-lg-5">Address</p>
-                      <p class="col">
-                        <input
-                          type="text"
-                          [(ngModel)]="model.address"
-                          #address="ngModel"
-                          placeholder="Enter Address"
-                          name="address"
-                          disabled
-                        />
-                      </p>
-                    </div>
-
-                    <div class="row">
-                      <p class="col col-lg-5">City</p>
-                      <p class="col">
-                        <input
-                          type="text"
-                          [(ngModel)]="model.city"
-                          #city="ngModel"
-                          placeholder="Enter City"
-                          name="city"
-                          disabled
-                        />
-                      </p>
-                    </div>
-
-                    <div class="row">
-                      <p class="col col-lg-5">Email Address</p>
-                      <p class="col">
-                        <input
-                          type="text"
-                          [(ngModel)]="model.email"
-                          #email="ngModel"
-                          placeholder="Enter Email"
-                          name="email"
-                          disabled
-                        />
-                      </p>
-                    </div>
-
-                    <div class="row">
-                      <p class="col col-lg-5">Mobile Number</p>
-                      <p class="col">
-                        <input
-                          type="text"
-                          [(ngModel)]="model.mobileNumber"
-                          #mobileNumber="ngModel"
-                          placeholder="Enter Moblie Number"
-                          name="mobileNumber"
-                          disabled
-                        />
-                      </p>
-                    </div>
-
-                    <div class="row">
-                      <p class="col col-lg-5">Country</p>
-                      <p class="col">
-                        <select
-                          style="width: 100%;"
-                          name="selectedCountry"
-                          [(ngModel)]="model.country"
-                          disabled
-                        >
-                          <option
-                            *ngFor="let country of countryList"
-                            value="{{ country.name }}"
-                            id="black-color"
-                            >{{ country.name }}</option
-                          >
-                        </select>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </ng-container>
+    <div class="col">
+      <ng-container [ngSwitch]="true">
+        <ng-container *ngSwitchCase="isEditMode"
+          ><span class="col px-2">
+            <button
+              class="col btn-red transparent-border"
+              (click)="deleteEmployeeEmitter()"
+            >
+              <i class="fas fa-trash"></i>
+              Cancel
+            </button>
+          </span>
+          <span class="col px-2">
+            <button
+              class="col btn-green transparent-border"
+              (click)="saveEmployee()"
+            >
+              <i class="fas fa-save"></i>
+              Save
+            </button>
+          </span>
         </ng-container>
-      </span>
+        <ng-container *ngSwitchCase="isAddNew"
+          ><span class="col px-2">
+            <button
+              class="col btn-red transparent-border"
+              (click)="cancelAddNew()"
+            >
+              <i class="fas fa-trash"></i>
+              Cancel
+            </button>
+          </span>
+          <span class="col px-2">
+            <button
+              class="col btn-green transparent-border"
+              (click)="saveEmployee()"
+            >
+              <i class="fas fa-save"></i>
+              Save
+            </button>
+          </span>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+          <span class="col px-2">
+            <button class="col" (click)="toggleEditMode()">
+              <i class="fas fa-edit"></i>
+              Edit
+            </button>
+          </span>
+          <span class="col px-2">
+            <button class="col" (click)="printPage(EmployeeDetail)">
+              <i class="fas fa-print"></i>
+              Print Page
+            </button>
+          </span>
+        </ng-container>
+      </ng-container>
     </div>
+  </div>
+  <div class="row my-5">
+    <form name="form" class="col" (ngSubmit)="saveCustomer()">
+      <div class="example-box" id="scrolling">
+        <div
+          *ngFor="
+            let fieldLabel of fieldLabels | idFilter;
+            trackBy: trackByIndex
+          "
+          class="mb-3 pr-4"
+        >
+          <div class="mb-1">
+            {{ ts.translate(fieldLabel) }}
+          </div>
+          <ng-container [ngSwitch]="true">
+            <img
+              *ngSwitchCase="fieldLabel === 'photo'"
+              [src]="model[fieldLabel]"
+              alt="Employee Photo"
+              class="employee-photo"
+            />
+
+            <textarea
+              *ngSwitchCase="fieldLabel === 'address'"
+              [placeholder]="ts.translate(fieldLabel)"
+              [disabled]="!isAddNew && !isEditMode"
+              class="p-1"
+              [value]="model[fieldLabel]"
+              [(ngModel)]="model[fieldLabel]"
+              [ngModelOptions]="{ standalone: true }"
+            >
+            </textarea>
+
+            <select
+              *ngSwitchCase="fieldLabel === 'country'"
+              style="width: 100%;"
+              name="selectedCountry"
+              [(ngModel)]="model.country"
+            >
+              <option
+                *ngFor="let country of countryList"
+                value="{{ country.name }}"
+                id="black-color"
+                >{{ country.name }}</option
+              >
+            </select>
+
+            <ng-container *ngSwitchDefault>
+              <input
+                type="text"
+                [placeholder]="ts.translate(fieldLabel)"
+                [value]="model[fieldLabel]"
+                [disabled]="!isAddNew && !isEditMode"
+                [(ngModel)]="model[fieldLabel]"
+                [ngModelOptions]="{ standalone: true }"
+                class="p-1"
+              />
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+    </form>
   </div>
 
   <div class="d-flex justify-content-center">

@@ -4,10 +4,8 @@ import {
   Input,
   Output,
   EventEmitter,
-  NgZone
+  SimpleChanges
 } from "@angular/core";
-import { VendorDetail } from "./vendor-and-customer-detail.model";
-import { VendorDetailMock } from "../../../../config/mock/vendor-detail.mock";
 import { TranslateService } from "src/app/core/services/translate/translate.service";
 import { Utils } from "src/app/utilities/utilities";
 import { VendorService } from "../../services/vendor.service";
@@ -21,18 +19,19 @@ import { MatSnackBar } from "@angular/material";
   styleUrls: ["./vendor-and-customer-detail.component.scss"]
 })
 export class VendorAndCustomerDetailComponent implements OnInit {
-  @Input() vendorCode: number;
+  @Input() code: number;
   @Input() componentType: string;
+  @Input() isEditMode: boolean;
   @Output() backNavigation = new EventEmitter<null>();
 
   //  vendor: VendorDetail;
-  vendor: Vendor = new Vendor();
-  customer: Customer = new Customer();
+  vendor: any = new Vendor();
+  customer: any = new Customer();
 
   fieldLabels: string[];
-  isEditMode: boolean;
+
   isAddNew: boolean;
-  isAddNewCustomer: boolean;
+
   model: any = {};
   countryList: any;
 
@@ -46,43 +45,36 @@ export class VendorAndCustomerDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!this.isAddNew && !this.isAddNewCustomer) {
-      if (this.componentType === "Customer") {
-        this.customerService.get(this.vendorCode).subscribe(
-          data => {
-            this.model = data[0];
-          },
-          err => console.log(err)
-        );
-      } else {
-        this.vendorService.get(this.vendorCode).subscribe(
-          data => {
-            this.model = data[0];
-          },
-          err => console.log(err)
-        );
-      }
-    }
+    console.log(this.vendor);
   }
 
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      if (this.isAddNew || this.isAddNewCustomer) {
-        if (this.componentType === "Customer") {
-          this.fieldLabels = Object.keys(this.customer);
-          this.vendor = Utils.resetFields(this.customer);
-        } else {
-          this.fieldLabels = Object.keys(this.vendor);
-          this.vendor = Utils.resetFields(this.vendor);
-        }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.code && changes.code.currentValue) {
+      if (this.componentType === "Customer") {
+        this.customerService.get(this.code).subscribe(
+          data => {
+            this.model = data[0];
+            this.fieldLabels = Object.keys(this.model);
+          },
+          err => console.log(err)
+        );
       } else {
-        if (this.componentType === "Customer") {
-          this.fieldLabels = Object.keys(this.customer);
-        } else {
-          this.fieldLabels = Object.keys(this.vendor);
-        }
+        this.vendorService.get(this.code).subscribe(
+          data => {
+            this.model = data[0];
+            this.fieldLabels = Object.keys(this.model);
+          },
+          err => console.log(err)
+        );
       }
-    }, 50);
+    } else {
+      this.isAddNew = true;
+      if (this.componentType === "Customer") {
+        this.fieldLabels = Object.keys(new Customer());
+      } else {
+        this.fieldLabels = Object.keys(new Vendor());
+      }
+    }
   }
 
   toggleEditMode() {
@@ -98,9 +90,6 @@ export class VendorAndCustomerDetailComponent implements OnInit {
   }
 
   saveCustomer() {
-    console.log("--------Save Customer-----");
-    console.log("country name-->" + this.model.country);
-    // call rest ful api
     this.customerService.save(this.model).subscribe(
       data => {
         this.customer = data;

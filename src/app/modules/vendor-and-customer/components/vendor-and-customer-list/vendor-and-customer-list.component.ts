@@ -49,6 +49,7 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
   customersDS: any = {};
   vendors: MatTableDataSource<Vendor>;
   vendor: Vendor;
+  isEditMode: boolean;
   displayedColumns: string[] = ["vendorCode", "vendorName", "phone", "action"];
 
   customers: MatTableDataSource<Customer>;
@@ -140,30 +141,8 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
   toggleVendorDetailView(code?, edit?) {
     this.showDetail = !this.showDetail;
     this.vendor = undefined;
-
-    if (code) {
-      this.chosenId = code;
-
-      setTimeout(() => {
-        if (edit && this.vendorDetail) {
-          this.vendorDetail.isEditMode = true;
-          this.vendorDetail.isAddNew = false;
-        }
-      }, 50);
-    } else {
-      setTimeout(() => {
-        if (edit === "ADD_NEW") {
-          this.vendorDetail.isAddNew = true;
-          this.vendorDetail.isAddNewCustomer = false;
-          this.vendorDetail.isEditMode = false;
-        }
-        if (edit === "ADD_NEW_CUST") {
-          this.vendorDetail.isAddNewCustomer = true;
-          this.vendorDetail.isAddNew = false;
-          this.vendorDetail.isEditMode = false;
-        }
-      }, 50);
-    }
+    this.chosenId = code;
+    this.isEditMode = edit;
   }
 
   deleteVendorCustomer(code: string, deleteType: string) {
