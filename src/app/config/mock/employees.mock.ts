@@ -1,4 +1,4 @@
-import { Employee } from "src/app/modules/employee/components/employee-list/employee-list.model";
+import { Employee } from "src/app/templates/modules/employee/components/employee-list/employee-list.model";
 
 export const EmployeesMock: Employee[] = [
   {

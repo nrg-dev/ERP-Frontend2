@@ -1,4 +1,4 @@
-import { EmployeeDetail } from "../../modules/employee/components/employee-detail/employee-detail.model";
+import { EmployeeDetail } from "../../templates/modules/employee/components/employee-detail/employee-detail.model";
 
 export const EmployeeDetailMock: EmployeeDetail = {
   photo: "assets/images/bk2.jpg",

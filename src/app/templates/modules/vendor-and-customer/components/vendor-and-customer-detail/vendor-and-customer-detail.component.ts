@@ -41,7 +41,7 @@ export class VendorAndCustomerDetailComponent implements OnInit {
     private customerService: CustomerService,
     private snackBar: MatSnackBar
   ) {
-    this.countryList = require("../../../../country.json");
+    this.countryList = require("../../../../../country.json");
   }
 
   ngOnInit() {

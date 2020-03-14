@@ -1,4 +1,4 @@
-import { VendorDetail } from "src/app/modules/vendor-and-customer/components/vendor-and-customer-detail/vendor-and-customer-detail.model";
+import { VendorDetail } from "src/app/templates/modules/vendor-and-customer/components/vendor-and-customer-detail/vendor-and-customer-detail.model";
 
 export const VendorDetailMock: VendorDetail = {
   vendorName: "Alex",

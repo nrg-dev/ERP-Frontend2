@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
-import { PurchaseService } from 'src/app/modules/purchase/services/purchase.service';
+import { PurchaseService } from 'src/app/templates/modules/purchase/services/purchase.service';
 import { SalesService } from '../../services/sales.service';
 
 @Component({

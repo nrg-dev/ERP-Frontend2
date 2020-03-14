@@ -5,7 +5,7 @@ import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} f
 import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
 import { CompleterData, CompleterService } from 'ng2-completer';
 import { PercentPipe } from '../../../../node_modules/@angular/common';
-import { VendorService } from 'src/app/modules/vendor-and-customer/services/vendor.service';
+import { VendorService } from 'src/app/templates/modules/vendor-and-customer/services/vendor.service';
 import { CategoryproductService } from '../services/categoryproduct.service';
 import { Category, Product } from 'src/app/_models';
 import { Discount } from 'src/app/_models/discount';

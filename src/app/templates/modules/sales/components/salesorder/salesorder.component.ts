@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import { CompleterService, CompleterData } from 'ng2-completer';
-import { PurchaseService } from 'src/app/modules/purchase/services/purchase.service';
+import { PurchaseService } from 'src/app/templates/modules/purchase/services/purchase.service';
 import { SalesService } from '../../services/sales.service';
 import { MatSnackBar } from "@angular/material/snack-bar";
 

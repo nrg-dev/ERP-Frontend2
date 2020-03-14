@@ -5,14 +5,14 @@ import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 // Custom Modules
-import { AppRoutingModule } from "./modules/app-routing/app-routing.module";
+import { AppRoutingModule } from "./templates/modules/app-routing/app-routing.module";
 import { CoreModule } from "./core/core.module";
 import { CustomMaterialModule } from "./core/material.module";
 
 import { AppComponent } from "./app.component";
 
-import { LoginComponent } from "./login/login.component";
-import { LandingpageComponent } from "./landingpage/landingpage.component";
+import { LoginComponent } from "./templates/login/login.component";
+import { LandingpageComponent } from "./templates/landingpage/landingpage.component";
 import {
   AlertService,
   AuthenticationService,

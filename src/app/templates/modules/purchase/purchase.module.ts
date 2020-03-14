@@ -1,11 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-
-import { CustomMaterialModule } from "src/app/core/material.module";
-import { CoreModule } from "../../core/core.module";
-import { SalesRoutingModule } from "./sales-routing.module";
-import { SalesComponent } from "./components/sales/sales.component";
-import { SalesorderComponent } from "./components/salesorder/salesorder.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import {
   MatAutocompleteModule,
@@ -43,37 +38,41 @@ import {
   MatTooltipModule,
   MatTreeModule
 } from "@angular/material";
-import { Ng2CompleterModule } from "ng2-completer";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { PurchaseService } from "../purchase/services/purchase.service";
-import { SalesService } from "./services/sales.service";
+import { CustomMaterialModule } from "src/app/core/material.module";
+import { CoreModule } from "../../../core/core.module";
+import { PurchaseRoutingModule } from "./purchase-routing.module";
+import { PurchaseComponent } from "./components/purchase/purchase.component";
 import {
-  SalesinvoiceComponent,
+  PurchaseAddComponent,
+  Status
+} from "./components/purchaseadd/purchaseadd.component";
+import {
+  PurchaseInvoiceComponent,
   ViewInvoice,
   EditInvoice,
-  Filter,
-  
-} from "./components/salesinvoice/salesinvoice.component";
-import { SalesreturnComponent } from "./components/salesreturn/salesreturn.component";
-import { SalesreportComponent } from "./components/salesreport/salesreport.component";
+  Filter
+} from "./components/purchase-invoice/purchase-invoice.component";
+import { PurchaseService } from "./services/purchase.service";
+import { PurchaseReturnComponent } from "./components/purchase-return/purchase-return.component";
+import { PurchasereportComponent } from "./components/purchasereport/purchasereport.component";
 
 @NgModule({
   declarations: [
-    SalesComponent,
-    SalesorderComponent,
-    SalesinvoiceComponent,
+    PurchaseComponent,
+    PurchaseAddComponent,
+    PurchaseInvoiceComponent,
     ViewInvoice,
     EditInvoice,
+    Status,
     Filter,
-    SalesreturnComponent,
-    SalesreportComponent
+    PurchaseReturnComponent,
+    PurchasereportComponent
   ],
   imports: [
     CommonModule,
-    SalesRoutingModule,
+    PurchaseRoutingModule,
     CoreModule,
     CustomMaterialModule,
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
@@ -113,10 +112,9 @@ import { SalesreportComponent } from "./components/salesreport/salesreport.compo
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-    MatPaginatorModule,
-    Ng2CompleterModule
+    MatPaginatorModule
   ],
-  providers: [SalesService, PurchaseService],
-  entryComponents: [ViewInvoice, EditInvoice, Filter]
+  providers: [PurchaseService],
+  entryComponents: [ViewInvoice, EditInvoice, Status, Filter]
 })
-export class SalesModule {}
+export class PurchaseModule {}

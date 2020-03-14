@@ -9,10 +9,10 @@ import {
   OnDestroy
 } from "@angular/core";
 import { EmployeeDetail } from "./employee-detail.model";
-import { EmployeeDetailMock } from "./../../../../config/mock/employee-detail.mock";
+import { EmployeeDetailMock } from "./../../../../../config/mock/employee-detail.mock";
 import { TranslateService } from "src/app/core/services/translate/translate.service";
 import { EmployeeService } from "../../services/employee.service";
-import { Utils } from "./../../../../utilities/utilities";
+import { Utils } from "./../../../../../utilities/utilities";
 import { PrintDialogService } from "src/app/core/services/print-dialog/print-dialog.service";
 import { MatSnackBar } from "@angular/material";
 
