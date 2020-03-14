@@ -147,7 +147,7 @@
     </div>
   </ng-template>
 
-  <mat-paginator [pageSizeOptions]="[5, 10]"></mat-paginator>
+  <mat-paginator [pageSize]="5" [hidePageSize]="true"></mat-paginator>
 </ng-container>
 <ng-container *ngIf="showDetail">
   <app-vendor-and-customer-detail

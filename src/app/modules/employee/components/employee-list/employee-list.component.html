@@ -86,7 +86,9 @@
       </table>
     </ng-template>
 
-    <mat-paginator [pageSizeOptions]="[5, 10]"></mat-paginator>
+    <div class="row justify-content-end col">
+      <mat-paginator [pageSize]="5" [hidePageSize]="true"></mat-paginator>
+    </div>
   </div>
 </ng-container>
 <ng-container *ngIf="showDetail">

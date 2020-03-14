@@ -19,6 +19,7 @@ import { VendorService } from "../../services/vendor.service";
 import { CustomerService } from "../../services/customer.service";
 import { Customer, Vendor } from "src/app/_models";
 import { PrintDialogService } from "src/app/core/services/print-dialog/print-dialog.service";
+import { VendorsMock } from "src/app/config/mock/vendors.mock";
 
 @Component({
   selector: "app-vendor-and-customer-list",
