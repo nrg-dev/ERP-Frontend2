@@ -54,6 +54,14 @@
             {{ row.vendorcode }}
           </td>
         </ng-container>
+        <ng-container matColumnDef="addeddate">
+          <th mat-header-cell *matHeaderCellDef>
+            Joining Date
+          </th>
+          <td mat-cell *matCellDef="let row" id="{{ row.addeddate }}">
+            {{ row.addeddate }}
+          </td>
+        </ng-container>
 
         <ng-container matColumnDef="vendorName">
           <th mat-header-cell *matHeaderCellDef>Name</th>
@@ -111,6 +119,15 @@
           <th mat-header-cell *matHeaderCellDef>Name</th>
           <td mat-cell *matCellDef="let row" id="{{ row.customerName }}">
             {{ row.customerName }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="addeddate">
+          <th mat-header-cell *matHeaderCellDef>
+            Joining Date
+          </th>
+          <td mat-cell *matCellDef="let row" id="{{ row.addeddate }}">
+            {{ row.addeddate }}
           </td>
         </ng-container>
 

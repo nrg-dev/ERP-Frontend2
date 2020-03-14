@@ -51,13 +51,20 @@ export class VendorAndCustomerListComponent implements OnInit, OnChanges {
   vendors: MatTableDataSource<Vendor>;
   vendor: Vendor;
   isEditMode: boolean;
-  displayedColumns: string[] = ["vendorCode", "vendorName", "phone", "action"];
+  displayedColumns: string[] = [
+    "vendorCode",
+    "vendorName",
+    "addeddate",
+    "phone",
+    "action"
+  ];
 
   customers: MatTableDataSource<Customer>;
   customer: Customer;
   displayedColumns2: string[] = [
     "custcode",
     "customerName",
+    "addeddate",
     "phoneNumber",
     "action"
   ];
