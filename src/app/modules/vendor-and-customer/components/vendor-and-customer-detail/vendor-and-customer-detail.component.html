@@ -10,62 +10,64 @@
         </ng-container>
       </ng-container>
     </div>
-    <div class="col">
-      <ng-container [ngSwitch]="true">
-        <ng-container *ngSwitchCase="isEditMode"
-          ><span class="col px-2">
-            <button
-              class="col btn-red transparent-border"
-              (click)="deleteEmployeeEmitter()"
-            >
-              <i class="fas fa-trash"></i>
-              Cancel
-            </button>
-          </span>
-          <span class="col px-2">
-            <button class="col btn-green transparent-border" (click)="save()">
-              <i class="fas fa-save"></i>
-              Save
-            </button>
-          </span>
+    <div class="col col px-3">
+      <span class="row m-0">
+        <ng-container [ngSwitch]="true">
+          <ng-container *ngSwitchCase="isEditMode"
+            ><span class="col px-2">
+              <button
+                class="col btn-red transparent-border"
+                (click)="deleteEmployeeEmitter()"
+              >
+                <i class="fas fa-trash"></i>
+                Delete
+              </button>
+            </span>
+            <span class="col px-2">
+              <button class="col btn-green transparent-border" (click)="save()">
+                <i class="fas fa-save"></i>
+                Save
+              </button>
+            </span>
+          </ng-container>
+          <ng-container *ngSwitchCase="isAddNew"
+            ><span class="col px-2">
+              <button
+                class="col btn-red transparent-border"
+                (click)="cancelAddNew()"
+              >
+                <i class="fas fa-trash"></i>
+                Delete
+              </button>
+            </span>
+            <span class="col px-2">
+              <button class="col btn-green transparent-border" (click)="save()">
+                <i class="fas fa-save"></i>
+                Save
+              </button>
+            </span>
+          </ng-container>
+          <ng-container *ngSwitchDefault>
+            <span class="col px-2">
+              <button class="col" (click)="toggleEditMode()">
+                <i class="fas fa-edit"></i>
+                Edit
+              </button>
+            </span>
+            <span class="col px-2">
+              <button class="col" (click)="printPage(EmployeeDetail)">
+                <i class="fas fa-print"></i>
+                Print Page
+              </button>
+            </span>
+          </ng-container>
         </ng-container>
-        <ng-container *ngSwitchCase="isAddNew"
-          ><span class="col px-2">
-            <button
-              class="col btn-red transparent-border"
-              (click)="cancelAddNew()"
-            >
-              <i class="fas fa-trash"></i>
-              Cancel
-            </button>
-          </span>
-          <span class="col px-2">
-            <button class="col btn-green transparent-border" (click)="save()">
-              <i class="fas fa-save"></i>
-              Save
-            </button>
-          </span>
-        </ng-container>
-        <ng-container *ngSwitchDefault>
-          <span class="col px-2">
-            <button class="col" (click)="toggleEditMode()">
-              <i class="fas fa-edit"></i>
-              Edit
-            </button>
-          </span>
-          <span class="col px-2">
-            <button class="col" (click)="printPage(EmployeeDetail)">
-              <i class="fas fa-print"></i>
-              Print Page
-            </button>
-          </span>
-        </ng-container>
-      </ng-container>
+      </span>
     </div>
   </div>
   <div class="row my-5">
     <form name="form" class="col" (ngSubmit)="saveCustomer()">
-      <div class="example-box" id="scrolling">
+      <div class="example-box three-column max-height-adjust" id="scrolling">
         <div
           *ngFor="
             let fieldLabel of fieldLabels | idFilter;

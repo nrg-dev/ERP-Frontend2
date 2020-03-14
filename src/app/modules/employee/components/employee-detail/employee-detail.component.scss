@@ -1,15 +1,16 @@
 @import "_base";
 
 textarea,
-input {
+input,
+select {
   appearance: none;
   border: none;
   width: 100%;
 
-  &:disabled {
-    background-color: $disabled-input-bg;
-    color: $white;
-  }
+  // &:disabled {
+  background-color: $disabled-input-bg;
+  color: $white;
+  // }
 }
 
 textarea {
