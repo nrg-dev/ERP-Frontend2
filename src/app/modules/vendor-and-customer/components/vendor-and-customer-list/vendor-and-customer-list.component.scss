@@ -15,3 +15,16 @@ button {
 button {
   border: 1px solid $white;
 }
+.search-box .search-icon {
+  color: white;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+.search-text-box{
+  background: #757c84;
+  color: white !important;
+}
+::-webkit-input-placeholder{
+  color: white !important;
+}

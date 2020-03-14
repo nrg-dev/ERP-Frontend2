@@ -6,6 +6,7 @@ import { environment } from "src/environments/environment";
 
 import { API_ENDPOINTS } from "./../empployee.config";
 import { EmployeeDetail } from "../components/employee-detail/employee-detail.model";
+import { EmployeeDetailComponent } from '../components/employee-detail/employee-detail.component';
 
 @Injectable()
 export class EmployeeService {
@@ -32,8 +33,8 @@ export class EmployeeService {
     );
   }
 
-  update(employee: Employee) {
-    return this.http.put<Employee>(
+  update(employee: EmployeeDetail) {
+    return this.http.put<EmployeeDetail>(
       `${environment.apiUrl}${API_ENDPOINTS.updateEmployee}`,
       employee
     );

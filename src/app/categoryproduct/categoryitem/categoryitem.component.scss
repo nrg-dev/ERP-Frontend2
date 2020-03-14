@@ -11,6 +11,12 @@ h2 {
     padding: 0 15px;
   }
 }
+td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {
+  padding-left: 0px;
+}
+td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:last-of-type {
+  padding-right: 2px;
+}
 .mat-input-element {
   background: white;
   color: black !important;
@@ -31,7 +37,12 @@ h2 {
 .search-box{
   top: 0.6rem;
 }
-
+.leftsidedet{
+  text-align: left 
+}
+.rightsidedet{
+  text-align: right;
+}
 /*table css start
 table {
   height: 340px;
