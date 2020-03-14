@@ -38,14 +38,16 @@
             <p>{{ list.name }}</p>
           </div>
         </div>
-        <div style="height: 10px;"></div>
-        <div
-          *ngFor="let list of categorylist"
-          (click)="showCategoryItems(list.categorycode, list.name)"
-          class="productlists-alignment"
-          id="{{ list.categorycode }}"
-        >
-          <p id="productlist-style">{{ list.name }}</p>
+
+        <div class="category-list-container overflow-scroll">
+          <div
+            *ngFor="let list of categorylist"
+            (click)="showCategoryItems(list.categorycode, list.name)"
+            class="productlists-alignment"
+            id="{{ list.categorycode }}"
+          >
+            <p id="productlist-style">{{ list.name }}</p>
+          </div>
         </div>
       </div>
     </div>
