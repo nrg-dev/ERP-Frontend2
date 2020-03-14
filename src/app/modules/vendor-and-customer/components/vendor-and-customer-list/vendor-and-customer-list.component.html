@@ -1,0 +1,177 @@
+<ng-container *ngIf="!showDetail">
+  <div class="row">
+    <div class="col-2">{{ componentType }} List</div>
+    <div class="row col-10">
+      <span class="col px-2">
+        <button
+          *ngIf="vendorListshow"
+          class="col"
+          (click)="printPage(VendorListTable)"
+        >
+          <i class="fas fa-print"></i>
+          Print Page
+        </button>
+        <button
+          *ngIf="customerListshow"
+          class="col"
+          (click)="printPage(CustomerListTable)"
+        >
+          <i class="fas fa-print"></i>
+          Print Page
+        </button>
+      </span>
+      <span class="col px-2">
+        <div>
+          <button class="col" (click)="toggleVendorDetailView('')">
+            <i class="fas fa-plus"></i>
+            Add New {{ componentType }}
+          </button>
+        </div>
+      </span>
+      <div class="col-5">
+        <div class="search-box">
+          <i class="fas fa-search search-icon" aria-hidden="true"></i>
+          <input
+            class="search-text-box"
+            type="search"
+            matInput
+            (keyup)="applyFilter($event.target.value)"
+            placeholder="{{ componentType + ' Name / Code' }}"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-container *ngTemplateOutlet="VendorListTable"></ng-container>
+  <ng-container *ngTemplateOutlet="CustomerListTable"></ng-container>
+  <ng-template #VendorListTable>
+    <div *ngIf="vendorListshow">
+      <table class="w-100 margin-20" mat-table [dataSource]="vendors">
+        <ng-container matColumnDef="vendorCode">
+          <th mat-header-cell *matHeaderCellDef>{{ componentType }} Code</th>
+          <td mat-cell *matCellDef="let row" id="{{ row.vendorcode }}">
+            {{ row.vendorcode }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="addeddate">
+          <th mat-header-cell *matHeaderCellDef>
+            Joining Date
+          </th>
+          <td mat-cell *matCellDef="let row" id="{{ row.addeddate }}">
+            {{ row.addeddate }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="vendorName">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let row" id="{{ row.vendorName }}">
+            {{ row.vendorName }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef>
+            Contact Number
+          </th>
+          <td mat-cell *matCellDef="let row" id="{{ row.phoneNumber }}">
+            {{ row.phoneNumber }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef hideInPrint>Action</th>
+          <td mat-cell *matCellDef="let row" class="actions" hideInPrint>
+            <i class="fas fa-eye" (click)="toggleVendorDetailView(row.id)"></i>
+            <i class="fas fa-print" (click)="productprint()"></i>
+            <i
+              class="fas fa-edit"
+              (click)="toggleVendorDetailView(row.id, true)"
+            ></i>
+            <i
+              class="fas fa-trash"
+              (click)="deleteVendorCustomer(row.id, 'vendor')"
+            ></i>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+          mat-row
+          [ngClass]="table - row"
+          tabindex="1"
+          *matRowDef="let row; columns: displayedColumns"
+        ></tr>
+      </table>
+    </div>
+  </ng-template>
+  <ng-template #CustomerListTable>
+    <div *ngIf="customerListshow">
+      <table class="w-100 margin-20" mat-table [dataSource]="customers">
+        <ng-container matColumnDef="custcode">
+          <th mat-header-cell *matHeaderCellDef>{{ componentType }} Code</th>
+          <td mat-cell *matCellDef="let row" id="{{ row.custcode }}">
+            {{ row.custcode }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="customerName">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let row" id="{{ row.customerName }}">
+            {{ row.customerName }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="addeddate">
+          <th mat-header-cell *matHeaderCellDef>
+            Joining Date
+          </th>
+          <td mat-cell *matCellDef="let row" id="{{ row.addeddate }}">
+            {{ row.addeddate }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="phoneNumber">
+          <th mat-header-cell *matHeaderCellDef>
+            Contact Number
+          </th>
+          <td mat-cell *matCellDef="let row" id="{{ row.phoneNumber }}">
+            {{ row.phoneNumber }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef hideInPrint>Action</th>
+          <td mat-cell *matCellDef="let row" class="actions" hideInPrint>
+            <i class="fas fa-eye" (click)="toggleVendorDetailView(row.id)"></i>
+            <i class="fas fa-print" (click)="productprint()"></i>
+            <i
+              class="fas fa-edit"
+              (click)="toggleVendorDetailView(row.id, true)"
+            ></i>
+            <i class="fas fa-trash" (click)="deleteVendorCustomer(row.id)"></i>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+        <tr
+          mat-row
+          [ngClass]="table - row"
+          tabindex="1"
+          *matRowDef="let row; columns: displayedColumns2"
+        ></tr>
+      </table>
+    </div>
+  </ng-template>
+
+  <mat-paginator [pageSize]="5" [hidePageSize]="true"></mat-paginator>
+</ng-container>
+<ng-container *ngIf="showDetail">
+  <app-vendor-and-customer-detail
+    #vendorDetail
+    (backNavigation)="backNavigation()"
+    [code]="chosenId"
+    [componentType]="componentType"
+    [isEditMode]="isEditMode"
+  ></app-vendor-and-customer-detail>
+</ng-container>

@@ -1,0 +1,21 @@
+@import "_base";
+
+button {
+  appearance: none;
+  background-color: transparent;
+  color: $white;
+}
+
+.actions {
+  i {
+    cursor: pointer;
+    padding: 0 15px;
+  }
+}
+button {
+  border: 1px solid $white;
+}
+
+.margin-20 {
+  margin-top: 20px;
+}
