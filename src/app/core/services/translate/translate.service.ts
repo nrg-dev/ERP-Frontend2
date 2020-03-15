@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { VOCABULARY } from "src/app/constants/translations/vocabulary";
+import { VOCABULARY } from "src/app/core/common/constants/translations/vocabulary";
 
 @Injectable({
   providedIn: "root"

@@ -7,10 +7,9 @@ import {
   SimpleChanges
 } from "@angular/core";
 import { TranslateService } from "src/app/core/services/translate/translate.service";
-import { Utils } from "src/app/utilities/utilities";
 import { VendorService } from "../../services/vendor.service";
 import { CustomerService } from "../../services/customer.service";
-import { Vendor, Customer } from "src/app/_models";
+import { Vendor, Customer } from "src/app/core/common/_models";
 import { MatSnackBar } from "@angular/material";
 
 @Component({
@@ -41,7 +40,7 @@ export class VendorAndCustomerDetailComponent implements OnInit {
     private customerService: CustomerService,
     private snackBar: MatSnackBar
   ) {
-    this.countryList = require("../../../../../country.json");
+    this.countryList = require("src/assets/json/country.json");
   }
 
   ngOnInit() {

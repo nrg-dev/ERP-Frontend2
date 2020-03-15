@@ -1,6 +1,6 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Vendor } from 'src/app/_models';
+import { Vendor } from 'src/app/core/common/_models';
 import { environment } from "src/environments/environment";
 import { API_ENDPOINTS } from "./../vendor.config";
 @Injectable()

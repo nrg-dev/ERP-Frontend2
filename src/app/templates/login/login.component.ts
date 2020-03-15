@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { User } from "../../_models/index";
+import { User } from "../../core/common/_models/index";
 import { Router, ActivatedRoute } from "@angular/router";
-import { AlertService } from "../../_services/index";
+import { AlertService } from "../../core/common/_services/index";
 import { FormsModule } from "@angular/forms";
 
 @Component({

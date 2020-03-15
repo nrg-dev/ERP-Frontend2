@@ -9,12 +9,10 @@ import {
 
 import { MatTableDataSource, MatPaginator } from "@angular/material";
 import { MatSnackBar } from "@angular/material/snack-bar";
-
-import { EmployeesMock } from "src/app/config/mock/employees.mock";
 import { Employee } from "./employee-list.model";
 import { EmployeeDetailComponent } from "../employee-detail/employee-detail.component";
 import { EmployeeService } from "../../services/employee.service";
-import { AlertService } from "src/app/_services/index";
+import { AlertService } from "src/app/core/common/_services/index";
 import { PrintDialogService } from "src/app/core/services/print-dialog/print-dialog.service";
 
 @Component({

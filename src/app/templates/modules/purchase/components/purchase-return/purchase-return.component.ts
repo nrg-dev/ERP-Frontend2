@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild ,ElementRef,Inject} from '@angular/core';
-import { Purchase } from 'src/app/_models';
-import { AlertService } from 'src/app/_services';
+import { Purchase } from 'src/app/core/common/_models';
+import { AlertService } from 'src/app/core/common/_services';
 import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";

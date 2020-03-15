@@ -1,7 +1,7 @@
 ﻿import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
-import { Employee } from "../../../../_models";
+import { Employee } from "../../../../core/common/_models";
 import { environment } from "src/environments/environment";
 
 import { API_ENDPOINTS } from "./../empployee.config";

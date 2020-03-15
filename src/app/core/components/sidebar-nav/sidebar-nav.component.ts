@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { MenuItem } from "./sidebar-nav.model";
-import { SidenavItems } from "src/app/config/sidenav.config";
+import { SidenavItems } from "src/app/core/common/config/sidenav.config";
 import { Location } from "@angular/common";
 import { Router, NavigationEnd } from "@angular/router";
 

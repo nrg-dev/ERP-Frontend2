@@ -1,6 +1,6 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Customer, Sales } from 'src/app/_models';
+import { Customer, Sales } from 'src/app/core/common/_models';
 import { environment } from "src/environments/environment";
 import { API_ENDPOINTS } from "./../sales.config";
 

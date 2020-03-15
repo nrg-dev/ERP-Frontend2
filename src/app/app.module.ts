@@ -17,11 +17,11 @@ import {
   AlertService,
   AuthenticationService,
   UserService
-} from "./_services/index";
+} from "./core/common/_services/index";
 
 import { DashboardWidgetComponent } from "./shared/components/dashboard-widget/dashboard-widget.component";
 import { DataWidgetComponent } from "./shared/components/data-widget/data-widget.component";
-import { NavigationComponent } from "./navigation/navigation.component";
+import { NavigationComponent } from "./core/components/navigation/navigation.component";
 
 @NgModule({
   declarations: [

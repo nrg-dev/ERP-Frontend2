@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { HttpRequest, HttpEvent} from '@angular/common/http';
-import { Purchase } from 'src/app/_models';
+import { Purchase } from 'src/app/core/common/_models';
 import { environment } from "src/environments/environment";
 
 import { API_ENDPOINTS } from "./../purchase.config";

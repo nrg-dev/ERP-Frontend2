@@ -1,7 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
-import { Customer } from 'src/app/_models';
+import { Customer } from 'src/app/core/common/_models';
 import { environment } from "src/environments/environment";
 import { API_ENDPOINTS } from "./../customer.config";
 @Injectable()

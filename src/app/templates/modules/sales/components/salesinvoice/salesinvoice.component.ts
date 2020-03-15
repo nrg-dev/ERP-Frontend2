@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild ,ElementRef,Inject} from '@angular/core';
-import { Sales, User, Category } from 'src/app/_models';
+import { Sales, User, Category } from 'src/app/core/common/_models';
 import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
