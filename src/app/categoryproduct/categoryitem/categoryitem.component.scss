@@ -11,6 +11,7 @@ h2 {
     padding: 0 15px;
   }
 }
+
 td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {
   padding-left: 0px;
 }
@@ -38,10 +39,12 @@ td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:la
   top: 0.6rem;
 }
 .leftsidedet{
-  text-align: left 
+  text-align: left;
+  border: none;
 }
 .rightsidedet{
   text-align: right;
+  border: none;
 }
 /*table css start
 table {
