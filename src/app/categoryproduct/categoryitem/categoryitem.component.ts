@@ -1298,7 +1298,7 @@ productlist(number: string){
 
   });
 
-  }
+  } 
   allproductdelete(prodcode: string){
     this.catprodservice.productremove(prodcode)
       .subscribe(
