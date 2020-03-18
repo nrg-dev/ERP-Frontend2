@@ -17,25 +17,20 @@
       <div class="col px-3">
         <span class="row m-0">
           <ng-container [ngSwitch]="true">
-            <ng-container *ngSwitchCase="isEditMode"
-              ><span class="col px-2">
-                <button
-                  class="col btn-red transparent-border"
-                  (click)="deleteEmployeeEmitter()"
-                >
+            <ng-container *ngSwitchCase="isEditMode">
+              <div class="borders">
+                <button id="delete-butn" class="col btn-red transparent-border"
+                  (click)="deleteEmployeeEmitter()">
                   <i class="fas fa-trash"></i>
                   Delete
                 </button>
-              </span>
-              <span class="col px-2">
-                <button
-                  class="col btn-green transparent-border"
-                  (click)="updateEmployee()"
-                >
-                  <i class="fas fa-save"></i>
-                  Save
+                &nbsp;&nbsp;
+                <button id="update-butn" class="col btn-green transparent-border"
+                  (click)="updateEmployee()">
+                    <i class="fas fa-save"></i>
+                    Save
                 </button>
-              </span>
+              </div>
             </ng-container>
             <ng-container *ngSwitchCase="isAddNew"
               ><span class="col px-2">
@@ -58,18 +53,17 @@
               </span>
             </ng-container>
             <ng-container *ngSwitchDefault>
-              <span class="col px-2">
-                <button class="col" (click)="toggleEditMode()">
-                  <i class="fas fa-edit"></i>
-                  Edit
+              <div class="borders">
+                <button id="save-butn" (click)="toggleEditMode()">
+                    <i class="fas fa-edit"></i>
+                    Edit
                 </button>
-              </span>
-              <span class="col px-2">
-                <button class="col" (click)="printPage(EmployeeDetail)">
+                &nbsp;&nbsp;
+                <button id="cancel-butn" (click)="printPage(EmployeeDetail)">
                   <i class="fas fa-print"></i>
                   Print Page
                 </button>
-              </span>
+              </div>
             </ng-container>
           </ng-container>
         </span>

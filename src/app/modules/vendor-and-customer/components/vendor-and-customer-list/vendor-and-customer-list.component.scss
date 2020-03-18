@@ -32,4 +32,21 @@ button {
 ::-webkit-input-placeholder{
   color: white !important;
 }
+::ng-deep .tab-content-bg {
+  background-color: #243641;
+}
+::ng-deep input,::ng-deep select,::ng-deep textarea {
+  border: 1px solid $white;
+  background-color: #243641;
+  color: white;
+}
 
+.mat-tab-body-content {
+  overflow: hidden;
+}
+.ngTable{
+  display: block;
+  overflow: auto;
+  height: 300px;
+  width: 100%;
+}

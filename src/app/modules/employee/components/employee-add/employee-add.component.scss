@@ -1,15 +1,53 @@
 #save-butn{
-    background-color: #27AE60;
-    border: 1px solid #27AE60;
-    text-align: center;
-    color: white;
-  }
-  #cancel-butn{
-    background-color: #d40505;
-    border: 1px solid #d40505;
-    text-align: center;
-    color: white;
-  }
-  .red {
+  background-color: #365880;
+  border: 1px solid #796d6d;
+  position: relative;
+  margin: -20px -50px;
+  width: 85px;
+  top: 50%;
+  left: 30%;
+  text-align: center;
+  color: white;
+}
+#cancel-butn{
+  background-color: #4C5052;
+  border: 1px solid #796d6d;
+  position: relative;
+  margin: -20px -50px;
+  width: 85px;
+  top: 50%;
+  left: 80%;
+  text-align: center;
+  color: white;
+}
+.red {
     border: solid 1px red;
+}
+#labeltext{
+  text-align: left;
+}
+
+input{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid white;
+  width: 75%;
+  height: 2rem;
+  background-color: #253844;
+  color: white;
+}
+input[type=text]:focus{
+  border: 1px solid white;
+  background-color: #253844;
+  color: white;
+}
+::ng-deep .text-center {
+  text-align: left!important; 
+}
+.borders {
+  border: none;
+  width: 100%;
+  padding: 8px;
+  background-color: #3C3F41;
 }

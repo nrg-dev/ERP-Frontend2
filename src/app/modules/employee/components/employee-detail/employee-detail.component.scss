@@ -30,3 +30,80 @@ textarea {
   width: 220px;
   height: 280px;
 }
+input{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid white;
+  width: 75%;
+  height: 2rem;
+  background-color: #243641;
+  color: white;
+}
+textarea{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid white;
+  width: 75%;
+  background-color: #243641;
+  color: white;
+}
+input[type=text]:focus{
+  border: 1px solid white;
+  background-color: #243641;
+  color: white;
+}
+::ng-deep .tab-content-bg{
+  background-color: #243641;
+}
+#save-butn{
+  background-color: #365880;
+  border: 1px solid #796d6d;
+  position: relative;
+  margin: -20px -50px;
+  width: 85px;
+  top: 75%;
+  left: 25%;
+  text-align: center;
+  color: white;
+}
+#cancel-butn{
+  background-color: #243641;
+  border: 1px solid #796d6d;
+  position: relative;
+  margin: -20px -50px;
+  width: 85px;
+  top: 50%;
+  left: 80%;
+  text-align: center;
+  color: white;
+}
+.borders {
+  border: none;
+  width: 100%;
+  padding: 5px 5px 50px 10px;
+  background-color: #3C3F41;
+}
+#update-butn{
+  background-color: #365880;
+  border: 1px solid #796d6d;
+  position: relative;
+  margin: -20px -50px;
+  width: 85px;
+  top: 50%;
+  left: 30%;
+  text-align: center;
+  color: white;
+}
+#delete-butn{
+  background-color: #4C5052;
+  border: 1px solid #796d6d;
+  position: relative;
+  margin: -20px -50px;
+  width: 85px;
+  top: 50%;
+  left: 80%;
+  text-align: center;
+  color: white;
+}
