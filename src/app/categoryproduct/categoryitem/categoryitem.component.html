@@ -238,74 +238,64 @@
 
             <ng-container *ngTemplateOutlet="AllProductList"></ng-container>
             <ng-template #AllProductList>
-              <table
-                class="w-100 mt-4"
-                mat-table
-                [dataSource]="dataSource"
-                matSort
-              >
-                <ng-container matColumnDef="productname">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Product Name
-                  </th>
-                  <td mat-cell *matCellDef="let row">{{ row.productname }}</td>
-                </ng-container>
+                <table class="w-100 mt-4" mat-table [dataSource]="dataSource" matSort>
+                
+                    <ng-container matColumnDef="productname">
+                        <th mat-header-cell *matHeaderCellDef> 
+                            <button class="mat-sort-header-button" type="button" class="leftsidedet"> Product Name </button>
+                        </th>
+                        <td mat-cell *matCellDef="let row" class="leftsidedet"> {{row.productname}} </td>
+                    </ng-container>
 
-                <ng-container matColumnDef="description">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Description
-                  </th>
-                  <td mat-cell *matCellDef="let row">{{ row.description }}</td>
-                </ng-container>
+                    <ng-container matColumnDef="description">
+                        <th mat-header-cell *matHeaderCellDef> 
+                            <button class="mat-sort-header-button" type="button" class="leftsidedet"> Description </button>
+                        </th>
+                        <td mat-cell *matCellDef="let row" class="leftsidedet"> {{row.description}} </td>
+                    </ng-container>
 
-                <ng-container matColumnDef="vendorcode">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Vendor Code
-                  </th>
-                  <td mat-cell *matCellDef="let row">{{ row.vendorcode }}</td>
-                </ng-container>
+                    <ng-container matColumnDef="vendorcode">
+                        <th mat-header-cell *matHeaderCellDef>
+                            <button class="mat-sort-header-button" type="button" class="leftsidedet"> Vendor Code </button>
+                        </th>
+                        <td mat-cell *matCellDef="let row" class="leftsidedet"> {{row.vendorcode}} </td>
+                    </ng-container>
+                     
+                    <ng-container matColumnDef="sellingprice">
+                        <th mat-header-cell *matHeaderCellDef>
+                            <button class="mat-sort-header-button" type="button" class="rightsidedet">Selling Price</button>
+                        </th>
+                        <td mat-cell *matCellDef="let row" class="rightsidedet"> {{row.sellingprice}} </td>
+                    </ng-container>
 
-                <ng-container matColumnDef="sellingprice">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Selling Price
-                  </th>
-                  <td mat-cell *matCellDef="let row">{{ row.sellingprice }}</td>
-                </ng-container>
+                    <ng-container matColumnDef="price">
+                        <th mat-header-cell *matHeaderCellDef> 
+                            <button class="mat-sort-header-button" type="button" class="rightsidedet">Price</button>
+                         </th>
+                        <td mat-cell *matCellDef="let row" class="rightsidedet"> {{row.price}} </td>
+                    </ng-container>
 
-                <ng-container matColumnDef="price">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Price
-                  </th>
-                  <td mat-cell *matCellDef="let row">{{ row.price }}</td>
-                </ng-container>
+                    <ng-container matColumnDef="editdelete">
+                        <th mat-header-cell *matHeaderCellDef hideInPrint> 
+                            <button class="mat-sort-header-button" type="button" class="rightsidedet"> Action </button>
+                        </th>
+                        <td mat-cell *matCellDef="let row" class="actions" hideInPrint class="rightsidedet"> 
+                            <i
+                            class="fas fa-edit"
+                            (click)="allproducteditcall(row.prodcode)"
+                            ></i>
+                            <i
+                            class="fas fa-trash"
+                            (click)="allproductdelete(row.prodcode)"
+                            ></i>
+                        </td>
+                    </ng-container>
 
-                <ng-container matColumnDef="editdelete">
-                  <th mat-header-cell *matHeaderCellDef hideInPrint>Action</th>
-                  <td
-                    mat-cell
-                    *matCellDef="let row"
-                    class="actions"
-                    hideInPrint
-                  >
-                    <i
-                      class="fas fa-edit"
-                      (click)="allproducteditcall(row.prodcode)"
-                    ></i>
-                    <i
-                      class="fas fa-trash"
-                      (click)="allproductdelete(row.prodcode)"
-                    ></i>
-                  </td>
-                </ng-container>
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr
-                  mat-row
-                  [ngClass]="table - row"
-                  tabindex="1"
-                  *matRowDef="let row; columns: displayedColumns"
-                ></tr>
-              </table>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+                    <tr mat-row [ngClass]="table-row" tabindex="1" 
+                    *matRowDef="let row; columns: displayedColumns;">
+                    </tr>
+                </table>
             </ng-template>
 
             <mat-paginator [pageSize]="5" [hidePageSize]="true"></mat-paginator>

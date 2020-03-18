@@ -69,12 +69,29 @@ export class EmployeeDetailComponent implements OnInit, OnChanges {
     );
   }
 
+  updateEmployee(){
+    alert("Emp Name ---->"+this.employee.name);
+    this.employeeService.update(this.employee).subscribe(
+      success => {
+        this.backToEmployeesList();
+
+        this.snackBar.open("Employee updated successfully", "", {
+          panelClass: ["success"],
+          verticalPosition: "top"
+        });
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+  
   saveEmployee() {
     this.employeeService.save(this.employee).subscribe(
       success => {
         this.backToEmployeesList();
 
-        this.snackBar.open("Employee updated successfully", "", {
+         this.snackBar.open("Employee Saved successfully", "", {
           panelClass: ["success"],
           verticalPosition: "top"
         });

@@ -19,3 +19,17 @@ button {
 .margin-20 {
   margin-top: 20px;
 }
+.search-box .search-icon {
+  color: white;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+.search-text-box{
+  background: #757c84;
+  color: white !important;
+}
+::-webkit-input-placeholder{
+  color: white !important;
+}
+
