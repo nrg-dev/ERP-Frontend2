@@ -6,6 +6,7 @@ import { LoginComponent } from "../../login/login.component";
 
 // Modules for lazyloading
 import { PlaceholderComponent } from "../../../core/components/placeholder/placeholder.component";
+import { EmployeeAddComponent } from "../employee/components/employee-add/employee-add.component";
 
 const routes: Routes = [
   {
@@ -39,7 +40,7 @@ const routes: Routes = [
       {
         path: "category-and-product",
         loadChildren: () =>
-          import("./../../../templates/categoryproduct/categoryproduct.module").then(
+          import("./../../modules/categoryproduct/categoryproduct.module").then(
             (m) => m.CategoryproductModule
           )
       },

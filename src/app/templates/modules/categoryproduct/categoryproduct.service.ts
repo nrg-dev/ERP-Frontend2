@@ -1,7 +1,7 @@
 ﻿import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Category, Product } from "../../core/common/_models";
-import { Discount } from "../../core/common/_models/discount";
+import { Category, Product } from "../../../core/common/_models";
+import { Discount } from "../../../core/common/_models/discount";
 import { API_ENDPOINTS } from "./categoryproduct.config";
 //import { ConsoleReporter } from 'jasmine';
 

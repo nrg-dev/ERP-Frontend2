@@ -15,7 +15,7 @@
           [ngClass]="{
             active:
               (!currentPath && menuItem.path === '/') ||
-              menuItem.path === currentPath
+              menuItem.path === assignPath
           }"
         >
           <a
@@ -28,7 +28,15 @@
               {{ menuItem.label }}
             </p>
           </a>
-        </mat-list-item>
+          </mat-list-item>
+      <ng-container *ngIf="menuItem.submenu && menuItem.path === assignPath">
+        <div style="font-size: 12px;padding-left: 70px;padding-top: 10px;">
+        <a [ngStyle]="i > 0 && {'padding-top': '10px'}"
+        class="d-flex align-items-center"
+        [routerLink]="[child.path]"
+        routerLinkActive="router-link-active" *ngFor="let child of menuItem.childern; let i = index">{{child.label}}</a>
+      </div>
+      </ng-container>
       </ng-container>
     </mat-nav-list>
   </mat-drawer>

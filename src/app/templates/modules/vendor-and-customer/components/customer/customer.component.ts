@@ -21,11 +21,11 @@ import { Customer, Vendor } from "src/app/core/common/_models";
 import { PrintDialogService } from "src/app/core/services/print-dialog/print-dialog.service";
 
 @Component({
-  selector: "app-vendor-and-customer-list",
-  templateUrl: "./vendor-and-customer-list.component.html",
-  styleUrls: ["./vendor-and-customer-list.component.scss"]
+  selector: "app-customer",
+  templateUrl: "./customer.component.html",
+  styleUrls: ["./customer.component.scss"]
 })
-export class VendorAndCustomerListComponent implements OnInit {
+export class CustomerComponent implements OnInit {
   @Input() tabChange: boolean = false;
   @Input() componentType: string;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
@@ -76,9 +76,10 @@ export class VendorAndCustomerListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-     this.getAllVendorDetails();
+    // this.getAllVendorDetails();
     // this.vendorsDS = this.getAllVendorDetails();
     //this.vendors = new MatTableDataSource(this.vendorsDS);
+    this.getAllCustomerDetails();
   }
 
   // ngOnChanges(changes: SimpleChanges): void {
@@ -98,29 +99,6 @@ export class VendorAndCustomerListComponent implements OnInit {
   //     }
   //   }
   // }
-
-  getAllVendorDetails() {
-    console.log("getAllVendorDetails");
-    this.vendorService.load().subscribe(
-      (data: Vendor[]) => {
-        this.vendorsDS = data;
-        this.vendors = new MatTableDataSource(this.vendorsDS);
-        this.vendors.paginator = this.paginator;
-      },
-      error => {
-        setTimeout(() => {
-          this.snackBar.open(
-            "Network error: server is temporarily unavailable",
-            "dismss",
-            {
-              panelClass: ["error"],
-              verticalPosition: "top"
-            }
-          );
-        });
-      }
-    );
-  }
 
   getAllCustomerDetails() {
     console.log("getAllCustomerDetails");
@@ -155,45 +133,45 @@ export class VendorAndCustomerListComponent implements OnInit {
   deleteVendorCustomer(code: string, deleteType: string) {
     console.log("code -->" + code);
     console.log("remove type -->" + deleteType);
-    if (deleteType == "vendor") {
-      this.vendorService.remove(code).subscribe(
-        data => {
-          this.vendor = data;
-          if (this.vendor.status == "Success") {
-            setTimeout(() => {
-              this.snackBar.open("Vendor is detleted successfully", "", {
-                panelClass: ["error"],
-                verticalPosition: "top"
-              });
-            });
-            this.getAllVendorDetails();
-          } else {
-            setTimeout(() => {
-              this.snackBar.open(
-                "Network error: server is temporarily unavailable",
-                "dismss",
-                {
-                  panelClass: ["error"],
-                  verticalPosition: "top"
-                }
-              );
-            });
-          }
-        },
-        error => {
-          setTimeout(() => {
-            this.snackBar.open(
-              "Network error: server is temporarily unavailable",
-              "dismss",
-              {
-                panelClass: ["error"],
-                verticalPosition: "top"
-              }
-            );
-          });
-        }
-      );
-    } else {
+    // if (deleteType == "vendor") {
+    //   this.vendorService.remove(code).subscribe(
+    //     data => {
+    //       this.vendor = data;
+    //       if (this.vendor.status == "Success") {
+    //         setTimeout(() => {
+    //           this.snackBar.open("Vendor is detleted successfully", "", {
+    //             panelClass: ["error"],
+    //             verticalPosition: "top"
+    //           });
+    //         });
+    //         this.getAllVendorDetails();
+    //       } else {
+    //         setTimeout(() => {
+    //           this.snackBar.open(
+    //             "Network error: server is temporarily unavailable",
+    //             "dismss",
+    //             {
+    //               panelClass: ["error"],
+    //               verticalPosition: "top"
+    //             }
+    //           );
+    //         });
+    //       }
+    //     },
+    //     error => {
+    //       setTimeout(() => {
+    //         this.snackBar.open(
+    //           "Network error: server is temporarily unavailable",
+    //           "dismss",
+    //           {
+    //             panelClass: ["error"],
+    //             verticalPosition: "top"
+    //           }
+    //         );
+    //       });
+    //     }
+    //   );
+    // } else {
       this.customerService.remove(code).subscribe(
         data => {
           this.customer = data;
@@ -231,7 +209,7 @@ export class VendorAndCustomerListComponent implements OnInit {
           });
         }
       );
-    }
+    //}
 
     //  this.vendorsDS = this.vendorsDS.filter(
     //   vendor => vendor.vendorCode !== vendorCode
@@ -240,11 +218,12 @@ export class VendorAndCustomerListComponent implements OnInit {
   }
 
   backNavigation() {
-    if (this.vendorListshow == true) {
-      this.getAllVendorDetails();
-    } else {
-      this.getAllCustomerDetails();
-    }
+    // if (this.vendorListshow == true) {
+    //   this.getAllVendorDetails();
+    // } else {
+    //   this.getAllCustomerDetails();
+    // }
+    this.getAllCustomerDetails();
     this.showDetail = false;
   }
 

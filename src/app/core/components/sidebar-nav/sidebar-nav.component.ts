@@ -13,12 +13,15 @@ export class SidebarNavComponent implements OnInit {
   menuItems: MenuItem[];
   isExpanded: boolean = true;
   currentPath: string;
+  assignPath: string;
 
   constructor(location: Location, router: Router) {
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.currentPath = location.path();
-      }
+        const splitPath = this.currentPath.split('/');
+        this.assignPath = splitPath[0]+'/'+splitPath[1];
+       }
     });
   }
 

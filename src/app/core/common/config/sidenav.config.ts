@@ -7,37 +7,81 @@ export const SidenavItems: MenuItem[] = [
     id: "dashboard",
     label: "Dashboard",
     icon: "assets/images/dashboard.png",
-    path: "/"
+    path: "/",
+    childern: [],
+    submenu: false
   },
   {
     id: "employment",
     label: "Employment",
     icon: "assets/images/employee.png",
-    path: "/employment"
+    path: "/employment",
+    submenu: true,
+    childern: [{
+      id: "employee_list",
+      label: "Employee List",
+      path: "/employment",
+     },
+     {
+      id: "add_employee",
+      label: "Add New Employee",
+      path: "addEmployee",
+     }]
   },
   {
     id: "vendorAndCustomer",
     label: "Vendor & Customer",
     icon: "assets/images/vendor-customer.png",
-    path: "/vendor-and-customer"
+    path: "/vendor-and-customer",
+    childern: [{
+      id: "vendor",
+      label: "Vendor",
+      path: "/vendor-and-customer",
+     },
+     {
+      id: "customer",
+      label: "Customer",
+      path: "customer",
+     }],
+    submenu: true
   },
   {
     id: "categoryAndProduct",
     label: "Category & Product",
     icon: "assets/images/category-product.png",
-    path: "/category-and-product"
+    path: "/category-and-product",
+    childern: [{
+      id: "all-product",
+      label: "All Product",
+      path: "/category-and-product",
+     },
+     {
+      id: "discount",
+      label: "Discount",
+      path: "discount",
+     },
+     {
+      id: "freegifts",
+      label: "Free Gifts",
+      path: "freegifts",
+     }],
+    submenu: true
   },
   {
     id: "purchase",
     label: "Purchase",
     icon: "assets/images/circle-cropped.png",
-    path: "/purchase"
+    path: "/purchase",
+    childern: [],
+    submenu: false
   },
   {
     id: "sales",
     label: "Sales",
     icon: "assets/images/sales.png",
-    path: "/sales"
+    path: "/sales",
+    childern: [],
+    submenu: false
   },
   /*{
     id: "finance",
@@ -67,6 +111,8 @@ export const SidenavItems: MenuItem[] = [
     id: "logout",
     label: "Log Out",
     icon: "assets/images/logout.png",
-    path: "/login"
+    path: "/login",
+    childern: [],
+    submenu: false
   }
 ];

@@ -3,4 +3,6 @@ export interface MenuItem {
   label: string;
   icon: string;
   path: string;
+  childern: any;
+  submenu: boolean;
 }

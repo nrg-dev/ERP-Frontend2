@@ -4,11 +4,11 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
 import { CompleterData, CompleterService } from 'ng2-completer';
-import { PercentPipe } from '../../../../../node_modules/@angular/common';
+import { PercentPipe } from '../../../../../../node_modules/@angular/common';
 import { VendorService } from 'src/app/templates/modules/vendor-and-customer/services/vendor.service';
 import { CategoryproductService } from '../services/categoryproduct.service';
-import { Category, Product } from '../../../core/common/_models';
-import { Discount } from '../../../core/common/_models/discount';
+import { Category, Product } from '../../../../core/common/_models';
+import { Discount } from '../../../../core/common/_models/discount';
 import { PrintDialogService } from "src/app/core/services/print-dialog/print-dialog.service";
 
 // addnewcategory start
@@ -905,6 +905,7 @@ export class CategoryItemComponent implements OnInit {
     this.leftdetails=true;
     this.allcategorylist();
     this.allproductList();
+    this.alldetails='block';
     this.alldiscountList();
     this.allfreegiftList();
 
