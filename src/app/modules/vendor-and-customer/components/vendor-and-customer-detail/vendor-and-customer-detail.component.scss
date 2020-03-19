@@ -5,14 +5,17 @@ input,
 select {
   appearance: none;
   border: 1px solid $white;
-  width: 100%;
-
+  width: 85%;
+  margin-left: 12%;
   // &:disabled {
   background-color: $disabled-input-bg;
   color: $white;
   // }
 }
-
+::ng-deep.mb-1,::ng-deep .my-1 {
+  margin-bottom: .25rem!important;
+  margin-left: 12%;
+}
 textarea {
   height: 48px;
 }
@@ -37,7 +40,7 @@ textarea {
   border: none;
   width: 100%;
   padding: 5px 5px 50px 10px;
-  background-color: #3C3F41;
+  /* background-color: #3C3F41; */
 }
 #update-butn{
   background-color: #365880;
@@ -46,7 +49,7 @@ textarea {
   margin: -20px -50px;
   width: 85px;
   top: 50%;
-  left: 30%;
+  left: 35%;
   text-align: center;
   color: white;
 }
@@ -67,7 +70,7 @@ textarea {
   position: relative;
   margin: -20px -50px;
   width: 85px;
-  top: 75%;
+  top: 50%;
   left: 25%;
   text-align: center;
   color: white;
@@ -77,9 +80,31 @@ textarea {
   border: 1px solid #796d6d;
   position: relative;
   margin: -20px -50px;
+  width: 115px;
+  top: 50%;
+  left: 65%;
+  text-align: center;
+  color: white;
+}
+#back-butn{
+  background-color: #4C5052;
+  border: 1px solid #796d6d;
+  position: relative;
+  margin: -20px -50px;
   width: 85px;
   top: 50%;
-  left: 80%;
+  left: 0%;
+  text-align: center;
+  color: white;
+}
+#viewback-butn{
+  background-color: #4C5052;
+  border: 1px solid #796d6d;
+  position: relative;
+  margin: -20px -50px;
+  width: 85px;
+  top: 50%;
+  left: -10%;
   text-align: center;
   color: white;
 }

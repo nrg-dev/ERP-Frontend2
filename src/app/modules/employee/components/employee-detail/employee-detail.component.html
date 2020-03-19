@@ -18,16 +18,23 @@
         <span class="row m-0">
           <ng-container [ngSwitch]="true">
             <ng-container *ngSwitchCase="isEditMode">
+              <br/>
               <div class="borders">
+                <button id="editback-butn" class="col btn-red transparent-border"
+                  (click)="backToEmployeesList()">
+                  <!-- <i class="fas fa-trash"></i> -->
+                  Back
+                </button>
+                &nbsp;&nbsp;
                 <button id="delete-butn" class="col btn-red transparent-border"
                   (click)="deleteEmployeeEmitter()">
-                  <i class="fas fa-trash"></i>
+                  <!-- <i class="fas fa-trash"></i> -->
                   Delete
                 </button>
                 &nbsp;&nbsp;
                 <button id="update-butn" class="col btn-green transparent-border"
                   (click)="updateEmployee()">
-                    <i class="fas fa-save"></i>
+                  <!--  <i class="fas fa-save"></i> -->
                     Save
                 </button>
               </div>
@@ -36,8 +43,7 @@
               ><span class="col px-2">
                 <button
                   class="col btn-red transparent-border"
-                  (click)="cancelAddNew()"
-                >
+                  (click)="cancelAddNew()">
                   <i class="fas fa-trash"></i>
                   Delete
                 </button>
@@ -54,6 +60,12 @@
             </ng-container>
             <ng-container *ngSwitchDefault>
               <div class="borders">
+                  <button id="back-butn" class="col btn-red transparent-border"
+                  (click)="backToEmployeesList()">
+                  <!-- <i class="fas fa-trash"></i> -->
+                  Back
+                </button>
+                &nbsp;&nbsp;
                 <button id="save-butn" (click)="toggleEditMode()">
                     <i class="fas fa-edit"></i>
                     Edit
@@ -143,8 +155,8 @@
     </ng-template>
   </div>
 </form>
-<div class="d-flex justify-content-center">
+<!-- <div class="d-flex justify-content-center">
   <button class="px-5 m-3" (click)="backToEmployeesList()">
     Back
   </button>
-</div>
+</div> -->

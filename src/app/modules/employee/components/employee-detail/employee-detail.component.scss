@@ -30,12 +30,17 @@ textarea {
   width: 220px;
   height: 280px;
 }
+::ng-deep .mb-1,::ng-deep .my-1 {
+  margin-bottom: .25rem!important;
+  margin-left: 17%;
+}
 input{
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   border: 1px solid white;
   width: 75%;
+  margin-left: 17%;
   height: 2rem;
   background-color: #243641;
   color: white;
@@ -46,6 +51,7 @@ textarea{
   appearance: none;
   border: 1px solid white;
   width: 75%;
+  margin-left: 17%;
   background-color: #243641;
   color: white;
 }
@@ -62,9 +68,10 @@ input[type=text]:focus{
   border: 1px solid #796d6d;
   position: relative;
   margin: -20px -50px;
+  border-radius: 4px;
   width: 85px;
-  top: 75%;
-  left: 25%;
+  top: 50%;
+  left: 10%;
   text-align: center;
   color: white;
 }
@@ -73,9 +80,10 @@ input[type=text]:focus{
   border: 1px solid #796d6d;
   position: relative;
   margin: -20px -50px;
-  width: 85px;
+  border-radius: 4px;
+  width: 120px;
   top: 50%;
-  left: 80%;
+  left: 55%;
   text-align: center;
   color: white;
 }
@@ -83,16 +91,17 @@ input[type=text]:focus{
   border: none;
   width: 100%;
   padding: 5px 5px 50px 10px;
-  background-color: #3C3F41;
+  /* background-color: #3C3F41; */
 }
 #update-butn{
   background-color: #365880;
   border: 1px solid #796d6d;
   position: relative;
   margin: -20px -50px;
+  border-radius: 4px;
   width: 85px;
   top: 50%;
-  left: 30%;
+  left: 33%;
   text-align: center;
   color: white;
 }
@@ -101,9 +110,34 @@ input[type=text]:focus{
   border: 1px solid #796d6d;
   position: relative;
   margin: -20px -50px;
+  border-radius: 4px;
   width: 85px;
   top: 50%;
   left: 80%;
+  text-align: center;
+  color: white;
+}
+#back-butn{
+  background-color: #4C5052;
+  border: 1px solid #796d6d;
+  position: relative;
+  margin: -20px -50px;
+  border-radius: 4px;
+  width: 85px;
+  top: 50%;
+  left: -35%;
+  text-align: center;
+  color: white;
+}
+#editback-butn{
+  background-color: #4C5052;
+  border: 1px solid #796d6d;
+  position: relative;
+  margin: -20px -50px;
+  border-radius: 4px;
+  width: 85px;
+  top: 50%;
+  left: -10%;
   text-align: center;
   color: white;
 }

@@ -1,22 +1,24 @@
-#save-butn{
-  background-color: #365880;
+#cancel-butn{
+  background-color: #4C5052;
   border: 1px solid #796d6d;
   position: relative;
   margin: -20px -50px;
+  border-radius: 4px;
   width: 85px;
   top: 50%;
   left: 30%;
   text-align: center;
   color: white;
 }
-#cancel-butn{
-  background-color: #4C5052;
+#save-butn{
+  background-color: #365880;
   border: 1px solid #796d6d;
   position: relative;
   margin: -20px -50px;
+  border-radius: 4px;
   width: 85px;
   top: 50%;
-  left: 80%;
+  left: 70%;
   text-align: center;
   color: white;
 }
@@ -25,6 +27,7 @@
 }
 #labeltext{
   text-align: left;
+  margin-left: 12%;
 }
 
 input{
@@ -33,6 +36,7 @@ input{
   appearance: none;
   border: 1px solid white;
   width: 75%;
+  margin-left: 12%;
   height: 2rem;
   background-color: #253844;
   color: white;
@@ -49,5 +53,5 @@ input[type=text]:focus{
   border: none;
   width: 100%;
   padding: 8px;
-  background-color: #3C3F41;
+  /* background-color: #3C3F41; */
 }
