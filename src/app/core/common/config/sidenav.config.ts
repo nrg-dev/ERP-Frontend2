@@ -50,38 +50,42 @@ export const SidenavItems: MenuItem[] = [
     label: "Category & Product",
     icon: "assets/images/category-product.png",
     path: "/category-and-product",
-    childern: [{
-      id: "all-product",
-      label: "All Product",
-      path: "/category-and-product",
-     },
-     {
-      id: "discount",
-      label: "Discount",
-      path: "discount",
-     },
-     {
-      id: "freegifts",
-      label: "Free Gifts",
-      path: "freegifts",
-     }],
-    submenu: true
+    childern: [],
+    submenu: false
   },
   {
     id: "purchase",
     label: "Purchase",
     icon: "assets/images/circle-cropped.png",
     path: "/purchase",
-    childern: [],
-    submenu: false
+    childern: [{
+      id: "purchase-order",
+      label: "Purchase Order",
+      path: "/purchase",
+     },
+     {
+      id: "purchase-invoice",
+      label: "Purchase Invoice",
+      path: "invoice",
+     }],
+    submenu: true
   },
   {
     id: "sales",
     label: "Sales",
     icon: "assets/images/sales.png",
     path: "/sales",
-    childern: [],
-    submenu: false
+    childern: [{
+      id: "sales-order",
+      label: "Sales Order",
+      path: "/sales",
+     },
+     {
+      id: "sales-invoice",
+      label: "Sales Invoice",
+      path: "invoice",
+     }],
+    submenu: true
   },
   /*{
     id: "finance",

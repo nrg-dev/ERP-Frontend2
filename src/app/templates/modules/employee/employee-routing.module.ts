@@ -9,7 +9,7 @@ import { EmployeeListComponent } from "./components/employee-list/employee-list.
 const routes: Routes = [
   {
       path: '',
-      component: EmployeeListComponent,
+      component: EmployeeComponent,
       pathMatch: 'full'
   },
   {

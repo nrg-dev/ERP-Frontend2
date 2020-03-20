@@ -905,7 +905,7 @@ export class CategoryItemComponent implements OnInit {
     this.leftdetails=true;
     this.allcategorylist();
     this.allproductList();
-    this.alldetails='block';
+    //this.alldetails='block';
     this.alldiscountList();
     this.allfreegiftList();
 
