@@ -70,7 +70,6 @@ export class EmployeeDetailComponent implements OnInit, OnChanges {
   }
 
   updateEmployee(){
-    alert("Emp Name ---->"+this.employee.name);
     this.employeeService.update(this.employee).subscribe(
       success => {
         this.backToEmployeesList();

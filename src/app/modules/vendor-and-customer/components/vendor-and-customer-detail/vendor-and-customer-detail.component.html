@@ -26,7 +26,7 @@
                 Delete
               </button>
               &nbsp;&nbsp;
-              <button id="update-butn" class="col btn-green transparent-border" (click)="save()">
+              <button id="update-butn" class="col btn-green transparent-border" (click)="update()">
                 <!-- <i class="fas fa-save"></i> -->
                   Save
               </button>
@@ -34,18 +34,17 @@
           </ng-container>
           <ng-container *ngSwitchCase="isAddNew">
             <div class="borders">
-              <button id="back-butn" class="d-flex justify-content-center"
+              <button id="addback-butn" class="d-flex justify-content-center"
                 (click)="backToVendorsList()">
                 Back
               </button>
               &nbsp;&nbsp;
-              <button id="delete-butn" class="col btn-red transparent-border"
+              <!-- <button id="delete-butn" class="col btn-red transparent-border"
               (click)="cancelAddNew()">
-                <!-- <i class="fas fa-trash"></i> -->
                 Delete
               </button>
-              &nbsp;&nbsp;
-              <button id="update-butn" class="col btn-green transparent-border" (click)="save()">
+              &nbsp;&nbsp; -->
+              <button id="add-butn" class="col btn-green transparent-border" (click)="save()">
                 <!-- <i class="fas fa-save"></i> -->
                   Save
               </button>
@@ -63,7 +62,7 @@
                   Edit
               </button>
               &nbsp;&nbsp;
-              <button id="cancel-butn" (click)="printPage(EmployeeDetail)">
+              <button id="cancel-butn" (click)="printPage(VenCustDetail)">
                 <i class="fas fa-print"></i>
                 Print Page
               </button>
@@ -74,67 +73,70 @@
       </span>
     </div>
   </div>
-  <div class="row my-5">
-    <form name="form" class="col" (ngSubmit)="saveCustomer()">
-      <div class="example-box three-column max-height-adjust" id="scrolling">
-        <div
-          *ngFor="
-            let fieldLabel of fieldLabels | idFilter;
-            trackBy: trackByIndex
-          "
-          class="mb-3 pr-4"
-        >
-          <div class="mb-1">
-            {{ ts.translate(fieldLabel) }}
-          </div>
-          <ng-container [ngSwitch]="true">
-            <img
-              *ngSwitchCase="fieldLabel === 'photo'"
-              [src]="model[fieldLabel]"
-              alt="Employee Photo"
-              class="employee-photo"
-            />
+  <ng-container *ngTemplateOutlet="VenCustDetail"></ng-container>
+  <ng-template #VenCustDetail>
+    <div class="row my-5">
+      <form name="form" class="col" (ngSubmit)="saveCustomer()">
+        <div class="example-box three-column max-height-adjust" id="scrolling">
+          <div
+            *ngFor="
+              let fieldLabel of fieldLabels | idFilter;
+              trackBy: trackByIndex
+            "
+            class="mb-3 pr-4"
+          >
+            <div class="mb-1">
+              {{ ts.translate(fieldLabel) }}
+            </div>
+            <ng-container [ngSwitch]="true">
+              <img
+                *ngSwitchCase="fieldLabel === 'photo'"
+                [src]="model[fieldLabel]"
+                alt="Employee Photo"
+                class="employee-photo"
+              />
 
-            <textarea
-              *ngSwitchCase="fieldLabel === 'address'"
-              [placeholder]="ts.translate(fieldLabel)"
-              [disabled]="!isAddNew && !isEditMode"
-              class="p-1"
-              [value]="model[fieldLabel]"
-              [(ngModel)]="model[fieldLabel]"
-              [ngModelOptions]="{ standalone: true }"
-            >
-            </textarea>
-
-            <select
-              *ngSwitchCase="fieldLabel === 'country'"
-              name="selectedCountry"
-              [(ngModel)]="model.country"
-            >
-              <option
-                *ngFor="let country of countryList"
-                value="{{ country.name }}"
-                id="black-color"
-                >{{ country.name }}</option
-              >
-            </select>
-
-            <ng-container *ngSwitchDefault>
-              <input
-                type="text"
+              <textarea
+                *ngSwitchCase="fieldLabel === 'address'"
                 [placeholder]="ts.translate(fieldLabel)"
-                [value]="model[fieldLabel]"
                 [disabled]="!isAddNew && !isEditMode"
+                class="p-1"
+                [value]="model[fieldLabel]"
                 [(ngModel)]="model[fieldLabel]"
                 [ngModelOptions]="{ standalone: true }"
-                class="p-1"
-              />
+              >
+              </textarea>
+
+              <select
+                *ngSwitchCase="fieldLabel === 'country'"
+                name="selectedCountry"
+                [(ngModel)]="model.country"
+              >
+                <option
+                  *ngFor="let country of countryList"
+                  value="{{ country.name }}"
+                  id="black-color"
+                  >{{ country.name }}</option
+                >
+              </select>
+
+              <ng-container *ngSwitchDefault>
+                <input
+                  type="text"
+                  [placeholder]="ts.translate(fieldLabel)"
+                  [value]="model[fieldLabel]"
+                  [disabled]="!isAddNew && !isEditMode"
+                  [(ngModel)]="model[fieldLabel]"
+                  [ngModelOptions]="{ standalone: true }"
+                  class="p-1"
+                />
+              </ng-container>
             </ng-container>
-          </ng-container>
+          </div>
         </div>
-      </div>
-    </form>
-  </div>
+      </form>
+    </div>
+  </ng-template>
 
   <!-- <div class="d-flex justify-content-center">
     <button class="px-5" (click)="backToVendorsList()">

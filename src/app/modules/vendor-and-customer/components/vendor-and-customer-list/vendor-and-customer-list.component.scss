@@ -50,3 +50,17 @@ button {
   height: 300px;
   width: 100%;
 }
+.leftsidedet{
+  text-align: left;
+  border: none;
+}
+td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {
+  padding-left: 0px;
+}
+td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:last-of-type {
+  padding-right: 2px;
+}
+.rightsidedet{
+  text-align: right;
+  border: none;
+}

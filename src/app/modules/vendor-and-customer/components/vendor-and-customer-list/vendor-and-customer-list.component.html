@@ -50,32 +50,36 @@
         <br/>
         <table class="w-100 margin-20" mat-table [dataSource]="vendors" class="ngTable">
           <ng-container matColumnDef="vendorCode">
-            <th mat-header-cell *matHeaderCellDef>{{ componentType }} Code</th>
-            <td mat-cell *matCellDef="let row" id="{{ row.vendorcode }}">
+            <th mat-header-cell *matHeaderCellDef>
+              <button class="mat-sort-header-button" type="button" class="leftsidedet"> {{ componentType }} Code </button>
+            </th>
+            <td mat-cell *matCellDef="let row" id="{{ row.vendorcode }}" class="leftsidedet">
               {{ row.vendorcode }}
             </td>
           </ng-container>
           <ng-container matColumnDef="addeddate">
             <th mat-header-cell *matHeaderCellDef>
-              Joining Date
+              <button class="mat-sort-header-button" type="button" class="leftsidedet"> Joining Date </button>            
             </th>
-            <td mat-cell *matCellDef="let row" id="{{ row.addeddate }}">
+            <td mat-cell *matCellDef="let row" id="{{ row.addeddate }}" class="leftsidedet">
               {{ row.addeddate }}
             </td>
           </ng-container>
 
           <ng-container matColumnDef="vendorName">
-            <th mat-header-cell *matHeaderCellDef>Name</th>
-            <td mat-cell *matCellDef="let row" id="{{ row.vendorName }}">
+            <th mat-header-cell *matHeaderCellDef>
+              <button class="mat-sort-header-button" type="button" class="leftsidedet"> Name </button>            
+            </th>
+            <td mat-cell *matCellDef="let row" id="{{ row.vendorName }}" class="leftsidedet">
               {{ row.vendorName }}
             </td>
           </ng-container>
 
           <ng-container matColumnDef="phone">
             <th mat-header-cell *matHeaderCellDef>
-              Contact Number
+              <button class="mat-sort-header-button" type="button" class="leftsidedet"> Contact Number </button>            
             </th>
-            <td mat-cell *matCellDef="let row" id="{{ row.phoneNumber }}">
+            <td mat-cell *matCellDef="let row" id="{{ row.phoneNumber }}" class="leftsidedet">
               {{ row.phoneNumber }}
             </td>
           </ng-container>
@@ -111,33 +115,37 @@
         <br/>
         <table class="w-100 margin-20" mat-table [dataSource]="customers" class="ngTable">
           <ng-container matColumnDef="custcode">
-            <th mat-header-cell *matHeaderCellDef>{{ componentType }} Code</th>
-            <td mat-cell *matCellDef="let row" id="{{ row.custcode }}">
+            <th mat-header-cell *matHeaderCellDef>
+              <button class="mat-sort-header-button" type="button" class="leftsidedet"> {{ componentType }} Code </button>
+            </th>
+            <td mat-cell *matCellDef="let row" id="{{ row.custcode }}" class="leftsidedet">
               {{ row.custcode }}
             </td>
           </ng-container>
 
           <ng-container matColumnDef="customerName">
-            <th mat-header-cell *matHeaderCellDef>Name</th>
-            <td mat-cell *matCellDef="let row" id="{{ row.customerName }}">
+            <th mat-header-cell *matHeaderCellDef>
+              <button class="mat-sort-header-button" type="button" class="leftsidedet"> Name </button>
+            </th>
+            <td mat-cell *matCellDef="let row" id="{{ row.customerName }}" class="leftsidedet">
               {{ row.customerName }}
             </td>
           </ng-container>
 
           <ng-container matColumnDef="addeddate">
             <th mat-header-cell *matHeaderCellDef>
-              Joining Date
+              <button class="mat-sort-header-button" type="button" class="leftsidedet"> Joining Date </button>
             </th>
-            <td mat-cell *matCellDef="let row" id="{{ row.addeddate }}">
+            <td mat-cell *matCellDef="let row" id="{{ row.addeddate }}" class="leftsidedet">
               {{ row.addeddate }}
             </td>
           </ng-container>
 
           <ng-container matColumnDef="phoneNumber">
             <th mat-header-cell *matHeaderCellDef>
-              Contact Number
+              <button class="mat-sort-header-button" type="button" class="leftsidedet"> Contact Number </button>
             </th>
-            <td mat-cell *matCellDef="let row" id="{{ row.phoneNumber }}">
+            <td mat-cell *matCellDef="let row" id="{{ row.phoneNumber }}" class="leftsidedet">
               {{ row.phoneNumber }}
             </td>
           </ng-container>
