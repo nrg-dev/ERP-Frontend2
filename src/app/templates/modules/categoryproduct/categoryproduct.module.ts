@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CategoryItemComponent, AddpromotionComponent, DiscountdeleteComponent, CategoryeditdeleteComponent, AddnewcategoryComponent, AddnewproductComponent ,ProductviewComponent, ProducteditComponent, AllproducteditComponent, CategorytableComponent} from './categoryitem/categoryitem.component';
+import { CategoryItemComponent, AddpromotionComponent, DiscounteditComponent, DiscountdeleteComponent, CategoryeditdeleteComponent, AddnewcategoryComponent, AddnewproductComponent ,ProductviewComponent, ProducteditComponent, AllproducteditComponent, CategorytableComponent} from './categoryitem/categoryitem.component';
 import { Routes, RouterModule } from '@angular/router';
 import { MatDialogModule, MatDialog, MatFormFieldModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 import {
@@ -46,14 +46,10 @@ import { FormsModule } from '@angular/forms';
 import { Ng2CompleterModule } from 'ng2-completer';
 import { VendorService } from '../vendor-and-customer/services/vendor.service';
 import { CategoryproductService } from './services/categoryproduct.service';
-import { DiscountComponent} from './discount/discount.component';
-import { FreegiftsComponent} from './freegifts/freegifts.component';
 import { CategoryProductRoutingModule } from "./categoryproduct-routing.module";
-import { AdddiscountComponent } from './discount/adddiscount/adddiscount.component';
-import { DiscounteditComponent } from './discount/discountedit/discountedit.component';
 
 @NgModule({
-  declarations: [AddnewcategoryComponent,CategoryItemComponent,CategoryeditdeleteComponent,AddpromotionComponent,DiscounteditComponent,DiscountdeleteComponent,AddnewproductComponent,ProductviewComponent,ProducteditComponent,AllproducteditComponent,CategorytableComponent,DiscountComponent,FreegiftsComponent,AdddiscountComponent],
+  declarations: [AddnewcategoryComponent,CategoryItemComponent,CategoryeditdeleteComponent,AddpromotionComponent,DiscounteditComponent, DiscountdeleteComponent,AddnewproductComponent,ProductviewComponent,ProducteditComponent,AllproducteditComponent,CategorytableComponent],
   imports: [
     FormsModule,
     MatFormFieldModule,
@@ -104,7 +100,7 @@ import { DiscounteditComponent } from './discount/discountedit/discountedit.comp
     Ng2CompleterModule,
     CategoryProductRoutingModule
   ],
-  entryComponents: [AddnewcategoryComponent,AddpromotionComponent,CategoryeditdeleteComponent,DiscounteditComponent,DiscountdeleteComponent,AddnewproductComponent,ProductviewComponent,ProducteditComponent,AllproducteditComponent,DiscountComponent,FreegiftsComponent,AdddiscountComponent],
+  entryComponents: [AddnewcategoryComponent,AddpromotionComponent,DiscounteditComponent, CategoryeditdeleteComponent,DiscountdeleteComponent,AddnewproductComponent,ProductviewComponent,ProducteditComponent,AllproducteditComponent],
   providers: [CategoryproductService,VendorService]
 })
 export class CategoryproductModule { 
