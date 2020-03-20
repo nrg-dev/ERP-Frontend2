@@ -67,7 +67,7 @@ export class VendorAndCustomerListComponent implements OnInit {
     "phoneNumber",
     "action"
   ];
-
+  
   constructor(
     private vendorService: VendorService,
     private customerService: CustomerService,
@@ -150,6 +150,13 @@ export class VendorAndCustomerListComponent implements OnInit {
     this.vendor = undefined;
     this.chosenId = code;
     this.isEditMode = edit;
+    let assignValue = '';
+    if (code && !edit) {
+      assignValue = 'viewVendor';
+    } else {
+      assignValue = edit ? 'Vendor':'addVendor';
+    }
+    this.customerService.getComponentType(assignValue);
   }
 
   deleteVendorCustomer(code: string, deleteType: string) {

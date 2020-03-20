@@ -22,6 +22,7 @@ export class VendorAndCustomerDetailComponent implements OnInit {
   @Input() componentType: string;
   @Input() isEditMode: boolean;
   @Output() backNavigation = new EventEmitter<null>();
+  @Input() type: string;
 
   //  vendor: VendorDetail;
   vendor: any = new Vendor();
@@ -33,6 +34,8 @@ export class VendorAndCustomerDetailComponent implements OnInit {
 
   model: any = {};
   countryList: any;
+  getComponentType: string;
+  addComponentType: string;
 
   constructor(
     private ts: TranslateService,
@@ -40,41 +43,51 @@ export class VendorAndCustomerDetailComponent implements OnInit {
     private customerService: CustomerService,
     private snackBar: MatSnackBar
   ) {
+    
     this.countryList = require("src/assets/json/country.json");
   }
 
   ngOnInit() {
-    console.log(this.vendor);
+    console.log(this.vendor); 
+    this.customerService.componentTypesubject.subscribe((data) => {
+      this.getComponentType = data;
+    });
+    this.customerService.addComponentTypesubject.subscribe((data) => {
+      this.addComponentType = data;
+    });
+    this.customerVendorView();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.code && changes.code.currentValue) {
-      if (this.componentType === "Customer") {
-        this.customerService.get(this.code).subscribe(
-          data => {
-            this.model = data[0];
-            this.fieldLabels = Object.keys(this.model);
-          },
-          err => console.log(err)
-        );
-      } else {
-        this.vendorService.get(this.code).subscribe(
-          data => {
-            this.model = data[0];
-            this.fieldLabels = Object.keys(this.model);
-          },
-          err => console.log(err)
-        );
-      }
-    } else {
-      this.isAddNew = true;
-      if (this.componentType === "Customer") {
-        this.fieldLabels = Object.keys(new Customer());
-      } else {
-        this.fieldLabels = Object.keys(new Vendor());
-      }
-    }
-  }
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   if (changes.code && changes.code.currentValue) {
+  //     if (this.getComponentType === "Customer") {
+  //       this.customerService.get(this.code).subscribe(
+  //         data => {
+  //           this.model = data[0];
+  //           this.fieldLabels = Object.keys(this.model);
+  //         },
+  //         err => console.log(err)
+  //       );
+  //     } else { console.log('testing3', this.getComponentType);
+  //       this.vendorService.get(this.code).subscribe(
+  //         data => {
+  //           this.model = data[0];
+  //           this.fieldLabels = Object.keys(this.model);
+  //         },
+  //         err => console.log(err)
+  //       );
+  //     }
+  //   } else {
+  //     this.isAddNew = true;
+  //     if (this.componentType === "Customer") {
+  //       this.fieldLabels = Object.keys(new Customer());
+  //     } else {
+  //       this.fieldLabels = Object.keys(new Vendor());
+  //     }
+  //   }
+
+  //   console.log('compnent type', this.componentType);
+  // }
 
   toggleEditMode() {
     this.isEditMode = !this.isEditMode;
@@ -177,4 +190,48 @@ export class VendorAndCustomerDetailComponent implements OnInit {
       }
     );
   }
+
+  customerVendorView() {
+    //if (changes.code && changes.code.currentValue) {
+      if (this.getComponentType === "Customer" || this.getComponentType === "viewCustomer") {
+        this.componentType = 'Customer';
+        if (this.getComponentType === "viewCustomer") {
+          this.isAddNew = false;
+          this.isEditMode = false;
+        }
+        this.customerService.get(this.code).subscribe(
+          data => {
+            this.model = data[0];
+            this.fieldLabels = Object.keys(this.model);
+          },
+          err => console.log(err)
+        );
+      } else if(this.getComponentType === "Vendor" || this.getComponentType === "viewVendor") {
+        this.componentType = 'Vendor'; 
+        if (this.getComponentType === "viewVendor") {
+          this.isAddNew = false;
+          this.isEditMode = false;
+        }
+        
+        this.vendorService.get(this.code).subscribe(
+          data => {
+            this.model = data[0];
+            this.fieldLabels = Object.keys(this.model);
+          },
+          err => console.log(err)
+        );
+      }
+       
+      else if (this.getComponentType === "addCustomer") {
+        this.componentType = 'Customer';
+        this.isAddNew = true;
+        this.fieldLabels = Object.keys(new Customer());
+      } else {
+        this.componentType = 'Vendor';
+        this.isAddNew = true;
+        this.fieldLabels = Object.keys(new Vendor());
+      }
+   // }
+ /* }*/
+}
 }

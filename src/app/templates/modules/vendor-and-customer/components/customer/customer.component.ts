@@ -128,7 +128,14 @@ export class CustomerComponent implements OnInit {
     this.vendor = undefined;
     this.chosenId = code;
     this.isEditMode = edit;
-  }
+    let assignValue = '';
+    if (code && !edit) {
+      assignValue = 'viewCustomer';
+    } else {
+      assignValue = edit ? 'Customer':'addCustomer';
+    }
+    this.customerService.getComponentType(assignValue);
+   }
 
   deleteVendorCustomer(code: string, deleteType: string) {
     console.log("code -->" + code);

@@ -4,12 +4,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { Customer } from 'src/app/core/common/_models';
 import { environment } from "src/environments/environment";
 import { API_ENDPOINTS } from "./../customer.config";
+import { BehaviorSubject } from 'rxjs';
+
 @Injectable()
 export class CustomerService {   
 
 //public url = require("../apiurl.json");
 //private commonURL = this.url[0].apiurl+'customer/';
-
+componentTypesubject = new BehaviorSubject('a');
+addComponentTypesubject = new BehaviorSubject('a');
 
 constructor(private http: HttpClient) { }
 
@@ -55,4 +58,9 @@ remove(custcode: string){
     return this.http.delete<Customer>(`${environment.apiUrl}${API_ENDPOINTS.remove}`+'?custcode='+custcode);
 
 }
+
+getComponentType(value: string) {
+    this.componentTypesubject.next(value);
+}
+
 }
