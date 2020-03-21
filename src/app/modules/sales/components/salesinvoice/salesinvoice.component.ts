@@ -6,6 +6,7 @@ import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} f
 import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
 import { PurchaseService } from 'src/app/modules/purchase/services/purchase.service';
 import { SalesService } from '../../services/sales.service';
+import { PrintDialogService } from "src/app/core/services/print-dialog/print-dialog.service";
 
 //---------- View Invoice Calling -----------
 @Component({
@@ -369,8 +370,8 @@ export class SalesinvoiceComponent implements OnInit {
     private dialog: MatDialog,
     private router: Router, 
     private salesservice: SalesService,
-    private snackBar: MatSnackBar
-
+    private snackBar: MatSnackBar,
+    private printDialogService: PrintDialogService
     ) { 
       this.salesservice.load().subscribe(res => { 
         this.salesList = res;
@@ -525,6 +526,10 @@ export class SalesinvoiceComponent implements OnInit {
         });   
       }
     ); 
+  }
+
+  printPage(data) {
+    this.printDialogService.openDialog(data);
   }
 
 }

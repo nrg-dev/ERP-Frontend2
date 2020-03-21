@@ -5,6 +5,7 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
 import { PurchaseService } from '../../services/purchase.service';
+import { PrintDialogService } from "src/app/core/services/print-dialog/print-dialog.service";
 
 @Component({
   selector: 'viewInvoice',
@@ -379,7 +380,8 @@ export class PurchaseInvoiceComponent implements OnInit {
     private dialog: MatDialog,
     private router: Router, 
     private purchaseservice: PurchaseService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private printDialogService: PrintDialogService
 
   ) { 
    // const purchasedata = require("../../purchasedata.json");
@@ -547,6 +549,10 @@ export class PurchaseInvoiceComponent implements OnInit {
         });   
       }
     ); 
+  }
+
+  printPage(data) {
+    this.printDialogService.openDialog(data);
   }
 
 }

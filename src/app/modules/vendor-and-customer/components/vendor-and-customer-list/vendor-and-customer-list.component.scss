@@ -40,15 +40,13 @@ button {
   background-color: #243641;
   color: white;
 }
+.mat-table {
+  width: 100%;
+  height: 300px;
+}
 
 .mat-tab-body-content {
   overflow: hidden;
-}
-.ngTable{
-  display: block;
-  overflow: auto;
-  height: 300px;
-  width: 100%;
 }
 .leftsidedet{
   text-align: left;
