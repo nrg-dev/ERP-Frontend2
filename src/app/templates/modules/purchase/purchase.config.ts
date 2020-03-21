@@ -14,5 +14,6 @@ export const API_ENDPOINTS = {
   loadCategory: `/category/load`,
   loadCategoryName: `/category/loadCategoryName`,  
   loadItemName: `/item/loadItemName`,
-  load: `/item/load`
+  load: `/item/load`,
+  GET_PURCHASE_ORDER_LIST: `/purchase/loadPO`,
 };

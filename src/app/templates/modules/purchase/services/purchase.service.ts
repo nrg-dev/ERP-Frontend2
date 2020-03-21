@@ -132,4 +132,8 @@ export class PurchaseService {
 
     }
 
+    getPurchaseOrderLists(){
+        return this.http.get(`${environment.apiUrl}${API_ENDPOINTS.GET_PURCHASE_ORDER_LIST}`);
+    }
+
 }

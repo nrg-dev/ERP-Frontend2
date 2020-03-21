@@ -55,6 +55,7 @@ import {
 import { PurchaseService } from "./services/purchase.service";
 import { PurchaseReturnComponent } from "./components/purchase-return/purchase-return.component";
 import { PurchasereportComponent } from "./components/purchasereport/purchasereport.component";
+import { PurchaseListComponent } from "./components/purchase-list/purchase-list.component";
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { PurchasereportComponent } from "./components/purchasereport/purchaserep
     Status,
     Filter,
     PurchaseReturnComponent,
-    PurchasereportComponent
+    PurchasereportComponent,
+    PurchaseListComponent
   ],
   imports: [
     CommonModule,

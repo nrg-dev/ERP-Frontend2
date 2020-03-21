@@ -120,11 +120,11 @@
                   </div>
                   <div class="row">
                       <div class="col-md-5 col-xs-5 col-lg-5" id="purchasetext">
-                        <button id="checkIn-butn"  (click)="savePurchase()"> Save </button>
+                        <button id="checkIn-butn"  (click)="savePurchase()"> Save </button>-->
                         <!-- <div class="radio-toolbar">
                           <label for="radio1" id="checkIn-butn" (click)="savePurchase()">Save</label>
                         </div> -->
-                     <!-- </div>
+                      <!--</div>
                       <div class="col-md-1 col-xs-1 col-lg-1"></div>
                       <div class="col-md-6 col-xs-6 col-lg-6">
                         <button id="checkOut-butn" (click)="cancelEmp()"> Cancel </button>
@@ -135,7 +135,7 @@
             </div>
           </form> -->
           <div class="mb-3">
-            <!-- <table  id="test" *ngIf="purchasetable">
+            <!-- <table  id="test">
               <thead style="background-color: #3c8dbc;color:white;">
                 <th style="padding-right: 10px;padding: 9px;">No.</th> 
                 <th style="padding-right: 10px;padding: 9px;">Product Name </th> 
@@ -166,7 +166,8 @@
                         
               </tbody>
             </table> -->
-            <div align="center">
+
+            <div>
 
               <div class="grid-container">
                <div class="purchase-text ">
@@ -216,62 +217,20 @@
                </th>
                </tr>
                
-               <tr>
+               <tr *ngFor="let item of purchaseOrderList; let i = index">
                <td>
                 <input type="checkbox"  />
                </td>
-                 <td>005</td>
-                 <td>23-98-2020</td>
-                 <td>Open</td>
-               <td>John</td>
-                 <td>Electronic</td>
-                 <td>Laptop</td>
-               <td>20000</td>
-                 <td>22000</td>
+                 <td>P10000</td>
+                 <td>{{item.date}}</td>
+                 <td>{{item.status}}</td>
+               <td>{{item.vendorname}}</td>
+                 <td>{{item.categoryname}}</td>
+                 <td>{{item.productname}}</td>
+               <td>-</td>
+                 <td>{{item.totalqty}}</td>
                </tr>
-               
-               <tr>
-               <td>
-                <input type="checkbox"  />
-               </td>
-               <td>005</td>
-                 <td>23-98-2020</td>
-                 <td>Open</td>
-               <td>John</td>
-                 <td>Electronic</td>
-                 <td>Laptop</td>
-               <td>20000</td>
-                 <td>22000</td>
-               </tr>
-               
-               <tr>
-               <td>
-                <input type="checkbox"  />
-               </td>
-                 <td>005</td>
-                 <td>23-98-2020</td>
-                 <td>Open</td>
-               <td>John</td>
-                 <td>Electronic</td>
-                 <td>Laptop</td>
-               <td>20000</td>
-                 <td>22000</td>
-               </tr>
-               
-               <tr>
-               <td>
-                <input type="checkbox"  />
-               </td>
-                 <td>005</td>
-                 <td>23-98-2020</td>
-                 <td>Open</td>
-               <td>John</td>
-                 <td>Electronic</td>
-                 <td>Laptop</td>
-               <td>20000</td>
-                 <td>22000</td>
-               </tr>
-             </table>
+               </table>
              </div>
 
 
@@ -281,5 +240,4 @@
       </div>
     </div>                    
   </div>
-  <br/><br/><br/>
-</div>
+  
