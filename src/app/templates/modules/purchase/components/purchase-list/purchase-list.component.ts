@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { PurchaseService } from '../../services/purchase.service';
 import { MatSnackBar } from "@angular/material/snack-bar";
+import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
+import {
+  PurchaseAddComponent,
+  Status
+} from "../purchaseadd/purchaseadd.component";
 
 @Component({
   selector: 'app-purchaselist',
@@ -9,10 +14,12 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 })
 export class PurchaseListComponent  implements OnInit  {
   purchaseOrderList: any;
+  dialogConfig = new MatDialogConfig();
 
   constructor( 
     private purchaseService:PurchaseService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
     ) { 
   }
 
@@ -34,6 +41,25 @@ export class PurchaseListComponent  implements OnInit  {
         });
       }
     );
+  }
+
+  addPurchaseOrder(){
+    //this.successdialog = 'block';
+
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+      'top': '1000',
+      left: '100'
+    };
+    this.dialog.open(PurchaseAddComponent,{
+      panelClass: 'addpromotion'
+     // data: {dialogTitle: "hello", dialogText: "text"},
+    })
+    .afterClosed().subscribe(result => {
+      this.getPurchaseOrderLists ();
+    });
+    
   }
   
 }

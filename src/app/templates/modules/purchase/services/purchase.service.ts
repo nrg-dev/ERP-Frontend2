@@ -136,4 +136,11 @@ export class PurchaseService {
         return this.http.get(`${environment.apiUrl}${API_ENDPOINTS.GET_PURCHASE_ORDER_LIST}`);
     }
 
+    addPurchaseOrder(data: any){
+        // return this.http.post(this.commonURL+'saveReturn',returnarray);
+         return this.http.post(
+             `${environment.apiUrl}${API_ENDPOINTS.ADD_PURCHASE_ORDER_LIST}`,
+             data
+           );   
+     }
 }

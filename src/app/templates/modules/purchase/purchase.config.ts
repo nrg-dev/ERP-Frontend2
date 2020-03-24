@@ -16,4 +16,5 @@ export const API_ENDPOINTS = {
   loadItemName: `/item/loadItemName`,
   load: `/item/load`,
   GET_PURCHASE_ORDER_LIST: `/purchase/loadPO`,
+  ADD_PURCHASE_ORDER_LIST: `/purchase/savePO`,
 };

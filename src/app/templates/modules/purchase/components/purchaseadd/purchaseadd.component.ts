@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Renderer2, AfterViewInit } from '@angular/core';
+import { formatDate } from '@angular/common';
 import { Purchase } from 'src/app/core/common/_models';
 import { AlertService } from 'src/app/core/common/_services';
 import { Router } from '@angular/router';
@@ -6,6 +7,7 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import { PurchaseService } from '../../services/purchase.service';
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { VendorService } from 'src/app/templates/modules/vendor-and-customer/services/vendor.service';
 
 //==== Status 
 @Component({
@@ -18,6 +20,7 @@ export class Status {
 
   constructor(
     public dialogRef: MatDialogRef<Status>,
+    
     ) {
 
     }
@@ -36,7 +39,7 @@ export class Status {
   templateUrl: './purchaseadd.component.html',
   styleUrls: ['./purchaseadd.component.scss']
 })
-export class PurchaseAddComponent  implements OnInit  {
+export class PurchaseAddComponent  implements OnInit, AfterViewInit {
   purchase:Purchase = new Purchase();
   model: any ={};
   public purchasetable = false;
@@ -47,21 +50,28 @@ export class PurchaseAddComponent  implements OnInit  {
   fieldArray: Array<any> = [];
   purchasesearcharray: Array<any> = [];
 
-  productList: any = {};
-  categoryList: any = {};
-  vendorList:  any = {};
-
+  productList: any;
+  categoryList: any;
   firstField = true;
-  
+  vendorList: any;
+  //purchaseDate: any;
+  currentDate = new Date();
+  purchaseDate: any;
+
   constructor( 
     private dialog: MatDialog,
     private purchaseService:PurchaseService,
     private router: Router, private alertService: AlertService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private renderer: Renderer2,
+    private vendorservice: VendorService,
+    private dialogRef: MatDialogRef<Status>
     ) { 
+      this.purchaseDate = formatDate(this.currentDate, 'dd/MMM/yyy', 'en-US');
   }
 
   ngOnInit() {
+    this.model.subtotal = 0;
     this.purchasetable = false;
     this.getcategoryList();
     this.model.sNo = 0;
@@ -73,8 +83,17 @@ export class PurchaseAddComponent  implements OnInit  {
     }else{
 
     }
+    this.getVendorLists();
   }
-
+  ngAfterViewInit() {
+    let dialog1 = document.getElementById('mat-dialog-0');
+    let dialog2 = document.getElementById('mat-dialog-1');
+    if (dialog1 !== null) {
+      dialog1.style.background = 'inherit';
+    } else {
+      dialog2.style.background = 'inherit';
+    }
+  }
   getcategoryList(){
     this.purchaseService.loadCategory()
     .subscribe(res => { 
@@ -287,5 +306,107 @@ export class PurchaseAddComponent  implements OnInit  {
   purchaseInvoice(){
     //this.htmlData = this.Status;
   }
+
+  getVendorLists() {
+    this.vendorservice.load()
+     .subscribe(
+        data => {
+          this.vendorList = data;
+         },
+       error => {
+         	
+		setTimeout(() => {
+      this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+        panelClass: ["error"],
+        verticalPosition: 'top'      
+      });
+    });   
+
+      }
+     );
+  }
+
+  addPurchaseOrder() {
+    let categoryname = '';
+    let categorycode = '';
+    let productname = '';
+    let productcode = '';
+    let vendorname = '';
+    let vendorcode = '';
+    let qty         = '';
+
+    if (this.model.qty !== null && this.model.price !== null) {
+      this.model.subtotal = Number.parseInt(this.model.qty) * this.model.price;
+    }
+
+    if (this.model.category !== undefined) {
+      const splitCategory = this.model.category.split('-');
+      categoryname  = splitCategory[0];
+      categorycode  = splitCategory[1];
+    }
+
+    if (this.model.vendorName !== undefined) {
+      const splitVendor = this.model.vendorName.split('-');
+      vendorname = splitVendor[0];
+      vendorcode = splitVendor[1];
+    }
+
+    if (this.model.productName !== undefined) {
+      const splitProduct = this.model.productName.split('-');
+      productname = splitProduct[0];
+      productcode = splitProduct[1];
+    }
+
+    // if (this.model.unit !== undefined && this.model.qty !== undefined) {
+    //   qty = this.model.qty+' '+this.model.unit;
+    // } else if (this.model.qty !== undefined) {
+    //   qty = this.model.qty;
+    // }
+    const addPurchaseData = {
+      "categoryname": categoryname, 
+      "categorycode": categorycode,
+      "productname": productname,
+      "productcode": productcode, 
+      "vendorname": vendorname, 
+      "vendorcode": vendorcode, 
+      "qty": (this.model.qty !== null) ? this.model.qty:0,
+      "subtotal":this.model.subtotal,
+      "date": this.purchaseDate,
+      "description": '',
+      "status" : "Open"
+     };
+
+    this.purchaseService.addPurchaseOrder(addPurchaseData)
+    .subscribe(res => { 
+      if (res === null) {
+        setTimeout(() => {
+          this.snackBar.open("Purchase Order created Successfully", "dismss", {
+            panelClass: ["success"],
+            verticalPosition: 'top'      
+          });
+        });
+        this.getProductList();
+        this.dialogRef.close();
+      }
+      },
+      error => {
+        setTimeout(() => {
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });
+  }
+);
+}
   
+  onSubTotalCalc(value:any, type: string) {
+    if (value !== 'NaN' && type === 'price' && this.model.qty !== undefined) {
+      this.model.subtotal = Number.parseInt(value) * this.model.qty;
+      document.getElementById("total").innerHTML = this.model.subtotal;
+    } else if (value !== 'NaN' && type === 'qty' && this.model.price !== undefined) {
+      this.model.subtotal = value * Number.parseInt(this.model.price);
+      document.getElementById("total").innerHTML = this.model.subtotal;
+    }
+  }
 }
