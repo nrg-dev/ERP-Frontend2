@@ -1,101 +1,159 @@
 @import "_base";
 
-.table {
-	color:white !important;
-    font-family: "Open Sans" !important;
-    width: 100%;
-}
+// .table {
+// 	color:white !important;
+//     font-family: "Open Sans" !important;
+//     width: 100%;
+// }
 
-.table td, .table th {
-    margin: 0;
-	border: none;padding-bottom: 12px;
-	text-align: left;
-	border-spacing: 10px !important;
-    padding: 10px !important;
+// .table td, .table th {
+//     margin: 0;
+// 	border: none;padding-bottom: 12px;
+// 	text-align: left;
+// 	border-spacing: 10px !important;
+//     padding: 10px !important;
 
-}
+// }
 
-.tbody{
-	background-color: #1A2D39;
-	overflow: visible;
-    position: absolute;
-    width: 1557.6px;
-    height: 76px;
-    left: 0px;
-    top: 76px;
-  }
+// .tbody{
+// 	background-color: #1A2D39;
+// 	overflow: visible;
+//     position: absolute;
+//     width: 1557.6px;
+//     height: 76px;
+//     left: 0px;
+//     top: 76px;
+//   }
 
-  *{
+//   *{
+//     color: white;
+//     }
+//     .purchase-text {
+//         float: left;
+//     }
+    
+//     #customers th {
+//       padding-top: 12px;
+//       padding-bottom: 12px;
+//       text-align: left;
+//       background-color: #17252E;
+//       color: white;
+//     }
+//     #customers tr {
+//         background-color: #1B2D39;
+//         height: 2rem;
+//     }
+//     .addpurchase-btn{
+//         float: right;
+//     }
+//     body {background-color: #16222B;}
+    
+//     #addpurchase-btn{
+//         width: 60%;
+//         height: 1.9rem;
+//         background: #1585A2;
+//         border: none;
+//         border-radius: 20px;
+//         margin: 1rem;
+//     }
+    
+//     .grid-container {
+//       display: grid;
+//       grid-template-columns: auto auto auto auto auto;
+//       grid-gap: 10px;
+//       padding: 10px;
+//     }
+//     #select-box{
+//       background-color: #17252E;
+//       border: none;
+//     }
+
+// ::ng-deep body {
+//     background-color: rgba(21,34,43,1);
+// }
+// tr {
+//     border-top: 10px solid #15222b;
+//     height: 70px;
+// }
+// #Purchase_Orders {
+//     position: absolute;
+//     font-family: Open Sans;
+//     font-style: normal;
+//     font-weight: bold;
+//     font-size: 24px;
+//     color: rgba(255,255,255,1);
+// }
+// button {
+//     overflow: visible;
+//     white-space: nowrap;
+//     text-align: left;
+//     font-family: Open Sans;
+//     font-style: normal;
+//     float: right;
+//     color: white;
+//     background: #1585A2;
+//     border: 1px solid #1585A2;
+//     border-radius: 20px;
+//     padding: 0.5rem;
+//     font-size: 14px;
+//     margin-left: 10px;
+// }
+
+#purchase-wrapper{color:#fff;  font-family: 'Open Sans'; font-size: 14px;}
+
+h3{color:#fff;}
+.m-t-25{margin-top: 25px;}
+.table>thead>tr>th, .table>tbody>tr>td{height:30px; border-top:15px solid #15222B; border-bottom:15px solid #15222B;color:#fff}
+.button {
+    background-color: #1186AA;
+    border: none;
     color: white;
-    }
-    .purchase-text {
-        float: left;
-    }
-    
-    #customers th {
-      padding-top: 12px;
-      padding-bottom: 12px;
-      text-align: left;
-      background-color: #17252E;
-      color: white;
-    }
-    #customers tr {
-        background-color: #1B2D39;
-        height: 2rem;
-    }
-    .addpurchase-btn{
-        float: right;
-    }
-    body {background-color: #16222B;}
-    
-    #addpurchase-btn{
-        width: 60%;
-        height: 1.9rem;
-        background: #1585A2;
-        border: none;
-        border-radius: 20px;
-        margin: 1rem;
-    }
-    
-    .grid-container {
-      display: grid;
-      grid-template-columns: auto auto auto auto auto;
-      grid-gap: 10px;
-      padding: 10px;
-    }
-    #select-box{
-      background-color: #17252E;
-      border: none;
-    }
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.button5 {
+    border-radius: 30px;
+    margin-top: 15px; float: right;
+    padding: 5px;
+    font-size: 15px;
+    margin-right: 10px;
+}
+.back-colr{background-color:#15222B;}
 
-::ng-deep body {
-    background-color: rgba(21,34,43,1);
-}
-tr {
-    border-top: 10px solid #15222b;
-    height: 70px;
-}
-#Purchase_Orders {
-    position: absolute;
-    font-family: Open Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 24px;
-    color: rgba(255,255,255,1);
-}
 button {
-    overflow: visible;
-    white-space: nowrap;
-    text-align: left;
-    font-family: Open Sans;
-    font-style: normal;
-    float: right;
-    color: white;
-    background: #1585A2;
-    border: 1px solid #1585A2;
-    border-radius: 20px;
-    padding: 0.5rem;
-    font-size: 14px;
-    margin-left: 10px;
+        overflow: visible;
+        white-space: nowrap;
+        text-align: left;
+        font-family: Open Sans;
+        font-style: normal;
+        float: right;
+        color: white;
+        background: #1585A2;
+        border: 1px solid #1585A2;
+        border-radius: 20px;
+        padding: 0.5rem;
+        font-size: 14px;
+        margin-top: 12px;
+    }
+
+    .create-button {
+        float: right;
+        color: white;
+        background: #1585A2;
+        border: 1px solid #1585A2;
+        margin-right: 10px;
 }
+
+  @media screen and (min-device-width: 320px) and (max-device-width: 767px){
+  .back-colr{float:left;}
+  body{font-size: 12px;}
+  .table>thead>tr>th, .table>tbody>tr>td{font-size: 11px;}
+  table>thead>tr>th>div.custom-control{position: relative;
+    top: 17px;}
+  }
 

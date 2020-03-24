@@ -15,6 +15,10 @@ import {
 export class PurchaseListComponent  implements OnInit  {
   purchaseOrderList: any;
   dialogConfig = new MatDialogConfig();
+  prodArr     =  [];
+  isCreateReturn: boolean = false;
+  isDeleteButton: boolean = false;
+  isCreateInvoice: boolean = false;
 
   constructor( 
     private purchaseService:PurchaseService,
@@ -26,7 +30,39 @@ export class PurchaseListComponent  implements OnInit  {
   ngOnInit() {
     this.getPurchaseOrderLists();
   }
-   
+  
+  getDeleteButtonStyle() {
+    if (!this.isDeleteButton) {
+      let myStyles = {
+        'color': 'gray',
+        'background': '#1A2D39',
+        'border':'1px solid #1A2D39'
+      };
+    return myStyles;
+  }
+}  
+
+getCreateReturnStyle() {
+  if (!this.isCreateReturn) {
+    let myStyles = {
+      'color': 'gray',
+      'background': '#1A2D39',
+      'border':'1px solid #1A2D39'
+    };
+  return myStyles;
+}
+}  
+
+getCreateInvoiceStyle() {
+  if (!this.isCreateInvoice) {
+    let myStyles = {
+      'color': 'gray',
+      'background': '#1A2D39',
+      'border':'1px solid #1A2D39'
+    };
+  return myStyles;
+}
+}  
   getPurchaseOrderLists(){
     this.purchaseService.getPurchaseOrderLists()
     .subscribe(res => { 
@@ -42,9 +78,15 @@ export class PurchaseListComponent  implements OnInit  {
       }
     );
   }
-  rowSelected(productcode:string){
-    console.log("Selected code-->"+productcode);
-  }
+  
+  rowSelected(index: number, item: any, isChecked: boolean) {
+    if (isChecked) {
+      this.prodArr.push(item);
+    } else {
+      this.prodArr.splice(index);
+    }
+    console.log('prodArr', this.prodArr)
+}
 
   addPurchaseOrder(){
     //this.successdialog = 'block';
