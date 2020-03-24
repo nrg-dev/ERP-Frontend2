@@ -1,31 +1,9 @@
-:host {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+.thead{
+  background-color:#1A2D39;margin: 0;color: white;
+  border: none;padding-bottom: 12px;
+  text-align: left;
 }
 
-:host ::ng-deep .mat-tab-labels {
-  flex-direction: column;
-}
-
-mat-tab-group {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: row;
-}
-
-:host ::ng-deep .mat-tab-body-wrapper {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-mat-tab-body {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-:host ::ng-deep mat-ink-bar {
-  display: none;
+.tbody{
+  background-color: #1A2D39;
 }
