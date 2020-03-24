@@ -1,7 +1,7 @@
 
 <div class="table-responsive">
-  <table class="table" style="border-spacing: 0 7px;">
-    <thead>
+  <table class="table">
+    <thead style="background-color: #17252F; font-family: Open Sans">
       <tr>
         <th>Numbers</th>
         <th>Date</th>
@@ -13,7 +13,7 @@
         <th>Sub Total</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody style="background-color:#1A2D39;">
       <tr *ngFor="let item of purchaseOrderList; let i = index">
         <td>{{item.productcode}}</td>
         <td>{{item.date}}</td>

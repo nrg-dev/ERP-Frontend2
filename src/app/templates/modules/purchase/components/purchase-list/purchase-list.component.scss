@@ -1,12 +1,25 @@
 @import "_base";
 
-.thead{
-	background-color:#1A2D39;margin: 0;color: white;
+.table {
+	color:white !important;
+	font-family: "Open Sans" !important;
+}
+
+.table td, .table th {
+    margin: 0;
 	border: none;padding-bottom: 12px;
 	text-align: left;
-  }
-  
-  .tbody{
+	border-spacing: 10px !important;
+    padding: 10px !important;
+
+}
+
+.tbody{
 	background-color: #1A2D39;
-	
+	overflow: visible;
+    position: absolute;
+    width: 1557.6px;
+    height: 76px;
+    left: 0px;
+    top: 76px;
   }
