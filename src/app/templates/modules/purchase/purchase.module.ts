@@ -56,6 +56,7 @@ import { PurchaseService } from "./services/purchase.service";
 import { PurchaseReturnComponent } from "./components/purchase-return/purchase-return.component";
 import { PurchasereportComponent } from "./components/purchasereport/purchasereport.component";
 import { PurchaseListComponent } from "./components/purchase-list/purchase-list.component";
+import { VendorService } from 'src/app/templates/modules/vendor-and-customer/services/vendor.service';
 
 @NgModule({
   declarations: [
@@ -116,7 +117,7 @@ import { PurchaseListComponent } from "./components/purchase-list/purchase-list.
     MatTreeModule,
     MatPaginatorModule
   ],
-  providers: [PurchaseService],
-  entryComponents: [ViewInvoice, EditInvoice, Status, Filter]
+  providers: [PurchaseService, VendorService],
+  entryComponents: [ViewInvoice, EditInvoice, Status, Filter,PurchaseAddComponent]
 })
 export class PurchaseModule {}
