@@ -27,6 +27,7 @@
   <table class="table">
     <thead style="background-color: #17252F; font-family: Open Sans">
       <tr>
+        <th>#</th>
         <th>Numbers</th>
         <th>Date</th>
         <th>Status</th>
@@ -39,6 +40,8 @@
     </thead>
     <tbody style="background-color:#1A2D39;">
       <tr *ngFor="let item of purchaseOrderList; let i = index">
+        <td><input type="checkbox" ng-model="checkboxModel.value2" (click)="rowSelected(item.productcode)"
+          ng-true-value="'YES'" ng-false-value="'NO'"></td>
         <td>{{item.productcode}}</td>
         <td>{{item.date}}</td>
         <td>{{item.status}}</td>
