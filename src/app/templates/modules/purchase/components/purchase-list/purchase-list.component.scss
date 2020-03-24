@@ -23,3 +23,46 @@
     left: 0px;
     top: 76px;
   }
+
+  *{
+    color: white;
+    }
+    .purchase-text {
+        float: left;
+    }
+    
+    #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #17252E;
+      color: white;
+    }
+    #customers tr {
+        background-color: #1B2D39;
+        height: 2rem;
+    }
+    .addpurchase-btn{
+        float: right;
+    }
+    body {background-color: #16222B;}
+    
+    #addpurchase-btn{
+        width: 60%;
+        height: 1.9rem;
+        background: #1585A2;
+        border: none;
+        border-radius: 20px;
+        margin: 1rem;
+    }
+    
+    .grid-container {
+      display: grid;
+      grid-template-columns: auto auto auto auto auto;
+      grid-gap: 10px;
+      padding: 10px;
+    }
+    #select-box{
+      background-color: #17252E;
+      border: none;
+    }
