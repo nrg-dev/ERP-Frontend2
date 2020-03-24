@@ -172,7 +172,7 @@
                
                <div>
                <div style="border-bottom: 1px solid #4D616D;">
-               <h2 id="height1rem">Add Purchase Order</h2>
+               <h2 id="height1rem" style="font-size: 20px;margin-top: 20px;">Add Purchase Order</h2>
               <div class="grid-container2">
                <div>
                 <p id="shadow-textcolor">Date</p>
@@ -197,7 +197,7 @@
                </div>
               </div>
               
-              <p id="height1rem" style="color: #6E7D87;">Product Category</p>
+              <p id="height1rem" style="color: #6E7D87;margin-bottom: 0.6rem;">Product Category</p>
                 
                 <select [(ngModel)]="model.category" #category="ngModel" name="category" id="Category-selectbox">
                   <option [ngValue]="undefined" hidden selected> Select Category </option>
@@ -208,7 +208,7 @@
                 
                 <div class="grid-container6">
                   <div>
-                  <p id="shadow-textcolor">Product</p>
+                  <p id="shadow-textcolor" style="margin-bottom: 0.6rem;">Product</p>
                  <select id="Category-selectbox2" [(ngModel)]="model.productName" #productName="ngModel" name="productName">
                   <option [ngValue]="undefined" hidden selected> Select Product </option>
                      <option style="color:inherit" *ngFor="let item of productList" value="{{ item.productname }}-{{ item.prodcode }}"> 
@@ -218,7 +218,7 @@
                
                   <div>
                 
-                    <p id="font-size">Price</p>
+                    <p id="font-size" style="margin-bottom: 0.6rem;">Price</p>
                   <!-- <p style="font-size: 12px;">0.003</p> -->
                   <input type="number" min="0" id="Category-selectbox3" style="width:100%" 
                   [(ngModel)]="model.price" #price="ngModel" name="price" 
@@ -228,14 +228,14 @@
               
               <div class="grid-container7">
                   <div>
-                  <p id="shadow-textcolor">Quantity</p>
+                  <p id="shadow-textcolor" style="margin-bottom: 0.6rem;">Quantity</p>
                  <input type="number" min="0" id="Category-selectbox3" [(ngModel)]="model.qty" #qty="ngModel" 
                  name="qty" (input)="onSubTotalCalc($event.target.value, 'qty')">
                   </div>
                
                   <div>
                 
-                    <p id="font-size">Unit</p>
+                    <p id="font-size" style="margin-bottom: 0.6rem;">Unit</p>
                     <input type="text" style="width:35%" id="Category-selectbox3" [(ngModel)]="model.unit" #unit="ngModel" 
                     name="unit">
                   </div>
