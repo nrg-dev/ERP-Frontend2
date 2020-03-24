@@ -42,6 +42,9 @@ export class PurchaseListComponent  implements OnInit  {
       }
     );
   }
+  rowSelected(productcode:string){
+    console.log("Selected code-->"+productcode);
+  }
 
   addPurchaseOrder(){
     //this.successdialog = 'block';
