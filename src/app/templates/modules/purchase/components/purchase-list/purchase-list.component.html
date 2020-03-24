@@ -1,19 +1,5 @@
 <div>
 
-  <div class="grid-container">
-   <div class="purchase-text ">
-     <h2> Purchase order</h2>
-   </div>
-   <div></div>
-   <div></div>
-   <div></div>
-   <div class="item1">
-     <button id="addpurchase-btn" (click)="addPurchaseOrder()">
-     <i class="fa fa-plus" aria-hidden="true"></i>
-     Add Purchase Order</button>
-   </div>
-  </div>
- <br/><br/>
 <div class="table-responsive">
   <div class="row">
     <div class="col-lg-4">
@@ -31,7 +17,7 @@
       <button id="create_Invoice">
         <span>Create Invoice</span>
       </button>
-      <button id="Add_Purchase_Order">
+      <button id="Add_Purchase_Order" (click)="addPurchaseOrder()">
         <span>+ Add Purchase Order</span>
       </button>
     </div>
