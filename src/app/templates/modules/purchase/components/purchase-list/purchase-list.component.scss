@@ -116,15 +116,8 @@ h3{color:#fff;}
     margin: 4px 2px;
     cursor: pointer;
 }
-.button5 {
-    border-radius: 30px;
-    margin-top: 15px; float: right;
-    padding: 5px;
-    font-size: 15px;
-    margin-right: 10px;
-}
-.back-colr{background-color:#15222B;}
 
+.back-colr{background-color:#15222B;}
 button {
         overflow: visible;
         white-space: nowrap;
@@ -148,6 +141,11 @@ button {
         border: 1px solid #1585A2;
         margin-right: 10px;
 }
+.button5 {
+    border-radius: 30px;
+    margin-top: 15px; float: right;
+    padding: 5px;
+    font-size: 15px;}
 
   @media screen and (min-device-width: 320px) and (max-device-width: 767px){
   .back-colr{float:left;}
@@ -156,4 +154,7 @@ button {
   table>thead>tr>th>div.custom-control{position: relative;
     top: 17px;}
   }
+
+.h3{color:#fff;}
+
 
