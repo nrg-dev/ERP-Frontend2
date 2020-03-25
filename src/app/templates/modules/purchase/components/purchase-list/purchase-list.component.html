@@ -1,62 +1,5 @@
-<!-- <div>
 
-<div class="table-responsive">
-  <div class="row">
-    <div class="col-lg-4">
-      <div id="Purchase_Orders">
-        <h3>Purchase Orders</h3>
-      </div>
-    </div>
-    <div class="col-lg-8">
-      <button id="delete">
-          <i class="fas fa-trash"></i>
-      </button>
-      <button id="create_Return">
-        <span>Create Return</span>
-      </button>
-      <button id="create_Invoice">
-        <span>Create Invoice</span>
-      </button>
-      <button id="Add_Purchase_Order" (click)="addPurchaseOrder()">
-        <span>+ Add Purchase Order</span>
-      </button>
-    </div>
-  </div>
-  <br/><br/>
-
-  <table class="table">
-    <thead style="background-color: #17252F; font-family: Open Sans">
-      <tr>
-        <th>#</th>
-        <th>Numbers</th>
-        <th>Date</th>
-        <th>Status</th>
-        <th>Vendor</th>
-        <th>Category</th>
-        <th>Product Name</th>
-        <th>Quantity</th>
-        <th>Sub Total</th>
-      </tr>
-    </thead>
-    <tbody style="background-color:#1A2D39;">
-      <tr *ngFor="let item of purchaseOrderList; let i = index">
-        <td><input type="checkbox" ng-model="checkboxModel.value2" (click)="rowSelected(item)"
-          ng-true-value="'YES'" ng-false-value="'NO'"></td>
-        <td>{{item.productcode}}</td>
-        <td>{{item.date}}</td>
-        <td>{{item.status}}</td>
-        <td>{{item.vendorname}}</td>
-        <td>{{item.categoryname}}</td>
-        <td>{{item.productname}}</td>
-        <td>{{item.qty}}</td>
-        <td>{{item.subtotal}}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-</div> -->
-
-<div class="container-fluid" id="purchase-wrapper">
+<div class="container-fluid" id="purchase-wrapper"> 
   <div class="row back-colr">
   <div class="container">
   <div><h3 style="float:left;">Purchase Orders</h3> 
@@ -70,11 +13,11 @@
       <button  [disabled]="!isCreateInvoice ? true:false" class="create-button" [ngStyle]="getCreateInvoiceStyle()">
         Create Invoice
     </button>
-     
-        <a href="javascript:0" class="btn btn-info btn-lg button5" (click)="addPurchaseOrder()">
-          <span class="fas fa-plus" style="font-size: 12px;"></span> Add Purchase Order 
-        </a>
-        
+
+    <button  (click)="addPurchaseOrder()" [disabled]="isAddPurchaseOrder" class="create-button" [ngStyle]="getAddPurchaseOrderStyle()">
+      <span class="fas fa-plus" style="font-size: 12px;"></span> Add Purchase Order 
+  </button>
+         
   </div>
   <table class="table m-t-25">
     <thead style="background-color: #17252F;">
@@ -94,10 +37,13 @@
        </tr>
     </thead>
     <tbody>
-      <tr style="background-color:#1A2D39" *ngFor="let item of purchaseOrderList; let i = index">
+      <tr style="background-color:#1A2D39" *ngFor="let item of purchaseOrderList; let i = index" 
+      (mouseenter) ="mouseEnter(i,item.status)" 
+      (mouseleave) ="mouseLeave(i,item.status)">
 	  <td><div class="custom-control custom-checkbox">
                   <!-- <input type="checkbox" class="custom-control-input" id="customCheck2"> -->
-                  <input type="checkbox" class="" id="customCheck2" (click)="rowSelected(i,item, $event.target.checked)">
+                  <input type="checkbox" class="" id="customCheck2" 
+                  (click)="rowSelected(i,item, $event.target.checked)">
                
               </div>
 			  </td>
@@ -109,82 +55,12 @@
         <td>{{item.productname}}</td>
 		<td>{{item.qty}}</td>
         <td>{{item.subtotal}}
-          <span *ngIf="isShowEditDelete[i] && prodArr.length === 1" class="fas fa-pen" 
+          <span *ngIf="isShowEditDelete[i]" class="fas fa-pen" 
           style="padding-right: 20px;"></span>
-          <span *ngIf="isShowEditDelete[i] && prodArr.length === 1" class="fas fa-trash"></span>
+          <span *ngIf="isShowEditDelete[i]" class="fas fa-trash"></span>
         </td>
        </tr>
-      <!-- <tr style="background-color:#1A2D39">
-	  <td><div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customCheck2">
-                 
-              </div></td>
-        <td>005</td>
-        <td>21/03/2020</td>
-        <td>Open</td>
-		<td>Carbon Composite</td>
-        <td>Carbon Fiber</td>
-        <td>Carbon Powder</td>
-		<td>30 grams</td>
-        <td>5,000.00</td>
-       </tr>
-       <tr style="background-color:#1A2D39">
-	  <td><div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customCheck2">
-                 
-              </div></td>
-        <td>005</td>
-        <td>21/03/2020</td>
-        <td><span style="color:rgba(20,154,82,1)">Invoiced</span></td>
-		<td>Carbon Composite</td>
-        <td>Carbon Fiber</td>
-        <td>Carbon Powder</td>
-		<td>30 grams</td>
-        <td>5,000.00</td>
-       </tr>
-	    <tr style="background-color:#1A2D39">
-	  <td><div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customCheck2">
-                 
-              </div></td>
-        <td>005</td>
-        <td>21/03/2020</td>
-        <td>Open</td>
-		<td>Carbon Composite</td>
-        <td>Carbon Fiber</td>
-        <td>Carbon Powder</td>
-		<td>30 grams</td>
-        <td>5,000.00</td>
-       </tr>
-	    <tr style="background-color:#1A2D39">
-	  <td><div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customCheck2">
-                 
-              </div></td>
-        <td>005</td>
-        <td>21/03/2020</td>
-        <td><span style="color:rgba(20,154,82,1)">Invoiced</span></td>
-		<td>Carbon Composite</td>
-        <td>Carbon Fiber</td>
-        <td>Carbon Powder</td>
-		<td>30 grams</td>
-        <td>5,000.00</td>
-       </tr>
-	    <tr style="background-color:#1A2D39">
-	  <td><div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customCheck2">
-                 
-              </div></td>
-        <td>005</td>
-        <td>21/03/2020</td>
-        <td><span style="color:rgba(20,154,82,1)">Invoiced</span></td>
-		<td>Carbon Composite</td>
-        <td>Carbon Fiber</td>
-        <td>Carbon Powder</td>
-		<td>30 grams</td>
-        <td>5,000.00</td>
-       </tr> -->
-    </tbody>
+     </tbody>
   </table>
 </div>
     </div>

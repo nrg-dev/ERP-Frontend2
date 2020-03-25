@@ -22,6 +22,7 @@ export class PurchaseListComponent  implements OnInit  {
   isDeleteButton: boolean = false;
   isCreateInvoice: boolean = false;
   isShowEditDelete = [];
+  isAddPurchaseOrder: boolean = false;
 
   constructor( 
     private purchaseService:PurchaseService,
@@ -54,10 +55,21 @@ getCreateReturnStyle() {
     };
   return myStyles;
 }
-}  
+}   
 
 getCreateInvoiceStyle() {
   if (!this.isCreateInvoice) {
+    let myStyles = {
+      'color': 'gray',
+      'background': '#1A2D39',
+      'border':'1px solid #1A2D39'
+    };
+  return myStyles;
+}
+}  
+
+getAddPurchaseOrderStyle() {
+  if (this.isAddPurchaseOrder) {
     let myStyles = {
       'color': 'gray',
       'background': '#1A2D39',
@@ -84,18 +96,31 @@ getCreateInvoiceStyle() {
   
   rowSelected(index: number, item: any, isChecked: boolean) {
     if (isChecked) {
+      item.indexVal = index;
       this.prodArr.push(item);
-      this.isCheckedArr.push(true);
+      this.isCheckedArr.push({checked: true, indexVal:index});
       this.vendorArr.push(item.vendorname);
-      this.isShowEditDelete.push(true);
+      this.isShowEditDelete[index] = false;
     } else {
-      this.prodArr.splice(index);
-      this.isCheckedArr.splice(index);
+      this.isCheckedArr.forEach((item, indexCheck) => {
+        if (item.indexVal === index) {
+          this.isCheckedArr.splice(indexCheck, 1);
+        }
+      });
+
+      this.prodArr.forEach((item, indexCheck) => {
+        if (item.indexVal === index) {
+          this.prodArr.splice(indexCheck, 1);
+        }
+      });
       this.vendorArr.splice(index);
-      this.isShowEditDelete.splice(index);
     }
 
+    console.log('lenght', this.prodArr.length)
+    console.log('prodArr', this.prodArr)
+
     if (this.prodArr.length > 0) {
+      this.isAddPurchaseOrder = true;
       this.prodArr.forEach((item, index) => {
         const status = item.status;
         const vendorName = item.vendorname;
@@ -129,6 +154,7 @@ getCreateInvoiceStyle() {
     this.isCreateInvoice = false;
     this.isCreateReturn = false;
     this.isDeleteButton = false;
+    this.isAddPurchaseOrder = false;
   }
     
 }
@@ -150,6 +176,18 @@ getCreateInvoiceStyle() {
       this.getPurchaseOrderLists ();
     });
     
+  }
+
+  mouseEnter(index: number, status: string) {
+    if (this.isCheckedArr.length === 0 && status === 'Open') { 
+      this.isShowEditDelete[index] = true;
+    }
+  }
+
+  mouseLeave(index: number, status: string) {
+    if (this.isCheckedArr.length === 0 && status === 'Open') {
+      this.isShowEditDelete[index] = false;
+    }
   }
   
 }
