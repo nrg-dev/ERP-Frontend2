@@ -72,7 +72,7 @@
     </button>
      
         <a href="javascript:0" class="btn btn-info btn-lg button5" (click)="addPurchaseOrder()">
-          <span class="glyphicon glyphicon-plus" style="font-size: 12px;"></span> + Add Purchase Order 
+          <span class="fas fa-plus" style="font-size: 12px;"></span> Add Purchase Order 
         </a>
         
   </div>
@@ -108,7 +108,11 @@
         <td>{{item.categoryname}}</td>
         <td>{{item.productname}}</td>
 		<td>{{item.qty}}</td>
-        <td>{{item.subtotal}}</td>
+        <td>{{item.subtotal}}
+          <span *ngIf="isShowEditDelete[i] && prodArr.length === 1" class="fas fa-pen" 
+          style="padding-right: 20px;"></span>
+          <span *ngIf="isShowEditDelete[i] && prodArr.length === 1" class="fas fa-trash"></span>
+        </td>
        </tr>
       <!-- <tr style="background-color:#1A2D39">
 	  <td><div class="custom-control custom-checkbox">

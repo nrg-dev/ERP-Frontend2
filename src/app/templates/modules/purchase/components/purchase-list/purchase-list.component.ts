@@ -16,9 +16,12 @@ export class PurchaseListComponent  implements OnInit  {
   purchaseOrderList: any;
   dialogConfig = new MatDialogConfig();
   prodArr     =  [];
+  isCheckedArr     =  [];
+  vendorArr     =  [];
   isCreateReturn: boolean = false;
   isDeleteButton: boolean = false;
   isCreateInvoice: boolean = false;
+  isShowEditDelete = [];
 
   constructor( 
     private purchaseService:PurchaseService,
@@ -82,10 +85,52 @@ getCreateInvoiceStyle() {
   rowSelected(index: number, item: any, isChecked: boolean) {
     if (isChecked) {
       this.prodArr.push(item);
+      this.isCheckedArr.push(true);
+      this.vendorArr.push(item.vendorname);
+      this.isShowEditDelete.push(true);
     } else {
       this.prodArr.splice(index);
+      this.isCheckedArr.splice(index);
+      this.vendorArr.splice(index);
+      this.isShowEditDelete.splice(index);
     }
-    console.log('prodArr', this.prodArr)
+
+    if (this.prodArr.length > 0) {
+      this.prodArr.forEach((item, index) => {
+        const status = item.status;
+        const vendorName = item.vendorname;
+        if (this.prodArr.length > 1) {
+          if (status !== 'Invoiced') {
+            if (vendorName !== this.vendorArr[index - 1]) {
+               this.isCreateInvoice = false;
+            } else { 
+              this.isDeleteButton = true;
+              this.isCreateInvoice = true;
+            }
+          } else {
+            this.isDeleteButton = false;
+            this.isCreateInvoice = false;
+          }
+        } else {
+          this.isDeleteButton = false;
+          if (status === 'Open' && isChecked) {
+            this.isCreateInvoice = true;
+          } else if (!this.isCheckedArr[index]){
+            this.isCreateInvoice = false;
+          }
+          if (status === 'Invoiced' && isChecked) {
+            this.isCreateReturn = true;
+          } else {
+            this.isCreateReturn = false;
+          }
+        }
+    });
+  } else {
+    this.isCreateInvoice = false;
+    this.isCreateReturn = false;
+    this.isDeleteButton = false;
+  }
+    
 }
 
   addPurchaseOrder(){
