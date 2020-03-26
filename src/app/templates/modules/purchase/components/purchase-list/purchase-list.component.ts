@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { PurchaseService } from '../../services/purchase.service';
 import { MatSnackBar } from "@angular/material/snack-bar";
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
@@ -12,7 +12,7 @@ import {
   templateUrl: './purchase-list.component.html',
   styleUrls: ['./purchase-list.component.scss']
 })
-export class PurchaseListComponent  implements OnInit  {
+export class PurchaseListComponent  implements OnInit, AfterViewInit  {
   purchaseOrderList: any;
   dialogConfig = new MatDialogConfig();
   prodArr     =  [];
@@ -23,6 +23,7 @@ export class PurchaseListComponent  implements OnInit  {
   isCreateInvoice: boolean = false;
   isShowEditDelete = [];
   isAddPurchaseOrder: boolean = false;
+  isVendorErrMsg: boolean = false;
 
   constructor( 
     private purchaseService:PurchaseService,
@@ -35,6 +36,11 @@ export class PurchaseListComponent  implements OnInit  {
     this.getPurchaseOrderLists();
   }
   
+  ngAfterViewInit() {
+    setTimeout(function () {
+      (<HTMLElement>document.querySelector('.mat-drawer-content')).style.overflow = 'inherit';
+    }, 300);
+   }
   getDeleteButtonStyle() {
     if (!this.isDeleteButton) {
       let myStyles = {
@@ -116,9 +122,6 @@ getAddPurchaseOrderStyle() {
       this.vendorArr.splice(index);
     }
 
-    console.log('lenght', this.prodArr.length)
-    console.log('prodArr', this.prodArr)
-
     if (this.prodArr.length > 0) {
       this.isAddPurchaseOrder = true;
       this.prodArr.forEach((item, index) => {
@@ -128,9 +131,11 @@ getAddPurchaseOrderStyle() {
           if (status !== 'Invoiced') {
             if (vendorName !== this.vendorArr[index - 1]) {
                this.isCreateInvoice = false;
+               this.isVendorErrMsg  = true;
             } else { 
               this.isDeleteButton = true;
               this.isCreateInvoice = true;
+              this.isVendorErrMsg  = false;
             }
           } else {
             this.isDeleteButton = false;
@@ -138,12 +143,13 @@ getAddPurchaseOrderStyle() {
           }
         } else {
           this.isDeleteButton = false;
-          if (status === 'Open' && isChecked) {
+          this.isVendorErrMsg  = false;
+          if (status === 'Open' && this.isCheckedArr[0].checked) {
             this.isCreateInvoice = true;
-          } else if (!this.isCheckedArr[index]){
+          } else {
             this.isCreateInvoice = false;
           }
-          if (status === 'Invoiced' && isChecked) {
+          if (status === 'Invoiced' && this.isCheckedArr[0].checked) {
             this.isCreateReturn = true;
           } else {
             this.isCreateReturn = false;
@@ -154,9 +160,9 @@ getAddPurchaseOrderStyle() {
     this.isCreateInvoice = false;
     this.isCreateReturn = false;
     this.isDeleteButton = false;
-    this.isAddPurchaseOrder = false;
+    this.isAddPurchaseOrder = false; 
   }
-    
+
 }
 
   addPurchaseOrder(){

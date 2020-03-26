@@ -86,15 +86,7 @@ export class PurchaseAddComponent  implements OnInit, AfterViewInit {
     this.getVendorLists();
   }
   ngAfterViewInit() {
-    // let dialog1 = document.getElementsByTagName('mat-dialog-container');
-    // let dialog2 = document.getElementById('mat-dialog-1');
-    // dialog1.style.background = 'inherit';
-    // if (dialog1 !== null) {
-    //   dialog1.style.background = 'inherit';
-    // } else {
-    //   dialog2.style.background = 'inherit';
-    // }
-    (<HTMLElement>document.querySelector('.mat-dialog-container')).style.background = 'inherit';
+   (<HTMLElement>document.querySelector('.mat-dialog-container')).style.background = 'inherit';
   }
   getcategoryList(){
     this.purchaseService.loadCategory()
@@ -410,5 +402,9 @@ export class PurchaseAddComponent  implements OnInit, AfterViewInit {
       this.model.subtotal = value * Number.parseInt(this.model.price);
       document.getElementById("total").innerHTML = this.model.subtotal;
     }
+  }
+
+  addPurchaseOrderClose() {
+    this.dialogRef.close();
   }
 }
