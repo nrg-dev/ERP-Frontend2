@@ -1,14 +1,14 @@
 @import "_base";
 
 
-#purchase-wrapper{color:#fff;  font-family: 'Open Sans'; font-size: 14px;}
+#purchase-wrapper{color:$white;  font-family: 'Open Sans'; font-size: 14px;}
 
-h3{color:#fff;}
+h3{color:$white;}
 .m-t-25{margin-top: 25px;}
 .table>thead>tr>th, .table>tbody>tr>td{
   height:30px; border-top:15px solid #15222B; 
   border-bottom:15px solid #15222B;
-  color:#fff}
+  color:$white}
 
 .back-colr{background-color:#15222B;}
 button {
@@ -18,7 +18,7 @@ button {
         font-family: Open Sans;
         font-style: normal;
         float: right;
-        color: white;
+        color: $white;
         background: #1585A2;
         border: 1px solid #1585A2;
         border-radius: 20px;
@@ -29,7 +29,7 @@ button {
 
     .create-button {
         float: right;
-        color: white;
+        color: $white;
         background: #1585A2;
         border: 1px solid #1585A2;
         margin-right: 10px;
@@ -56,7 +56,7 @@ input[type=checkbox]:checked:after {
     display: block;
     width: 5px;
     height: 10px;
-    border: solid white;
+    border: solid $white;
     border-width: 0 2px 2px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
