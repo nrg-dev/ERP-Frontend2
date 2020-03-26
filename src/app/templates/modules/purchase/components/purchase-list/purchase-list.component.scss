@@ -19,8 +19,8 @@ button {
         font-style: normal;
         float: right;
         color: $white;
-        background: #1585A2;
-        border: 1px solid #1585A2;
+        background:$btn-bg;
+        border: 1px solid $btn-bg;
         border-radius: 20px;
         padding: 0.5rem;
         font-size: 14px;
@@ -30,8 +30,8 @@ button {
     .create-button {
         float: right;
         color: $white;
-        background: #1585A2;
-        border: 1px solid #1585A2;
+        background: $btn-bg;
+        border: 1px solid $btn-bg;
         margin-right: 10px;
 }
 
