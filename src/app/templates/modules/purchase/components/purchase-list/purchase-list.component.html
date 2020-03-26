@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<div *ngIf="isVendorErrMsg" style="text-align: center;color:red;">Select only one vendor</div>
+<div *ngIf="isVendorErrMsg" id="error-msg">Select only one vendor</div>
 <div class="container-fluid" id="purchase-wrapper"> 
   <div class="row back-colr">
-  <div class="container" style="overflow-y: scroll;height: 500px;">
-  <div><h3 style="float:left;font-size: 24px;padding-top: 10px;">Purchase Orders</h3> 
-  <button id="delete"  style="padding:5px" [disabled]="!isDeleteButton ? true:false" [ngStyle]="getDeleteButtonStyle()">
+  <div class="container">
+  <div><h3 id="purchase-order-title">Purchase Orders</h3> 
+  <button id="delete" [disabled]="!isDeleteButton ? true:false" [ngStyle]="getDeleteButtonStyle()">
     <i class="fas fa-trash"></i>
 </button>
-       <button style="padding:5px" [disabled]="!isCreateReturn ? true:false" class="create-button" [ngStyle]="getCreateReturnStyle()">
+       <button [disabled]="!isCreateReturn ? true:false" class="create-button" [ngStyle]="getCreateReturnStyle()">
           Create Return
       </button>
-      <button  style="padding:5px" [disabled]="!isCreateInvoice ? true:false" class="create-button" [ngStyle]="getCreateInvoiceStyle()">
+      <button  [disabled]="!isCreateInvoice ? true:false" class="create-button" [ngStyle]="getCreateInvoiceStyle()">
         Create Invoice
     </button>
 
-    <button  style="padding:5px" (click)="addPurchaseOrder()" [disabled]="isAddPurchaseOrder" class="create-button" [ngStyle]="getAddPurchaseOrderStyle()">
-      <span class="fas fa-plus" style="font-size: 12px;"></span> Add Purchase Order 
+    <button  (click)="addPurchaseOrder()" [disabled]="isAddPurchaseOrder" class="create-button" [ngStyle]="getAddPurchaseOrderStyle()">
+      <span class="fas fa-plus"></span> Add Purchase Order 
   </button>
          
   </div>
   <table class="table m-t-25">
-    <thead style="background-color: #17252F;">
+    <thead id="table-head">
       <tr>
 	  <th>
       <div class="custom-control custom-checkbox">
@@ -36,17 +36,12 @@
         <th>Product Name</th>
 		<th>Quantity</th>
         <th>Sub Total</th>
+        <th id="action-header">Action</th>
        </tr>
     </thead>
     <tbody>
-      <tr style="background-color:#1A2D39" *ngFor="let item of purchaseOrderList; let i = index">
+      <tr class="purchase-order-row" *ngFor="let item of purchaseOrderList; let i = index">
 	  <td>
-      <!-- <div class="custom-control custom-checkbox"> -->
-                  <!-- <input type="checkbox" class="custom-control-input" id="customCheck2"> -->
-                  <!-- <input type="checkbox" class="" id="customCheck2" 
-                  (click)="rowSelected(i,item, $event.target.checked)">
-               
-              </div> -->
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input1" id="customCheck2" 
                 (click)="rowSelected(i,item, $event.target.checked)">
@@ -55,7 +50,7 @@
 			  </td>
         <td>{{item.productcode}}</td>
         <td>{{item.date | date : 'dd/MM/yyyy'}}</td>
-        <td><span *ngIf="item.status === 'Open'" style="color:#1585A2">{{item.status}}</span>
+        <td><span *ngIf="item.status === 'Open'" class="open-status">{{item.status}}</span>
           <span *ngIf="item.status !== 'Open'">{{item.status}}</span>
         </td>
 		<td>{{item.vendorname}}</td>
@@ -63,13 +58,13 @@
         <td>{{item.productname}}</td>
 		<td>{{item.qty}}</td>
         <td class="txt-right">{{item.subtotal}}
-          <span class="edit-delete-icon" *ngIf="isCheckedArr.length === 0 && item.status === 'Open'" 
-          style="display: none; float: right;padding-top: 10px;">
-          <span class="fas fa-pen" 
-          style="padding-right: 20px;line-height: 0.2;margin-left: 10px;"></span>
-          <span style="line-height: 0.2;" class="fas fa-trash"></span>
-        </span>
+          
         </td>
+        <td><span class="edit-delete-icon" *ngIf="isCheckedArr.length === 0 && item.status === 'Open'">
+          
+          <span class="fas fa-pen" ></span>
+          <span class="fas fa-trash"></span>
+        </span></td>
        </tr>
      </tbody>
   </table>
