@@ -6,6 +6,7 @@
 h3{color:$white;}
 .m-t-25{margin-top: 25px;}
 .table>thead>tr>th, .table>tbody>tr>td{
+  font-size: 12px;
   height:30px; border-top:15px solid #15222B; 
   border-bottom:15px solid #15222B;
   color:$white}
@@ -116,7 +117,10 @@ table tbody tr:hover td span{
 }
 
 #purchase-order-title {
-  float:left;font-size: 24px;padding-top: 10px;
+  float:left;
+  font-size: 14px;
+  padding-top: 10px;
+  font-weight: bold;
 }
 
 .container {
