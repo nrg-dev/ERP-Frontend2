@@ -46,7 +46,8 @@ export class PurchaseListComponent  implements OnInit, AfterViewInit  {
       let myStyles = {
         'color': 'gray',
         'background': '#1A2D39',
-        'border':'1px solid #1A2D39'
+        'border':'1px solid #1A2D39',
+        'display': 'none'
       };
     return myStyles;
   }
@@ -57,7 +58,8 @@ getCreateReturnStyle() {
     let myStyles = {
       'color': 'gray',
       'background': '#1A2D39',
-      'border':'1px solid #1A2D39'
+      'border':'1px solid #1A2D39',
+      'display': 'none'
     };
   return myStyles;
 }
@@ -68,7 +70,8 @@ getCreateInvoiceStyle() {
     let myStyles = {
       'color': 'gray',
       'background': '#1A2D39',
-      'border':'1px solid #1A2D39'
+      'border':'1px solid #1A2D39',
+      'display': 'none'
     };
   return myStyles;
 }
@@ -79,7 +82,8 @@ getAddPurchaseOrderStyle() {
     let myStyles = {
       'color': 'gray',
       'background': '#1A2D39',
-      'border':'1px solid #1A2D39'
+      'border':'1px solid #1A2D39',
+      'display': 'none'
     };
   return myStyles;
 }
@@ -105,21 +109,12 @@ getAddPurchaseOrderStyle() {
       item.indexVal = index;
       this.prodArr.push(item);
       this.isCheckedArr.push({checked: true, indexVal:index});
-      this.vendorArr.push(item.vendorname);
+      this.vendorArr.push({vendorName: item.vendorname, indexVal:index});
       this.isShowEditDelete[index] = false;
     } else {
-      this.isCheckedArr.forEach((item, indexCheck) => {
-        if (item.indexVal === index) {
-          this.isCheckedArr.splice(indexCheck, 1);
-        }
-      });
-
-      this.prodArr.forEach((item, indexCheck) => {
-        if (item.indexVal === index) {
-          this.prodArr.splice(indexCheck, 1);
-        }
-      });
-      this.vendorArr.splice(index);
+      this.removeItem(this.isCheckedArr, index, 'checked');
+      this.removeItem(this.prodArr, index, 'product');
+      this.removeItem(this.vendorArr, index, 'vendor');
     }
 
     if (this.prodArr.length > 0) {
@@ -128,22 +123,31 @@ getAddPurchaseOrderStyle() {
         const status = item.status;
         const vendorName = item.vendorname;
         if (this.prodArr.length > 1) {
+          this.isCreateReturn = false;
           if (status !== 'Invoiced') {
-            if (vendorName !== this.vendorArr[index - 1]) {
-               this.isCreateInvoice = false;
-               this.isVendorErrMsg  = true;
-            } else { 
-              this.isDeleteButton = true;
-              this.isCreateInvoice = true;
-              this.isVendorErrMsg  = false;
-            }
+            let getVendorName = '';
+            this.vendorArr.forEach((item, indexCheck) => {
+              if (indexCheck > 0) {
+                getVendorName = this.vendorArr[indexCheck - 1].vendorName;
+                if (vendorName !== getVendorName) {
+                  this.isCreateInvoice = false;
+                  this.isDeleteButton = false;
+                  this.getErrorMsg(true);
+                } else {
+                  this.isDeleteButton = true;
+                  this.isCreateInvoice = true;
+                  this.isCreateReturn = false;
+                  this.getErrorMsg(false);
+                }
+              }
+             });
           } else {
             this.isDeleteButton = false;
             this.isCreateInvoice = false;
           }
         } else {
           this.isDeleteButton = false;
-          this.isVendorErrMsg  = false;
+          this.getErrorMsg(false);
           if (status === 'Open' && this.isCheckedArr[0].checked) {
             this.isCreateInvoice = true;
           } else {
@@ -166,8 +170,6 @@ getAddPurchaseOrderStyle() {
 }
 
   addPurchaseOrder(){
-    //this.successdialog = 'block';
-
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
     this.dialogConfig.position = {
@@ -184,16 +186,39 @@ getAddPurchaseOrderStyle() {
     
   }
 
-  mouseEnter(index: number, status: string) {
-    if (this.isCheckedArr.length === 0 && status === 'Open') { 
-      this.isShowEditDelete[index] = true;
+  getErrorMsg(isErrMsg: boolean) {
+    console.log('isErrMsg', isErrMsg)
+    if (isErrMsg) {
+      setTimeout(() => {
+        this.snackBar.open("Select only one vendor", "dismss", {
+          panelClass: ["warn"],
+          verticalPosition: 'top'      
+        });
+      });
+    } else {
+      return '';
     }
   }
 
-  mouseLeave(index: number, status: string) {
-    if (this.isCheckedArr.length === 0 && status === 'Open') {
-      this.isShowEditDelete[index] = false;
+  removeItem(isCheckedArr: any, index: number, type: string) {
+    console.log('isCheckedArr', isCheckedArr)
+    console.log('index12', index)
+    isCheckedArr.forEach((item, indexCheck) => {
+      console.log('indexVal', item.indexVal)
+      console.log('index', index)
+      if (item.indexVal === index) {
+        isCheckedArr.splice(indexCheck, 1);
+      }
+    });
+
+    if (type === 'checked') {
+      this.isCheckedArr = isCheckedArr;
+    } else if (type === 'product') {
+      this.prodArr = isCheckedArr;
+    } else {
+      this.vendorArr = isCheckedArr;
     }
+    
   }
-  
+ 
 }

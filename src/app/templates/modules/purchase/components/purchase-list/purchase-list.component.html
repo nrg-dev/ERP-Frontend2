@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<div *ngIf="isVendorErrMsg" id="error-msg">Select only one vendor</div>
+<div class="row">
 <div class="container-fluid" id="purchase-wrapper"> 
   <div class="row back-colr">
   <div class="container">
@@ -51,12 +51,12 @@
         <td>{{item.productcode}}</td>
         <td>{{item.date | date : 'dd/MM/yyyy'}}</td>
         <td><span *ngIf="item.status === 'Open'" class="open-status">{{item.status}}</span>
-          <span *ngIf="item.status !== 'Open'">{{item.status}}</span>
+          <span *ngIf="item.status !== 'Open'" class="invoice-status">{{item.status}}</span>
         </td>
 		<td>{{item.vendorname}}</td>
         <td>{{item.categoryname}}</td>
         <td>{{item.productname}}</td>
-		<td>{{item.qty}}</td>
+		<td class="txt-right">{{item.qty}}</td>
         <td class="txt-right">{{item.subtotal}}
           
         </td>
@@ -71,3 +71,4 @@
 </div>
     </div>
   </div>
+</div>

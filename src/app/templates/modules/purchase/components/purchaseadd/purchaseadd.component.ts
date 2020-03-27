@@ -365,6 +365,7 @@ export class PurchaseAddComponent  implements OnInit, AfterViewInit {
       "vendorcode": vendorcode, 
       "qty": (this.model.qty !== null) ? this.model.qty:0,
       "subtotal":this.model.subtotal,
+      "unit": this.model.unit,
       "date": this.purchaseDate,
       "description": '',
       "status" : "Open"

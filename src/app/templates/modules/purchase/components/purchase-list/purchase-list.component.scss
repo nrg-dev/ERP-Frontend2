@@ -1,14 +1,14 @@
 @import "_base";
 
 
-#purchase-wrapper{color:$white;  font-family: 'Open Sans'; font-size: 14px;}
+#purchase-wrapper{color:#97A4AC;  font-family: 'Open Sans'; font-size: 18px;}
 
 h3{color:$white;}
 .m-t-25{margin-top: 25px;}
 .table>thead>tr>th, .table>tbody>tr>td{
   height:30px; border-top:15px solid #15222B; 
   border-bottom:15px solid #15222B;
-  color:$white}
+  color:#97A4AC}
 
 .back-colr{background-color:#15222B;}
 button {
@@ -45,8 +45,8 @@ input[type=checkbox]:before {
     content: "";
     display: block;
     position: absolute;
-       width: 18px;
-height: 18px;
+       width: 20px;
+height: 20px;
 top: -3px;
     left: 0;
     border: 2px solid #2C4655;
@@ -117,14 +117,19 @@ table tbody tr:hover td span{
 
 #purchase-order-title {
   float:left;font-size: 24px;padding-top: 10px;
+  font-weight: bold;
 }
 
 .container {
-  overflow-y: scroll;height: 500px;
+  overflow-y: scroll;height: 600px;
 }
 
 #error-msg {
   text-align: center;color:red;
+}
+
+.invoice-status {
+  color: green;
 }
   @media screen and (min-device-width: 320px) and (max-device-width: 767px){
   .back-colr{float:left;}
