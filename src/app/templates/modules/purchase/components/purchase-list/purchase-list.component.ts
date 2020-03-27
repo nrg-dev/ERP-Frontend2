@@ -3,8 +3,7 @@ import { PurchaseService } from '../../services/purchase.service';
 import { MatSnackBar } from "@angular/material/snack-bar";
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import {
-  PurchaseAddComponent,
-  Status
+  PurchaseAddComponent  
 } from "../purchaseadd/purchaseadd.component";
 
 @Component({

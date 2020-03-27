@@ -9,30 +9,6 @@ import { PurchaseService } from '../../services/purchase.service';
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { VendorService } from 'src/app/templates/modules/vendor-and-customer/services/vendor.service';
 
-//==== Status 
-@Component({
-  selector: 'status',
-  styleUrls: ['./status.css'],
-  templateUrl: './status.html', 
-})
-export class Status {
-
-
-  constructor(
-    public dialogRef: MatDialogRef<Status>,
-    
-    ) {
-
-    }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-  updateDelete(){
-    console.log("updateDelete");
-  }
-}
 
 @Component({
   selector: 'app-purchaseadd',
@@ -60,12 +36,12 @@ export class PurchaseAddComponent  implements OnInit, AfterViewInit {
 
   constructor( 
     private dialog: MatDialog,
+    public dialogRef: MatDialogRef<PurchaseAddComponent>,
     private purchaseService:PurchaseService,
     private router: Router, private alertService: AlertService,
     private snackBar: MatSnackBar,
     private renderer: Renderer2,
     private vendorservice: VendorService,
-    private dialogRef: MatDialogRef<Status>
     ) { 
       this.purchaseDate = formatDate(this.currentDate, 'dd/MMM/yyy', 'en-US');
   }
@@ -268,38 +244,7 @@ export class PurchaseAddComponent  implements OnInit, AfterViewInit {
  }
 
 
-  cancelEmp(){
-    console.log("------ Cancel Employeee -------");
-    this.fieldArray = [];
-    this.purchasetable = false;
-    this.model.vendorName = '';
-    this.model.productName = '';
-    this.model.category = '';
-    this.model.sNo = 0;
-    this.model.totalItem = 0;
-    this.model.subTotal = '';
-    this.model.deliveryCost = '';   
-  }
 
-  public getstatus(){
-    this.dialogConfig.disableClose = true;
-    this.dialogConfig.autoFocus = true;
-    this.dialogConfig.position = {
-      'top': '1000',
-      left: '100'
-    };
-    this.dialog.open(Status,{
-    //  data: {dialogTitle: "hello", dialogText: "text"},
-      data: "issueId",
-      height: '80%'
-    }).afterClosed().subscribe(result => {
-    // this.refresh();
-    });
-  }
-  //htmlData:any;
-  purchaseInvoice(){
-    //this.htmlData = this.Status;
-  }
 
   getVendorLists() {
     this.vendorservice.load()
@@ -381,7 +326,6 @@ export class PurchaseAddComponent  implements OnInit, AfterViewInit {
           });
         });
         this.getProductList();
-        this.dialogRef.close();
       }
       },
       error => {
@@ -407,5 +351,6 @@ export class PurchaseAddComponent  implements OnInit, AfterViewInit {
 
   addPurchaseOrderClose() {
     this.dialogRef.close();
+
   }
 }
