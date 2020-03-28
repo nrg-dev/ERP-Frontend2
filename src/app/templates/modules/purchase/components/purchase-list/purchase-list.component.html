@@ -29,9 +29,16 @@
     </div>
             </th>
         <th style="cursor:pointer">Number</th>
-        <th style="cursor:pointer">Date</th>
-        <th onclick="w3.sortHTML('#poTable', '.purchase-order-row-open', 'td:nth-child(3)')" 
-        style="cursor:pointer">Status</th>
+        <th style="cursor:pointer">Date
+          <i *ngIf="!isSortDateDesc" class="sort-by-desc" (click)="sortByOrder('date','desc')"></i>
+          <i class="sort-by-asc" *ngIf="!isSortDateAsc" (click)="sortByOrder('date','asc')"></i>
+        </th>
+        <!-- <th onclick="w3.sortHTML('#poTable', '.purchase-order-row-open', 'td:nth-child(3)')" 
+        style="cursor:pointer">Status<i class="sort-by-desc"></i></th> -->
+        <th style="cursor:pointer">Status
+          <i *ngIf="!isSortStatusDesc" class="sort-by-desc" (click)="sortByOrder('status','desc')"></i>
+          <i class="sort-by-asc" *ngIf="!isSortStatusAsc" (click)="sortByOrder('status','asc')"></i>
+        </th>
 		<th>Vendor</th>
         <th>Category</th>
         <th>Product Name</th>

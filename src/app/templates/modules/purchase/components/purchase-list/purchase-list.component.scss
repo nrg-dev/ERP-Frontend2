@@ -126,7 +126,7 @@ table tbody tr:hover td span{
 }
 
 .container {
-  overflow-y: scroll;height: 600px;
+  overflow-y: scroll;height: 550px;
 }
 
 #error-msg {
@@ -135,6 +135,32 @@ table tbody tr:hover td span{
 
 .invoice-status {
   color: green;
+}
+
+.sort-by-desc
+{
+    left: 3px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border: solid 5px transparent;
+    margin: 4px 4px 0 3px;
+    background: transparent;
+    border-top: solid 7px $white;
+    border-bottom-width: 0;
+}
+
+.sort-by-asc
+{
+    left: 3px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border: solid 5px transparent;
+    margin: 4px 4px 0 3px;
+    background: transparent;
+    border-bottom: solid 7px $white;
+    border-top-width: 0;
 }
   @media screen and (min-device-width: 320px) and (max-device-width: 767px){
   .back-colr{float:left;}

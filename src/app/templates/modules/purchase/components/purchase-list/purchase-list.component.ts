@@ -23,6 +23,10 @@ export class PurchaseListComponent  implements OnInit, AfterViewInit  {
   isShowEditDelete = [];
   isAddPurchaseOrder: boolean = false;
   isVendorErrMsg: boolean = false;
+  isSortStatusDesc: boolean = false;
+  isSortStatusAsc: boolean = true;
+  isSortDateDesc: boolean = false;
+  isSortDateAsc: boolean = true;
 
   constructor( 
     private purchaseService:PurchaseService,
@@ -219,5 +223,27 @@ getAddPurchaseOrderStyle() {
     }
     
   }
- 
+
+  sortByOrder(column: string, order: string) {
+      if (column === 'status' && order === 'desc') {
+        this.isSortStatusDesc = true;
+        this.isSortStatusAsc  = false;  
+        this.purchaseOrderList.sort((a,b)=>b.status.localeCompare(a.status));
+      } else if (column === 'status' && order === 'asc') {
+        this.isSortStatusDesc = false;
+        this.isSortStatusAsc  = true;  
+        this.purchaseOrderList.sort((a,b)=>a.status.localeCompare(b.status));
+      }
+      else if (column === 'date' && order === 'desc') {
+        this.isSortDateDesc = true;
+        this.isSortDateAsc  = false;  
+        this.purchaseOrderList.sort((a,b)=>b.date.localeCompare(a.date));
+      } else {
+        this.isSortDateDesc = false;
+        this.isSortDateAsc  = true;  
+        this.purchaseOrderList.sort((a,b)=>a.date.localeCompare(b.date));
+      }
+      console.log('purchaseOrderList', this.purchaseOrderList)
+    }
+  
 }
