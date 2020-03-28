@@ -14,7 +14,7 @@
         Create Invoice
     </button>
 
-    <button  (click)="addPurchaseOrder()" [disabled]="isAddPurchaseOrder" class="create-button" [ngStyle]="getAddPurchaseOrderStyle()">
+    <button  (click)="addPurchaseOrder(null,null)" [disabled]="isAddPurchaseOrder" class="create-button" [ngStyle]="getAddPurchaseOrderStyle()">
       <span class="fas fa-plus"></span> Add Purchase Order 
   </button>
          
@@ -47,8 +47,9 @@
         <th id="action-header">Action</th>
        </tr>
     </thead>
-    <tbody *ngFor="let item of purchaseOrderList; let i = index">
-      <tr [ngClass]="{'purchase-order-row-open': item.status ==='Open', 
+    <tbody>
+      <tr *ngFor="let item of purchaseOrderList; let i = index" 
+      [ngClass]="{'purchase-order-row-open': item.status ==='Open', 
       'purchase-order-row-invoiced':item.status ==='Invoiced' }"
       >
 	  <td>
@@ -67,13 +68,13 @@
         <td>{{item.categoryname}}</td>
         <td>{{item.productname}}</td>
 		<td class="txt-right">{{item.qty}}</td>
-        <td class="txt-right">{{item.subtotal}}
+        <td class="txt-right">{{item.subtotal}} 
           
         </td>
         <td><span class="edit-delete-icon" *ngIf="isCheckedArr.length === 0 && item.status === 'Open'">
           
-          <span class="fas fa-pen" ></span>
-          <span class="fas fa-trash"></span>
+          <span class="fas fa-pen" (click)="addPurchaseOrder(item.id, item)"></span>
+          <span class="fas fa-trash" (click)="removePurchaseOrder(item.id)"></span>
         </span></td>
        </tr>
      </tbody>

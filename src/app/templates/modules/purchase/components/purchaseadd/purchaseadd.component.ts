@@ -1,4 +1,4 @@
-import { Component, OnInit,Renderer2, AfterViewInit } from '@angular/core';
+import { Component, OnInit,Renderer2, AfterViewInit, Input, Inject } from '@angular/core';
 import { formatDate } from '@angular/common';
 import { Purchase } from 'src/app/core/common/_models';
 import { AlertService } from 'src/app/core/common/_services';
@@ -42,11 +42,14 @@ export class PurchaseAddComponent  implements OnInit, AfterViewInit {
     private snackBar: MatSnackBar,
     private renderer: Renderer2,
     private vendorservice: VendorService,
+    @Inject(MAT_DIALOG_DATA) public data
     ) { 
       this.purchaseDate = formatDate(this.currentDate, 'dd/MMM/yyy', 'en-US');
   }
 
-  ngOnInit() {
+  ngOnInit() { 
+    
+    this.editPurchaseOrder(this.data);
     this.model.subtotal = 0;
     this.purchasetable = false;
     this.getcategoryList();
@@ -353,4 +356,17 @@ export class PurchaseAddComponent  implements OnInit, AfterViewInit {
     this.dialogRef.close();
 
   }
+
+  editPurchaseOrder(data: any) {
+    if (data.id !== undefined) { 
+      this.model.qty = data.qty;
+      this.model.unit = data.unit;
+      this.model.price = data.unitprice;
+      this.model.category = data.categoryname+'-'+data.categorycode;
+      this.model.vendorName = data.vendorname+'-'+data.vendorcode;
+      this.model.productName = data.productname+'-'+data.productcode;
+      this.model.subtotal = Number.parseInt(data.unitprice) * data.qty;
+    }
+  }
+
 }

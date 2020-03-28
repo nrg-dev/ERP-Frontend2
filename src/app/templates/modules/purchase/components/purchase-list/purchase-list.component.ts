@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { PurchaseService } from '../../services/purchase.service';
 import { MatSnackBar } from "@angular/material/snack-bar";
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
@@ -11,7 +11,7 @@ import {
   templateUrl: './purchase-list.component.html',
   styleUrls: ['./purchase-list.component.scss']
 })
-export class PurchaseListComponent  implements OnInit, AfterViewInit  {
+export class PurchaseListComponent  implements OnInit, OnDestroy  {
   purchaseOrderList: any;
   dialogConfig = new MatDialogConfig();
   prodArr     =  [];
@@ -27,7 +27,9 @@ export class PurchaseListComponent  implements OnInit, AfterViewInit  {
   isSortStatusAsc: boolean = true;
   isSortDateDesc: boolean = false;
   isSortDateAsc: boolean = true;
-
+  title: string = '';
+  button: string = '';
+  
   constructor( 
     private purchaseService:PurchaseService,
     private snackBar: MatSnackBar,
@@ -37,13 +39,18 @@ export class PurchaseListComponent  implements OnInit, AfterViewInit  {
 
   ngOnInit() {
     this.getPurchaseOrderLists();
+    this.removeScrollBar();
   }
   
-  ngAfterViewInit() {
+  ngOnDestroy(){
+    (<HTMLElement>document.querySelector('.mat-drawer-content')).style.overflow = 'auto';
+  }
+
+  removeScrollBar() {
     setTimeout(function () {
-      (<HTMLElement>document.querySelector('.mat-drawer-content')).style.overflow = 'inherit';
-    }, 300);
-   }
+        (<HTMLElement>document.querySelector('.mat-drawer-content')).style.overflow = 'inherit';
+      }, 300);
+  }
   getDeleteButtonStyle() {
     if (!this.isDeleteButton) {
       let myStyles = {
@@ -172,7 +179,22 @@ getAddPurchaseOrderStyle() {
 
 }
 
-  addPurchaseOrder(){
+  addPurchaseOrder(id: string, item: any) {
+    let data: any;
+    if (id !== null) {
+      this.title = 'Edit Purchase Order';
+      this.button = 'Update';
+      item.dialogTitle  = this.title;
+      item.dialogText  = this.button;
+      item.selected     = false;
+      item.selected     = true;
+      data  = item;
+    } else {
+      this.title = 'Add Purchase Order';
+      this.button = 'Add';
+      data        = {dialogTitle: this.title, dialogText: this.button};
+    }
+    
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
     this.dialogConfig.position = {
@@ -180,8 +202,8 @@ getAddPurchaseOrderStyle() {
       left: '100'
     };
     this.dialog.open(PurchaseAddComponent,{
-      panelClass: 'addpromotion'
-     // data: {dialogTitle: "hello", dialogText: "text"},
+      panelClass: 'addpromotion',
+      data: data,
     })
     .afterClosed().subscribe(result => {
       this.getPurchaseOrderLists ();
@@ -243,7 +265,13 @@ getAddPurchaseOrderStyle() {
         this.isSortDateAsc  = true;  
         this.purchaseOrderList.sort((a,b)=>a.date.localeCompare(b.date));
       }
-      console.log('purchaseOrderList', this.purchaseOrderList)
+    }
+
+    removePurchaseOrder(id: string) {
+      this.purchaseService.removePurchaseOrder(id).subscribe(() =>{
+        this.getPurchaseOrderLists();
+      });
+      
     }
   
 }

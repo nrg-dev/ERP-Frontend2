@@ -17,7 +17,6 @@ export class PurchaseService {
    // private categoryURL = this.url[0].apiurl+'category/';
    // private productURL = this.url[0].apiurl+'item/';
 
-
     constructor(private http: HttpClient) { }
 
     //*********************Purchase************************
@@ -142,5 +141,10 @@ export class PurchaseService {
              `${environment.apiUrl}${API_ENDPOINTS.ADD_PURCHASE_ORDER_LIST}`,
              data
            );   
+     }
+
+     // Remove purchase order
+    removePurchaseOrder(id:string){ 
+        return this.http.delete<String>(`${environment.apiUrl}${API_ENDPOINTS.REMOVE_PURCHASE_ORDER+'?id='+id}`); 
      }
 }

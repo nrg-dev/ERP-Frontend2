@@ -9,7 +9,7 @@
                 <button type="button" class="close" aria-label="Close" (click)="addPurchaseOrderClose()">
                   <span aria-hidden="true">&times;</span>
                 </button>
-               <h2 id="h2ID">Add Purchase Order</h2>
+               <h2 id="h2ID">{{data.dialogTitle}}</h2>
               
               <div class="grid-container2">
                <div>
@@ -22,14 +22,15 @@
               
               <div class="grid-container2">
                <div id="date-borderbox">
-                <p id="date-box">{{purchaseDate | date : 'dd-MM-yyyy'}}</p>
+                <p id="date-box" *ngIf="data.id === undefined">{{purchaseDate | date : 'dd-MM-yyyy'}}</p>
+                <p id="date-box" *ngIf="data.id !== ''">{{data.date | date : 'dd-MM-yyyy'}}</p>
                </div>
                
                <div>
                 <select id="selected-box" [(ngModel)]="model.vendorName" #vendorName="ngModel" name="vendorName">
-                <option id="options-box" [ngValue]="undefined" hidden selected> Select Vendor </option>
+               <option id="options-box" [value]="null">Select Vendor</option>
                  <option id="options-box" *ngFor="let item of vendorList" 
-                    value="{{item.vendorName}}-{{item.vendorcode}}"> {{item.vendorName}}-{{item.vendorcode}} 
+                    [value]="item.vendorName+'-'+item.vendorcode"> {{item.vendorName}} 
                   </option>
                 </select>
                </div>
@@ -40,8 +41,9 @@
                 <select id="selected-box" [(ngModel)]="model.category" #category="ngModel" name="category">
                   <option id="options-box" [ngValue]="undefined" hidden selected> Select Category </option>
                   <option id="options-box" *ngFor="let itemcategory of categoryList" 
-                  value="{{ itemcategory.name }}-{{ itemcategory.categorycode }}"> 
-                  {{ itemcategory.name }}-{{ itemcategory.categorycode }} </option>                     
+                  [value]="itemcategory.name+'-'+itemcategory.categorycode">
+                   
+                  {{ itemcategory.name }}</option>                     
                 </select> 
                 
                 <div class="grid-container6">
@@ -49,8 +51,9 @@
                   <p id="po-label">Product</p>
                  <select id="selected-box" [(ngModel)]="model.productName" #productName="ngModel" name="productName">
                   <option id="options-box" [ngValue]="undefined" hidden selected> Select Product </option>
-                     <option id="options-box" *ngFor="let item of productList" value="{{ item.productname }}-{{ item.prodcode }}"> 
-                      {{ item.productname }}-{{ item.prodcode }} </option>
+                     <option id="options-box" *ngFor="let item of productList" 
+                     [value]="item.productname+'-'+item.prodcode"> 
+                      {{ item.productname }} </option>
                    </select>
                   </div>
                
@@ -90,7 +93,7 @@
                   <div></div>
                 <div></div>
                 <div id="add-btn">
-                 <p id="add-text" (click)="addPurchaseOrder()">Add</p>
+                 <p id="add-text" (click)="addPurchaseOrder()">{{data.dialogText}}</p>
                 </div>
                 </div>
                </div>
