@@ -39,8 +39,10 @@
         <th id="action-header">Action</th>
        </tr>
     </thead>
-    <tbody>
-      <tr class="purchase-order-row" *ngFor="let item of purchaseOrderList; let i = index">
+    <tbody *ngFor="let item of purchaseOrderList; let i = index">
+      <tr [ngClass]="{'purchase-order-row-open': item.status ==='Open', 
+      'purchase-order-row-invoiced':item.status ==='Invoiced' }"
+      >
 	  <td>
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input1" id="customCheck2" 

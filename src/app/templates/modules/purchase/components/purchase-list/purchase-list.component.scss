@@ -104,9 +104,13 @@ table tbody tr:hover td span{
   color:#1585A2;
 }
 
-.purchase-order-row {
-  background-color:#1A2D39;
+.purchase-order-row-open {
+  background-color:#253f4b; // Open
 }
+.purchase-order-row-invoiced {
+  background-color:#1A2D39; //Invoiced
+}
+
 
 #table-head {
   background-color: #17252F;
