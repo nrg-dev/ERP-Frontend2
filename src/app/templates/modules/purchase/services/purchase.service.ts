@@ -135,8 +135,7 @@ export class PurchaseService {
     }
 
     addPurchaseOrder(data: any){
-        // return this.http.post(this.commonURL+'saveReturn',returnarray);
-         return this.http.post(
+          return this.http.post(
              `${environment.apiUrl}${API_ENDPOINTS.ADD_PURCHASE_ORDER_LIST}`,
              data
            );   
@@ -145,5 +144,12 @@ export class PurchaseService {
      // Remove purchase order
     removePurchaseOrder(id:string){ 
         return this.http.delete<String>(`${environment.apiUrl}${API_ENDPOINTS.REMOVE_PURCHASE_ORDER+'?id='+id}`); 
+     }
+
+     updatePurchaseOrder(data: any){
+          return this.http.put(
+             `${environment.apiUrl}${API_ENDPOINTS.UPDATE_PURCHASE_ORDER}`,
+             data
+           );   
      }
 }
