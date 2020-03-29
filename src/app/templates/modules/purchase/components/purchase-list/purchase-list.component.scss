@@ -1,9 +1,9 @@
 @import "_base";
 
 #purchase-wrapper{
-  color:#97A4AC;  
+  //color:#97A4AC;  
   font-family: $font-family; 
-  font-size: 18px;
+  //font-size: 18px;
 }
 
 h3{color:$white;}
@@ -13,17 +13,17 @@ h3{color:$white;}
 .table>thead>tr>th{
   font-size: $table-font-size;
   height:40px; 
-  border-top:10px solid #15222B; 
-  border-bottom:10px solid #15222B;
-  color:#97A4AC
+  border-top:10px solid $main-bg; 
+  border-bottom:10px solid $main-bg;
+  color:$table-header-font;
 } 
   .table>tbody>tr>td{
     font-size: $table-font-size;
-    height:40px; border-top:10px solid #15222B; 
-  
-    color:#fff}
+    height:40px; border-top:5px solid $main-bg;   
+    color:#fff
+  }
 
-.back-colr{background-color:#15222B;}
+.back-colr{background-color:$main-bg;}
 button {
         overflow: visible;
         white-space: nowrap;
@@ -83,9 +83,6 @@ left: 8px;
 
 .txt-right{text-align:right; padding-right: 25px!important;}
 
-.mat-drawer-content {
-  overflow: inherit !important;
-}
 
 .custom-control {
   padding-left: 0px;
@@ -101,7 +98,8 @@ table tbody tr:hover td span{
 }
 
 .edit-delete-icon {
-  display: none;background: #253f4b;
+  display: none;
+  background: $table-open-row-bg;
   position: relative;
   height: 20px;
   top: 0px;
@@ -119,7 +117,7 @@ table tbody tr:hover td span{
 }
 
 .open-status {
-  color:#1585A2;
+  color:$open-status;
 }
 
 .purchase-order-row-open {
@@ -150,12 +148,10 @@ table tbody tr:hover td span{
   // overflow-y: scroll;height: 550px;
 }
 
-#error-msg {
-  text-align: center;color:red;
-}
+
 
 .invoice-status {
-  color: green;
+  color: $green;
 }
 
 .sort-by-desc
