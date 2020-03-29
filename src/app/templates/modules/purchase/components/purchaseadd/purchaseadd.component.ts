@@ -49,8 +49,8 @@ export class PurchaseAddComponent  implements OnInit, AfterViewInit {
 
   ngOnInit() { 
     
-    this.editPurchaseOrder(this.data);
     this.model.subtotal = 0;
+    this.editPurchaseOrder(this.data);
     this.purchasetable = false;
     this.getcategoryList();
     this.model.sNo = 0;
@@ -268,7 +268,7 @@ export class PurchaseAddComponent  implements OnInit, AfterViewInit {
      );
   }
 
-  addPurchaseOrder() {
+  addPurchaseOrder(data: any) {
     let categoryname = '';
     let categorycode = '';
     let productname = '';
@@ -276,6 +276,7 @@ export class PurchaseAddComponent  implements OnInit, AfterViewInit {
     let vendorname = '';
     let vendorcode = '';
     let qty         = '';
+    let addPurchaseData: any;
 
     if (this.model.qty !== null && this.model.price !== null) {
       this.model.subtotal = Number.parseInt(this.model.qty) * this.model.price;
@@ -299,12 +300,7 @@ export class PurchaseAddComponent  implements OnInit, AfterViewInit {
       productcode = splitProduct[1];
     }
 
-    // if (this.model.unit !== undefined && this.model.qty !== undefined) {
-    //   qty = this.model.qty+' '+this.model.unit;
-    // } else if (this.model.qty !== undefined) {
-    //   qty = this.model.qty;
-    // }
-    const addPurchaseData = {
+    addPurchaseData = {
       "categoryname": categoryname, 
       "categorycode": categorycode,
       "productname": productname,
@@ -312,35 +308,22 @@ export class PurchaseAddComponent  implements OnInit, AfterViewInit {
       "vendorname": vendorname, 
       "vendorcode": vendorcode, 
       "qty": (this.model.qty !== null) ? this.model.qty:0,
-      "subtotal":this.model.subtotal,
+      "subtotal": this.model.subtotal,
       "unit": this.model.unit,
-      "date": this.purchaseDate,
+      "unitprice": this.model.price,
+      "date": data.id !== undefined ? data.date:this.purchaseDate,
       "description": '',
-      "status" : "Open"
+      "status" : data.id !== undefined ? data.status:'Open'
      };
 
-    this.purchaseService.addPurchaseOrder(addPurchaseData)
-    .subscribe(res => { 
-      if (res === null) {
-        setTimeout(() => {
-          this.snackBar.open("Purchase Order created Successfully", "dismss", {
-            panelClass: ["success"],
-            verticalPosition: 'top'      
-          });
-        });
-        this.getProductList();
-      }
-      },
-      error => {
-        setTimeout(() => {
-          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-            panelClass: ["error"],
-            verticalPosition: 'top'      
-          });
-        });
+     if (data.id !== undefined) {
+      addPurchaseData.id = data.id;
+      this.updatePurchaseOrderData(addPurchaseData);
+     } else {
+      this.addPurchaseOrderData(addPurchaseData);
+     }
+     this.addPurchaseOrderClose();
   }
-);
-}
   
   onSubTotalCalc(value:any, type: string) {
     if (value !== 'NaN' && type === 'price' && this.model.qty !== undefined) {
@@ -365,8 +348,55 @@ export class PurchaseAddComponent  implements OnInit, AfterViewInit {
       this.model.category = data.categoryname+'-'+data.categorycode;
       this.model.vendorName = data.vendorname+'-'+data.vendorcode;
       this.model.productName = data.productname+'-'+data.productcode;
-      this.model.subtotal = Number.parseInt(data.unitprice) * data.qty;
+      this.model.subtotal = data.subtotal;
     }
+  }
+
+  addPurchaseOrderData(addPurchaseData: any) {
+    this.purchaseService.addPurchaseOrder(addPurchaseData)
+    .subscribe(res => { 
+      if (res === null) {
+        setTimeout(() => {
+          this.snackBar.open("Purchase Order created Successfully", "dismss", {
+            panelClass: ["success"],
+            verticalPosition: 'top'      
+          });
+        });
+        this.getProductList();
+      }
+      },
+      error => {
+        setTimeout(() => {
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });
+  }
+);
+  }
+
+  updatePurchaseOrderData(addPurchaseData: any) {
+    this.purchaseService.updatePurchaseOrder(addPurchaseData)
+    .subscribe(res => { 
+      if (res === null) {
+        setTimeout(() => {
+          this.snackBar.open("Purchase Order updated Successfully", "dismss", {
+            panelClass: ["success"],
+            verticalPosition: 'top'      
+          });
+        });
+       }
+      },
+      error => {
+        setTimeout(() => {
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });
+  }
+);
   }
 
 }

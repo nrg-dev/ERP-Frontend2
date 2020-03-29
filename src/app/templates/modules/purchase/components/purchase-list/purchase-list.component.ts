@@ -268,8 +268,30 @@ getAddPurchaseOrderStyle() {
     }
 
     removePurchaseOrder(id: string) {
-      this.purchaseService.removePurchaseOrder(id).subscribe(() =>{
-        this.getPurchaseOrderLists();
+      this.purchaseService.removePurchaseOrder(id).subscribe((data: any) =>{
+        if (data === null) {
+          setTimeout(() => {
+            this.snackBar.open("Purchase order has been deleted successfully", "dismss", {
+              panelClass: ["success"],
+              verticalPosition: 'top'      
+            });
+          });
+          this.getPurchaseOrderLists();
+        } else if (data === 500) {
+          setTimeout(() => {
+            this.snackBar.open("Internal server error", "dismss", {
+              panelClass: ["error"],
+              verticalPosition: 'top'      
+            });
+          });
+        } else {
+          setTimeout(() => {
+            this.snackBar.open("Bad request data", "dismss", {
+              panelClass: ["error"],
+              verticalPosition: 'top'      
+            });
+          });
+        }
       });
       
     }
