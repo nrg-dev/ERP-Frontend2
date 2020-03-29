@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild ,ElementRef,Inject} from '@angular/core';
+import { Component, OnInit, ViewChild ,ElementRef,Inject, OnDestroy} from '@angular/core';
 import { Purchase, User, Category } from 'src/app/core/common/_models';
 import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
@@ -362,7 +362,7 @@ export class Filter {
   templateUrl: './purchase-invoice.component.html',
   styleUrls: ['./purchase-invoice.component.scss']
 })
-export class PurchaseInvoiceComponent implements OnInit {
+export class PurchaseInvoiceComponent implements OnInit, OnDestroy {
   purchse:Purchase;
   model: any ={};
   public purchaseList : any;
@@ -371,7 +371,17 @@ export class PurchaseInvoiceComponent implements OnInit {
   displayedColumns: string[] = ['date','invoicenumber','productName','vendorname','Qty','Subtotal','deliverycost','total','status','Action'];
 
   dataSource: MatTableDataSource<any>;
+
+  isSortStatusDesc: boolean = false;
+  isSortStatusAsc: boolean = true;
   
+  isSortDateDesc: boolean = false;
+  isSortDateAsc: boolean = true;
+  isCreateReturn: boolean = false;
+  isDeleteButton: boolean = false;
+  isCreateInvoice: boolean = false;
+  isAddPurchaseOrder: boolean = false;
+
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
   @ViewChild(MatSort,{ static: true }) sort: MatSort;
   
@@ -382,35 +392,108 @@ export class PurchaseInvoiceComponent implements OnInit {
     private snackBar: MatSnackBar
 
   ) { 
-   // const purchasedata = require("../../purchasedata.json");
-
-   // this.purchaseList=purchasedata;
-
-    //console.log("data3 -->"+this.purchaseList[2].addedDate);
-
-    this.purchaseservice.load().subscribe(res => { 
-        this.purchaseList = res;
-        this.dataSource = new MatTableDataSource(this.purchaseList);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;  
-      },
-      error => {
-        setTimeout(() => {
-          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-            panelClass: ["error"],
-            verticalPosition: 'top'      
-          });
-        });   
-      }
-    );
     
   }
   
-
   ngOnInit() {
-   
-   this.dataSource.paginator = this.paginator;
-   this.dataSource.sort = this.sort;
+    this.removeScrollBar();
+    this.purchaseLoad();
+    //this.dataSource.paginator = this.paginator;
+    //this.dataSource.sort = this.sort;
+  }
+
+  purchaseLoad(){
+    this.purchaseservice.load().subscribe(res => { 
+      this.purchaseList = res;
+    },
+    error => {
+      setTimeout(() => {
+        this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+          panelClass: ["error"],
+          verticalPosition: 'top'      
+        });
+      });   
+    }
+  );
+  }
+
+  ngOnDestroy(){
+    (<HTMLElement>document.querySelector('.mat-drawer-content')).style.overflow = 'auto';
+  }
+
+  removeScrollBar() {
+    setTimeout(function () {
+        (<HTMLElement>document.querySelector('.mat-drawer-content')).style.overflow = 'inherit';
+      }, 300);
+  }
+
+  getDeleteButtonStyle() {
+    if (!this.isDeleteButton) {
+      let myStyles = {
+        'color': 'gray',
+        'background': '#1A2D39',
+        'border':'1px solid #1A2D39',
+        'display': 'none'
+      };
+      return myStyles;
+    }
+  }  
+
+  getCreateReturnStyle() {
+    if (!this.isCreateReturn) {
+      let myStyles = {
+        'color': 'gray',
+        'background': '#1A2D39',
+        'border':'1px solid #1A2D39',
+        'display': 'none'
+      };
+      return myStyles;
+    }
+  }   
+
+  getCreateInvoiceStyle() {
+    if (!this.isCreateInvoice) {
+      let myStyles = {
+        'color': 'gray',
+        'background': '#1A2D39',
+        'border':'1px solid #1A2D39',
+        'display': 'none'
+      };
+      return myStyles;
+    }
+  } 
+
+  getAddPurchaseOrderStyle() {
+    if (this.isAddPurchaseOrder) {
+      let myStyles = {
+        'color': 'gray',
+        'background': '#1A2D39',
+        'border':'1px solid #1A2D39',
+        'display': 'none'
+      };
+    return myStyles;
+  }
+  } 
+
+  sortByOrder(column: string, order: string) {
+    if (column === 'status' && order === 'desc') {
+      this.isSortStatusDesc = true;
+      this.isSortStatusAsc  = false;  
+      this.purchaseList.sort((a,b)=>b.status.localeCompare(a.status));
+    } else if (column === 'status' && order === 'asc') {
+      this.isSortStatusDesc = false;
+      this.isSortStatusAsc  = true;  
+      this.purchaseList.sort((a,b)=>a.status.localeCompare(b.status));
+    }
+    else if (column === 'date' && order === 'desc') {
+      this.isSortDateDesc = true;
+      this.isSortDateAsc  = false;  
+      this.purchaseList.sort((a,b)=>b.date.localeCompare(a.date));
+    } else {
+      this.isSortDateDesc = false;
+      this.isSortDateAsc  = true;  
+      this.purchaseList.sort((a,b)=>a.date.localeCompare(b.date));
+    }
   }
 
   openfilter() {
@@ -500,7 +583,7 @@ export class PurchaseInvoiceComponent implements OnInit {
   getAllPODetails(){
     this.purchaseservice.load().subscribe(res => { 
       this.purchaseList = res;
-      this.dataSource = new MatTableDataSource(this.purchaseList);  
+      //this.dataSource = new MatTableDataSource(this.purchaseList);  
       },
       error => {
         setTimeout(() => {

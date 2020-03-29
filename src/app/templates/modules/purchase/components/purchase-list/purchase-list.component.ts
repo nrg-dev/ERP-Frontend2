@@ -59,9 +59,9 @@ export class PurchaseListComponent  implements OnInit, OnDestroy  {
         'border':'1px solid #1A2D39',
         'display': 'none'
       };
-    return myStyles;
-  }
-}  
+      return myStyles;
+    }
+  }  
 
 getCreateReturnStyle() {
   if (!this.isCreateReturn) {
@@ -71,8 +71,8 @@ getCreateReturnStyle() {
       'border':'1px solid #1A2D39',
       'display': 'none'
     };
-  return myStyles;
-}
+    return myStyles;
+  }
 }   
 
 getCreateInvoiceStyle() {
@@ -83,8 +83,8 @@ getCreateInvoiceStyle() {
       'border':'1px solid #1A2D39',
       'display': 'none'
     };
-  return myStyles;
-}
+    return myStyles;
+  }
 }  
 
 getAddPurchaseOrderStyle() {

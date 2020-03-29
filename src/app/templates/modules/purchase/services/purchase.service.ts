@@ -39,7 +39,6 @@ export class PurchaseService {
     load(){
         //return this.http.get<Purchase>(this.commonURL+'load');
         return this.http.get<Purchase>(`${environment.apiUrl}${API_ENDPOINTS.loadPurchase}`);
-
     }
 
     // get 

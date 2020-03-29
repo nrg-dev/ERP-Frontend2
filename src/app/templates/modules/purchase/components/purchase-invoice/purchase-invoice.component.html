@@ -1,212 +1,75 @@
-<div class="mat-tab-body-content">
-  <div class="employee-content">
-    <div class="row">
-      <div class="col-lg-12">
-        <div id="addemployee-div">
-          <br />
-          <div class="row">
-            <div class="col-lg-4">
-              <p>Purchase Order Status</p>
-              <!-- <div style="height: 10%;"> 
-                <button (click)="openfilter()" style="width:auto;">Filter</button> &nbsp;
-              </div> -->
-            </div>
-            <div class="col-lg-4">
-              <button id="print-butn" style="cursor: pointer;">
-                &nbsp;<i
-                  class="fa fa-print"
-                  aria-hidden="true"
-                  id="icon-mod"
-                ></i>
-                &nbsp; &nbsp;<label id="text">Print Page</label>
-              </button>
-            </div>
-            <div class="col-lg-4">
-              <div class="search-box">
-                <i class="fas fa-search search-icon" aria-hidden="true"></i>
-                <input
-                  class="search-text-box"
-                  type="search"
-                  (keyup)="applyFilter($event.target.value)"
-                  placeholder="Search Invoice"
-                />
-              </div>
-            </div>
-          </div>
-          <br />
-          <div class="row">
-            <div class="col-lg-2">
-              <label style="color: white;font-size: 12px;">Filter Date:</label>
-            </div>
-            <div class="col-lg-7">
-              <input
-                type="date"
-                id="dateBox"
-                [(ngModel)]="model.fromdate"
-                name="fromdate"
-                #fromdate="ngModel"
-              />
-              <label style="color: white;">&nbsp; - &nbsp;</label>
-              <input
-                type="date"
-                id="dateBox"
-                [(ngModel)]="model.todate"
-                name="todate"
-                #todate="ngModel"
-              />
-            </div>
-            <div class="col-lg-2">
-              <button
-                (click)="openfilter()"
-                style="width:auto;font-size: 12px;border-radius: 4px;"
-              >
-                Filter
-              </button>
-              &nbsp;
-            </div>
-          </div>
-          <br />
-
-          <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource" matSort class="ngTable">
-              <ng-container matColumnDef="date">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                  Added Date
-                </th>
-                <td mat-cell *matCellDef="let row" id="middleContent">
-                  {{ row.poDate }}
-                </td>
-              </ng-container>
-
-              <ng-container matColumnDef="invoicenumber">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                  Invoice Number
-                </th>
-                <td mat-cell *matCellDef="let row" id="middleContent">
-                  {{ row.invoiceNumber }}
-                </td>
-              </ng-container>
-
-              <ng-container matColumnDef="productName">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                  Product List
-                </th>
-                <td mat-cell *matCellDef="let row" id="middleContent">
-                  {{ row.productName }}
-                </td>
-              </ng-container>
-
-              <ng-container matColumnDef="vendorname">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                  Vendor
-                </th>
-                <td mat-cell *matCellDef="let row" id="middleContent">
-                  {{ row.vendorName }}
-                </td>
-              </ng-container>
-
-              <ng-container matColumnDef="Qty">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Qty</th>
-                <td mat-cell *matCellDef="let row" id="middleContent">
-                  {{ row.quantity }}
-                </td>
-              </ng-container>
-
-              <ng-container matColumnDef="Subtotal">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                  Subtotal
-                </th>
-                <td mat-cell *matCellDef="let row" id="middleContent">
-                  {{ row.unitPrice }}
-                </td>
-              </ng-container>
-
-              <ng-container matColumnDef="deliverycost">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                  Delivery Cost
-                </th>
-                <td mat-cell *matCellDef="let row" id="middleContent">
-                  {{ row.deliveryCost }}
-                </td>
-              </ng-container>
-
-              <ng-container matColumnDef="total">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Total</th>
-                <td mat-cell *matCellDef="let row" id="middleContent">
-                  {{ row.totalAmount - -row.deliveryCost }}
-                </td>
-              </ng-container>
-
-              <ng-container matColumnDef="status">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                  Status
-                </th>
-                <td mat-cell *matCellDef="let row" id="middleContent">
-                  {{ row.status }}
-                </td>
-              </ng-container>
-
-              <ng-container matColumnDef="Action">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                  Action
-                </th>
-                <td
-                  mat-cell
-                  *matCellDef="let row"
-                  id="middleContent"
-                  style="cursor: pointer;"
-                >
-                  <i
-                    class="fas fa-eye"
-                    (click)="
-                      viewinvoice(
-                        row.invoiceNumber,
-                        row.vendorName,
-                        row.poDate,
-                        row.status
-                      )
-                    "
-                  ></i>
-                  &nbsp;
-                  <i
-                    class="fas fa-edit"
-                    (click)="
-                      editinvoice(row.invoiceNumber, row.status, row.vendorName)
-                    "
-                  ></i>
-                  <i
-                    class="fas fa-trash"
-                    (click)="deletePurchase(row.invoiceNumber)"
-                  ></i>
-                  <!-- <div class="row">
-                    <div id="rowview-div" (click)="viewinvoice(row.invoiceNumber,row.vendorName,row.poDate,row.status)">
-                      <i class="fa fa-eye" id="rowedit-icon" aria-hidden="true"></i>    
-                    </div>  
-                    &nbsp;&nbsp;&nbsp;
-                    <div id="rowedit-div" (click)="editinvoice(row.invoiceNumber,row.status)">
-                        <i class="fa fa-pencil-square-o" id="rowedit-icon" aria-hidden="true"></i>    
-                    </div>  
-                    &nbsp;&nbsp;&nbsp;
-                    <div id="rowdelete-div"(click)="deletePurchase(row.invoiceNumber)">
-                        <i class="fa fa-trash-o" id="rowdelete-icon" aria-hidden="true"></i>    
-                    </div>   
-                </div> -->
-                </td>
-              </ng-container>
-
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr
-                mat-row
-                class="table-row"
-                tabindex="1"
-                *matRowDef="let row; columns: displayedColumns"
-              ></tr>
-            </table>
-          </div>
-          <mat-paginator [pageSize]="5" [hidePageSize]="true"></mat-paginator>
+<!DOCTYPE html>
+<div class="row">
+  <div class="container-fluid" id="purchase-wrapper">
+    <div class="row back-colr">
+      <div class="container">
+        <div>
+          <h3 id="purchase-order-title">Purchase Orders</h3> 
+          <button id="delete" [disabled]="!isDeleteButton ? true:false" [ngStyle]="getDeleteButtonStyle()">
+              <i class="fas fa-trash"></i>
+          </button>
+          <button [disabled]="!isCreateReturn ? true:false" class="create-button" [ngStyle]="getCreateReturnStyle()">
+                  Create Return
+          </button>
+          <button  [disabled]="!isCreateInvoice ? true:false" class="create-button" [ngStyle]="getCreateInvoiceStyle()">
+                Create Invoice
+          </button>
+        
+          <button  (click)="addPurchaseOrder(null,null)" [disabled]="isAddPurchaseOrder" class="create-button" [ngStyle]="getAddPurchaseOrderStyle()">
+              <span class="fas fa-plus"></span> Add Purchase Order 
+          </button>
         </div>
+
+        <table class="table m-t-25" id="poTable">
+          <thead id="table-head">
+            <tr>
+              <th style="cursor:pointer">Number</th>
+              <th style="cursor:pointer">Date
+                  <i *ngIf="!isSortDateDesc" class="sort-by-desc" (click)="sortByOrder('date','desc')"></i>
+                  <i class="sort-by-asc" *ngIf="!isSortDateAsc" (click)="sortByOrder('date','asc')"></i>
+              </th>
+              <th>Product Name</th>
+              <th>Vendor</th>
+              <th>Quantity</th>
+              <th>Sub Total</th>
+              <th>Delivery Cost</th>
+              <th>Total</th>
+                <!-- <th onclick="w3.sortHTML('#poTable', '.purchase-order-row-open', 'td:nth-child(3)')" 
+                style="cursor:pointer">Status<i class="sort-by-desc"></i></th> -->
+              <th style="cursor:pointer">Status
+                  <i *ngIf="!isSortStatusDesc" class="sort-by-desc" (click)="sortByOrder('status','desc')"></i>
+                  <i class="sort-by-asc" *ngIf="!isSortStatusAsc" (click)="sortByOrder('status','asc')"></i>
+              </th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of purchaseList; let i = index">
+              <td [ngClass]="poCode">{{item.invoiceNumber}}</td>
+              <td [ngClass]="poDate">{{item.poDate | date : 'dd/MM/yyyy'}}</td>
+              <td>{{item.productName}}</td>
+              <td>{{item.vendorName}}</td>
+              <td class="txt-right">{{item.quantity}}</td>
+              <td class="txt-right">{{item.unitPrice}} </td>
+              <td class="txt-right">{{item.deliveryCost}}</td>
+              <td class="txt-right">{{item.totalAmount--item.deliveryCost}}</td>
+              <td><span class="open-status">{{item.status}}</span>
+                  <!-- <span *ngIf="item.status !== 'Pending'" class="invoice-status">{{item.status}}</span> -->
+              </td>
+              <td>
+                  <span class="fas fa-pen" (click)="viewinvoice(
+                    item.invoiceNumber,item.vendorName,item.poDate,item.status)">
+                  </span>
+                  <span class="fas fa-edit" (click)="editinvoice(
+                    item.invoiceNumber,item.status,item.vendorName)">
+                  </span>
+                  <span class="fas fa-trash" (click)="deletePurchase(item.invoiceNumber)"></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
       </div>
     </div>
   </div>
-  <br />
 </div>
