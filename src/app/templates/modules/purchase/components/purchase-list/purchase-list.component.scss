@@ -13,7 +13,7 @@ h3{color:$white;}
   .table>tbody>tr>td{
     font-size: 14px;
     height:40px; border-top:10px solid #15222B; 
-    border-bottom:10px solid #15222B;
+  
     color:#fff}
 
 .back-colr{background-color:#15222B;}
@@ -181,7 +181,9 @@ table tbody tr:hover td span{
   table>thead>tr>th>div.custom-control{position: relative;
     top: 17px;}
   }
-  .over-flo{overflow-y: scroll !important; height:400px !important;}
+  .over-flo{overflow-y: scroll !important; height:400px !important; display: table-caption;
+    position: relative;
+    top: 58px;}
 ::-webkit-scrollbar {
   width: 20px;
 }
@@ -201,6 +203,15 @@ table tbody tr:hover td span{
 .header-align{position: absolute;
   top: 20px;
   width: 97%;}
+.wid-50px{width: 50px!important;}
+.wid-110px{width: 110px!important;}
+.wid-180px{width: 180px!important;}
+.wid-150px{width: 150px!important;}
+
+  
+
+
+
 
 
 
