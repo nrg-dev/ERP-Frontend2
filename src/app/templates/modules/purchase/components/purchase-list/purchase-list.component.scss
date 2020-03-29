@@ -5,11 +5,16 @@
 
 h3{color:$white;}
 .m-t-25{margin-top: 25px;}
-.table>thead>tr>th, .table>tbody>tr>td{
-  font-size: 12px;
-  height:30px; border-top:15px solid #15222B; 
-  border-bottom:15px solid #15222B;
-  color:#97A4AC}
+.table>thead>tr>th{
+  font-size: 16px;
+  height:40px; border-top:10px solid #15222B; 
+  border-bottom:10px solid #15222B;
+  color:#97A4AC} 
+  .table>tbody>tr>td{
+    font-size: 16px;
+    height:40px; border-top:10px solid #15222B; 
+    border-bottom:10px solid #15222B;
+    color:#fff}
 
 .back-colr{background-color:#15222B;}
 button {
@@ -29,12 +34,12 @@ button {
     }
 
     .create-button {
-        float: right;
-        color: $white;
-        background: $btn-bg;
-        border: 1px solid $btn-bg;
-        margin-right: 10px;
-        padding:5px;
+      float: right;
+      color: $white;
+      background: $btn-bg;
+      border: 1px solid $btn-bg;
+      margin-right: 10px;
+      padding:8px;
 }
 
   input[type=checkbox] {
@@ -89,7 +94,11 @@ table tbody tr:hover td span{
 }
 
 .edit-delete-icon {
-  display: none;padding-top: 5px;
+  display: none;background: #1A2D39;
+  position: relative;
+  height: 20px;
+  top: 0px;
+  margin-top: -18px;
 }
 
 .fa-pen {
@@ -107,7 +116,7 @@ table tbody tr:hover td span{
 }
 
 .purchase-order-row-open {
-  background-color:#253f4b; // Open
+  background-color:#1A2D39; // Open
 }
 .purchase-order-row-invoiced {
   background-color:#1A2D39; //Invoiced
@@ -128,7 +137,8 @@ table tbody tr:hover td span{
 }
 
 .container {
-  overflow-y: scroll;height: 550px;
+  margin-left: 0px;
+  // overflow-y: scroll;height: 550px;
 }
 
 #error-msg {
@@ -171,6 +181,26 @@ table tbody tr:hover td span{
   table>thead>tr>th>div.custom-control{position: relative;
     top: 17px;}
   }
+  .over-flo{overflow-y: scroll !important; height:500px !important;}
+::-webkit-scrollbar {
+  width: 20px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #2C4655; 
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2C4655; 
+}
+.grid-align{position: absolute; top:60px; width: 98%;}
+.header-align{position: absolute;
+  top: 20px;
+  width: 97%;}
 
 
 
