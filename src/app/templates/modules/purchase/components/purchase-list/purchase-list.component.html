@@ -3,7 +3,7 @@
 <div class="container-fluid" id="purchase-wrapper"> 
   <div class="row back-colr">
   <div class="container">
-  <div class="header-align"><h3 id="purchase-order-title">Purchase Orders</h3> 
+  <div><h3 id="purchase-order-title">Purchase Orders</h3> 
   <button id="delete" [disabled]="!isDeleteButton ? true:false" [ngStyle]="getDeleteButtonStyle()">
     <i class="fas fa-trash"></i>
 </button>
@@ -19,14 +19,12 @@
   </button>
          
   </div>
-  <div class="m-t-25 grid-align" style="position: absolute; top:60px; width: 98%;">
-    <div class="over-flo">
-  <table class="table" id="poTable" style="margin-bottom: 0px !important; padding-top: 0px!important;">
+  <table class="table m-t-25" id="poTable">
     <thead id="table-head">
       <tr>
 	  <th>
       <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input1" id="customCheck2">
+        <input type="checkbox" class="custom-control-input1" id="customChecks2">
         <label class="custom-control-label1" for="customCheck2"></label>
     </div>
             </th>
@@ -46,7 +44,7 @@
         <th>Product Name</th>
 		<th>Quantity</th>
         <th>Sub Total</th>
-        <!-- <th id="action-header">Action</th> -->
+        <th id="action-header">Action</th>
        </tr>
     </thead>
     <tbody> 
@@ -71,22 +69,16 @@
         <td>{{item.productname}}</td>
 		<td class="txt-right">{{item.qty}}</td>
         <td class="txt-right">{{item.subtotal}} 
-          <span class="edit-delete-icon" *ngIf="isCheckedArr.length === 0 && item.status === 'Open'">
           
-            <span class="fas fa-pen" (click)="addPurchaseOrder(item.id, item)"></span>
-            <span class="fas fa-trash" (click)="removePurchaseOrder(item.id)"></span>
-          </span>
         </td>
-        <!-- <td><span class="edit-delete-icon" *ngIf="isCheckedArr.length === 0 && item.status === 'Open'">
+        <td><span class="edit-delete-icon" *ngIf="isCheckedArr.length === 0 && item.status === 'Open'">
           
           <span class="fas fa-pen" (click)="addPurchaseOrder(item.id, item)"></span>
           <span class="fas fa-trash" (click)="removePurchaseOrder(item.id)"></span>
-        </span></td> -->
+        </span></td>
        </tr>
      </tbody>
   </table>
-  </div>
-  </div>
 </div>
     </div>
   </div>
