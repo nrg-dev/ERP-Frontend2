@@ -1,17 +1,24 @@
 @import "_base";
 
-
-#purchase-wrapper{color:#97A4AC;  font-family: 'Open Sans'; font-size: 18px;}
+#purchase-wrapper{
+  color:#97A4AC;  
+  font-family: $font-family; 
+  font-size: 18px;
+}
 
 h3{color:$white;}
+
 .m-t-25{margin-top: 25px;}
+
 .table>thead>tr>th{
-  font-size: 14px;
-  height:40px; border-top:10px solid #15222B; 
+  font-size: $table-font-size;
+  height:40px; 
+  border-top:10px solid #15222B; 
   border-bottom:10px solid #15222B;
-  color:#97A4AC} 
+  color:#97A4AC
+} 
   .table>tbody>tr>td{
-    font-size: 14px;
+    font-size: $table-font-size;
     height:40px; border-top:10px solid #15222B; 
   
     color:#fff}
@@ -21,7 +28,7 @@ button {
         overflow: visible;
         white-space: nowrap;
         text-align: left;
-        font-family: Open Sans;
+        font-family: $font-family;
         font-style: normal;
         float: right;
         color: $white;
@@ -29,7 +36,7 @@ button {
         border: 1px solid $btn-bg;
         border-radius: 20px;
         padding: 0.5rem;
-        font-size: 14px;
+        font-size: $table-font-size;
         margin-top: 12px;
     }
 
@@ -94,7 +101,7 @@ table tbody tr:hover td span{
 }
 
 .edit-delete-icon {
-  display: none;background: #1A2D39;
+  display: none;background: #253f4b;
   position: relative;
   height: 20px;
   top: 0px;
@@ -116,15 +123,15 @@ table tbody tr:hover td span{
 }
 
 .purchase-order-row-open {
-  background-color:#1A2D39; // Open
+  background-color:$table-open-row-bg; // Open
 }
 .purchase-order-row-invoiced {
-  background-color:#1A2D39; //Invoiced
+  background-color:$table-invoived-row-bg; //Invoiced
 }
 
 
 #table-head {
-  background-color: #17252F;
+  background-color: $table-header-bg;
 }
 
 .fa-plus {
@@ -132,7 +139,9 @@ table tbody tr:hover td span{
 }
 
 #purchase-order-title {
-  float:left;font-size: 24px;padding-top: 10px;
+  float:left;
+  font-size: $header-title-font-size;
+  padding-top: 10px;
   font-weight: bold;
 }
 
@@ -174,6 +183,15 @@ table tbody tr:hover td span{
     border-bottom: solid 7px $white;
     border-top-width: 0;
 }
+
+.selected {
+  background-color: #334F5F !important;
+}
+
+.checkbox-selected:before {
+  border: 2px solid #1186aa !important;
+  background-color: #253f4b !important;
+}
   @media screen and (min-device-width: 320px) and (max-device-width: 767px){
   .back-colr{float:left;}
   body{font-size: 12px;}
@@ -206,7 +224,10 @@ table tbody tr:hover td span{
 .wid-50px{width: 50px!important;}
 .wid-110px{width: 110px!important;}
 .wid-180px{width: 180px!important;}
+.wid-190px{width: 190px!important;}
 .wid-150px{width: 150px!important;}
+.font-bld{ font-weight: bold;}
+.font-norm{ font-weight: normal;}
 
   
 
