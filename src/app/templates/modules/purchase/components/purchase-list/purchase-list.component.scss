@@ -6,12 +6,12 @@
 h3{color:$white;}
 .m-t-25{margin-top: 25px;}
 .table>thead>tr>th{
-  font-size: 16px;
+  font-size: 14px;
   height:40px; border-top:10px solid #15222B; 
   border-bottom:10px solid #15222B;
   color:#97A4AC} 
   .table>tbody>tr>td{
-    font-size: 16px;
+    font-size: 14px;
     height:40px; border-top:10px solid #15222B; 
     border-bottom:10px solid #15222B;
     color:#fff}
@@ -181,7 +181,7 @@ table tbody tr:hover td span{
   table>thead>tr>th>div.custom-control{position: relative;
     top: 17px;}
   }
-  .over-flo{overflow-y: scroll !important; height:500px !important;}
+  .over-flo{overflow-y: scroll !important; height:400px !important;}
 ::-webkit-scrollbar {
   width: 20px;
 }
