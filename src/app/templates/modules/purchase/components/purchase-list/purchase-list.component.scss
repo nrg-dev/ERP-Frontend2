@@ -1,17 +1,24 @@
 @import "_base";
 
-
-#purchase-wrapper{color:#97A4AC;  font-family: 'Open Sans'; font-size: 18px;}
+#purchase-wrapper{
+  color:#97A4AC;  
+  font-family: $font-family; 
+  font-size: 18px;
+}
 
 h3{color:$white;}
+
 .m-t-25{margin-top: 25px;}
+
 .table>thead>tr>th{
-  font-size: 14px;
-  height:40px; border-top:10px solid #15222B; 
+  font-size: $table-font-size;
+  height:40px; 
+  border-top:10px solid #15222B; 
   border-bottom:10px solid #15222B;
-  color:#97A4AC} 
+  color:#97A4AC
+} 
   .table>tbody>tr>td{
-    font-size: 14px;
+    font-size: $table-font-size;
     height:40px; border-top:10px solid #15222B; 
     border-bottom:10px solid #15222B;
     color:#fff}
@@ -21,7 +28,7 @@ button {
         overflow: visible;
         white-space: nowrap;
         text-align: left;
-        font-family: Open Sans;
+        font-family: $font-family;
         font-style: normal;
         float: right;
         color: $white;
@@ -29,7 +36,7 @@ button {
         border: 1px solid $btn-bg;
         border-radius: 20px;
         padding: 0.5rem;
-        font-size: 14px;
+        font-size: $table-font-size;
         margin-top: 12px;
     }
 
@@ -124,7 +131,7 @@ table tbody tr:hover td span{
 
 
 #table-head {
-  background-color: #17252F;
+  background-color: $table-header-bg;
 }
 
 .fa-plus {
@@ -132,7 +139,9 @@ table tbody tr:hover td span{
 }
 
 #purchase-order-title {
-  float:left;font-size: 24px;padding-top: 10px;
+  float:left;
+  font-size: $header-title-font-size;
+  padding-top: 10px;
   font-weight: bold;
 }
 
