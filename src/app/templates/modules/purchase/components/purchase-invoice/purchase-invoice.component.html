@@ -4,20 +4,7 @@
     <div class="row back-colr">
       <div class="container">
         <div>
-          <h3 id="purchase-order-title">Purchase Orders</h3> 
-          <button id="delete" [disabled]="!isDeleteButton ? true:false" [ngStyle]="getDeleteButtonStyle()">
-              <i class="fas fa-trash"></i>
-          </button>
-          <button [disabled]="!isCreateReturn ? true:false" class="create-button" [ngStyle]="getCreateReturnStyle()">
-                  Create Return
-          </button>
-          <button  [disabled]="!isCreateInvoice ? true:false" class="create-button" [ngStyle]="getCreateInvoiceStyle()">
-                Create Invoice
-          </button>
-        
-          <button  (click)="addPurchaseOrder(null,null)" [disabled]="isAddPurchaseOrder" class="create-button" [ngStyle]="getAddPurchaseOrderStyle()">
-              <span class="fas fa-plus"></span> Add Purchase Order 
-          </button>
+          <h3 id="purchase-order-title">Purchase Invoice List</h3> 
         </div>
 
         <table class="table m-t-25" id="poTable">
@@ -60,10 +47,7 @@
                   <span class="fas fa-pen" (click)="viewinvoice(
                     item.invoiceNumber,item.vendorName,item.poDate,item.status)">
                   </span>
-                  <span class="fas fa-edit" (click)="editinvoice(
-                    item.invoiceNumber,item.status,item.vendorName)">
-                  </span>
-                  <span class="fas fa-trash" (click)="deletePurchase(item.invoiceNumber)"></span>
+                
               </td>
             </tr>
           </tbody>
