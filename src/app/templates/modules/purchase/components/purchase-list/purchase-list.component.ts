@@ -115,13 +115,21 @@ getAddPurchaseOrderStyle() {
   }
   
   rowSelected(index: number, item: any, isChecked: boolean) {
+    let purchaseRowEl: any;
+    let purchaseCheckEl: any;
+    purchaseRowEl = document.querySelector('#purchase-order-row-id'+index);
+    purchaseCheckEl = document.querySelector('#customCheck'+index);
     if (isChecked) {
       item.indexVal = index;
       this.prodArr.push(item);
       this.isCheckedArr.push({checked: true, indexVal:index});
       this.vendorArr.push({vendorName: item.vendorname, indexVal:index});
       this.isShowEditDelete[index] = false;
+      purchaseRowEl.classList.add('selected');
+      purchaseCheckEl.classList.add('checkbox-selected');
     } else {
+      purchaseRowEl.classList.remove('selected');
+      purchaseCheckEl.classList.remove('checkbox-selected');
       this.removeItem(this.isCheckedArr, index, 'checked');
       this.removeItem(this.prodArr, index, 'product');
       this.removeItem(this.vendorArr, index, 'vendor');
