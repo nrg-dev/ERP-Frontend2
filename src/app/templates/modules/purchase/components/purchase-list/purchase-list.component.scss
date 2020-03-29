@@ -116,10 +116,10 @@ table tbody tr:hover td span{
 }
 
 .purchase-order-row-open {
-  background-color:#1A2D39; // Open
+  background-color:$table-open-row-bg; // Open
 }
 .purchase-order-row-invoiced {
-  background-color:#1A2D39; //Invoiced
+  background-color:$table-invoived-row-bg; //Invoiced
 }
 
 
