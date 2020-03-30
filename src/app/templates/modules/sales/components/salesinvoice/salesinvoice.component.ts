@@ -320,8 +320,10 @@ export class SalesinvoiceComponent implements OnInit {
   public salesList : any;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
-  displayedColumns: string[] = ['date','invoicenumber','productName','customername','Qty','Subtotal','deliverycost','total','status','Action'];
-  dataSource: MatTableDataSource<any>;
+  isSortDateDesc: boolean = false;
+  isSortDateAsc: boolean = true;
+
+
   
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
   @ViewChild(MatSort,{ static: true }) sort: MatSort;
@@ -350,7 +352,18 @@ export class SalesinvoiceComponent implements OnInit {
   ngOnInit() {
   }
 
- 
+  sortByOrder(column: string, order: string) {
+    
+    if (column === 'date' && order === 'desc') {
+      this.isSortDateDesc = true;
+      this.isSortDateAsc  = false;  
+      this.salesList.sort((a,b)=>b.date.localeCompare(a.date));
+    } else {
+      this.isSortDateDesc = false;
+      this.isSortDateAsc  = true;  
+      this.salesList.sort((a,b)=>a.date.localeCompare(b.date));
+    }
+  }
 
   openfilter() { 
     this.salesservice.loadfilterData(this.model)
@@ -364,13 +377,9 @@ export class SalesinvoiceComponent implements OnInit {
               verticalPosition: 'top'      
             });
           });  
-          this.dataSource = new MatTableDataSource();
-          this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort; 
+
         }else{
-          this.dataSource = new MatTableDataSource(this.salesList);  
-          this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort;  
+
         }     
       },
       error => {
@@ -423,7 +432,6 @@ export class SalesinvoiceComponent implements OnInit {
   getAllSODetails(){
     this.salesservice.load().subscribe(res => { 
       this.salesList = res;
-      this.dataSource = new MatTableDataSource(this.salesList);  
       },
       error => {
         setTimeout(() => {
