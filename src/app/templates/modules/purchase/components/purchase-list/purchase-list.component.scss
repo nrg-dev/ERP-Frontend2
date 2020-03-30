@@ -1,197 +1,5 @@
-@import "_base";
+@import "_common";
 
-#purchase-wrapper{
-  color:#97A4AC;  
-  font-family: $font-family; 
-  font-size: 18px;
-}
-
-h3{color:$white;}
-
-.m-t-25{margin-top: 25px;}
-
-.table>thead>tr>th{
-  font-size: $table-font-size;
-  height:40px; 
-  border-top:10px solid #15222B; 
-  border-bottom:10px solid #15222B;
-  color:#97A4AC
-} 
-  .table>tbody>tr>td{
-    font-size: $table-font-size;
-    height:40px; border-top:10px solid #15222B; 
-    border-bottom:10px solid #15222B;
-    color:#fff}
-
-.back-colr{background-color:#15222B;}
-button {
-        overflow: visible;
-        white-space: nowrap;
-        text-align: left;
-        font-family: $font-family;
-        font-style: normal;
-        float: right;
-        color: $white;
-        background:$btn-bg;
-        border: 1px solid $btn-bg;
-        border-radius: 20px;
-        padding: 0.5rem;
-        font-size: $table-font-size;
-        margin-top: 12px;
-    }
-
-    .create-button {
-      float: right;
-      color: $white;
-      background: $btn-bg;
-      border: 1px solid $btn-bg;
-      margin-right: 10px;
-      padding:8px;
-}
-
-  input[type=checkbox] {
-    position: relative;
-    cursor: pointer;
-}
-
-input[type=checkbox]:before {
-    content: "";
-    display: block;
-    position: absolute;
-       width: 20px;
-height: 20px;
-top: -3px;
-    left: 0;
-    border: 2px solid #2C4655;
-    border-radius: 0px;
-    background-color: #1A2D39;
-}
-input[type=checkbox]:checked:after {
-    content: "";
-    display: block;
-    width: 5px;
-    height: 10px;
-    border: solid $white;
-    border-width: 0 2px 2px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-    position: absolute;
-  top: 1px;
-left: 8px;
-}
-
-.txt-right{text-align:right; padding-right: 25px!important;}
-
-.mat-drawer-content {
-  overflow: inherit !important;
-}
-
-.custom-control {
-  padding-left: 0px;
-  padding-top: 3px;
-}
-
-table tbody tr:hover td span{
-  display: block !important;
-}
-
-#action-header {
-  visibility: hidden;
-}
-
-.edit-delete-icon {
-  display: none;background: #1A2D39;
-  position: relative;
-  height: 20px;
-  top: 0px;
-  margin-top: -18px;
-}
-
-.fa-pen {
-  float: left;
-  cursor: pointer;
-}
-
-.fa-trash {
-  float: right;
-  cursor: pointer;
-}
-
-.open-status {
-  color:#1585A2;
-}
-
-.purchase-order-row-open {
-  background-color:$table-open-row-bg; // Open
-}
-.purchase-order-row-invoiced {
-  background-color:$table-invoived-row-bg; //Invoiced
-}
-
-
-#table-head {
-  background-color: $table-header-bg;
-}
-
-.fa-plus {
-  font-size: 12px;
-}
-
-#purchase-order-title {
-  float:left;
-  font-size: $header-title-font-size;
-  padding-top: 10px;
-  font-weight: bold;
-}
-
-.container {
-  margin-left: 0px;
-  // overflow-y: scroll;height: 550px;
-}
-
-#error-msg {
-  text-align: center;color:red;
-}
-
-.invoice-status {
-  color: green;
-}
-
-.sort-by-desc
-{
-    left: 3px;
-    display: inline-block;
-    width: 0;
-    height: 0;
-    border: solid 5px transparent;
-    margin: 4px 4px 0 3px;
-    background: transparent;
-    border-top: solid 7px $white;
-    border-bottom-width: 0;
-}
-
-.sort-by-asc
-{
-    left: 3px;
-    display: inline-block;
-    width: 0;
-    height: 0;
-    border: solid 5px transparent;
-    margin: 4px 4px 0 3px;
-    background: transparent;
-    border-bottom: solid 7px $white;
-    border-top-width: 0;
-}
-
-.selected {
-  background-color: #334F5F !important;
-}
-
-.checkbox-selected:before {
-  border: 2px solid #1186aa !important;
-  background-color: #253f4b !important;
-}
   @media screen and (min-device-width: 320px) and (max-device-width: 767px){
   .back-colr{float:left;}
   body{font-size: 12px;}
@@ -199,7 +7,9 @@ table tbody tr:hover td span{
   table>thead>tr>th>div.custom-control{position: relative;
     top: 17px;}
   }
-  .over-flo{overflow-y: scroll !important; height:400px !important;}
+  .over-flo{overflow-y: scroll !important; height:400px !important; display: table-caption;
+    position: relative;
+    top: 58px;}
 ::-webkit-scrollbar {
   width: 20px;
 }
@@ -208,17 +18,23 @@ table tbody tr:hover td span{
   border-radius: 10px;
 }
  
-::-webkit-scrollbar-thumb {
-  background: #2C4655; 
-  border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #2C4655; 
-}
+
 .grid-align{position: absolute; top:60px; width: 98%;}
 .header-align{position: absolute;
   top: 20px;
   width: 97%;}
+.wid-50px{width: 50px!important;}
+.wid-110px{width: 110px!important;}
+.wid-180px{width: 180px!important;}
+.wid-190px{width: 190px!important;}
+.wid-150px{width: 150px!important;}
+.font-bld{ font-weight: bold;}
+.font-norm{ font-weight: normal;}
+
+  
+
+
+
 
 
 
