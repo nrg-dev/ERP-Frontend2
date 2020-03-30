@@ -1,5 +1,5 @@
 <div id="box-dialouge">
-    <form name="editSalesform" (ngSubmit)="updateInvoice()">
+    <form name="editSalesform">
 
     <br/>
         <h2 style="text-align: center;font-size: 22px;">Edit Invoice {{ this.model.invoiceNumber }}</h2>
@@ -94,7 +94,7 @@
         <div class="col-lg-5">
             <div class="radio-toolbar">
                 <button id="checkIn-butn">Save</button>
-                <label id="checkOut-butn" (click)="cancelInvoice()">Cancel</label>
+                <label id="checkOut-butn" >Cancel</label>
             </div>
         </div>
         <div class="col-lg-3"></div>
