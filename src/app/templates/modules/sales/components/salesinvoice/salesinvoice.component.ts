@@ -61,7 +61,7 @@ export class ViewInvoice {
     .subscribe(
       data => {
         this.sales = data;
-        console.log("Vendor Name -->"+this.sales.customerName);
+        console.log("Customer Name -->"+this.sales.customerName);
       },
       error => {
         setTimeout(() => {
@@ -320,10 +320,10 @@ export class SalesinvoiceComponent implements OnInit {
   public salesList : any;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
+  isSortStatusDesc: boolean = false;
+  isSortStatusAsc: boolean = true;
   isSortDateDesc: boolean = false;
   isSortDateAsc: boolean = true;
-
-
   
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
   @ViewChild(MatSort,{ static: true }) sort: MatSort;
@@ -335,8 +335,27 @@ export class SalesinvoiceComponent implements OnInit {
     private snackBar: MatSnackBar
 
     ) { 
-      this.salesservice.load().subscribe(res => { 
-        this.salesList = res;
+      
+  }
+
+  ngOnInit() {
+    this.getAllSODetails();
+    this.removeScrollBar();
+  }
+
+  ngOnDestroy(){
+    (<HTMLElement>document.querySelector('.mat-drawer-content')).style.overflow = 'auto';
+  }
+
+  removeScrollBar() {
+    setTimeout(function () {
+        (<HTMLElement>document.querySelector('.mat-drawer-content')).style.overflow = 'inherit';
+      }, 300);
+  }
+
+  getAllSODetails(){
+    this.salesservice.load().subscribe(res => { 
+      this.salesList = res;
       },
       error => {
         setTimeout(() => {
@@ -344,24 +363,28 @@ export class SalesinvoiceComponent implements OnInit {
             panelClass: ["error"],
             verticalPosition: 'top'      
           });
-        });   
-      }
+        });         }
     );
   }
 
-  ngOnInit() {
-  }
-
   sortByOrder(column: string, order: string) {
-    
-    if (column === 'date' && order === 'desc') {
+    if (column === 'status' && order === 'desc') {
+      this.isSortStatusDesc = true;
+      this.isSortStatusAsc  = false;  
+      this.salesList.sort((a,b)=>b.status.localeCompare(a.status));
+    } else if (column === 'status' && order === 'asc') {
+      this.isSortStatusDesc = false;
+      this.isSortStatusAsc  = true;  
+      this.salesList.sort((a,b)=>a.status.localeCompare(b.status));
+    }
+    else if (column === 'date' && order === 'desc') {
       this.isSortDateDesc = true;
       this.isSortDateAsc  = false;  
-      this.salesList.sort((a,b)=>b.date.localeCompare(a.date));
+      this.salesList.sort((a,b)=>b.soDate.localeCompare(a.soDate));
     } else {
       this.isSortDateDesc = false;
       this.isSortDateAsc  = true;  
-      this.salesList.sort((a,b)=>a.date.localeCompare(b.date));
+      this.salesList.sort((a,b)=>a.soDate.localeCompare(b.soDate));
     }
   }
 
@@ -429,19 +452,7 @@ export class SalesinvoiceComponent implements OnInit {
     });
   }
 
-  getAllSODetails(){
-    this.salesservice.load().subscribe(res => { 
-      this.salesList = res;
-      },
-      error => {
-        setTimeout(() => {
-          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-            panelClass: ["error"],
-            verticalPosition: 'top'      
-          });
-        });         }
-    );
-  }
+ 
 
   public deleteSale(invoiceNumber:string){
     console.log("Delete Invoice Number  --->"+invoiceNumber);

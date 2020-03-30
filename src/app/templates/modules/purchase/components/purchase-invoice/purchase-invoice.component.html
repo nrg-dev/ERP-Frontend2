@@ -29,6 +29,10 @@
                 <i *ngIf="!isSortDateDesc" class="sort-by-desc" (click)="sortByOrder('date','desc')"></i>
                 <i class="sort-by-asc" *ngIf="!isSortDateAsc" (click)="sortByOrder('date','asc')"></i>
               </th>
+              <th class="wid-190px" style="cursor:pointer;">Status
+                <i *ngIf="!isSortStatusDesc" class="sort-by-desc" (click)="sortByOrder('status','desc')"></i>
+                <i class="sort-by-asc" *ngIf="!isSortStatusAsc" (click)="sortByOrder('status','asc')"></i>
+              </th>
               <th class="wid-150px">Product Name</th>
               <th class="wid-150px">Vendor</th>
               <th class="wid-150px">Quantity</th>
@@ -37,29 +41,32 @@
               <th class="wid-150px">Total</th>
               <!-- <th onclick="w3.sortHTML('#poTable', '.purchase-order-row-open', 'td:nth-child(3)')" 
               style="cursor:pointer">Status<i class="sort-by-desc"></i></th> -->
-              <th class="wid-190px" style="cursor:pointer;">Status
-                <i *ngIf="!isSortStatusDesc" class="sort-by-desc" (click)="sortByOrder('status','desc')"></i>
-                <i class="sort-by-asc" *ngIf="!isSortStatusAsc" (click)="sortByOrder('status','asc')"></i>
-              </th>
+             
               <!-- <th class="wid-150px">Action</th> -->
              </tr>
           </thead>
           <tbody class="over-flo"> 
             <tr *ngFor="let item of purchaseList; let i = index" 
               [ngClass]="{'purchase-order-row-open': item.status ==='Pending', 
-              'purchase-order-row-invoiced':item.status ==='Approve'}"
+              'purchase-order-row-invoiced':item.status ==='Approved'}"
               id="purchase-order-row-id{{i}}">
               <td class="wid-150px" [ngClass]="poCode">{{item.invoiceNumber}}</td>
-              <td class="wid-150px">{{item.poDate}}</td>
+              <td class="wid-150px" [ngClass]="poDate"><span [ngClass]="item.status !== 'Pending' ? 'font-norm' : 'font-bld'">{{item.poDate | date : 'dd/MM/yyyy'}}</span></td>
+              <td class="wid-190px"><span class="open-status">{{item.status}}</span>
               <td class="wid-150px">{{item.productName}}</td>
               <td class="wid-150px">{{item.vendorName}}</td>
               <td class="txt-right wid-150px">{{item.quantity}}</td>
               <td class="txt-right wid-150px">{{item.unitPrice}}</td>
-              <td class="txt-right wid-150px">{{item.deliveryCost}} 
-              <td class="txt-right wid-150px">{{item.totalAmount--item.deliveryCost}}</td>
-              <td class="wid-190px"><span class="open-status">{{item.status}}</span>
-                <!-- <span *ngIf="item.status !== 'Open'" class="invoice-status">{{item.status}}</span> -->
+              <td class="txt-right wid-150px">{{item.deliveryCost}}</td>
+              <td class="txt-right wid-150px">{{item.totalAmount--item.deliveryCost}} 
+                <span class="edit-delete-icon" *ngIf="item.status === 'Pending'">
+                    <span class="fas fa-eye" (click)="viewinvoice(
+                      item.invoiceNumber,item.vendorName,item.poDate,item.status)"></span>
+                  <!-- <span class="fas fa-pen" (click)="addPurchaseOrder(item.id, item)"></span>
+                  <span class="fas fa-trash" (click)="removePurchaseOrder(item.invoiceNumber)"></span> -->
+                </span>
               </td>
+                <!-- <span *ngIf="item.status !== 'Open'" class="invoice-status">{{item.status}}</span> -->
               <!-- <td class="wid-150px">                
                   <span class="fas fa-eye" (click)="viewinvoice(
                     item.invoiceNumber,item.vendorName,item.poDate,item.status)"></span>

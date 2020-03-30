@@ -474,16 +474,16 @@ export class PurchaseInvoiceComponent implements OnInit, OnDestroy {
       else if (column === 'date' && order === 'desc') {
         this.isSortDateDesc = true;
         this.isSortDateAsc  = false;  
-        this.purchaseList.sort((a,b)=>b.date.localeCompare(a.date));
+        this.purchaseList.sort((a,b)=>b.poDate.localeCompare(a.poDate));
       } else {
         this.isSortDateDesc = false;
         this.isSortDateAsc  = true;  
-        this.purchaseList.sort((a,b)=>a.date.localeCompare(b.date));
+        this.purchaseList.sort((a,b)=>a.poDate.localeCompare(b.poDate));
       }
     }
 
-    removePurchaseOrder(id: string) {
-      this.purchaseService.removePurchaseOrder(id).subscribe((data: any) =>{
+    removePurchaseOrder(invoiceNumber: string) {
+      this.purchaseService.remove(invoiceNumber).subscribe((data: any) =>{
         if (data === null) {
           setTimeout(() => {
             this.snackBar.open("Purchase order has been deleted successfully", "dismss", {
