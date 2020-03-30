@@ -21,7 +21,7 @@ h3{color:$white;}
   .table>tbody>tr>td{
     font-size: $table-font-size;
     height:40px; border-top:5px solid $main-bg;   
-    color:#fff
+    color:$table-row-font-color;
   }
 
 .back-colr{background-color:$main-bg;}
@@ -137,7 +137,7 @@ table tbody tr:hover td span{
   font-size: 12px;
 }
 
-#purchase-order-title {
+#title {
   float:left;
   font-size: $header-title-font-size;
   padding-top: 10px;
@@ -148,8 +148,6 @@ table tbody tr:hover td span{
   margin-left: 0px;
   // overflow-y: scroll;height: 550px;
 }
-
-
 
 .invoice-status {
   color: $green;
@@ -188,4 +186,12 @@ table tbody tr:hover td span{
 .checkbox-selected:before {
   border: 2px solid $btn-bg !important;
   background-color: $table-open-row-bg !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $header-bg; 
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: $header-bg; 
 }
