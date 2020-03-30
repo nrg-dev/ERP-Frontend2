@@ -35,9 +35,7 @@
               <th class="wid-150px">Sub Total</th>
               <th class="wid-150px">Delivery Cost</th>
               <th class="wid-150px">Total</th>
-              <!-- <th onclick="w3.sortHTML('#poTable', '.purchase-order-row-open', 'td:nth-child(3)')" 
-              style="cursor:pointer">Status<i class="sort-by-desc"></i></th> -->
-              <th class="wid-190px" style="cursor:pointer;">Status
+                <th class="wid-190px" style="cursor:pointer;">Status
                 <i *ngIf="!isSortStatusDesc" class="sort-by-desc" (click)="sortByOrder('status','desc')"></i>
                 <i class="sort-by-asc" *ngIf="!isSortStatusAsc" (click)="sortByOrder('status','asc')"></i>
               </th>
@@ -46,8 +44,8 @@
           </thead>
           <tbody class="over-flo"> 
             <tr *ngFor="let item of purchaseList; let i = index" 
-              [ngClass]="{'purchase-order-row-open': item.status ==='Pending', 
-              'purchase-order-row-invoiced':item.status ==='Approve'}"
+              [ngClass]="{'order-row-open': item.status ==='Pending', 
+              'purchase-order-row':item.status ==='Approve'}"
               id="purchase-order-row-id{{i}}">
               <td class="wid-150px" [ngClass]="poCode">{{item.invoiceNumber}}</td>
               <td class="wid-150px">{{item.poDate}}</td>

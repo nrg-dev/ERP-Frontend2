@@ -35,8 +35,8 @@
     </thead>
     <tbody class="over-flo"> 
       <tr *ngFor="let item of salesList; let i = index"
-      [ngClass]="{'sales-order-row-open': item.status ==='Pending', 
-      'sales-order-row-invoiced':item.status ==='Approve'}">
+      [ngClass]="{'order-row-open': item.status ==='Pending', 
+      'order-row-invoiced':item.status ==='Approve'}">
       
 	 
         <td class="wid-150px" >{{item.invoiceNumber}}</td>

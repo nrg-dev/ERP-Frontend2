@@ -121,19 +121,13 @@ table tbody tr:hover td span{
   color:$open-status;
 }
 
-.purchase-order-row-open {
+.order-row-open {
   background-color:$table-open-row-bg; // Open
 }
-.purchase-order-row-invoiced {
+.order-row-invoiced {
   background-color:$table-invoived-row-bg; //Invoiced
 }
 
-.sales-order-row-open {
-  background-color:$table-open-row-bg; // Open
-}
-.sales-order-row-invoiced {
-  background-color:$table-invoived-row-bg; //Invoiced
-}
 
 #table-head {
   background-color: $table-header-bg;
