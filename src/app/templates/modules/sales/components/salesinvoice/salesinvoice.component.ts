@@ -265,50 +265,11 @@ export class EditInvoice {
     );
   }
 
-  updateInvoice(){
-    this.sales = new Sales;
-    for(let j=0; j<this.salesList.length; j++){
-      console.log("Edited Sales Category Name ------>"+this.salesList[j].category);
-      console.log("Edited Sales Item Name ------>"+this.salesList[j].productName);
-      console.log("Edited Sales description ------>"+this.salesList[j].description);
-      console.log("Edited Sales quantity ------>"+this.salesList[j].quantity);
-      console.log("Edited Sales unitPrice ------>"+this.salesList[j].price);
-      console.log("Edited Sales netAmount ------>"+this.salesList[j].netAmount);
-      console.log("Edited Sales ObjectID ------>"+this.salesList[j].id);
-      console.log("Edited Sales invoiceNumber ------>"+this.salesList[j].invoiceNumber);
-      console.log("Edited Sales SODate ------>"+this.salesList[j].soDate);
-    }
+  
 
-    console.log(this.salesList);
-    this.saleseditarray.push(this.salesList);
-    console.log(this.saleseditarray);
+    
 
-    this.salesService.update(this.saleseditarray)
-    .subscribe(
-      data => {
-        this.sales = data; 
-        this.dialogRef.close();
-        setTimeout(() => {
-          this.snackBar.open("Sales Invoice updated Successfully", "dismss", {
-            panelClass: ["success"],
-            verticalPosition: 'top'      
-          });
-        });
-      },
-      error => {
-        setTimeout(() => {
-          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-            panelClass: ["error"],
-            verticalPosition: 'top'      
-          });
-        });   
-      }
-    ); 
-  }
 
-  cancelInvoice(){
-    this.dialogRef.close();
-  }
 
 }
 
@@ -374,11 +335,6 @@ export class SalesinvoiceComponent implements OnInit {
     ) { 
       this.salesservice.load().subscribe(res => { 
         this.salesList = res;
-        //var ks = $('#keywords').val().split("\n");
-        //console.log("Qty List -->"+this.salesList[1].quantity);
-        this.dataSource = new MatTableDataSource(this.salesList);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;  
       },
       error => {
         setTimeout(() => {
@@ -392,16 +348,9 @@ export class SalesinvoiceComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
   }
 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
+ 
 
   openfilter() { 
     this.salesservice.loadfilterData(this.model)
@@ -433,14 +382,7 @@ export class SalesinvoiceComponent implements OnInit {
         });  
       }
     );
-    /*const dialogRef = this.dialog.open(Filter, {
-    width: '60%',
-    //  data: {name: this.name, animal: this.animal}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });*/
+    
   }  
 
   public viewinvoice(invoiceNumber:string,customerName:string,invoicedate: string,status:string){
