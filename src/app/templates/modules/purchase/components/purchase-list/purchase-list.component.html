@@ -50,9 +50,8 @@
        </tr>
     </thead>
     <tbody class="over-flo"> 
-      <tr *ngFor="let item of purchaseOrderList; let i = index" 
-      [ngClass]="{'purchase-order-row-open': item.status ==='Open', 
-      'purchase-order-row-invoiced':item.status ==='Invoiced'}" id="purchase-order-row-id{{i}}"
+      <tr *ngFor="let item of purchaseOrderList; let i = index" class="purchase-order-row-invoiced"
+   id="purchase-order-row-id{{i}}"
       >
 	  <td class="wid-50px">
               <div class="custom-control custom-checkbox">
