@@ -16,17 +16,8 @@ export const SidenavItems: MenuItem[] = [
     label: "Employment",
     icon: "assets/images/employee.png",
     path: "/employment",
-    submenu: true,
-    childern: [{
-      id: "employee_list",
-      label: "Employee List",
-      path: "/employment",
-     },
-     {
-      id: "add_employee",
-      label: "Add New Employee",
-      path: "addEmployee",
-     }]
+    submenu: false,
+    childern: []
   },
   {
     id: "vendorAndCustomer",

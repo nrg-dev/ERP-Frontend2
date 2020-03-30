@@ -4,23 +4,25 @@ import {
   ViewChild,
   Input,
   SimpleChanges,
-  OnChanges
+  OnChanges,
+  OnDestroy
 } from "@angular/core";
 
-import { MatTableDataSource, MatPaginator } from "@angular/material";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Employee } from "./employee-list.model";
 import { EmployeeDetailComponent } from "../employee-detail/employee-detail.component";
 import { EmployeeService } from "../../services/employee.service";
 import { AlertService } from "src/app/core/common/_services/index";
 import { PrintDialogService } from "src/app/core/services/print-dialog/print-dialog.service";
+import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
+import { EmployeeAddComponent } from "../employee-add/employee-add.component";
 
 @Component({
   selector: "app-employee-list",
   templateUrl: "./employee-list.component.html",
   styleUrls: ["./employee-list.component.scss"]
 })
-export class EmployeeListComponent implements OnInit, OnChanges {
+export class EmployeeListComponent implements OnInit, OnChanges,OnDestroy {
   @Input() tabChange: boolean = false;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
@@ -38,7 +40,7 @@ export class EmployeeListComponent implements OnInit, OnChanges {
   searchText: string;
   showDetail: boolean = false;
   // employeesDS: Employee[];
-  employeesDS: any = {};
+  employeesDS: any;
   employees: MatTableDataSource<Employee>;
   employee;
   displayedColumns: string[] = [
@@ -48,15 +50,19 @@ export class EmployeeListComponent implements OnInit, OnChanges {
     "contactNumber",
     "action"
   ];
+  dialogConfig = new MatDialogConfig();
+
   constructor(
     private employeeService: EmployeeService,
     private alertService: AlertService,
     private printDialogService: PrintDialogService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
     this.allemplist();
+    this.removeScrollBar();
     /*this.snackBar.open("Employee list SUCCESS", "dismss", {
       panelClass: ["success"],
       verticalPosition: 'top'
@@ -115,7 +121,7 @@ export class EmployeeListComponent implements OnInit, OnChanges {
 
   allemplist() {
     this.employeeService.load().subscribe(
-      (data: Employee[]) => {
+      (data: Employee[]) => { 
         this.employeesDS = data;
         this.employees = new MatTableDataSource(this.employeesDS);
         this.employees.paginator = this.paginator;
@@ -185,5 +191,33 @@ export class EmployeeListComponent implements OnInit, OnChanges {
     if (this.employees.paginator) {
       this.employees.paginator.firstPage();
     }
+  }
+
+  addEmployee() {
+     let data = {};
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+      'top': '1000',
+      left: '100'
+    };
+    this.dialog.open(EmployeeAddComponent,{
+      panelClass: 'addpromotion',
+      data: data,
+    })
+    .afterClosed().subscribe(result => {
+      this.allemplist();
+    });
+    
+  }
+
+  ngOnDestroy(){
+    (<HTMLElement>document.querySelector('.mat-drawer-content')).style.overflow = 'auto';
+  }
+
+  removeScrollBar() {
+    setTimeout(function () {
+        (<HTMLElement>document.querySelector('.mat-drawer-content')).style.overflow = 'inherit';
+      }, 300);
   }
 }

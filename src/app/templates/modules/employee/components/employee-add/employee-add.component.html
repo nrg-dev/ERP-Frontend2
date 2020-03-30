@@ -1,4 +1,4 @@
-
+<!-- 
     <form  name="employeeForm"
     (submit)="employeeForm.form.valid && saveEmployee()"
     #employeeForm="ngForm"
@@ -117,4 +117,141 @@
     </form>
     
                     	
-    
+     -->
+
+     
+     <div class="mb-3" style="font-size: 12px;">
+           
+      <div class="grid-container3">
+       <div></div>
+       
+       <div>
+       <div>
+        <button type="button" class="close" aria-label="Close" (click)="addEmployeeClose()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+       <h2 id="h2ID">Add Employee</h2>
+      
+      <div class="grid-container2">
+       <div>
+        <p id="po-label">Employee Name</p>
+        </div>
+        <div>
+         <p id="po-label">Employee Rank</p>
+        </div>
+      </div>
+      
+      <div class="grid-container2">
+       <div>
+        <input type="text" name="name" id="po-textbox" [(ngModel)]="this.model.name" 
+        #name="ngModel">
+       </div>
+       
+       <div>
+        <input type="text" name="rank" id="po-textbox" [(ngModel)]="this.model.rank" 
+        #rank="ngModel">
+       </div>
+      </div>
+      
+     
+        
+        <div class="grid-container6">
+          <div>
+            <p id="po-label">Phone Number</p>
+        
+            <input type="text" name="phonenumber" id="po-textbox" [(ngModel)]="this.model.phonenumber" 
+            #phonenumber="ngModel">
+         
+          </div>
+       
+          <div>
+            <p id="po-label">Address</p>
+            <input type="text" name="address" id="po-textbox" [(ngModel)]="this.model.address" 
+            #address="ngModel">
+            
+          </div>
+        </div>
+      
+        <div class="grid-container6">
+          <div>
+            <p id="po-label">Employee Email</p>
+          <!-- <p style="font-size: 12px;">0.003</p> -->
+          <input type="text" name="email" id="po-textbox" [(ngModel)]="this.model.email" 
+          #email="ngModel">
+         
+          </div>
+       
+          <div>
+        
+            <p id="po-label">Employee DOB</p>
+          <!-- <p style="font-size: 12px;">0.003</p> -->
+          <input type="text" name="dob" id="po-textbox" [(ngModel)]="this.model.dob" 
+          #dob="ngModel">
+          </div>
+        </div>
+
+        <div class="grid-container6">
+          <div>
+          <p id="po-label">ContractNumber</p>
+          <input type="text" name="contractnumber" id="po-textbox" [(ngModel)]="this.model.contractnumber" 
+          #contractnumber="ngModel">
+          </div>
+       
+          <div>
+        
+            <p id="po-label">NPWP Number</p>
+          <!-- <p style="font-size: 12px;">0.003</p> -->
+          <input type="text" name="npwp" id="po-textbox" [(ngModel)]="this.model.npwp" 
+          #npwp="ngModel">
+          </div>
+        </div>
+
+        <div class="grid-container6">
+          <div>
+          <p id="po-label">BPJS</p>
+          <input type="text" name="bpjs" id="po-textbox" [(ngModel)]="this.model.bpjs" 
+          #bpjs="ngModel">
+          </div>
+       
+          <div>
+        
+            <p id="po-label">Monthly Salary</p>
+          <!-- <p style="font-size: 12px;">0.003</p> -->
+          <input type="text" name="monthlysalary" id="po-textbox" [(ngModel)]="this.model.monthlysalary" 
+          #monthlysalary="ngModel">
+          </div>
+        </div>
+        <div class="grid-container6">
+          <div>
+          <p id="po-label">Work Hour</p>
+          <input type="text" name="workHour" id="po-textbox" [(ngModel)]="this.model.workHour" 
+          #workHour="ngModel">
+          </div>
+       
+          <div>
+        
+            <p id="po-label">Annual Leave</p>
+          <!-- <p style="font-size: 12px;">0.003</p> -->
+          <input type="text" name="annualLeave" id="po-textbox" [(ngModel)]="this.model.annualLeave" 
+          #annualLeave="ngModel">
+          </div>
+        </div>
+        </div>
+        
+             
+        <div class="grid-container4">
+          <div></div>
+        <div></div>
+        <div id="add-btn">
+         <p id="add-text" (click)="saveEmployee()">Add</p>
+        </div>
+        </div>
+       </div>
+       
+       <div></div>
+      </div>
+      
+      <div></div>
+     
+  </div>      
+ 

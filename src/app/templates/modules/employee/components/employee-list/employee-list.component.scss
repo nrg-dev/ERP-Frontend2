@@ -1,12 +1,60 @@
-@import "_base";
+//@import "_base";
 
-.actions {
-  i {
-    cursor: pointer;
-    padding: 0 15px;
+// .actions {
+//   i {
+//     cursor: pointer;
+//     padding: 0 15px;
+//   }
+// }
+// .mat-input-element{
+//   background-color: white;
+//   color: black !important;
+// }
+
+@import "_common";
+
+  @media screen and (min-device-width: 320px) and (max-device-width: 767px){
+  .back-colr{float:left;}
+  body{font-size: 12px;}
+  .table>thead>tr>th, .table>tbody>tr>td{font-size: 11px;}
+  table>thead>tr>th>div.custom-control{position: relative;
+    top: 17px;}
   }
+  .over-flo{overflow-y: scroll !important; height:400px !important; display: table-caption;
+    position: relative;
+    top: 58px;}
+::-webkit-scrollbar {
+  width: 20px;
 }
-.mat-input-element{
-  background-color: white;
-  color: black !important;
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
 }
+ 
+
+.grid-align{position: absolute; top:60px; width: 98%;}
+.header-align{position: absolute;
+  top: 20px;
+  width: 97%;}
+.wid-50px{width: 50px!important;}
+.wid-110px{width: 110px!important;}
+.wid-180px{width: 180px!important;}
+.wid-190px{width: 190px!important;}
+.wid-150px{width: 150px!important;}
+.font-bld{ font-weight: bold;}
+.font-norm{ font-weight: normal;}
+.user-icon { margin-top: 0;}
+.fa-calendar-times, .fa-user-clock, .fa-list-alt {
+  float: left;
+  cursor: pointer;
+  padding-right: 10px;
+}
+
+
+  
+
+
+
+
+
+

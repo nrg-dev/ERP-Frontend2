@@ -1,4 +1,4 @@
-<ng-container *ngIf="!showDetail">
+<!-- <ng-container *ngIf="!showDetail">
   <div class="row w-100 m-0">
     <div class="row w-100">
       <div class="col">
@@ -98,4 +98,71 @@
     (navigateBack)="toggleEmployeeDetailView()"
     (deleteEmployee)="deleteEmployee($event)"
   ></app-employee-detail>
-</ng-container>
+</ng-container> -->
+
+<!DOCTYPE html>
+<div class="row">
+<div class="container-fluid" id="purchase-wrapper"> 
+  <div class="row back-colr">
+  <div class="container">
+  <div class="header-align"><h3 id="title">Employees</h3> 
+    
+  <button class="create-button">
+    View
+</button>
+<button class="create-button">
+  Print
+</button>
+    <button  class="create-button" (click)="addEmployee()">
+      <span class="fas fa-plus"></span> Add Employee 
+  </button>
+         
+  </div>
+  <div class="m-t-25 grid-align" style="position: absolute; top:60px; width: 98%;">
+  <table class="table" id="poTable" style="margin-bottom: 0px !important; padding-top: 0px!important;">
+    <thead id="table-head" style="position: absolute;
+    top: 0px;">
+      <tr>
+	  <th class="wid-50px">
+     
+            </th>
+        <th class="wid-150px" style="cursor:pointer;">ID</th>
+        <th class="wid-150px" style="cursor:pointer;">Name
+         
+        </th>
+        <!-- <th onclick="w3.sortHTML('#poTable', '.purchase-order-row-open', 'td:nth-child(3)')" 
+        style="cursor:pointer">Status<i class="sort-by-desc"></i></th> -->
+        <th class="wid-190px" style="cursor:pointer;">Designation
+        
+        </th>
+		<th class="wid-190px">Email</th>
+        <th class="wid-190px">Phone</th>
+        <th class="wid-190px"><i class="fa fa-filter"></i></th>
+       </tr>
+    </thead>
+    <tbody class="over-flo"> 
+      <tr *ngFor="let item of employeesDS" class="purchase-order-row-open">
+	  <td class="wid-50px">
+      <img src="assets/images/employee.png" class="img-fluid logo" alt="Employee" />
+			  </td>
+        <td class="wid-150px">{{item.employeecode}}</td>
+        <td class="wid-150px"><span >{{item.name}}</span></td>
+        <td class="wid-190px">-
+        </td>
+		<td class="wid-190px">{{item.email}}</td>
+        <td class="wid-190px">{{item.phonenumber}}</td>
+       
+        <td class="wid-190px"><span class="edit-delete-icon user-icon">
+          
+          <span class="fas fa-calendar-times"></span>
+          <span class="fas fa-user-clock"></span>
+          <span class="fas fa-list-alt"></span>
+        </span></td>
+       </tr>
+     </tbody>
+  </table>
+</div>
+</div>
+    </div>
+  </div>
+</div>
