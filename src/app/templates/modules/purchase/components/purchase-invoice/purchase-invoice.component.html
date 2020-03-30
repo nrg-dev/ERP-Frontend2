@@ -1,59 +1,76 @@
 <!DOCTYPE html>
 <div class="row">
-  <div class="container-fluid" id="purchase-wrapper">
-    <div class="row back-colr">
-      <div class="container">
-        <div>
-          <h3 id="purchase-order-title">Purchase Invoice List</h3> 
-        </div>
+<div class="container-fluid" id="purchase-wrapper"> 
+  <div class="row back-colr">
+  <div class="container">
+  <div class="header-align"><h3 id="title">Purchase Invoice List</h3> 
+  <!-- <button id="delete" [disabled]="!isDeleteButton ? true:false" [ngStyle]="getDeleteButtonStyle()">
+    <i class="fas fa-trash"></i>
+  </button>
+       <button [disabled]="!isCreateReturn ? true:false" class="create-button" [ngStyle]="getCreateReturnStyle()">
+          Create Return
+      </button>
+      <button  [disabled]="!isCreateInvoice ? true:false" class="create-button" [ngStyle]="getCreateInvoiceStyle()">
+        Create Invoice
+    </button>
 
-        <table class="table m-t-25" id="poTable">
-          <thead id="table-head">
+    <button  (click)="addPurchaseOrder(null,null)" [disabled]="isAddPurchaseOrder" class="create-button" [ngStyle]="getAddPurchaseOrderStyle()">
+      <span class="fas fa-plus"></span> Add Purchase Order 
+  </button> -->
+         
+  </div>
+  <div class="m-t-25 grid-align" style="position: absolute; top:60px; width: 98%;">
+
+      <table class="table" id="poTable" style="margin-bottom: 0px !important; padding-top: 0px!important;">
+          <thead id="table-head" style="position: absolute;top: 0px;">
             <tr>
-              <th style="cursor:pointer">Number</th>
-              <th style="cursor:pointer">Date
-                  <i *ngIf="!isSortDateDesc" class="sort-by-desc" (click)="sortByOrder('date','desc')"></i>
-                  <i class="sort-by-asc" *ngIf="!isSortDateAsc" (click)="sortByOrder('date','asc')"></i>
+              <th class="wid-150px" style="cursor:pointer;">Number</th>
+              <th class="wid-150px" style="cursor:pointer;">Date
+                <i *ngIf="!isSortDateDesc" class="sort-by-desc" (click)="sortByOrder('date','desc')"></i>
+                <i class="sort-by-asc" *ngIf="!isSortDateAsc" (click)="sortByOrder('date','asc')"></i>
               </th>
-              <th>Product Name</th>
-              <th>Vendor</th>
-              <th>Quantity</th>
-              <th>Sub Total</th>
-              <th>Delivery Cost</th>
-              <th>Total</th>
-                <!-- <th onclick="w3.sortHTML('#poTable', '.purchase-order-row-open', 'td:nth-child(3)')" 
-                style="cursor:pointer">Status<i class="sort-by-desc"></i></th> -->
-              <th style="cursor:pointer">Status
-                  <i *ngIf="!isSortStatusDesc" class="sort-by-desc" (click)="sortByOrder('status','desc')"></i>
-                  <i class="sort-by-asc" *ngIf="!isSortStatusAsc" (click)="sortByOrder('status','asc')"></i>
+              <th class="wid-150px">Product Name</th>
+              <th class="wid-150px">Vendor</th>
+              <th class="wid-150px">Quantity</th>
+              <th class="wid-150px">Sub Total</th>
+              <th class="wid-150px">Delivery Cost</th>
+              <th class="wid-150px">Total</th>
+              <!-- <th onclick="w3.sortHTML('#poTable', '.purchase-order-row-open', 'td:nth-child(3)')" 
+              style="cursor:pointer">Status<i class="sort-by-desc"></i></th> -->
+              <th class="wid-190px" style="cursor:pointer;">Status
+                <i *ngIf="!isSortStatusDesc" class="sort-by-desc" (click)="sortByOrder('status','desc')"></i>
+                <i class="sort-by-asc" *ngIf="!isSortStatusAsc" (click)="sortByOrder('status','asc')"></i>
               </th>
-              <th>Action</th>
-            </tr>
+              <!-- <th class="wid-150px">Action</th> -->
+             </tr>
           </thead>
-          <tbody>
-            <tr *ngFor="let item of purchaseList; let i = index">
-              <td [ngClass]="poCode">{{item.invoiceNumber}}</td>
-              <td [ngClass]="poDate">{{item.poDate | date : 'dd/MM/yyyy'}}</td>
-              <td>{{item.productName}}</td>
-              <td>{{item.vendorName}}</td>
-              <td class="txt-right">{{item.quantity}}</td>
-              <td class="txt-right">{{item.unitPrice}} </td>
-              <td class="txt-right">{{item.deliveryCost}}</td>
-              <td class="txt-right">{{item.totalAmount--item.deliveryCost}}</td>
-              <td><span class="open-status">{{item.status}}</span>
-                  <!-- <span *ngIf="item.status !== 'Pending'" class="invoice-status">{{item.status}}</span> -->
+          <tbody class="over-flo"> 
+            <tr *ngFor="let item of purchaseList; let i = index" 
+              [ngClass]="{'purchase-order-row-open': item.status ==='Pending', 
+              'purchase-order-row-invoiced':item.status ==='Approve'}"
+              id="purchase-order-row-id{{i}}">
+              <td class="wid-150px" [ngClass]="poCode">{{item.invoiceNumber}}</td>
+              <td class="wid-150px">{{item.poDate}}</td>
+              <td class="wid-150px">{{item.productName}}</td>
+              <td class="wid-150px">{{item.vendorName}}</td>
+              <td class="txt-right wid-150px">{{item.quantity}}</td>
+              <td class="txt-right wid-150px">{{item.unitPrice}}</td>
+              <td class="txt-right wid-150px">{{item.deliveryCost}} 
+              <td class="txt-right wid-150px">{{item.totalAmount--item.deliveryCost}}</td>
+              <td class="wid-190px"><span class="open-status">{{item.status}}</span>
+                <!-- <span *ngIf="item.status !== 'Open'" class="invoice-status">{{item.status}}</span> -->
               </td>
-              <td>
-                  <span class="fas fa-pen" (click)="viewinvoice(
-                    item.invoiceNumber,item.vendorName,item.poDate,item.status)">
-                  </span>
-                
-              </td>
-            </tr>
-          </tbody>
+              <!-- <td class="wid-150px">                
+                  <span class="fas fa-eye" (click)="viewinvoice(
+                    item.invoiceNumber,item.vendorName,item.poDate,item.status)"></span>
+                  <span class="fas fa-trash" (click)="removePurchaseOrder(item.id)"></span>
+              </td> -->
+             </tr>
+           </tbody>
         </table>
 
-      </div>
+</div>
+</div>
     </div>
   </div>
 </div>

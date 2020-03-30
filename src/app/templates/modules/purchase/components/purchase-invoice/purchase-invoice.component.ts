@@ -363,60 +363,29 @@ export class Filter {
   styleUrls: ['./purchase-invoice.component.scss']
 })
 export class PurchaseInvoiceComponent implements OnInit, OnDestroy {
-  purchse:Purchase;
-  model: any ={};
-  public purchaseList : any;
+  purchaseList: any;
   dialogConfig = new MatDialogConfig();
-  isDtInitialized:boolean = false;
-  displayedColumns: string[] = ['date','invoicenumber','productName','vendorname','Qty','Subtotal','deliverycost','total','status','Action'];
-
-  dataSource: MatTableDataSource<any>;
-
-  isSortStatusDesc: boolean = false;
-  isSortStatusAsc: boolean = true;
-  
-  isSortDateDesc: boolean = false;
-  isSortDateAsc: boolean = true;
   isCreateReturn: boolean = false;
   isDeleteButton: boolean = false;
   isCreateInvoice: boolean = false;
   isAddPurchaseOrder: boolean = false;
-
-  @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort,{ static: true }) sort: MatSort;
+  isSortStatusDesc: boolean = false;
+  isSortStatusAsc: boolean = true;
+  isSortDateDesc: boolean = false;
+  isSortDateAsc: boolean = true;
   
-  constructor(
-    private dialog: MatDialog,
-    private router: Router, 
-    private purchaseservice: PurchaseService,
-    private snackBar: MatSnackBar
-
-  ) { 
-    
+  constructor( 
+    private purchaseService:PurchaseService,
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
+    ) { 
   }
-  
+
   ngOnInit() {
+    this.getAllPODetails();
     this.removeScrollBar();
-    this.purchaseLoad();
-    //this.dataSource.paginator = this.paginator;
-    //this.dataSource.sort = this.sort;
   }
-
-  purchaseLoad(){
-    this.purchaseservice.load().subscribe(res => { 
-      this.purchaseList = res;
-    },
-    error => {
-      setTimeout(() => {
-        this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-          panelClass: ["error"],
-          verticalPosition: 'top'      
-        });
-      });   
-    }
-  );
-  }
-
+  
   ngOnDestroy(){
     (<HTMLElement>document.querySelector('.mat-drawer-content')).style.overflow = 'auto';
   }
@@ -425,6 +394,23 @@ export class PurchaseInvoiceComponent implements OnInit, OnDestroy {
     setTimeout(function () {
         (<HTMLElement>document.querySelector('.mat-drawer-content')).style.overflow = 'inherit';
       }, 300);
+  }
+
+  getAllPODetails(){
+    this.purchaseService.load()
+    .subscribe(res => { 
+      this.purchaseList = res;
+      console.log("Purchase Length ----------->"+this.purchaseList.length);
+      },
+      error => {
+        setTimeout(() => {
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });
+      }
+    );
   }
 
   getDeleteButtonStyle() {
@@ -461,7 +447,7 @@ export class PurchaseInvoiceComponent implements OnInit, OnDestroy {
       };
       return myStyles;
     }
-  } 
+  }  
 
   getAddPurchaseOrderStyle() {
     if (this.isAddPurchaseOrder) {
@@ -471,165 +457,95 @@ export class PurchaseInvoiceComponent implements OnInit, OnDestroy {
         'border':'1px solid #1A2D39',
         'display': 'none'
       };
-    return myStyles;
-  }
-  } 
-
-  sortByOrder(column: string, order: string) {
-    if (column === 'status' && order === 'desc') {
-      this.isSortStatusDesc = true;
-      this.isSortStatusAsc  = false;  
-      this.purchaseList.sort((a,b)=>b.status.localeCompare(a.status));
-    } else if (column === 'status' && order === 'asc') {
-      this.isSortStatusDesc = false;
-      this.isSortStatusAsc  = true;  
-      this.purchaseList.sort((a,b)=>a.status.localeCompare(b.status));
+      return myStyles;
     }
-    else if (column === 'date' && order === 'desc') {
-      this.isSortDateDesc = true;
-      this.isSortDateAsc  = false;  
-      this.purchaseList.sort((a,b)=>b.date.localeCompare(a.date));
-    } else {
-      this.isSortDateDesc = false;
-      this.isSortDateAsc  = true;  
-      this.purchaseList.sort((a,b)=>a.date.localeCompare(b.date));
-    }
-  }
-
-  openfilter() {
-    this.purchaseservice.loadfilterData(this.model)
-    .subscribe(
-      res => { 
-        this.purchaseList = res;
-        if(this.purchaseList.length == 0){
-         
-          setTimeout(() => {
-            this.snackBar.open("No Data Found", "dismss", {
-              panelClass: ["warning"],
-              verticalPosition: 'top'      
-            });
-          });   
-          this.dataSource = new MatTableDataSource();
-          this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort; 
-        }else{
-          this.dataSource = new MatTableDataSource(this.purchaseList); 
-          this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort;  
-        } 
-      },
-      error => {
-        setTimeout(() => {
-          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-            panelClass: ["error"],
-            verticalPosition: 'top'      
-          });
-        });   
-      }
-    );
-    /*const dialogRef = this.dialog.open(Filter, {
-    width: '60%',
-    //  data: {name: this.name, animal: this.animal}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    }); */
   }  
 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
-
-  public viewinvoice(invoiceNumber:string,vendorName:string,invoicedate: string,status:string){
-    console.log("View Invoice Number  --->"+invoiceNumber);
-    this.dialogConfig.disableClose = true;
-    this.dialogConfig.autoFocus = true;
-    this.dialogConfig.position = {
-      'top': '1000',
-      left: '100'
-    };
-    this.dialog.open(ViewInvoice,{
-      panelClass: 'viewInvoice',
-      data: { invoice: invoiceNumber, name: vendorName,date: invoicedate,currentStatus: status },
-      height: '80%'
-    }).afterClosed().subscribe(result => {
-      // this.refresh();
-    });
-  }
-  
-  public editinvoice(invoiceNumber:string,status:string,vendorName:string){
-    console.log("Edit Invoice Number  --->"+invoiceNumber);
-    this.dialogConfig.disableClose = true;
-    this.dialogConfig.autoFocus = true;
-    this.dialogConfig.position = {
-      'top': '1000',
-      left: '100'
-    };
-    this.dialog.open(EditInvoice,{
-      panelClass: 'editInvoice',
-      data: { invoice: invoiceNumber, status: status, vendorName: vendorName },
-      height: '80%'
-    }).afterClosed().subscribe(result => {
-      // this.refresh();
-
-      this.getAllPODetails();
-    });
-  }
-
-  getAllPODetails(){
-    this.purchaseservice.load().subscribe(res => { 
-      this.purchaseList = res;
-      //this.dataSource = new MatTableDataSource(this.purchaseList);  
-      },
-      error => {
-        setTimeout(() => {
-          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-            panelClass: ["error"],
-            verticalPosition: 'top'      
-          });
-        });   
+  sortByOrder(column: string, order: string) {
+      if (column === 'status' && order === 'desc') {
+        this.isSortStatusDesc = true;
+        this.isSortStatusAsc  = false;  
+        this.purchaseList.sort((a,b)=>b.status.localeCompare(a.status));
+      } else if (column === 'status' && order === 'asc') {
+        this.isSortStatusDesc = false;
+        this.isSortStatusAsc  = true;  
+        this.purchaseList.sort((a,b)=>a.status.localeCompare(b.status));
       }
-    );
-  }
+      else if (column === 'date' && order === 'desc') {
+        this.isSortDateDesc = true;
+        this.isSortDateAsc  = false;  
+        this.purchaseList.sort((a,b)=>b.date.localeCompare(a.date));
+      } else {
+        this.isSortDateDesc = false;
+        this.isSortDateAsc  = true;  
+        this.purchaseList.sort((a,b)=>a.date.localeCompare(b.date));
+      }
+    }
 
-  public deletePurchase(invoiceNumber:string){
-    console.log("Delete Invoice Number  --->"+invoiceNumber);
-    this.purchaseservice.remove(invoiceNumber)
-    .subscribe(
-      data => {
-        this.model = data;
-        if(this.model.status == "Success"){
+    removePurchaseOrder(id: string) {
+      this.purchaseService.removePurchaseOrder(id).subscribe((data: any) =>{
+        if (data === null) {
           setTimeout(() => {
-            this.snackBar.open("Invoice deleted Successfully", "dismss", {
+            this.snackBar.open("Purchase order has been deleted successfully", "dismss", {
               panelClass: ["success"],
               verticalPosition: 'top'      
             });
           });
-    
           this.getAllPODetails();
-        }else{
+        } else if (data === 500) {
           setTimeout(() => {
-            this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            this.snackBar.open("Internal server error", "dismss", {
               panelClass: ["error"],
               verticalPosition: 'top'      
             });
-          });   ;
-        }
-        
-      },
-      error => {
-        setTimeout(() => {
-          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-            panelClass: ["error"],
-            verticalPosition: 'top'      
           });
-        });   
-      }
-    ); 
-  }
+        } else {
+          setTimeout(() => {
+            this.snackBar.open("Bad request data", "dismss", {
+              panelClass: ["error"],
+              verticalPosition: 'top'      
+            });
+          });
+        }
+      })
+    }
 
+    public viewinvoice(invoiceNumber:string,vendorName:string,invoicedate: string,status:string){
+      console.log("View Invoice Number  --->"+invoiceNumber);
+      this.dialogConfig.disableClose = true;
+      this.dialogConfig.autoFocus = true;
+      this.dialogConfig.position = {
+        'top': '1000',
+        left: '100'
+      };
+      this.dialog.open(ViewInvoice,{
+        panelClass: 'viewInvoice',
+        data: { invoice: invoiceNumber, name: vendorName,date: invoicedate,currentStatus: status },
+        height: '80%'
+      }).afterClosed().subscribe(result => {
+        // this.refresh();
+      });
+    }
+    
+    public editinvoice(invoiceNumber:string,status:string,vendorName:string){
+      console.log("Edit Invoice Number  --->"+invoiceNumber);
+      this.dialogConfig.disableClose = true;
+      this.dialogConfig.autoFocus = true;
+      this.dialogConfig.position = {
+        'top': '1000',
+        left: '100'
+      };
+      this.dialog.open(EditInvoice,{
+        panelClass: 'editInvoice',
+        data: { invoice: invoiceNumber, status: status, vendorName: vendorName },
+        height: '80%'
+      }).afterClosed().subscribe(result => {
+        // this.refresh();
+  
+        this.getAllPODetails();
+      });
+    }
+
+    
 }
+
