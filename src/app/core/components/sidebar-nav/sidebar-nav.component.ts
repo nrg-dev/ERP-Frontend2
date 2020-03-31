@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { InteractionService } from './../../common/_services/interaction.service';
 import { MenuItem } from "./sidebar-nav.model";
 import { SidenavItems } from "src/app/core/common/config/sidenav.config";
 import { Location } from "@angular/common";
@@ -10,12 +11,16 @@ import { Router, NavigationEnd } from "@angular/router";
   styleUrls: ["./sidebar-nav.component.scss"]
 })
 export class SidebarNavComponent implements OnInit {
+  
   menuItems: MenuItem[];
-  isExpanded: boolean = true;
+  isExpanded: boolean;
   currentPath: string;
   assignPath: string;
 
-  constructor(location: Location, router: Router) {
+  constructor(
+      private interactionService:InteractionService, 
+      location: Location, router: Router) {
+
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.currentPath = location.path();
@@ -27,5 +32,6 @@ export class SidebarNavComponent implements OnInit {
 
   ngOnInit() {
     this.menuItems = SidenavItems;
+    this.interactionService.viewSideNaviSource.subscribe(value => this.isExpanded = value);
   }
 }

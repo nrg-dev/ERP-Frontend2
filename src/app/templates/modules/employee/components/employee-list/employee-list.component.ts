@@ -16,6 +16,7 @@ import { AlertService } from "src/app/core/common/_services/index";
 import { PrintDialogService } from "src/app/core/services/print-dialog/print-dialog.service";
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import { EmployeeAddComponent } from "../employee-add/employee-add.component";
+import { EmployeeReportComponent } from "../employee-report/employee-report.component";
 
 @Component({
   selector: "app-employee-list",
@@ -51,7 +52,8 @@ export class EmployeeListComponent implements OnInit, OnChanges,OnDestroy {
     "action"
   ];
   dialogConfig = new MatDialogConfig();
-
+  showHideDailyReport = [];
+  
   constructor(
     private employeeService: EmployeeService,
     private alertService: AlertService,
@@ -219,5 +221,14 @@ export class EmployeeListComponent implements OnInit, OnChanges,OnDestroy {
     setTimeout(function () {
         (<HTMLElement>document.querySelector('.mat-drawer-content')).style.overflow = 'inherit';
       }, 300);
+  }
+
+  dailyReport(index: number) {
+    this.showHideDailyReport = [];
+    this.showHideDailyReport[index] = true;
+  }
+
+  closeDailyReportPopup(value: boolean, index) {
+    this.showHideDailyReport[index] = value;
   }
 }

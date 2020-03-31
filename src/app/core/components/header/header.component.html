@@ -1,5 +1,14 @@
 <header class="w-100 position-fixed d-flex align-items-center p-4">
   <h1 hidden>ERP</h1>
+
+  <button 
+    class="navbar-toggler d-flex align-items-center menu-icon-margin-adjust" 
+    (click)="toggleSideNavi()"
+    aria-label="Toggle Side Navigation">
+    <i class="fas fa-bars fa-1x"></i>
+    <p class="m-0 pl-3" mat-line *ngIf="isExpanded">Show/Hide Menu</p>
+  </button>
+
   <div class="search-box">
     <i class="fas fa-search search-icon" aria-hidden="true"></i>
     <input

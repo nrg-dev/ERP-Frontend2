@@ -108,7 +108,7 @@
   <div class="header-align"><h3 id="title">Employees</h3> 
     
   <button class="create-button">
-    View
+    Download
 </button>
 <button class="create-button">
   Print
@@ -136,27 +136,38 @@
         
         </th>
 		<th class="wid-190px">Email</th>
-        <th class="txt-right wid-150px">Phone</th>
+        <th class="wid-150px">Phone</th>
+        <th class="wid-190px">Joined Date</th>
+        <th class="wid-190px">Status</th>
         <th class="wid-190px"><i class="fa fa-filter"></i></th>
        </tr>
     </thead>
     <tbody class="over-flo"> 
-      <tr *ngFor="let item of employeesDS" class="purchase-order-row-invoiced">
+      <tr *ngFor="let item of employeesDS; let i = index" class="purchase-order-row-invoiced">
 	  <td class="wid-50px">
       <img src="assets/images/employee.png" class="img-fluid logo" alt="Employee" />
 			  </td>
         <td class="wid-150px">{{item.employeecode}}</td>
         <td class="wid-150px"><span >{{item.name}}</span></td>
-        <td class="wid-190px">-
-        </td>
-		<td class="wid-190px">{{item.email}}</td>
-        <td class="txt-right wid-150px">{{item.phonenumber}}</td>
-       
-        <td class="wid-190px"><span class="edit-delete-icon user-icon">
+        <td class="wid-190px">-</td>
+		    <td class="wid-190px">{{item.email}}</td>
+        <td class="wid-150px">{{item.phonenumber}}</td>
+            
+        <td class="wid-190px">
+          <app-employee-report (closeDailyReport)="closeDailyReportPopup($event, i)" *ngIf="showHideDailyReport[i]" [dailyReportItem]="item"></app-employee-report>
+          {{item.addeddate}}
           
+        </td>
+        <td class="wid-190px">{{item.Status}}
+          
+        </td>
+      
+        <td class="wid-190px"><span class="edit-delete-icon user-icon">
+         
           <span class="fas fa-calendar-times"></span>
           <span class="fas fa-user-clock"></span>
-          <span class="fas fa-list-alt"></span>
+          <span class="fas fa-list-alt" (click) = "dailyReport(i)"></span>
+          
         </span></td>
        </tr>
      </tbody>
