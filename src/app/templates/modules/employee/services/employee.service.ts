@@ -47,4 +47,11 @@ export class EmployeeService {
       )
     );
   }
+
+  saveDailyReport(data: any) {
+    return this.http.post<any>(
+      `${environment.apiUrl}${API_ENDPOINTS.SAVE_DAILY_REPORT}`,
+      data
+    );
+  }
 }

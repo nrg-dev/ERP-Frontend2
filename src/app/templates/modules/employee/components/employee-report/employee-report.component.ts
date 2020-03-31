@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import {
   MatDialog,
@@ -10,6 +10,7 @@ import {
 import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
 import { EmployeeService } from "../../services/employee.service";
 import { TranslateService } from "src/app/core/services/translate/translate.service";
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: "app-employee-report",
@@ -34,331 +35,67 @@ export class EmployeeReportComponent implements OnInit {
     checkoutReason: string;
   }[];
   previewDetails;
-
+  @Output() closeDailyReport: EventEmitter<any> = new EventEmitter<any>();
+  currentDate = new Date();
+  todayDate: any;
+  @Input() dailyReportItem: any;
+  
   constructor(
     private employeeService: EmployeeService,
-    private ts: TranslateService
-  ) {}
+    private ts: TranslateService,
+    private snackBar: MatSnackBar
+  ) {
+    this.todayDate = formatDate(this.currentDate, 'dd/MMM/yyy', 'en-US');
+  }
 
-  ngOnInit() {
-    this.employees = [
-      {
-        name: "SAM",
-        code: 101201
-      },
-      {
-        name: "PETER",
-        code: 101001
-      },
-      {
-        name: "SAM",
-        code: 101001
-      },
-      {
-        name: "BOY",
-        code: 105001
-      },
-      {
-        name: "SAM",
-        code: 101301
-      },
-      {
-        name: "BOSS",
-        code: 101001
-      },
-      {
-        name: "SAM",
-        code: 102001
-      },
-      {
-        name: "MAN",
-        code: 101001
-      },
-      {
-        name: "SAM",
-        code: 101041
-      },
-      {
-        name: "PETER",
-        code: 101002
-      },
-      {
-        name: "SAM",
-        code: 101201
-      },
-      {
-        name: "PETER",
-        code: 101001
-      },
-      {
-        name: "SAM",
-        code: 101001
-      },
-      {
-        name: "BOY",
-        code: 105001
-      },
-      {
-        name: "SAM",
-        code: 101301
-      },
-      {
-        name: "BOSS",
-        code: 101001
-      },
-      {
-        name: "SAM",
-        code: 102001
-      },
-      {
-        name: "MAN",
-        code: 101001
-      },
-      {
-        name: "SAM",
-        code: 101041
-      },
-      {
-        name: "PETER",
-        code: 101002
-      },
-      {
-        name: "SAM",
-        code: 101201
-      },
-      {
-        name: "PETER",
-        code: 101001
-      },
-      {
-        name: "SAM",
-        code: 101001
-      },
-      {
-        name: "BOY",
-        code: 105001
-      },
-      {
-        name: "SAM",
-        code: 101301
-      },
-      {
-        name: "BOSS",
-        code: 101001
-      },
-      {
-        name: "SAM",
-        code: 102001
-      },
-      {
-        name: "MAN",
-        code: 101001
-      },
-      {
-        name: "SAM",
-        code: 101041
-      },
-      {
-        name: "PETER",
-        code: 101002
-      }
-    ];
-
-    this.absentCardDetails = [
-      {
-        date: "Tuesday, 01/10/19",
-        checkIn: "08.00",
-        checkOut: "17.00",
-        checkInReason: "Bedrest",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Thrusday, 03/10/19",
-        checkIn: "Absent",
-        checkOut: "Absent",
-        checkInReason: "Check up at hospital",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Tuesday, 01/10/19",
-        checkIn: "08.00",
-        checkOut: "17.00",
-        checkInReason: "Bedrest",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Thrusday, 03/10/19",
-        checkIn: "Absent",
-        checkOut: "Absent",
-        checkInReason: "Check up at hospital",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Tuesday, 01/10/19",
-        checkIn: "08.00",
-        checkOut: "17.00",
-        checkInReason: "Bedrest",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Thrusday, 03/10/19",
-        checkIn: "Absent",
-        checkOut: "Absent",
-        checkInReason: "Check up at hospital",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Tuesday, 01/10/19",
-        checkIn: "08.00",
-        checkOut: "17.00",
-        checkInReason: "Bedrest",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Thrusday, 03/10/19",
-        checkIn: "Absent",
-        checkOut: "Absent",
-        checkInReason: "Check up at hospital",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Tuesday, 01/10/19",
-        checkIn: "08.00",
-        checkOut: "17.00",
-        checkInReason: "Bedrest",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Thrusday, 03/10/19",
-        checkIn: "Absent",
-        checkOut: "Absent",
-        checkInReason: "Check up at hospital",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Tuesday, 01/10/19",
-        checkIn: "08.00",
-        checkOut: "17.00",
-        checkInReason: "Bedrest",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Thrusday, 03/10/19",
-        checkIn: "Absent",
-        checkOut: "Absent",
-        checkInReason: "Check up at hospital",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Tuesday, 01/10/19",
-        checkIn: "08.00",
-        checkOut: "17.00",
-        checkInReason: "Bedrest",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Thrusday, 03/10/19",
-        checkIn: "Absent",
-        checkOut: "Absent",
-        checkInReason: "Check up at hospital",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Tuesday, 01/10/19",
-        checkIn: "08.00",
-        checkOut: "17.00",
-        checkInReason: "Bedrest",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Thrusday, 03/10/19",
-        checkIn: "Absent",
-        checkOut: "Absent",
-        checkInReason: "Check up at hospital",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Tuesday, 01/10/19",
-        checkIn: "08.00",
-        checkOut: "17.00",
-        checkInReason: "Bedrest",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Thrusday, 03/10/19",
-        checkIn: "Absent",
-        checkOut: "Absent",
-        checkInReason: "Check up at hospital",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Tuesday, 01/10/19",
-        checkIn: "08.00",
-        checkOut: "17.00",
-        checkInReason: "Bedrest",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Thrusday, 03/10/19",
-        checkIn: "Absent",
-        checkOut: "Absent",
-        checkInReason: "Check up at hospital",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Tuesday, 01/10/19",
-        checkIn: "08.00",
-        checkOut: "17.00",
-        checkInReason: "Bedrest",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Thrusday, 03/10/19",
-        checkIn: "Absent",
-        checkOut: "Absent",
-        checkInReason: "Check up at hospital",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Tuesday, 01/10/19",
-        checkIn: "08.00",
-        checkOut: "17.00",
-        checkInReason: "Bedrest",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Thrusday, 03/10/19",
-        checkIn: "Absent",
-        checkOut: "Absent",
-        checkInReason: "Check up at hospital",
-        checkoutReason: "Bedrest"
-      }
-    ];
-
-    this.previewDetails = {
-      name: "SAM",
-      code: 11203,
-      rank: "Supervisor",
-      phone: "+xxx xxxx xxxx",
-      email: "xxxxxxx@gmail.com",
-      doj: "20 October 2019",
-      status: "Active"
-    };
-
-    this.employeeService.load().subscribe(
-      data => {
-        this.employeeList = data;
-        console.log("employee code -->" + this.employeeList[0].employeecode);
-        this.dataSource = new MatTableDataSource(this.employeeList);
-      },
-      error => {
-        //this.alertService.error("Network error: server is temporarily unavailable");
-      }
-    );
-    this.dataSource = new MatTableDataSource(this.employeeList);
+  ngOnInit() { 
+    this.model.report = '';
   }
 
   objectKeys(obj) {
     return Object.keys(obj);
+  }
+
+  dailyReportClose() { 
+    this.closeDailyReport.emit(false);
+  }
+
+  saveDailyReport() {
+    this.model.employeecode = this.dailyReportItem.employeecode;
+    this.model.type = 'save';
+    this.model.date = this.todayDate;
+    this.employeeService.saveDailyReport(this.model).subscribe((res: any) => {
+      if (res === null) {
+        setTimeout(() => {
+          this.snackBar.open("Daily report has been added Successfully", "dismss", {
+            panelClass: ["success"],
+            verticalPosition: 'top'      
+          });
+        });
+        this.dailyReportClose();
+      } else if (res === 500) {
+        setTimeout(() => {
+          this.snackBar.open("Internal server error", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });
+      } else {
+        setTimeout(() => {
+          this.snackBar.open("Bad request error", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });
+      }
+       error => {
+        setTimeout(() => {
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });
+  }
+    });
   }
 }
