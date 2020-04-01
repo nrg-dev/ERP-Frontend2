@@ -36,14 +36,7 @@ export const SidenavItems: MenuItem[] = [
      }],
     submenu: true
   },
-  {
-    id: "categoryAndProduct",
-    label: "Category",
-    icon: "assets/images/category-product.png",
-    path: "/category-and-product",
-    childern: [],
-    submenu: false
-  },
+ 
   {
     id: "purchase",
     label: "Purchase",
@@ -51,15 +44,27 @@ export const SidenavItems: MenuItem[] = [
     path: "/purchase",
     childern: [{
       id: "purchase-order",
-      label: "Purchase Order",
+      label: "Orders",
       path: "/purchase",
      },
      {
       id: "purchase-invoice",
-      label: "Purchase Invoice",
+      label: "Invoices",
       path: "invoice",
-     }],
+      }, {
+        id: "purchase-invoice",
+        label: "Returns",
+        path: "invoice",
+      }],
     submenu: true
+  },
+  {
+    id: "categoryAndProduct",
+    label: "Stock",
+    icon: "assets/images/category-product.png",
+    path: "/category-and-product",
+    childern: [],
+    submenu: false
   },
   {
     id: "sales",
@@ -68,14 +73,20 @@ export const SidenavItems: MenuItem[] = [
     path: "/sales",
     childern: [{
       id: "sales-order",
-      label: "Sales Order",
+      label: "Orders",
       path: "/sales",
      },
      {
       id: "sales-invoice",
-      label: "Sales Invoice",
+      label: "Invoices",
       path: "invoice",
-     }],
+     },
+      {
+        id: "sales-invoice",
+        label: "Returns",
+        path: "invoice",
+      }
+    ],
     submenu: true
   },
   /*{
@@ -102,12 +113,12 @@ export const SidenavItems: MenuItem[] = [
     icon: "assets/images/usermgt.png",
     path: "/user-management"
   },*/
-  {
-    id: "logout",
-    label: "Log Out",
-    icon: "assets/images/logout.png",
-    path: "/login",
-    childern: [],
-    submenu: false
-  }
+  // {
+  //   id: "logout",
+  //   label: "Log Out",
+  //   icon: "assets/images/logout.png",
+  //   path: "/login",
+  //   childern: [],
+  //   submenu: false
+  // }
 ];

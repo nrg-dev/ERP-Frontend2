@@ -56,7 +56,6 @@ mat-drawer {
 }
 
 .side-navi > ul li div{
-  border: 1px solid red;
   position: relative;
 }
 
@@ -69,9 +68,13 @@ mat-drawer {
   cursor: pointer;
 }
 
+.side-navi > ul li div span.open {
+  background: url(/assets/images/navi-arrow-down.png) no-repeat center;
+}
+
 
 .side-navi ul li ul{
-  margin-left: 60px;
+  margin-left: 35%;
 }
 
 .side-navi ul li ul a.active,
@@ -87,7 +90,6 @@ mat-drawer {
 
 .mat-list-base .mat-list-item .mat-list-item-content {
   padding: 0 !important;
-  border: 2px solid red;
 }
 
 .mat-list-item a {
