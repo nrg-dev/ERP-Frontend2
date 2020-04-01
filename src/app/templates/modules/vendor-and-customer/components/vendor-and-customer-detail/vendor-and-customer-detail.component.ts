@@ -113,7 +113,13 @@ export class VendorAndCustomerDetailComponent implements OnInit {
     this.customerService.save(this.model).subscribe(
       data => {
         this.customer = data;
-        console.log("Response -->" + this.customer.status);
+        setTimeout(() => {
+            this.snackBar.open("Customer created Successfully", "", {
+            panelClass: ["success"],
+            verticalPosition: "top"
+          });
+        });
+        /*console.log("Response -->" + this.customer.status);
         if (this.customer.status == "success") {
           setTimeout(() => {
             this.snackBar.open("Customer created Successfully", "", {
@@ -133,7 +139,7 @@ export class VendorAndCustomerDetailComponent implements OnInit {
               }
             );
           });
-        }
+        }*/
       },
       error => {
         setTimeout(() => {
@@ -154,7 +160,14 @@ export class VendorAndCustomerDetailComponent implements OnInit {
     this.vendorService.save(this.model).subscribe(
       data => {
         this.vendor = data;
-        console.log("Response -->" + this.vendor.status);
+        setTimeout(() => {
+          this.snackBar.open("Vendor created Successfully", "dismss", {
+            panelClass: ["success"],
+            verticalPosition: "top"
+          });
+        });
+
+        /*console.log("Response -->" + this.vendor.status);
         if (this.vendor.status == "success") {
           setTimeout(() => {
             this.snackBar.open("Sales Order created Successfully", "dismss", {
@@ -174,7 +187,7 @@ export class VendorAndCustomerDetailComponent implements OnInit {
               }
             );
           });
-        }
+        }*/
       },
       error => {
         setTimeout(() => {
