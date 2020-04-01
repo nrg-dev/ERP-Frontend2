@@ -30,5 +30,68 @@ img {
 
 mat-drawer {
  background-color: $sidenav-bg;
-  
 }
+
+.side-navi ul,
+.side-navi ul li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.side-navi > ul li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  padding-right: 2.5rem;
+}
+
+.side-navi > ul li .active,
+.side-navi > ul  li a:hover {
+  background: #2c4655;
+}
+
+
+.side-navi > ul li a p{
+  font-size: 16px;
+}
+
+.side-navi > ul li div{
+  border: 1px solid red;
+  position: relative;
+}
+
+.side-navi > ul li div span {
+  position: absolute;
+  top: 50%; right: 10%;
+  padding: 5px;
+  background: url(/assets/images/navi-arrow-right.png) no-repeat center;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+
+.side-navi ul li ul{
+  margin-left: 60px;
+}
+
+.side-navi ul li ul a.active,
+.side-navi ul li ul a:hover{
+  background-color: transparent;
+  color: #55bcdc;
+}
+.side-navi ul li ul a {
+  font-size: 14px;
+  padding: 0.3rem 0.5rem;
+}
+
+
+.mat-list-base .mat-list-item .mat-list-item-content {
+  padding: 0 !important;
+  border: 2px solid red;
+}
+
+.mat-list-item a {
+  background-color:#2C4655;
+  width: 100%;
+}
+

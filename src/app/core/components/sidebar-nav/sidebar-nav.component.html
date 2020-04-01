@@ -1,8 +1,9 @@
 <mat-drawer-container class="header-margin-adjust w-100" autosize>
   <mat-drawer #drawer mode="side" disableClose="true" opened="true" class="">
-    <mat-nav-list *ngIf='isExpanded'>
-      <ng-container *ngFor="let menuItem of menuItems">
-        <mat-list-item
+    <mat-nav-list *ngIf='isExpanded' class="side-navi" >
+      <ul>
+      <li *ngFor="let menuItem of menuItems" >
+        <div
           [ngClass]="{
             active:
               (!currentPath && menuItem.path === '/') ||
@@ -13,22 +14,25 @@
             class="d-flex align-items-center"
             [routerLink]="[menuItem.path]"
             routerLinkActive="router-link-active"
+            (click)="!menuItem.childern.length && toggleSideNavi()"
           >
             <img [src]="menuItem.icon" />
             <p class="m-0 pl-3" mat-line>
-              {{ menuItem.label }}
+              {{ menuItem.label }} 
             </p>
           </a>
-          </mat-list-item>
-      <ng-container *ngIf="menuItem.submenu && menuItem.path === assignPath">
-        <div style="font-size: 12px;padding-left: 70px;padding-top: 10px;">
-        <a [ngStyle]="i > 0 && {'padding-top': '10px'}"
-        class="d-flex align-items-center"
-        [routerLink]="[child.path]"
-        routerLinkActive="router-link-active" *ngFor="let child of menuItem.childern; let i = index">{{child.label}}</a>
-      </div>
-      </ng-container>
-      </ng-container>
+          <span class="child-shuffle" (click)="shuffleChildLinks()"></span>
+        </div>
+        <ul *ngIf="menuItem.submenu && menuItem.path === assignPath">
+          <li *ngFor="let child of menuItem.childern; let i = index">
+            <a
+            (click)="toggleSideNavi()"
+            [routerLink]="child?.path"
+            [routerLinkActive]="['active']">{{child.label}}</a>
+        </li>
+        </ul>
+      </li>
+      </ul>
     </mat-nav-list>
   </mat-drawer>
 

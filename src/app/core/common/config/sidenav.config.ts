@@ -13,7 +13,7 @@ export const SidenavItems: MenuItem[] = [
   },
   {
     id: "employment",
-    label: "Employment",
+    label: "Employees",
     icon: "assets/images/employee.png",
     path: "/employment",
     submenu: false,
@@ -21,24 +21,24 @@ export const SidenavItems: MenuItem[] = [
   },
   {
     id: "vendorAndCustomer",
-    label: "Vendor & Customer",
+    label: "Vendor",
     icon: "assets/images/vendor-customer.png",
     path: "/vendor-and-customer",
     childern: [{
       id: "vendor",
       label: "Vendor",
-      path: "/vendor-and-customer",
+      path: "/vendor-and-customer/vendor",
      },
      {
       id: "customer",
       label: "Customer",
-      path: "customer",
+       path: "/vendor-and-customer/customer",
      }],
     submenu: true
   },
   {
     id: "categoryAndProduct",
-    label: "Category & Product",
+    label: "Category",
     icon: "assets/images/category-product.png",
     path: "/category-and-product",
     childern: [],

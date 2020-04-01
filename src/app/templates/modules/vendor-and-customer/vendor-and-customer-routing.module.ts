@@ -9,13 +9,19 @@ import { CustomerComponent } from "./components/customer/customer.component";
 const routes: Routes = [
   {
       path: '',
-      component: VendorAndCustomerComponent,
-      pathMatch: 'full'
+      pathMatch: 'full',
+      redirectTo:'vendor'
   },
+
+  {
+    path: 'vendor',
+    component: VendorAndCustomerComponent,
+  },
+ 
   {
     path: 'customer',
     component: CustomerComponent
-}
+  }
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

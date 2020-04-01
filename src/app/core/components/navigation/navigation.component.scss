@@ -54,9 +54,16 @@
   width: 100% !important;
 }
 
-.mat-drawer {
-  background-color: #243c48;
+.mat-drawer-side {
+  background-color:#1A2D39;
   color: white;
+  display: block;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 
 .mat-list-item {

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { PurchaseService } from '../../services/purchase.service';
 import { MatSnackBar } from "@angular/material/snack-bar";
-import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
+import { MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import {
   PurchaseAddComponent  
 } from "../purchaseadd/purchaseadd.component";
