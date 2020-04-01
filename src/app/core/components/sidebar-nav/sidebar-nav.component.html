@@ -2,7 +2,7 @@
   <mat-drawer #drawer mode="side" disableClose="true" opened="true" class="">
     <mat-nav-list *ngIf='isExpanded' class="side-navi" >
       <ul>
-      <li *ngFor="let menuItem of menuItems" >
+      <li *ngFor="let menuItem of menuItems; let i = index" >
         <div
           [ngClass]="{
             active:
@@ -21,16 +21,16 @@
               {{ menuItem.label }} 
             </p>
           </a>
-          <span class="child-shuffle" (click)="shuffleChildLinks()"></span>
+          <span *ngIf="menuItem.childern.length" class="child-shuffle" [class.open]="showChildNum == i" (click)="shuffleChildLinks(i)"></span>
         </div>
-        <ul *ngIf="menuItem.submenu && menuItem.path === assignPath">
-          <li *ngFor="let child of menuItem.childern; let i = index">
-            <a
-            (click)="toggleSideNavi()"
-            [routerLink]="child?.path"
-            [routerLinkActive]="['active']">{{child.label}}</a>
-        </li>
-        </ul>
+        <div *ngIf="showChildNum == i">
+            <ul *ngIf="menuItem.submenu">
+              <li *ngFor="let child of menuItem.childern; let i = index">
+                <a (click)="toggleSideNavi()" [routerLink]="child?.path" [routerLinkActive]="['active']">{{child.label}}</a>
+              </li>
+            </ul>
+        </div>
+
       </li>
       </ul>
     </mat-nav-list>

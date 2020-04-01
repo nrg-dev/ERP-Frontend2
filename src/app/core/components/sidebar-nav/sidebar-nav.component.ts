@@ -16,6 +16,7 @@ export class SidebarNavComponent implements OnInit {
   isExpanded: boolean;
   currentPath: string;
   assignPath: string;
+  showChildNum:number = NaN;
 
   constructor(
       private interactionService:InteractionService, 
@@ -39,7 +40,7 @@ export class SidebarNavComponent implements OnInit {
     this.interactionService.toggleSideNavi();
   }
 
-  shuffleChildLinks(){
-    console.log('hi');
+  shuffleChildLinks(num){
+    this.showChildNum = this.showChildNum !== num ? this.showChildNum = num : -1;
   }
 }
