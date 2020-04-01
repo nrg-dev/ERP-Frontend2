@@ -7,7 +7,7 @@
   table>thead>tr>th>div.custom-control{position: relative;
     top: 17px;}
   }
-  .over-flo{overflow-y: scroll !important; height:400px!important; display: table-caption;
+  .over-flo{overflow-y: scroll !important; height:400px; height: 300px; display: table-caption;
     position: absolute; top: 58px;}
 ::-webkit-scrollbar {
   width: 10px;
