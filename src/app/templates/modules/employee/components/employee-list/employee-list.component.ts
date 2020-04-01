@@ -17,6 +17,7 @@ import { PrintDialogService } from "src/app/core/services/print-dialog/print-dia
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import { EmployeeAddComponent } from "../employee-add/employee-add.component";
 import { EmployeeReportComponent } from "../employee-report/employee-report.component";
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: "app-employee-list",
@@ -53,6 +54,9 @@ export class EmployeeListComponent implements OnInit, OnChanges,OnDestroy {
   ];
   dialogConfig = new MatDialogConfig();
   showHideDailyReport = [];
+  getDailyReportDetail: any;
+  currentDate = new Date();
+  todayDate: any;
   
   constructor(
     private employeeService: EmployeeService,
@@ -60,29 +64,13 @@ export class EmployeeListComponent implements OnInit, OnChanges,OnDestroy {
     private printDialogService: PrintDialogService,
     private snackBar: MatSnackBar,
     private dialog: MatDialog
-  ) {}
+  ) {
+    this.todayDate = formatDate(this.currentDate, 'dd/MMM/yyy', 'en-US');
+  }
 
-  ngOnInit() {
+  ngOnInit() { 
     this.allemplist();
     this.removeScrollBar();
-    /*this.snackBar.open("Employee list SUCCESS", "dismss", {
-      panelClass: ["success"],
-      verticalPosition: 'top'
-    });
-    setTimeout(() => {
-      this.snackBar.open("Employee list ERROR", "dismss", {
-        panelClass: ["error"],
-        verticalPosition: 'top'
-
-      });
-      setTimeout(() => {
-        this.snackBar.open("Employee list WARNING", "dismss", {
-          panelClass: ["warning"],
-          verticalPosition: 'top'
-
-        });
-      }, 1500);
-    }, 1500);*/
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -223,12 +211,21 @@ export class EmployeeListComponent implements OnInit, OnChanges,OnDestroy {
       }, 300);
   }
 
-  dailyReport(index: number) {
+  dailyReport(index: number, empCode: string) {
     this.showHideDailyReport = [];
     this.showHideDailyReport[index] = true;
+    this.employeeService.getDailyReportLists().subscribe((res: any) => {
+      if (res.length > 0) { 
+        this.getDailyReportDetail = res.filter(t=>t.employeecode === empCode && t.date === this.todayDate)[0];
+      }
+    })
   }
 
   closeDailyReportPopup(value: boolean, index) {
     this.showHideDailyReport[index] = value;
   }
+
+  isEqual(startDate, endDate) {
+    return endDate.valueOf() == startDate.valueOf();
+}
 }

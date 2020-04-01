@@ -54,4 +54,15 @@ export class EmployeeService {
       data
     );
   }
+
+  getDailyReportLists() {
+    return this.http.get(`${environment.apiUrl}${API_ENDPOINTS.DAILY_REPORT_LISTS}`);
+  }
+
+  updateDailyReport(data: any) {
+    return this.http.put<any>(
+      `${environment.apiUrl}${API_ENDPOINTS.UPDATE_DAILY_REPORT}`,
+      data
+    );
+  }
 }
