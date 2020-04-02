@@ -9,7 +9,7 @@ import {
 @Component({
   selector: 'app-purchaselist',
   templateUrl: './purchase-list.component.html',
-  styleUrls: ['./purchase-list.component.scss']
+  styleUrls: ['./purchase-list.component.scss', './purchase-list.component.css']
 })
 export class PurchaseListComponent  implements OnInit, OnDestroy  {
   purchaseOrderList: any;

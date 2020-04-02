@@ -5,22 +5,29 @@
   font-size:13px;
 }
 
+.table-container {
+  width: 96.5%;
+  overflow: auto;
+}
+
 table {
-  table-layout: fixed;
-  width: 100%;
   border-collapse: collapse;
-  display:block;
+  width: 100%;
 }
 th, td {
   padding: 10px;
   color: white;
 }
 tbody {
-  height: 250px;
-  overflow-y: auto;   
-  overflow-x: hidden;
-  width:  14.2857%;
-  color: white;
+  max-height: 250px;
+  overflow-y: auto;
+  display: block;
+}
+
+thead, tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
 }
 
 th{
@@ -125,7 +132,6 @@ textarea{
 #addemployee-div{
   background: #1B2931;
   height: 880px;
-  width: 107%;
   border-radius: 10px;
   margin-left: 10px;
   /* border: 1px solid black;
