@@ -154,7 +154,7 @@
         <td class="wid-150px">{{item.phonenumber}}</td>
             
         <td class="wid-190px">
-          <app-employee-report (closeDailyReport)="closeDailyReportPopup($event, i)" *ngIf="showHideDailyReport[i]" [dailyReportItem]="item"></app-employee-report>
+          <app-employee-report (closeDailyReport)="closeDailyReportPopup($event, i)" *ngIf="showHideDailyReport[i]" [dailyReportItem]="item" [getDailyReportDetail]="getDailyReportDetail"></app-employee-report>
           {{item.addeddate}}
           
         </td>
@@ -163,11 +163,9 @@
         </td>
       
         <td class="wid-190px"><span class="edit-delete-icon user-icon">
-         
-          <span class="fas fa-calendar-times"></span>
-          <span class="fas fa-user-clock"></span>
-          <span class="fas fa-list-alt" (click) = "dailyReport(i)"></span>
-          
+          <span class="fas fa-list-alt" style="font-size: 20px; margin-right: 10px;" (click) = "dailyReport(i, item.employeecode)"></span>
+          <span class="fas fa-user-clock" style="margin-right: 10px; font-size: 20px;"></span>
+          <span class="fas fa-calendar-times" style="margin-right: 10px; font-size: 20px;"></span>
         </span></td>
        </tr>
      </tbody>

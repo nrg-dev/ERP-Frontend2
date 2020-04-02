@@ -39,6 +39,7 @@ export class EmployeeReportComponent implements OnInit {
   currentDate = new Date();
   todayDate: any;
   @Input() dailyReportItem: any;
+  @Input() getDailyReportDetail: any;
   
   constructor(
     private employeeService: EmployeeService,
@@ -49,7 +50,11 @@ export class EmployeeReportComponent implements OnInit {
   }
 
   ngOnInit() { 
-    this.model.report = '';
+    setTimeout(() => {
+      this.model.report = this.getDailyReportDetail !== undefined ? this.getDailyReportDetail.report: '';
+
+    }, 1200);
+       
   }
 
   objectKeys(obj) {
@@ -62,12 +67,58 @@ export class EmployeeReportComponent implements OnInit {
 
   saveDailyReport() {
     this.model.employeecode = this.dailyReportItem.employeecode;
-    this.model.type = 'save';
-    this.model.date = this.todayDate;
+    this.model.type = this.getDailyReportDetail !== undefined ? 'update':'save'; 
+    if (this.getDailyReportDetail === undefined) {
+      this.model.date = this.todayDate;
+      this.addDailyReport();
+    } else { 
+      this.model.id = this.getDailyReportDetail.id;
+      this.updateDailyReport();
+    }
+   
+  }
+
+  addDailyReport() {
     this.employeeService.saveDailyReport(this.model).subscribe((res: any) => {
       if (res === null) {
         setTimeout(() => {
           this.snackBar.open("Daily report has been added Successfully", "dismss", {
+            panelClass: ["success"],
+            verticalPosition: 'top'      
+          });
+        });
+        this.dailyReportClose();
+      } else if (res === 500) {
+        setTimeout(() => {
+          this.snackBar.open("Internal server error", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });
+      } else {
+        setTimeout(() => {
+          this.snackBar.open("Bad request error", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });
+      }
+       error => {
+        setTimeout(() => {
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });
+  }
+    });
+  }
+
+  updateDailyReport() {
+    this.employeeService.updateDailyReport(this.model).subscribe((res: any) => {
+      if (res === null) {
+        setTimeout(() => {
+          this.snackBar.open("Daily report has been updated Successfully", "dismss", {
             panelClass: ["success"],
             verticalPosition: 'top'      
           });
