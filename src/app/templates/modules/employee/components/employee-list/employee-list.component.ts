@@ -16,7 +16,6 @@ import { AlertService } from "src/app/core/common/_services/index";
 import { PrintDialogService } from "src/app/core/services/print-dialog/print-dialog.service";
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import { EmployeeAddComponent } from "../employee-add/employee-add.component";
-import { EmployeeReportComponent } from "../employee-report/employee-report.component";
 import { formatDate } from '@angular/common';
 
 @Component({
@@ -57,6 +56,7 @@ export class EmployeeListComponent implements OnInit, OnChanges,OnDestroy {
   getDailyReportDetail: any;
   currentDate = new Date();
   todayDate: any;
+  isShowHideAbsent = [];
   
   constructor(
     private employeeService: EmployeeService,
@@ -221,11 +221,16 @@ export class EmployeeListComponent implements OnInit, OnChanges,OnDestroy {
     })
   }
 
-  closeDailyReportPopup(value: boolean, index) {
-    this.showHideDailyReport[index] = value;
+  closePopup(value: boolean, index, type: string) {
+    if (type === 'report') {
+      this.showHideDailyReport[index] = value;
+    } else {
+      this.isShowHideAbsent[index] = value;
+    }
   }
 
-  isEqual(startDate, endDate) {
-    return endDate.valueOf() == startDate.valueOf();
-}
+  absentPopup(index: number) {
+    this.isShowHideAbsent = [];
+    this.isShowHideAbsent[index] = true;
+  }
 }

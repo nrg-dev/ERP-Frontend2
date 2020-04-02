@@ -1,10 +1,62 @@
 @import "_base";
 
-.fix-height {
-  height: 650px;
+.box{
+  background: rgb(37, 63, 75);
+  width: 386px;
+  height: 207px                               ;
+  border-radius: 5px;
+  font-family: Open Sans;
+}
+.text{
+  color:white;
+  font-family: Open Sans;
+  float: left;
+  padding-left: 2.5rem;
+  font-weight: bold;
+  font-weight: bold;
+}
+.datetext{
+  color: #627580;
+  float: right;
+  padding-right: 2.5rem;
+}
+.reasonTxt{
+  border-radius: 8px;
+  border: 1px solid #334F5F;
+  background: #1C313E;
+  width: 80%;
+  height: 50px;
+  color: #8B99A1;
+  padding-left: 15px;
+}
+button{
+  background: #1C313E;
+  border: 1px solid #1C313E;
+  height: 2rem;
+  font-size: 15px;
+  border-radius: 25px;
+  font-weight: bold;
+  padding-right: 10px;
+}
+#absent{
+  background: #934146;
+  color: white;
+  font-size: 18px;
+  width: 17rem;
+  height: 3rem;
+}
+::placeholder {
+  color: #8D9BA4;
+  font-size: 15px;
+  padding-top: 5px;
 }
 
-.date-time-container,
-.preview-detail {
-  background: $material-table-even-bg;
+.close {
+  background: none !important;
+  border: none !important;
+ }
+
+#popup-close  {
+  color: $white;
+  font-size: 20px;
 }

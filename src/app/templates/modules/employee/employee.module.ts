@@ -113,7 +113,7 @@ import { EmployeeAbsentCardComponent } from "./components/employee-absent-card/e
     MatTreeModule,
     DataTablesModule.forRoot()
   ],
-  entryComponents: [EmployeeReportComponent],
+  entryComponents: [EmployeeReportComponent, EmployeeAbsenceComponent],
   providers: [EmployeeService]
 })
 export class EmployeeModule {}
