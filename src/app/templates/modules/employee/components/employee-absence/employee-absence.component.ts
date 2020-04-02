@@ -59,7 +59,7 @@ export class EmployeeAbsenceComponent implements OnInit {
     return Object.keys(obj);
   }
 
-  saveAbsence() {
+  saveAbsence() { 
     let msg = '';
     this.model.employeecode = this.absenceItem.employeecode;
     this.model.type = 'save';

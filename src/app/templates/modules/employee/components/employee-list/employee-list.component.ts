@@ -213,6 +213,7 @@ export class EmployeeListComponent implements OnInit, OnChanges,OnDestroy {
 
   dailyReport(index: number, empCode: string) {
     this.showHideDailyReport = [];
+    this.isShowHideAbsent = [];
     this.showHideDailyReport[index] = true;
     this.employeeService.getDailyReportLists().subscribe((res: any) => {
       if (res.length > 0) { 
@@ -231,6 +232,7 @@ export class EmployeeListComponent implements OnInit, OnChanges,OnDestroy {
 
   absentPopup(index: number) {
     this.isShowHideAbsent = [];
+    this.showHideDailyReport = [];
     this.isShowHideAbsent[index] = true;
   }
 }

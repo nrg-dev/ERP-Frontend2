@@ -60,3 +60,7 @@ button{
   color: $white;
   font-size: 20px;
 }
+
+#absent-box {
+  position:absolute; top:10px; z-index: 1;
+}
