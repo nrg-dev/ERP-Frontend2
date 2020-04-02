@@ -1,9 +1,9 @@
 @import "_base";
 
 .header-margin-adjust {
-  height: calc(100vh - 70px);
+  height: calc(100vh - 95px);
   position: absolute;
-  top: 70px;
+  top: 95px;
 }
 
 mat-drawer-container,
@@ -32,6 +32,10 @@ mat-drawer {
  background-color: $sidenav-bg;
 }
 
+.side-navi{
+  width: 287px;
+}
+
 .side-navi ul,
 .side-navi ul li {
   padding: 0;
@@ -50,6 +54,9 @@ mat-drawer {
   background: #2c4655;
 }
 
+.side-navi > ul li{
+  margin-bottom: 0.5rem;
+}
 
 .side-navi > ul li a p{
   font-size: 16px;
@@ -63,13 +70,13 @@ mat-drawer {
   position: absolute;
   top: 50%; right: 10%;
   padding: 5px;
-  background: url(/assets/images/navi-arrow-right.png) no-repeat center;
+  background: url(/assets/images/menu-right-arrow.svg) no-repeat center;
   transform: translateY(-50%);
   cursor: pointer;
 }
 
 .side-navi > ul li div span.open {
-  background: url(/assets/images/navi-arrow-down.png) no-repeat center;
+  background: url(/assets/images/menu-down-arrow.svg) no-repeat center;
 }
 
 
