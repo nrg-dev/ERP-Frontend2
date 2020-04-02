@@ -43,12 +43,15 @@ export class EmployeeAbsenceComponent implements OnInit {
   };
   @Output() closeAbsencePopup: EventEmitter<any> = new EventEmitter<any>();
   @Input() absenceItem: any;
+  @Input() getAbsentDetail: any;
 
   constructor(private employeeService: EmployeeService,
               public commonService: CommonService) {}
 
   ngOnInit() {
-   this.model.report = '';
+   setTimeout(() => {
+    this.model.reason = this.getAbsentDetail !== undefined ? this.getAbsentDetail.reason:'';
+  }, 1200);
   }
 
   absencePopupClose() { 
@@ -62,14 +65,29 @@ export class EmployeeAbsenceComponent implements OnInit {
   saveAbsence() { 
     let msg = '';
     this.model.employeecode = this.absenceItem.employeecode;
-    this.model.type = 'save';
+    this.model.type = this.getAbsentDetail === undefined ? 'save':'update';
     this.model.date = this.commonService.getTodayDate();
-    msg = 'Absence has been added successfully';
-    this.employeeService.saveEmployeeAbsent(this.model).subscribe((res: any) => {
-      this.commonService.getSuccessErrorMsg(res,msg);
-      if (res === null) {
-        this.absencePopupClose();
-      }
-    }); 
+    if (this.getAbsentDetail === undefined) {
+      msg = 'Absence has been added successfully';
+      this.employeeService.saveEmployeeAbsent(this.model).subscribe((res: any) => {
+        this.commonService.getSuccessErrorMsg(res,msg);
+        if (res === null) {
+          this.absencePopupClose();
+        }
+      });
+  } else {
+      this.model.checkinreason = null;
+      this.model.checkintime = null;
+      this.model.checkoutreason = null;
+      this.model.checkouttime = null;
+      this.model.absent = 'yes';
+      msg = 'Absence has been updated successfully';
+      this.employeeService.updateEmployeeAbsent(this.model).subscribe((res: any) => {
+        this.commonService.getSuccessErrorMsg(res,msg);
+        if (res === null) {
+          this.absencePopupClose();
+        }
+      });
+  } 
   }
 }

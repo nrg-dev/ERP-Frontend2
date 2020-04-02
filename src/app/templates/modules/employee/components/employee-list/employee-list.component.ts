@@ -16,7 +16,7 @@ import { AlertService } from "src/app/core/common/_services/index";
 import { PrintDialogService } from "src/app/core/services/print-dialog/print-dialog.service";
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import { EmployeeAddComponent } from "../employee-add/employee-add.component";
-import { formatDate } from '@angular/common';
+import { CommonService } from "../../../../../core/common/_services/common.service";
 
 @Component({
   selector: "app-employee-list",
@@ -54,18 +54,18 @@ export class EmployeeListComponent implements OnInit, OnChanges,OnDestroy {
   dialogConfig = new MatDialogConfig();
   showHideDailyReport = [];
   getDailyReportDetail: any;
-  currentDate = new Date();
-  todayDate: any;
   isShowHideAbsent = [];
+  getAbsentDetail: any;
   
   constructor(
     private employeeService: EmployeeService,
     private alertService: AlertService,
     private printDialogService: PrintDialogService,
     private snackBar: MatSnackBar,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    public commonService: CommonService
   ) {
-    this.todayDate = formatDate(this.currentDate, 'dd/MMM/yyy', 'en-US');
+    
   }
 
   ngOnInit() { 
@@ -217,7 +217,7 @@ export class EmployeeListComponent implements OnInit, OnChanges,OnDestroy {
     this.showHideDailyReport[index] = true;
     this.employeeService.getDailyReportLists().subscribe((res: any) => {
       if (res.length > 0) { 
-        this.getDailyReportDetail = res.filter(t=>t.employeecode === empCode && t.date === this.todayDate)[0];
+        this.getDailyReportDetail = res.filter(t=>t.employeecode === empCode && t.date === this.commonService.getTodayDate())[0];
       }
     })
   }
@@ -230,9 +230,15 @@ export class EmployeeListComponent implements OnInit, OnChanges,OnDestroy {
     }
   }
 
-  absentPopup(index: number) {
+  absentPopup(index: number, item: any) { 
     this.isShowHideAbsent = [];
     this.showHideDailyReport = [];
     this.isShowHideAbsent[index] = true;
+    item.date = this.commonService.getTodayDate();
+    this.employeeService.getAbsentLists(item).subscribe((res: any) => {
+      if (res.length > 0) { 
+        this.getAbsentDetail = res[0];
+      }
+    })
   }
 }
