@@ -58,7 +58,7 @@
                
             </div>
 			  </td>
-        <td class="wid-150px" [ngClass]="poCode">{{item.productcode}}</td>
+        <td class="wid-150px" [ngClass]="poCode">{{item.pocode}}</td>
         <td class="wid-150px" [ngClass]="poDate"><span [ngClass]="item.status !== 'Open' ? 'font-norm' : 'font-bld'">{{item.date | date : 'dd/MM/yyyy'}}</span></td>
         <td class="wid-190px"><span *ngIf="item.status === 'Open'" class="open-status">{{item.status}}</span>
           <span *ngIf="item.status !== 'Open'" class="invoice-status">{{item.status}}</span>

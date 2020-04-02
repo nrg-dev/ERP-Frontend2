@@ -7,4 +7,5 @@ export const API_ENDPOINTS = {
   SAVE_DAILY_REPORT: `employee/saveDailyReport`,
   DAILY_REPORT_LISTS: `/employee/loadDailyReport`,
   UPDATE_DAILY_REPORT: `employee/updateDailyReport`,
+  SAVE_EMPLOYEE_ABSENT: `employee/saveAbsent`,
 };

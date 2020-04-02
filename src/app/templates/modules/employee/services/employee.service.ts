@@ -65,4 +65,11 @@ export class EmployeeService {
       data
     );
   }
+
+  saveEmployeeAbsent(data: any) {
+    return this.http.post<any>(
+      `${environment.apiUrl}${API_ENDPOINTS.SAVE_EMPLOYEE_ABSENT}`,
+      data
+    );
+  }
 }

@@ -13,6 +13,7 @@ import { SidebarNavComponent } from "./components/sidebar-nav/sidebar-nav.compon
 import { PlaceholderComponent } from "./components/placeholder/placeholder.component";
 import { HideInPrintDirective } from "./directives/hide-in-print/hide-in-print.directive";
 import { IdFilterPipe } from "./pipes/id-filter.pipe";
+import { CommonService } from "./common/_services/common.service";
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { IdFilterPipe } from "./pipes/id-filter.pipe";
     FormsModule,
     HideInPrintDirective,
     IdFilterPipe
-  ]
+  ],
+  providers: [CommonService]
 })
 export class CoreModule {}

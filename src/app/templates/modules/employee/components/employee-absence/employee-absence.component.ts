@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import {
   MatDialog,
@@ -9,6 +9,7 @@ import {
 } from "@angular/material";
 import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
 import { EmployeeService } from "../../services/employee.service";
+import { CommonService } from "../../../../../core/common/_services/common.service";
 
 @Component({
   selector: "app-employee-absence",
@@ -40,327 +41,35 @@ export class EmployeeAbsenceComponent implements OnInit {
     status: string;
     reason: string;
   };
+  @Output() closeAbsencePopup: EventEmitter<any> = new EventEmitter<any>();
+  @Input() absenceItem: any;
 
-  constructor(private employeeService: EmployeeService) {}
+  constructor(private employeeService: EmployeeService,
+              public commonService: CommonService) {}
 
   ngOnInit() {
-    this.employees = [
-      {
-        name: "SAM",
-        code: 101201
-      },
-      {
-        name: "PETER",
-        code: 101001
-      },
-      {
-        name: "SAM",
-        code: 101001
-      },
-      {
-        name: "BOY",
-        code: 105001
-      },
-      {
-        name: "SAM",
-        code: 101301
-      },
-      {
-        name: "BOSS",
-        code: 101001
-      },
-      {
-        name: "SAM",
-        code: 102001
-      },
-      {
-        name: "MAN",
-        code: 101001
-      },
-      {
-        name: "SAM",
-        code: 101041
-      },
-      {
-        name: "PETER",
-        code: 101002
-      },
-      {
-        name: "SAM",
-        code: 101201
-      },
-      {
-        name: "PETER",
-        code: 101001
-      },
-      {
-        name: "SAM",
-        code: 101001
-      },
-      {
-        name: "BOY",
-        code: 105001
-      },
-      {
-        name: "SAM",
-        code: 101301
-      },
-      {
-        name: "BOSS",
-        code: 101001
-      },
-      {
-        name: "SAM",
-        code: 102001
-      },
-      {
-        name: "MAN",
-        code: 101001
-      },
-      {
-        name: "SAM",
-        code: 101041
-      },
-      {
-        name: "PETER",
-        code: 101002
-      },
-      {
-        name: "SAM",
-        code: 101201
-      },
-      {
-        name: "PETER",
-        code: 101001
-      },
-      {
-        name: "SAM",
-        code: 101001
-      },
-      {
-        name: "BOY",
-        code: 105001
-      },
-      {
-        name: "SAM",
-        code: 101301
-      },
-      {
-        name: "BOSS",
-        code: 101001
-      },
-      {
-        name: "SAM",
-        code: 102001
-      },
-      {
-        name: "MAN",
-        code: 101001
-      },
-      {
-        name: "SAM",
-        code: 101041
-      },
-      {
-        name: "PETER",
-        code: 101002
-      }
-    ];
+   this.model.report = '';
+  }
 
-    this.absentCardDetails = [
-      {
-        date: "Tuesday, 01/10/19",
-        checkIn: "08.00",
-        checkOut: "17.00",
-        checkInReason: "Bedrest",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Thrusday, 03/10/19",
-        checkIn: "Absent",
-        checkOut: "Absent",
-        checkInReason: "Check up at hospital",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Tuesday, 01/10/19",
-        checkIn: "08.00",
-        checkOut: "17.00",
-        checkInReason: "Bedrest",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Thrusday, 03/10/19",
-        checkIn: "Absent",
-        checkOut: "Absent",
-        checkInReason: "Check up at hospital",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Tuesday, 01/10/19",
-        checkIn: "08.00",
-        checkOut: "17.00",
-        checkInReason: "Bedrest",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Thrusday, 03/10/19",
-        checkIn: "Absent",
-        checkOut: "Absent",
-        checkInReason: "Check up at hospital",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Tuesday, 01/10/19",
-        checkIn: "08.00",
-        checkOut: "17.00",
-        checkInReason: "Bedrest",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Thrusday, 03/10/19",
-        checkIn: "Absent",
-        checkOut: "Absent",
-        checkInReason: "Check up at hospital",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Tuesday, 01/10/19",
-        checkIn: "08.00",
-        checkOut: "17.00",
-        checkInReason: "Bedrest",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Thrusday, 03/10/19",
-        checkIn: "Absent",
-        checkOut: "Absent",
-        checkInReason: "Check up at hospital",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Tuesday, 01/10/19",
-        checkIn: "08.00",
-        checkOut: "17.00",
-        checkInReason: "Bedrest",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Thrusday, 03/10/19",
-        checkIn: "Absent",
-        checkOut: "Absent",
-        checkInReason: "Check up at hospital",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Tuesday, 01/10/19",
-        checkIn: "08.00",
-        checkOut: "17.00",
-        checkInReason: "Bedrest",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Thrusday, 03/10/19",
-        checkIn: "Absent",
-        checkOut: "Absent",
-        checkInReason: "Check up at hospital",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Tuesday, 01/10/19",
-        checkIn: "08.00",
-        checkOut: "17.00",
-        checkInReason: "Bedrest",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Thrusday, 03/10/19",
-        checkIn: "Absent",
-        checkOut: "Absent",
-        checkInReason: "Check up at hospital",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Tuesday, 01/10/19",
-        checkIn: "08.00",
-        checkOut: "17.00",
-        checkInReason: "Bedrest",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Thrusday, 03/10/19",
-        checkIn: "Absent",
-        checkOut: "Absent",
-        checkInReason: "Check up at hospital",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Tuesday, 01/10/19",
-        checkIn: "08.00",
-        checkOut: "17.00",
-        checkInReason: "Bedrest",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Thrusday, 03/10/19",
-        checkIn: "Absent",
-        checkOut: "Absent",
-        checkInReason: "Check up at hospital",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Tuesday, 01/10/19",
-        checkIn: "08.00",
-        checkOut: "17.00",
-        checkInReason: "Bedrest",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Thrusday, 03/10/19",
-        checkIn: "Absent",
-        checkOut: "Absent",
-        checkInReason: "Check up at hospital",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Tuesday, 01/10/19",
-        checkIn: "08.00",
-        checkOut: "17.00",
-        checkInReason: "Bedrest",
-        checkoutReason: "Bedrest"
-      },
-      {
-        date: "Thrusday, 03/10/19",
-        checkIn: "Absent",
-        checkOut: "Absent",
-        checkInReason: "Check up at hospital",
-        checkoutReason: "Bedrest"
-      }
-    ];
-
-    this.previewDetails = {
-      name: "SAM",
-      code: 11234,
-      date: "11 October 2019",
-      time: "20:02:44",
-      status: "Check Out",
-      reason: "Sick"
-    };
-
-    this.employeeService.load().subscribe(
-      data => {
-        this.employeeList = data;
-        console.log("employee code -->" + this.employeeList[0].employeecode);
-        this.dataSource = new MatTableDataSource(this.employeeList);
-      },
-      error => {
-        //this.alertService.error("Network error: server is temporarily unavailable");
-      }
-    );
-    this.dataSource = new MatTableDataSource(this.employeeList);
+  absencePopupClose() { 
+    this.closeAbsencePopup.emit(false);
   }
 
   objectKeys(obj) {
     return Object.keys(obj);
+  }
+
+  saveAbsence() {
+    let msg = '';
+    this.model.employeecode = this.absenceItem.employeecode;
+    this.model.type = 'save';
+    this.model.date = this.commonService.getTodayDate();
+    msg = 'Absence has been added successfully';
+    this.employeeService.saveEmployeeAbsent(this.model).subscribe((res: any) => {
+      this.commonService.getSuccessErrorMsg(res,msg);
+      if (res === null) {
+        this.absencePopupClose();
+      }
+    }); 
   }
 }
