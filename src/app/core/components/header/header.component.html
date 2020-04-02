@@ -1,36 +1,35 @@
 <header class="w-100 position-fixed d-flex align-items-center p-4">
+
   <h1 hidden>ERP</h1>
 
   <button 
-    class="navbar-toggler d-flex align-items-center menu-icon-margin-adjust" 
     (click)="toggleSideNavi()"
-    aria-label="Toggle Side Navigation">
-    <i class="fas fa-bars fa-1x"></i>
-    <!-- <p class="m-0 pl-3" mat-line>Show/Hide Menu</p> -->
+    aria-label="Toggle Side Navigation" 
+    class="header-menu">
   </button>
 
-  <div class="search-box">
-    <i class="fas fa-search search-icon" aria-hidden="true"></i>
-    <input
-      class="search-text-box"
-      type="search"
-      [(ngModel)]="searchText"
-      autocomplete="on"
-      placeholder="Search here"
-    />
-  </div>
-  <a [routerLink]="['/']">
-    <img
-      src="assets/images/nrg-logo.png"
-      class="img-fluid logo position-absolute"
-      alt="app logo"
-    />
+  <a [routerLink]="['/']" class="app-logo">
+    <img 
+      src="assets/images/LOGO-nrg.svg" 
+      class="img-fluid logo position-absolute" 
+      alt="app logo" />
   </a>
-  <div class="ml-auto d-flex align-items-center">
-    <app-user-avatar></app-user-avatar>
-    <i class="fas fa-cog ml-2"></i>
-    <a [routerLink]="['/login']"> <i class="fas fa-power-off ml-2"></i></a>
+
+  <input class="global-search-box" type="input" [(ngModel)]="searchText" autocomplete="on" placeholder="Search here" />
+
+  <div class="user-config">
+    <div class="user-info">
+      <h3>Hendri Mulyana</h3>
+      <span>General Manager</span>
+    </div>
+    <div class="user-photo">
+      <img src="assets/images/photo-manager.svg" alt="photo user" />
+    </div>
+    <div class="user-options">
+      <a [routerLink]="['/']" class="user-option"></a>
+    </div>
   </div>
+  
 </header>
 
 <!-- <div class=" col-1 col-lg-1"></div>

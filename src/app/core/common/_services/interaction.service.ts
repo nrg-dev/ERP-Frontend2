@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class InteractionService {
 
-  currentView:boolean = true;
+  currentView:boolean = false;
   viewSideNaviSource = new BehaviorSubject(this.currentView);
 
   constructor() { }

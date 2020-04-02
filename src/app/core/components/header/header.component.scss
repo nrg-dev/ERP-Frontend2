@@ -1,21 +1,80 @@
 @import "_base";
 
 header {
+
   background-color: $header-bg;
-  //background-color: #2C4655;
+  height: 95px;
 
-
-  height: 70px;
-
-  .logo {
-    width: 100px;
-    left: 50%;
-
-    // margin adjust for using routerLink
-    margin-top: -20px;
+  .header-menu {
+    padding: 10px 14px;
+    background: url(/assets/images/header-menu-icon.svg) no-repeat;
+    border: 0;
   }
 
-  a {
-    color: inherit;
+  .app-logo{
+    display: block;
+    width: 80px;
+    height: 35px;
+    margin-left: 20px;
+
+    img {
+      width: 78px;
+      vertical-align: top;
+    }
   }
+
+   .global-search-box {
+      margin-left: 120px;
+      border-radius: 18px;
+      font-size: 14px;
+      padding: 7px 40px 7px 15px;
+      background:#617480 url(/assets/images/icon-search.svg) no-repeat 130% 50%;
+      background-size: 50% 50%;
+      color: white;
+    }
+
+    ::placeholder {
+      color: #bcc8cf;
+    }
+
+    .user-config {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+    }
+
+    .user-info {
+      margin-right: 20px;
+      text-align: right;
+
+      h3 {
+        font-size: 17px;
+        margin-bottom: 0;
+        line-height: 1;
+      }
+      span {
+        font-size: 13px;
+      }
+    }
+
+    .user-photo {
+      margin-right: 15px;
+      border-radius: 50%;
+
+      img {
+        width: 40px;
+      }
+    }
+
+    .user-options {
+      background:#4c6472 url(/assets/images/icon-gear.svg) no-repeat center;
+      padding: 20px;
+      height: 10px;
+      display: inline-block;
+      background-size: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    
+
 }

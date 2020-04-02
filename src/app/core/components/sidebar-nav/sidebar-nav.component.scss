@@ -1,9 +1,9 @@
 @import "_base";
 
 .header-margin-adjust {
-  height: calc(100vh - 70px);
+  height: calc(100vh - 95px);
   position: absolute;
-  top: 70px;
+  top: 95px;
 }
 
 mat-drawer-container,
@@ -54,6 +54,9 @@ mat-drawer {
   background: #2c4655;
 }
 
+.side-navi > ul li{
+  margin-bottom: 0.5rem;
+}
 
 .side-navi > ul li a p{
   font-size: 16px;
