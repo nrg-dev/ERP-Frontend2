@@ -19,7 +19,7 @@ table {
   color: white;
 } */
 tbody {
-  max-height: 450px;
+  height: 450px;
   overflow-y: auto;
   display: block;
 }
