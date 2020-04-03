@@ -58,6 +58,7 @@ import { CustomMaterialModule } from "src/app/core/material.module";
 import { FormsModule } from "@angular/forms";
 import { EmployeeCardComponent } from "./components/employee-card/employee-card.component";
 import { EmployeeAbsentCardComponent } from "./components/employee-absent-card/employee-absent-card.component";
+import { EmployeeChecinCheckoutComponent } from "./components/employee-checkin-checkout/employee-checkin-checkout.component";
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { EmployeeAbsentCardComponent } from "./components/employee-absent-card/e
     EmployeeReportComponent,
     EmployeeDetailComponent,
     EmployeeCardComponent,
-    EmployeeAbsentCardComponent
+    EmployeeAbsentCardComponent,
+    EmployeeChecinCheckoutComponent
   ],
   imports: [
     CommonModule,
@@ -113,7 +115,7 @@ import { EmployeeAbsentCardComponent } from "./components/employee-absent-card/e
     MatTreeModule,
     DataTablesModule.forRoot()
   ],
-  entryComponents: [EmployeeReportComponent, EmployeeAbsenceComponent],
+  entryComponents: [EmployeeReportComponent, EmployeeAbsenceComponent, EmployeeChecinCheckoutComponent],
   providers: [EmployeeService]
 })
 export class EmployeeModule {}

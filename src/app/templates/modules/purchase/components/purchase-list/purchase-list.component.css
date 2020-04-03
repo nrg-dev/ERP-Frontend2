@@ -14,12 +14,18 @@ table {
   border-collapse: collapse;
   width: 100%;
 }
+
+thead tr th:first-child,
+tbody tr td:first-child {
+  width: 50px;
+}
+
 /* th, td {
   padding: 10px;
   color: white;
 } */
 tbody {
-  max-height: 450px;
+  height: 525px;
   overflow-y: auto;
   display: block;
 }

@@ -5,13 +5,19 @@ import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
 @Injectable()
 export class CommonService { 
     currentDate = new Date();
-    todayDate: any;   
+    todayDate: any;
+    currentTime: any;
     constructor(public snackBar: MatSnackBar) {
         this.todayDate = formatDate(this.currentDate, 'dd/MMM/yyy', 'en-US');
+        this.currentTime = formatDate(this.currentDate, 'dd/MMM/yyy hh:mm:ss a', 'en-US');
     }
 
     getTodayDate() {
         return this.todayDate;
+    }
+
+    getCurrentTime() {
+      return this.currentTime;
     }
 
     getSuccessErrorMsg(res: any, msg: string) {
