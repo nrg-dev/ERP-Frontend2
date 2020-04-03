@@ -1,0 +1,29 @@
+<div class="box" id="employee-checkin-checkout-box">
+  <div align="center">
+    <button type="button" class="close" id="close-button" aria-label="Close" (click)="checkinCheckoutPopupClose()">
+      <span id="popup-close" aria-hidden="true">&times;</span>
+    </button><br>
+    <div class="col-12">
+      <div class="">
+        <p class="text">Attendance</p>
+      </div>
+      <div class="">
+        <p class="datetext">{{commonService.getTodayDate() | date : 'EEEE MMMM d'}}</p>
+      </div>
+    </div>
+    <div>
+      <input type="text" placeholder="{{commonService.getCurrentTime() | date : 'h:mm a'}}" class="timeTxt" readonly/>
+      <br/><br/>
+      <textarea class="reasonTxt" placeholder="Reason" name="reason" [(ngModel)]="this.model.reason" #reason="ngModel"></textarea>
+    </div>
+    <br/>
+    <div id="btn1">
+      <button id="checkIn" class="checkin-checkout" name="checkIn" type="button" (click)="saveCheckinCheckedout('checkedin')">Checked-In</button>
+    </div>
+    <div id="btn2">
+      <button id="checkOut" class="checkin-checkout" name="checkOut" type="button" (click)="saveCheckinCheckedout('checkedout')">Checked-Out</button>
+    </div>
+    <br/>
+  </div>
+  <!-- End Box -->
+</div>

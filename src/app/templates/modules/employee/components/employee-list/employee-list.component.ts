@@ -56,6 +56,7 @@ export class EmployeeListComponent implements OnInit, OnChanges,OnDestroy {
   getDailyReportDetail: any;
   isShowHideAbsent = [];
   getAbsentDetail: any;
+  isShowHideCheckinCheckout = [];
   
   constructor(
     private employeeService: EmployeeService,
@@ -211,13 +212,15 @@ export class EmployeeListComponent implements OnInit, OnChanges,OnDestroy {
       }, 300);
   }
 
-  dailyReport(index: number, empCode: string) {
+  dailyReport(index: number, item: any) { 
     this.showHideDailyReport = [];
     this.isShowHideAbsent = [];
+    this.isShowHideCheckinCheckout = [];
     this.showHideDailyReport[index] = true;
-    this.employeeService.getDailyReportLists().subscribe((res: any) => {
+    item.date = this.commonService.getTodayDate();
+    this.employeeService.getDailyReportLists(item).subscribe((res: any) => {
       if (res.length > 0) { 
-        this.getDailyReportDetail = res.filter(t=>t.employeecode === empCode && t.date === this.commonService.getTodayDate())[0];
+        this.getDailyReportDetail = res[0];console.log('getDailyReportDetail', this.getDailyReportDetail)
       }
     })
   }
@@ -225,17 +228,32 @@ export class EmployeeListComponent implements OnInit, OnChanges,OnDestroy {
   closePopup(value: boolean, index, type: string) {
     if (type === 'report') {
       this.showHideDailyReport[index] = value;
-    } else {
+    } else if (type === 'absence') {
       this.isShowHideAbsent[index] = value;
+    } else {
+      this.isShowHideCheckinCheckout[index] = value;
     }
   }
 
   absentPopup(index: number, item: any) { 
     this.isShowHideAbsent = [];
     this.showHideDailyReport = [];
+    this.isShowHideCheckinCheckout = [];
     this.isShowHideAbsent[index] = true;
     item.date = this.commonService.getTodayDate();
-    this.employeeService.getAbsentLists(item).subscribe((res: any) => {
+    this.getEmployeeAbsentDetail(item);
+  }
+
+  checkinCheckout(index: number, item: any) {
+    this.showHideDailyReport = [];
+    this.isShowHideAbsent = [];
+    this.isShowHideCheckinCheckout = [];
+    this.isShowHideCheckinCheckout[index] = true;
+    this.getEmployeeAbsentDetail(item);
+  }
+
+  getEmployeeAbsentDetail(item: any) {
+    this.employeeService.getAbsentLists(item).subscribe((res: any) => { 
       if (res.length > 0) { 
         this.getAbsentDetail = res[0];
       }

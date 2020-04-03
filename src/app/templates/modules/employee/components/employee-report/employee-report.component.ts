@@ -1,15 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import {
-  MatDialog,
-  MatDialogConfig,
-  MatPaginator,
-  MatSort,
-  MatTableDataSource
-} from "@angular/material";
-import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
 import { EmployeeService } from "../../services/employee.service";
-import { TranslateService } from "src/app/core/services/translate/translate.service";
 import { CommonService } from "../../../../../core/common/_services/common.service";
 
 @Component({
@@ -18,33 +8,14 @@ import { CommonService } from "../../../../../core/common/_services/common.servi
   styleUrls: ["./employee-report.component.scss"]
 })
 export class EmployeeReportComponent implements OnInit {
-  displayedColumns: string[] = ["EmployeeName", "Empcode"];
-  dataSource: MatTableDataSource<any>;
-  empDetailsList: any;
-  employeeList: any = {};
   model: any = {};
-  searchText:string;
-
-  // TODO : Move the models out
-  employees: { name: string; code: number }[];
-  absentCardDetails: {
-    date: string;
-    checkIn: string;
-    checkInReason: string;
-    checkOut: string;
-    checkoutReason: string;
-  }[];
-  previewDetails;
   @Output() closeDailyReport: EventEmitter<any> = new EventEmitter<any>();
-  currentDate = new Date();
-  todayDate: any;
   @Input() dailyReportItem: any;
   @Input() getDailyReportDetail: any;
+  isSaveDailyReport: boolean = false;
   
   constructor(
     private employeeService: EmployeeService,
-    private ts: TranslateService,
-    private snackBar: MatSnackBar,
     public commonService: CommonService
   ) {
     
@@ -53,9 +24,8 @@ export class EmployeeReportComponent implements OnInit {
   ngOnInit() { 
     setTimeout(() => {
       this.model.report = this.getDailyReportDetail !== undefined ? this.getDailyReportDetail.report: '';
-
     }, 1200);
-       
+      
   }
 
   objectKeys(obj) {
@@ -66,28 +36,25 @@ export class EmployeeReportComponent implements OnInit {
     this.closeDailyReport.emit(false);
   }
 
-  saveDailyReport() {
+  saveDailyReport() { 
     this.model.employeecode = this.dailyReportItem.employeecode;
-    this.model.type = this.getDailyReportDetail !== undefined ? 'update':'save';
-    let msg = ''; 
-    if (this.getDailyReportDetail === undefined) {
-      this.model.date = this.commonService.getTodayDate();
-      this.employeeService.saveDailyReport(this.model).subscribe((res: any) => {
-        msg = 'Daily report has been added Successfully';
-        this.commonService.getSuccessErrorMsg(res,msg);
-        if (res === null) {
-          this.dailyReportClose();
-        }
-      });
-    } else {
-      this.employeeService.updateDailyReport(this.model).subscribe((res: any) => {
-        msg = 'Daily report has been updated Successfully';
-        this.commonService.getSuccessErrorMsg(res,msg);
-        if (res === null) {
-          this.dailyReportClose();
-        }
-      });
-    }
-   
+    this.model.type = this.getDailyReportDetail === undefined ? 'save': 'update';
+    this.model.date = this.commonService.getTodayDate();
+    let msg = '';
+    this.isSaveDailyReport = true;
+    if (this.model.report !== '') { 
+          this.employeeService.saveDailyReport(this.model).subscribe((res: any) => {
+          if (this.getDailyReportDetail === undefined) {
+            msg = 'Daily report has been added Successfully';
+          } else {
+            msg = 'Daily report has been updated Successfully';
+          }
+          this.commonService.getSuccessErrorMsg(res,msg);
+          if (res === null) {
+            this.dailyReportClose();
+          }
+        });
+      } 
+  
   }
 }
