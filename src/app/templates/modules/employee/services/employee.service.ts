@@ -55,8 +55,8 @@ export class EmployeeService {
     );
   }
 
-  getDailyReportLists() {
-    return this.http.get(`${environment.apiUrl}${API_ENDPOINTS.DAILY_REPORT_LISTS}`);
+  getDailyReportLists(item: any) {
+    return this.http.get(`${environment.apiUrl}${API_ENDPOINTS.DAILY_REPORT_LISTS+'?employeecode='+item.employeecode+'&date='+item.date+'&type=D'}`);
   }
 
   updateDailyReport(data: any) {
