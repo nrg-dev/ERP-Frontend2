@@ -127,125 +127,101 @@
        
        <div>
        <div>
-        <button type="button" class="close" aria-label="Close" (click)="addEmployeeClose()">
+        <button type="button" class="close" aria-label="Close" style="color: #1c313e; font-size: 28px;" (click)="addEmployeeClose()">
           <span aria-hidden="true">&times;</span>
         </button>
        <h2 id="h2ID">Add Employee</h2>
       
       <div class="grid-container2">
-       <div>
-        <p id="po-label">Employee Name</p>
-        </div>
-        <div>
-         <p id="po-label">Employee Rank</p>
-        </div>
+       <div id="po-label">Employee Name</div>
+        <div id="po-label" style="margin-left: 83px;">Employee Rank</div>
       </div>
       
-      <div class="grid-container2">
-       <div>
-        <input type="text" name="name" id="po-textbox" [(ngModel)]="this.model.name" 
-        #name="ngModel">
-       </div>
+      <div class="grid-container2" style="grid-gap: 95px !important;">
        
-       <div>
+        <input type="text" name="name" id="po-textbox" [(ngModel)]="this.model.name" 
+        #name="ngModel" style="width:166px;">
+       
+       
+       
         <input type="text" name="rank" id="po-textbox" [(ngModel)]="this.model.rank" 
         #rank="ngModel">
-       </div>
+       
       </div>
       
      
         
         <div class="grid-container6">
-          <div>
-            <p id="po-label">Phone Number</p>
-        
-            <input type="text" name="phonenumber" id="po-textbox" [(ngModel)]="this.model.phonenumber" 
-            #phonenumber="ngModel">
+          <div id="po-label">Phone Number
+        <input type="text" name="phonenumber" id="po-textbox" [(ngModel)]="this.model.phonenumber" 
+            #phonenumber="ngModel" class="m-t-5px">
          
           </div>
        
-          <div>
-            <p id="po-label">Address</p>
+          <div id="po-label">Address
             <input type="text" name="address" id="po-textbox" [(ngModel)]="this.model.address" 
-            #address="ngModel">
+            #address="ngModel" class="m-t-5px">
             
           </div>
         </div>
       
         <div class="grid-container6">
-          <div>
-            <p id="po-label">Employee Email</p>
+          <div id="po-label">Employee Email
           <!-- <p style="font-size: 12px;">0.003</p> -->
           <input type="text" name="email" id="po-textbox" [(ngModel)]="this.model.email" 
-          #email="ngModel">
+          #email="ngModel" class="m-t-5px">
          
           </div>
        
-          <div>
-        
-            <p id="po-label">Employee DOB</p>
+          <div id="po-label">Employee DOB
           <!-- <p style="font-size: 12px;">0.003</p> -->
           <input type="text" name="dob" id="po-textbox" [(ngModel)]="this.model.dob" 
-          #dob="ngModel">
+          #dob="ngModel" class="m-t-5px">
           </div>
         </div>
 
         <div class="grid-container6">
-          <div>
-          <p id="po-label">ContractNumber</p>
+          <div id="po-label">ContractNumber
           <input type="text" name="contractnumber" id="po-textbox" [(ngModel)]="this.model.contractnumber" 
-          #contractnumber="ngModel">
+          #contractnumber="ngModel" class="m-t-5px">
           </div>
        
-          <div>
-        
-            <p id="po-label">NPWP Number</p>
+          <div id="po-label">NPWP Number
           <!-- <p style="font-size: 12px;">0.003</p> -->
           <input type="text" name="npwp" id="po-textbox" [(ngModel)]="this.model.npwp" 
-          #npwp="ngModel">
+          #npwp="ngModel" class="m-t-5px">
           </div>
         </div>
 
         <div class="grid-container6">
-          <div>
-          <p id="po-label">BPJS</p>
+          <div id="po-label"><div>BPJS</div>
           <input type="text" name="bpjs" id="po-textbox" [(ngModel)]="this.model.bpjs" 
-          #bpjs="ngModel">
+          #bpjs="ngModel" class="m-t-5px">
           </div>
        
-          <div>
-        
-            <p id="po-label">Monthly Salary</p>
+          <div id="po-label">Monthly Salary
           <!-- <p style="font-size: 12px;">0.003</p> -->
           <input type="text" name="monthlysalary" id="po-textbox" [(ngModel)]="this.model.monthlysalary" 
-          #monthlysalary="ngModel">
+          #monthlysalary="ngModel" class="m-t-5px">
           </div>
         </div>
         <div class="grid-container6">
-          <div>
-          <p id="po-label">Work Hour</p>
+          <div id="po-label">Work Hour
           <input type="text" name="workHour" id="po-textbox" [(ngModel)]="this.model.workHour" 
-          #workHour="ngModel">
+          #workHour="ngModel" class="m-t-5px">
           </div>
        
-          <div>
-        
-            <p id="po-label">Annual Leave</p>
+          <div id="po-label">Annual Leave
           <!-- <p style="font-size: 12px;">0.003</p> -->
           <input type="text" name="annualLeave" id="po-textbox" [(ngModel)]="this.model.annualLeave" 
-          #annualLeave="ngModel">
+          #annualLeave="ngModel" class="m-t-5px">
           </div>
         </div>
         </div>
-        
-             
-        <div class="grid-container4">
-          <div></div>
-        <div></div>
-        <div id="add-btn">
+         <div id="add-btn" style="float: right; margin-right: 51px; width: 20%;">
          <p id="add-text" (click)="saveEmployee()">Add</p>
         </div>
-        </div>
+        
        </div>
        
        <div></div>
