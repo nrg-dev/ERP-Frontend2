@@ -17,6 +17,10 @@ export class HeaderComponent implements OnInit {
     if (event.target && event.target.classList.contains('navi-link-deduct')) {
       return;
     }
+    if (event.target && event.target.classList.contains('child-shuffle')) {
+      return;
+    }
+    
     this.interactionService.toggleSideNavi(false);
   }
   
