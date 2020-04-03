@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { InteractionService } from './../../common/_services/interaction.service';
 
 @Component({
