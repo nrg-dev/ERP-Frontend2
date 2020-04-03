@@ -149,7 +149,7 @@
 			  </td>
         <td class="wid-150px">{{item.employeecode}}</td>
         <td class="wid-150px"><span >{{item.name}}</span></td>
-        <td class="wid-190px">-</td>
+        <td class="wid-190px">{{item.rank}}</td>
 		    <td class="wid-190px">{{item.email}}</td>
         <td class="wid-150px">
           <app-employee-report (closeDailyReport)="closePopup($event, i,'report')" *ngIf="showHideDailyReport[i]" [dailyReportItem]="item" [getDailyReportDetail]="getDailyReportDetail"></app-employee-report>
@@ -157,18 +157,18 @@
             
         <td class="wid-190px">
               
-          <app-employee-absence *ngIf="isShowHideAbsent[i]" [absenceItem]="item" (closeAbsencePopup)="closePopup($event, i,'absence')"></app-employee-absence>
+          <app-employee-absence *ngIf="isShowHideAbsent[i]" [absenceItem]="item" (closeAbsencePopup)="closePopup($event, i,'absence')" [getAbsentDetail]="getAbsentDetail"></app-employee-absence>
           {{item.addeddate}}
           
         </td>
-        <td class="wid-190px">{{item.Status}}
+        <td class="wid-190px">{{item.status}}
           
         </td>
       
         <td class="wid-190px"><span class="edit-delete-icon user-icon">
           <span class="fas fa-list-alt" style="font-size: 20px; margin-right: 10px;" (click) = "dailyReport(i, item.employeecode)"></span>
           <span class="fas fa-user-clock" style="margin-right: 10px; font-size: 20px;"></span>
-          <span class="fas fa-calendar-times" style="margin-right: 10px; font-size: 20px;" (click)="absentPopup(i)"></span>
+          <span class="fas fa-calendar-times" style="margin-right: 10px; font-size: 20px;" (click)="absentPopup(i, item)"></span>
         </span></td>
        </tr>
      </tbody>

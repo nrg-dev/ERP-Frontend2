@@ -72,4 +72,15 @@ export class EmployeeService {
       data
     );
   }
+
+  updateEmployeeAbsent(data: any) {
+    return this.http.put<any>(
+      `${environment.apiUrl}${API_ENDPOINTS.UPDATE_EMPLOYEE_ABSENT}`,
+      data
+    );
+  }
+
+  getAbsentLists(item: any) { 
+    return this.http.get(`${environment.apiUrl}${API_ENDPOINTS.GET_ABSENT_LISTS+'?employeecode='+item.employeecode+'&date='+item.date+'&type=D'}`);
+  }
 }
