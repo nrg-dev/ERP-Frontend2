@@ -100,7 +100,7 @@ getAddPurchaseOrderStyle() {
 }  
   getPurchaseOrderLists(){
     this.purchaseService.getPurchaseOrderLists()
-    .subscribe(res => { 
+    .subscribe((res:[]) => { 
       this.purchaseOrderList = res;
       },
       error => {

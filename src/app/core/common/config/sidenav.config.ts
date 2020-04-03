@@ -21,16 +21,16 @@ export const SidenavItems: MenuItem[] = [
   },
   {
     id: "vendorAndCustomer",
-    label: "Vendor",
+    label: "Vendors",
     icon: "assets/images/vendor-customer.png",
     path: "/vendor-and-customer",
     childern: [{
-      id: "vendor",
+      id: "vendors",
       label: "Vendor",
       path: "/vendor-and-customer/vendor",
      },
      {
-      id: "customer",
+      id: "customers",
       label: "Customer",
        path: "/vendor-and-customer/customer",
      }],
@@ -39,7 +39,7 @@ export const SidenavItems: MenuItem[] = [
  
   {
     id: "purchase",
-    label: "Purchase",
+    label: "Purchases",
     icon: "assets/images/circle-cropped.png",
     path: "/purchase",
     childern: [{
