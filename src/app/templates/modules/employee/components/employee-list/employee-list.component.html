@@ -118,57 +118,57 @@
   </button>
          
   </div>
-  <div class="m-t-25 grid-align" style="position: absolute; top:60px; width: 98%;">
-  <table class="table" id="poTable" style="margin-bottom: 0px !important; padding-top: 0px!important;">
+  <div class="m-t-25 grid-align" style="position: absolute; top:60px; width: 96%;">
+  <table class="table" id="poTable" style="margin-bottom: 0px !important; padding-top: 0px!important; text-align: center;">
     <thead id="table-head" style="position: absolute;
     top: 0px;">
       <tr>
-	  <th class="wid-50px">
+	  <th class="wid-50px" style="width: 4% !important;">
      
             </th>
-        <th class="wid-150px" style="cursor:pointer;">ID</th>
-        <th class="wid-150px" style="cursor:pointer;">Name
+        <th class="wid-190px" style="cursor:pointer; width: 6% !important;">ID</th>
+        <th class="wid-190px" style="cursor:pointer; width: 10% !important;">Name
          
         </th>
         <!-- <th onclick="w3.sortHTML('#poTable', '.purchase-order-row-open', 'td:nth-child(3)')" 
         style="cursor:pointer">Status<i class="sort-by-desc"></i></th> -->
-        <th class="wid-190px" style="cursor:pointer;">Designation
+        <th class="wid-190px" style="cursor:pointer; width: 5% !important;">Designation
         
         </th>
-		<th class="wid-190px">Email</th>
-        <th class="wid-150px">Phone</th>
-        <th class="wid-190px">Joined Date</th>
-        <th class="wid-190px">Status</th>
-        <th class="wid-190px"><i class="fa fa-filter"></i></th>
+		<th class="wid-190px" style="width: 18% !important;">Email</th>
+        <th class="wid-200px" style="width: 10% !important;">Phone</th>
+        <th class="wid-200px" style="width: 10% !important;">Joined Date</th>
+        <th class="wid-200px" style="width: 10% !important;">Status</th>
+        <th  style="width:345px" style="width: 11% !important;"><i class="fa fa-filter"></i></th>
        </tr>
     </thead>
     <tbody class="over-flo"> 
       <tr *ngFor="let item of employeesDS; let i = index" class="purchase-order-row-invoiced">
-	  <td class="wid-50px">
+	  <td class="wid-50px" style="width: 4% !important;">
       <img src="assets/images/employee.png" class="img-fluid logo" alt="Employee" />
 			  </td>
-        <td class="wid-150px">{{item.employeecode}}</td>
-        <td class="wid-150px"><span >{{item.name}}</span></td>
-        <td class="wid-190px">{{item.rank}}</td>
-		    <td class="wid-190px">{{item.email}}</td>
-        <td class="wid-150px">
+        <td class="wid-190px" style="width: 6% !important;">{{item.employeecode}}</td>
+        <td class="wid-190px" style="width: 10% !important;"><span >{{item.name}}</span></td>
+        <td class="wid-190px" style="width: 5% !important;">{{item.rank}}</td>
+		    <td class="wid-190px" style="width: 18% !important;">{{item.email}}</td>
+        <td class="wid-200px" style="width: 10% !important;">
           <app-employee-report (closeDailyReport)="closePopup($event, i,'report')" *ngIf="showHideDailyReport[i]" [dailyReportItem]="item" [getDailyReportDetail]="getDailyReportDetail"></app-employee-report>
           {{item.phonenumber}}</td>
             
-        <td class="wid-190px">
+        <td class="wid-200px" style="width: 3% !important;">
               
           <app-employee-absence *ngIf="isShowHideAbsent[i]" [absenceItem]="item" (closeAbsencePopup)="closePopup($event, i,'absence')" [getAbsentDetail]="getAbsentDetail"></app-employee-absence>
           {{item.addeddate}}
           
         </td>
-        <td class="wid-190px">{{item.status}}
+        <td class="wid-200px" style="width: 10% !important;">{{item.status}}
           
         </td>
       
-        <td class="wid-190px"><span class="edit-delete-icon user-icon">
-          <span class="fas fa-list-alt" style="font-size: 20px; margin-right: 10px;" (click) = "dailyReport(i, item.employeecode)"></span>
-          <span class="fas fa-user-clock" style="margin-right: 10px; font-size: 20px;"></span>
-          <span class="fas fa-calendar-times" style="margin-right: 10px; font-size: 20px;" (click)="absentPopup(i, item)"></span>
+        <td style="width:345px" style="width: 11% !important;"><span class="edit-delete-icon user-icon" style="left:10px !important">
+          <span class="fas fa-list-alt" style="font-size: 18px; margin-right: 3px;" (click) = "dailyReport(i, item.employeecode)"></span>
+          <span class="fas fa-user-clock" style="margin-right: 3px; font-size: 18px;"></span>
+          <span class="fas fa-calendar-times" style="font-size: 18px;" (click)="absentPopup(i, item)"></span>
         </span></td>
        </tr>
      </tbody>
