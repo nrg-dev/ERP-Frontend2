@@ -149,7 +149,7 @@
 			  </td>
         <td class="wid-150px">{{item.employeecode}}</td>
         <td class="wid-150px"><span >{{item.name}}</span></td>
-        <td class="wid-190px">-</td>
+        <td class="wid-190px">{{item.rank}}</td>
 		    <td class="wid-190px">{{item.email}}</td>
         <td class="wid-150px">
           <app-employee-report (closeDailyReport)="closePopup($event, i,'report')" *ngIf="showHideDailyReport[i]" [dailyReportItem]="item" [getDailyReportDetail]="getDailyReportDetail"></app-employee-report>
@@ -161,7 +161,7 @@
           {{item.addeddate}}
           
         </td>
-        <td class="wid-190px">{{item.Status}}
+        <td class="wid-190px">{{item.status}}
           
         </td>
       
