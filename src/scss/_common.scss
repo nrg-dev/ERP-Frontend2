@@ -18,12 +18,18 @@ h3{color:$white;}
   border-bottom:10px solid $main-bg;
   color:$table-header-font;
 } 
-  .table>tbody>tr>td{
-    font-size: $table-font-size;
-    height:40px; border-top:5px solid $main-bg;   
-    color:$table-row-font-color;
-  }
+.table>tbody>tr>td{
+  font-size: $table-font-size;
+  height:40px; border-top:5px solid $main-bg;   
+  color:$table-row-font-color;
+}
 
+tbody{
+  overflow-y: auto !important; 
+  height: 32rem!important; 
+  display: table-caption;
+  top: 58px;
+}
 .back-colr{background-color:$main-bg;}
 button {
         overflow: visible;
