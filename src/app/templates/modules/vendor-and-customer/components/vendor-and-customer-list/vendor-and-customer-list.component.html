@@ -226,10 +226,10 @@
         <ng-container *ngTemplateOutlet="VendorListTable"></ng-container>
         <ng-container *ngTemplateOutlet="CustomerListTable"></ng-container>
         <ng-template #VendorListTable>
-            <div class="row">
-                <div class="container-fluid" id="purchase-wrapper"> 
-                  <div class="row back-colr">
-                  <div class="container">
+          <div class="container-fluid" id="purchase-wrapper"> 
+            <div class="row back-colr">
+              <div class="container">
+                <div class="row">
                   <div class="header-align"><h3 id="title">Vendor List</h3> 
                     
                   <button class="create-button">
@@ -243,12 +243,20 @@
                   </button>
                          
                   </div>
+                </div>
+                <br/>
+                <div class="row">
                   <div class="m-t-25 grid-align" style="position: absolute; top:60px; width: 98%;">
                   <table class="table" id="vTable" style="margin-bottom: 0px !important; padding-top: 0px!important;">
                     <thead id="table-head" style="position: absolute;
                     top: 0px;">
                       <tr>
-                        <th class="wid-50px"></th>
+                        <th class="wid-50px">
+                          <div class="checkbox">
+                            <input type="checkbox" id="checkbox1">
+                            <label for="checkbox1"></label>
+                          </div>
+                        </th>
                         <th class="wid-150px" style="cursor:pointer;">Code</th>
                         <th class="wid-190px" style="cursor:pointer;">Name</th>
                         <th class="wid-190px" style="cursor:pointer;">Country</th>
@@ -260,7 +268,10 @@
                     <tbody class="over-flo"> 
                       <tr *ngFor="let item of vendorsDS; let i = index" class="purchase-order-row-invoiced">
                         <td class="wid-50px">
-                          
+                          <div class="checkbox">
+                            <input type="checkbox" id="checkbox1">
+                            <label for="checkbox1"></label>
+                          </div>
                         </td>
                         <td class="wid-150px">{{item.vendorcode}}</td>
                         <td class="wid-190px">{{item.vendorName}}</td>

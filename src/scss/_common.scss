@@ -29,6 +29,7 @@ tbody{
   height: 32rem!important; 
   display: table-caption;
   top: 58px;
+  padding-top: 4rem;
 }
 .back-colr{background-color:$main-bg;}
 button {
@@ -56,18 +57,19 @@ button {
       padding:8px 20px;
 }
 
-  input[type=checkbox] {
+input[type=checkbox] {
     position: relative;
     cursor: pointer;
+    vertical-align: middle;
 }
 
 input[type=checkbox]:before {
     content: "";
     display: block;
     position: absolute;
-       width: 20px;
-height: 20px;
-top: -3px;
+    width: 20px;
+    height: 20px;
+    top: -3px;
     left: 0;
     border: 2px solid $header-bg;
     border-radius: 0px;
@@ -84,8 +86,8 @@ input[type=checkbox]:checked:after {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
     position: absolute;
-  top: 1px;
-left: 8px;
+    top: 1px;
+    left: 8px;
 }
 
 .txt-right{text-align:right; padding-right: 25px!important;}
