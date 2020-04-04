@@ -13,6 +13,7 @@ export class InteractionService {
 
   toggleSideNavi(value?) {
     this.currentView = value === false ? value : !this.currentView
+    console.log(this.currentView);
     this.viewSideNaviSource.next(this.currentView);
   }
 

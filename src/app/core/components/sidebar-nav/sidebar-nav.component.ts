@@ -36,9 +36,6 @@ export class SidebarNavComponent implements OnInit {
     this.interactionService.viewSideNaviSource.subscribe(value => this.isExpanded = value);
   }
   //added to toggle sidenavi
-  toggleSideNavi() {
-    this.interactionService.toggleSideNavi();
-  }
 
   shuffleChildLinks(num){
     this.showChildNum = this.showChildNum !== num ? this.showChildNum = num : -1;
