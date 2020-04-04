@@ -249,11 +249,12 @@
                     top: 0px;">
                       <tr>
                         <th class="wid-50px"></th>
-                        <th class="wid-150px" style="cursor:pointer;">Vendor Code</th>
-                        <th class="wid-150px">Joining Date</th>
+                        <th class="wid-150px" style="cursor:pointer;">Code</th>
                         <th class="wid-190px" style="cursor:pointer;">Name</th>
+                        <th class="wid-190px" style="cursor:pointer;">Country</th>
+                        <th class="wid-150px">Email</th>
+                        <th class="wid-150px">Joining Date</th>
                         <th class="wid-190px">Contact Number</th>
-                        <th class="wid-190px"><i class="fa fa-filter"></i></th>
                        </tr>
                     </thead>
                     <tbody class="over-flo"> 
@@ -262,15 +263,12 @@
                           
                         </td>
                         <td class="wid-150px">{{item.vendorcode}}</td>
-                        <td class="wid-150px"><span >{{item.addeddate}}</span></td>
                         <td class="wid-190px">{{item.vendorName}}</td>
+                        <td class="wid-190px">{{item.country}}</td>
+                        <td class="wid-190px">{{item.email}}</td>
+                        <td class="wid-150px"><span >{{item.addeddate}}</span></td>
                         <td class="wid-190px">{{item.phoneNumber}}</td>                  
-                        <td class="wid-190px"><span class="edit-delete-icon user-icon">
-                            <span class="fas fa-list-alt" style="font-size: 20px; margin-right: 10px;" (click) = "toggleVendorDetailView(row.id)"></span>
-                            <span class="fas fa-user-clock" style="margin-right: 10px; font-size: 20px;" (click)="toggleVendorDetailView(row.id, true)"></span>
-                            <span class="fas fa-calendar-times" style="margin-right: 10px; font-size: 20px;" (click)="deleteVendorCustomer(row.id, 'vendor')"></span>
-                          </span>
-                        </td>
+                      
                        </tr>
                      </tbody>
                   </table>
