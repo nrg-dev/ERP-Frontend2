@@ -88,3 +88,17 @@
   color: $white;
   font-size: 20px;
 }
+
+.checkin-disabled {
+  color: #149A52 !important;
+  background: #1C313E !important;
+}
+
+.checkout-disabled {
+  color: #CC4343 !important;
+  background: #1C313E !important;
+}
+
+#error-msg {
+  color: red;
+}

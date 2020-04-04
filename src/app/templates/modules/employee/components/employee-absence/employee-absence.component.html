@@ -9,7 +9,7 @@
       <div class="">
         <p class="text">Absence</p>
       </div>
-      <div *ngIf="isSaveAbsent && model.reason === ''" id="error-msg">Report is required</div>
+      <div *ngIf="isSaveAbsent && model.reason === ''" id="error-msg">Reason is required</div>
       <div class="">
         <p class="datetext">{{commonService.getTodayDate() | date : 'EEEE MMMM d'}}</p>
       </div>

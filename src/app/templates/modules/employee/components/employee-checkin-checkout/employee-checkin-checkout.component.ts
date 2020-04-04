@@ -13,17 +13,26 @@ export class EmployeeChecinCheckoutComponent implements OnInit {
   @Output() closeCheckinCheckoutPopup: EventEmitter<any> = new EventEmitter<any>();
   @Input() absenceItem: any;
   @Input() getAbsentDetail: any;
+  @Input() currentTime: any;
   isSaveAbsent: boolean = false;
   todayTime: any;
+  isSaveChecinCheckout: boolean = false;
+  isDisableCheckout: boolean = false;
+  isDisableCheckin: boolean = false;
+  checkoutLabel: string = '';
+  checkinLabel: string = '';
 
   constructor(private employeeService: EmployeeService,
-              public commonService: CommonService) {
-                this.todayTime = formatDate(this.commonService.getCurrentTime(), 'HH:mm', 'en-US', '+0530');
+              public commonService: CommonService) { 
+               
               }
 
   ngOnInit() { 
+   this.todayTime = formatDate(this.currentTime, 'HH:mm', 'en-US', '+0530');
    setTimeout(() => { 
-    this.model.reason = this.getAbsentDetail !== undefined ? this.getAbsentDetail.reason:'';
+    this.model.checkinCheckoutReason = '';
+    this.disableCheckoutButton();
+    this.disableCheckinButton();
   }, 1300);
   }
 
@@ -34,18 +43,19 @@ export class EmployeeChecinCheckoutComponent implements OnInit {
   objectKeys(obj) {
     return Object.keys(obj);
   }
-  saveCheckinCheckedout(type: string) { console.log('details', this.getAbsentDetail)
+  saveCheckinCheckedout(type: string) {
+    this.isSaveChecinCheckout = true; 
     this.model.employeecode = this.absenceItem.employeecode;
     this.model.type = this.getAbsentDetail === undefined ? 'save':'update';
     this.model.date = this.commonService.getTodayDate();
     let msg = '';
     if (type === 'checkedin') {
-      this.model.checkinreason = this.model.reason;
+      this.model.checkinreason = this.model.checkinCheckoutReason;
       this.model.checkintime = this.todayTime;
       this.model.checkoutreason = null;
       this.model.checkouttime = null;
     } else {
-      this.model.checkoutreason = this.model.reason;
+      this.model.checkoutreason = this.model.checkinCheckoutReason;
       this.model.checkouttime = this.todayTime;
       this.model.checkinreason = this.getAbsentDetail.checkinreason;
       this.model.checkintime = this.getAbsentDetail.checkintime; 
@@ -54,7 +64,7 @@ export class EmployeeChecinCheckoutComponent implements OnInit {
     
     this.model.absent = null;
     this.model.reason = null;
-    if (this.model.reason !== '') {
+    if (this.model.checkinCheckoutReason !== '') {
           this.employeeService.saveEmployeeAbsent(this.model).subscribe((res: any) => {
           this.commonService.getSuccessErrorMsg(res,msg);
           if (res === null) {
@@ -62,5 +72,25 @@ export class EmployeeChecinCheckoutComponent implements OnInit {
           }
         });
     }
+  }
+
+  disableCheckoutButton() { 
+    if (this.getAbsentDetail !== undefined && this.getAbsentDetail.checkoutreason !== null) {
+      this.isDisableCheckout = true;
+      this.checkoutLabel = 'Checked-Out';
+    } else { 
+      this.isDisableCheckout = false;
+      this.checkoutLabel = 'Check-Out';
+    } 
+  }
+
+  disableCheckinButton() { 
+    if (this.getAbsentDetail !== undefined && this.getAbsentDetail.checkinreason !== null) {
+      this.isDisableCheckin = true;
+      this.checkinLabel = 'Checked-In';
+    } else { 
+      this.isDisableCheckin = false;
+      this.checkinLabel = 'Check-In';
+    } 
   }
 }

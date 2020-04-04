@@ -3,8 +3,6 @@ import {
   OnInit,
   ViewChild,
   Input,
-  SimpleChanges,
-  OnChanges,
   OnDestroy
 } from "@angular/core";
 
@@ -17,46 +15,25 @@ import { PrintDialogService } from "src/app/core/services/print-dialog/print-dia
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import { EmployeeAddComponent } from "../employee-add/employee-add.component";
 import { CommonService } from "../../../../../core/common/_services/common.service";
+import {formatDate } from '@angular/common';
 
 @Component({
   selector: "app-employee-list",
   templateUrl: "./employee-list.component.html",
   styleUrls: ["./employee-list.component.scss"]
 })
-export class EmployeeListComponent implements OnInit, OnChanges,OnDestroy {
-  @Input() tabChange: boolean = false;
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-
-  // To get the child component reference after *ngIf
-  private employeeDetail: EmployeeDetailComponent;
-  @ViewChild(EmployeeDetailComponent, { static: false }) set content(
-    content: EmployeeDetailComponent
-  ) {
-    setTimeout(() => {
-      this.employeeDetail = content;
-    }, 0);
-  }
-
-  chosenEmployeeCode: any;
-  searchText: string;
-  showDetail: boolean = false;
-  // employeesDS: Employee[];
+export class EmployeeListComponent implements OnInit, OnDestroy {
   employeesDS: any;
   employees: MatTableDataSource<Employee>;
   employee;
-  displayedColumns: string[] = [
-    "code",
-    "name",
-    "rank",
-    "contactNumber",
-    "action"
-  ];
   dialogConfig = new MatDialogConfig();
   showHideDailyReport = [];
   getDailyReportDetail: any;
   isShowHideAbsent = [];
   getAbsentDetail: any;
   isShowHideCheckinCheckout = [];
+  isAbsentMouseover = [];
+  todayTime: any;
   
   constructor(
     private employeeService: EmployeeService,
@@ -74,48 +51,14 @@ export class EmployeeListComponent implements OnInit, OnChanges,OnDestroy {
     this.removeScrollBar();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log("employee tab -->" + changes.tabChange.currentValue);
-    if (changes.tabChange) {
-      this.allemplist();
-      this.showDetail = false;
-      if (this.employees) {
-        this.employees.paginator = this.paginator;
-      }
-    }
-  }
-
   printPage(data) {
     this.printDialogService.openDialog(data);
   }
-
-  toggleEmployeeDetailView(employeeCode?, edit?) {
-    this.showDetail = !this.showDetail;
-    this.employee = undefined;
-    if (employeeCode) {
-      this.chosenEmployeeCode = employeeCode;
-
-      setTimeout(() => {
-        if (edit && this.employeeDetail) {
-          this.employeeDetail.isEditMode = true;
-        }
-      }, 50);
-    }
-  }
-
-  //  deleteEmployee(employeeCode: string) {
-  //   this.employeesDS = this.employeesDS.filter(
-  //     employee => employee.employeecode !== employeeCode
-  //    );
-  //    this.employees.data = this.employeesDS;
-  //  }
 
   allemplist() {
     this.employeeService.load().subscribe(
       (data: Employee[]) => { 
         this.employeesDS = data;
-        this.employees = new MatTableDataSource(this.employeesDS);
-        this.employees.paginator = this.paginator;
       },
       error => {
         setTimeout(() => {
@@ -220,7 +163,7 @@ export class EmployeeListComponent implements OnInit, OnChanges,OnDestroy {
     item.date = this.commonService.getTodayDate();
     this.employeeService.getDailyReportLists(item).subscribe((res: any) => {
       if (res.length > 0) { 
-        this.getDailyReportDetail = res[0];console.log('getDailyReportDetail', this.getDailyReportDetail)
+        this.getDailyReportDetail = res[0];
       }
     })
   }
@@ -245,6 +188,9 @@ export class EmployeeListComponent implements OnInit, OnChanges,OnDestroy {
   }
 
   checkinCheckout(index: number, item: any) {
+    this.todayTime = '';
+    const currentDate = new Date();
+    this.todayTime = currentDate;
     this.showHideDailyReport = [];
     this.isShowHideAbsent = [];
     this.isShowHideCheckinCheckout = [];
@@ -253,10 +199,31 @@ export class EmployeeListComponent implements OnInit, OnChanges,OnDestroy {
   }
 
   getEmployeeAbsentDetail(item: any) {
+    this.getAbsentDetail = undefined;
+    item.date = this.commonService.getTodayDate();
     this.employeeService.getAbsentLists(item).subscribe((res: any) => { 
       if (res.length > 0) { 
         this.getAbsentDetail = res[0];
       }
     })
+  }
+
+  absentMouseover(index: number, item: any) { 
+    this.isAbsentMouseover = [];
+    item.date = this.commonService.getTodayDate();
+    this.employeeService.getAbsentLists(item).subscribe((res: any) => { 
+      if (res.length > 0) { 
+        this.getAbsentDetail = res[0];
+        if (this.getAbsentDetail.absent === 'yes') {
+          this.isAbsentMouseover[index] = true;
+        } else {
+          this.isAbsentMouseover[index] = false;
+        }
+      } else {
+        this.isAbsentMouseover[index] = false;
+      }
+    }) 
+    
+    
   }
 }
