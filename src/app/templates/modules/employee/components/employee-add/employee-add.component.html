@@ -1,135 +1,20 @@
-<!-- 
-    <form  name="employeeForm"
-    (submit)="employeeForm.form.valid && saveEmployee()"
-    #employeeForm="ngForm"
-    novalidate
-    class="text-center border border-light p-4">
-               
-      <br/>
-      <div class="form-row mb-4">
-          <div class="col">
-            <label id="labeltext">Employee Name *</label>
-            <input type="text" id="defaultRegisterFormLastName" 
-            class="form-control" placeholder="Name"
-             [(ngModel)]="this.model.name" 
-             #name="ngModel" name="name"             
-             required>            
-          </div>
-          
-
-          <div class="col">
-            <label id="labeltext">Employee Rank </label>
-            <input type="text" id="defaultRegisterFormLastName" 
-            class="form-control" placeholder="Employee Rank" 
-            [(ngModel)]="this.model.rank" #rank="ngModel" name="rank" >
-          </div>
-          <div class="col">
-            <label id="labeltext">PhoneNumber</label>
-            <input type="text" id="defaultRegisterFormLastName" 
-            class="form-control" placeholder="Phone number" 
-            [(ngModel)]="this.model.phonenumber" #phonenumber="ngModel" 
-            name="phonenumber" >
-          </div>
-      </div>
-
-      <div class="form-row mb-4">
-          <div class="col">
-            <label id="labeltext"> Address</label> 
-            <input type="text" id="defaultRegisterFormLastName" class="form-control" 
-            placeholder="Address"
-             [(ngModel)]="this.model.address" #address="ngModel" name="address" >
-          </div>
-          <div class="col">
-            <label id="labeltext">Employee Email</label>
-            <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Email" 
-            [(ngModel)]="this.model.email" #email="ngModel" name="email" >
-          </div>
-          <div class="col">
-            <label id="labeltext">Employee DOB </label>
-            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Date of Birth" 
-            [(ngModel)]="this.model.dob" #dob="ngModel" name="dob" >
-          </div>
-      </div>
-
-      <div class="form-row mb-4">
-        <div class="col">
-          <label id="labeltext">ContractNumber </label>
-          <input type="text" id="defaultRegisterFormFirstName" class="form-control"
-           placeholder="Contract Number" 
-          [(ngModel)]="this.model.contractnumber" #contractnumber="ngModel" 
-          name="contractnumber" >
-        </div>
-        <div class="col">
-          <label id="labeltext">NPWP Number </label>
-          <input type="text" id="defaultRegisterFormLastName" 
-          class="form-control" placeholder="NPWP Number" 
-          [(ngModel)]="this.model.npwp" #npwp="ngModel" name="npwp" >
-        </div>
-
-        <div class="col">
-          <label id="labeltext">BPJS </label>
-          <input type="text" id="defaultRegisterFormLastName" 
-          class="form-control" placeholder="BPJS"
-           [(ngModel)]="this.model.bpjs" #bpjs="ngModel" name="bpjs" >
-        </div>
-      </div>
-
-      <div class="form-row mb-4">
-        <div class="col">
-          <label id="labeltext"> Monthly Salary </label>
-          <input type="text" id="defaultRegisterFormFirstName" 
-          class="form-control" placeholder="Monthly Salary" 
-          [(ngModel)]="this.model.monthlysalary" #monthlysalary="ngModel" 
-          name="monthlysalary" >
-        </div>
-        <div class="col">
-          <label id="labeltext">Work Hour </label>
-          <input type="text" id="defaultRegisterFormLastName" class="form-control"
-           placeholder="Work Hour" 
-          [(ngModel)]="this.model.workHour" #workHour="ngModel" name="workHour" >
-        </div>
-
-        <div class="col">
-          <label id="labeltext">Annual Leave </label>
-            <input type="text" id="defaultRegisterFormLastName" class="form-control" 
-            placeholder="Annual Leave"
-             [(ngModel)]="this.model.annualLeave" #annualLeave="ngModel" 
-             name="annualLeave" >
-        </div>
-      </div>
-
-      <br/>
-      <div class="form-row mb-8">
-        <div class="col-2"></div>
-        <div class="col">
-          <button id="save-butn">
-            Save
-          </button>
-          
-          &nbsp;&nbsp;
-          <button id="cancel-butn" (click)="cancelEmployee()">
-            Cancel
-          </button>
-        </div>
-        <div class="col-2"></div>
-      </div>
-   
-    </form>
     
-                    	
-     -->
-
-     
      <div class="mb-3" style="font-size: 12px;">
-           
+      
       <div class="grid-container3">
-       <div></div>
        
        <div>
+      
+       </div>
+       
        <div>
-        <button type="button" class="close" aria-label="Close" style="color: #1c313e; font-size: 28px;" (click)="addEmployeeClose()">
-          <span aria-hidden="true">&times;</span>
-        </button>
+       
+       <div>
+      
+        <button type="button" class="close" aria-label="Close" 
+        (click)="addEmployeeClose()">
+         <span aria-hidden="true">&times;</span>
+       </button>
        <h2 id="h2ID">Add Employee</h2>
       
       <div class="grid-container2">
@@ -139,12 +24,12 @@
       
       <div class="grid-container2" style="grid-gap: 95px !important;">
        
-        <input type="text" name="name" id="po-textbox" [(ngModel)]="this.model.name" 
+        <input type="text" name="name" id="textbox" [(ngModel)]="this.model.name" 
         #name="ngModel" style="width:166px;">
        
        
        
-        <input type="text" name="rank" id="po-textbox" [(ngModel)]="this.model.rank" 
+        <input type="text" name="rank" id="textbox" [(ngModel)]="this.model.rank" 
         #rank="ngModel">
        
       </div>
@@ -153,13 +38,13 @@
         
         <div class="grid-container6">
           <div id="po-label">Phone Number
-        <input type="text" name="phonenumber" id="po-textbox" [(ngModel)]="this.model.phonenumber" 
+        <input type="text" name="phonenumber" id="textbox" [(ngModel)]="this.model.phonenumber" 
             #phonenumber="ngModel" class="m-t-5px">
          
           </div>
        
           <div id="po-label">Address
-            <input type="text" name="address" id="po-textbox" [(ngModel)]="this.model.address" 
+            <input type="text" name="address" id="textbox" [(ngModel)]="this.model.address" 
             #address="ngModel" class="m-t-5px">
             
           </div>
@@ -168,52 +53,52 @@
         <div class="grid-container6">
           <div id="po-label">Employee Email
           <!-- <p style="font-size: 12px;">0.003</p> -->
-          <input type="text" name="email" id="po-textbox" [(ngModel)]="this.model.email" 
+          <input type="text" name="email" id="textbox" [(ngModel)]="this.model.email" 
           #email="ngModel" class="m-t-5px">
          
           </div>
        
           <div id="po-label">Employee DOB
           <!-- <p style="font-size: 12px;">0.003</p> -->
-          <input type="text" name="dob" id="po-textbox" [(ngModel)]="this.model.dob" 
+          <input type="text" name="dob" id="textbox" [(ngModel)]="this.model.dob" 
           #dob="ngModel" class="m-t-5px">
           </div>
         </div>
 
         <div class="grid-container6">
           <div id="po-label">ContractNumber
-          <input type="text" name="contractnumber" id="po-textbox" [(ngModel)]="this.model.contractnumber" 
+          <input type="text" name="contractnumber" id="textbox" [(ngModel)]="this.model.contractnumber" 
           #contractnumber="ngModel" class="m-t-5px">
           </div>
        
           <div id="po-label">NPWP Number
           <!-- <p style="font-size: 12px;">0.003</p> -->
-          <input type="text" name="npwp" id="po-textbox" [(ngModel)]="this.model.npwp" 
+          <input type="text" name="npwp" id="textbox" [(ngModel)]="this.model.npwp" 
           #npwp="ngModel" class="m-t-5px">
           </div>
         </div>
 
         <div class="grid-container6">
           <div id="po-label"><div>BPJS</div>
-          <input type="text" name="bpjs" id="po-textbox" [(ngModel)]="this.model.bpjs" 
+          <input type="text" name="bpjs" id="textbox" [(ngModel)]="this.model.bpjs" 
           #bpjs="ngModel" class="m-t-5px">
           </div>
        
           <div id="po-label">Monthly Salary
           <!-- <p style="font-size: 12px;">0.003</p> -->
-          <input type="text" name="monthlysalary" id="po-textbox" [(ngModel)]="this.model.monthlysalary" 
+          <input type="text" name="monthlysalary" id="textbox" [(ngModel)]="this.model.monthlysalary" 
           #monthlysalary="ngModel" class="m-t-5px">
           </div>
         </div>
         <div class="grid-container6">
           <div id="po-label">Work Hour
-          <input type="text" name="workHour" id="po-textbox" [(ngModel)]="this.model.workHour" 
+          <input type="text" name="workHour" id="textbox" [(ngModel)]="this.model.workHour" 
           #workHour="ngModel" class="m-t-5px">
           </div>
        
           <div id="po-label">Annual Leave
           <!-- <p style="font-size: 12px;">0.003</p> -->
-          <input type="text" name="annualLeave" id="po-textbox" [(ngModel)]="this.model.annualLeave" 
+          <input type="text" name="annualLeave" id="textbox" [(ngModel)]="this.model.annualLeave" 
           #annualLeave="ngModel" class="m-t-5px">
           </div>
         </div>
