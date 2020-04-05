@@ -22,9 +22,9 @@ export class EmployeeReportComponent implements OnInit {
   }
 
   ngOnInit() { 
-    setTimeout(() => {
+    setTimeout(() => { 
       this.model.report = this.getDailyReportDetail !== undefined ? this.getDailyReportDetail.report: '';
-    }, 1200);
+    }, 600);
       
   }
 
