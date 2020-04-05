@@ -223,7 +223,9 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
         this.isAbsentMouseover[index] = false;
       }
     }) 
-    
-    
+  }
+
+  enableAbsentIcon(value: boolean, index: number) {
+    this.isAbsentMouseover[index] = value;
   }
 }

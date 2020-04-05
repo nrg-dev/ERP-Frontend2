@@ -11,6 +11,7 @@ import {formatDate } from '@angular/common';
 export class EmployeeChecinCheckoutComponent implements OnInit {
   model: any = {};
   @Output() closeCheckinCheckoutPopup: EventEmitter<any> = new EventEmitter<any>();
+  @Output() enableAbsentIcon: EventEmitter<any> = new EventEmitter<any>();
   @Input() absenceItem: any;
   @Input() getAbsentDetail: any;
   @Input() currentTime: any;
@@ -54,12 +55,13 @@ export class EmployeeChecinCheckoutComponent implements OnInit {
       this.model.checkintime = this.todayTime;
       this.model.checkoutreason = null;
       this.model.checkouttime = null;
+      msg = 'Checked in successfully';
     } else {
       this.model.checkoutreason = this.model.checkinCheckoutReason;
       this.model.checkouttime = this.todayTime;
       this.model.checkinreason = this.getAbsentDetail.checkinreason;
       this.model.checkintime = this.getAbsentDetail.checkintime; 
-      msg = 'Checkedout updated successfully';
+      msg = 'Checked out successfully';
     }
     
     this.model.absent = null;
@@ -68,6 +70,7 @@ export class EmployeeChecinCheckoutComponent implements OnInit {
           this.employeeService.saveEmployeeAbsent(this.model).subscribe((res: any) => {
           this.commonService.getSuccessErrorMsg(res,msg);
           if (res === null) {
+            this.enableAbsentIcon.emit(false);
             this.checkinCheckoutPopupClose();
           }
         });
