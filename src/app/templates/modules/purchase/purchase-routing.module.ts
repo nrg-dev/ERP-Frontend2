@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { PurchaseComponent } from './components/purchase/purchase.component';
 import { PurchaseInvoiceComponent } from './components/purchase-invoice/purchase-invoice.component';
+import { PurchaseReturnComponent } from './components/purchase-return/purchase-return.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'invoice',
     component: PurchaseInvoiceComponent
+},
+{
+  path: 'return',
+  component: PurchaseReturnComponent
 }
 ];
 
