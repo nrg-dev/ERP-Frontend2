@@ -50,11 +50,11 @@ export const SidenavItems: MenuItem[] = [
      {
       id: "purchase-invoice",
       label: "Invoices",
-      path: "invoice",
+      path: "/purchase/invoice",
       }, {
         id: "purchase-invoice",
         label: "Returns",
-        path: "invoice",
+        path: "/purchase/return",
       }],
     submenu: true
   },
@@ -79,12 +79,12 @@ export const SidenavItems: MenuItem[] = [
      {
       id: "sales-invoice",
       label: "Invoices",
-      path: "invoice",
+      path: "/sales/invoice",
      },
       {
         id: "sales-invoice",
         label: "Returns",
-        path: "invoice",
+        path: "/sales/return",
       }
     ],
     submenu: true
