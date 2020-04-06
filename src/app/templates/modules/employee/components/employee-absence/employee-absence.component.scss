@@ -3,7 +3,6 @@
 .box{
   background: rgb(37, 63, 75);
   width: 386px;
-  height: 207px                               ;
   border-radius: 5px;
   font-family: Open Sans;
 }
@@ -25,7 +24,7 @@
   border: 1px solid #334F5F;
   background: #1C313E;
   width: 80%;
-  height: 50px;
+  height: 14em;
   color: #8B99A1;
   padding-left: 15px;
 }
@@ -44,6 +43,7 @@ button{
   font-size: 18px;
   width: 17rem;
   height: 3rem;
+  margin-bottom: 20px;
 }
 ::placeholder {
   color: #8D9BA4;
