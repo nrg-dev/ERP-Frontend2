@@ -2,9 +2,8 @@ import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { PurchaseService } from '../../services/purchase.service';
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
-import {
-  PurchaseAddComponent  
-} from "../purchaseadd/purchaseadd.component";
+import { PurchaseAddComponent } from "../purchaseadd/purchaseadd.component";
+import { PurchaseCreateInvoiceComponent } from './../purchase-create-invoice/purchase-create-invoice.component';
 
 @Component({
   selector: 'app-purchaselist',
@@ -298,6 +297,22 @@ getAddPurchaseOrderStyle() {
   }
   
   createInvoice() {
+
+    let data: any;
+
+    data = { dialogTitle: 'Add Purchase Order', dialogText: 'Add' };
+
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+      'top': '1000',
+      left: '100'
+    };
+
+    this.dialog.open(PurchaseCreateInvoiceComponent, {
+      panelClass: 'addpromotion',
+      data: data,
+    })
     console.log('i am here', this.prodArr);
   }
 

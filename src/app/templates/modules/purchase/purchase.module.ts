@@ -54,6 +54,7 @@ import { PurchaseReturnComponent } from "./components/purchase-return/purchase-r
 import { PurchasereportComponent } from "./components/purchasereport/purchasereport.component";
 import { PurchaseListComponent } from "./components/purchase-list/purchase-list.component";
 import { VendorService } from 'src/app/templates/modules/vendor-and-customer/services/vendor.service';
+import { PurchaseCreateInvoiceComponent } from './components/purchase-create-invoice/purchase-create-invoice.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { VendorService } from 'src/app/templates/modules/vendor-and-customer/ser
     PurchaseInvoiceComponent,
     PurchaseReturnComponent,
     PurchasereportComponent,
-    PurchaseListComponent
+    PurchaseListComponent,
+    PurchaseCreateInvoiceComponent
   ],
   imports: [
     CommonModule,
@@ -111,6 +113,6 @@ import { VendorService } from 'src/app/templates/modules/vendor-and-customer/ser
     MatPaginatorModule
   ],
   providers: [PurchaseService, VendorService],
-  entryComponents: [PurchaseAddComponent]
+  entryComponents: [PurchaseAddComponent, PurchaseCreateInvoiceComponent]
 })
 export class PurchaseModule {}
