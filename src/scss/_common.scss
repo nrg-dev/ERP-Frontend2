@@ -203,3 +203,19 @@ table tbody tr:hover td span{
 ::-webkit-scrollbar-thumb:hover {
   background: $header-bg; 
 }
+
+@media (min-width:2052px) and (max-width:2732px){
+  #vTable{
+    width: 150% !important;
+  }
+}
+@media (min-width:2733px) and (max-width:4102px){
+  #vTable{
+    width: 180% !important;
+  }
+}
+@media (min-width:4103px) and (max-width:5464px){
+  #vTable{
+    width: 200% !important;
+  }
+}

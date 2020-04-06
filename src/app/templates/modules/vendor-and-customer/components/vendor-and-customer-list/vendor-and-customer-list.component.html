@@ -226,41 +226,35 @@
         <ng-container *ngTemplateOutlet="VendorListTable"></ng-container>
         <ng-container *ngTemplateOutlet="CustomerListTable"></ng-container>
         <ng-template #VendorListTable>
-          <div class="container-fluid" id="purchase-wrapper"> 
-            <div class="row back-colr">
-              <div class="container">
-                <div class="row">
-                  <div class="header-align"><h3 id="title">Vendor List</h3> 
-                    
-                  <button class="create-button">
-                    Download
+          <!DOCTYPE html>
+            <div class="container-fluid" id="purchase-wrapper"> 
+              <div class="back-colr">
+              <div class="container" style="margin-left: 12px;">
+              <div class="header-align"><h3 style="float: left;" id="title">Vendor List</h3> 
+                <div style="float: right;">
+                  <button  class="create-button" style="float: left; margin-right: 10px; margin-top: 4px;" (click)="addVendor()">
+                    <span class="fas fa-plus"></span> Add New Vendor 
                   </button>
-                  <button class="create-button" (click)="productprint()">
-                    Print
-                  </button>
-                  <button class="create-button" (click)="addVendor()">
-                      <span class="fas fa-plus"></span> Add New Vendor 
-                  </button>
-                         
-                  </div>
-                </div>
-                <br/>
-                <div class="row">
-                  <div class="m-t-25 grid-align" style="position: absolute; top:60px; width: 98%;">
+                  <img src="assets/images/print.png" style="margin-right: 10px;" class="img-fluid logo" alt="print"/>
+                  <img src="assets/images/download.png" class="img-fluid logo" alt="download" />
+                </div> 
+              </div>
+              <br/>
+              <div class="m-t-25 grid-align" style="position: absolute; top:70px;margin:0px 10px;">
                   <table class="table" id="vTable" style="margin-bottom: 0px !important; padding-top: 0px!important;">
                     <thead id="table-head" style="position: absolute;
                     top: 0px;">
                       <tr>
                         <th class="wid-50px">
-                          <div class="checkbox">
-                            <input type="checkbox" id="checkbox1">
-                            <label for="checkbox1"></label>
+                          <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input1" id="customChecks2">
+                            <label class="custom-control-label1" for="customCheck2"></label>
                           </div>
                         </th>
                         <th class="wid-150px" style="cursor:pointer;">Code</th>
                         <th class="wid-190px" style="cursor:pointer;">Name</th>
                         <th class="wid-190px" style="cursor:pointer;">Country</th>
-                        <th class="wid-150px">Email</th>
+                        <th class="wid-150px" style="width: 185px !important;">Email</th>
                         <th class="wid-150px">Joining Date</th>
                         <th class="wid-190px">Contact Number</th>
                        </tr>
@@ -268,9 +262,8 @@
                     <tbody class="over-flo"> 
                       <tr *ngFor="let item of vendorsDS; let i = index" class="purchase-order-row-invoiced">
                         <td class="wid-50px">
-                          <div class="checkbox">
-                            <input type="checkbox" id="checkbox1">
-                            <label for="checkbox1"></label>
+                          <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input1">
                           </div>
                         </td>
                         <td class="wid-150px">{{item.vendorcode}}</td>
@@ -279,11 +272,9 @@
                         <td class="wid-190px">{{item.email}}</td>
                         <td class="wid-150px"><span >{{item.addeddate}}</span></td>
                         <td class="wid-190px">{{item.phoneNumber}}</td>                  
-                      
                        </tr>
                      </tbody>
                   </table>
-                </div>
                 </div>
               </div>
             </div>
@@ -292,59 +283,66 @@
      
         <ng-template #CustomerListTable>
           <div *ngIf="customerListshow">
-              <div class="row">
-                  <div class="container-fluid" id="purchase-wrapper"> 
-                    <div class="row back-colr">
-                    <div class="container">
-                    <div class="header-align"><h3 id="title">Vendor List</h3> 
-                      
-                    <button class="create-button">
-                      Download
-                  </button>
-                  <button class="create-button" (click)="productprint()">
-                    Print
-                  </button>
-                      <button  class="create-button" (click)="addVendor()">
-                        <span class="fas fa-plus"></span> Add New Customer 
+            <!DOCTYPE html>
+              <div class="container-fluid" id="purchase-wrapper"> 
+                <div class="back-colr">
+                <div class="container" style="margin-left: 12px;">
+                <div class="header-align"><h3 style="float: left;" id="title">Customer List</h3> 
+                  <div style="float: right;">
+                    <button  class="create-button" style="float: left; margin-right: 10px; margin-top: 4px;" (click)="addVendor()">
+                      <span class="fas fa-plus"></span> Add New Customer 
                     </button>
-                           
-                    </div>
-                    <div class="m-t-25 grid-align" style="position: absolute; top:60px; width: 98%;">
-                    <table class="table" id="vTable" style="margin-bottom: 0px !important; padding-top: 0px!important;">
+                    <img src="assets/images/print.png" style="margin-right: 10px;" class="img-fluid logo" alt="print"/>
+                    <img src="assets/images/download.png" class="img-fluid logo" alt="download" />
+                  </div> 
+                </div>
+                <br/>
+                <div class="m-t-25 grid-align" style="position: absolute; top:60px; width: 94%;margin:0px 10px;">
+                    <table class="table" id="vTable" style="margin-bottom: 0px !important; padding-top: 0px!important;
+                      width: 100%!important;">
                       <thead id="table-head" style="position: absolute;
                       top: 0px;">
                         <tr>
-                          <th class="wid-50px"></th>
+                          <th class="wid-50px">
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input1" id="customChecks2">
+                              <label class="custom-control-label1" for="customCheck2"></label>
+                            </div>
+                          </th>
                           <th class="wid-150px" style="cursor:pointer;">{{ componentType }} Code</th>
-                          <th class="wid-150px">Joining Date</th>
                           <th class="wid-190px" style="cursor:pointer;">Name</th>
+                          <th class="wid-190px" style="cursor:pointer;">Country</th>
+                          <th class="wid-150px" style="width: 185px !important;">Email</th>
+                          <th class="wid-150px">Joining Date</th>
                           <th class="wid-190px">Contact Number</th>
-                          <th class="wid-190px"><i class="fa fa-filter"></i></th>
-                         </tr>
+                        </tr>
                       </thead>
                       <tbody class="over-flo"> 
-                        <tr *ngFor="let item of vendorsDS; let i = index" class="purchase-order-row-invoiced">
+                        <tr *ngFor="let item of customersDS; let i = index" class="purchase-order-row-invoiced">
                           <td class="wid-50px">
-                            
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input1">
+                            </div>
                           </td>
                           <td class="wid-150px">{{item.custcode}}</td>
-                          <td class="wid-150px"><span >{{item.addeddate}}</span></td>
                           <td class="wid-190px">{{item.customerName}}</td>
+                          <td class="wid-190px">{{item.country}}</td>
+                          <td class="wid-190px">{{item.email}}</td>
+                          <td class="wid-150px"><span >{{item.addeddate}}</span></td>
                           <td class="wid-190px">{{item.phoneNumber}}</td>                  
-                          <td class="wid-190px"><span class="edit-delete-icon user-icon">
+                          <!-- 
                             <span class="fas fa-eye" style="font-size: 20px; margin-right: 10px;" (click) = "toggleVendorDetailView(row.id)"></span>
-                            <span class="fas fa-edit" style="margin-right: 10px; font-size: 20px;" (click)="toggleVendorDetailView(row.id, true)"></span>
-                            <span class="fas fa-trash" style="margin-right: 10px; font-size: 20px;" (click)="deleteVendorCustomer(row.id, 'vendor')"></span>
-                          </span></td>
-                         </tr>
-                       </tbody>
+                              <span class="fas fa-edit" style="margin-right: 10px; font-size: 20px;" (click)="toggleVendorDetailView(row.id, true)"></span>
+                              <span class="fas fa-trash" style="margin-right: 10px; font-size: 20px;" (click)="deleteVendorCustomer(row.id, 'vendor')"></span>
+                            </span>
+                          -->
+                        </tr>
+                      </tbody>
                     </table>
-                  </div>
                   </div>
                 </div>
               </div>
-            </div>
-            
+            </div>            
           </div>
         </ng-template>
       </div>
