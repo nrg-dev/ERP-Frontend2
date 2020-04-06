@@ -22,7 +22,7 @@
     <thead id="table-head" style="position: absolute;
     top: 0px;">
       <tr>
-	  <th class="wid-50px" style="width: 5% !important;">
+	  <th class="wid-50px" style="width: 4% !important;">
      
             </th>
         <th class="wid-190px" style="cursor:pointer; width: 8% !important;">ID</th>
@@ -31,10 +31,10 @@
         </th>
         <!-- <th onclick="w3.sortHTML('#poTable', '.purchase-order-row-open', 'td:nth-child(3)')" 
         style="cursor:pointer">Status<i class="sort-by-desc"></i></th> -->
-        <th class="wid-190px" style="cursor:pointer; width: 7% !important;">Designation
+        <th class="wid-190px" style="cursor:pointer; width: 5% !important;">Designation
         
         </th>
-		<th class="wid-190px" style="width: 20% !important;">Email</th>
+		<th class="wid-190px" style="width: 22% !important;">Email</th>
         <th class="wid-200px" style="width: 12% !important;">Phone</th>
         <th class="wid-200px" style="width: 10% !important;">Joined Date</th>
         <th class="wid-200px" style="width: 13% !important;">Status</th>
@@ -45,13 +45,13 @@
     </thead>
     <tbody class="over-flo"> 
       <tr *ngFor="let item of employeesDS; let i = index" class="purchase-order-row-invoiced">
-	  <td class="wid-50px" style="width: 5% !important;">
+	  <td class="wid-50px" style="width: 4% !important;">
       <img src="assets/images/employee.png" class="img-fluid logo" alt="Employee" />
 			  </td>
         <td class="wid-190px" style="width: 8% !important;">{{item.employeecode}}</td>
         <td class="wid-190px" style="width: 13% !important;"><span >{{item.name}}</span></td>
-        <td class="wid-190px" style="width: 7% !important;">{{item.rank}}</td>
-		    <td class="wid-190px" style="width: 20% !important;">{{item.email}}</td>
+        <td class="wid-190px" style="width: 5% !important;">{{item.rank}}</td>
+		    <td class="wid-190px" style="width: 22% !important;">{{item.email}}</td>
         <td class="wid-200px" style="width: 12% !important;">
           <app-employee-report (closeDailyReport)="closePopup($event, i,'report')" *ngIf="showHideDailyReport[i]" [dailyReportItem]="item" [getDailyReportDetail]="getDailyReportDetail"></app-employee-report>
           {{item.phonenumber}}</td>
