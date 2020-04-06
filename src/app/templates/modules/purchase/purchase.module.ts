@@ -47,10 +47,7 @@ import {
   
 } from "./components/purchaseadd/purchaseadd.component";
 import {
-  PurchaseInvoiceComponent,
-  ViewInvoice,
-  EditInvoice,
-  Filter
+  PurchaseInvoiceComponent
 } from "./components/purchase-invoice/purchase-invoice.component";
 import { PurchaseService } from "./services/purchase.service";
 import { PurchaseReturnComponent } from "./components/purchase-return/purchase-return.component";
@@ -63,9 +60,6 @@ import { VendorService } from 'src/app/templates/modules/vendor-and-customer/ser
     PurchaseComponent,
     PurchaseAddComponent,
     PurchaseInvoiceComponent,
-    ViewInvoice,
-    EditInvoice,
-    Filter,
     PurchaseReturnComponent,
     PurchasereportComponent,
     PurchaseListComponent
@@ -117,6 +111,6 @@ import { VendorService } from 'src/app/templates/modules/vendor-and-customer/ser
     MatPaginatorModule
   ],
   providers: [PurchaseService, VendorService],
-  entryComponents: [ViewInvoice, EditInvoice,  Filter,PurchaseAddComponent]
+  entryComponents: [PurchaseAddComponent]
 })
 export class PurchaseModule {}
