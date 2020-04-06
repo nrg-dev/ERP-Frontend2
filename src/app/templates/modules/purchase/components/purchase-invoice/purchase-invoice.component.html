@@ -34,7 +34,7 @@
           <td class="txt-right wid-150px">{{ item.totalAmount - item.deliveryCost }}</td>
           <td><span>{{item.status}}</span></td>
           <td><span class="edit-delete-icon invoice-view">
-            <i (click)="showPdf()" class="fa mar-let-40px pdf-icon">&#xf1c1;</i>
+            <a href="assests/sample.pdf" target="_blank" class="pdf-icon"><i (click)="showPdf()" class="fa">&#xf1c1;</i></a>
            </span></td>
          </tr>
        </tbody>
