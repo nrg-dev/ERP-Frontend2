@@ -2,7 +2,6 @@
 .box{
   background: rgb(37, 63, 75);
   width: 25rem;
-  height: 16rem;
   border-radius: 5px;
   top:5rem;
   font-family: Open Sans;
@@ -31,8 +30,8 @@
   border: 1px solid #334F5F;
   background: #1C313E;
   width: 80%;
-  height: 50px;
-  color: #8B99A1;
+  height: 14em;
+  color: $white;
   padding-left: 15px;
 }
 .checkin-checkout{

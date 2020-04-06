@@ -9,7 +9,7 @@
   }
 
   .over-flo{
-    overflow-y: auto !important; 
+    overflow-y: scroll !important; overflow-x: hidden;
     height:340px !important; 
     display: table-caption;
     top: 58px;
