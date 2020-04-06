@@ -12,6 +12,7 @@ import {
   styleUrls: ['./purchase-list.component.scss', './purchase-list.component.css']
 })
 export class PurchaseListComponent  implements OnInit, OnDestroy  {
+
   purchaseOrderList: any;
   dialogConfig = new MatDialogConfig();
   prodArr     =  [];
@@ -212,7 +213,7 @@ getAddPurchaseOrderStyle() {
   }
 
   getErrorMsg(isErrMsg: boolean) {
-    console.log('isErrMsg', isErrMsg)
+    // console.log('isErrMsg', isErrMsg)
     if (isErrMsg) {
       setTimeout(() => {
         this.snackBar.open("Select only one vendor", "dismss", {
@@ -226,11 +227,11 @@ getAddPurchaseOrderStyle() {
   }
 
   removeItem(isCheckedArr: any, index: number, type: string) {
-    console.log('isCheckedArr', isCheckedArr)
-    console.log('index12', index)
+    // console.log('isCheckedArr', isCheckedArr)
+    // console.log('index12', index)
     isCheckedArr.forEach((item, indexCheck) => {
-      console.log('indexVal', item.indexVal)
-      console.log('index', index)
+      // console.log('indexVal', item.indexVal)
+      // console.log('index', index)
       if (item.indexVal === index) {
         isCheckedArr.splice(indexCheck, 1);
       }
@@ -265,9 +266,9 @@ getAddPurchaseOrderStyle() {
         this.isSortDateAsc  = true;  
         this.purchaseOrderList.sort((a,b)=>a.date.localeCompare(b.date));
       }
-    }
+  }
 
-    removePurchaseOrder(id: string) {
+  removePurchaseOrder(id: string) {
       this.purchaseService.removePurchaseOrder(id).subscribe((data: any) =>{
         if (data === null) {
           setTimeout(() => {
@@ -294,6 +295,10 @@ getAddPurchaseOrderStyle() {
         }
       });
       
-    }
+  }
   
+  createInvoice() {
+    console.log('i am here', this.prodArr);
+  }
+
 }
