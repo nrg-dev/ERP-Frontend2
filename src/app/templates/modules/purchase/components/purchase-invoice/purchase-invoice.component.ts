@@ -42,11 +42,11 @@ export class PurchaseInvoiceComponent implements OnInit {
 
     const linkSource = 'data:application/pdf;base64,' + data;
         const downloadLink = document.createElement("a");
-        const fileName = '/assets/'+'sample.pdf';
-
+        const fileName = 'sample.pdf';
+        const path = 'assets/images/sample.pdf';
         downloadLink.href = linkSource;
         downloadLink.download = fileName;
         downloadLink.click();
-        window.open(fileName, '_blank');
+        window.open(path, '_blank');
   }
 }
