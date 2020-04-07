@@ -12,7 +12,7 @@
         <tr>
           <th class="wid-150px">Created Date</th>
           <th>Invoice Number</th>
-          <th>Product List</th>
+        <!--  <th>Product List</th> -->
           <th>Vendor</th>
           <th>Qty</th>
           <th>Sub Totoal</th>
@@ -24,14 +24,14 @@
       </thead>
       <tbody> 
         <tr class="purchase-order-row-invoiced" *ngFor="let item of invoiceList">
-          <td class="wid-150px">{{item.poDate}}</td>
-          <td><span>{{item.invoiceNumber}}</span></td>
-          <td>{{item.productName}}</td>
-          <td>{{item.vendorName}}</td>
-          <td><span>{{item.quantity}}</span></td>
-          <td><span>{{item.unitPrice}}</span></td>
-          <td class="txt-right wid-150px">{{item.deliveryCost}}</td>
-          <td class="txt-right wid-150px">{{ item.totalAmount - item.deliveryCost }}</td>
+          <td class="wid-150px">{{item.invoicedate}}</td>
+          <td><span>{{item.invoicenumber}}</span></td>
+        <!--  <td>{{item.productName}}</td> -->
+          <td>{{item.vendorname}}</td>
+          <td><span>{{item.qty}}</span></td>
+          <td><span>{{item.subtotal}}</span></td>
+          <td class="txt-right wid-150px">{{item.deliveryprice}}</td>
+          <td class="txt-right wid-150px">{{ item.totalprice }}</td>
           <td><span>{{item.status}}</span></td>
           <td><span class="edit-delete-icon invoice-view">
             <a href="assests/sample.pdf" target="_blank" class="pdf-icon"><i (click)="showPdf()" class="fa">&#xf1c1;</i></a>

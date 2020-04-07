@@ -1,6 +1,6 @@
 export const API_ENDPOINTS = {
   loadVendor: `/purchase/loadVendor`,
-  loadPurchase: `/purchase/load`,
+  loadInvoice: `/purchase/loadInvoice`,
   getUnitPrice: `/purchase/getUnitPrice`,    
   getPurchase: `/purchase/get`,
   save: `/purchase/save`,
