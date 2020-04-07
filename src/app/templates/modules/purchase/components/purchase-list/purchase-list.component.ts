@@ -47,7 +47,6 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.getPurchaseOrderLists();
     this.removeScrollBar();
-    this.createInvoice();
   }
 
   ngOnDestroy() {
@@ -316,7 +315,15 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
   createInvoice() {
     let data: any;
 
-    data = { dialogTitle: "Add Purchase Order", dialogText: "Add" };
+    data = {
+      dialogPaneTitle: "Purchase Orders",
+      dialogInvoiceTitle: "Create Invoice",
+      dialogText: "Add",
+      invoiceItems: this.prodArr,
+      venderName: this.prodArr[0].vendorname,
+      date: new Date(),
+      delivery: 500,
+    };
 
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
