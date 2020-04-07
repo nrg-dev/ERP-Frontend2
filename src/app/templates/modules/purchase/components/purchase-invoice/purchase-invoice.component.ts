@@ -49,7 +49,12 @@ export class PurchaseInvoiceComponent implements OnInit {
   }
 
   generatePdf(){
-    const win = window.open("","", 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
+    //const win = window.open("","", 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
+    const width = 620;
+    const height = 370;
+    var left = (screen.width/2)-(width/2);
+    var top = (screen.height/2)-(height/2);
+    const win = window.open("","", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+width+', height='+height+', top='+top+', left='+left);
     let html = '';
 
     html += '<html>';
