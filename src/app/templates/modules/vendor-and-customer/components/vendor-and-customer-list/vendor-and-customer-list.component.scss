@@ -8,7 +8,7 @@
     top: 17px;}
 }
 .over-flo{
-  overflow-y: scroll !important; overflow-x: hidden;
+  /* overflow-y: scroll !important; overflow-x: hidden; */
   height: 35rem; 
   display: table-caption;
   position: absolute;
@@ -50,5 +50,5 @@
   z-index: 1;
   display: block;
   height: 100%;
-  overflow: hidden;
+  overflow: hidden !important;
 }
