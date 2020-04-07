@@ -13,13 +13,13 @@
           <th class="wid-150px">Created Date</th>
           <th>Invoice Number</th>
         <!--  <th>Product List</th> -->
-          <th>Vendor</th>
+          <th class="wid-150px">Vendor</th>
           <th>Qty</th>
           <th>Sub Totoal</th>
           <th class="txt-right wid-150px">Delivery Cost</th>
           <th class="txt-right wid-150px">Total</th>
-          <th>Status</th>
-          <th>Action</th> 
+          <th class="txt-right wid-150px">Status</th>
+          <th class="txt-right wid-150px">Action</th> 
          </tr>
       </thead>
       <tbody> 
@@ -27,14 +27,14 @@
           <td class="wid-150px">{{item.invoicedate}}</td>
           <td><span>{{item.invoicenumber}}</span></td>
         <!--  <td>{{item.productName}}</td> -->
-          <td>{{item.vendorname}}</td>
+          <td class="wid-150px">{{item.vendorname}}</td>
           <td><span>{{item.qty}}</span></td>
           <td><span>{{item.subtotal}}</span></td>
           <td class="txt-right wid-150px">{{item.deliveryprice}}</td>
           <td class="txt-right wid-150px">{{ item.totalprice }}</td>
-          <td><span>{{item.status}}</span></td>
-          <td><span class="edit-delete-icon invoice-view">
-            <a href="assests/images/sample.pdf" target="_blank" class="pdf-icon"><i (click)="showPdf()" class="fa">&#xf1c1;</i></a>
+          <td class="txt-right wid-150px"><span>{{item.status}}</span></td>
+          <td class="txt-right wid-150px"><span class="edit-delete-icon invoice-view">
+            <a href="assets/images/sample.pdf" target="_blank" class="pdf-icon"><i (click)="showPdf()" class="fa">&#xf1c1;</i></a>
            </span></td>
          </tr>
        </tbody>
