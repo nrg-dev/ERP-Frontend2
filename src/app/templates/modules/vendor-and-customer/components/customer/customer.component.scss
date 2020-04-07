@@ -27,7 +27,7 @@
 .grid-align{position: absolute; top:60px; width: 98%;}
 .header-align{position: absolute;
   top: 20px;
-  width: 89%;}
+  width: 95%;}
 .wid-50px{width: 50px!important;}
 .wid-110px{width: 110px!important;}
 .wid-180px{width: 180px!important;}
@@ -51,4 +51,31 @@
   display: block;
   height: 100%;
   overflow: hidden;
+}
+
+.table-container {
+  width: 96.5%;
+  overflow: auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+thead tr th:first-child,
+tbody tr td:first-child {
+  width: 50px;
+}
+
+tbody {
+  height: 525px;
+  overflow-y: auto;
+  display: block;
+}
+
+thead, tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
 }
