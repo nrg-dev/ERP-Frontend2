@@ -7,10 +7,16 @@
   table>thead>tr>th>div.custom-control{position: relative;
     top: 17px;}
 }
-.over-flo{height: 35rem; display: table-caption;
-  position: absolute; top: 58px;}
+.over-flo{
+  overflow-y: scroll !important; overflow-x: hidden;
+  height: 35rem; 
+  display: table-caption;
+  position: absolute;
+  top: 4.2rem;
+}
+
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px grey; 
@@ -21,41 +27,28 @@
 .grid-align{position: absolute; top:60px; width: 98%;}
 .header-align{position: absolute;
   top: 20px;
-  width: 97%;}
+  width: 89%;}
 .wid-50px{width: 50px!important;}
 .wid-110px{width: 110px!important;}
 .wid-180px{width: 180px!important;}
 .wid-190px{width: 190px!important;}
+.wid-200px{width: 220px!important;}
 .wid-150px{width: 150px!important;}
+.wid-350px{width: 350px!important;}
 .font-bld{ font-weight: bold;}
 .font-norm{ font-weight: normal;}
 .mar-let-40px{margin-left: 40px;}
 
-
+.user-icon { margin-top: 0;}
+.fa-calendar-times, .fa-user-clock, .fa-list-alt {
+  float: left;
+  cursor: pointer;
+  padding-right: 10px;
+}
 ::ng-deep .mat-drawer-content {
   position: relative;
   z-index: 1;
   display: block;
   height: 100%;
   overflow: hidden;
-}
-
-button {
-  appearance: none;
-  background-color: transparent;
-  color: $white;
-}
-
-.actions {
-  i {
-    cursor: pointer;
-    padding: 0 15px;
-  }
-}
-button {
-  border: 1px solid $white;
-}
-
-.margin-20 {
-  margin-top: 20px;
 }
