@@ -115,7 +115,10 @@ import { EmployeeChecinCheckoutComponent } from "./components/employee-checkin-c
     MatTreeModule,
     DataTablesModule.forRoot()
   ],
-  entryComponents: [EmployeeReportComponent, EmployeeAbsenceComponent, EmployeeChecinCheckoutComponent],
+  entryComponents: [EmployeeReportComponent, 
+                    EmployeeAbsenceComponent, 
+                    EmployeeChecinCheckoutComponent,
+                    EmployeeDetailComponent],
   providers: [EmployeeService]
 })
 export class EmployeeModule {}

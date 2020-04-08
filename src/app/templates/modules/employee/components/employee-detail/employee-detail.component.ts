@@ -4,105 +4,49 @@ import {
   Input,
   Output,
   EventEmitter,
-  SimpleChanges,
-  OnChanges,
   OnDestroy
 } from "@angular/core";
-import { EmployeeDetail } from "./employee-detail.model";
-import { TranslateService } from "src/app/core/services/translate/translate.service";
 import { EmployeeService } from "../../services/employee.service";
-import { Utils } from "src/app/core/services/utilities/utilities";
-import { PrintDialogService } from "src/app/core/services/print-dialog/print-dialog.service";
 import { MatSnackBar } from "@angular/material";
+import { CommonService } from "../../../../../core/common/_services/common.service";
+import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
 
 @Component({
   selector: "app-employee-detail",
   templateUrl: "./employee-detail.component.html",
   styleUrls: ["./employee-detail.component.scss"]
 })
-export class EmployeeDetailComponent implements OnInit, OnChanges {
-  @Input() employeeCode: string;
-  @Input() isAddNew: boolean = false;
-  @Output() cancelAddNewEmployee = new EventEmitter<number>();
-  @Output() navigateBack = new EventEmitter<null>();
-  @Output() deleteEmployee = new EventEmitter<string>();
+export class EmployeeDetailComponent implements OnInit {
+  
+  attendanceDetails = [];
+  employeeDet: any;
 
-  employee: EmployeeDetail;
-  fieldLabels: string[];
-  isEditMode: boolean = false;
-  model: any = {};
-
-  constructor(
-    private ts: TranslateService,
+   constructor(
     private employeeService: EmployeeService,
-    private printDialogService: PrintDialogService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private commonService: CommonService,
+    private activatedRoute: ActivatedRoute
   ) {}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.employeeCode) {
-      this.getEmployee();
-    }
-    if (changes.isAddNew && changes.isAddNew.currentValue) {
-      this.employee = Utils.resetFields(this.employee);
-    } else {
-      // TODO: REMOVE THE ELSE
-      this.ngOnInit();
-    }
-  }
-
   ngOnInit() {
-    // this.employee = { ...EmployeeDetailMock };
+    this.activatedRoute.params.subscribe(params => {
+      this.viewEmployee(params.id);
+    });
   }
 
-  getEmployee() {
-    this.employeeService.get(this.employeeCode).subscribe(
-      (data: any) => {
-        this.employee = data[0];
-        this.fieldLabels = Object.keys(this.employee);
-        if (this.isAddNew) {
-          this.isEditMode = false;
-        }
-      },
-      err => console.log(err)
-    );
-  }
-
-  saveEmployee() {
-    this.employeeService.save(this.employee).subscribe(
-      success => {
-        this.backToEmployeesList();
-
-        this.snackBar.open("Employee updated successfully", "", {
-          panelClass: ["success"],
-          verticalPosition: "top"
-        });
-      },
-      err => {
-        console.log(err);
+  viewEmployee(empCode: string) {
+    this.employeeService.getEmployeeDetail(empCode).subscribe((res: any) => {
+      if (res.length > 0) {
+        this.employeeDet = res[0];
+        const item = {date:this.commonService.getTodayDate(),type:'M',employeecode: empCode};
+        this.employeeService.getAbsentLists(item).subscribe((data: any) => { 
+          if (data.length > 0) { 
+            this.attendanceDetails = data;
+          }
+        })
+       
       }
-    );
+    });
   }
-
-  toggleEditMode() {
-    this.isEditMode = !this.isEditMode;
-    this.isAddNew = false;
-  }
-
-  deleteEmployeeEmitter() {
-    this.deleteEmployee.emit(this.employeeCode);
-    this.backToEmployeesList();
-  }
-
-  cancelAddNew() {
-    this.cancelAddNewEmployee.emit(0);
-  }
-
-  backToEmployeesList() {
-    this.navigateBack.emit();
-  }
-
-  printPage(data) {
-    this.printDialogService.openDialog(data);
-  }
+  
 }

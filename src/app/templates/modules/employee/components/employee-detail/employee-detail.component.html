@@ -1,4 +1,4 @@
-<form name="formReg">
+<!-- <form name="formReg">
   <div class="tab-content-bg p-3">
     <div class="row">
       <div class="col">
@@ -99,7 +99,7 @@
             {{ ts.translate(fieldLabel) }}
           </div>
           <!-- Validation for photo and input fields -->
-          <ng-container [ngSwitch]="true">
+         <!--<ng-container [ngSwitch]="true">
             <img
               *ngSwitchCase="fieldLabel === 'photo'"
               [src]="employee[fieldLabel]"
@@ -153,4 +153,156 @@
   <button class="px-5 m-3" (click)="backToEmployeesList()">
     Back
   </button>
+</div> -->
+
+<div class="container-fluid">
+  <div class="row back-colr">
+  <div class="container">
+  <div><h3 style="float:left;"> {{employeeDet.name}}</h3> 
+  <!--<button style="float:right;" class="button button5"> Add Purchase Order</button>-->
+ <div style="float: right;">
+ <img src="assets/images/print.png" style="margin-right: 10px;" class="img-fluid logo" alt="print"/>
+<img src="assets/images/edit.png" style="margin-right: 10px;" class="img-fluid logo" alt="print"/>
+<img src="assets/images/bar.png" style="margin-right: 15px;margin-left: 15px;" class="img-fluid logo" alt="print"/>
+<img src="assets/images/delete.png" class="img-fluid logo" alt="download" />
+    </div>
+  </div>
+  
+  <div class="col-md-12 col-xs-12 col-sm-12" style="margin-top: 20px;">
+  <div class="col-md-3 col-xs-12 col-sm-3" style="background-color:#17252F; display:block;-webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
+-moz-box-shadow: 3px 2px 5px -1px rgba(0,0,0,.075);
+box-shadow:3px 2px 5px -1px rgba(0,0,0,.075)">
+  <div class="col-md-2" style="background-color:#1A2D39; margin: 30px 10px 10px 10px; width: 90%;padding: 15px; -webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
+-moz-box-shadow: 3px 2px 5px -1px rgba(0,0,0,.075);
+box-shadow:3px 2px 5px -1px rgba(0,0,0,.075)">
+  <div style="float:left;margin-right: 15px;"><img src="assets/images/profile-pic.png" /></div>
+<div style="display: flow-root; margin-top: 15px;"><span>{{employeeDet.rank}}</span>
+<span>{{employeeDet.employeecode}}</span></div>  
+  </div>
+  <div style="clear:both"></div>
+  <div style="margin-left:25px;">
+  <div style="color: rgba(85,112,129,1);margin-top:25px;">Phone</div>
+      <div style="color:#fff;">{{employeeDet.phonenumber}}</div>
+	  <div style="color: rgba(85,112,129,1); margin-top:25px;">Email</div>
+      <div style="color:#fff;">{{employeeDet.email}}</div>
+	  <div style="color: rgba(85,112,129,1); margin-top:25px;">Address </div>
+      <div style="color:#fff;">{{employeeDet.address}}</div>
+ <div style="color: rgba(85,112,129,1); margin-top:25px;">Birthday</div>
+      <div style="color:#fff;">{{employeeDet.dob}}</div>
+	   <div style="color: rgba(85,112,129,1); margin-top:25px;">NPWP</div>
+      <div style="color:#fff;">{{employeeDet.npwp}}</div>
+	   <div style="color: rgba(85,112,129,1); margin-top:25px;">BPJS</div>
+      <div style="color:#fff;">{{employeeDet.bpjs}}</div>
+  </div>
+   
+  </div>
+   <div class="col-md-9 col-xs-12 col-sm-9" style="position: relative;
+    left: 30px;">
+  <div class="col-md-12 col-xs-12 col-sm-12" style="background-color:#17252F; display:block;-webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
+-moz-box-shadow: 3px 2px 5px -1px rgba(0,0,0,.075);
+box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);padding-bottom: 25px;">
+  <h4 style="color: rgba(85,112,129,1); margin-bottom: 20px;">Employment Details</h4>
+  <div class="col-md-3">
+  <div class="ble-colr">Joined on</div>
+  <div>{{employeeDet.addeddate}}</div>
+  </div>
+  <div class="col-md-3">
+  <div class="ble-colr">Monthly Salary</div>
+  <div>{{employeeDet.monthlysalary}}</div>
+  </div>
+  <div class="col-md-3">
+  <div class="ble-colr">Overtime Salary</div>
+  <div>-</div>
+  </div>
+  <div class="col-md-3">
+  <div class="ble-colr">Contract Document</div>
+  <div>CN-99-23430.pdf</div>
+  </div>
+  </div>
+ 
+   <div class="col-md-12 col-xs-12 col-sm-12" style="background-color:#17252F; display:block;-webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
+-moz-box-shadow: 3px 2px 5px -1px rgba(0,0,0,.075);
+box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);padding-bottom: 25px; margin-top:25px;">
+  <h4 style="color: rgba(85,112,129,1); margin-bottom: 20px;">Attendance Details</h4>
+  <div class="col-md-3">
+  <div class="ble-colr">Work</div>
+  <div>{{employeeDet.workHour}}</div>
+  </div>
+  <div class="col-md-3">
+  <div class="ble-colr">Annual Leave</div>
+  <div>{{employeeDet.annualLeave}}</div>
+  </div>
+  <div class="col-md-3">
+  <div class="ble-colr">Days Absent</div>
+  <div>-</div>
+  </div>
+  <div class="col-md-3">
+  <div class="ble-colr">Absent Deduction</div>
+  <div>-</div>
+  </div>
+  <div class="col-md-12 col-xs-12 col-sm-12" style="background-color:#1A2D39; margin: 30px 10px 10px 10px; width: 98%; padding: 15px; -webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
+-moz-box-shadow: 3px 2px 5px -1px rgba(0,0,0,.075);
+box-shadow:3px 2px 5px -1px rgba(0,0,0,.075)">
+  <div class="col-md-12" style="margin-bottom: 20px;"><h5 style="float: left;">October Absent Card</h5> <img src="assets/images/print1.png" style="margin-right: 10px; float: right;" class="img-fluid logo" alt="print"/></div>
+  <div class="col-md-12">
+	 <div class="col-md-2" style="border:2px solid #284556; padding: 15px 0px; text-align: center;">
+  <div>21/09/19</div>
+ 
+  </div>
+  <div class="col-md-4" style="background-color:#1C313E;height: 52px;margin-left: 10px; padding-top: 5px;">
+  <div style="color:#17af7d;">9:00 AM</div>
+  
+  </div>
+  <div class="col-md-5" style="background-color:#253F4B; height: 52px;margin-left: 10px;">
+  <div style="color:red;padding-top: 5px;">2:00 PM</div>
+  <div>Doctor’s Appointment</div>
+  </div>
+  </div>
+   <div class="col-md-12" style="margin-top:10px;">
+	 <div class="col-md-2" style="border:2px solid #284556; padding: 15px 0px; text-align: center;">
+  <div>21/09/19</div>
+ 
+  </div>
+  <div class="col-md-9" style="background-color:#253F4B;height: 52px;margin-left: 10px;padding-top: 5px; width: 533px;
+">
+  <div style="color:#17af7d;">9:00 AM</div>
+  
+  </div>
+  
+  </div>
+   <div class="col-md-12" style="margin-top:10px;">
+	 <div class="col-md-2" style="border:2px solid #284556; padding: 15px 0px; text-align: center;">
+  <div>21/09/19</div>
+ 
+  </div>
+  <div class="col-md-9" style="background-color:#253F4B;height: 52px;margin-left: 10px;padding-top: 5px;width: 533px;
+">
+  <div style="color:#17af7d;">9:00 AM</div>
+  
+  </div>
+  
+  </div>
+   <div class="col-md-12" style="margin-top:10px;">
+	 <div class="col-md-2" style="border:2px solid #284556; padding: 15px 0px; text-align: center;">
+  <div>21/09/19</div>
+ 
+  </div>
+  <div class="col-md-4" style="background-color:#253F4B;height: 52px;margin-left: 10px;padding-top: 5px;">
+  <div style="color:#17af7d;">9:00 AM</div>
+  
+  </div>
+  <div class="col-md-5" style="background-color:#1C313E; height: 52px;margin-left: 10px;">
+  <div style="color:red;padding-top: 5px;">2:00 PM</div>
+  <div>Doctor’s Appointment</div>
+  </div>
+  </div> 
+  
+  
+  </div>
+  </div>
+  </div>
+  </div>
+    
 </div>
+    </div>
+  </div>
