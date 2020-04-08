@@ -1,5 +1,78 @@
 <ng-container *ngIf="!showDetail">
   <div class="row">
+    <ng-container *ngTemplateOutlet="CustomerListTable"></ng-container>
+    <ng-template #CustomerListTable>
+      <!DOCTYPE html>
+        <div class="">
+          <div class="container-fluid" id="purchase-wrapper"> 
+            <div class="back-colr">
+              <div class="container" style="margin-left: 12px;">
+                <div class="header-align"><h3 style="float: left;" id="title">Customer List </h3> 
+                  <div style="float: right;">
+                    <button  class="create-button" style="float: left; margin-right: 10px; margin-top: 4px;" (click)="addCustomer()">
+                      <span class="fas fa-plus"></span> Add New Customer 
+                    </button>
+                    <img src="assets/images/print.png" style="margin-right: 10px;" class="img-fluid logo" alt="print"/>
+                    <img src="assets/images/download.png" class="img-fluid logo" alt="download" />
+                  </div>
+                </div>
+                <div class="m-t-25 grid-align" style="position: absolute; top:60px; width: 94%;">
+                <table class="table" id="poTable" style="margin-bottom: 0px !important; padding-top: 0px!important; text-align: left;">
+                  <thead id="table-head" style="position: absolute;
+                  top: 0px;">
+                    <tr>
+                      <th class="wid-50px" style="width: 5% !important;">
+                        <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input1" id="customChecks2">
+                              <label class="custom-control-label1" for="customCheck2"></label>
+                          </div>
+                      </th>
+                      <th class="wid-190px" style="cursor:pointer; width: 10% !important;">Code</th>
+                      <th class="wid-190px" style="cursor:pointer; width: 13% !important;">Name</th>
+                      <th class="wid-190px" style="cursor:pointer; width: 10% !important;">Country</th>
+                      <th class="wid-190px" style="width: 22% !important;">Email</th>
+                      <th class="wid-200px" style="width: 13% !important;">Joining Date</th>
+                      <th class="wid-200px" style="width: 13% !important;">Contact Number</th>
+                      <th class="wid-200px" style="width: 1% !important;"></th>
+                      <th  style="width:345px" style="width: 13% !important;">City</th>
+                    </tr>
+                  </thead>
+                  <tbody class="over-flo"> 
+                    <tr *ngFor="let item of customersDS; let i = index" class="purchase-order-row-invoiced">
+                      <td class="wid-50px" style="width: 5% !important;">
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input1">
+                        </div>
+                      </td>
+                      <td class="wid-190px" style="width: 10% !important;">{{item.custcode}}</td>
+                      <td class="wid-190px" style="width: 13% !important;"><span >{{item.customerName}}</span></td>
+                      <td class="wid-190px" style="width: 10% !important;">{{item.country}}</td>
+                      <td class="wid-190px" style="width: 22% !important;">{{item.email}}</td>
+                      <td class="wid-200px" style="width: 13% !important;">
+                        {{item.addeddate}}</td>
+                      <td class="wid-200px" style="width: 10% !important;">
+                        {{item.phoneNumber}}</td>
+                      <td class="wid-200px" style="width: 1% !important;"></td>
+                      <td class="wid-190px" style="width: 13% !important;">{{item.city}}</td>                      
+                      <!-- <td class="wid-190px" style="width: 13% !important;text-align: right;">
+                        <span class="edit-delete-icon user-icon" class="edit-delete-icon user-icon" style="left:20px !important">
+                          <span class="fas fa-list-alt" style="font-size: 16px; margin-right: 5px;" (click)="toggleVendorDetailView(row.id)"></span>
+                          <span class="fas fa-user-clock" style="margin-right: 5px; font-size: 16px;" (click)="toggleVendorDetailView(row.id, true)"></span>
+                          <span class="fas fa-calendar-times" style="margin-right: 10px; font-size: 16px;" (click)="deleteVendorCustomer(row.id, 'vendor')"></span>
+                        </span>
+                      </td> -->
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>          
+    </ng-template>
+  </div>
+  
+  <!-- <div class="row">
     <div class="col-2">Customer List</div>
     <div class="row col-10">
       <span class="col px-2">
@@ -93,7 +166,7 @@
     </div>
   </ng-template>
 
-  <mat-paginator [pageSize]="5" [hidePageSize]="true"></mat-paginator>
+  <mat-paginator [pageSize]="5" [hidePageSize]="true"></mat-paginator> -->
 </ng-container>
 <ng-container *ngIf="showDetail">
   <app-vendor-and-customer-detail

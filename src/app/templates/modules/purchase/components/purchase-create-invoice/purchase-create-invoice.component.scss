@@ -1,0 +1,233 @@
+@import "_base";
+
+.purchase-invoice-view {
+  display: flex;
+  padding: 30px;
+  height: 100%;
+  color: #5d6d76;
+
+  h3 {
+    color: #fff;
+    font-size: 18px;
+  }
+
+  .purchase-orders-view {
+    flex-basis: 45%;
+    padding-right: 30px;
+    border-right: 1px solid #1c313e;
+    .orders-view-header {
+      margin-bottom: 30px;
+      h3 {
+        margin-bottom: 0;
+      }
+      span {
+        font-size: 12px;
+      }
+    }
+
+    .orders-view-box {
+      display: flex;
+      padding: 15px;
+      font-size: 14px;
+      background-color: #1a2d39;
+      margin-bottom: 10px;
+
+      .option {
+        padding-right: 15px;
+      }
+
+      .details {
+        width: 100%;
+        div:first-child {
+          padding-bottom: 20px;
+          span {
+            display: inline-block;
+            padding-right: 10px;
+            margin-right: 15px;
+            border-right: 1px solid #1a2d39;
+            color: #dadddf;
+          }
+          span:last-child {
+            border: 0;
+          }
+        }
+
+        div:nth-child(2) h4 {
+          font-size: 18px;
+          color: #dadddf;
+          margin-bottom: 0;
+        }
+
+        div:nth-child(3) {
+          text-align: right;
+          color: #dadddf;
+          padding-top: 15px;
+        }
+      }
+    }
+  }
+
+  .create-invoice-view {
+    flex-basis: 55%;
+    padding-left: 40px;
+    border-left: 1px solid #15222b;
+    font-size: 14px;
+
+    .create-invoice-header {
+      padding-top: 40px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .popup-close-invoice {
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2) url(/assets/images/pop-close-btn.svg)
+        no-repeat center;
+      display: block;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      padding: 15px;
+      background-size: 50% 50%;
+    }
+
+    .vendor-info div {
+      margin-bottom: 10px;
+      display: flex;
+      flex-grow: 1;
+
+      span:first-child {
+        white-space: nowrap;
+        padding-right: 20px;
+        min-width: 10%;
+      }
+    }
+
+    .vendor-info div:last-child {
+      padding-bottom: 10px;
+    }
+
+    .vendor-info div:nth-child(2) span:last-child {
+      border: 1px solid #2b4353;
+      padding: 3px 5px;
+      background-color: #15222b;
+    }
+
+    .product-list {
+      padding-right: 30px;
+    }
+
+    .product-list h4 {
+      font-size: 14px;
+    }
+
+    .product-list .table-invoice > div {
+      display: flex;
+      margin-bottom: 10px;
+      border-radius: 7px;
+      padding: 5px 20px;
+    }
+
+    .product-list .table-invoice > div:last-child {
+      border-radius: 0;
+    }
+
+    .invoice-header {
+      background-color: #182833;
+    }
+
+    .invoice-header div:first-child,
+    .invoice-body div:first-child {
+      width: 60%;
+    }
+
+    .invoice-body {
+      color: #dadddf;
+    }
+
+    .invoice-body div:first-child span {
+      display: block;
+      color: #5d6d76;
+    }
+
+    .invoice-header div:nth-child(2),
+    .invoice-body div:nth-child(2) {
+      width: 25%;
+    }
+
+    .invoice-body {
+      background-color: #1c313e;
+    }
+
+    .invoice-header div:last-child,
+    .invoice-body div:last-child {
+      width: 15%;
+      text-align: right;
+    }
+
+    .invoice-footer {
+      margin-top: 15px;
+      padding-top: 10px;
+      display: flex;
+      flex-direction: column;
+      border-top: 2px solid #334f5f;
+    }
+
+    .invoice-footer > div:first-child {
+      padding-top: 15px;
+    }
+
+    .invoice-footer > div {
+      display: flex;
+      color: #dadddf;
+      margin-bottom: 10px;
+    }
+
+    .invoice-footer > div > div:first-child {
+      width: 65%;
+      text-align: right;
+    }
+    .invoice-footer > div:nth-child(2) div:last-child span {
+      border: 1px solid #20323e;
+      display: inline-block;
+      width: 100px;
+      padding: 5px 10px;
+    }
+
+    .invoice-footer > div > div:last-child {
+      width: 35%;
+      text-align: right;
+    }
+
+    .invoice-footer > div:last-child,
+    .invoice-footer > div:nth-child(2) {
+      position: relative;
+      right: -15px;
+    }
+
+    .invoice-footer > div:last-child div:last-child,
+    .invoice-footer > div:last-child div:first-child span {
+      border: 1px solid #2a4352;
+      padding: 10px;
+      background-color: #1c313e;
+      font-weight: bold;
+    }
+    .invoice-footer > div:last-child div:last-child {
+      border-left: 0;
+    }
+    .invoice-footer > div:last-child div:first-child span {
+      display: inline-block;
+      border-right: 0;
+      padding-right: 0;
+    }
+  }
+
+  .add-button button {
+    border: 0;
+    background: #1186aa;
+    border-radius: 15px;
+    padding: 5px 40px;
+    margin-left: auto;
+    display: block;
+  }
+}

@@ -30,7 +30,8 @@ tbody {
   display: block;
 }
 
-thead, tbody tr {
+thead,
+tbody tr {
   display: table;
   width: 100%;
   table-layout: fixed;
@@ -52,35 +53,35 @@ td{
   border-left: 1px solid white;
 } */
 
-h3{
-    color:white;
-    font-size: 18px;
+h3 {
+  color: white;
+  font-size: 18px;
 }
 #savebtn {
-    background-color:#51AF57;
-    border: #51AF57;
-    color:white;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 50px;
-    padding: 5px;
+  background-color: #51af57;
+  border: #51af57;
+  color: white;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 50px;
+  padding: 5px;
 }
-#textColor{
-  background-color:#243641;
+#textColor {
+  background-color: #243641;
   border: 1px solid white;
   color: white;
   width: 100%;
   height: 30px;
 }
 
-#rowdelete-icon{
+#rowdelete-icon {
   margin-top: 5px;
   color: white;
 }
-#rowdelete-div{
+#rowdelete-div {
   height: 25px;
   width: 25px;
-  background: #EF6956; 
+  background: #ef6956;
   border-radius: 16px;
   color: white;
 }
@@ -91,14 +92,14 @@ h3{
 }
 
 #sticky {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 50px;
-    padding: 5px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 50px;
+  padding: 5px;
 }
 
-h2{
-    font-size: 30px;
+h2 {
+  font-size: 30px;
 }
 .mat-tab-group {
   display: flex;
@@ -110,13 +111,13 @@ h2{
   cursor: pointer;
 }
 
-.tab{
+.tab {
   margin-left: 25px;
 }
-textarea{
+textarea {
   height: 38px;
 }
-#labeltext{
+#labeltext {
   color: white;
 }
 .tablink {
@@ -136,8 +137,8 @@ textarea{
   border-bottom: 3px solid #007bff;
 }
 
-#addemployee-div{
-  background: #1B2931;
+#addemployee-div {
+  background: #1b2931;
   height: 880px;
   border-radius: 10px;
   margin-left: 10px;
@@ -156,45 +157,45 @@ button {
   color: #fff;
   border: none;
   cursor: pointer;
-  opacity: .9;
+  opacity: 0.9;
   border-radius: 4px;
 }
-.addButton{
-  background-color: #27AE60;
+.addButton {
+  background-color: #27ae60;
   padding: 10px 25px;
 }
-.romoveButton{
+.romoveButton {
   background-color: #174fa6;
   padding: 10px 15px;
 }
-#date-details{
+#date-details {
   width: 100%;
   margin: 0 25px;
-  height:auto;
-  background-color: #151F25;
+  height: auto;
+  background-color: #151f25;
 }
 
-.text{
+.text {
   text-align: center;
   padding: 10px;
   margin: -10px 0 auto;
 }
 
-#purchasetext{
+#purchasetext {
   padding-left: 30px;
   font-size: small;
 }
-#purchaseoutput{
+#purchaseoutput {
   font-size: small;
 }
 
-hr{
+hr {
   background-color: white;
   width: 85%;
   margin: auto;
 }
 
-#checkIn-butn{
+#checkIn-butn {
   background-color: #07ab07;
   padding-top: 4px;
   height: 32px;
@@ -202,7 +203,7 @@ hr{
   text-align: center;
   color: white;
 }
-#checkOut-butn{
+#checkOut-butn {
   background-color: #d40505;
   height: 32px;
   margin: 5px 0 0 5px;
@@ -227,8 +228,8 @@ hr{
 }
 
 @media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
-  #addemployee-div{
-    background: #1B2931;
+  #addemployee-div {
+    background: #1b2931;
     height: 880px;
     width: 107%;
     border-radius: 10px;
@@ -236,14 +237,13 @@ hr{
     margin : 0px 15px 30px 95px; */
   }
 }
-@media (min-width: 1025px) and (max-width: 1280px){
-  #addemployee-div{
-    background: #1B2931;
+@media (min-width: 1025px) and (max-width: 1280px) {
+  #addemployee-div {
+    background: #1b2931;
     height: 880px;
     width: 107%;
     border-radius: 10px;
     /* border: 1px solid black;
     margin : 0px 15px 30px 45px; */
   }
-  
 }

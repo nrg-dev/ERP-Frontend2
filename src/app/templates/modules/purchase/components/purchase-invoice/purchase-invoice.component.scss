@@ -1,66 +1,50 @@
-@import "_base";
 
-button {
-  appearance: none;
-  background-color: transparent;
-  color: $white;
-}
+@import "_common";
 
-.actions {
-  i {
-    cursor: pointer;
-    padding: 0 15px;
+  @media screen and (min-device-width: 320px) and (max-device-width: 767px){
+  .back-colr{float:left;}
+  body{font-size: 12px;}
+  .table>thead>tr>th, .table>tbody>tr>td{font-size: 11px;}
+  table>thead>tr>th>div.custom-control{position: relative;
+    top: 17px;}
   }
+  .over-flo{overflow-y: scroll !important; height: 340px; display: table-caption;
+    position: absolute; top: 58px;}
+::-webkit-scrollbar {
+  width: 10px;
 }
-button {
-  border: 1px solid $white;
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
 }
-.mat-tab-body-content {
-  overflow: hidden;
-}
-.mat-input-element {
-  font: inherit;
-  font-family: fontawesome;
-  background: #58666e;
-  color: white;
-  height: 35px;
-  outline: 0;
-  margin: 10;
-  width: 75%;
-  max-width: 100%;
-  vertical-align: bottom;
-  text-align: start;
-  border-radius: 6px;
-  padding: 11px;
-  margin-top: -20px;
-}
-::ng-deep td.mat-cell,
-::ng-deep td.mat-footer-cell {
-  border-bottom: 1px solid white;
-}
-::ng-deep .mat-form-field-underline,
-::ng-deep .mat-form-field-ripple {
-  background-color: #243641 !important;
-}
-::ng-deep .mat-focused .mat-form-field-label {
-  color: #58666e !important;
-  margin-top: 10px;
-}
-::ng-deep .mat-form-field-empty.mat-form-field-label {
-  color: white;
-  font-size: 12px;
-}
-#dateBox{
-  background-color: #243642;
-  width: 40%;
-  font-size: 12px;
-  color: white;
-  border: 1px solid white;
+ 
+
+.grid-align{position: absolute; top:60px; width: 98%;}
+.header-align{position: absolute;
+  top: 20px;
+  width: 97%;}
+.wid-50px{width: 50px!important;}
+.wid-110px{width: 110px!important;}
+.wid-180px{width: 180px!important;}
+.wid-190px{width: 190px!important;}
+.wid-150px{width: 150px!important;}
+.font-bld{ font-weight: bold;}
+.font-norm{ font-weight: normal;}
+.mar-let-40px{margin-left: 40px;}
+
+.invoice-view {
+  margin-top: 0px;
 }
 
-.ngTable{
-  display: block;
-  overflow: auto;
-  height: 500px;
-  width: 100%;
+.pdf-icon {
+  font-size: 18px;
+  color: inherit !important;
+  padding: 0px !important;
+  text-align: inherit !important;
 }
+
+
+
+
+
+

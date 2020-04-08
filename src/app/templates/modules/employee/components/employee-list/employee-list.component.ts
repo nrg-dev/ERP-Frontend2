@@ -16,6 +16,7 @@ import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} f
 import { EmployeeAddComponent } from "../employee-add/employee-add.component";
 import { CommonService } from "../../../../../core/common/_services/common.service";
 import {formatDate } from '@angular/common';
+import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
 
 @Component({
   selector: "app-employee-list",
@@ -34,6 +35,7 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
   isShowHideCheckinCheckout = [];
   isAbsentMouseover = [];
   todayTime: any;
+  employeeDetails: any;
   
   constructor(
     private employeeService: EmployeeService,
@@ -41,7 +43,8 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
     private printDialogService: PrintDialogService,
     private snackBar: MatSnackBar,
     private dialog: MatDialog,
-    public commonService: CommonService
+    public commonService: CommonService,
+    public router: Router
   ) {
     
   }
@@ -201,6 +204,7 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
   getEmployeeAbsentDetail(item: any) {
     this.getAbsentDetail = undefined;
     item.date = this.commonService.getTodayDate();
+    item.type = 'D';
     this.employeeService.getAbsentLists(item).subscribe((res: any) => { 
       if (res.length > 0) { 
         this.getAbsentDetail = res[0];
@@ -211,6 +215,7 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
   absentMouseover(index: number, item: any) { 
     this.isAbsentMouseover = [];
     item.date = this.commonService.getTodayDate();
+    item.type = 'D';
     this.employeeService.getAbsentLists(item).subscribe((res: any) => { 
       if (res.length > 0) { 
         this.getAbsentDetail = res[0];
