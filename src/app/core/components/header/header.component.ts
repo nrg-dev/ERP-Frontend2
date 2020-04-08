@@ -21,8 +21,6 @@ export class HeaderComponent implements OnInit {
     if (event.target && event.target.classList.contains('child-shuffle')) {
       return;
     }
-
-    console.log(event.target.classList);
     
     this.interactionService.toggleSideNavi(false);
   }

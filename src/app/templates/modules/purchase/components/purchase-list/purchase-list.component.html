@@ -9,7 +9,12 @@
        <button [disabled]="!isCreateReturn ? true:false" class="create-button" [ngStyle]="getCreateReturnStyle()">
           Create Return
       </button>
-      <button  [disabled]="!isCreateInvoice ? true:false" class="create-button" [ngStyle]="getCreateInvoiceStyle()">
+      <button  
+          [disabled]="!isCreateInvoice ? true:false" 
+          class="create-button" 
+          [ngStyle]="getCreateInvoiceStyle()"
+          (click)="createInvoice()"
+          >
         Create Invoice
     </button>
 
