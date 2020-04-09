@@ -13,5 +13,6 @@ export const environment = {
  * `zone.run`, `zoneDelegate.invokeTask` for easier debugging, you can
  * import the following file, but please comment it out in production mode
  * because it will have performance impact when throw error
+ * apiUrl: "http://34.214.60.154:8095/erp"
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.

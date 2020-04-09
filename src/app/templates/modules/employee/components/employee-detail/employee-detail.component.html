@@ -239,61 +239,39 @@ box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);padding-bottom: 25px; margin-top:25
   <div class="col-md-12 col-xs-12 col-sm-12" style="background-color:#1A2D39; margin: 30px 10px 10px 10px; width: 98%; padding: 15px; -webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
 -moz-box-shadow: 3px 2px 5px -1px rgba(0,0,0,.075);
 box-shadow:3px 2px 5px -1px rgba(0,0,0,.075)">
-  <div class="col-md-12" style="margin-bottom: 20px;"><h5 style="float: left;">October Absent Card</h5> <img src="assets/images/print1.png" style="margin-right: 10px; float: right;" class="img-fluid logo" alt="print"/></div>
-  <div class="col-md-12">
-	 <div class="col-md-2" style="border:2px solid #284556; padding: 15px 0px; text-align: center;">
-  <div>21/09/19</div>
- 
-  </div>
-  <div class="col-md-4" style="background-color:#1C313E;height: 52px;margin-left: 10px; padding-top: 5px;">
-  <div style="color:#17af7d;">9:00 AM</div>
-  
-  </div>
-  <div class="col-md-5" style="background-color:#253F4B; height: 52px;margin-left: 10px;">
-  <div style="color:red;padding-top: 5px;">2:00 PM</div>
-  <div>Doctor’s Appointment</div>
-  </div>
-  </div>
-   <div class="col-md-12" style="margin-top:10px;">
-	 <div class="col-md-2" style="border:2px solid #284556; padding: 15px 0px; text-align: center;">
-  <div>21/09/19</div>
- 
-  </div>
-  <div class="col-md-9" style="background-color:#253F4B;height: 52px;margin-left: 10px;padding-top: 5px; width: 533px;
-">
-  <div style="color:#17af7d;">9:00 AM</div>
-  
-  </div>
-  
-  </div>
-   <div class="col-md-12" style="margin-top:10px;">
-	 <div class="col-md-2" style="border:2px solid #284556; padding: 15px 0px; text-align: center;">
-  <div>21/09/19</div>
- 
-  </div>
-  <div class="col-md-9" style="background-color:#253F4B;height: 52px;margin-left: 10px;padding-top: 5px;width: 533px;
-">
-  <div style="color:#17af7d;">9:00 AM</div>
-  
-  </div>
-  
-  </div>
-   <div class="col-md-12" style="margin-top:10px;">
-	 <div class="col-md-2" style="border:2px solid #284556; padding: 15px 0px; text-align: center;">
-  <div>21/09/19</div>
- 
-  </div>
-  <div class="col-md-4" style="background-color:#253F4B;height: 52px;margin-left: 10px;padding-top: 5px;">
-  <div style="color:#17af7d;">9:00 AM</div>
-  
-  </div>
-  <div class="col-md-5" style="background-color:#1C313E; height: 52px;margin-left: 10px;">
-  <div style="color:red;padding-top: 5px;">2:00 PM</div>
-  <div>Doctor’s Appointment</div>
-  </div>
-  </div> 
-  
-  
+  <div class="col-md-12" style="margin-bottom: 20px;"><h5 style="float: left;">{{commonService.getTodayDate() | date : 'MMMM'}} Absent Card</h5> <img src="assets/images/print1.png" style="margin-right: 10px; float: right;" class="img-fluid logo" alt="print"/></div>
+  <ng-container *ngIf="attendanceDetails.length > 0">
+    <div class="col-md-12" *ngFor="let item of attendanceDetails">
+      <div class="col-md-2" style="border:2px solid #284556; padding: 15px 0px; text-align: center;">
+        <div>{{item.date}}</div>
+      </div>
+      
+      <div *ngIf="item.absent === null" class="col-md-4" style="background-color:#1C313E;height: 52px;margin-left: 10px; padding-top: 5px;">
+        <div *ngIf="item.checkintime === null" style="color:#17af7d;">9:00 AM</div>
+        <div *ngIf="item.checkintime !== null">
+          <div style="color:red;padding-top: 5px;">{{item.checkintime}}</div>
+          <div>{{item.checkinreason}}</div>
+        </div>
+      </div>
+      
+      <div *ngIf="item.absent === null" class="col-md-5" style="background-color:#253F4B; height: 52px;margin-left: 10px;">
+        <div *ngIf="item.checkouttime === null" style="color:#17af7d;">9:00 AM</div>
+        <div *ngIf="item.checkintime !== null">
+          <div style="color:red;padding-top: 5px;">{{item.checkouttime}}</div>
+          <div>{{item.checkoutreason}}</div>
+        </div>
+      </div>
+      
+      <div *ngIf="item.absent === 'yes'" class="col-md-9" style="background-color:#253F4B;height: 52px;margin-left: 10px;padding-top: 5px; width: 533px;
+      ">
+        <div>
+          <span style="color:red;">ABSENT</span>
+          <span style="color:red;text-align: center;">{{tem.reason}}</span>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+    
   </div>
   </div>
   </div>
