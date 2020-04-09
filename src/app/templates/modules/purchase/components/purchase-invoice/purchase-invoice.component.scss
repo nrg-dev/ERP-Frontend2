@@ -18,6 +18,14 @@
   border-radius: 10px;
 }
  
+.table > tbody > tr:hover {
+  background-color: $header-bg;
+}
+
+//.edit-delete-icon > invoice-view :hover {
+ // background-color: $header-bg;
+//}
+
 
 .grid-align{position: absolute; top:60px; width: 98%;}
 .header-align{position: absolute;
