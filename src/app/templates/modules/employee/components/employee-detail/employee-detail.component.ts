@@ -24,7 +24,7 @@ export class EmployeeDetailComponent implements OnInit {
    constructor(
     private employeeService: EmployeeService,
     private snackBar: MatSnackBar,
-    private commonService: CommonService,
+    public commonService: CommonService,
     private activatedRoute: ActivatedRoute
   ) {}
 
