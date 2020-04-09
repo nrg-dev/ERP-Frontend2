@@ -34,7 +34,7 @@
           <td class="txt-right wid-150px">{{ item.totalprice }}</td>
           <td class="txt-right wid-150px"><span>{{item.status}}</span></td>
           <td class="txt-right wid-150px"><span class="edit-delete-icon invoice-view">
-            <a href="javascript:0" (click)="generatePdf()" target="_blank" class="pdf-icon"><i  class="fa">&#xf1c1;</i></a>
+            <a href="javascript:0" (click)="generatePdf(item.base64)" class="pdf-icon"><i  class="fa">&#xf1c1;</i></a>
             </span></td>
          </tr>
        </tbody>
