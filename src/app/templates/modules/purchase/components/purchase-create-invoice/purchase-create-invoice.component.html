@@ -87,7 +87,7 @@
           </div>
         </div>
         <div class="add-button">
-          <button>{{ data.dialogText }}</button>
+          <button [disabled]='!getSubTotal()' (click)="createInvoice()">{{ data.dialogText }}</button>
         </div>
       </div>
     </div>

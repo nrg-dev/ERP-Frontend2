@@ -153,4 +153,12 @@ export class PurchaseService {
              data
            );   
      }
+
+    createInvoice(data:any) {
+        return this.http.post(
+            `${environment.apiUrl}${API_ENDPOINTS.CREATE_INVOICE}`,
+            data
+        )
+    }
+
 }

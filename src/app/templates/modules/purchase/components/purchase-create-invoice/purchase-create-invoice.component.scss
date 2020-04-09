@@ -30,6 +30,10 @@
       }
     }
 
+    .orders-view-box div {
+      box-sizing: border-box;
+    }
+
     .orders-view-box {
       display: flex;
       padding: 15px;
@@ -95,8 +99,8 @@
       background: rgba(255, 255, 255, 0.2) url(/assets/images/pop-close-btn.svg) no-repeat center;
       display: block;
       position: absolute;
-      right: 10px;
-      top: 10px;
+      right: 0;
+      top: 0;
       padding: 15px;
       background-size: 50% 50%;
     }
@@ -144,14 +148,11 @@
       padding: 5px 20px;
     }
 
-    .product-list .table-invoice .invoice-body-holder > div:last-child {
-      border-radius: 0;
-      padding: 5px 10px;
-    }
-
+ 
     .invoice-header {
       background-color: #182833;
       font-size: 12px;
+      margin-right: 10px;
     }
 
     .invoice-header div:first-child,
@@ -161,7 +162,7 @@
 
     .invoice-body-holder {
       max-height: 170px;
-      overflow-y: auto;
+      overflow-y: scroll;
     }
 
     .invoice-body {
@@ -176,7 +177,8 @@
 
     .invoice-header div:nth-child(2),
     .invoice-body div:nth-child(2) {
-      width: 25%;
+      width: 20%;
+      text-align: right;
     }
 
     .invoice-body {
@@ -185,7 +187,7 @@
 
     .invoice-header div:last-child,
     .invoice-body div:last-child {
-      width: 15%;
+      width: 20%;
       text-align: right;
     }
 
@@ -195,6 +197,8 @@
       display: flex;
       flex-direction: column;
       border-top: 2px solid #334f5f;
+      padding-right: 10px;
+      margin-right: 10px;
     }
 
     .invoice-footer > div:first-child {
@@ -213,11 +217,11 @@
     }
 
     .invoice-footer > div > div:first-child {
-      width: 65%;
+      width: 75%;
     }
 
     .invoice-footer > div > div:last-child {
-      width: 100%;
+      width: 25%;
       text-align: right;
     }
 
@@ -247,12 +251,17 @@
 
 
   }
+  
+  .add-button {
+    padding-right: 20px;
+    padding-top: 10px;
+  }
 
   .add-button button {
     border: 0;
     background: #1186aa;
     border-radius: 15px;
-    padding: 5px 40px;
+    padding: 5px 60px;
     margin-left: auto;
     display: block;
   }
