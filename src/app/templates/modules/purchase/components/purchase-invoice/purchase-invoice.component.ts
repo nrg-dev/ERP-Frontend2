@@ -46,7 +46,7 @@ export class PurchaseInvoiceComponent implements OnInit {
         });
       });
     } else {  
-      const width = 620;
+      const width = 800;
       const height = 370;
       var left = (screen.width/2)-(width/2);
       var top = (screen.height/2)-(height/2);
