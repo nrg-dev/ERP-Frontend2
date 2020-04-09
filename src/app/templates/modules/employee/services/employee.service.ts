@@ -81,6 +81,15 @@ export class EmployeeService {
   }
 
   getAbsentLists(item: any) { 
-    return this.http.get(`${environment.apiUrl}${API_ENDPOINTS.GET_ABSENT_LISTS+'?employeecode='+item.employeecode+'&date='+item.date+'&type=D'}`);
+    return this.http.get(`${environment.apiUrl}${API_ENDPOINTS.GET_ABSENT_LISTS+'?employeecode='+item.employeecode+'&date='+item.date+'&type='+item.type}`);
+  }
+
+  getEmployeeDetail(employeecode: string) {
+    return this.http.get<Employee>(
+      `${environment.apiUrl}${API_ENDPOINTS.GET_EMPLOYEE_DETAILS}`.replace(
+        "{param}",
+        employeecode
+      )
+    );
   }
 }

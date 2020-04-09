@@ -10,4 +10,5 @@ export const API_ENDPOINTS = {
   SAVE_EMPLOYEE_ABSENT: `employee/saveAbsent`,
   UPDATE_EMPLOYEE_ABSENT: `employee/updateAbsent`,
   GET_ABSENT_LISTS: `/employee/loadAbsentList`,
+  GET_EMPLOYEE_DETAILS: `/employee/get?employeecode={param}`,
 };

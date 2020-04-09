@@ -15,6 +15,9 @@
     top: 58px;
 }
 
+tr[ng-click] {
+  cursor: pointer;
+}
 
 .grid-align{position: absolute; top:60px; width: 98%;}
 .header-align{position: absolute;
