@@ -7,16 +7,14 @@
   table>thead>tr>th>div.custom-control{position: relative;
     top: 17px;}
   }
-  .over-flo{overflow-y: scroll !important; height: 340px; display: table-caption;
-    position: absolute; top: 58px;}
-::-webkit-scrollbar {
-  width: 10px;
+  .over-flo{
+    overflow-y: scroll !important; 
+    height: 340px; 
+    display: table-caption;
+    position: absolute; 
+    top: 58px;
 }
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
-  border-radius: 10px;
-}
- 
+
 
 .grid-align{position: absolute; top:60px; width: 98%;}
 .header-align{position: absolute;
