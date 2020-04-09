@@ -32,5 +32,11 @@
 // }
 
 .ble-colr{color: rgba(85,112,129,1)}
-
+.side-wapper{background-color:#17252F; display:block;-webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
+    -moz-box-shadow: 3px 2px 5px -1px rgba(0,0,0,.075);
+    box-shadow:3px 2px 5px -1px rgba(0,0,0,.075)}
+.side-profile-box{background-color:#1A2D39; margin: 30px 10px 10px 10px; width: 90%;padding: 15px; -webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
+    -moz-box-shadow: 3px 2px 5px -1px rgba(0,0,0,.075);
+    box-shadow:3px 2px 5px -1px rgba(0,0,0,.075)}
+.profile-div{float:left;margin-right: 15px;}
 .back-colr{background-color:#15222B;}
