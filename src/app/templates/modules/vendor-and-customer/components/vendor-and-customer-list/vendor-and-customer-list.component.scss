@@ -23,7 +23,12 @@
   border-radius: 10px;
 }
  
-
+.table > tbody > tr:hover {
+  background-color: $header-bg;
+}
+.table > tbody > tr:hover, .table > tbody > tr:hover span  {
+  background-color: $header-bg;;
+}
 .grid-align{position: absolute; top:60px; width: 98%;}
 .header-align{position: absolute;
   top: 20px;
@@ -51,4 +56,211 @@
   display: block;
   height: 100%;
   overflow: hidden !important;
+}
+@media (min-width: 320px) and (max-width: 359px) {
+  #tableGrid{
+    position: absolute; top:85px; width: 85%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  tbody{
+    overflow-x: auto !important; 
+    height: 23rem!important; 
+    display: table-caption;
+    top: 58px;
+  }
+}
+@media (min-width: 359px) and (max-width: 374px) {
+  #tableGrid{
+    position: absolute; top:85px; width: 160%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  tbody,thead{
+    overflow-x: auto !important; 
+    height: 23rem!important; 
+    display: table-caption;
+    top: 58px;
+  }
+  #wid-5{
+    width: 10%;
+  }
+  #wid-10{
+    width: 25%;
+  }
+  #wid-13{
+    width: 30%;
+  }
+}
+@media (min-width: 375px) and (max-width: 409px) {
+  #tableGrid{
+    position: absolute; top:85px; width: 85%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  tbody{
+    overflow-x: auto !important; 
+    height: 23rem!important; 
+    display: table-caption;
+    top: 58px;
+  }
+  #wid-10{
+    width: 85%;
+  }
+}
+@media (min-width: 410px) and (max-width: 470px) {
+  #tableGrid{
+    position: absolute; top:85px; width: 85%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  tbody{
+    overflow-x: auto !important; 
+    height: 23rem!important; 
+    display: table-caption;
+    top: 58px;
+  }
+}
+@media (min-width: 471px) and (max-width: 530px) {
+  #tableGrid{
+    position: absolute; top:85px; width: 85%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  tbody{
+    overflow-x: auto !important; 
+    height: 23rem!important; 
+    display: table-caption;
+    top: 58px;
+  }
+}
+@media (min-width: 531px) and (max-width: 539px) {
+  #tableGrid{
+    position: absolute; top:85px; width: 85%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  tbody{
+    overflow-x: auto !important; 
+    height: 23rem!important; 
+    display: table-caption;
+    top: 58px;
+  }
+}
+@media (min-width: 540px) and (max-width: 600px) {
+  #tableGrid{
+    position: absolute; top:85px; width: 85%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  tbody{
+    overflow-x: auto !important; 
+    height: 23rem!important; 
+    display: table-caption;
+    top: 58px;
+  }
+}
+@media (min-width: 601px) and (max-width: 767px) {
+  #tableGrid{
+    position: absolute; top:85px; width: 85%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  tbody{
+    overflow-x: auto !important; 
+    height: 23rem!important; 
+    display: table-caption;
+    top: 58px;
+  }
+} /* 200% zoom */
+@media (min-width: 768px) and (max-width: 810px) and (orientation: landscape) {
+  #tableGrid{
+    position: absolute; top:85px; width: 85%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  tbody{
+    overflow-x: auto !important; 
+    height: 23rem!important; 
+    display: table-caption;
+    top: 58px;
+  }
+} /* 175% zoom */
+@media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
+  #tableGrid{
+    position: absolute; top:80px; width:95%;
+  }
+  tbody{
+    overflow-y: auto !important; 
+    height: 27rem!important; 
+    display: table-caption;
+    top: 58px;
+  }
+} /* 150% zoom */
+@media (min-width: 1025px) and (max-width: 1280px){
+  #tableGrid{
+    position: absolute; top:80px; width: 95%;
+  }
+  tbody{
+    overflow-y: auto !important; 
+    height: 27rem!important; 
+    display: table-caption;
+    top: 58px;
+  }
+}
+
+@media (min-width: 1281px) and (max-width: 1380px) {
+  #tableGrid{
+    position: absolute; top:60px; width: 95%;
+  }
+  tbody{
+    overflow-y: auto !important; 
+    height: 27rem!important; 
+    display: table-caption;
+    top: 58px;
+  }
+}
+@media (min-width: 1381px) and (max-width:2051px) {
+  #tableGrid{
+    position: absolute; top:60px; width: 95%;
+  }
+  tbody{
+    overflow-y: auto !important; 
+    height: 27rem!important; 
+    display: table-caption;
+    top: 58px;
+  }
+} /* 90% zoom */
+@media (min-width:2052px) and (max-width:2732px){
+  #tableGrid{
+    position: absolute; top:60px; width: 95%;
+  }
+  tbody{
+    overflow-y: auto !important; 
+    height: 27rem!important; 
+    display: table-caption;
+    top: 58px;
+  }
+}
+@media (min-width:2733px) and (max-width:4102px){
+  #tableGrid{
+    position: absolute; top:60px; width: 95%;
+  }
+  tbody{
+    overflow-y: auto !important; 
+    height: 27rem!important; 
+    display: table-caption;
+    top: 58px;
+  }
+}
+@media (min-width:4103px) and (max-width:5464px){
+  #tableGrid{
+    position: absolute; top:60px; width: 95%;
+  }
+  tbody{
+    overflow-y: auto !important; 
+    height: 27rem!important; 
+    display: table-caption;
+    top: 58px;
+  }
 }

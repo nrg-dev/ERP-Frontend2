@@ -1,5 +1,6 @@
 import { Component, Inject, OnChanges, OnInit } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { PurchaseService } from "../../services/purchase.service";
 
 @Component({
   selector: "app-purchase-create-invoice",
@@ -11,7 +12,8 @@ export class PurchaseCreateInvoiceComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<PurchaseCreateInvoiceComponent>,
-    @Inject(MAT_DIALOG_DATA) public data
+    @Inject(MAT_DIALOG_DATA) public data, 
+    private purchaseService:PurchaseService
   ) {}
 
   ngOnInit() {
@@ -39,5 +41,21 @@ export class PurchaseCreateInvoiceComponent implements OnInit {
 
   getTotal(): number {
     return this.getSubTotal() + this.data.delivery;
+  }
+
+  createInvoice() {
+
+    const invoice = {
+      "createddate": new Date().toJSON().slice(0, 10).split('-').reverse().join('/'),
+      "ordernumbers" : ["PO1000"],
+      "subtotal": this.getSubTotal(),
+      "deliverycharge": this.data.delivery,
+      "totalprice": this.getTotal()
+    }
+
+    this.purchaseService.createInvoice(invoice).subscribe(result => {
+      console.log(result);
+    });
+    
   }
 }
