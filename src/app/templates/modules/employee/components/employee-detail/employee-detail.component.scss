@@ -1,9 +1,18 @@
 .ble-colr{color: rgba(85,112,129,1)}
-.side-wapper{background-color:#17252F; display:block;-webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
+.side-wapper{background-color:#17252F; -webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
     -moz-box-shadow: 3px 2px 5px -1px rgba(0,0,0,.075);
-    box-shadow:3px 2px 5px -1px rgba(0,0,0,.075)}
+    box-shadow:3px 2px 5px -1px rgba(0,0,0,.075); float: left;}
 .side-profile-box{background-color:#1A2D39; margin: 30px 10px 10px 10px; width: 90%;padding: 15px; -webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
     -moz-box-shadow: 3px 2px 5px -1px rgba(0,0,0,.075);
     box-shadow:3px 2px 5px -1px rgba(0,0,0,.075)}
-.profile-div{float:left;margin-right: 15px;}
+.profile-div{float:left;background-color:#1A2D39;background-color: #1A2D39;
+    padding: 15px;
+    margin-top: 15px;
+    width: 100%;-webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
+    -moz-box-shadow: 3px 2px 5px -1px rgba(0,0,0,.075);
+    box-shadow:3px 2px 5px -1px rgba(0,0,0,.075)}
 .back-colr{background-color:#15222B;}
+.text-profile{float: left;
+    margin-left: 10px;
+    margin-top: 15px;}
+    .float-left{float: left;}

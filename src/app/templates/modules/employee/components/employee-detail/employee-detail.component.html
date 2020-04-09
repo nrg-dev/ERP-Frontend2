@@ -162,19 +162,20 @@
   <!--<button style="float:right;" class="button button5"> Add Purchase Order</button>-->
  <div style="float: right;">
  <img src="assets/images/print.png" style="margin-right: 10px;" class="img-fluid logo" alt="print"/>
-<img src="assets/images/edit.PNG" style="margin-right: 10px;" class="img-fluid logo" alt="print"/>
+<img src="assets/images/edit.png" style="margin-right: 10px;" class="img-fluid logo" alt="print"/>
 <img src="assets/images/bar.PNG" style="margin-right: 15px;margin-left: 15px;" class="img-fluid logo" alt="print"/>
 <img src="assets/images/delete.PNG" class="img-fluid logo" alt="download" />
     </div>
   </div>
   
-  <div class="col-md-12 col-xs-12 col-sm-12" style="margin-top: 20px;">
+  <div class="col-md-12 col-xs-12 col-sm-12" style="clear:both;position: relative;
+  top: 10px;">
   <div class="col-md-3 col-xs-12 col-sm-3 side-wapper">
-  <div class="col-md-2 side-profile-box">
-  <div class="profile-div"><img src="assets/images/profile-pic.PNG" /></div>
-<div style="display: flow-root; margin-top: 15px;"><span>{{employeeDet.rank}}</span>
-<span>{{employeeDet.employeecode}}</span></div>  
-  </div>
+  
+    <div class="profile-div float-left"><img src="assets/images/profile-pic.PNG" />
+      <div class="text-profile">{{employeeDet.rank}}<br />
+      {{employeeDet.employeecode}}</div></div>
+  
   <div style="clear:both"></div>
   <div style="margin-left:25px;">
   <div style="color: rgba(85,112,129,1);margin-top:25px;">Phone</div>
@@ -192,50 +193,52 @@
   </div>
    
   </div>
-   <div class="col-md-9 col-xs-12 col-sm-9" style="position: relative;
+   <div class="col-md-9 col-xs-12 col-sm-9 float-left" style="position: relative;
     left: 30px;">
   <div class="col-md-12 col-xs-12 col-sm-12" style="background-color:#17252F; display:block;-webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
 -moz-box-shadow: 3px 2px 5px -1px rgba(0,0,0,.075);
 box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);padding-bottom: 25px;">
   <h4 style="color: rgba(85,112,129,1); margin-bottom: 20px;">Employment Details</h4>
-  <div class="col-md-3">
+  <div class="col-md-3 float-left">
   <div class="ble-colr">Joined on</div>
   <div>{{employeeDet.addeddate}}</div>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-3 float-left">
   <div class="ble-colr">Monthly Salary</div>
   <div>{{employeeDet.monthlysalary}}</div>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-3 float-left">
   <div class="ble-colr">Overtime Salary</div>
   <div>-</div>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-3 float-left">
   <div class="ble-colr">Contract Document</div>
   <div>CN-99-23430.pdf</div>
   </div>
   </div>
+  <div style="clear: both;"></div>
  
    <div class="col-md-12 col-xs-12 col-sm-12" style="background-color:#17252F; display:block;-webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
 -moz-box-shadow: 3px 2px 5px -1px rgba(0,0,0,.075);
 box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);padding-bottom: 25px; margin-top:25px;">
   <h4 style="color: rgba(85,112,129,1); margin-bottom: 20px;">Attendance Details</h4>
-  <div class="col-md-3">
+  <div class="col-md-3 float-left">
   <div class="ble-colr">Work</div>
   <div>{{employeeDet.workHour}}</div>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-3 float-left">
   <div class="ble-colr">Annual Leave</div>
   <div>{{employeeDet.annualLeave}}</div>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-3 float-left">
   <div class="ble-colr">Days Absent</div>
   <div>-</div>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-3 float-left">
   <div class="ble-colr">Absent Deduction</div>
   <div>-</div>
   </div>
+  <div style="clear: both;"></div>
   <div class="col-md-12 col-xs-12 col-sm-12" style="background-color:#1A2D39; margin: 30px 10px 10px 10px; width: 98%; padding: 15px; -webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
 -moz-box-shadow: 3px 2px 5px -1px rgba(0,0,0,.075);
 box-shadow:3px 2px 5px -1px rgba(0,0,0,.075)">
@@ -246,7 +249,7 @@ box-shadow:3px 2px 5px -1px rgba(0,0,0,.075)">
         <div>{{item.date}}</div>
       </div>
       
-      <div *ngIf="item.absent === null" class="col-md-4" style="background-color:#1C313E;height: 52px;margin-left: 10px; padding-top: 5px;">
+      <div *ngIf="item.absent === null" class="col-md-4 float-left" style="background-color:#1C313E;height: 52px;margin-left: 10px; padding-top: 5px;">
         <div *ngIf="item.checkintime === null" style="color:#17af7d;">9:00 AM</div>
         <div *ngIf="item.checkintime !== null">
           <div style="color:red;padding-top: 5px;">{{item.checkintime}}</div>
@@ -254,7 +257,7 @@ box-shadow:3px 2px 5px -1px rgba(0,0,0,.075)">
         </div>
       </div>
       
-      <div *ngIf="item.absent === null" class="col-md-5" style="background-color:#253F4B; height: 52px;margin-left: 10px;">
+      <div *ngIf="item.absent === null" class="col-md-5 float-left" style="background-color:#253F4B; height: 52px;margin-left: 10px;">
         <div *ngIf="item.checkouttime === null" style="color:#17af7d;">9:00 AM</div>
         <div *ngIf="item.checkintime !== null">
           <div style="color:red;padding-top: 5px;">{{item.checkouttime}}</div>
@@ -262,7 +265,7 @@ box-shadow:3px 2px 5px -1px rgba(0,0,0,.075)">
         </div>
       </div>
       
-      <div *ngIf="item.absent === 'yes'" class="col-md-9" style="background-color:#253F4B;height: 52px;margin-left: 10px;padding-top: 5px; width: 533px;
+      <div *ngIf="item.absent === 'yes'" class="col-md-9 float-left" style="background-color:#253F4B;height: 52px;margin-left: 10px;padding-top: 5px; width: 533px;
       ">
         <div>
           <span style="color:red;">ABSENT</span>
@@ -270,6 +273,7 @@ box-shadow:3px 2px 5px -1px rgba(0,0,0,.075)">
         </div>
       </div>
     </div>
+    <div style="clear: both;"></div>
   </ng-container>
     
   </div>
