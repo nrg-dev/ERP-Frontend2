@@ -43,15 +43,21 @@ export class PurchaseCreateInvoiceComponent implements OnInit {
     return this.getSubTotal() + this.data.delivery;
   }
 
+  getOrderNumbers():any {
+    return this.invoiceList.map(item => item.pocode);
+  }
+
   createInvoice() {
 
     const invoice = {
       "createddate": new Date().toJSON().slice(0, 10).split('-').reverse().join('/'),
-      "ordernumbers" : ["PO1000"],
+      "ordernumbers" : this.getOrderNumbers(),
       "subtotal": this.getSubTotal(),
       "deliverycharge": this.data.delivery,
       "totalprice": this.getTotal()
     }
+
+    console.log('invoice', invoice);
 
     this.purchaseService.createInvoice(invoice).subscribe(result => {
       console.log(result);

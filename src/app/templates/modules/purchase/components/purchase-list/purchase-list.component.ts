@@ -336,6 +336,5 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
       panelClass: "purchaseCreateInvoice",
       data: data,
     });
-    console.log("i am here", this.prodArr);
   }
 }
