@@ -321,8 +321,7 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
       dialogText: "Add",
       invoiceItems: this.prodArr,
       venderName: this.prodArr[0].vendorname,
-      date: new Date(),
-      delivery: 500,
+      date: new Date()
     };
 
     this.dialogConfig.disableClose = true;

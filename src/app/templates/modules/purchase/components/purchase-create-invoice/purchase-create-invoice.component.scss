@@ -1,4 +1,5 @@
 @import "_base";
+@import "_common";
 
 .purchase-invoice-view {
   display: flex;
@@ -11,7 +12,7 @@
   }
 
   .purchase-orders-view {
-    flex-basis: 45%;
+    flex-basis: 30%;
     padding: 25px;
     border-right: 1px solid #1c313e;
 
@@ -82,8 +83,9 @@
   }
 
   .create-invoice-view {
-    flex-basis: 55%;
+    flex-basis: 70%;
     padding: 25px;
+    padding-left: 80px;
     border-left: 1px solid #15222b;
     font-size: 14px;
     background: #17252f;
@@ -161,7 +163,7 @@
     }
 
     .invoice-body-holder {
-      max-height: 170px;
+      max-height: 150px;
       overflow-y: scroll;
     }
 
@@ -217,11 +219,21 @@
     }
 
     .invoice-footer > div > div:first-child {
-      width: 75%;
+      width: 80%;
     }
 
     .invoice-footer > div > div:last-child {
-      width: 25%;
+      width: 20%;
+      text-align: right;
+    }
+
+    .sub-gross input {
+      background-color: transparent;
+      font-family: sans-serif;
+      font-size: 14px;
+      border: 0;
+      width: 50px;
+      color: #fff;
       text-align: right;
     }
 
@@ -254,7 +266,7 @@
   
   .add-button {
     padding-right: 20px;
-    padding-top: 10px;
+    padding-top: 20px;
   }
 
   .add-button button {
@@ -265,4 +277,10 @@
     margin-left: auto;
     display: block;
   }
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }

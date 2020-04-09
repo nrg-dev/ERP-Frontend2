@@ -9,6 +9,7 @@ import { PurchaseService } from "../../services/purchase.service";
 })
 export class PurchaseCreateInvoiceComponent implements OnInit {
   invoiceList = [];
+  delivery = 0;
 
   constructor(
     public dialogRef: MatDialogRef<PurchaseCreateInvoiceComponent>,
@@ -40,11 +41,17 @@ export class PurchaseCreateInvoiceComponent implements OnInit {
   }
 
   getTotal(): number {
-    return this.getSubTotal() + this.data.delivery;
+    return this.getSubTotal() + this.delivery;
   }
 
   getOrderNumbers():any {
     return this.invoiceList.map(item => item.pocode);
+  }
+
+  setDefaultNumber() {
+    if (!this.delivery) {
+      this.delivery = 0;
+    }
   }
 
   createInvoice() {
@@ -53,11 +60,9 @@ export class PurchaseCreateInvoiceComponent implements OnInit {
       "createddate": new Date().toJSON().slice(0, 10).split('-').reverse().join('/'),
       "ordernumbers" : this.getOrderNumbers(),
       "subtotal": this.getSubTotal(),
-      "deliverycharge": this.data.delivery,
+      "deliverycharge": this.delivery,
       "totalprice": this.getTotal()
     }
-
-    console.log('invoice', invoice);
 
     this.purchaseService.createInvoice(invoice).subscribe(result => {
       console.log(result);

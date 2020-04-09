@@ -9,7 +9,7 @@
       </div>
       <div class="orders-view-body">
         <div class="orders-view-box" *ngFor="let invoiceItem of data?.invoiceItems">
-          <div class="option">
+          <div class="option custom-control">
             <input type="checkbox" [checked]="true" (change)="removeProduct(invoiceItem, $event)" />
           </div>
           <div class="details">
@@ -74,7 +74,7 @@
             <div class='sub-gross'>
               <div>Delivery Charges</div>
               <div>
-                <span>{{ data.delivery }}</span>
+                <span><input (blur)="setDefaultNumber()" [(ngModel)]="delivery"   type="number" ></span>
               </div>
             </div>
             <div class='gross'>
