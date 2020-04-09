@@ -2,26 +2,31 @@
 
 .purchase-invoice-view {
   display: flex;
-  padding: 30px;
-  height: 100%;
   color: #5d6d76;
+  height: calc(100vh - 65px);
 
   h3 {
     color: #fff;
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .purchase-orders-view {
     flex-basis: 45%;
-    padding-right: 30px;
+    padding: 25px;
     border-right: 1px solid #1c313e;
+
+    .orders-view-body {
+      height: 80%;
+      overflow: auto;
+    }
+
     .orders-view-header {
       margin-bottom: 30px;
       h3 {
         margin-bottom: 0;
       }
       span {
-        font-size: 12px;
+        font-size: 11px;
       }
     }
 
@@ -39,7 +44,8 @@
       .details {
         width: 100%;
         div:first-child {
-          padding-bottom: 20px;
+          padding-bottom: 5px;
+          font-size: 12px;
           span {
             display: inline-block;
             padding-right: 10px;
@@ -53,9 +59,13 @@
         }
 
         div:nth-child(2) h4 {
-          font-size: 18px;
+          font-size: 14px;
           color: #dadddf;
           margin-bottom: 0;
+        }
+
+        div:nth-child(2) span {
+          font-size: 12px;
         }
 
         div:nth-child(3) {
@@ -69,9 +79,10 @@
 
   .create-invoice-view {
     flex-basis: 55%;
-    padding-left: 40px;
+    padding: 25px;
     border-left: 1px solid #15222b;
     font-size: 14px;
+    background: #17252f;
 
     .create-invoice-header {
       padding-top: 40px;
@@ -81,8 +92,7 @@
 
     .popup-close-invoice {
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2) url(/assets/images/pop-close-btn.svg)
-        no-repeat center;
+      background: rgba(255, 255, 255, 0.2) url(/assets/images/pop-close-btn.svg) no-repeat center;
       display: block;
       position: absolute;
       right: 10px;
@@ -100,6 +110,11 @@
         white-space: nowrap;
         padding-right: 20px;
         min-width: 10%;
+      }
+
+      span:last-child {
+        white-space: nowrap;
+        color: #dadddf;
       }
     }
 
@@ -121,24 +136,32 @@
       font-size: 14px;
     }
 
-    .product-list .table-invoice > div {
+    .product-list .table-invoice .invoice-header,
+    .product-list .table-invoice .invoice-body-holder > div {
       display: flex;
       margin-bottom: 10px;
       border-radius: 7px;
       padding: 5px 20px;
     }
 
-    .product-list .table-invoice > div:last-child {
+    .product-list .table-invoice .invoice-body-holder > div:last-child {
       border-radius: 0;
+      padding: 5px 10px;
     }
 
     .invoice-header {
       background-color: #182833;
+      font-size: 12px;
     }
 
     .invoice-header div:first-child,
     .invoice-body div:first-child {
       width: 60%;
+    }
+
+    .invoice-body-holder {
+      max-height: 170px;
+      overflow-y: auto;
     }
 
     .invoice-body {
@@ -148,6 +171,7 @@
     .invoice-body div:first-child span {
       display: block;
       color: #5d6d76;
+      font-size: 12px;
     }
 
     .invoice-header div:nth-child(2),
@@ -175,51 +199,53 @@
 
     .invoice-footer > div:first-child {
       padding-top: 15px;
+      padding-right: 10px;
     }
 
     .invoice-footer > div {
+    
       display: flex;
-      color: #dadddf;
+      text-align: right;
+      width: 100%;
       margin-bottom: 10px;
+      color: #dadddf;
+      
     }
 
     .invoice-footer > div > div:first-child {
       width: 65%;
-      text-align: right;
-    }
-    .invoice-footer > div:nth-child(2) div:last-child span {
-      border: 1px solid #20323e;
-      display: inline-block;
-      width: 100px;
-      padding: 5px 10px;
     }
 
     .invoice-footer > div > div:last-child {
-      width: 35%;
+      width: 100%;
       text-align: right;
     }
 
-    .invoice-footer > div:last-child,
-    .invoice-footer > div:nth-child(2) {
-      position: relative;
-      right: -15px;
+    .invoice-footer div.sub-gross div:last-child span {
+      border: 1px solid #233743;
+      display: inline-block;
+      padding: 3px 10px;
+      min-width: 40px;
     }
 
-    .invoice-footer > div:last-child div:last-child,
-    .invoice-footer > div:last-child div:first-child span {
+    .invoice-footer div.gross div span {
       border: 1px solid #2a4352;
-      padding: 10px;
-      background-color: #1c313e;
-      font-weight: bold;
+      padding: 3px 10px;
+       display: inline-block;
+       background: #1c313e;
+       color: #fff;
+       font-weight: bold;
     }
-    .invoice-footer > div:last-child div:last-child {
-      border-left: 0;
+    .invoice-footer div.gross div:last-child span {
+     min-width: 100%;
+     border-left: 0;
     }
-    .invoice-footer > div:last-child div:first-child span {
-      display: inline-block;
-      border-right: 0;
-      padding-right: 0;
+
+     .invoice-footer div.gross div:first-child span {
+     border-right: 0;
     }
+
+
   }
 
   .add-button button {

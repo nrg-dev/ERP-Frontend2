@@ -7,29 +7,24 @@
           3 Open orders found from Carbon Composite that need to invoiced
         </span>
       </div>
-      <div
-        class="orders-view-box"
-        *ngFor="let invoiceItem of data?.invoiceItems"
-      >
-        <div class="option">
-          <input
-            type="checkbox"
-            [checked]="true"
-            (change)="removeProduct(invoiceItem, $event)"
-          />
-        </div>
-        <div class="details">
-          <div>
-            <span>{{ invoiceItem.pocode }}</span>
-            <span>{{ invoiceItem.date }}</span>
-            <span>{{ invoiceItem.vendorname }}</span>
+      <div class="orders-view-body">
+        <div class="orders-view-box" *ngFor="let invoiceItem of data?.invoiceItems">
+          <div class="option">
+            <input type="checkbox" [checked]="true" (change)="removeProduct(invoiceItem, $event)" />
           </div>
-          <div>
-            <h4>{{ invoiceItem.productname }}</h4>
-            <span>{{ invoiceItem.categoryname }}</span>
-          </div>
-          <div>
-            {{ invoiceItem.subtotal }}
+          <div class="details">
+            <div>
+              <span>{{ invoiceItem.pocode }}</span>
+              <span>{{ invoiceItem.date }}</span>
+              <span>{{ invoiceItem.vendorname }}</span>
+            </div>
+            <div>
+              <h4>{{ invoiceItem.productname }}</h4>
+              <span>{{ invoiceItem.categoryname }}</span>
+            </div>
+            <div>
+              {{ invoiceItem.subtotal }}
+            </div>
           </div>
         </div>
       </div>
@@ -61,28 +56,31 @@
             <div>Quantity</div>
             <div>Cost</div>
           </div>
-          <div class="invoice-body" *ngFor="let item of invoiceList">
-            <div>
-              {{ item.productname }}
-              <span>{{ item.categoryname }}</span>
+          <div class="invoice-body-holder">
+            <div class="invoice-body" *ngFor="let item of invoiceList">
+              <div>
+                {{ item.productname }}
+                <span>{{ item.categoryname }}</span>
+              </div>
+              <div>{{ item.qty }} {{ item.unit }}</div>
+              <div>{{ item.subtotal }}</div>
             </div>
-            <div>{{ item.qty }} {{ item.unit }}</div>
-            <div>{{ item.subtotal }}</div>
           </div>
           <div class="invoice-footer">
             <div>
               <div>Subtotal</div>
               <div>{{ getSubTotal() }}</div>
             </div>
-            <div>
+            <div class='sub-gross'>
               <div>Delivery Charges</div>
               <div>
                 <span>{{ data.delivery }}</span>
               </div>
             </div>
-            <div>
+            <div class='gross'>
               <div><span>Total</span></div>
               <div>
+               
                 <span>{{ getTotal() }}</span>
               </div>
             </div>
