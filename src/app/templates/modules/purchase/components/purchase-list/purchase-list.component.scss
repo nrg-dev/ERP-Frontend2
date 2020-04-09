@@ -17,7 +17,12 @@
   border-radius: 10px;
 }
  
-
+.table > tbody > tr:hover {
+  background-color: $header-bg;
+}
+tr[ng-click] {
+  cursor: pointer;
+}
 .grid-align{position: absolute; top:60px; width: 98%;}
 .header-align{position: absolute;
   top: 20px;

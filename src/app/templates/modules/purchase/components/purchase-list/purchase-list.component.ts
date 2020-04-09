@@ -192,7 +192,7 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
       this.isAddPurchaseOrder = false;
     }
   }
-
+ 
   addPurchaseOrder(id: string, item: any) {
     let data: any;
     if (id !== null) {
