@@ -10,18 +10,20 @@
               menuItem.path === assignPath
           }"
           class="navi-link-deduct"
+          
         >
           <a
             class="d-flex align-items-center navi-link-deduct"
             [routerLink]="[menuItem.path]"
             routerLinkActive="router-link-active"
+            (click)="shuffleOverrideLinks(i); false"
           >
             <img class="navi-link-deduct" [src]="menuItem.icon" />
             <p class="m-0 pl-3 navi-link-deduct" mat-line>
-              {{ menuItem.label }} 
-            </p>
+              {{ menuItem.label }} </p>
           </a>
-          <span *ngIf="menuItem.childern.length" class="child-shuffle" [class.open]="showChildNum == i" (click)="shuffleChildLinks(i)"></span>
+          <span *ngIf="menuItem.childern.length" class="child-shuffle" [class.open]="showChildNum == i" (click)="shuffleChildLinks(i);false"></span>
+          
         </div>
         <div *ngIf="showChildNum == i">
             <ul *ngIf="menuItem.submenu">
