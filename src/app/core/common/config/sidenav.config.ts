@@ -7,7 +7,7 @@ export const SidenavItems: MenuItem[] = [
     id: "dashboard",
     label: "Dashboard",
     icon: "assets/images/dashboard.png",
-    path: "/",
+    path: "/dashboard",
     childern: [],
     submenu: false
   },
