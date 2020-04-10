@@ -172,7 +172,7 @@
   top: 10px;">
   <div class="col-md-3 col-xs-12 col-sm-3 side-wapper">
   
-    <div class="profile-div float-left"><img src="assets/images/profile-pic.PNG" />
+    <div class="profile-div"><img src="assets/images/profile-pic.PNG" class="float-left"/>
       <div class="text-profile">{{employeeDet.rank}}<br />
       {{employeeDet.employeecode}}</div></div>
   
@@ -195,10 +195,15 @@
   </div>
    <div class="col-md-9 col-xs-12 col-sm-9 float-left" style="position: relative;
     left: 30px;">
-  <div class="col-md-12 col-xs-12 col-sm-12" style="background-color:#17252F; display:block;-webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
--moz-box-shadow: 3px 2px 5px -1px rgba(0,0,0,.075);
-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);padding-bottom: 25px;">
-  <h4 style="color: rgba(85,112,129,1); margin-bottom: 20px;">Employment Details</h4>
+  <div class="col-md-12 col-xs-12 col-sm-12 side-wapper">
+ 
+      
+
+  <h4 class="panel-title" style="color: rgba(85,112,129,1); margin-bottom: 20px;">
+    
+    <a data-toggle="collapse" data-target="#collapse1" style="cursor:pointer">Employment Details</a></h4>
+  
+    <div id="collapse1" class="panel-collapse collapse in">
   <div class="col-md-3 float-left">
   <div class="ble-colr">Joined on</div>
   <div>{{employeeDet.addeddate}}</div>
@@ -215,13 +220,16 @@ box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);padding-bottom: 25px;">
   <div class="ble-colr">Contract Document</div>
   <div>CN-99-23430.pdf</div>
   </div>
-  </div>
+  
   <div style="clear: both;"></div>
- 
-   <div class="col-md-12 col-xs-12 col-sm-12" style="background-color:#17252F; display:block;-webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
--moz-box-shadow: 3px 2px 5px -1px rgba(0,0,0,.075);
-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);padding-bottom: 25px; margin-top:25px;">
-  <h4 style="color: rgba(85,112,129,1); margin-bottom: 20px;">Attendance Details</h4>
+  </div>
+  
+</div>
+   <div class="col-md-12 col-xs-12 col-sm-12 side-wapper m-t-20">
+     
+  <h4 class="panel-title" style="color: rgba(85,112,129,1); margin-bottom: 20px;">
+    <a data-toggle="collapse" data-target="#collapse2" style="cursor:pointer">Attendance Details</a></h4>
+    <div id="collapse2" class="panel-collapse collapse in">
   <div class="col-md-3 float-left">
   <div class="ble-colr">Work</div>
   <div>{{employeeDet.workHour}}</div>
@@ -238,46 +246,48 @@ box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);padding-bottom: 25px; margin-top:25
   <div class="ble-colr">Absent Deduction</div>
   <div>-</div>
   </div>
+
   <div style="clear: both;"></div>
-  <div class="col-md-12 col-xs-12 col-sm-12" style="background-color:#1A2D39; margin: 30px 10px 10px 10px; width: 98%; padding: 15px; -webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
--moz-box-shadow: 3px 2px 5px -1px rgba(0,0,0,.075);
-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075)">
-  <div class="col-md-12" style="margin-bottom: 20px;"><h5 style="float: left;">{{commonService.getTodayDate() | date : 'MMMM'}} Absent Card</h5> <img src="assets/images/print1.png" style="margin-right: 10px; float: right;" class="img-fluid logo" alt="print"/></div>
+</div>
+</div>
+  <div class="col-md-12 col-xs-12 col-sm-12 side-wapper">
+    <div class="profile-div">
+  <div class="col-md-12 m-b-20px"><h5 class="float-left">{{commonService.getTodayDate() | date : 'MMMM'}} Absent Card</h5> 
+    <img src="assets/images/print1.PNG" style="float: right;" class="img-fluid logo" alt="print"/></div>
+    <div class="clr-both"></div>
   <ng-container *ngIf="attendanceDetails.length > 0">
     <div class="col-md-12" *ngFor="let item of attendanceDetails">
-      <div class="col-md-2" style="border:2px solid #284556; padding: 15px 0px; text-align: center;">
-        <div>{{item.date}}</div>
+      <div class="m-t-10">
+      <div class="col-md-2 float-left date-div">
+        <div style="font-size: 14px;">{{item.date}}</div>
       </div>
-      
-      <div *ngIf="item.absent === null" class="col-md-4 float-left" style="background-color:#1C313E;height: 52px;margin-left: 10px; padding-top: 5px;">
-        <div *ngIf="item.checkintime === null" style="color:#17af7d;">9:00 AM</div>
+       <div *ngIf="item.absent === null" class="col-md-5 float-left last-div">
+        <div *ngIf="item.checkouttime === null" style="color:#17af7d;font-size: 14px;padding-top: 5px;">9:00 AM</div>
         <div *ngIf="item.checkintime !== null">
-          <div style="color:red;padding-top: 5px;">{{item.checkintime}}</div>
-          <div>{{item.checkinreason}}</div>
+          <div style="color:red; font-size: 14px;">{{item.checkouttime}}</div>
+          <div style="font-size: 14px;">{{item.checkoutreason}}</div>
         </div>
       </div>
-      
-      <div *ngIf="item.absent === null" class="col-md-5 float-left" style="background-color:#253F4B; height: 52px;margin-left: 10px;">
-        <div *ngIf="item.checkouttime === null" style="color:#17af7d;">9:00 AM</div>
+      <div *ngIf="item.absent === null" class="col-md-4 float-left time-div">
+        <div *ngIf="item.checkintime === null" style="color:#17af7d;font-size: 14px;padding-top: 5px;">9:00 AM</div>
         <div *ngIf="item.checkintime !== null">
-          <div style="color:red;padding-top: 5px;">{{item.checkouttime}}</div>
-          <div>{{item.checkoutreason}}</div>
+          <div style="color:red;font-size: 14px;">{{item.checkintime}}</div>
+          <div style="font-size: 14px;">{{item.checkinreason}}</div>
         </div>
       </div>
-      
-      <div *ngIf="item.absent === 'yes'" class="col-md-9 float-left" style="background-color:#253F4B;height: 52px;margin-left: 10px;padding-top: 5px; width: 533px;
-      ">
+    </div>
+      <div *ngIf="item.absent === 'yes'" class="col-md-9 float-left middle-div">
         <div>
-          <span style="color:red;">ABSENT</span>
-          <span style="color:red;text-align: center;">{{tem.reason}}</span>
+          <span style="color:red;font-size: 14px;">ABSENT</span>
+          <span style="color:red;font-size: 14px; text-align: center;">{{tem.reason}}</span>
         </div>
       </div>
     </div>
     <div style="clear: both;"></div>
   </ng-container>
-    
+    </div>
   </div>
-  </div>
+  
   </div>
   </div>
     
