@@ -12,7 +12,7 @@
   }
 
   .purchase-orders-view {
-    flex-basis: 30%;
+    flex-basis: 35%;
     padding: 25px;
     border-right: 1px solid #1c313e;
 
@@ -76,14 +76,14 @@
         div:nth-child(3) {
           text-align: right;
           color: #dadddf;
-          padding-top: 15px;
+          padding-top: 5px;
         }
       }
     }
   }
 
   .create-invoice-view {
-    flex-basis: 70%;
+    flex-basis: 65%;
     padding: 25px;
     padding-left: 80px;
     border-left: 1px solid #15222b;
@@ -163,7 +163,7 @@
     }
 
     .invoice-body-holder {
-      max-height: 150px;
+      max-height: 130px;
       overflow-y: scroll;
     }
 
