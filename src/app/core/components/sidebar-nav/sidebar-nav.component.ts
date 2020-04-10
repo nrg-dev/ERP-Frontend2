@@ -33,11 +33,25 @@ export class SidebarNavComponent implements OnInit {
 
   ngOnInit() {
     this.menuItems = SidenavItems;
-    this.interactionService.viewSideNaviSource.subscribe(value => this.isExpanded = value);
+    this.interactionService.viewSideNaviSource.subscribe(value => {
+      this.isExpanded = value;
+
+      this.menuItems.map((item, index) => {
+        if(item.path == this.assignPath) {
+          this.shuffleOverrideLinks(index);
+        }
+      })
+    });
   }
   //added to toggle sidenavi
 
   shuffleChildLinks(num){
     this.showChildNum = this.showChildNum !== num ? this.showChildNum = num : -1;
+  }
+
+  shuffleOverrideLinks(num) {
+    setTimeout(() => {
+      this.showChildNum = num;
+    })
   }
 }
