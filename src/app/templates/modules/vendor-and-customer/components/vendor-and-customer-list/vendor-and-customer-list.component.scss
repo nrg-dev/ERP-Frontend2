@@ -1,22 +1,17 @@
+
 @import "_common";
 
-@media screen and (min-device-width: 320px) and (max-device-width: 767px){
+  @media screen and (min-device-width: 320px) and (max-device-width: 767px){
   .back-colr{float:left;}
   body{font-size: 12px;}
   .table>thead>tr>th, .table>tbody>tr>td{font-size: 11px;}
   table>thead>tr>th>div.custom-control{position: relative;
     top: 17px;}
-}
-.over-flo{
-  /* overflow-y: scroll !important; overflow-x: hidden; */
-  height: 35rem; 
-  display: table-caption;
-  position: absolute;
-  top: 4.2rem;
-}
-
+  }
+  .over-flo{overflow-y: scroll !important; height: 340px; display: table-caption;
+    position: absolute; top: 58px;}
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px grey; 
@@ -26,241 +21,41 @@
 .table > tbody > tr:hover {
   background-color: $header-bg;
 }
+
 .table > tbody > tr:hover, .table > tbody > tr:hover span  {
   background-color: $header-bg;;
 }
+
+
 .grid-align{position: absolute; top:60px; width: 98%;}
 .header-align{position: absolute;
   top: 20px;
-  width: 95%;}
+  width: 97%;}
 .wid-50px{width: 50px!important;}
 .wid-110px{width: 110px!important;}
 .wid-180px{width: 180px!important;}
 .wid-190px{width: 190px!important;}
-.wid-200px{width: 220px!important;}
 .wid-150px{width: 150px!important;}
-.wid-350px{width: 350px!important;}
 .font-bld{ font-weight: bold;}
 .font-norm{ font-weight: normal;}
 .mar-let-40px{margin-left: 40px;}
 
-.user-icon { margin-top: 0;}
-.fa-calendar-times, .fa-user-clock, .fa-list-alt {
-  float: left;
-  cursor: pointer;
-  padding-right: 10px;
-}
-::ng-deep .mat-drawer-content {
-  position: relative;
-  z-index: 1;
-  display: block;
-  height: 100%;
-  overflow: hidden !important;
-}
-@media (min-width: 320px) and (max-width: 359px) {
-  #tableGrid{
-    position: absolute; top:85px; width: 85%;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  tbody{
-    overflow-x: auto !important; 
-    height: 23rem!important; 
-    display: table-caption;
-    top: 58px;
-  }
-}
-@media (min-width: 359px) and (max-width: 374px) {
-  #tableGrid{
-    position: absolute; top:85px; width: 160%;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  tbody,thead{
-    overflow-x: auto !important; 
-    height: 23rem!important; 
-    display: table-caption;
-    top: 58px;
-  }
-  #wid-5{
-    width: 10%;
-  }
-  #wid-10{
-    width: 25%;
-  }
-  #wid-13{
-    width: 30%;
-  }
-}
-@media (min-width: 375px) and (max-width: 409px) {
-  #tableGrid{
-    position: absolute; top:85px; width: 85%;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  tbody{
-    overflow-x: auto !important; 
-    height: 23rem!important; 
-    display: table-caption;
-    top: 58px;
-  }
-  #wid-10{
-    width: 85%;
-  }
-}
-@media (min-width: 410px) and (max-width: 470px) {
-  #tableGrid{
-    position: absolute; top:85px; width: 85%;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  tbody{
-    overflow-x: auto !important; 
-    height: 23rem!important; 
-    display: table-caption;
-    top: 58px;
-  }
-}
-@media (min-width: 471px) and (max-width: 530px) {
-  #tableGrid{
-    position: absolute; top:85px; width: 85%;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  tbody{
-    overflow-x: auto !important; 
-    height: 23rem!important; 
-    display: table-caption;
-    top: 58px;
-  }
-}
-@media (min-width: 531px) and (max-width: 539px) {
-  #tableGrid{
-    position: absolute; top:85px; width: 85%;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  tbody{
-    overflow-x: auto !important; 
-    height: 23rem!important; 
-    display: table-caption;
-    top: 58px;
-  }
-}
-@media (min-width: 540px) and (max-width: 600px) {
-  #tableGrid{
-    position: absolute; top:85px; width: 85%;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  tbody{
-    overflow-x: auto !important; 
-    height: 23rem!important; 
-    display: table-caption;
-    top: 58px;
-  }
-}
-@media (min-width: 601px) and (max-width: 767px) {
-  #tableGrid{
-    position: absolute; top:85px; width: 85%;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  tbody{
-    overflow-x: auto !important; 
-    height: 23rem!important; 
-    display: table-caption;
-    top: 58px;
-  }
-} /* 200% zoom */
-@media (min-width: 768px) and (max-width: 810px) and (orientation: landscape) {
-  #tableGrid{
-    position: absolute; top:85px; width: 85%;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  tbody{
-    overflow-x: auto !important; 
-    height: 23rem!important; 
-    display: table-caption;
-    top: 58px;
-  }
-} /* 175% zoom */
-@media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
-  #tableGrid{
-    position: absolute; top:80px; width:95%;
-  }
-  tbody{
-    overflow-y: auto !important; 
-    height: 27rem!important; 
-    display: table-caption;
-    top: 58px;
-  }
-} /* 150% zoom */
-@media (min-width: 1025px) and (max-width: 1280px){
-  #tableGrid{
-    position: absolute; top:80px; width: 95%;
-  }
-  tbody{
-    overflow-y: auto !important; 
-    height: 27rem!important; 
-    display: table-caption;
-    top: 58px;
-  }
+.invoice-view {
+  margin-top: 0px;
 }
 
-@media (min-width: 1281px) and (max-width: 1380px) {
-  #tableGrid{
-    position: absolute; top:60px; width: 95%;
-  }
-  tbody{
-    overflow-y: auto !important; 
-    height: 27rem!important; 
-    display: table-caption;
-    top: 58px;
-  }
+.pdf-icon {
+  font-size: 18px;
+  color: inherit !important;
+  padding: 0px !important;
+  text-align: inherit !important;
 }
-@media (min-width: 1381px) and (max-width:2051px) {
-  #tableGrid{
-    position: absolute; top:60px; width: 95%;
-  }
-  tbody{
-    overflow-y: auto !important; 
-    height: 27rem!important; 
-    display: table-caption;
-    top: 58px;
-  }
-} /* 90% zoom */
-@media (min-width:2052px) and (max-width:2732px){
-  #tableGrid{
-    position: absolute; top:60px; width: 95%;
-  }
-  tbody{
-    overflow-y: auto !important; 
-    height: 27rem!important; 
-    display: table-caption;
-    top: 58px;
-  }
+
+.edit-delete-icon {
+  margin-top: 0 !important;
 }
-@media (min-width:2733px) and (max-width:4102px){
-  #tableGrid{
-    position: absolute; top:60px; width: 95%;
-  }
-  tbody{
-    overflow-y: auto !important; 
-    height: 27rem!important; 
-    display: table-caption;
-    top: 58px;
-  }
-}
-@media (min-width:4103px) and (max-width:5464px){
-  #tableGrid{
-    position: absolute; top:60px; width: 95%;
-  }
-  tbody{
-    overflow-y: auto !important; 
-    height: 27rem!important; 
-    display: table-caption;
-    top: 58px;
-  }
-}
+
+
+
+
+

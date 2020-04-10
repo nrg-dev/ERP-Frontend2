@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild ,ElementRef,Inject} from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild ,ElementRef,Inject} from '@angular/core';
 import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
 import { PurchaseService } from '../../services/purchase.service';
 
@@ -7,7 +7,7 @@ import { PurchaseService } from '../../services/purchase.service';
   templateUrl: './purchase-invoice.component.html',
   styleUrls: ['./purchase-invoice.component.scss', './purchase-invoice.component.css']
 })
-export class PurchaseInvoiceComponent implements OnInit {
+export class PurchaseInvoiceComponent implements OnInit, OnDestroy {
   
   invoiceList: any;
   constructor(
@@ -20,8 +20,22 @@ export class PurchaseInvoiceComponent implements OnInit {
 
   ngOnInit() { 
       this.getInvoiceLists();
+      this.removeScrollBar();
   }
 
+  ngOnDestroy() {
+    (<HTMLElement>(
+      document.querySelector(".mat-drawer-content")
+    )).style.overflow = "auto";
+  }
+
+  removeScrollBar() {
+    setTimeout(function () {
+      (<HTMLElement>(
+        document.querySelector(".mat-drawer-content")
+      )).style.overflow = "inherit";
+    }, 300);
+  }
   getInvoiceLists() {
     this.purchaseservice.load().subscribe(res => { 
       this.invoiceList = res;
