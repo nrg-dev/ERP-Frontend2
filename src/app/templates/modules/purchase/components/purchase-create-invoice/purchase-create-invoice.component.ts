@@ -58,6 +58,8 @@ export class PurchaseCreateInvoiceComponent implements OnInit {
 
   createInvoice() {
 
+    this.createPurchaseInvoiceClose();
+
     const invoice = {
       "createddate": new Date().toJSON().slice(0, 10).split('-').reverse().join('/'),
       "ordernumbers" : this.getOrderNumbers(),
@@ -78,6 +80,7 @@ export class PurchaseCreateInvoiceComponent implements OnInit {
                 verticalPosition: "top",
               }
             );
+
           });
         }
       },

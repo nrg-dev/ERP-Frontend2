@@ -43,6 +43,10 @@ mat-drawer {
   list-style: none;
 }
 
+.side-navi div.active ul{
+  border: 1px solid red;
+}
+
 .side-navi > ul li a {
   display: block;
   padding: 0.5rem 1rem;
