@@ -1,5 +1,6 @@
 import { Component, Inject, OnChanges, OnInit } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { PurchaseService } from "../../services/purchase.service";
 
 @Component({
@@ -14,7 +15,8 @@ export class PurchaseCreateInvoiceComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<PurchaseCreateInvoiceComponent>,
     @Inject(MAT_DIALOG_DATA) public data, 
-    private purchaseService:PurchaseService
+    private purchaseService:PurchaseService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -64,9 +66,34 @@ export class PurchaseCreateInvoiceComponent implements OnInit {
       "totalprice": this.getTotal()
     }
 
-    this.purchaseService.createInvoice(invoice).subscribe(result => {
-      console.log(result);
-    });
+    this.purchaseService.createInvoice(invoice).subscribe(
+      (respose) => {
+        if (respose === null) {
+          setTimeout(() => {
+            this.snackBar.open(
+              "Purchase Order updated Successfully",
+              "dismss",
+              {
+                panelClass: ["success"],
+                verticalPosition: "top",
+              }
+            );
+          });
+        }
+      },
+      (error) => {
+        setTimeout(() => {
+          this.snackBar.open(
+            "Network error: server is temporarily unavailable",
+            "dismss",
+            {
+              panelClass: ["error"],
+              verticalPosition: "top",
+            }
+          );
+        });
+      }
+    );
     
   }
 }
