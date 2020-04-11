@@ -158,11 +158,11 @@
 <div class="container-fluid">
   <div class="row back-colr">
   <div class="container">
-  <div> <i class="fas fa-chevron-left left-arrow"></i><h3 style="float:left;"> {{employeeDet.name}}</h3> 
+  <div> <a [routerLink]= "['/employment']" style="color: #fff;"><i class="fas fa-chevron-left left-arrow"></i></a><h3 style="float:left;"> {{employeeDet.name}}</h3> 
   <!--<button style="float:right;" class="button button5"> Add Purchase Order</button>-->
  <div style="float: right;">
  <img src="assets/images/print.png" style="margin-right: 10px;" class="img-fluid logo" alt="Print"/>
-<img src="assets/images/edit.png" style="margin-right: 10px;" class="img-fluid logo" alt="Edit"/>
+<img src="assets/images/edit.PNG" style="margin-right: 10px;" class="img-fluid logo" alt="Edit"/>
 <img src="assets/images/bar.PNG" style="margin-right: 15px;margin-left: 15px;" class="img-fluid logo" />
 <img src="assets/images/delete.PNG" class="img-fluid logo" alt="Delete"/>
     </div>
@@ -201,10 +201,10 @@
 
   <h4 class="panel-title" style="color: rgba(85,112,129,1); margin-bottom: 20px;">
     
-    <a data-toggle="collapse" data-target="#collapse1" style="cursor:pointer;cursor: pointer;
+    <a class="collapsed" data-toggle="collapse" data-target="#collapse1" style="cursor:pointer;cursor: pointer;
     color: #fff; font-size: 18px;">Employment Details</a></h4>
   
-    <div id="collapse1" class="panel-collapse collapse in">
+    <div id="collapse1" class="panel-collapse collapse">
   <div class="col-md-3 float-left">
   <div class="ble-colr">Joined on</div>
   <div>{{employeeDet.addeddate}}</div>
@@ -228,9 +228,9 @@
 </div>
 <div class="col-md-12 col-xs-12 col-sm-12 side-wapper m-t-20 p-t-10">
  <h4 class="panel-title" style="color: rgba(85,112,129,1); margin-bottom: 20px;">
-    <a data-toggle="collapse" data-target="#collapse2" style="cursor:pointer;cursor: pointer;
+    <a data-toggle="collapse" class="collapsed" data-target="#collapse2" style="cursor:pointer;cursor: pointer;
     color: #fff; font-size: 18px;">Daily Report</a></h4>
-      <div id="collapse2" class="panel-collapse collapse in">
+      <div id="collapse2" class="panel-collapse collapse">
         <div class="col-md-6 float-left">
           <img src="assets/images/calender.png" style="float: left;" />
         </div>
@@ -247,8 +247,8 @@ margin-top: 20px;"/>
    <div class="col-md-12 col-xs-12 col-sm-12 side-wapper m-t-20 p-t-10">
      
   <h4 class="panel-title" style="color: rgba(85,112,129,1); margin-bottom: 20px;">
-    <a data-toggle="collapse" data-target="#collapse3" style="cursor:pointer;color: #fff; font-size: 18px;">Attendance Details</a></h4>
-    <div id="collapse3" class="panel-collapse collapse in">
+    <a class="collapsed" data-toggle="collapse" data-target="#collapse3" style="cursor:pointer;color: #fff; font-size: 18px;">Attendance Details</a></h4>
+    <div id="collapse3" class="panel-collapse collapse">
   <div class="col-md-3 float-left">
   <div class="ble-colr">Work</div>
   <div>{{employeeDet.workHour}}</div>
