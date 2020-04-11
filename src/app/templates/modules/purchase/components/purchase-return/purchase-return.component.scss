@@ -1,17 +1,26 @@
 
 @import "_base";
 
-table {
-  border-collapse: collapse;
-  border-spacing: 10px;
-  width: 100%;
-
+#table-outer-div{ 
+  overflow-y: auto; 
+  height: 80vh; 
+}
+#table-outer-div thead th { 
+  position: sticky; 
+  top: 0; 
 }
 
-
-#table-outer-div{
-  overflow:auto;
-  height: 80vh;
+/* Just common table stuff. Really. */
+table  { 
+  border-collapse: collapse; 
+  width: 100%; 
+}
+th { 
+  background:#17252F; 
+}
+th, td {
+  text-align: left;
+  padding: 8px;
 }
 thead {
   background-color: $table-header-bg;
@@ -19,16 +28,20 @@ thead {
 tbody {
   background-color:$table-invoived-row-bg; 
 }
-
-#table-outer-div thead th {
-  position: sticky;
-  top: 0;
+.table>thead>tr>th{
+  font-size: $table-font-size;
+  border-top: 0px solid $main-bg;
+  border-bottom:10px solid $main-bg;
+  color:$table-header-font;
+} 
+.table>tbody>tr>td{
+  font-size: $table-font-size;
+  border-top:5px solid $main-bg;   
+  color:$table-row-font-color;
 }
-
-th, td {
-  text-align: left;
-  padding: 8px;
+.table > tbody > tr:hover {
+  background-color: $header-bg;
 }
-
-
-//tr:nth-child(even){background-color: #f2f2f2}
+.table > tbody > tr:hover, .table > tbody > tr:hover span  {
+  background-color: $header-bg;
+}
