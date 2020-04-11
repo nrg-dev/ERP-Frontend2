@@ -158,13 +158,13 @@
 <div class="container-fluid">
   <div class="row back-colr">
   <div class="container">
-  <div><h3 style="float:left;"> {{employeeDet.name}}</h3> 
+  <div> <i class="fas fa-chevron-left left-arrow"></i><h3 style="float:left;"> {{employeeDet.name}}</h3> 
   <!--<button style="float:right;" class="button button5"> Add Purchase Order</button>-->
  <div style="float: right;">
- <img src="assets/images/print.png" style="margin-right: 10px;" class="img-fluid logo" alt="print"/>
-<img src="assets/images/edit.png" style="margin-right: 10px;" class="img-fluid logo" alt="print"/>
-<img src="assets/images/bar.PNG" style="margin-right: 15px;margin-left: 15px;" class="img-fluid logo" alt="print"/>
-<img src="assets/images/delete.PNG" class="img-fluid logo" alt="download" />
+ <img src="assets/images/print.png" style="margin-right: 10px;" class="img-fluid logo" alt="Print"/>
+<img src="assets/images/edit.png" style="margin-right: 10px;" class="img-fluid logo" alt="Edit"/>
+<img src="assets/images/bar.PNG" style="margin-right: 15px;margin-left: 15px;" class="img-fluid logo" />
+<img src="assets/images/delete.PNG" class="img-fluid logo" alt="Delete"/>
     </div>
   </div>
   
@@ -195,13 +195,14 @@
   </div>
    <div class="col-md-9 col-xs-12 col-sm-9 float-left" style="position: relative;
     left: 30px;">
-  <div class="col-md-12 col-xs-12 col-sm-12 side-wapper">
+  <div class="col-md-12 col-xs-12 col-sm-12 side-wapper p-t-20">
  
       
 
   <h4 class="panel-title" style="color: rgba(85,112,129,1); margin-bottom: 20px;">
     
-    <a data-toggle="collapse" data-target="#collapse1" style="cursor:pointer">Employment Details</a></h4>
+    <a data-toggle="collapse" data-target="#collapse1" style="cursor:pointer;cursor: pointer;
+    color: #fff; font-size: 18px;">Employment Details</a></h4>
   
     <div id="collapse1" class="panel-collapse collapse in">
   <div class="col-md-3 float-left">
@@ -225,11 +226,29 @@
   </div>
   
 </div>
-   <div class="col-md-12 col-xs-12 col-sm-12 side-wapper m-t-20">
+<div class="col-md-12 col-xs-12 col-sm-12 side-wapper m-t-20 p-t-10">
+ <h4 class="panel-title" style="color: rgba(85,112,129,1); margin-bottom: 20px;">
+    <a data-toggle="collapse" data-target="#collapse2" style="cursor:pointer;cursor: pointer;
+    color: #fff; font-size: 18px;">Daily Report</a></h4>
+      <div id="collapse2" class="panel-collapse collapse in">
+        <div class="col-md-6 float-left">
+          <img src="assets/images/calender.png" style="float: left;" />
+        </div>
+        <div class="col-md-6 float-left">
+<div style="font-size: 14px;">October 24, 2019</div>
+<textarea class="form-control text-area-style" rows="5" id="comment">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in
+</textarea>
+<img src="assets/images/edit.png" style="margin-right: 10px;" class="img-fluid logo" alt="Edit" style="float: right;
+margin-top: 20px;"/>
+</div>
+        <div style="clear: both;"></div>
+      </div>
+</div>
+   <div class="col-md-12 col-xs-12 col-sm-12 side-wapper m-t-20 p-t-10">
      
   <h4 class="panel-title" style="color: rgba(85,112,129,1); margin-bottom: 20px;">
-    <a data-toggle="collapse" data-target="#collapse2" style="cursor:pointer">Attendance Details</a></h4>
-    <div id="collapse2" class="panel-collapse collapse in">
+    <a data-toggle="collapse" data-target="#collapse3" style="cursor:pointer;color: #fff; font-size: 18px;">Attendance Details</a></h4>
+    <div id="collapse3" class="panel-collapse collapse in">
   <div class="col-md-3 float-left">
   <div class="ble-colr">Work</div>
   <div>{{employeeDet.workHour}}</div>
@@ -250,7 +269,7 @@
   <div style="clear: both;"></div>
 </div>
 </div>
-  <div class="col-md-12 col-xs-12 col-sm-12 side-wapper">
+<div class="col-md-12 col-xs-12 col-sm-12 side-wapper">
     <div class="profile-div">
   <div class="col-md-12 m-b-20px"><h5 class="float-left">{{commonService.getTodayDate() | date : 'MMMM'}} Absent Card</h5> 
     <img src="assets/images/print1.PNG" style="float: right;" class="img-fluid logo" alt="print"/></div>
