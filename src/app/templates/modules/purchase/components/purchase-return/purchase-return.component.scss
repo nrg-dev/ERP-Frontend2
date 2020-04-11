@@ -45,3 +45,17 @@ tbody {
 .table > tbody > tr:hover, .table > tbody > tr:hover span  {
   background-color: $header-bg;
 }
+ //x 
+@media screen and (min-width: 375px) {
+  //#id1{
+    //font-size: 12px !important;
+ // }
+  .table > tbody >tr > td{
+    font-size: 10px !important;
+  }
+
+  .table > thead > tr > td{
+    font-size: 10px !important;
+  }
+  
+}
