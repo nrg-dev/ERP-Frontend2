@@ -34,7 +34,7 @@ export class EmployeeChecinCheckoutComponent implements OnInit {
     this.model.checkinCheckoutReason = '';
     this.disableCheckoutButton();
     this.disableCheckinButton();
-  }, 1300);
+  }, 200);
   }
 
   checkinCheckoutPopupClose() { 

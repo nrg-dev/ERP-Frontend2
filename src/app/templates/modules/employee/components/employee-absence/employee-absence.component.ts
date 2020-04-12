@@ -20,7 +20,7 @@ export class EmployeeAbsenceComponent implements OnInit {
   ngOnInit() {
    setTimeout(() => {
     this.model.reason = this.getAbsentDetail !== undefined ? this.getAbsentDetail.reason:'';
-  }, 1200);
+  }, 200);
   }
 
   absencePopupClose() { 

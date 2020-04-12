@@ -16,7 +16,7 @@ table  {
   width: 100%; 
 }
 th { 
-  background:#17252F; 
+  background:$table-header-bg; 
 }
 th, td {
   text-align: left;
