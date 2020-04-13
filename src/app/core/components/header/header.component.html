@@ -23,7 +23,11 @@
       <span>General Manager</span>
     </div>
     <div class="user-photo">
-      <img src="assets/images/photo-manager.svg" alt="photo user" />
+      <img src="assets/images/photo-manager.svg" (mouseenter)="optionListToggle(true)" alt="photo user" />
+      <ul class="option-list" [class.show]="showMenu" (mouseleave)="optionListToggle(false)">
+        <li><a [routerLink]="['']">Edit Profile</a></li>
+        <li><a [routerLink]="['/logout']">Sign Out</a></li>
+      </ul>
     </div>
     <div class="user-options">
       <a [routerLink]="['/']" class="user-option"></a>

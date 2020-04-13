@@ -9,8 +9,11 @@ import { InteractionService } from './../../common/_services/interaction.service
 export class HeaderComponent implements OnInit {
 
   searchText:string;
+  showMenu = false;
 
   @HostListener('document:click', ['$event']) closeNaviOnOutClick(event) {
+
+    this.optionListToggle(false);
     
     if (event.target && event.target.classList.contains('header-menu')){
       return;
@@ -31,6 +34,10 @@ export class HeaderComponent implements OnInit {
 
   toggleSideNavi() {
     this.interactionService.toggleSideNavi();
+  }
+
+  optionListToggle(value) {
+    this.showMenu = value;
   }
 
 }

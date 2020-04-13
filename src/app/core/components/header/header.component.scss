@@ -4,6 +4,7 @@ header {
 
   background-color: $header-bg;
   height: 65px;
+  z-index: 2;
 
   .header-menu {
     padding: 10px 14px;
@@ -60,10 +61,60 @@ header {
     .user-photo {
       margin-right: 15px;
       border-radius: 50%;
+      position: relative;
 
       img {
         width: 40px;
+        cursor: pointer;
       }
+
+      ul.option-list {
+        display: none;
+      }
+
+      ul.option-list.show {
+        display: block;
+      }
+
+      ul.option-list,
+      ul.option-list li {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+
+      ul.option-list {
+        background-color: #334f5f;
+        position: absolute;
+        z-index: 200;
+        border-radius: 6px;
+        top: 60px;
+        right: 0;
+      }
+
+      ul.option-list a {
+        color: #fff;
+        font-size: 11px;
+        display: block;
+        white-space: nowrap;
+        padding: 6px 15px;
+        min-width: 110px;
+      }
+
+     ul.option-list li:first-child a{
+       padding-top: 12px;
+     }
+
+     ul.option-list li:first-child a:hover{
+        color: #55bcdc;
+     } 
+
+     ul.option-list li:last-child a,
+     ul.option-list li:last-child a:hover{
+        color: #e05152;
+        padding-bottom: 12px;
+     } 
+
     }
 
     .user-options {
