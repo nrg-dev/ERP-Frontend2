@@ -10,6 +10,7 @@ import { EmployeeService } from "../../services/employee.service";
 import { MatSnackBar } from "@angular/material";
 import { CommonService } from "../../../../../core/common/_services/common.service";
 import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
 @Component({
   selector: "app-employee-detail",
@@ -20,7 +21,8 @@ export class EmployeeDetailComponent implements OnInit {
   
   attendanceDetails = [];
   employeeDet: any;
-
+  events: string[] = [];
+  
    constructor(
     private employeeService: EmployeeService,
     private snackBar: MatSnackBar,
@@ -32,6 +34,9 @@ export class EmployeeDetailComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       this.viewEmployee(params.id);
     });
+    // setTimeout(function () {
+    //   (<HTMLElement>document.querySelector('#date-picker')).click();
+    // }, 500);
   }
 
   viewEmployee(empCode: string) {
@@ -44,9 +49,25 @@ export class EmployeeDetailComponent implements OnInit {
             this.attendanceDetails = data;
           }
         })
-       
+        
       }
     });
   }
   
+  showDailyReport() { 
+    setTimeout(function () { 
+      (<HTMLElement>document.querySelector('.mat-icon-button')).click();
+      (<HTMLElement>document.querySelector('.mat-calendar')).style.width = '300px';
+      (<HTMLElement>document.querySelector('.mat-calendar')).style.height = '0px';
+      (<HTMLElement>document.querySelector('.mat-icon-button ')).style.visibility = 'hidden';
+     }, 500);
+  }
+
+  addEvent(type: string, event: MatDatepickerInputEvent<Date>,picker) {
+    this.events.push(`${type}: ${event.value}`); 
+    console.log('test', `${type}: ${event.value}`);
+    (<HTMLElement>document.querySelector('.mat-datepicker-popup')).style.pointerEvents = 'initial !important';
+    //picker.open();
+    console.log('picker', picker)
+  }
 }

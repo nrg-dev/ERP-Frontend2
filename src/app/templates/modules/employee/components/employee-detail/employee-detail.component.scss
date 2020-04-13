@@ -49,3 +49,33 @@
     border-radius: 0px;
     font-size: 13px;
     height: 170px; margin-top: 10px; text-align: left;}
+
+    ::ng-deep .mat-datepicker-popup { 
+        /* Do you changes here */
+        top:290px !important;
+        pointer-events: initial !important;
+    }
+
+    ::ng-deep .mat-calendar-table-header th { 
+        color: rgba(85,112,129,1) !important;
+    }
+
+    ::ng-deep .mat-calendar-body-cell-content {
+        color: rgba(85,112,129,1) !important;
+    }
+
+    ::ng-deep .mat-calendar-body-label {
+        color: rgba(85,112,129,1) !important;
+    }
+
+    ::ng-deep .mat-calendar-header {
+        color: rgba(85,112,129,1) !important;
+    }
+
+    ::ng-deep .mat-datepicker-content .mat-calendar-next-button {
+        color: rgba(85,112,129,1) !important;
+    }
+
+    ::ng-deep .mat-datepicker-content .mat-calendar-previous-button {
+        color: rgba(85,112,129,1) !important;
+    }

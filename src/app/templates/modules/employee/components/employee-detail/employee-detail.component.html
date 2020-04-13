@@ -155,7 +155,7 @@
   </button>
 </div> -->
 
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="employeeDet !== undefined">
   <div class="row back-colr">
   <div class="container">
   <div> <a [routerLink]= "['/employment']" style="color: #fff;"><i class="fas fa-chevron-left left-arrow"></i></a><h3 style="float:left;"> {{employeeDet.name}}</h3> 
@@ -172,7 +172,7 @@
   top: 10px;">
   <div class="col-md-3 col-xs-12 col-sm-3 side-wapper">
   
-    <div class="profile-div"><img src="assets/images/profile-pic.PNG" class="float-left"/>
+      <div class="profile-div"><img src="assets/images/profile-pic.PNG" class="float-left"/>
       <div class="text-profile">{{employeeDet.rank}}<br />
       {{employeeDet.employeecode}}</div></div>
   
@@ -226,13 +226,25 @@
   </div>
   
 </div>
-<div class="col-md-12 col-xs-12 col-sm-12 side-wapper m-t-20 p-t-10">
+<div class="col-md-12 col-xs-12 col-sm-12 side-wapper m-t-20 p-t-10" (click)="showDailyReport()">
  <h4 class="panel-title" style="color: rgba(85,112,129,1); margin-bottom: 20px;">
     <a data-toggle="collapse" class="collapsed" data-target="#collapse2" style="cursor:pointer;cursor: pointer;
-    color: #fff; font-size: 18px;">Daily Report</a></h4>
+    color: #fff; font-size: 18px;">Daily Report</a>
+    <!-- <input matInput [matDatepicker]="dp" placeholder="Select minimum date" style="visibility: hidden;">
+   <mat-datepicker-toggle matSuffix [for]="dp">
+    <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+  </mat-datepicker-toggle>
+  <mat-datepicker #dp disabled="false"></mat-datepicker>   -->
+    
+    
+  </h4>
       <div id="collapse2" class="panel-collapse collapse">
         <div class="col-md-6 float-left">
-          <img src="assets/images/calender.png" style="float: left;" />
+          <!-- <img src="assets/images/calender.png" style="float: left;" /> -->
+          <input mdInput [matDatepicker]="picker" placeholder="Choose a date" #picker id="picker" style="visibility: hidden;" (dateInput)="addEvent('input', $event, picker)" (dateChange)="addEvent('change', $event, picker)" [(ngModel)]="_picker" [ngModelOptions]="{standalone: true}" (keydown)="false"> 
+          <mat-datepicker-toggle mdSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+
         </div>
         <div class="col-md-6 float-left">
 <div style="font-size: 14px;">October 24, 2019</div>
@@ -298,7 +310,7 @@ margin-top: 20px;"/>
       <div *ngIf="item.absent === 'yes'" class="col-md-9 float-left middle-div">
         <div>
           <span style="color:red;font-size: 14px;">ABSENT</span>
-          <span style="color:red;font-size: 14px; text-align: center;">{{tem.reason}}</span>
+          <span style="color:red;font-size: 14px; text-align: center;">{{item.reason}}</span>
         </div>
       </div>
     </div>
