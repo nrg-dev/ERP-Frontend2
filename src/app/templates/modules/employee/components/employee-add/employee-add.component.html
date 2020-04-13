@@ -1,118 +1,109 @@
-    
-     <div class="mb-3" style="font-size: 12px;">
-      
-      <div class="grid-container3">
-       
-       <div>
-      
-       </div>
-       
-       <div>
-       
-       <div>
-      
-        <button type="button" class="close" aria-label="Close" 
-        (click)="addEmployeeClose()" style="position: relative; left: 25px; top: -5px;">
-         <span aria-hidden="true">&times;</span>
-       </button>
-       <h2 id="h2ID">Add Employee</h2>
-      
-      <div class="grid-container2">
-       <div id="po-label">Employee Name</div>
-        <div id="po-label" style="margin-left: 83px;">Employee Rank</div>
-      </div>
-      
-      <div class="grid-container2" style="grid-gap: 95px !important;">
-       
-        <input type="text" name="name" id="textbox" [(ngModel)]="this.model.name" 
-        #name="ngModel" style="width:166px;">
-       
-       
-       
-        <input type="text" name="rank" id="textbox" [(ngModel)]="this.model.rank" 
-        #rank="ngModel">
-       
-      </div>
-      
-     
-        
-        <div class="grid-container6">
-          <div id="po-label">Phone Number
-        <input type="text" name="phonenumber" id="textbox" [(ngModel)]="this.model.phonenumber" 
-            #phonenumber="ngModel" class="m-t-5px">
-         
-          </div>
-       
-          <div id="po-label">Address
-            <input type="text" name="address" id="textbox" [(ngModel)]="this.model.address" 
-            #address="ngModel" class="m-t-5px">
-            
-          </div>
-        </div>
-      
-        <div class="grid-container6">
-          <div id="po-label">Employee Email
-          <!-- <p style="font-size: 12px;">0.003</p> -->
-          <input type="text" name="email" id="textbox" [(ngModel)]="this.model.email" 
-          #email="ngModel" class="m-t-5px">
-         
-          </div>
-       
-          <div id="po-label">Employee DOB
-          <!-- <p style="font-size: 12px;">0.003</p> -->
-          <input type="text" name="dob" id="textbox" [(ngModel)]="this.model.dob" 
-          #dob="ngModel" class="m-t-5px">
-          </div>
-        </div>
-
-        <div class="grid-container6">
-          <div id="po-label">ContractNumber
-          <input type="text" name="contractnumber" id="textbox" [(ngModel)]="this.model.contractnumber" 
-          #contractnumber="ngModel" class="m-t-5px">
-          </div>
-       
-          <div id="po-label">NPWP Number
-          <!-- <p style="font-size: 12px;">0.003</p> -->
-          <input type="text" name="npwp" id="textbox" [(ngModel)]="this.model.npwp" 
-          #npwp="ngModel" class="m-t-5px">
-          </div>
-        </div>
-
-        <div class="grid-container6">
-          <div id="po-label"><div>BPJS</div>
-          <input type="text" name="bpjs" id="textbox" [(ngModel)]="this.model.bpjs" 
-          #bpjs="ngModel" class="m-t-5px">
-          </div>
-       
-          <div id="po-label">Monthly Salary
-          <!-- <p style="font-size: 12px;">0.003</p> -->
-          <input type="text" name="monthlysalary" id="textbox" [(ngModel)]="this.model.monthlysalary" 
-          #monthlysalary="ngModel" class="m-t-5px">
-          </div>
-        </div>
-        <div class="grid-container6">
-          <div id="po-label">Work Hour
-          <input type="text" name="workHour" id="textbox" [(ngModel)]="this.model.workHour" 
-          #workHour="ngModel" class="m-t-5px">
-          </div>
-       
-          <div id="po-label">Annual Leave
-          <!-- <p style="font-size: 12px;">0.003</p> -->
-          <input type="text" name="annualLeave" id="textbox" [(ngModel)]="this.model.annualLeave" 
-          #annualLeave="ngModel" class="m-t-5px">
-          </div>
-        </div>
-        </div>
-         <div id="add-btn" style="float: right; margin-right: 51px; width: 20%;">
-         <p id="add-text" (click)="saveEmployee()">Add</p>
-        </div>
-        
-       </div>
-       
-       <div></div>
-      </div>
-      
+<div class="dialogBox">
+  <div class="mb-3" style="font-size: 12px;">
+    <div class="grid-container3">  
       <div></div>
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">   
+            <div class="box">
+              <div id="editBox">
+                <i class="fas fa-pen" id="edit-icon" aria-hidden="true"></i> 
+                <input type="file" style="visibility: hidden;" />
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            <button type="button" class="close" aria-label="Close" 
+              (click)="addEmployeeClose()" style="position: relative; left: 25px; top: -5px;">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <!-- Input Text Start -->
+            <div>
+              <h2 id="h2ID">Add Employee</h2>
+              <div class="grid-container2">
+                <div id="po-label">Employee Name</div>
+                <div id="po-label" style="margin-left: 83px;">Employee Rank</div>
+              </div>
+              <div class="grid-container2" style="grid-gap: 95px !important;">
+                <input type="text" name="name" id="textbox" [(ngModel)]="this.model.name" 
+                  #name="ngModel" style="width:156px;">
+                <input type="text" name="rank" id="textbox1" [(ngModel)]="this.model.rank" 
+                  #rank="ngModel">
+              </div>
+            
+              <div class="grid-container6">
+                <div id="po-label">Phone Number
+                  <input type="text" name="phonenumber" id="textbox" [(ngModel)]="this.model.phonenumber" 
+                    #phonenumber="ngModel" class="m-t-5px">
+                </div>
+                <div id="po-label">Address
+                  <input type="text" name="address" id="textbox1" [(ngModel)]="this.model.address" 
+                  #address="ngModel" class="m-t-5px">
+                </div>
+              </div>
+
+              <div class="grid-container6">
+                  <div id="po-label">Employee Email
+                    <!-- <p style="font-size: 12px;">0.003</p> -->
+                    <input type="text" name="email" id="textbox" [(ngModel)]="this.model.email" 
+                      #email="ngModel" class="m-t-5px">
+                  </div>
+                  <div id="po-label">Employee DOB
+                    <!-- <p style="font-size: 12px;">0.003</p> -->
+                    <input type="text" name="dob" id="textbox1" [(ngModel)]="this.model.dob" 
+                      #dob="ngModel" class="m-t-5px">
+                  </div>
+                </div>
+        
+                <div class="grid-container6">
+                  <div id="po-label">ContractNumber
+                    <input type="text" name="contractnumber" id="textbox" [(ngModel)]="this.model.contractnumber" 
+                      #contractnumber="ngModel" class="m-t-5px">
+                  </div>
+                  <div id="po-label">NPWP Number
+                    <!-- <p style="font-size: 12px;">0.003</p> -->
+                    <input type="text" name="npwp" id="textbox1" [(ngModel)]="this.model.npwp" 
+                      #npwp="ngModel" class="m-t-5px">
+                  </div>
+                </div>
+
+                <div class="grid-container6">
+                  <div id="po-label"><div>BPJS</div>
+                    <input type="text" name="bpjs" id="textbox" [(ngModel)]="this.model.bpjs" 
+                      #bpjs="ngModel" class="m-t-5px">
+                  </div>
+                  <div id="po-label">Monthly Salary
+                    <!-- <p style="font-size: 12px;">0.003</p> -->
+                    <input type="text" name="monthlysalary" id="textbox1" [(ngModel)]="this.model.monthlysalary" 
+                      #monthlysalary="ngModel" class="m-t-5px">
+                  </div>
+                </div>
+                <div class="grid-container6">
+                  <div id="po-label">Work Hour
+                    <input type="text" name="workHour" id="textbox" [(ngModel)]="this.model.workHour" 
+                      #workHour="ngModel" class="m-t-5px">
+                  </div>
+                  <div id="po-label">Annual Leave
+                    <!-- <p style="font-size: 12px;">0.003</p> -->
+                    <input type="text" name="annualLeave" id="textbox1" [(ngModel)]="this.model.annualLeave" 
+                      #annualLeave="ngModel" class="m-t-5px">
+                  </div>
+                </div>
+
+            </div>
+            <!-- Input Text End -->
+            <div id="add-btn" style="float: right; margin-right: 51px; width: 20%;">
+              <p id="add-text" (click)="saveEmployee()">Add</p>
+            </div>
+          </div>
+          
+        </div>  
+      </div>
+
+      <div></div>
+    </div>    
+    <div></div>
+  </div> 
+</div>
      
-  </div>      
  
