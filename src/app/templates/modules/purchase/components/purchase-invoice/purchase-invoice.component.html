@@ -1,47 +1,42 @@
-
-<div class="row">
-  <div class="container-fluid" id="purchase-wrapper"> 
-    <div class="row back-colr">
+<div class="container-fluid" id="purchase-wrapper"> 
+  <div class="back-colr">
     <div class="container">
-    <div class="header-align"><h3 id="title">Purchase Invoices</h3> 
-            
-    </div>
-    <div class="m-t-25 grid-align table-container">
-    <table class="table" id="poTable">
-      <thead id="table-head">
-        <tr>
-          <th class="wid-150px">Created Date</th>
-          <th>Invoice Number</th>
-        <!--  <th>Product List</th> -->
-          <th class="wid-150px">Vendor</th>
-          <th>Qty</th>
-          <th>Sub Totoal</th>
-          <th class="txt-right wid-150px">Delivery Cost</th>
-          <th class="txt-right wid-150px">Total</th>
-          <th class="txt-right wid-150px">Status</th>
-          <th class="txt-right wid-150px"></th> 
-         </tr>
-      </thead>
-      <tbody> 
-        <tr class="purchase-order-row-invoiced" *ngFor="let item of invoiceList">
-          <td class="wid-150px">{{item.invoicedate}}</td>
-          <td><span>{{item.invoicenumber}}</span></td>
-        <!--  <td>{{item.productName}}</td> -->
-          <td class="wid-150px">{{item.vendorname}}</td>
-          <td><span>{{item.qty}}</span></td>
-          <td><span>{{item.subtotal}}</span></td>
-          <td class="txt-right wid-150px">{{item.deliveryprice}}</td>
-          <td class="txt-right wid-150px">{{ item.totalprice }}</td>
-          <td class="txt-right wid-150px"><span>{{item.status}}</span></td>
-          <td class="txt-right wid-150px"><span class="edit-delete-icon invoice-view">
-            <a href="javascript:0" (click)="generatePdf(item.base64)" class="pdf-icon"><i  class="fa">&#xf1c1;</i></a>
-            </span></td>
-         </tr>
-       </tbody>
-    </table>
-  </div>
-  </div>
+      <div class="header-align">
+        <h3 id="title">Purchase Invoices</h3>        
       </div>
     </div>
+    <div id="table-outer-div">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Created Date</th>
+            <th>Invoice Number</th>
+            <th>Vendor</th>
+            <th>Qty</th>
+            <th>Sub Total</th>
+            <th>Delivery Cost</th>
+            <th>Total</th>
+            <th>City</th>
+            <th></th>
+          </tr>
+      </thead>
+      <tbody *ngFor="let item of invoiceList; let i = index"> 
+          <tr>
+            <td>{{item.invoicedate}}</td>
+            <td><span>{{item.invoicenumber}}</span></td>
+            <td>{{item.vendorname}}</td>
+            <td><span>{{item.qty}}</span></td>
+            <td><span>{{item.subtotal}}</span></td>
+            <td>{{item.deliveryprice}}</td>
+            <td>{{ item.totalprice }}</td>
+            <td><span>{{item.status}}</span></td>
+            <td><span class="edit-delete-icon invoice-view">
+              <a href="javascript:0" (click)="generatePdf(item.base64)" class="pdf-icon"><i  class="fa">&#xf1c1;</i></a>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-  
+</div>

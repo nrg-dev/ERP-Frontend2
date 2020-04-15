@@ -1,84 +1,112 @@
 <div class="">
-<div class="container-fluid" id="purchase-wrapper"> 
-  <div class="back-colr">
-  <div class="container" style="margin-left: 12px;">
-  <div class="header-align"><h3 style="float: left;" id="title">Employees</h3> 
-    
-  <!-- <button class="create-button">
-    <span class="fas fa-download" style="margin-right: 5px;"></span>Download
-</button> -->
-<div style="float: right;"><button  class="create-button" style="float: left; margin-right: 10px; margin-top: 4px;" (click)="addEmployee()">
-  <span class="fas fa-plus"></span> Add Employee 
-</button>
-<img src="assets/images/print.png" style="margin-right: 10px;" class="img-fluid logo" alt="print"/>
-<img src="assets/images/download.png" class="img-fluid logo" alt="download" />
-    </div>
-
-         
+  <div class="container-fluid" id="purchase-wrapper"> 
+    <div class="back-colr">
+      <div class="container">
+        <div class="header-align"><h3 style="float: left;" id="title">Employees</h3> 
+          <!-- <button class="create-button">
+            <span class="fas fa-download" style="margin-right: 5px;"></span>Download
+          </button> -->
+          <div style="float: right;"><button  class="create-button" style="float: left; margin-right: 10px; margin-top: 4px;" (click)="addEmployee()">
+            <span class="fas fa-plus"></span> Add Employee 
+            </button>
+            <img src="assets/images/print.png" style="margin-right: 10px;" class="img-fluid logo" alt="print"/>
+            <img src="assets/images/download.png" class="img-fluid logo" alt="download" />
+          </div>     
+        </div>
+      </div>
+      <!-- <div class="m-t-25 grid-align" style="position: absolute; top:60px; width: 90%;">
+        <table class="table" id="poTable" style="margin-bottom: 0px !important; padding-top: 0px!important; text-align: left;">
+          <thead id="table-head" style="position: absolute;
+            top: 0px;">
+            <tr>
+              <th class="wid-50px" style="width: 4% !important;"></th>
+              <th class="wid-190px" style="cursor:pointer; width: 8% !important;">ID</th>
+              <th class="wid-190px" style="cursor:pointer; width: 13% !important;">Name</th>
+              <th class="wid-190px" style="cursor:pointer; width: 5% !important;">Designation</th>
+              <th class="wid-190px" style="width: 22% !important;">Email</th>
+              <th class="wid-200px" style="width: 12% !important;">Phone</th>
+              <th class="wid-200px" style="width: 10% !important;text-align: right;">Joined Date</th>
+              <th class="wid-200px" style="width: 13% !important; text-align: right;">Status</th>
+              <th  style="width:345px" style="width: 13% !important;text-align: right;">
+              </th>
+            </tr>
+          </thead>
+          <tbody class="over-flo"> 
+            <tr *ngFor="let item of employeesDS; let i = index" class="purchase-order-row-invoiced" (dblclick)= "router.navigateByUrl('/employment/viewEmployee/'+item.employeecode)">
+              <td class="wid-50px" style="width: 4% !important;">
+                <img src="assets/images/employee.png" class="img-fluid logo" alt="Employee" />
+              </td>
+              <td class="wid-190px" style="width: 8% !important;">{{item.employeecode}}</td>
+              <td class="wid-190px" style="width: 13% !important;"><span >{{item.name}}</span></td>
+              <td class="wid-190px" style="width: 5% !important;">{{item.rank}}</td>
+              <td class="wid-190px" style="width: 22% !important;">{{item.email}}</td>
+              <td class="wid-200px" style="width: 12% !important;">
+                <app-employee-report (closeDailyReport)="closePopup($event, i,'report')" *ngIf="showHideDailyReport[i]" [dailyReportItem]="item" [getDailyReportDetail]="getDailyReportDetail"></app-employee-report>
+                {{item.phonenumber}}
+              </td>
+              <td class="wid-200px" style="width: 10% !important;text-align: right;">
+                <app-employee-absence *ngIf="isShowHideAbsent[i]" [absenceItem]="item" (closeAbsencePopup)="closePopup($event, i,'absence')" [getAbsentDetail]="getAbsentDetail"></app-employee-absence>
+                <app-employee-checkin-checkout *ngIf="isShowHideCheckinCheckout[i]" (closeCheckinCheckoutPopup)="closePopup($event, i,'checkinCheckout')" (enableAbsentIcon)="enableAbsentIcon($event, i)" [absenceItem]="item" [getAbsentDetail]="getAbsentDetail" [currentTime]="todayTime"></app-employee-checkin-checkout>
+                {{item.addeddate}}
+              </td>
+              <td class="wid-200px" style="width: 13% !important; text-align: right;">{{item.status}}</td>
+              <td class="wid-190px" style="width: 13% !important;text-align: right;">
+                <span class="edit-delete-icon user-icon" class="edit-delete-icon user-icon" style="left:20px !important">
+                  <span class="fas fa-list-alt" style="font-size: 16px; margin-right: 5px;" (click) = "dailyReport(i, item)"></span>
+                  <span class="fas fa-user-clock" style="margin-right: 5px; font-size: 16px;" (click)="checkinCheckout(i, item)"></span>
+                  <span class="fas fa-calendar-times" [ngClass]="isAbsentMouseover[i] ? 'absent-disabled' : ''" (mouseover)="absentMouseover(i, item)" style="margin-right: 10px; font-size: 16px;" (click)="absentPopup(i, item)"></span>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div> -->
+      <div id="table-outer-div">
+        <table class="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Designation</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Joined Date</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>  
+          <tbody *ngFor="let a of employeesDS; let i = index"> 
+            <tr>
+              <td class="wid-50px" style="width: 4% !important;">
+                <img src="assets/images/employee.png" class="img-fluid logo" alt="Employee" />
+              </td>
+              <td>{{a.employeecode}}</td>
+              <td>{{a.name}}</td>
+              <td>{{a.rank}}</td>
+              <td>{{a.email}}</td>
+              <td>
+                <app-employee-report (closeDailyReport)="closePopup($event, i,'report')" *ngIf="showHideDailyReport[i]" [dailyReportItem]="item" [getDailyReportDetail]="getDailyReportDetail"></app-employee-report>
+                {{a.phonenumber}}
+              </td>
+              <td>
+                <app-employee-absence *ngIf="isShowHideAbsent[i]" [absenceItem]="item" (closeAbsencePopup)="closePopup($event, i,'absence')" [getAbsentDetail]="getAbsentDetail"></app-employee-absence>
+                <app-employee-checkin-checkout *ngIf="isShowHideCheckinCheckout[i]" (closeCheckinCheckoutPopup)="closePopup($event, i,'checkinCheckout')" (enableAbsentIcon)="enableAbsentIcon($event, i)" [absenceItem]="item" [getAbsentDetail]="getAbsentDetail" [currentTime]="todayTime"></app-employee-checkin-checkout>
+                {{a.addeddate}}
+              </td>
+              <td>{{a.status}}</td>
+              <td class="wid-190px" style="width: 13% !important;text-align: right;">
+                <span class="edit-delete-icon user-icon" class="edit-delete-icon user-icon" style="left:20px !important">
+                  <span class="fas fa-list-alt" style="font-size: 16px; margin-right: 5px;" (click) = "dailyReport(i, item)"></span>
+                  <span class="fas fa-user-clock" style="margin-right: 5px; font-size: 16px;" (click)="checkinCheckout(i, item)"></span>
+                  <span class="fas fa-calendar-times" [ngClass]="isAbsentMouseover[i] ? 'absent-disabled' : ''" (mouseover)="absentMouseover(i, item)" style="margin-right: 10px; font-size: 16px;" (click)="absentPopup(i, item)"></span>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>  
   </div>
-  <div class="m-t-25 grid-align" style="position: absolute; top:60px; width: 90%;">
-  <table class="table" id="poTable" style="margin-bottom: 0px !important; padding-top: 0px!important; text-align: left;">
-    <thead id="table-head" style="position: absolute;
-    top: 0px;">
-      <tr>
-	  <th class="wid-50px" style="width: 4% !important;">
-     
-            </th>
-        <th class="wid-190px" style="cursor:pointer; width: 8% !important;">ID</th>
-        <th class="wid-190px" style="cursor:pointer; width: 13% !important;">Name
-         
-        </th>
-        <!-- <th onclick="w3.sortHTML('#poTable', '.purchase-order-row-open', 'td:nth-child(3)')" 
-        style="cursor:pointer">Status<i class="sort-by-desc"></i></th> -->
-        <th class="wid-190px" style="cursor:pointer; width: 5% !important;">Designation
-        
-        </th>
-		<th class="wid-190px" style="width: 22% !important;">Email</th>
-        <th class="wid-200px" style="width: 12% !important;">Phone</th>
-        <th class="wid-200px" style="width: 10% !important;text-align: right;">Joined Date</th>
-        <th class="wid-200px" style="width: 13% !important; text-align: right;">Status</th>
-        <th  style="width:345px" style="width: 13% !important;text-align: right;">
-          <!-- <i class="fa fa-filter"></i> -->
-        </th>
-       </tr>
-    </thead>
-    <tbody class="over-flo"> 
-      <tr *ngFor="let item of employeesDS; let i = index" class="purchase-order-row-invoiced" (dblclick)= "router.navigateByUrl('/employment/viewEmployee/'+item.employeecode)">
-	  <td class="wid-50px" style="width: 4% !important;">
-      <img src="assets/images/employee.png" class="img-fluid logo" alt="Employee" />
-			  </td>
-        <td class="wid-190px" style="width: 8% !important;">{{item.employeecode}}</td>
-        <td class="wid-190px" style="width: 13% !important;"><span >{{item.name}}</span></td>
-        <td class="wid-190px" style="width: 5% !important;">{{item.rank}}</td>
-		    <td class="wid-190px" style="width: 22% !important;">{{item.email}}</td>
-        <td class="wid-200px" style="width: 12% !important;">
-          <app-employee-report (closeDailyReport)="closePopup($event, i,'report')" *ngIf="showHideDailyReport[i]" [dailyReportItem]="item" [getDailyReportDetail]="getDailyReportDetail"></app-employee-report>
-          {{item.phonenumber}}</td>
-            
-        <td class="wid-200px" style="width: 10% !important;text-align: right;">
-              
-          <app-employee-absence *ngIf="isShowHideAbsent[i]" [absenceItem]="item" (closeAbsencePopup)="closePopup($event, i,'absence')" [getAbsentDetail]="getAbsentDetail"></app-employee-absence>
+</div>
 
-          <app-employee-checkin-checkout *ngIf="isShowHideCheckinCheckout[i]" (closeCheckinCheckoutPopup)="closePopup($event, i,'checkinCheckout')" (enableAbsentIcon)="enableAbsentIcon($event, i)" [absenceItem]="item" [getAbsentDetail]="getAbsentDetail" [currentTime]="todayTime"></app-employee-checkin-checkout>
-          {{item.addeddate}}
-          
-        </td>
-        <td class="wid-200px" style="width: 13% !important; text-align: right;">{{item.status}}
-          
-        </td>
-      
-        <td class="wid-190px" style="width: 13% !important;text-align: right;">
-          <span class="edit-delete-icon user-icon" class="edit-delete-icon user-icon" style="left:20px !important">
-          <span class="fas fa-list-alt" style="font-size: 16px; margin-right: 5px;" (click) = "dailyReport(i, item)"></span>
-          <span class="fas fa-user-clock" style="margin-right: 5px; font-size: 16px;" (click)="checkinCheckout(i, item)"></span>
-          <span class="fas fa-calendar-times" [ngClass]="isAbsentMouseover[i] ? 'absent-disabled' : ''" (mouseover)="absentMouseover(i, item)" style="margin-right: 10px; font-size: 16px;" (click)="absentPopup(i, item)"></span>
-        </span>
-      </td>
-       </tr>
-     </tbody>
-  </table>
-</div>
-</div>
-    </div>
-  </div>
-</div>

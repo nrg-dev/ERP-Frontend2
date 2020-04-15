@@ -1,52 +1,43 @@
+<h3>Vendor List</h3> 
+
+<div id="table-outer-div">
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th style="cursor:pointer;">Code
+          <i *ngIf="!isSortCodeDesc" class="sort-by-desc" (click)="sortByOrder('code','desc')"></i>
+          <i class="sort-by-asc" *ngIf="!isSortCodeAsc" (click)="sortByOrder('code','asc')"></i>
+        </th>
+        <th>Name</th>
+        <th>Country</th>
+        <th>Email</th>
+        <th>Joining Date</th>
+        <th>Contact Number</th>
+        <th>City</th>
+        <th></th>
+      </tr>
+  </thead>
+  <tbody *ngFor="let v of vendorsDS; let i = index"> 
+      <tr>
+        <td class="wid-50px" style="width: 4% !important;">
+          <img src="assets/images/employee.png" class="img-fluid logo" alt="Employee" />
+        </td>
+        <td>{{v.vendorcode}}</td>
+        <td><span>{{v.vendorName}}</span></td>
+        <td>{{v.country}}</td>
+        <td><span>{{v.email}}</span></td>
+        <td><span>{{v.addeddate}}</span></td>
+        <td>{{v.phoneNumber}}</td>
+        <td>{{v.city}}</td>
+        <td>
+          <span class="edit-delete-icon">
+            <span class="fas fa-trash"></span>
+          </span>
+        </td>
+      </tr>
      
-<div class="row">
-  <div class="container-fluid" id="purchase-wrapper"> 
-    <div class="row back-colr">
-    <div class="container">
-    <div class="header-align"><h3 id="title">Vendor List</h3> 
-            
-    </div>
-    <div class="m-t-25 grid-align table-container">
-    <table class="table" id="poTable">
-      <thead id="table-head">
-        <tr>
-          <th class="wid-50px" style="width: 4% !important;"></th>
-          <th class="wid-150px" style="cursor:pointer;">Code
-            <i *ngIf="!isSortCodeDesc" class="sort-by-desc" (click)="sortByOrder('code','desc')"></i>
-            <i class="sort-by-asc" *ngIf="!isSortCodeAsc" (click)="sortByOrder('code','asc')"></i>
-          </th>
-          <th>Name</th>
-          <th class="wid-150px">Country</th>
-          <th>Email</th>
-          <th>Joining Date</th>
-          <th class="txt-right wid-150px">Contact Number</th>
-          <th class="txt-right wid-150px">City</th>
-          <th class="txt-right wid-150px"></th> 
-         </tr>
-      </thead>
-      <tbody> 
-         <tr class="purchase-order-row-invoiced" *ngFor="let item of vendorsDS">
-          <td class="wid-50px" style="width: 4% !important;">
-            <img src="assets/images/employee.png" class="img-fluid logo" alt="Employee" />
-          </td>
-          <td class="wid-150px">{{item.vendorcode}}</td>
-          <td><span>{{item.vendorName}}</span></td>
-          <td class="wid-150px">{{item.country}}</td>
-          <td><span>{{item.email}}</span></td>
-          <td><span>{{item.addeddate}}</span></td>
-          <td class="txt-right wid-150px">{{item.phoneNumber}}</td>
-          <td class="txt-right wid-150px">{{ item.city }}</td>
-         <td class="txt-right wid-150px"><span class="edit-delete-icon">
-          <span class="fas fa-trash"></span>
-            </span>
-          </td>
-         </tr>
-       </tbody>
-    </table>
-  </div>
-  </div>
-      </div>
-    </div>
-  </div>
-  
-  
+    </tbody>
+  </table>
+</div>
+

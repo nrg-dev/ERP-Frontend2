@@ -24,7 +24,7 @@ import { PrintDialogService } from "src/app/core/services/print-dialog/print-dia
 @Component({
   selector: "app-vendor-and-customer-list",
   templateUrl: "./vendor-and-customer-list.component.html",
-  styleUrls: ["./vendor-and-customer-list.component.scss", './vendor-and-customer-list.component.css']
+  styleUrls: ["./vendor-and-customer-list.component.scss"]
 })
 export class VendorAndCustomerListComponent implements OnInit, OnDestroy {
   @Input() tabChange: boolean = false;

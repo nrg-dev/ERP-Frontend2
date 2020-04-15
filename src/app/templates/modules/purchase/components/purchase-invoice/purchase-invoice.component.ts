@@ -5,7 +5,7 @@ import { PurchaseService } from '../../services/purchase.service';
 @Component({
   selector: 'app-purchase-invoice',
   templateUrl: './purchase-invoice.component.html',
-  styleUrls: ['./purchase-invoice.component.scss', './purchase-invoice.component.css']
+  styleUrls: ['./purchase-invoice.component.scss']
 })
 export class PurchaseInvoiceComponent implements OnInit, OnDestroy {
   
