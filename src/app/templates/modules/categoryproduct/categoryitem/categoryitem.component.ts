@@ -32,9 +32,10 @@ export class AddnewcategoryComponent {
   saveCategory(){
     this.catprodservice.save(this.model)
     .subscribe(
-      data => {
+      (data) => {
         this.category =   data; 
         this.dialogRef.close();
+        console.log("Category Save Response-->"+data.status);
         if(this.category.status=="success"){   
           setTimeout(() => {
             this.snackBar.open("Category Saved Successfully", "", {
