@@ -5,6 +5,19 @@
   overflow-y: auto; 
   height: 75vh; 
 }
+
+#table-save-btn-div{
+  height: 5vh;
+}
+
+.create-button {
+  float: right;
+  color: $white;
+  background: $btn-bg;
+  border: 1px solid $btn-bg;
+  margin-right: 10px;
+  padding:8px 20px;
+}
 #table-outer-div thead th { 
   position: sticky; 
   top: 0; 
