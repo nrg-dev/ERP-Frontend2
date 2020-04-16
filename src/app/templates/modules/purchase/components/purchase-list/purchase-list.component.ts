@@ -15,8 +15,7 @@ import { PurchaseCreateInvoiceComponent } from "./../purchase-create-invoice/pur
   selector: "app-purchaselist",
   templateUrl: "./purchase-list.component.html",
   styleUrls: [
-    "./purchase-list.component.scss",
-    "./purchase-list.component.css",
+    "./purchase-list.component.scss"
   ],
 })
 export class PurchaseListComponent implements OnInit, OnDestroy {
