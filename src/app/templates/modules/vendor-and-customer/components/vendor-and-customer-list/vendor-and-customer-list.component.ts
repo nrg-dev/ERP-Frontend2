@@ -132,4 +132,9 @@ export class VendorAndCustomerListComponent implements OnInit, OnDestroy {
       this.vendorsDS.sort((a, b) => a.vendorcode.localeCompare(b.vendorcode));
     } 
   }
+
+  // Add Vendor
+  addVendor(){
+    console.log("add vendor");
+  }
 }
