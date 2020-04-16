@@ -11,6 +11,7 @@ import { MatSnackBar } from "@angular/material";
 import { CommonService } from "../../../../../core/common/_services/common.service";
 import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: "app-employee-detail",
@@ -27,7 +28,8 @@ export class EmployeeDetailComponent implements OnInit {
     private employeeService: EmployeeService,
     private snackBar: MatSnackBar,
     public commonService: CommonService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private sanitizer:DomSanitizer
   ) {}
 
   ngOnInit() {
@@ -70,4 +72,8 @@ export class EmployeeDetailComponent implements OnInit {
     //picker.open();
     console.log('picker', picker)
   }
+
+  transform(){
+    return this.sanitizer.bypassSecurityTrustResourceUrl(this.employeeDet.cardImageBase64);
+   }
 }

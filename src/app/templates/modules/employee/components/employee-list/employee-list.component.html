@@ -76,7 +76,8 @@
               <th></th>
             </tr>
           </thead>  
-          <tbody *ngFor="let a of employeesDS; let i = index"> 
+          <tbody *ngFor="let a of employeesDS; let i = index"
+          (dblclick)="router.navigateByUrl('/employment/viewEmployee/'+a.employeecode)"> 
             <tr>
               <td class="wid-50px" style="width: 4% !important;">
                 <img src="assets/images/employee.png" class="img-fluid logo" alt="Employee" />

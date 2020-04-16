@@ -4,8 +4,26 @@
       <div></div>
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="row">
-          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">   
-            <div class="box">
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">  
+            <br/><br/>
+            <div class="form-group">
+              <fieldset class="form-group">
+                  <p class="error">{{imageError}}</p>
+                  <div class="custom-file fileInputProfileWrap">
+                    <input type="file" (change)="fileChangeEvent($event)" class="fileInputProfile">
+                    <div class="img-space">
+                      <ng-container *ngIf="isImageSaved; else elseTemplate">
+                          <img [src]="cardImageBase64" />
+                      </ng-container>
+                      <ng-template #elseTemplate> 
+                        <img id="imageplaceholder" src="./../../assets/images/placeholder.png" class="img-responsive"> 
+                      </ng-template>
+                    </div>
+                  </div>
+              </fieldset>
+            </div> 
+            <a class="btn btn-danger" (click)="removeImage()" *ngIf="isImageSaved">Remove</a>
+            <!--<div class="box">
               <img id="blah" />
               <div id="editBox">
                 <div class="choose_file">
@@ -13,7 +31,7 @@
                   <input type="file" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])"/>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
           <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
             <button type="button" class="close" aria-label="Close" 
@@ -29,8 +47,8 @@
               </div>
               <div class="grid-container2" style="grid-gap: 95px !important;">
                 <input type="text" name="name" id="textbox" [(ngModel)]="this.model.name" 
-                  #name="ngModel" style="width:156px;">
-                <input type="text" name="rank" id="textbox1" [(ngModel)]="this.model.rank" 
+                  #name="ngModel" style="width:166px;">
+                <input type="text" name="rank" id="textbox" [(ngModel)]="this.model.rank" 
                   #rank="ngModel">
               </div>
             
@@ -40,7 +58,7 @@
                     #phonenumber="ngModel" class="m-t-5px">
                 </div>
                 <div id="po-label">Address
-                  <input type="text" name="address" id="textbox1" [(ngModel)]="this.model.address" 
+                  <input type="text" name="address" id="textbox" [(ngModel)]="this.model.address" 
                   #address="ngModel" class="m-t-5px">
                 </div>
               </div>
@@ -53,7 +71,7 @@
                   </div>
                   <div id="po-label">Employee DOB
                     <!-- <p style="font-size: 12px;">0.003</p> -->
-                    <input type="text" name="dob" id="textbox1" [(ngModel)]="this.model.dob" 
+                    <input type="text" name="dob" id="textbox" [(ngModel)]="this.model.dob" 
                       #dob="ngModel" class="m-t-5px">
                   </div>
                 </div>
@@ -65,7 +83,7 @@
                   </div>
                   <div id="po-label">NPWP Number
                     <!-- <p style="font-size: 12px;">0.003</p> -->
-                    <input type="text" name="npwp" id="textbox1" [(ngModel)]="this.model.npwp" 
+                    <input type="text" name="npwp" id="textbox" [(ngModel)]="this.model.npwp" 
                       #npwp="ngModel" class="m-t-5px">
                   </div>
                 </div>
@@ -77,7 +95,7 @@
                   </div>
                   <div id="po-label">Monthly Salary
                     <!-- <p style="font-size: 12px;">0.003</p> -->
-                    <input type="text" name="monthlysalary" id="textbox1" [(ngModel)]="this.model.monthlysalary" 
+                    <input type="text" name="monthlysalary" id="textbox" [(ngModel)]="this.model.monthlysalary" 
                       #monthlysalary="ngModel" class="m-t-5px">
                   </div>
                 </div>
@@ -88,7 +106,7 @@
                   </div>
                   <div id="po-label">Annual Leave
                     <!-- <p style="font-size: 12px;">0.003</p> -->
-                    <input type="text" name="annualLeave" id="textbox1" [(ngModel)]="this.model.annualLeave" 
+                    <input type="text" name="annualLeave" id="textbox" [(ngModel)]="this.model.annualLeave" 
                       #annualLeave="ngModel" class="m-t-5px">
                   </div>
                 </div>

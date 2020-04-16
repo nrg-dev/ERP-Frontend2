@@ -172,7 +172,15 @@
   top: 10px;">
   <div class="col-md-3 col-xs-12 col-sm-3 side-wapper">
   
-      <div class="profile-div"><img src="assets/images/profile-pic.PNG" class="float-left"/>
+      <div class="profile-div">
+          <fieldset class="form-group">
+            <div class="custom-file fileInputProfileWrap">
+              <div class="img-space">
+                <img [src]="transform()">
+              </div>
+            </div>
+          </fieldset>
+        <!-- <img src="assets/images/profile-pic.PNG" class="float-left"/> -->
       <div class="text-profile">{{employeeDet.rank}}<br />
       {{employeeDet.employeecode}}</div></div>
   
