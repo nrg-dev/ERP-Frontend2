@@ -86,6 +86,7 @@ export class VendorAndCustomerListComponent implements OnInit, OnDestroy {
   ngOnInit() {
      this.getAllVendorDetails();
      this.removeScrollBar();
+    // this.goToVendorDetails(null);
   }
  
   ngOnDestroy() {

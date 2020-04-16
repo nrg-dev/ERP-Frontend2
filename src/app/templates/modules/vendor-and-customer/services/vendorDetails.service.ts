@@ -14,8 +14,13 @@ constructor(private http: HttpClient) { }
     }
 
     // Load all categories
-    loadallcategory() {
-        return this.http.get(`${environment.apiUrl}${API_ENDPOINTS.loadallcategory}`);
+    loadallcategoryitems() {
+        return this.http.get(`${environment.apiUrl}${API_ENDPOINTS.loadallcategoryItems}`);
+    }
+
+    // Load all categories
+    loadallcategories() {
+        return this.http.get(`${environment.apiUrl}${API_ENDPOINTS.loadallcategories}`);
     }
 
 

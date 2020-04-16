@@ -1,0 +1,221 @@
+.vendor-details-container,
+.vendor-details-container div {
+    box-sizing: border-box;
+}
+
+.vendor-details-container {
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    height: 100%;
+    display: flex;
+    padding: 20px;
+    padding-bottom: 6.5%;
+   
+}
+
+.vendor-selected{
+    flex: 1 0 25%;
+    padding: 20px;
+    margin-right: 20px;
+    position: relative;
+    box-shadow: 0 0 12px #0c141a !important;
+    font-size: 12px;
+    color: #fcfdfe;
+
+    span{
+        font-size: 11px;
+    }
+
+    h2, h3 {
+            font-size: 12px;
+            line-height: 1;
+            margin: 0;
+            padding: 0;
+    }
+
+    .org-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 35px;
+        box-shadow: 0 0 8px #0c141a !important;
+        padding: 20px;
+        background: #1a2d39;
+
+        img {
+            width: 45px;
+            border-radius: 50%;
+        }
+
+        & div:last-child{
+            padding-left: 10px;
+
+            & span {
+                color: #bfc5c8;
+            }
+        }
+
+    }
+
+    .address-box {
+        margin-bottom: 20px;
+
+        & span {
+            color: #435b6a;
+            display: block;
+            margin-bottom: 5px;
+        }
+    }
+}
+
+.vendor-categories * {
+    box-sizing: border-box;
+}
+
+.vendor-categories {
+    flex: 1 0 75%;
+    box-shadow: 0 0 12px #0c141a !important;
+    padding: 20px;
+    color: #fff;
+
+    
+
+    .vendor-category-header {
+        position: relative;
+        margin-bottom: 20px;
+        
+        .drop-down {
+
+            display: inline-block;
+            position: relative;
+            padding-right: 30px;
+            min-width: 200px;
+
+            h2{
+                font-size: 18px;
+            }
+
+            & a.drop-down-arrow {
+                position: absolute;
+                font-size: 12px;
+                right: 0;
+                top: 4px;
+                cursor: pointer;
+            }
+
+            ul.show {
+                display: block;
+            }
+
+            ul {
+                background: #253f4b;
+                position: absolute;
+                padding: 15px;
+                display: none;
+            }
+
+            li a {
+                font-size: 13px;
+                color: #edeff0;
+            }
+        }
+
+        & a.close {
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2) url(/assets/images/pop-close-btn.svg) no-repeat center;
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 15px;
+            background-size: 50% 50%;
+            cursor: pointer;
+        }
+    }
+
+    .item-search{
+        margin-bottom: 20px;
+
+        input{
+            background: #192a36 url(/assets/images/icon-search.svg) no-repeat 93% center;
+            background-size: 15px;
+            font-size: 12px;
+            color: #8a96a0;
+            padding: 5px 40px 5px 15px;
+            border-radius: 15px;
+            width: 250px;
+        }
+    }
+
+    .category-items {
+
+        display: flex;
+        flex-wrap: wrap;
+
+         .category-item:nth-child(odd) {
+            margin: 0 20px 20px 0;
+        }
+
+        .category-item:nth-child(even) {
+            margin: 0;
+            margin-bottom: 20px;
+        }
+
+        .category-item {
+            flex: 0 0 calc(50% - 10px);
+            display: flex;
+            background: #1a2d39;
+            padding: 15px;
+        }
+
+        .item-content {
+            width: 70%;
+        }
+
+        .item-image {
+            margin-right: 10px;
+            width: calc(30% - 10px);
+       }
+
+
+        .info {
+
+            display: flex;
+            justify-content: space-between;
+            line-height: 0.5;
+            padding-bottom: 10px;
+
+            span {
+                color: #435b6a;
+                font-size: 11px;
+            }
+        }
+
+        .item-name {
+            margin-bottom: 5px;
+
+            h3 {
+                font-size: 14px;
+                color: #fff;
+                margin: 0;
+                line-height: 0.5;
+            }
+            span {
+                color: #4699b5;
+                font-size: 11px;
+            }
+
+          
+        }
+
+        .item-desc {
+              p {
+                font-size: 12px;
+                line-height: 1;
+                margin: 0;
+                padding: 0;
+            }
+        }
+    }
+   
+}
