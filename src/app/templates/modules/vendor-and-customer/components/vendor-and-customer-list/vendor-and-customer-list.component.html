@@ -25,21 +25,21 @@
          </tr>
       </thead>
       <tbody> 
-         <tr class="purchase-order-row-invoiced" *ngFor="let item of vendorsDS">
-          <td class="wid-50px" style="width: 4% !important;">
-            <img src="assets/images/employee.png" class="img-fluid logo" alt="Employee" />
-          </td>
-          <td class="wid-150px">{{item.vendorcode}}</td>
-          <td><span>{{item.vendorName}}</span></td>
-          <td class="wid-150px">{{item.country}}</td>
-          <td><span>{{item.email}}</span></td>
-          <td><span>{{item.addeddate}}</span></td>
-          <td class="txt-right wid-150px">{{item.phoneNumber}}</td>
-          <td class="txt-right wid-150px">{{ item.city }}</td>
-         <td class="txt-right wid-150px"><span class="edit-delete-icon">
-          <span class="fas fa-trash"></span>
-            </span>
-          </td>
+         <tr class="purchase-order-row-invoiced" *ngFor="let item of vendorsDS" (dblclick)="goToVendorDetails(item)">
+            <td class="wid-50px" style="width: 4% !important;">
+              <img src="assets/images/employee.png" class="img-fluid logo" alt="Employee" />
+            </td>
+            <td class="wid-150px">{{item.vendorcode}}</td>
+            <td><span>{{item.vendorName}}</span></td>
+            <td class="wid-150px">{{item.country}}</td>
+            <td><span>{{item.email}}</span></td>
+            <td><span>{{item.addeddate}}</span></td>
+            <td class="txt-right wid-150px">{{item.phoneNumber}}</td>
+            <td class="txt-right wid-150px">{{ item.city }}</td>
+          <td class="txt-right wid-150px"><span class="edit-delete-icon">
+            <span class="fas fa-trash"></span>
+              </span>
+            </td>
          </tr>
        </tbody>
     </table>

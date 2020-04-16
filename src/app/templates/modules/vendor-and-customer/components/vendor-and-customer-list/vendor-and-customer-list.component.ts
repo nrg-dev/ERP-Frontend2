@@ -3,16 +3,15 @@ import {
   OnInit,
   ViewChild,
   Input,
-  SimpleChanges,
-  OnChanges,
-  AfterContentChecked,
   OnDestroy
 } from "@angular/core";
 
 import {
   MatTableDataSource,
   MatPaginator,
-  MatSnackBar
+  MatSnackBar,
+  MatDialog,
+  MatDialogConfig
 } from "@angular/material";
 import { VendorAndCustomerDetailComponent } from "../vendor-and-customer-detail/vendor-and-customer-detail.component";
 //import { Vendor } from "./vendor-and-customer-list.component.model";
@@ -20,6 +19,7 @@ import { VendorService } from "../../services/vendor.service";
 import { CustomerService } from "../../services/customer.service";
 import { Customer, Vendor } from "src/app/core/common/_models";
 import { PrintDialogService } from "src/app/core/services/print-dialog/print-dialog.service";
+import { VendorDetailsComponent } from './../vendor-details/vendor-details.component';
 
 @Component({
   selector: "app-vendor-and-customer-list",
@@ -27,6 +27,9 @@ import { PrintDialogService } from "src/app/core/services/print-dialog/print-dia
   styleUrls: ["./vendor-and-customer-list.component.scss", './vendor-and-customer-list.component.css']
 })
 export class VendorAndCustomerListComponent implements OnInit, OnDestroy {
+
+  dialogConfig = new MatDialogConfig();
+
   @Input() tabChange: boolean = false;
   @Input() componentType: string;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
@@ -76,7 +79,8 @@ export class VendorAndCustomerListComponent implements OnInit, OnDestroy {
     private vendorService: VendorService,
     private customerService: CustomerService,
     private snackBar: MatSnackBar,
-    private printDialogService: PrintDialogService
+    private printDialogService: PrintDialogService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -131,5 +135,13 @@ export class VendorAndCustomerListComponent implements OnInit, OnDestroy {
       this.isSortCodeAsc = true;
       this.vendorsDS.sort((a, b) => a.vendorcode.localeCompare(b.vendorcode));
     } 
+  }
+
+  goToVendorDetails(item) {
+    console.log('item is', item);
+    this.dialog.open(VendorDetailsComponent, {
+      panelClass: "vendorDetailsView",
+      data: item,
+    });
   }
 }
