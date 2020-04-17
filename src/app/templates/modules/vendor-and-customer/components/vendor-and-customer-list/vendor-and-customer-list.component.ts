@@ -15,11 +15,14 @@ import {
   MatSnackBar
 } from "@angular/material";
 import { VendorAndCustomerDetailComponent } from "../vendor-and-customer-detail/vendor-and-customer-detail.component";
+import { VendorAddComponent } from "../vendor-add/vendor-add.component";
 //import { Vendor } from "./vendor-and-customer-list.component.model";
 import { VendorService } from "../../services/vendor.service";
 import { CustomerService } from "../../services/customer.service";
 import { Customer, Vendor } from "src/app/core/common/_models";
 import { PrintDialogService } from "src/app/core/services/print-dialog/print-dialog.service";
+import {MatDialog, MatDialogConfig, MatSort} from "@angular/material";
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: "app-vendor-and-customer-list",
@@ -49,6 +52,7 @@ export class VendorAndCustomerListComponent implements OnInit, OnDestroy {
   vendorsDS = [];
   customersDS: any = {};
   vendors: MatTableDataSource<Vendor>;
+  dialogConfig = new MatDialogConfig();
   vendor: Vendor;
   isEditMode: boolean;
   displayedColumns: string[] = [
@@ -76,7 +80,9 @@ export class VendorAndCustomerListComponent implements OnInit, OnDestroy {
     private vendorService: VendorService,
     private customerService: CustomerService,
     private snackBar: MatSnackBar,
-    private printDialogService: PrintDialogService
+    private printDialogService: PrintDialogService,
+    private dialog: MatDialog,
+    private sanitizer:DomSanitizer
   ) {}
 
   ngOnInit() {
@@ -135,6 +141,23 @@ export class VendorAndCustomerListComponent implements OnInit, OnDestroy {
 
   // Add Vendor
   addVendor(){
-    console.log("add vendor");
+    let data = {};
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+      'top': '1000',
+      left: '100'
+    };
+    this.dialog.open(VendorAddComponent,{
+      panelClass: 'addpromotion',
+      data: data,
+    })
+    .afterClosed().subscribe(result => {
+      this.getAllVendorDetails();
+    });
+  }
+
+  transform(cardImageBase64:string){
+    return this.sanitizer.bypassSecurityTrustResourceUrl(cardImageBase64);
   }
 }

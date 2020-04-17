@@ -1,0 +1,102 @@
+<div class="dialogBox">
+  <div class="mb-3" style="font-size: 12px;">
+    <div class="grid-container3">  
+      <div></div>
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">  
+            <br/><br/>
+            <div class="form-group">
+              <fieldset class="form-group">
+                  <p class="error">{{imageError}}</p>
+                  <div class="custom-file fileInputProfileWrap">
+                    <input type="file" (change)="fileChangeEvent($event)" class="fileInputProfile">
+                    <div class="img-space">
+                      <ng-container *ngIf="isImageSaved; else elseTemplate">
+                          <img [src]="cardImageBase64" />
+                      </ng-container>
+                      <ng-template #elseTemplate> 
+                        <img id="imageplaceholder" src="./../../assets/images/placeholder.png" class="img-responsive"> 
+                      </ng-template>
+                    </div>
+                  </div>
+              </fieldset>
+            </div> 
+            <a class="btn btn-danger" (click)="removeImage()" *ngIf="isImageSaved">Remove</a>
+          </div>
+          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            <button type="button" class="close" aria-label="Close" 
+              (click)="addVendorClose()" style="position: relative; left: 25px; top: -5px;">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <!-- Input Text Start -->
+            <div>
+              <h2 id="h2ID">Add Vendor</h2>
+              <br/>
+
+              <div class="grid-container6">
+                <div id="po-label">Vendor Name
+                  <input type="text" name="vendorName" id="textbox" [(ngModel)]="this.model.vendorName" 
+                    #vendorName="ngModel" class="m-t-5px" placeholder="Vendor Name">
+                </div>
+               
+                <div id="po-label">Address
+                  <input type="text" name="address" id="textbox" [(ngModel)]="this.model.address" 
+                    #address="ngModel" class="m-t-5px" placeholder="Address">
+                </div>
+              </div><br/>
+                
+              <div class="grid-container6">
+                <div id="po-label">Phone Number
+                  <input type="text" name="phoneNumber" id="textbox" [(ngModel)]="this.model.phoneNumber" 
+                    #phoneNumber="ngModel" class="m-t-5px" placeholder="(123)456-789">
+                </div>
+               
+                <div id="po-label">Mobile Number
+                  <input type="text" name="mobileNumber" id="textbox" [(ngModel)]="this.model.mobileNumber" 
+                    #mobileNumber="ngModel" class="m-t-5px" placeholder="(123)456-789">
+                </div>
+              </div><br/>
+              
+              <div class="grid-container6">
+                <div id="po-label">Vendor Email
+                  <input type="text" name="email" id="textbox" [(ngModel)]="this.model.email" 
+                    #email="ngModel" class="m-t-5px" placeholder="you@domain.com">
+                </div>
+               
+                <div id="po-label">Country
+                  <select name="country" id="textbox" [(ngModel)]="this.model.country" 
+                    #country="ngModel" class="m-t-5px" placeholder="Choose country">
+                    <option value="India">India</option>
+                    <option value="Singapore">Singapore</option>
+                    <option value="Australia">Australia</option>
+                    <option value="US">US</option>
+                    <option value="UK">UK</option>
+                  </select>
+                </div>
+              </div><br/>
+        
+              <div class="grid-container6">
+                <div id="po-label">Vendor City
+                  <input type="text" name="city" id="textbox" [(ngModel)]="this.model.city" 
+                  #city="ngModel" class="m-t-5px" placeholder="Jakarta">
+                </div> 
+              </div>
+
+            </div>
+            <!-- Input Text End -->
+            <div id="add-btn" style="float: right; margin-right: 51px; width: 20%;">
+              <p id="add-text" (click)="saveVendor()">Add</p>
+            </div>
+          </div>
+          
+        </div>  
+      </div>
+
+      <div></div>
+    </div>    
+    <div></div>
+  </div> 
+</div>
+     
+ 

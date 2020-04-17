@@ -3,6 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { VendorAndCustomerComponent } from "./components/vendor-and-customer/vendor-and-customer.component";
 import { CustomerComponent } from "./components/customer/customer.component";
 import { CustomerAddComponent } from "./components/customer-add/customer-add.component";
+import { VendorAddComponent } from "./components/vendor-add/vendor-add.component";
 
 // const routes: Routes = [
 //   { path: "", component: VendorAndCustomerComponent, pathMatch: "full" }
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'addCustomer',
     component: CustomerAddComponent
+  },
+  {
+    path: 'addVendor',
+    component: VendorAddComponent
   }
 ];
 @NgModule({

@@ -75,5 +75,5 @@ export class EmployeeDetailComponent implements OnInit {
 
   transform(){
     return this.sanitizer.bypassSecurityTrustResourceUrl(this.employeeDet.cardImageBase64);
-   }
+  }
 }

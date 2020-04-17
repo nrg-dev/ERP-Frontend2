@@ -1,5 +1,5 @@
 <div id="table-save-btn-div">
-  <button  class="create-button"  (click)="addVendor()">
+  <button  class="create-button" (click)="addVendor()">
   <span class="fas fa-plus"></span> Add Vendor 
   </button>
 </div>
@@ -26,7 +26,7 @@
   <tbody *ngFor="let v of vendorsDS; let i = index"> 
       <tr>
         <td class="wid-50px" style="width: 4% !important;">
-          <img src="assets/images/employee.png" class="img-fluid logo" alt="Employee" />
+          <img [src]="transform(v.cardImageBase64)"  class="img-fluid logo">
         </td>
         <td>{{v.vendorcode}}</td>
         <td><span>{{v.vendorName}}</span></td>

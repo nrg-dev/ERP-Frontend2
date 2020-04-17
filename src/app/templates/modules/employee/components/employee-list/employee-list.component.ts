@@ -17,6 +17,7 @@ import { EmployeeAddComponent } from "../employee-add/employee-add.component";
 import { CommonService } from "../../../../../core/common/_services/common.service";
 import {formatDate } from '@angular/common';
 import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: "app-employee-list",
@@ -44,7 +45,8 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
     private snackBar: MatSnackBar,
     private dialog: MatDialog,
     public commonService: CommonService,
-    public router: Router
+    public router: Router,
+    private sanitizer:DomSanitizer
   ) {
     
   }
@@ -232,5 +234,9 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
 
   enableAbsentIcon(value: boolean, index: number) {
     this.isAbsentMouseover[index] = value;
+  }
+
+  transform(cardImageBase64:string){
+    return this.sanitizer.bypassSecurityTrustResourceUrl(cardImageBase64);
   }
 }

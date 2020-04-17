@@ -29,26 +29,33 @@
               <th></th>
             </tr>
           </thead>  
-          <tbody *ngFor="let a of employeesDS; let i = index"
+          <tbody *ngFor="let e of employeesDS; let i = index"
           (dblclick)="router.navigateByUrl('/employment/viewEmployee/'+a.employeecode)"> 
-            <tr>
+          <tr>
               <td class="wid-50px" style="width: 4% !important;">
-                <img src="assets/images/employee.png" class="img-fluid logo" alt="Employee" />
+                <!-- <img [src]="transform(e.cardImageBase64)"  class="img-fluid logo"> -->
+                <fieldset class="form-group">
+                  <div class="custom-file fileInputProfileWrap">
+                    <div class="img-space">
+                      <img [src]="transform(e.cardImageBase64)">
+                    </div>
+                  </div>
+                </fieldset>
               </td>
-              <td>{{a.employeecode}}</td>
-              <td>{{a.name}}</td>
-              <td>{{a.rank}}</td>
-              <td>{{a.email}}</td>
+              <td>{{e.employeecode}}</td>
+              <td>{{e.name}}</td>
+              <td>{{e.rank}}</td>
+              <td>{{e.email}}</td>
               <td>
                 <app-employee-report (closeDailyReport)="closePopup($event, i,'report')" *ngIf="showHideDailyReport[i]" [dailyReportItem]="item" [getDailyReportDetail]="getDailyReportDetail"></app-employee-report>
-                {{a.phonenumber}}
+                {{e.phonenumber}}
               </td>
               <td>
                 <app-employee-absence *ngIf="isShowHideAbsent[i]" [absenceItem]="item" (closeAbsencePopup)="closePopup($event, i,'absence')" [getAbsentDetail]="getAbsentDetail"></app-employee-absence>
                 <app-employee-checkin-checkout *ngIf="isShowHideCheckinCheckout[i]" (closeCheckinCheckoutPopup)="closePopup($event, i,'checkinCheckout')" (enableAbsentIcon)="enableAbsentIcon($event, i)" [absenceItem]="item" [getAbsentDetail]="getAbsentDetail" [currentTime]="todayTime"></app-employee-checkin-checkout>
-                {{a.addeddate}}
+                {{e.addeddate}}
               </td>
-              <td>{{a.status}}</td>
+              <td>{{e.status}}</td>
               <td class="wid-190px" style="width: 13% !important;text-align: right;">
                 <span class="edit-delete-icon user-icon" class="edit-delete-icon user-icon" style="left:20px !important">
                   <span class="fas fa-list-alt" style="font-size: 16px; margin-right: 5px;" (click) = "dailyReport(i, item)"></span>
@@ -56,7 +63,7 @@
                   <span class="fas fa-calendar-times" [ngClass]="isAbsentMouseover[i] ? 'absent-disabled' : ''" (mouseover)="absentMouseover(i, item)" style="margin-right: 10px; font-size: 16px;" (click)="absentPopup(i, item)"></span>
                 </span>
               </td>
-            </tr>
+            </tr>  
           </tbody>
         </table>
       </div>

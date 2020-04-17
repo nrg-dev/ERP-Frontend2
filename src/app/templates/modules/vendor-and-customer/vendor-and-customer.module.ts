@@ -8,6 +8,7 @@ import { VendorAndCustomerListComponent } from "./components/vendor-and-customer
 import { VendorAndCustomerDetailComponent } from "./components/vendor-and-customer-detail/vendor-and-customer-detail.component";
 import { CustomerComponent } from "./components/customer/customer.component";
 import { CustomerAddComponent } from "./components/customer-add/customer-add.component";
+import { VendorAddComponent } from "./components/vendor-add/vendor-add.component";
 
 import { CoreModule } from "../../../core/core.module";
 import { CustomerService } from "./services/customer.service";
@@ -20,7 +21,8 @@ import { MAT_TABS_CONFIG } from "@angular/material";
     VendorAndCustomerListComponent,
     VendorAndCustomerDetailComponent,
     CustomerComponent,
-    CustomerAddComponent
+    CustomerAddComponent,
+    VendorAddComponent
   ],
   imports: [
     CommonModule,
