@@ -1,9 +1,12 @@
+@import "_base";
+
 * {
   font-size: 13px;
   color: white;
 }
 ::ng-deep .addnewproduct .mat-dialog-container {
-  background-color: #434f5b;
+//  background-color: #434f5b;
+  background:$po-order-form-bg;
   width: 880px;
   height: 586px;
   padding: 17px;
@@ -18,7 +21,8 @@ h2 {
   font-weight: bold;
 }
 #discountedit-secondlayer {
-  background: #333c45;
+//  background: #333c45;
+  background:$po-order-form-bg;
   height: 100%;
   width: 100%;
 }
@@ -30,74 +34,80 @@ h2 {
 #editselect-box {
   width: 220px;
   height: 35px;
-  background: #272e34;
-  border: none;
-  box-shadow: none;
+  background:$po-order-form-bg;
+  border: 1px solid  $header-bg;
+  //box-shadow: none;
   /* font-size: 12px; */
 }
 #name-box {
   width: 220px;
   height: 35px;
-  background: #272e34;
-  border: none;
-  box-shadow: none;
+  //background: #272e34;
+  background:$po-order-form-bg;
+  border: 1px solid  $header-bg;
+  //box-shadow: none;
 }
 #description-box {
   width: 220px;
   height: 75px;
-  background: #272e34;
-  border: none;
-  box-shadow: none;
-  font-size: 10px;
+  background:$po-order-form-bg;
+  border: 1px solid  $header-bg;
+  //box-shadow: none;
+  font-size: 12px;
   /*  font-size:12px; */
 }
 #tax-box {
   width: 71px;
   height: 35px;
-  background: #272e34;
-  border: none;
-  box-shadow: none;
+  background:$po-order-form-bg;
+  border: 1px solid  $header-bg;
+  //box-shadow: none;
   margin-left: 114px;
 }
 #margin-box {
   width: 71px;
   height: 35px;
-  background: #272e34;
-  border: none;
-  box-shadow: none;
+  background:$po-order-form-bg;
+  border: 1px solid  $header-bg;
+  //box-shadow: none;
 }
 #price-box {
   width: 220px;
   height: 35px;
-  background: #272e34;
-  border: none;
-  box-shadow: none;
+  background:$po-order-form-bg;
+  border: 1px solid  $header-bg;
+  //box-shadow: none;
 }
 #addproductpic-box {
   height: 100px;
   width: 110px;
   text-align: center;
   background: #272e34;
+  //background:$po-order-form-bg;
+
   border: none;
   box-shadow: none;
 }
 #addpicture-icon {
   font-size: 40px;
   color: #51575c;
+  //background:$po-order-form-bg;
   text-align: center;
   margin: 30px;
 }
 #productcode-box {
-  background-color: #999999;
-  width: 220px;
+  background:$po-order-form-bg;
+  border: 1px solid  $header-bg;
+  //box-shadow: none;  width: 220px;
   height: 35px;
-  color: white;
+  //color: white;
 }
 #save-btn {
   width: 140px;
   height: 35px;
-  background: #51af57;
+  background: $btn-bg;
   border: none;
+  border-radius: 25px;
 }
 #cancel-btn {
   width: 140px;

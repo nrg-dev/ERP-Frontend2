@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild ,ElementRef,Inject} from '@angular/core';
+import { Component, OnInit, ViewChild ,ElementRef,Inject,Optional } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
@@ -166,6 +166,10 @@ export class CategoryeditdeleteComponent {
   }
 }
 // categoryeditdelete end
+export interface UsersData {
+  title: string;
+  key: string;
+}
 
 // add promostion start
 @Component({
@@ -182,13 +186,31 @@ export class AddpromotionComponent {
   discount:Discount;
   //protected dataService: CompleterData;
   public dataService: CompleterData;
-  
+  title:string;
+  key:string;
+  discountShow:boolean;
+  freegiftShow:boolean;
+
+  local_data:any;
   constructor(
     public dialogRef: MatDialogRef<AddpromotionComponent>,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: UsersData,
     private catprodservice: CategoryproductService,
     private completerService: CompleterService,
     private snackBar: MatSnackBar
     ) {
+      console.log(data);
+      this.local_data = {...data};
+      this.title = this.local_data.title;
+      this.key = this.local_data.key;
+       if(this.key == "freegift") {
+        this.discountShow = false;
+        this.freegiftShow = true;
+      }
+      if(this.key == "discount") {
+        this.discountShow = true;
+        this.freegiftShow = false;
+      }
       this.catprodservice.load()
       .subscribe(
          data => {
@@ -897,7 +919,8 @@ export class CategoryItemComponent implements OnInit {
     }
 
    
-    
+    public NAMES = [];
+
   ngOnInit() {
    
     this.dataSource.paginator = this.paginator;
@@ -909,7 +932,26 @@ export class CategoryItemComponent implements OnInit {
     this.alldiscountList();
     this.allfreegiftList();
 
+    for (let i = 1; i < 100; i++) {
+      let newName = {
+         id:i.toString(),
+         value1:"Ubalton",
+         value2:"+91 88704662431",
+         value3:"alex@gmail.com",
+         value4:"Tamil Nadu",
+         value5:"India",
+         value6:"+91 4763212",
+         value7:"10000",
+         value8:"MCA",
+         value9:"Male",
+         value10:"Active",
+         value11:"Delhi",
+      };
+      this.NAMES.push(newName);
   }
+  }
+
+  
 
   printPage(data) {
     this.printDialogService.openDialog(data);
@@ -1149,7 +1191,7 @@ productlist(number: string){
     );
   }
 
-  addpromotion(){
+  addpromotion(title:string,show:string){
     //this.successdialog = 'block';
 
     this.dialogConfig.disableClose = true;
@@ -1159,8 +1201,8 @@ productlist(number: string){
       left: '100'
     };
     this.dialog.open(AddpromotionComponent,{
-      panelClass: 'addpromotion'
-     // data: {dialogTitle: "hello", dialogText: "text"},
+      panelClass: 'addpromotion',
+      data: {title: title, key: show}
     })
     .afterClosed().subscribe(result => {
       this.alldiscountList();
@@ -1283,6 +1325,7 @@ productlist(number: string){
   }
 
   allproducteditcall(prodcode: string){
+    console.log("allproducteditcall");
     this.dialogConfig.disableClose = true;
   this.dialogConfig.autoFocus = true;
   this.dialogConfig.position = {
@@ -1301,6 +1344,7 @@ productlist(number: string){
 
   }
   allproductdelete(prodcode: string){
+    console.log("detete product");
     this.catprodservice.productremove(prodcode)
       .subscribe(
         data => {

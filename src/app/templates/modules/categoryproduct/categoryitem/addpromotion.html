@@ -2,7 +2,7 @@
 <div id="box-dialouge">
     <br/>
     <form name="addpromotion" (ngSubmit)="savePromotion()"> 
-    <h2 style="text-align: center;">Add Promotion Product</h2>
+    <h2 style="text-align: center;">{{title}}</h2>
     <div class="row">
         <div class="col-2 col-md-2 col-sm-2 col-lg-2"></div>
         <div class="col-10 col-md-10 col-sm-10 col-lg-10">
@@ -69,7 +69,7 @@
 
         <div class="col-4 col-md-4 col-sm-4 col-lg-4"></div>
         <div class="col-8 col-md-8 col-sm-8 col-lg-8">
-            <div class="row" style="margin-left: 0px;">
+            <div *ngIf="discountShow" class="row" style="margin-left: 0px;">
               <input class="regular-radio" type="radio" name="radiopromo" style="margin: 5px 7px 17px 7px;" />
                   <p>Discount</p>
                   &nbsp;
@@ -83,7 +83,7 @@
                     [(ngModel)]="model.qty"  #qty="ngModel" />
             </div>
 
-            <div class="row" style="margin-left: 0px;">
+            <div *ngIf="freegiftShow" class="row" style="margin-left: 0px;">
               <input type="radio" class="regular-radio" value="freegift" [(ngModel)]="model.discountType" #discountType="ngModel"
               name="radiopromo" style="margin: 5px 7px 17px 7px;
               "/>
@@ -138,9 +138,9 @@
                 <div class="col-4 col-md-4 col-sm-4 col-lg-4">
                     <button id="save-btn" type="submit">Save</button>
                 </div>
-                <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+             <!--   <div class="col-4 col-md-4 col-sm-4 col-lg-4">
                     <button id="cancel-btn" (click)="close($event); false">Cancel</button>
-                </div>
+                </div> -->
                 <div class="col-2 col-md-2 col-sm-2 col-lg-2"></div>
              </div>
         </div>    

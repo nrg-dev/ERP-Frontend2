@@ -145,7 +145,6 @@ export class VendorAndCustomerListComponent implements OnInit, OnDestroy {
     });
   }
   removeVendor(vendorcode:string){
-    alert("Remove vendor");
     this.vendorService.remove(vendorcode)
     .subscribe(
       data => {
