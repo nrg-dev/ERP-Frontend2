@@ -144,4 +144,27 @@ export class VendorAndCustomerListComponent implements OnInit, OnDestroy {
       data: item
     });
   }
+  removeVendor(vendorcode:string){
+    alert("Remove vendor");
+    this.vendorService.remove(vendorcode)
+    .subscribe(
+      data => {
+        setTimeout(() => {
+          this.snackBar.open("Vendor Removed", "", {
+            panelClass: ["success"],
+            verticalPosition: 'top'      
+          });
+        });
+        this.getAllVendorDetails();
+      },
+      error => {
+        setTimeout(() => {
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });  
+      }
+    );
+  }
 }
