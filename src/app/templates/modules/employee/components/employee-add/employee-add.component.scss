@@ -174,7 +174,7 @@ img {
   margin: 80px 20px;
   border-radius: 5px;
 }
-
+/*
 .image-wrap {
   padding: 10px;
   border: solid 1px #e0e0e0;
@@ -190,7 +190,7 @@ img {
   padding: 10px;
   min-height:175px;
 }
-
+*/
 #imageplaceholder{
   width: 180px;
   height: 300px;
@@ -223,14 +223,15 @@ img {
 
 .image-wrap {
   padding: 10px;
-  border: solid 1px #e0e0e0;
+  //border: solid 1px #e0e0e0;
   display: inline-block;
 }
 
 .img-space {
-  border: dashed 1px #d3d3d3;
+ // border: dashed 1px #d3d3d3;
   border-radius: 8px;
-  background-color: #f2f2f2;
+ // background-color: #f2f2f2;
+ background-color: $po-order-form-bg;
   height: auto;
   width: 100%;
   padding: 10px;
