@@ -4,9 +4,8 @@
 }
 
 .vendor-details-container {
-    position: absolute;
-    width: 80%;
-    left: 10%;
+    position: relative;
+    width: 100%;
     height: 100%;
     display: flex;
     padding: 20px;
@@ -73,7 +72,7 @@
 }
 
 .vendor-categories {
-    flex: 1 0 75%;
+    flex: 1 0 69%;
     box-shadow: 0 0 12px #0c141a !important;
     padding: 20px;
     color: #fff;
