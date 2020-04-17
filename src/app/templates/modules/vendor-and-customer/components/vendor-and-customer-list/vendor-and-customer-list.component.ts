@@ -139,10 +139,9 @@ export class VendorAndCustomerListComponent implements OnInit, OnDestroy {
   }
 
   goToVendorDetails(item) {
-    console.log('item is', item);
     this.dialog.open(VendorDetailsComponent, {
       panelClass: "vendorDetailsView",
-      data: item,
+      data: item
     });
   }
 }

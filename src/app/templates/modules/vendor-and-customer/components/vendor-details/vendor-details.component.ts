@@ -11,6 +11,8 @@ import { VendorDetailsService } from './../../services/vendorDetails.service';
 export class VendorDetailsComponent implements OnInit {
 
   allCategoryItems = [];
+  backAllCategoryItems = [];
+  filteredItems = [];
   categoriesForFilter:any = [];
   selectedCategoryInFilter:any;
   dropDownView = false;
@@ -41,17 +43,43 @@ export class VendorDetailsComponent implements OnInit {
 
   ngOnInit() {
 
-    this.vendorDetailsService.loadsidepanel(this.data.vendorcode).subscribe(data => {
-      console.log(data);
-    })
+    // this.vendorDetailsService.loadsidepanel(this.data.vendorcode).subscribe(data => {
+    //   console.log(data);
+    // })
 
     this.vendorDetailsService.loadallcategoryitems().subscribe((data:any) => {
-      this.allCategoryItems = data;
+        if(!data.length) return;
+        this.backAllCategoryItems = data;
+      this.filterItems({ categorycode:null});
     })
 
     this.vendorDetailsService.loadallcategories().subscribe((data:any) => {
       this.categoriesForFilter = data;
-    })
+    });
+
+  }
+
+  searchItems(event) {
+
+    const searchPhrase = String(event.target.value).trim().toLocaleLowerCase();
+    const itemsToSearch = this.filteredItems || [];
+
+    const searchResult = itemsToSearch.filter((item) => {
+      return String(item.productname).trim().toLocaleLowerCase().includes(searchPhrase);
+    });
+
+    this.allCategoryItems = searchResult;
+  }
+
+  filterItems({ categorycode }) {
+
+    if(!categorycode){
+      this.allCategoryItems = this.backAllCategoryItems;
+      this.filteredItems = this.backAllCategoryItems;
+      return;
+    }
+    this.allCategoryItems = this.backAllCategoryItems.filter((item) => item.categorycode === categorycode);
+    this.filteredItems = this.allCategoryItems;
   }
 
   vendorDetailsClose(): void {
@@ -65,6 +93,7 @@ export class VendorDetailsComponent implements OnInit {
   selectCategory(item):void {
     this.dropDownView = false;
     this.selectedCategory = item.name;
+    this.filterItems(item);
   }
 
 }
