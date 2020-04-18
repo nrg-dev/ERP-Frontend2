@@ -30,12 +30,16 @@ export class AddnewcategoryComponent {
     ) {
     }
   saveCategory(){
+    console.log("Inside saveCategory method");
+    console.log("Category Name-->"+this.model.name);
+    console.log("Category Desc-->"+this.model.description);
+
     this.catprodservice.save(this.model)
     .subscribe(
       data => {
-        this.category =   data; 
+      //  this.category =   data; 
+     //   console.log("Response-->"+data);
         this.dialogRef.close();
-        if(this.category.status=="success"){   
           setTimeout(() => {
             this.snackBar.open("Category Saved Successfully", "", {
               panelClass: ["success"],
@@ -43,15 +47,14 @@ export class AddnewcategoryComponent {
             });
           });
 
-        } 
-        if(this.category.status=="failure"){
+        /*if(this.category.status=="failure"){
           setTimeout(() => {
             this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
               panelClass: ["error"],
               verticalPosition: 'top'      
             });
           }); 
-        }
+        } */
       },
       error => {
         setTimeout(() => {
@@ -1178,10 +1181,11 @@ productlist(number: string){
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
     this.dialogConfig.position = {
-      'top': '1000',
+      'top': '100',
       left: '100'
     };
     this.dialog.open(AddnewcategoryComponent,{
+      height:'55vh',width:'80vh',
       panelClass: 'addnewcategory'
      // data: {dialogTitle: "hello", dialogText: "text"},
     })

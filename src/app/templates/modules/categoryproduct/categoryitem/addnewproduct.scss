@@ -7,8 +7,9 @@
 ::ng-deep .addnewproduct .mat-dialog-container {
 //  background-color: #434f5b;
   background:$po-order-form-bg;
-  width: 880px;
-  height: 586px;
+  width: 150vh;;
+  height: 100vh; 
+  border-radius: 25px;
   padding: 17px;
   overflow: hidden;
 }

@@ -6,10 +6,12 @@
 }
 ::ng-deep .allproductedit .mat-dialog-container {
   background:$po-order-form-bg;
-  width: 880px;
-  height: 586px;
+  width: 150vh;;
+  height: 100vh; 
+  border-radius: 25px;
   padding: 17px;
   overflow: hidden;
+  
 }
 #text-cursor {
   cursor: text;
