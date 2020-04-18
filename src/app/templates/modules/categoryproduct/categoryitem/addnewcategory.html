@@ -1,12 +1,18 @@
 <div class="container">
-    <form name="addnewcategory" (ngSubmit)="saveCategory()"> 
-        
-    <input type="text" [(ngModel)]="model.name" #name="ngModel" placeholder="Enter Name" name="name"  required>
+    <div [hidden]="submitted">
+
+    <form name="addnewcategory" (ngSubmit)="saveCategory()" #categoryForm="ngForm"> 
+        <div class="form-group">
+ 
+    <input type="text"  [(ngModel)]="model.name" #name="ngModel" placeholder="Enter Name"
+     id="name" name="name"  strictRequired>
 
     <input type="text" 
     [(ngModel)]="model.description" #description="ngModel" placeholder="Enter Description" name="description"
     >
-    <button>Save</button>
+    </div>
+    <button type="submit" [disabled]="!categoryForm.form.valid">Save</button>
 
     </form>
+    </div>
 </div>
