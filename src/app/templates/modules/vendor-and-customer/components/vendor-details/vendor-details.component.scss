@@ -55,6 +55,27 @@
 
     }
 
+    .org-info{
+        max-height: 46.5vh;
+        overflow-y: auto;
+    }
+
+    .org-footer{
+        min-height: 30px;
+        padding-right: 10px;
+        
+        .icon-printer{
+            background: url(/assets/images/printicon.svg) no-repeat center center;
+            display: block;
+            padding: 15px;
+            background-size: 25px;
+            margin-left: auto;
+            width: 30px;
+            position: relative;
+            top:10px;
+        }
+    }
+
     .address-box {
         margin-bottom: 20px;
 
