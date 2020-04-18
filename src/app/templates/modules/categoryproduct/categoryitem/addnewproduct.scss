@@ -37,6 +37,8 @@ h2 {
   height: 35px;
   background:$po-order-form-bg;
   border: 1px solid  $header-bg;
+  border-radius: 5px;
+
   //box-shadow: none;
   /* font-size: 12px; */
 }
@@ -46,6 +48,8 @@ h2 {
   //background: #272e34;
   background:$po-order-form-bg;
   border: 1px solid  $header-bg;
+  border-radius: 5px;
+
   //box-shadow: none;
 }
 #description-box {
@@ -53,9 +57,50 @@ h2 {
   height: 75px;
   background:$po-order-form-bg;
   border: 1px solid  $header-bg;
+  border-radius: 5px;
+
   //box-shadow: none;
   font-size: 12px;
   /*  font-size:12px; */
+}
+
+.image-wrap {
+  padding: 10px;
+  border: solid 1px #e0e0e0;
+  display: inline-block;
+}
+
+.img-space {
+  border-radius: 8px;
+  height: auto;
+  width: 50%;
+  padding: 10px;
+  min-height:175px;
+}
+
+.img-space img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  cursor: pointer;
+}
+
+.fileInputProfileWrap {
+  width: 100%;
+  height: auto;
+}
+
+.fileInputProfile {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 99;
+  opacity: 0;
+}
+.fileInputProfile[disabled] + .img-space{
+  pointer-events: none;
+  cursor: not-allowed!important;
 }
 #tax-box {
   width: 71px;
@@ -64,6 +109,8 @@ h2 {
   border: 1px solid  $header-bg;
   //box-shadow: none;
   margin-left: 114px;
+  border-radius: 5px;
+
 }
 #margin-box {
   width: 71px;
@@ -71,12 +118,16 @@ h2 {
   background:$po-order-form-bg;
   border: 1px solid  $header-bg;
   //box-shadow: none;
+  border-radius: 5px;
+
 }
 #price-box {
   width: 220px;
   height: 35px;
   background:$po-order-form-bg;
   border: 1px solid  $header-bg;
+  border-radius: 5px;
+
   //box-shadow: none;
 }
 #addproductpic-box {
@@ -101,6 +152,8 @@ h2 {
   border: 1px solid  $header-bg;
   //box-shadow: none;  width: 220px;
   height: 35px;
+  border-radius: 5px;
+
   //color: white;
 }
 #save-btn {

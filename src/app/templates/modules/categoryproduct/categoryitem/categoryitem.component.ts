@@ -439,6 +439,8 @@ export class AddnewproductComponent {
   data: any = {};
   category:Category;
   product:Product;
+  selectedFiles: any = {};
+
   constructor(
     public dialogRef: MatDialogRef<AddnewproductComponent>,
     private catprodservice: CategoryproductService,
@@ -483,6 +485,112 @@ export class AddnewproductComponent {
      );
      this.model.sellingprice = 0;
   }
+  /*fileChangeEvent(event) {
+    this.selectedFiles = event.target.files;
+    for (let i = 0; i < event.target.files; i++) {
+      this.selectedFiles.push(event.target.files[i]);
+    }
+  }*/
+  isImageSaved1: boolean;
+  isImageSaved2:boolean;
+  imageError: string;
+  empList: Array<any> = [];
+  imageIndex1:boolean = false;
+  imageIndex2:boolean = false;
+  imgBase64Path:any;
+  fileChangeEvent(fileInput: any,imageNumber:number) {
+    this.imageError = null;
+    if (fileInput.target.files && fileInput.target.files[0]) {
+        // Size Filter Bytes
+        const max_size = 20971520;
+        const allowed_types = ['image/png', 'image/jpeg'];
+        const max_height = 15200;
+        const max_width = 25600;
+
+        if (fileInput.target.files[0].size > max_size) {
+            this.imageError =
+                'Maximum size allowed is ' + max_size / 1000 + 'Mb';
+
+            return false;
+        }
+
+      
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+            const image = new Image();
+            image.src = e.target.result;
+            image.onload = rs => {
+                const img_height = rs.currentTarget['height'];
+                const img_width = rs.currentTarget['width'];
+
+                console.log(img_height, img_width);
+
+
+                if (img_height > max_height && img_width > max_width) {
+                 
+                    return false;
+                } else {
+                    this.imgBase64Path = e.target.result;
+                   // this.cardImageBase64 = imgBase64Path;
+                   if(this.empList[imageNumber]!=null){
+                     console.log("no value...");
+                   }
+                   if(imageNumber==0){
+                      if(this.imageIndex1==false){
+                        console.log("First Time");
+                        this.empList.push(this.imgBase64Path);
+                        this.isImageSaved1 = true;
+                        this.imageIndex1=true;
+                        console.log("First time Base 64 array value-->"+this.empList[0]);
+                      }
+                      else{
+                        console.log("else");
+                        console.log("Second time Before update Base 64 array value-->"+this.empList[0]);
+                        console.log("Second time Base 64-->"+this.imgBase64Path);
+                        this.empList[0] = this.imgBase64Path;
+                        this.isImageSaved1 = true;
+                        console.log("Second time Base 64 array value-->"+this.empList[0]);
+                        //this.imageIndex1=true;
+                      }
+                  }
+                  // Second Image
+                  if(imageNumber==1){
+                    if(this.imageIndex2==false){
+                      console.log("First Time");
+                      this.empList.push(this.imgBase64Path);
+                      this.isImageSaved2 = true;
+                      this.imageIndex2=true;
+                      console.log("First time Base 64 array value-->"+this.empList[1]);
+                      //this.isImageSaved2 = true;
+                    }
+                    else{
+                      console.log("else");
+                      console.log("Second time Before update Base 64 array value-->"+this.empList[1]);
+                      console.log("Second time Base 64-->"+this.imgBase64Path);
+                      this.empList[1] = this.imgBase64Path;
+                      this.isImageSaved2 = true;
+                      console.log("Second time Base 64 array value-->"+this.empList[1]);
+                    }
+                }
+                 
+                    // this.previewImagePath = imgBase64Path;
+                }
+            };
+        };
+
+        reader.readAsDataURL(fileInput.target.files[0]);
+    }
+}
+
+removeImage(i:number) {
+  this.empList[i]=null;
+  if(i==0){
+    this.isImageSaved1 = false;
+  }
+  if(i==1){
+    this.isImageSaved2 = false;
+  }
+}
 
   marginPrice:any;
   taxPrice:any;
@@ -922,7 +1030,7 @@ export class CategoryItemComponent implements OnInit {
     }
 
    
-    public NAMES = [];
+  //  public NAMES = [];
 
   ngOnInit() {
    
@@ -935,7 +1043,7 @@ export class CategoryItemComponent implements OnInit {
     this.alldiscountList();
     this.allfreegiftList();
 
-    for (let i = 1; i < 100; i++) {
+  /*  for (let i = 1; i < 100; i++) {
       let newName = {
          id:i.toString(),
          value1:"Ubalton",
@@ -951,7 +1059,7 @@ export class CategoryItemComponent implements OnInit {
          value11:"Delhi",
       };
       this.NAMES.push(newName);
-  }
+  } */
   }
 
   
@@ -1288,10 +1396,14 @@ productlist(number: string){
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
     this.dialogConfig.position = {
-      'top': '100',
-      left: '100'
+
+
+//      'top': '100',
+  //    left: '100'
     };
     this.dialog.open(AddnewproductComponent,{ 
+      height:'100vh',
+      width:'150vh',
       panelClass: 'addnewproduct',
     })
     .afterClosed().subscribe(result => {

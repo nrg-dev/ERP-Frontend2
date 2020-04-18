@@ -62,3 +62,17 @@ h4{
   left: -35px;
   content: "✖";
 }
+
+.close.mat-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  background:red;
+  padding: 5px;
+  line-height: 14px;
+  min-width: auto;
+}
+.cdk-overlay-pane.my-dialog {
+  position: relative!important;
+}
