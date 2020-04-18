@@ -13,7 +13,6 @@
   width: 100% !important;
 }
 
-
 #h2ID{
   color:$h2-bg;
   font-family: $font-family;
@@ -228,10 +227,10 @@ img {
 }
 
 .img-space {
- // border: dashed 1px #d3d3d3;
+  // border: dashed 1px #d3d3d3;
   border-radius: 8px;
- // background-color: #f2f2f2;
- background-color: $po-order-form-bg;
+  // background-color: #f2f2f2;
+  background-color: $po-order-form-bg;
   height: auto;
   width: 100%;
   padding: 10px;

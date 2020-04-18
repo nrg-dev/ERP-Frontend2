@@ -33,7 +33,15 @@ export class EmployeeAddComponent implements OnInit, AfterViewInit {
   cancelEmployee(){}
   saveEmployee() { 
     this.model.cardImageBase64=this.cardImageBase64;
-    this.employeeService.save(this.model)
+    if(this.model.name == "" || this.model.name == undefined){
+      setTimeout(() => {
+        this.snackBar.open("Employee name is required.", "", {
+          panelClass: ["warning"],
+          verticalPosition: 'top'      
+        });
+      });
+    }else{
+      this.employeeService.save(this.model)
       .subscribe(
         data => {
           setTimeout(() => {
@@ -54,6 +62,7 @@ export class EmployeeAddComponent implements OnInit, AfterViewInit {
           });  
         }
       );
+    }
   }
 
   addEmployeeClose() {
