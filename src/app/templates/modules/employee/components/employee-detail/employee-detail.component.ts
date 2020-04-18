@@ -12,6 +12,7 @@ import { CommonService } from "../../../../../core/common/_services/common.servi
 import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AlertService } from "src/app/core/common/_services/index";
 
 @Component({
   selector: "app-employee-detail",
@@ -23,9 +24,12 @@ export class EmployeeDetailComponent implements OnInit {
   attendanceDetails = [];
   employeeDet: any;
   events: string[] = [];
+  model: any = {};
   
    constructor(
     private employeeService: EmployeeService,
+    private alertService: AlertService,
+    private router: Router,
     private snackBar: MatSnackBar,
     public commonService: CommonService,
     private activatedRoute: ActivatedRoute,
@@ -76,4 +80,35 @@ export class EmployeeDetailComponent implements OnInit {
   transform(){
     return this.sanitizer.bypassSecurityTrustResourceUrl(this.employeeDet.cardImageBase64);
   }
+
+  deleteEmployee(employeecode: string) {
+    this.employeeService.remove(employeecode).subscribe(
+      data => {
+        this.model = data;
+        setTimeout(() => {
+          this.snackBar.open("Employee is deleted successfully", "", {
+            panelClass: ["error"],
+            verticalPosition: "top"
+          });
+        });
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 1500);
+        this.router.navigate(['/employment']);
+      },
+      error => {
+        setTimeout(() => {
+          this.snackBar.open(
+            "Network error: server is temporarily unavailable",
+            "",
+            {
+              panelClass: ["error"],
+              verticalPosition: "top"
+            }
+          );
+        });
+      }
+    );
+  }
+
 }

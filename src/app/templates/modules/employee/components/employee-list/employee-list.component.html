@@ -30,7 +30,7 @@
             </tr>
           </thead>  
           <tbody *ngFor="let e of employeesDS; let i = index"
-          (dblclick)="router.navigateByUrl('/employment/viewEmployee/'+a.employeecode)"> 
+          (dblclick)="router.navigateByUrl('/employment/viewEmployee/'+e.employeecode)"> 
           <tr>
               <td class="wid-50px" style="width: 4% !important;">
                 <!-- <img [src]="transform(e.cardImageBase64)"  class="img-fluid logo"> -->
