@@ -13,7 +13,7 @@ export class CategoryproductService {
 
   constructor(private http: HttpClient) {}
 
-  //*********************Employee************************
+  //*********************Category and Product Service ************************
 
   //category Save
   save(category: Category) {

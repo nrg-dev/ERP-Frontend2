@@ -131,7 +131,7 @@
                         <div class="img-space">   
                             
                             <div *ngIf="isImageSaved1; else elseTemplate" id="addproductpic-box">
-                                <img [src]="empList[0]" />
+                                <img [src]="productImage[0]" />
                             </div>
 
                             <ng-template #elseTemplate>
@@ -159,7 +159,7 @@
                     <div class="img-space">   
                         
                         <div *ngIf="isImageSaved2; else elseTemplate" id="addproductpic-box">
-                            <img [src]="empList[1]" />
+                            <img [src]="productImage[1]" />
                         </div>
 
                         <ng-template #elseTemplate>
