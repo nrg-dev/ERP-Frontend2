@@ -491,12 +491,18 @@ export class AddnewproductComponent {
       this.selectedFiles.push(event.target.files[i]);
     }
   }*/
-  isImageSaved1: boolean;
-  isImageSaved2:boolean;
+  isImageSaved0: boolean;
+  isImageSaved1:boolean;
+  isImageSaved2: boolean;
+  isImageSaved3:boolean;
+  
   imageError: string;
   productImage: Array<any> = [];
+  imageIndex0:boolean = false;
   imageIndex1:boolean = false;
   imageIndex2:boolean = false;
+  imageIndex3:boolean = false;
+
   imgBase64Path:any;
   fileChangeEvent(fileInput: any,imageNumber:number) {
     this.imageError = null;
@@ -539,7 +545,7 @@ export class AddnewproductComponent {
                       if(this.imageIndex1==false){
                         console.log("First Time");
                         this.productImage.push(this.imgBase64Path);
-                        this.isImageSaved1 = true;
+                        this.isImageSaved0 = true;
                         this.imageIndex1=true;
                         console.log("First time Base 64 array value-->"+this.productImage[0]);
                       }
@@ -548,33 +554,69 @@ export class AddnewproductComponent {
                         console.log("Second time Before update Base 64 array value-->"+this.productImage[0]);
                         console.log("Second time Base 64-->"+this.imgBase64Path);
                         this.productImage[0] = this.imgBase64Path;
-                        this.isImageSaved1 = true;
+                        this.isImageSaved0 = true;
                         console.log("Second time Base 64 array value-->"+this.productImage[0]);
                         //this.imageIndex1=true;
                       }
                   }
                   // Second Image
                   if(imageNumber==1){
-                    if(this.imageIndex2==false){
+                    if(this.imageIndex1==false){
                       console.log("First Time");
                       this.productImage.push(this.imgBase64Path);
-                      this.isImageSaved2 = true;
-                      this.imageIndex2=true;
+                      this.isImageSaved1 = true;
+                      this.imageIndex1=true;
                       console.log("First time Base 64 array value-->"+this.productImage[1]);
-                      //this.isImageSaved2 = true;
                     }
                     else{
                       console.log("else");
                       console.log("Second time Before update Base 64 array value-->"+this.productImage[1]);
                       console.log("Second time Base 64-->"+this.imgBase64Path);
                       this.productImage[1] = this.imgBase64Path;
-                      this.isImageSaved2 = true;
+                      this.isImageSaved1 = true;
                       console.log("Second time Base 64 array value-->"+this.productImage[1]);
                     }
                 }
-                 
-                    // this.previewImagePath = imgBase64Path;
+
+                // Third Image
+                if(imageNumber==2){
+                  if(this.imageIndex2==false){
+                    console.log("First Time");
+                    this.productImage.push(this.imgBase64Path);
+                    this.isImageSaved2 = true;
+                    this.imageIndex2=true;
+                    console.log("First time Base 64 array value-->"+this.productImage[2]);
+                  }
+                  else{
+                    console.log("else");
+                    console.log("Third time Before update Base 64 array value-->"+this.productImage[2]);
+                    console.log("Third time Base 64-->"+this.imgBase64Path);
+                    this.productImage[2] = this.imgBase64Path;
+                    this.isImageSaved2 = true;
+                    console.log("Third time Base 64 array value-->"+this.productImage[2]);
+                  }
+              }
+
+              // Fourth Image
+              if(imageNumber==3){
+                if(this.imageIndex3==false){
+                  console.log("First Time");
+                  this.productImage.push(this.imgBase64Path);
+                  this.isImageSaved3 = true;
+                  this.imageIndex3=true;
+                  console.log("First time Base 64 array value-->"+this.productImage[1]);
                 }
+                else{
+                  console.log("else");
+                  console.log("Fourth time Before update Base 64 array value-->"+this.productImage[3]);
+                  console.log("Fourth time Base 64-->"+this.imgBase64Path);
+                  this.productImage[3] = this.imgBase64Path;
+                  this.isImageSaved3 = true;
+                  console.log("Fourth time Base 64 array value-->"+this.productImage[1]);
+                }
+            }
+                 
+              }
             };
         };
 
@@ -585,10 +627,16 @@ export class AddnewproductComponent {
 removeImage(i:number) {
   this.productImage[i]=null;
   if(i==0){
-    this.isImageSaved1 = false;
+    this.isImageSaved0 = false;
   }
   if(i==1){
+    this.isImageSaved1 = false;
+  }
+  if(i==2){
     this.isImageSaved2 = false;
+  }
+  if(i==3){
+    this.isImageSaved3 = false;
   }
 }
 
@@ -625,7 +673,7 @@ removeImage(i:number) {
       data => {
         this.product =   data; 
         this.dialogRef.close();
-        if(this.product.status=="success"){
+       // if(this.product.status=="success"){
           setTimeout(() => {
             this.snackBar.open("Productr saved Successfully", "", {
               panelClass: ["success"],
@@ -635,8 +683,8 @@ removeImage(i:number) {
 
      
           this.model.sellingprice = 0;
-        } 
-        if(this.product.status=="failure"){
+      //  } 
+    /*   if(this.product.status=="failure"){
           setTimeout(() => {
             this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
               panelClass: ["error"],
@@ -644,7 +692,7 @@ removeImage(i:number) {
             });
           });   
       
-        }
+        } */
       },
       error => {
         setTimeout(() => {

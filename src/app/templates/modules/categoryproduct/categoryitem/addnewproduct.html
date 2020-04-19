@@ -83,7 +83,10 @@
                 #price="ngModel" (change)="getSellingPrice(model.price,model.tax,model.margin)"
                  placeholder="IDR X.XXX.XXX" name="price"/>
             </div>
+
+            
         </div>
+
 
         <br/>
         <div class="row">
@@ -116,12 +119,14 @@
                 #sellingprice="ngModel" value="{{ model.sellingprice }}"
                 placeholder="IDR 30.000" name="sellingprice"/>
             </div>
+
         </div>
 
     </div>
 
     <div class="col-5 col-md-5 col-sm-5 col-lg-5">
           <label id="text-cursor">Add Product Picture</label> 
+        <!-- First Image Row -->  
           <div class="row">
             <!--<div style="background:yellow">   -->
             <div>
@@ -129,96 +134,108 @@
                     <div class="custom-file fileInputProfileWrap">
                         <input type="file" (change)="fileChangeEvent($event,0)" class="fileInputProfile">
                         <div class="img-space">   
-                            
-                            <div *ngIf="isImageSaved1; else elseTemplate" id="addproductpic-box">
+                            <div *ngIf="isImageSaved0; else elseTemplate" id="addproductpic-box">
                                 <img [src]="productImage[0]" />
                             </div>
-
                             <ng-template #elseTemplate>
-     
                                 <div id="addproductpic-box">
                                     <i class="fa fa-plus-circle" id="addpicture-icon" aria-hidden="true"></i> 
                                 </div>
                             </ng-template>
-     
                         </div>
-     
                     </div>
-                  <!--  <a class="btn btn-danger" (click)="removeImage(0)" *ngIf="isImageSaved1">Remove</a>
--->
                 </fieldset>
             </div> 
             &nbsp;
-
-    <!--        <div style="background:blue"> -->   
-                <div>   
-
+            <div>   
             <fieldset> 
                 <div class="custom-file fileInputProfileWrap">
                     <input type="file" (change)="fileChangeEvent($event,1)" class="fileInputProfile">
                     <div class="img-space">   
-                        
-                        <div *ngIf="isImageSaved2; else elseTemplate" id="addproductpic-box">
+                        <div *ngIf="isImageSaved1; else elseTemplate" id="addproductpic-box">
                             <img [src]="productImage[1]" />
                         </div>
-
                         <ng-template #elseTemplate>
- 
                             <div id="addproductpic-box">
                                 <i class="fa fa-plus-circle" id="addpicture-icon" aria-hidden="true"></i> 
                             </div>
                         </ng-template>
- 
                     </div>
-
                 </div>
-                 <!--  <a class="btn btn-danger" (click)="removeImage(0)" *ngIf="isImageSaved1">Remove</a>
--->
             </fieldset>
             </div>
-
-         <!--   <div id="addproductpic-box">
-                <i class="fa fa-plus-circle" id="addpicture-icon" aria-hidden="true"></i> 
+         </div>
+<!--Remove Row for first images-->
+         <div class="row">
+            <div>
+                <a class="btn btn-danger" *ngIf="isImageSaved0" (click)="removeImage(0)">Remove </a>
             </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;
-            <div id="addproductpic-box">
-                <i class="fa fa-plus-circle" id="addpicture-icon" aria-hidden="true"></i> 
-            </div> -->
+<!--Remove Row for Second images-->
+            <div>
+                <a class="btn btn-danger" *ngIf="isImageSaved1" (click)="removeImage(1)">Remove </a>
+            </div>
+         </div>
+
+        <!-- Second Image Row -->  
+         <div class="row">
+            <!--<div style="background:yellow">   -->
+            <div>
+            <fieldset> 
+                    <div class="custom-file fileInputProfileWrap">
+                        <input type="file" (change)="fileChangeEvent($event,2)" class="fileInputProfile">
+                        <div class="img-space">   
+                            <div *ngIf="isImageSaved2; else elseTemplate" id="addproductpic-box">
+                                <img [src]="productImage[2]" />
+                            </div>
+                            <ng-template #elseTemplate>
+                                <div id="addproductpic-box">
+                                    <i class="fa fa-plus-circle" id="addpicture-icon" aria-hidden="true"></i> 
+                                </div>
+                            </ng-template>
+                        </div>
+                    </div>
+                </fieldset>
+            </div> 
+            &nbsp;
+            <div>   
+            <fieldset> 
+                <div class="custom-file fileInputProfileWrap">
+                    <input type="file" (change)="fileChangeEvent($event,3)" class="fileInputProfile">
+                    <div class="img-space">   
+                        <div *ngIf="isImageSaved3; else elseTemplate" id="addproductpic-box">
+                            <img [src]="productImage[3]" />
+                        </div>
+                        <ng-template #elseTemplate>
+                            <div id="addproductpic-box">
+                                <i class="fa fa-plus-circle" id="addpicture-icon" aria-hidden="true"></i> 
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
+            </fieldset>
+            </div>
          </div>
 
          <div class="row">
             <div>
-                <a class="btn btn-danger" *ngIf="isImageSaved1" (click)="removeImage(0)">Remove </a>
-
+                <a class="btn btn-danger" *ngIf="isImageSaved2" (click)="removeImage(2)">Remove </a>
             </div>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;
-
             <div>
-                <a class="btn btn-danger" *ngIf="isImageSaved2" (click)="removeImage(1)">Remove </a>
-
+                <a class="btn btn-danger" *ngIf="isImageSaved3" (click)="removeImage(3)">Remove </a>
             </div>
-
-
-
          </div>
-         <br/>
-       
-
-         <br/>
-       
+    </div>
     </div>
 
-    </div>
-    <br/>
-    <div class="row">
+   <div class="row">
         <div class="col-3 col-md-3 col-sm-3 col-lg-3"></div>
         <div class="col-3 col-md-3 col-sm-3 col-lg-3">
         <button id="save-btn">Add</button>
         </div>
-      <!--  <div class="col-3 col-md-3 col-sm-3 col-lg-3">
-        <button id="cancel-btn" (click)="close($event); false">Cancel</button>
-        </div> -->
         <div class="col-3 col-md-3 col-sm-3 col-lg-3"></div>
     </div>
 </form>

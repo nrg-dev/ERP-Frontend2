@@ -47,9 +47,11 @@ import { Ng2CompleterModule } from 'ng2-completer';
 import { VendorService } from '../vendor-and-customer/services/vendor.service';
 import { CategoryproductService } from './services/categoryproduct.service';
 import { CategoryProductRoutingModule } from "./categoryproduct-routing.module";
+import { UnitsComponent } from './units/units.component';
+import { AddunitsComponent } from './addunits/addunits.component';
 
 @NgModule({
-  declarations: [AddnewcategoryComponent,CategoryItemComponent,CategoryeditdeleteComponent,AddpromotionComponent,DiscounteditComponent, DiscountdeleteComponent,AddnewproductComponent,ProductviewComponent,ProducteditComponent,AllproducteditComponent,CategorytableComponent],
+  declarations: [AddnewcategoryComponent,CategoryItemComponent,CategoryeditdeleteComponent,AddpromotionComponent,DiscounteditComponent, DiscountdeleteComponent,AddnewproductComponent,ProductviewComponent,ProducteditComponent,AllproducteditComponent,CategorytableComponent, UnitsComponent, AddunitsComponent],
   imports: [
     FormsModule,
     MatFormFieldModule,

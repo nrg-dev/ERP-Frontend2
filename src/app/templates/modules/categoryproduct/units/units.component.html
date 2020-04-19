@@ -1,0 +1,32 @@
+<div id="outer-div">
+    <button  (click)="addNewUnits()" class="create-button">
+      <span class="fas fa-plus"></span> Units 
+    </button>
+ 
+  </div>  
+
+<h3>Unit List</h3> 
+
+<div id="table-outer-div">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Unit name</th>
+        <th>Unit symbol</th>
+        <th>Quantity name</th>
+        <th>Quantity symbol</th>
+        <th>Dimension symbol</th>
+      </tr>
+  </thead>
+  <tbody *ngFor="let a of NAMES; let i = index"> 
+      <tr>
+        <td>{{a.value1}}</td>
+        <td>{{a.value2}}</td>
+        <td>{{a.value3}}</td>
+        <td>{{a.value4}}</td>
+        <td>{{a.value5}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
