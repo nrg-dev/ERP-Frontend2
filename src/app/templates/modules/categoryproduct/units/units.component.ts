@@ -32,8 +32,6 @@ for (let i = 1; i < 100; i++) {
 }
   }
   addNewUnits(){
-    alert("Routing...");
-    this.router.navigate(["addunits"]);
-
+    this.router.navigate(["category-and-product/addunits"]);
   }
 }
