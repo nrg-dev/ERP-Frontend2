@@ -726,14 +726,16 @@ export class AllproducteditComponent {
   allproducedittlist: any = {};
   category:Category;
   product:Product;
+  inputproductcode:string;
   constructor(
     public dialogRef: MatDialogRef<AllproducteditComponent>,
     private catprodservice: CategoryproductService,
     private vendorservice: VendorService,
     private snackBar: MatSnackBar,
-
     @Inject(MAT_DIALOG_DATA) public data: any
     ) {
+      this.inputproductcode=data;
+      //alert(data);
       this.catprodservice.loadCategoryName()
       .subscribe(
          data => {
@@ -870,6 +872,8 @@ export class AllproducteditComponent {
   ngOnInit() {
   }
   setItem(){
+    console.log("Product Code-->"+this.inputproductcode);
+    this.model.prodcode=this.inputproductcode;
     console.log("setItem method");
     this.catprodservice.setItem(this.model)
     .subscribe(
