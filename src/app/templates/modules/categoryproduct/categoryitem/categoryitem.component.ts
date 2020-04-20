@@ -1518,7 +1518,7 @@ productlist(number: string){
       .subscribe(
         data => {
           this.product =  data;  
-          if(this.product.status == "Success"){
+        //  if(this.product.status == "Success"){
             setTimeout(() => {
               this.snackBar.open("Product Deleted Successfully", "", {
                 panelClass: ["error"],
@@ -1526,15 +1526,7 @@ productlist(number: string){
               });
             });
         
-        }else if(this.product.status == "failure"){
-          
-			 setTimeout(() => {
-        this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-          panelClass: ["error"],
-          verticalPosition: 'top'      
-        });
-      });  
-        }
+      //  }
       },
       error => {
         setTimeout(() => {

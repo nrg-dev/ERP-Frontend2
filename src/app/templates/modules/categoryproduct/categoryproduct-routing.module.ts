@@ -3,7 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 
 // Components
 import { 
-  CategoryItemComponent, 
+  CategoryItemComponent,
   AddpromotionComponent, 
   DiscounteditComponent, 
   DiscountdeleteComponent, 
