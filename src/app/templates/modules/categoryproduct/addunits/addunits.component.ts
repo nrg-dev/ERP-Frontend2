@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./addunits.component.scss']
 })
 export class AddunitsComponent implements OnInit {
+  model: any = {};
 
   constructor(private router: Router) { }
 
@@ -15,6 +16,14 @@ export class AddunitsComponent implements OnInit {
 
   unitClose(){
     this.router.navigate(["category-and-product/units"]);
+  }
+
+  addUnit() {
+    console.log(this.model.unitname);
+    console.log(this.model.unitsymbol);
+    console.log(this.model.quantityname);
+    console.log(this.model.quantitysymbol);
+    console.log(this.model.dimensionsymbol);
   }
 
 }

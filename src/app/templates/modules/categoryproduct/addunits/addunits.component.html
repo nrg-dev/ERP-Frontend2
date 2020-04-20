@@ -2,21 +2,49 @@
 <div class="container">
   <button class="close" (click)="unitClose()">Back</button>
 
-  <form action="/action_page.php">
+    <form
+    name="unitForm"
+    (submit)="unitForm.form.valid && addUnit()"
+    #unitForm="ngForm"
+    novalidate>
     <div class="row">
       <div class="col-25">
         <label for="fname">Unit name	</label>
       </div>
       <div class="col-75">
-        <input type="text" id="fname" name="firstname" placeholder="Your name..">
+        <input type="text" name="unitname"
+        [(ngModel)]="model.unitname"
+        #unitname="ngModel"
+        id="unitname" 
+        name="unitname"
+        required
+        placeholder="Enter Unit..">
+
+        <p
+        class="font-sm my-1 text-danger"
+        [ngStyle]="{
+          visibility:
+            unitForm.submitted && !unitname.valid ? 'visible' : 'hidden'
+        }"
+      >
+        Required
+      </p>
+      
       </div>
     </div>
+  
+
     <div class="row">
       <div class="col-25">
         <label for="lname">Unit symbol	</label>
       </div>
       <div class="col-75">
-        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+        <input type="text" name="unitsymbol"
+        [(ngModel)]="model.unitsymbol"
+        #unitsymbol="ngModel"
+        id="unitsymbol" 
+        name="unitsymbol" 
+        placeholder="Enter Unit Symbol..">
       </div>
     </div>
 
@@ -24,7 +52,12 @@
         <div class="col-25">
           <label for="lname">Quantity name	        </label>       </div>
         <div class="col-75">
-          <input type="text" id="Quantityname" name="Quantityname" placeholder="Enter Quantityname..">
+          <input type="text" name="quantityname"
+          [(ngModel)]="model.quantityname"
+          #quantityname="ngModel"
+          id="quantityname" 
+          name="quantityname" 
+          placeholder="Enter Quantity Name..">
         </div>
       </div>
 
@@ -33,23 +66,26 @@
         <label for="country">Quantity symbol		</label>
       </div>
       <div class="col-75">
-        <input type="text" id="Quantitysymbol" name="Quantitysymbol" placeholder="Enter Quantitysymbol..">
+        <input type="text" name="quantitysymbol"
+        [(ngModel)]="model.quantitysymbol"
+        #quantitysymbol="ngModel"
+        id="quantitysymbol" 
+        name="quantitysymbol" 
+        placeholder="Enter Quantity Symbol..">
       </div>
 
-      <!--<div class="col-75">
-        <select id="country" name="country">
-          <option value="australia">Australia</option>
-          <option value="canada">Canada</option>
-          <option value="usa">USA</option>
-        </select>
-      </div> -->
     </div>
     <div class="row">
       <div class="col-25">
         <label for="subject">Dimension symbol  </label>
       </div>
       <div class="col-75">
-        <input type="text" id="Quantitysymbol" name="Quantitysymbol" placeholder="Enter Quantitysymbol..">
+        <input type="text" name="dimensionsymbol"
+        [(ngModel)]="model.dimensionsymbol"
+        #dimensionsymbol="ngModel"
+        id="dimensionsymbol" 
+        name="dimensionsymbol" 
+        placeholder="Enter Dimension Symbol..">
       </div>
       <!--
       <div class="col-75">
@@ -62,6 +98,7 @@
       <div class="col-25"></div>
       <div class="col-75">
         <button for="save" class="save-button">SAVE</button>
+
       </div>
     </div>
     
