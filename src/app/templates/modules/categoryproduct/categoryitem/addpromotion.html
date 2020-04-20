@@ -1,5 +1,10 @@
 <!--Dialouge box start-->
 <div id="box-dialouge">
+    <button type="button" class="close" aria-label="Close" 
+        (click)="addPromotionClose()" style="position: relative; left: 0px; top: 5px;">
+        <span aria-hidden="true" id="close-icon">&times;</span>
+    </button>
+        
     <br/>
     <form name="addpromotion" (ngSubmit)="savePromotion()"> 
     <h2 style="text-align: center;">{{title}}</h2>

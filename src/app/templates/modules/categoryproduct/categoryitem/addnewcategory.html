@@ -1,20 +1,19 @@
 <!--<button class="close" mat-button (click)="onNoClick()">X</button>
 -->
 <div class="container">
-    <div>
-
+    <button type="button" class="close" aria-label="Close" 
+        (click)="addCategoryClose()" style="position: relative; left: 25px; top: -20px;">
+        <span aria-hidden="true" id="close-icon">&times;</span>
+    </button>
     <form name="addnewcategory" (ngSubmit)="saveCategory()" #categoryForm="ngForm"> 
         <div class="form-group">
- 
-    <input type="text"  [(ngModel)]="model.name" #name="ngModel" placeholder="Enter Name"
-     id="name" name="name"  strictRequired>
+            <input type="text"  [(ngModel)]="model.name" #name="ngModel" placeholder="Enter Name"
+            id="name" name="name"  strictRequired>
 
-    <input type="text" 
-    [(ngModel)]="model.description" #description="ngModel" placeholder="Enter Description" name="description"
-    >
-    </div>
-    <button type="submit" [disabled]="!categoryForm.form.valid">Save</button>
+            <input type="text" [(ngModel)]="model.description" #description="ngModel" 
+                placeholder="Enter Description" name="description">
+        </div>
+        <button type="submit" [disabled]="!categoryForm.form.valid">Save</button>
 
     </form>
-    </div>
 </div>

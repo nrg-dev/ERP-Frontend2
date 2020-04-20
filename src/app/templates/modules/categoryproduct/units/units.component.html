@@ -16,6 +16,7 @@
         <th>Quantity name</th>
         <th>Quantity symbol</th>
         <th>Dimension symbol</th>
+        <th colspan="2"></th>
       </tr>
   </thead>
   <tbody *ngFor="let a of NAMES; let i = index"> 
@@ -25,6 +26,13 @@
         <td>{{a.value3}}</td>
         <td>{{a.value4}}</td>
         <td>{{a.value5}}</td>
+        <td>
+            <span (click)="unitedit(a.value1)" class="fas fa-pen mar-let-40px"></span>
+        </td>
+        <td>
+            <span (click)="unitdelete(a.value1)" class="fas fa-trash"></span>
+        </td>
+  
       </tr>
     </tbody>
   </table>

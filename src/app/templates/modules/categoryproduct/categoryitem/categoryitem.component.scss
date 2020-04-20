@@ -11,7 +11,13 @@
   //padding:8px 20px;
   border-radius: 25px;
 }
-
+::ng-deep .mat-drawer-content {
+  position: relative;
+  z-index: 1;
+  display: block;
+  height: 100%;
+  overflow: hidden !important;
+}
 
 #outer-div{ 
  // overflow-y: auto; 
@@ -62,7 +68,13 @@ tbody {
 .table > tbody > tr:hover, .table > tbody > tr:hover span  {
   background-color: $header-bg;
 }
+table tbody tr td span{
+  display: none;
+}
 
+table tbody tr:hover td span{
+  display: block !important;
+}
 // iPhone media query start
 
 // iPhone 6, 7, & 8 in portrait & landscape

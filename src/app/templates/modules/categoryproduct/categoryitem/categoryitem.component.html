@@ -18,6 +18,8 @@
 
 </div>     
 
+<br/>
+
 <h3>Product List</h3> 
 <!--<a [routerLink]="['units']">Units</a> &nbsp; :: &nbsp;<a [routerLink]="['addunits']">addunits</a>
 -->
@@ -34,10 +36,7 @@
         <th>Margin</th>
         <th>Tax</th>
         <th>Selling Price / Unit</th>
-        <th>Edit</th>
-        <th>Delete</th>
-
-
+        <th colspan="2"></th>
       </tr>
   </thead>
   <tbody *ngFor="let a of allproductlist; let i = index"> 
@@ -52,15 +51,10 @@
         <td>{{a.margin}}</td>
         <td>{{a.sellingprice}}</td>
         <td>
-          <span>
-            <span (click)="allproducteditcall(a.prodcode)" class="fas fa-pen mar-let-40px"></span>
-              </span>
+          <span (click)="allproducteditcall(a.prodcode)" class="fas fa-pen mar-let-40px"></span>
         </td>
-        
         <td>
-          <span>
-            <span (click)="allproductdelete(a.prodcode)" class="fas fa-trash"></span>
-              </span>
+          <span (click)="allproductdelete(a.prodcode)" class="fas fa-trash"></span>
         </td>
 
       </tr>
@@ -68,4 +62,4 @@
     </tbody>
   </table>
 </div>
-
+<br/>

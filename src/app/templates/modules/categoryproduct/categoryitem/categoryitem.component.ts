@@ -29,17 +29,21 @@ export class AddnewcategoryComponent {
 
     ) {
     }
-  saveCategory(){
-    console.log("Inside saveCategory method");
-    console.log("Category Name-->"+this.model.name);
-    console.log("Category Desc-->"+this.model.description);
 
-    this.catprodservice.save(this.model)
-    .subscribe(
-      data => {
-      //  this.category =   data; 
-     //   console.log("Response-->"+data);
-        this.dialogRef.close();
+    addCategoryClose() {
+      this.dialogRef.close();
+    }
+    saveCategory(){
+      console.log("Inside saveCategory method");
+      console.log("Category Name-->"+this.model.name);
+      console.log("Category Desc-->"+this.model.description);
+
+      this.catprodservice.save(this.model)
+      .subscribe(
+        data => {
+        //  this.category =   data; 
+        //   console.log("Response-->"+data);
+          this.dialogRef.close();
           setTimeout(() => {
             this.snackBar.open("Category Saved Successfully", "", {
               panelClass: ["success"],
@@ -247,6 +251,10 @@ export class AddpromotionComponent {
         }
       );
  
+    }
+
+    addPromotionClose() {
+      this.dialogRef.close();
     }
 
     savePromotion(){
@@ -622,6 +630,10 @@ export class AddnewproductComponent {
 
         reader.readAsDataURL(fileInput.target.files[0]);
     }
+}
+
+addProductClose() {
+  this.dialogRef.close();
 }
 
 removeImage(i:number) {
@@ -1518,23 +1530,22 @@ productlist(number: string){
       .subscribe(
         data => {
           this.product =  data;  
-          if(this.product.status == "Success"){
+          //if(this.product.status == "Success"){
             setTimeout(() => {
               this.snackBar.open("Product Deleted Successfully", "", {
                 panelClass: ["error"],
                 verticalPosition: 'top'      
               });
             });
-        
-        }else if(this.product.status == "failure"){
-          
-			 setTimeout(() => {
-        this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-          panelClass: ["error"],
-          verticalPosition: 'top'      
-        });
-      });  
-        }
+            this.allproductList();
+          /*}else if(this.product.status == "failure"){
+            setTimeout(() => {
+              this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+                panelClass: ["error"],
+                verticalPosition: 'top'      
+              });
+          }); 
+        }*/ 
       },
       error => {
         setTimeout(() => {
@@ -1542,8 +1553,9 @@ productlist(number: string){
             panelClass: ["error"],
             verticalPosition: 'top'      
           });
-        });      }
+        });      
+      }
     );
   }
 
-  }
+}
