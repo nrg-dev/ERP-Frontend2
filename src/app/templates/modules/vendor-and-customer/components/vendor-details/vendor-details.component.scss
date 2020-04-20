@@ -10,10 +10,23 @@
     display: flex;
     padding: 20px;
     padding-bottom: 6.5%;
+    padding-left: 30px;
+
+    & a.close {
+            border-radius: 50%;
+            background:  url(/assets/images/Back-button.svg) no-repeat center;
+            display: block;
+            position: absolute;
+            left: -10px;
+            top: 15px;
+            padding: 15px;
+            background-size: 50% 50%;
+            cursor: pointer;
+        }
 }
 
 .vendor-selected{
-    flex: 1 0 15%;
+    flex: 1 0 14%;
     padding: 20px;
     margin-right: 20px;
     position: relative;
@@ -129,13 +142,14 @@
                 cursor: pointer;
             }
 
+            & span.menu-add,
             & span.menu-edit{
                 width: 12px;
                 height: 12px;
                 display: inline-block;
                 vertical-align: middle;
                 position: absolute;
-                right: 0;
+                right: 10px;
                 top: 50%;
                 transform: translateY(-50%);
                 cursor: pointer;
@@ -152,10 +166,12 @@
                 font-size: 12px;
             }
 
+            & span.menu-add,
             & span.menu-edit.show{
                 visibility: visible;
             }
 
+            & span.menu-add,
             & span.menu-edit.edit{
                 background: url(/assets/images/icon-tick.svg) no-repeat center;
             }
@@ -167,27 +183,33 @@
             ul {
                 background: #253f4b;
                 position: absolute;
-                padding: 15px;
+                padding: 10px 0;
                 display: none;
             }
 
             li a {
                 font-size: 13px;
                 color: #edeff0;
+                padding: 15px;
             }
+
+            li.addCategory {
+                border-top: 1px solid #17252F;
+                text-align: center;
+                margin-top: 10px;
+
+                & div {
+                    position: relative;
+                    padding-top: 8px;
+                    & span.menu-add {
+                        right: -20px;
+                        top:20px;
+                    }
+                }
+            }
+
         }
 
-        & a.close {
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2) url(/assets/images/Back-button.svg) no-repeat center;
-            display: block;
-            position: absolute;
-            right: 0;
-            top: 0;
-            padding: 15px;
-            background-size: 50% 50%;
-            cursor: pointer;
-        }
     }
 
     .item-search{

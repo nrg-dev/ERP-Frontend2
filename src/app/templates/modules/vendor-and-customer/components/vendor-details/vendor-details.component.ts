@@ -1,4 +1,4 @@
-import { Component, Inject, ElementRef, OnInit, HostListener } from '@angular/core';
+import { Component, Inject, ElementRef, OnInit, HostListener, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA  } from '@angular/material';
 
 import { VendorDetailsService } from './../../services/vendorDetails.service';
@@ -11,6 +11,8 @@ import { element } from 'protractor';
 })
 export class VendorDetailsComponent implements OnInit {
 
+  @ViewChild('dropDwn', {static:true}) dropDwn:ElementRef;
+
   allCategoryItems = [];
   backAllCategoryItems = [];
   filteredItems = [];
@@ -22,23 +24,15 @@ export class VendorDetailsComponent implements OnInit {
   onEdit = -1;
   isLabelEdited = false;
   labelNewText="";
+  isAddCategory = false;
+  newCateogry = "";
 
 
   @HostListener('document:click', ['$event']) closeNaviOnOutClick(event) {
 
-    if (event.target && event.target.classList.contains('drop-down-arrow')) {
-      return;
-    }
+    const parent = this.dropDwn.nativeElement;
 
-    if (event.target && event.target.classList.contains('menu-item')) {
-      return;
-    }
-
-    if (event.target && event.target.classList.contains('input')) {
-      return;
-    }
-
-    if (event.target && event.target.classList.contains('menu-edit')) {
+    if(parent.contains(event.target)){
       return;
     }
 
@@ -135,6 +129,29 @@ export class VendorDetailsComponent implements OnInit {
   updateMenu(index){
     this.categoriesForFilter[index]['name'] = this.labelNewText;
     this.dropDownView = false;
+  }
+
+  showAddCategory() {
+    this.isAddCategory = true;
+  }
+
+  addCategory() {
+
+    if (!this.newCateogry.trim().length) return;
+    
+    const newCategory = {
+      "id": "0",
+      "categorycode": "0",
+      "name": this.newCateogry,
+      "description": null,
+      "updateddate": null,
+      "status": null
+    }
+
+    this.categoriesForFilter = [...this.categoriesForFilter,newCategory];
+    this.newCateogry = "";
+    this.dropDownView = false;
+
   }
 
 }
