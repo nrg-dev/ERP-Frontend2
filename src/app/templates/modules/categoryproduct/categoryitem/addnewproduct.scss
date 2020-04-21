@@ -6,7 +6,7 @@
 }
 ::ng-deep .addnewproduct .mat-dialog-container {
   background:$po-order-form-bg;
-  width: 150vh;;
+  width: 150vh;
   height: 100vh; 
   border-radius: 25px;
   padding: 17px;
@@ -105,19 +105,31 @@ input[type=submit]:hover {
 }
 .close {
   border: none;
-  color: white;
+  background:red;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 20px;
   margin: 4px 2px;
+  padding: 3px;
   cursor: pointer;
-  border-radius: 50%; 
 }
 #close-icon{
   font-size: 1.5rem;
+  color: #000;
 }
-
+.close.mat-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  background:red;
+  padding: 5px;
+  line-height: 14px;
+  min-width: auto;
+}
+.cdk-overlay-pane.my-dialog {
+  position: relative!important;
+}
 #text-cursor {
   cursor: text;
 }
@@ -213,4 +225,7 @@ h2 {
   height: 35px;
   background: #ff0000;
   border: none;
+}
+.btn-danger{
+  margin-left: 25px;
 }

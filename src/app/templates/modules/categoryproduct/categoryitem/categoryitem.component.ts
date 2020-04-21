@@ -444,6 +444,7 @@ export class AddnewproductComponent {
   model: any = {};
   allcategorylist:any = {};
   vendornamelist: any = {};
+  allUnitlist:any = {};
   unitlist: any = {};
   data: any = {};
   category:Category;
@@ -458,21 +459,18 @@ export class AddnewproductComponent {
 
     ) {
       this.catprodservice.load()
-     .subscribe(
+      .subscribe(
         data => {
           this.allcategorylist = data;
-          //console.log("category name"+this.allcategorylist);
         },
-       error => {
-       	
-		setTimeout(() => {
-      this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-        panelClass: ["error"],
-        verticalPosition: 'top'      
-      });
-    });   
-
-      }
+        error => {	
+          setTimeout(() => {
+            this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+              panelClass: ["error"],
+              verticalPosition: 'top'      
+            });
+          });   
+        }
      );
 
      this.vendorservice.load()
@@ -481,18 +479,32 @@ export class AddnewproductComponent {
           this.vendornamelist = data;
           console.log("category name"+this.vendornamelist);
         },
-       error => {
-         	
-		setTimeout(() => {
-      this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-        panelClass: ["error"],
-        verticalPosition: 'top'      
-      });
-    });   
-
+       error => {	
+        setTimeout(() => {
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });   
       }
      );
-     this.model.sellingprice = 0;
+     let id = "all";
+     //--load unitList
+     this.catprodservice.loadUnitList(id)
+      .subscribe(
+        data => {
+          this.allUnitlist = data;
+        },
+        error => {
+          setTimeout(() => {
+            this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+              panelClass: ["error"],
+              verticalPosition: 'top'      
+            });
+          });   
+        }
+      );
+      this.model.sellingprice = 0;
   }
   /*fileChangeEvent(event) {
     this.selectedFiles = event.target.files;

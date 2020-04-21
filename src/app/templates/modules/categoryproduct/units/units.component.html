@@ -18,7 +18,6 @@
         <th>Quantity name</th>
         <th>Quantity symbol</th>
         <th>Dimension symbol</th>
-        <th colspan="2"></th>
       </tr>
   </thead>
   <tbody *ngFor="let a of NAMES; let i = index"> 
@@ -27,12 +26,11 @@
         <td>{{a.value2}}</td>
         <td>{{a.value3}}</td>
         <td>{{a.value4}}</td>
-        <td>{{a.value5}}</td>
-        <td>
+        <td>{{a.value5}}
+          <span>
             <span (click)="unitedit(a.value1)" class="fas fa-pen mar-let-40px"></span>
-        </td>
-        <td>
-            <span (click)="unitdelete(a.value1)" class="fas fa-trash"></span>
+            <span (click)="unitdelete(a.value1)" class="fas fa-trash mar-let-30px"></span>
+          </span>
         </td>
   
       </tr>

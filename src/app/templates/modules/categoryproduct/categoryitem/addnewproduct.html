@@ -63,8 +63,8 @@
                         <select id="editselect-box" name ="unit" [(ngModel)]="model.unit"
                             #unit="ngModel" unit>
                             <option [ngValue]="undefined" hidden selected> Select Unit </option>
-                            <option id="editselect-box" *ngFor="let item of unitlist" 
-                                value="{{item.vendorName}}-{{item.vendorcode}}"> {{item.vendorName}}-{{item.vendorcode}} </option>
+                            <option id="editselect-box" *ngFor="let item of allUnitlist" 
+                                value="{{item.unitname}}"> {{item.unitname}} </option>
                         </select>
                     </div>
                 </div>
@@ -137,6 +137,12 @@
                             </div>
                         </div>
                     </fieldset>
+                    <div class="row">
+                        <div>
+                            <a class="btn btn-danger" *ngIf="isImageSaved0" (click)="removeImage(0)">Remove </a>
+                        </div>
+                    </div>
+                    
                 </div> 
                 &nbsp;
                 <div>   
@@ -155,20 +161,15 @@
                             </div>
                         </div>
                     </fieldset>
+                    <div class="row">
+                        <div>
+                            <a class="btn btn-danger" *ngIf="isImageSaved1" (click)="removeImage(1)">Remove </a>
+                        </div>
+                    </div>
+                   
                 </div>
             </div>
-            <!--Remove Row for first images-->
-            <div class="row">
-                <div>
-                    <a class="btn btn-danger" *ngIf="isImageSaved0" (click)="removeImage(0)">Remove </a>
-                </div>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;
-                <div>
-                    <a class="btn btn-danger" *ngIf="isImageSaved1" (click)="removeImage(1)">Remove </a>
-                </div>
-            </div>
-        
+           
             <!-- Second Image Row -->  
             <div class="row">
                 <div>
@@ -187,6 +188,11 @@
                             </div>
                         </div>
                     </fieldset>
+                    <div class="row">
+                        <div>
+                            <a class="btn btn-danger" *ngIf="isImageSaved2" (click)="removeImage(2)">Remove </a>
+                        </div>
+                    </div>
                 </div> 
                 &nbsp;
                 <div>   
@@ -205,19 +211,14 @@
                             </div>
                         </div>
                     </fieldset>
+                    <div class="row">
+                        <div>
+                            <a class="btn btn-danger" *ngIf="isImageSaved3" (click)="removeImage(3)">Remove </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        
-            <div class="row">
-                <div>
-                    <a class="btn btn-danger" *ngIf="isImageSaved2" (click)="removeImage(2)">Remove </a>
-                </div>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;
-                <div>
-                    <a class="btn btn-danger" *ngIf="isImageSaved3" (click)="removeImage(3)">Remove </a>
-                </div>
-            </div>
+            
         </div>
     </div>
 </div>

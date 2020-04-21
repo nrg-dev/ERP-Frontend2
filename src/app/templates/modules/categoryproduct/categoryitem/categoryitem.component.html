@@ -36,7 +36,6 @@
         <th>Margin</th>
         <th>Tax</th>
         <th>Selling Price / Unit</th>
-        <th colspan="2"></th>
       </tr>
   </thead>
   <tbody *ngFor="let a of allproductlist; let i = index"> 
@@ -49,14 +48,12 @@
         <td>{{a.price}}</td>
         <td>{{a.tax}}</td>
         <td>{{a.margin}}</td>
-        <td>{{a.sellingprice}}</td>
-        <td>
-          <span (click)="allproducteditcall(a.prodcode)" class="fas fa-pen mar-let-40px"></span>
+        <td>{{a.sellingprice}} 
+          <span class="edit-delete-icon" *ngIf="a.productname === a.productname">
+            <span class="fas fa-pen mar-let-40px" (click)="allproducteditcall(a.prodcode)" ></span>
+            <span class="fas fa-trash mar-let-30px" (click)="allproductdelete(a.prodcode)"></span>
+          </span>
         </td>
-        <td>
-          <span (click)="allproductdelete(a.prodcode)" class="fas fa-trash"></span>
-        </td>
-
       </tr>
      
     </tbody>
