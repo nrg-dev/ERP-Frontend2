@@ -23,12 +23,7 @@ for (let i = 1; i < 100; i++) {
        value3:"alex@gmail.com",
        value4:"Tamil Nadu",
        value5:"India",
-       value6:"+91 4763212",
-       value7:"10000",
-       value8:"MCA",
-       value9:"Male",
-       value10:"Active",
-       value11:"Delhi",
+
     };
     this.NAMES.push(newName);
 }

@@ -1,11 +1,23 @@
 <!--<a [routerLink]="['units']">Units</a> &nbsp; :: &nbsp;<a [routerLink]="['/addunits']">addunits</a>
 -->
-<div id="outer-div">
-    <button  (click)="addNewUnits()" class="create-button">
-      <span class="fas fa-plus"></span> Units 
-    </button>
- 
-  </div>  
+
+<div class="row">
+
+  <div class="col-12">
+  <button  (click)="addNewUnits()" class="create-button">
+    <span class="fas fa-plus"></span> Units 
+  </button>
+</div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-12">
+
+
+
+
 
 <h3>Unit List</h3> 
 
@@ -22,7 +34,7 @@
   </thead>
   <tbody *ngFor="let a of NAMES; let i = index"> 
       <tr>
-        <td>{{a.value1}}</td>
+        <td>{{a.id}}</td>
         <td>{{a.value2}}</td>
         <td>{{a.value3}}</td>
         <td>{{a.value4}}</td>
@@ -36,5 +48,8 @@
       </tr>
     </tbody>
   </table>
+</div>
+</div>
+
 </div>
 
