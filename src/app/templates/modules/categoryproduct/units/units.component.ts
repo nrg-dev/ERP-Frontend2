@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CategoryproductService } from '../services/categoryproduct.service';
+import { MatSnackBar } from "@angular/material";
 
 @Component({
   selector: 'app-units',
@@ -7,26 +9,32 @@ import { Router } from '@angular/router';
   styleUrls: ['./units.component.scss']
 })
 export class UnitsComponent implements OnInit {
+  constructor(private router: Router,
+    private catprodservice: CategoryproductService,
+    private snackBar: MatSnackBar
+  ) { }
 
-  constructor(private router: Router) { }
-
-  public NAMES = [];
-  unitlist:any;
+  unitlist:any = {};
 
   ngOnInit() {
    
-for (let i = 1; i < 100; i++) {
-    let newName = {
-       id:i.toString(),
-       value1:"Ubalton",
-       value2:"+91 88704662431",
-       value3:"alex@gmail.com",
-       value4:"Tamil Nadu",
-       value5:"India",
+    let id = "all";
+     //--load unitList
+     this.catprodservice.loadUnitList(id)
+      .subscribe(
+        data => {
+          this.unitlist = data;
+        },
+        error => {
+          setTimeout(() => {
+            this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+              panelClass: ["error"],
+              verticalPosition: 'top'      
+            });
+          });   
+        }
+      );
 
-    };
-    this.NAMES.push(newName);
-}
   }
   addNewUnits(){
     this.router.navigate(["category-and-product/addunits"]);

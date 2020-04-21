@@ -32,16 +32,16 @@
         <th>Dimension symbol</th>
       </tr>
   </thead>
-  <tbody *ngFor="let a of NAMES; let i = index"> 
+  <tbody *ngFor="let a of unitlist; let i = index"> 
       <tr>
-        <td>{{a.id}}</td>
-        <td>{{a.value2}}</td>
-        <td>{{a.value3}}</td>
-        <td>{{a.value4}}</td>
-        <td>{{a.value5}}
+        <td>{{a.unitname}}</td>
+        <td>{{a.unitsymbol}}</td>
+        <td>{{a.quantityname}}</td>
+        <td>{{a.quantitysymbol}}</td>
+        <td>{{a.dimensionsymbol}}
           <span>
-            <span (click)="unitedit(a.value1)" class="fas fa-pen mar-let-40px"></span>
-            <span (click)="unitdelete(a.value1)" class="fas fa-trash mar-let-30px"></span>
+            <span (click)="unitedit(a.quantityname)" class="fas fa-pen mar-let-40px"></span>
+            <span (click)="unitdelete(a.quantityname)" class="fas fa-trash mar-let-30px"></span>
           </span>
         </td>
   
