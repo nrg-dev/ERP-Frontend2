@@ -15,19 +15,14 @@
         [(ngModel)]="model.unitname"
         #unitname="ngModel"
         id="unitname" 
-        name="unitname"
         required
-        placeholder="Enter Unit..">
-
-        <p
-        class="font-sm my-1 text-danger"
-        [ngStyle]="{
-          visibility:
-            unitForm.submitted && !unitname.valid ? 'visible' : 'hidden'
-        }"
-      >
-        Required
-      </p>
+        placeholder="Enter Unit..">     
+        <div *ngIf="unitname.errors  && (unitname.dirty || unitname.touched) ||
+        (unitForm.submitted && !unitname.valid )">
+          <span [hidden]="!unitname.errors.required">
+            Required field cannot be left blank
+          </span>
+         </div>
       
       </div>
     </div>
@@ -38,12 +33,21 @@
         <label for="lname">Unit symbol	</label>
       </div>
       <div class="col-75">
-        <input type="text" name="unitsymbol"
+        <input type="text" 
         [(ngModel)]="model.unitsymbol"
         #unitsymbol="ngModel"
         id="unitsymbol" 
-        name="unitsymbol" 
+        name="unitsymbol"
+        required
         placeholder="Enter Unit Symbol..">
+
+        <div *ngIf="unitsymbol.errors  && (unitsymbol.dirty || unitsymbol.touched) ||
+        (unitForm.submitted && !unitsymbol.valid )">
+          <span [hidden]="!unitsymbol.errors.required">
+            Required field cannot be left blank
+          </span>
+         </div>
+
       </div>
     </div>
 
@@ -96,7 +100,8 @@
     <div class="row">
       <div class="col-25"></div>
       <div class="col-75">
-        <button for="save" class="save-button">SAVE</button>
+       <!-- <button  [disabled]="!unitForm.form.valid" class="save-button">SAVE</button> -->
+        <button  class="save-button">SAVE</button>
 
       </div>
     </div>

@@ -162,6 +162,8 @@ export class CategoryproductService {
   }
 
   saveUnit(units: Units) {
+    console.log("saveUnit service");
+    console.log("URL-->"+`${environment.apiUrl}${API_ENDPOINTS.saveUnit}`);
     return this.http.post<Units>(
       `${environment.apiUrl}${API_ENDPOINTS.saveUnit}`,
       units

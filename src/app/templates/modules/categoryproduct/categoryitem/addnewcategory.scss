@@ -1,5 +1,21 @@
 @import "_base";
 
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+
+span{
+//  color:#a94442;
+  color:white;
+  background-color: red;
+  font-size: 12px;
+}
+
 ::ng-deep .addnewcategory  .mat-dialog-container {
   background:$po-order-form-bg;
 }
