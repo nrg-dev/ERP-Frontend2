@@ -442,8 +442,9 @@ export class DiscountdeleteComponent {
 })
 export class AddnewproductComponent {
   model: any = {};
-  allcategorylist:any= {};
+  allcategorylist:any = {};
   vendornamelist: any = {};
+  unitlist: any = {};
   data: any = {};
   category:Category;
   product:Product;

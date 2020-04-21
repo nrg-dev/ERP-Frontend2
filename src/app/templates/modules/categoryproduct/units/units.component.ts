@@ -11,6 +11,8 @@ export class UnitsComponent implements OnInit {
   constructor(private router: Router) { }
 
   public NAMES = [];
+  unitlist:any;
+
   ngOnInit() {
    
 for (let i = 1; i < 100; i++) {
