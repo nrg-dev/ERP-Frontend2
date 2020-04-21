@@ -178,12 +178,14 @@
 
             ul.show {
                 display: block;
+                overflow-y: auto;
+                max-height: 300px;
             }
 
             ul {
                 background: #253f4b;
                 position: absolute;
-                padding: 10px 0;
+                padding-top: 10px;
                 display: none;
             }
 
@@ -195,8 +197,13 @@
 
             li.addCategory {
                 border-top: 1px solid #17252F;
+                background: #253f4b;
                 text-align: center;
                 margin-top: 10px;
+                position: sticky;
+                left: 0;
+                bottom: 0;
+                padding-bottom:15px;
 
                 & div {
                     position: relative;
