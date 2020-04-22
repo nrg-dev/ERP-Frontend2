@@ -16,6 +16,7 @@ import {
   CategorytableComponent} from './categoryitem/categoryitem.component';
 import { UnitsComponent } from './units/units.component';
 import { AddunitsComponent } from './addunits/addunits.component';
+import { CategoryComponent } from './category/category.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'addunits',
     component: AddunitsComponent,
+  },
+  {
+    path: 'category',
+    component: CategoryComponent,
   }
 
 ];

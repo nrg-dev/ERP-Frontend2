@@ -73,6 +73,11 @@ export const SidenavItems: MenuItem[] = [
         id: "units",
         label: "units",
         path: "/category-and-product/units",
+       },
+       {
+        id: "category",
+        label: "category",
+        path: "/category-and-product/category",
        }
     ],
     submenu: true

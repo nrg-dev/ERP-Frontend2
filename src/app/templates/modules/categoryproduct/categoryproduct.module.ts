@@ -49,9 +49,10 @@ import { CategoryproductService } from './services/categoryproduct.service';
 import { CategoryProductRoutingModule } from "./categoryproduct-routing.module";
 import { UnitsComponent } from './units/units.component';
 import { AddunitsComponent } from './addunits/addunits.component';
+import { CategoryComponent } from './category/category.component';
 
 @NgModule({
-  declarations: [AddnewcategoryComponent,CategoryItemComponent,CategoryeditdeleteComponent,AddpromotionComponent,DiscounteditComponent, DiscountdeleteComponent,AddnewproductComponent,ProductviewComponent,ProducteditComponent,AllproducteditComponent,CategorytableComponent, UnitsComponent, AddunitsComponent],
+  declarations: [AddnewcategoryComponent,CategoryItemComponent,CategoryeditdeleteComponent,AddpromotionComponent,DiscounteditComponent, DiscountdeleteComponent,AddnewproductComponent,ProductviewComponent,ProducteditComponent,AllproducteditComponent,CategorytableComponent, UnitsComponent, AddunitsComponent, CategoryComponent],
   imports: [
     FormsModule,
     MatFormFieldModule,
