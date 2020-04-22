@@ -1,29 +1,42 @@
-<div id="outer-div">
+<div class="container">
+
+<div class="row">
+
+ 
+<div class="col-11"> 
+
   <button  (click)="addNewCategory()" class="create-button">
     <span class="fas fa-plus"></span> Category 
   </button>
 
-<button  (click)="addNewProduct()" class="create-button">
-  <span class="fas fa-plus"></span> 
-  Product 
-</button>
+  <button  (click)="addNewProduct()" class="create-button">
+    <span class="fas fa-plus"></span> 
+    Product 
+  </button>
+  
 
-<button  (click)="addpromotion('Add Discount','discount')" class="create-button">
-  <span class="fas fa-plus"></span> Discount 
-</button>
 
-<button  (click)="addpromotion('Add Free Gift','freegift')" class="create-button">
-  <span class="fas fa-plus"></span> Free Gift 
-</button>
 
-</div>     
 
-<br/>
+  <button  (click)="addpromotion('Add Discount','discount')" class="create-button">
+    <span class="fas fa-plus"></span> Discount 
+  </button>
+  
 
-<h3>Product List</h3> 
-<!--<a [routerLink]="['units']">Units</a> &nbsp; :: &nbsp;<a [routerLink]="['addunits']">addunits</a>
--->
-<div id="table-outer-div">
+  <button  (click)="addpromotion('Add Free Gift','freegift')" class="create-button">
+    <span class="fas fa-plus"></span> Free Gift 
+  </button>
+  
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="col-12"> 
+
+  <h3>Product List</h3> 
+
   <table class="table">
     <thead>
       <tr>
@@ -64,4 +77,13 @@
     </tbody>
   </table>
 </div>
-<br/>
+  </div>
+
+</div>
+
+
+
+ 
+
+ 
+

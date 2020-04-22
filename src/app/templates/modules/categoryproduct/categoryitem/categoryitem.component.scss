@@ -25,8 +25,14 @@
 }
 #table-outer-div{ 
   font-family:$font-family;
+  //overflow-y: auto; 
+  //height: 75vh; 
+}
+
+.col-12{
   overflow-y: auto; 
-  height: 75vh; 
+  height: 75vh;
+  font-family:$font-family;
 }
 #table-outer-div thead th { 
   position: sticky; 
@@ -38,6 +44,8 @@ table  {
   border-collapse: collapse; 
   width: 100%; 
 }
+
+
 th { 
   background:$table-header-bg; 
 }
