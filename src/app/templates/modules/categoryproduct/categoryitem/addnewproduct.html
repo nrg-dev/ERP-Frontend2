@@ -9,17 +9,25 @@
     </div>
     <div class="row" style="margin-left: 15px;">
         <div class="col-50">
-            <form name="addnewcategory" (ngSubmit)="saveAddNewProduct(model.category)">
+            <form name="productForm" (ngSubmit)="productForm.form.valid && saveAddNewProduct(model.category)"
+                #productForm="ngForm" novalidate>
                 <div class="row">
                     <div class="col-30">
                         <label for="fname">Category </label>
                     </div>
                     <div class="col-70">
-                        <select id="editselect-box"  name ="selectcategory" [(ngModel)]="model.categorycode" 
+                        <select id="editselect-box"  name="categorycode" [(ngModel)]="model.categorycode" 
                             #categorycode="ngModel" required>
                             <option [ngValue]="undefined" hidden selected> Select Product Category </option>
                             <option id="editselect-box" *ngFor="let itemcategory of allcategorylist" value="{{itemcategory.name}}-{{itemcategory.categorycode}}"> {{itemcategory.name}}-{{itemcategory.categorycode}} </option>
                         </select>
+
+                        <div *ngIf="categorycode.errors  && (categorycode.dirty || categorycode.touched) ||
+                            (productForm.submitted && !categorycode.valid )">
+                            <span [hidden]="!categorycode.errors.required" style="background-color: red;">
+                                Required field cannot be left blank
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -27,9 +35,15 @@
                         <label for="fname">Product Name </label>
                     </div>
                     <div class="col-70">
-                        <input type="text" id="name-box" placeholder="Fiber Kevlar Matt"
-                            [(ngModel)]="model.productname" #productname="ngModel" 
-                            placeholder="Product Name" name="productname"/>
+                        <input id="name-box" name="productname" [(ngModel)]="model.productname" 
+                            #productname="ngModel" placeholder="Product Name" required>             
+
+                        <div *ngIf="productname.errors  && (productname.dirty || productname.touched) ||
+                            (productForm.submitted && !productname.valid )">
+                            <span [hidden]="!productname.errors.required" style="background-color: red;">
+                                Required field cannot be left blank
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -48,11 +62,18 @@
                     </div>
                     <div class="col-70">
                         <select id="editselect-box" name ="vendorcode" [(ngModel)]="model.vendorcode"
-                            #vendorcode="ngModel" vendorcode>
+                            #vendorcode="ngModel" required>
                             <option [ngValue]="undefined" hidden selected> Select Vendor </option>
                             <option id="editselect-box" *ngFor="let item of vendornamelist" 
                                 value="{{item.vendorName}}-{{item.vendorcode}}"> {{item.vendorName}}-{{item.vendorcode}} </option>
                         </select>
+
+                        <div *ngIf="vendorcode.errors  && (vendorcode.dirty || vendorcode.touched) ||
+                            (productForm.submitted && !vendorcode.valid )">
+                            <span [hidden]="!vendorcode.errors.required" style="background-color: red;">
+                                Required field cannot be left blank
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -60,12 +81,19 @@
                         <label for="fname">Unit </label>
                     </div>
                     <div class="col-70">
-                        <select id="editselect-box" name ="unit" [(ngModel)]="model.unit"
-                            #unit="ngModel" unit>
+                        <select id="editselect-box" name="unit" [(ngModel)]="model.unit"
+                            #unit="ngModel" required>
                             <option [ngValue]="undefined" hidden selected> Select Unit </option>
                             <option id="editselect-box" *ngFor="let item of allUnitlist" 
                                 value="{{item.unitname}}"> {{item.unitname}} </option>
                         </select>
+
+                        <div *ngIf="unit.errors  && (unit.dirty || unit.touched) ||
+                            (productForm.submitted && !unit.valid )">
+                            <span [hidden]="!unit.errors.required" style="background-color: red;">
+                                Required field cannot be left blank
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
