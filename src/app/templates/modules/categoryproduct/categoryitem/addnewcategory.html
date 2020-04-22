@@ -8,17 +8,16 @@
     #categoryForm="ngForm" novalidate>   
         <div>
             <input type="text"  [(ngModel)]="model.name" 
-            #name="ngModel" placeholder="Enter Name"
-            id="name" name="name"  required>
+                #name="ngModel" placeholder="Enter Name"
+                id="name" name="name"  required>
 
 
             <div *ngIf="name.errors  && (name.dirty || name.touched) ||
-            (categoryForm.submitted && !name.valid )">
-              <span [hidden]="!name.errors.required" class="spanerror">
-                Required field cannot be left blank
-              </span>
-             </div>
-
+                (categoryForm.submitted && !name.valid )">
+                <span [hidden]="!name.errors.required" class="spanerror">
+                    Required field cannot be left blank
+                </span>
+            </div>
 
             <input type="text" [(ngModel)]="model.description" #description="ngModel" 
                 placeholder="Enter Description" name="description">
