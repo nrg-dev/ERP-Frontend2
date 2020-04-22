@@ -24,7 +24,7 @@
 
                         <div *ngIf="categorycode.errors  && (categorycode.dirty || categorycode.touched) ||
                             (productForm.submitted && !categorycode.valid )">
-                            <span [hidden]="!categorycode.errors.required" style="background-color: red;">
+                            <span [hidden]="!categorycode.errors.required" >
                                 Required field cannot be left blank
                             </span>
                         </div>
@@ -40,7 +40,7 @@
 
                         <div *ngIf="productname.errors  && (productname.dirty || productname.touched) ||
                             (productForm.submitted && !productname.valid )">
-                            <span [hidden]="!productname.errors.required" style="background-color: red;">
+                            <span [hidden]="!productname.errors.required">
                                 Required field cannot be left blank
                             </span>
                         </div>
@@ -70,7 +70,7 @@
 
                         <div *ngIf="vendorcode.errors  && (vendorcode.dirty || vendorcode.touched) ||
                             (productForm.submitted && !vendorcode.valid )">
-                            <span [hidden]="!vendorcode.errors.required" style="background-color: red;">
+                            <span [hidden]="!vendorcode.errors.required">
                                 Required field cannot be left blank
                             </span>
                         </div>
@@ -90,7 +90,7 @@
 
                         <div *ngIf="unit.errors  && (unit.dirty || unit.touched) ||
                             (productForm.submitted && !unit.valid )">
-                            <span [hidden]="!unit.errors.required" style="background-color: red;">
+                            <span [hidden]="!unit.errors.required">
                                 Required field cannot be left blank
                             </span>
                         </div>

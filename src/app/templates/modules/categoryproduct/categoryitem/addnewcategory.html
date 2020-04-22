@@ -5,7 +5,7 @@
     </button>
     <form name="categoryForm" 
     (submit)="categoryForm.form.valid && saveCategory()"
-    #categoryForm="ngForm" novalidate> 
+    #categoryForm="ngForm" novalidate>   
         <div>
             <input type="text"  [(ngModel)]="model.name" 
             #name="ngModel" placeholder="Enter Name"
@@ -14,7 +14,7 @@
 
             <div *ngIf="name.errors  && (name.dirty || name.touched) ||
             (categoryForm.submitted && !name.valid )">
-              <span [hidden]="!name.errors.required" style="background-color: red;">
+              <span [hidden]="!name.errors.required">
                 Required field cannot be left blank
               </span>
              </div>

@@ -11,8 +11,8 @@
 
 span{
 //  color:#a94442;
-  color:white;
-  background-color: red;
+  //color:white;
+  background-color:$error-code; 
   font-size: 12px;
 }
 input[type=text], select, textarea {
