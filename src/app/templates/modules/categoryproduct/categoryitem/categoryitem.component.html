@@ -45,7 +45,12 @@
         <td>{{a.productname}}</td>
         <td>{{a.categoryname}}</td>
         <td>{{a.vendorname}}</td>
-        <td>{{a.price}}</td>
+        <td>
+          <label *ngIf="a.price == null && a.unit == null"></label>
+          <label *ngIf="a.price == null && a.unit !== null">{{a.unit}}</label>
+          <label *ngIf="a.unit == null && a.price !== null">{{a.price}}</label>
+          <label *ngIf="a.unit !== null && a.price !== null">{{a.price}}/{{a.unit}}</label>
+        </td>
         <td>{{a.tax}}</td>
         <td>{{a.margin}}</td>
         <td>{{a.sellingprice}} 
