@@ -40,7 +40,7 @@
 
                         <div *ngIf="productname.errors  && (productname.dirty || productname.touched) ||
                             (productForm.submitted && !productname.valid )">
-                            <span [hidden]="!productname.errors.required" style="background-color: red;">
+                            <span [hidden]="!productname.errors.required">
                                 Required field cannot be left blank
                             </span>
                         </div>
