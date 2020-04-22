@@ -174,4 +174,9 @@ export class CategoryproductService {
     console.log("Load Unit List..");
     return this.http.get(`${environment.apiUrl}${API_ENDPOINTS.loadUnitList}`+'?id='+id);
   }
+
+  removeUnit(id: string) {
+     return this.http.delete<Units>(
+       `${environment.apiUrl}${API_ENDPOINTS.removeUnit}`+'?id='+id);
+   }
 }
