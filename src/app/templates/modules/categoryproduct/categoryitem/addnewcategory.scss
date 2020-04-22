@@ -12,7 +12,6 @@
 span{
 //  color:#a94442;
   color:white;
-  background-color: red;
   font-size: 12px;
 }
 
@@ -94,12 +93,12 @@ h4{
 }
 .close {
   border: none;
-  background:red;
+  color:white;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  margin: 4px 2px;
-  padding: 3px;
+  font-size: 20px;
+  border-radius: 50%;
   cursor: pointer;
 }
 #close-icon{
