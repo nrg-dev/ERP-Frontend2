@@ -1,10 +1,26 @@
 
 @import "_base";
 
-#table-outer-div{ 
+.col-12 {
   overflow-y: auto; 
-  height: 75vh; 
+  height: 74vh; 
+//  width: 100%;
 }
+
+//#title{
+ //height: 6vh; 
+  //position:fixed;
+  //.col-12[_ngcontent-hsx-c7] {
+  //  overflow-y: none !important;
+   // height: 75vh;
+//}
+//  width: 100%;
+//}
+
+//#table-outer-div{ 
+  //overflow-y: auto; 
+  //height: 75vh; 
+//}
 #table-outer-div thead th { 
   position: sticky; 
   top: 0; 
@@ -14,6 +30,7 @@
 table  { 
   border-collapse: collapse; 
   width: 100%; 
+  overflow-y: auto; 
 }
 th { 
   background:$table-header-bg; 
