@@ -38,7 +38,7 @@
 
                         <div *ngIf="categorycode.errors  && (categorycode.dirty || categorycode.touched) ||
                             (addpromotionForm.submitted && !categorycode.valid )">
-                            <span [hidden]="!categorycode.errors.required" style="background-color: red;">
+                            <span [hidden]="!categorycode.errors.required" class="spanerror">
                                 Required field cannot be left blank
                             </span>
                         </div>

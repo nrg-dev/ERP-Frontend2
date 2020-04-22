@@ -24,7 +24,7 @@
 
                         <div *ngIf="categorycode.errors  && (categorycode.dirty || categorycode.touched) ||
                             (productForm.submitted && !categorycode.valid )">
-                            <span [hidden]="!categorycode.errors.required" >
+                            <span [hidden]="!categorycode.errors.required" class="spanerror">
                                 Required field cannot be left blank
                             </span>
                         </div>
@@ -40,7 +40,7 @@
 
                         <div *ngIf="productname.errors  && (productname.dirty || productname.touched) ||
                             (productForm.submitted && !productname.valid )">
-                            <span [hidden]="!productname.errors.required">
+                            <span [hidden]="!productname.errors.required" class="spanerror">
                                 Required field cannot be left blank
                             </span>
                         </div>
@@ -70,7 +70,7 @@
 
                         <div *ngIf="vendorcode.errors  && (vendorcode.dirty || vendorcode.touched) ||
                             (productForm.submitted && !vendorcode.valid )">
-                            <span [hidden]="!vendorcode.errors.required">
+                            <span [hidden]="!vendorcode.errors.required" class="spanerror">
                                 Required field cannot be left blank
                             </span>
                         </div>
@@ -90,7 +90,7 @@
 
                         <div *ngIf="unit.errors  && (unit.dirty || unit.touched) ||
                             (productForm.submitted && !unit.valid )">
-                            <span [hidden]="!unit.errors.required">
+                            <span [hidden]="!unit.errors.required" class="spanerror">
                                 Required field cannot be left blank
                             </span>
                         </div>

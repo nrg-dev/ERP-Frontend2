@@ -10,10 +10,8 @@
 }
 
 span{
-//  color:#a94442;
   color:white;
   font-size: 12px;
-  background-color: $error-code;
 }
 
 ::ng-deep .addnewcategory  .mat-dialog-container {
@@ -104,4 +102,7 @@ h4{
 }
 #close-icon{
   font-size: 1.5rem;
+}
+.spanerror{
+  background-color: $error-code;
 }

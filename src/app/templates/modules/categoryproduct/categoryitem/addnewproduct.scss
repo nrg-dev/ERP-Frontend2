@@ -14,7 +14,6 @@
 }
 
 span{
-  background-color: $error-code;
   color:white;
   font-size: 12px;
   margin: 5px 0px;
@@ -243,4 +242,7 @@ h2 {
 }
 .btn-danger{
   margin-left: 25px;
+}
+.spanerror{
+  background-color: $error-code;
 }
