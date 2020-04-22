@@ -1,9 +1,7 @@
 
 @import "_base";
 
-#outer-div{ 
-   height: 5vh; 
- }
+
  .create-button {
   float: right;
   color: $white;
@@ -14,7 +12,7 @@
   //padding:8px 20px;
   border-radius: 25px;
 }
-#table-outer-div{ 
+.col-12{ 
   overflow-y: auto; 
   height: 75vh; 
 }
