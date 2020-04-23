@@ -1039,7 +1039,7 @@ export class CategorytableComponent {
   styleUrls: ['./categoryitem.component.scss']
 })
 export class CategoryItemComponent implements OnInit {
- allproductlist : any= {};// Product;  
+  allproductlist : any= {};// Product;  
   product:Product;
   categorylist: any= {};
   allproducedittlist:any;
@@ -1050,6 +1050,9 @@ export class CategoryItemComponent implements OnInit {
   model: any = {};
   discount:Discount;
   itemtitle:string="All Items";
+  loadinggif:boolean = false;
+  public productTable = false;
+
   // All Product
   displayedColumns: string[] = [
     'productname',
@@ -1131,7 +1134,7 @@ export class CategoryItemComponent implements OnInit {
   //  public NAMES = [];
 
   ngOnInit() {
-   
+    this.productTable = false;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.leftdetails=true;
@@ -1186,16 +1189,22 @@ export class CategoryItemComponent implements OnInit {
   }
 
   allproductList(){
+    this.loadinggif=true;
+    this.productTable = false;
     this.catprodservice.loadItem("all")
     .subscribe(
       data => {
         this.allproductlist = data;
+        this.loadinggif=false;
+        this.productTable = true;
         console.log("Product length -->"+this.allproductlist.length);
         this.dataSource = new MatTableDataSource(this.allproductlist);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
       error => {
+        this.loadinggif=false;
+        this.productTable = true;
         setTimeout(() => {
           this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
             panelClass: ["error"],
