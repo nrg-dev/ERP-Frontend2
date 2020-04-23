@@ -1,280 +1,231 @@
 @import "_base";
 
-.grid-container3 {
-  display: grid;
-  grid-template-columns: 1rem auto 1rem;
-  grid-gap: 10px;
-  padding: 10px;
+* {
+  font-size: 13px;
+  color: white;
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+
+span{
+  color:white;
+  font-size: 12px;
+  margin: 5px 0px;
+}
+.container{
   background:$po-order-form-bg;
-  border-radius: 8px; font-size: 14px;;
+  width: 100%;
+  height: auto; 
+  border-radius: 25px;
+  padding: 17px;
+}
+::ng-deep  .mat-dialog-container {
+  overflow: hidden !important;
+}
+.mat-dialog-container {
+  display: block;
+  padding: 24px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  overflow: auto;
+  outline: 0;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  max-height: inherit;
+}
+#form{
+  margin: 0px -40px 0px 40px;
+}
+input, select, textarea {
+  width: 80%;
+  padding: 5px;
+  background: none;
+  border-radius: 4px;
+  resize: vertical;
+  color:white;
+  border: 1px solid $header-bg; 
+  margin: 0px 0px 3px 0px;
+  background:$po-order-form-bg;
 }
 
-.grid-container3 {
-  width: 100% !important;
+input[type=submit] {
+  color: white;
+  width: 50%;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  float: right;
 }
 
-
-#h2ID{
-  color:$h2-bg;
-  font-family: $font-family;
-  font-size: 20px;
-  margin-top: 0px;
-  font-weight: bold;
+input[type=submit]:hover {
+  background-color: #45a049;
 }
 
-#date-box{
-  color:$h2-bg;
+.container {
+  border-radius: 5px;
+  padding: 10px;
+}
+.col-5{
+  float: left;
+  width: 5%;
+  margin-top: 6px;
+}
+.col-20{
+  float: left;
+  width: 10%;
+  margin-top: 6px;
+}
+.col-20{
+  float: left;
+  width: 20%;
+  margin-top: 6px;
+}
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+.col-30 {
+  float: left;
+  width: 30%;
+  margin-top: 6px;
+}
+.col-45 {
+  float: left;
+  width: 45%;
+  margin-left: auto;
+}
+.col-50 {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+}
+.col-60 {
+  float: left;
+  width: 60%;
+  margin-top: 6px;
 }
 
-#po-label{
-  color:#fff;
+.col-70 {
+  float: left;
+  width: 70%;
+  margin-top: 6px;
 }
 
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-50, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
 .close {
   border: none;
-  color: white;
+  color:white;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
-  margin: 4px 2px;
+  border-radius: 50%;
   cursor: pointer;
-  border-radius: 50%; 
 }
-#textbox{
+#close-icon{
+  font-size: 1.5rem;
+}
+.cdk-overlay-pane.my-dialog {
+  position: relative!important;
+}
+#text-cursor {
+  cursor: text;
+}
+#h2ID{
   color:$h2-bg;
-  background: $po-order-form-bg;
-  width: 75%;
-  height: 1.5rem;
-  border: 1px solid  $header-bg;
-  color: $white;
-}
-#textbox1{
-  color:$h2-bg;
-  background: $po-order-form-bg;
-  width: 95%;
-  height: 1.5rem;
-  border: 1px solid  $header-bg;
-  color: $white;
-}
-
-#selected-box{
-  width: 87%;
-  height: 1.5rem;
-  background: $po-order-form-bg;
-  border: 1px solid  #2C4655;
-  color:$h2-bg;
-}
-
-#options-box{
-  width: 87%;
-  height: 1.5rem;
-  background: none;
-  border: 1px solid  #2C4655;
-  color:$h2-bg;
-}
-
-#add-text{
-  text-align: center;
-  margin: 6px;
-  cursor: pointer;
-
-}
-
-#add-btn{
-  width: 45%;
-  height: 1.9rem;
-  background: $btn-bg;
-  color:$h2-bg;
+  font-family: $font-family;
+  font-size: 20px;
+  margin: 0px 0px 0px 25px;
   font-weight: bold;
-  border: none;
-  border-radius: 20px;
-  margin: 1rem;
 }
-.purchase-text {
-  float: left;
+#imageplaceholder{
+  width: 180px;
+  height: 300px;
 }
-
-#customers th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #17252E;
-  color: white;
-}
-#customers tr {
-  background-color: #1B2D39;
-  height: 2rem;
-}
-.addpurchase-btn{
-  float: right;
-}
-body {background-color: #16222B;}
-
-#addpurchase-btn{
-  width: 60%;
-    height: 1.9rem;
-    background: #1585A2;
-    border: none;
-    border-radius: 20px;
-  margin: 1rem;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: auto 35% auto;
-  grid-gap: 10px;
+.image-wrap {
   padding: 10px;
-  display: inline;
-}
-.grid-container2 {
-  display: grid;
-  grid-template-columns: 9rem auto;
-  grid-gap: 10px;
-  // padding: 10px;
-  height: 1.8rem;
+  //border: solid 1px #e0e0e0;
+  display: inline-block;
 }
 
-.grid-container4 {
-  display: grid;
-  grid-template-columns: 8rem auto auto;
-  grid-gap: 10px;
+.img-space {
+  // border: dashed 1px #d3d3d3;
+  border-radius: 8px;
+  // background-color: #f2f2f2;
+  background-color: $po-order-form-bg;
+  height: auto;
+  width: 85%;
   padding: 10px;
-    background: $po-order-form-bg;
-    height: 3rem;
-}
-.grid-container5 {
-  display: grid;
-  grid-template-columns: 9rem auto;
-  grid-gap: 10px;
-  padding: 10px;
-  height: 3rem;
-}
-.grid-container6 {
-  display: grid;
-  grid-template-columns: 13rem auto;
-  grid-gap: 32px;
-  // padding: 10px;
-  height: 3rem;
-  margin-top: 10px;
-}
-.grid-container7 {
-  display: grid;
-  grid-template-columns: 5rem auto;
-  grid-gap: 10px;
-  // padding: 23px;
-  margin-top: 12px;
-  height: 4.5rem;
-}
-#select-box{
-    background-color: #17252E;
-    border: none;
-}
-#date-borderbox{
-    width: 63%;
-    height: 1.6rem;
-    border: 1px solid  #2C4655;
-}
-#datebox-margin{
-    margin: 0.3rem;
-    font-size: 12px;
+  min-height:175px;
 }
 
-#Category-selectbox{
-    width: 55%;
-    height: 1.5rem;
-    background: none;
-    border: 1px solid  #2C4655;
-    color: #6E7D87;
-}
-#Category-selectbox2{
-    width: 100%;
-    height: 1.5rem;
-    background: none;
-    border: 1px solid  #2C4655;
-    color: #6E7D87;
-}
-#Category-selectbox3{
-    width: 80%;
-    height: 1.5rem;
-    background: none;
-    border: 1px solid  #2C4655;
-    color: #6E7D87;
-}
-
-/*#height1rem{
-  height: 1rem;
-}*/
-#font-size{
-  font-size: 12px;
-  color: #6E7D87;
-}
-
-
-.mat-dialog-container{
-  background: inherit !important;
-}
-.ng-trigger-dialogContainer {
-  background: inherit !important;
-}
-
-  /* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
-.m-t-5px{margin-top: 5px;}
-.box{
-  color: rgb(78, 51, 51);
-  background: #17252F;
-  width: 100%;
-  height: 70%;
-  margin-top: 3.5rem;
-}
-
-#editBox {
-  width: 35px;
-  height: 35px;
-  background-color: #97A4AC;/*#acbac3*/
-  border-radius: 20px;
-  float: right;
-  margin: -318px 12px
-}
-#edit-icon {
-  font-size: 12px;
-  padding: 12px;
-  color: white;
-  text-align: center;
-}
-
-.choose_file {
-  position: relative;
-  display: inline-block;   
-  font: normal 14px Myriad Pro, Verdana, Geneva, sans-serif;
-  margin-top: 2px;
-}
-.choose_file input[type="file"]{
-  -webkit-appearance:none; 
-  position:absolute;
-  top:0;
-  left:0;
-  opacity:0;
+.img-space img {
+  display: block;
   width: 100%;
   height: 100%;
+  margin: auto;
+  cursor: pointer;
 }
-img {
-  vertical-align: middle;
-  border-style: none;
+
+.fileInputProfileWrap {
+  width: 100%;
+  height: auto;
+  margin: 25% 0% auto;
 }
-#blah{
-  width: 10rem;
-  height: 11rem;
-  margin: 80px 20px;
-  border-radius: 5px;
+
+.fileInputProfile {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 99;
+  opacity: 0;
 }
+.fileInputProfile[disabled] + .img-space{
+  pointer-events: none;
+  cursor: not-allowed!important;
+}
+#save-btn {
+  width: 140px;
+  height: 35px;
+  background: $btn-bg;
+  border: none;
+  border-radius: 25px;
+}
+#cancel-btn {
+  width: 140px;
+  height: 35px;
+  background: #ff0000;
+  border: none;
+}
+.btn-danger{
+  margin-left: 25px;
+}
+.error{
+  color: red;
+  margin: 0px auto;
+}
+.spanerror{
+  background-color: $error-code;
+}
+
