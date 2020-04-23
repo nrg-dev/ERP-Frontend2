@@ -7,5 +7,6 @@ export const API_ENDPOINTS = {
   remove: `/vendor/remove`, 
   loadsidepanel:'/vendor/get?vendorcode=',
   loadallcategoryItems:'/item/load?category=all',
-  loadallcategories:'category/load'
+  loadallcategories:'category/load',
+  postnewcategory: `category/save`
 };

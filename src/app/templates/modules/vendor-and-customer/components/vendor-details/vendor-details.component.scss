@@ -116,13 +116,16 @@
 
             display: inline-block;
             position: relative;
-            min-width: 200px;
+            min-width: 300px;
 
             li {
                 position: relative;
-                padding-right: 25px;
                 white-space: nowrap;
                 padding-right: 30px;
+
+                & div {
+                    margin-left: 15px;
+                }
             }
 
             h2{
@@ -175,7 +178,7 @@
             ul.show {
                 display: block;
                 overflow-y: auto;
-                max-height: 300px;
+                max-height: 200px;
             }
 
             ul {
@@ -195,11 +198,17 @@
                 border-top: 1px solid #17252F;
                 background: #253f4b;
                 text-align: center;
-                margin-top: 10px;
                 position: sticky;
                 left: 0;
                 bottom: 0;
-                padding-bottom:15px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                margin-top: 5px;
+
+                & a{
+                    color: #4699b5;
+                    padding: 0;
+                }
 
                 & div {
                     position: relative;
@@ -262,9 +271,10 @@
         .item-image {
             margin-right: 10px;
             width: calc(30% - 10px);
-
+            overflow: hidden;
             img {
                 max-width: 70%;
+                max-height: 75px;
             }
        }
 

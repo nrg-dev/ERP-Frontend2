@@ -1,8 +1,10 @@
 import { Component, Inject, ElementRef, OnInit, HostListener, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA  } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatSnackBar } from "@angular/material/snack-bar";
+
 
 import { VendorDetailsService } from './../../services/vendorDetails.service';
-import { element } from 'protractor';
 
 @Component({
   selector: 'app-vendor-details',
@@ -38,15 +40,17 @@ export class VendorDetailsComponent implements OnInit {
 
     if(this.dropDownView) {
       this.dropDownView = false;
+      this.isAddCategory = false;
     }
     return;
   }
 
   constructor(
     private dialogRef: MatDialogRef<VendorDetailsComponent>,
-    private eRef: ElementRef,
     @Inject(MAT_DIALOG_DATA) public data,
-    private vendorDetailsService:VendorDetailsService
+    private _sanitizer: DomSanitizer,
+    private vendorDetailsService:VendorDetailsService,
+    private snackBar: MatSnackBar
     ) { }
 
   ngOnInit() {
@@ -61,11 +65,16 @@ export class VendorDetailsComponent implements OnInit {
         this.filterItems({ categorycode:null});
     })
 
-    this.vendorDetailsService.loadallcategories().subscribe((data:any) => {
-      this.categoriesForFilter = data;
-    });
+    this.getCategoryItems();
 
   }
+
+  getCategoryItems() {
+    this.vendorDetailsService.loadallcategories().subscribe((data: any) => {
+      this.categoriesForFilter = data;
+    });
+  }
+
 
   searchItems(event) {
 
@@ -113,9 +122,12 @@ export class VendorDetailsComponent implements OnInit {
   editMenu(i){
     this.onEdit = i;
     this.dropDownView = true;
+    this.isAddCategory = false;
+    this.newCateogry = "";
   }
 
   menuLabelChange(event){
+
     if (!event.target.value.trim()) {
       this.isLabelEdited = false;
       this.labelNewText = "";
@@ -126,13 +138,19 @@ export class VendorDetailsComponent implements OnInit {
     
   }
 
-  updateMenu(index){
-    this.categoriesForFilter[index]['name'] = this.labelNewText;
+  updateMenu(category){
+    const newCategory = {
+      "categorycode": category.categorycode,
+      "name": this.labelNewText,
+    }
+    this.categoyDropDownEditor(newCategory);
     this.dropDownView = false;
   }
 
   showAddCategory() {
     this.isAddCategory = true;
+    this.editIndex = -1;
+    this.onEdit = -1;
   }
 
   addCategory() {
@@ -140,18 +158,55 @@ export class VendorDetailsComponent implements OnInit {
     if (!this.newCateogry.trim().length) return;
     
     const newCategory = {
-      "id": "0",
-      "categorycode": "0",
-      "name": this.newCateogry,
-      "description": null,
-      "updateddate": null,
-      "status": null
+      "name": this.newCateogry
     }
 
-    this.categoriesForFilter = [...this.categoriesForFilter,newCategory];
-    this.newCateogry = "";
-    this.dropDownView = false;
+    this.categoyDropDownEditor(newCategory);
+    
+  }
 
+  getImage(imgData) {
+    if (Array.isArray(imgData)){
+      return this._sanitizer.bypassSecurityTrustResourceUrl(imgData[0]);
+    }
+    
+  }
+
+  categoyDropDownEditor(newCategory){
+    this.vendorDetailsService.postnewcategories(newCategory)
+      .subscribe((respose) => {
+        if (respose === null) {
+
+          this.getCategoryItems();
+          this.newCateogry = "";
+          this.dropDownView = false;
+          this.isAddCategory = false;
+
+          setTimeout(() => {
+            this.snackBar.open(
+              "Category added Successfully",
+              "dismss",
+              {
+                panelClass: ["success"],
+                verticalPosition: "top",
+              }
+            );
+
+          });
+        }
+      },
+        (error) => {
+          setTimeout(() => {
+            this.snackBar.open(
+              "Network error: server is temporarily unavailable",
+              "dismss",
+              {
+                panelClass: ["error"],
+                verticalPosition: "top",
+              }
+            );
+          });
+        })
   }
 
 }

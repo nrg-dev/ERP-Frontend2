@@ -23,6 +23,12 @@ constructor(private http: HttpClient) { }
         return this.http.get(`${environment.apiUrl}${API_ENDPOINTS.loadallcategories}`);
     }
 
+    // Load all categories
+    postnewcategories(category) {
+
+        return this.http.post<any>(
+            `${environment.apiUrl}${API_ENDPOINTS.postnewcategory}`, category);
+    }
 
 
 }
