@@ -197,6 +197,7 @@ export class AddpromotionComponent {
   key:string;
   discountShow:boolean;
   freegiftShow:boolean;
+  otherShow:boolean;
 
   local_data:any;
   constructor(
@@ -210,14 +211,14 @@ export class AddpromotionComponent {
       this.local_data = {...data};
       this.title = this.local_data.title;
       this.key = this.local_data.key;
-       if(this.key == "freegift") {
+      /* if(this.key == "freegift") {
         this.discountShow = false;
         this.freegiftShow = true;
       }
       if(this.key == "discount") {
         this.discountShow = true;
         this.freegiftShow = false;
-      }
+      } */
       this.catprodservice.load()
       .subscribe(
          data => {
@@ -300,9 +301,28 @@ export class AddpromotionComponent {
         }
       ); 
     }
+
+    freediscountBox(title:string){
+      if(title == "Add Free Gift"){
+        this.freegiftShow = true;
+        this.discountShow = false;
+        this.otherShow = false;
+      }else if(title == "Add Discount"){
+        this.freegiftShow = false;
+        this.discountShow = true;
+        this.otherShow = false;
+      }
+    }
+
+    otherBox(){
+      this.freegiftShow = false;
+      this.discountShow = false;
+      this.otherShow = true;
+    }
+
     close(e) {
-    this.dialogRef.close();
-  }
+      this.dialogRef.close();
+    }
 }
 // add promostion end
 
