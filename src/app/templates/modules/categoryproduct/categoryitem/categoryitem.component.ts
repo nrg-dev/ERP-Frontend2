@@ -511,8 +511,9 @@ export class AddnewproductComponent {
         });   
       }
      );
-     let id = "all";
+     
      //--load unitList
+     let id = "all";
      this.catprodservice.loadUnitList(id)
       .subscribe(
         data => {
@@ -772,6 +773,7 @@ export class AllproducteditComponent {
   allcategorylist:any= {};
   vendornamecodelist: any = {};
   allproducedittlist: any = {};
+  allUnitlist:any = {};
   category:Category;
   product:Product;
   inputproductcode:string;
@@ -818,6 +820,23 @@ export class AllproducteditComponent {
        }
       );
 
+      //--load unitList
+     let id = "all";
+     this.catprodservice.loadUnitList(id)
+      .subscribe(
+        data => {
+          this.allUnitlist = data;
+        },
+        error => {
+          setTimeout(() => {
+            this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+              panelClass: ["error"],
+              verticalPosition: 'top'      
+            });
+          });   
+        }
+      );
+
        //this.allproductlist="";
     this.catprodservice.loadItem("all")
     .subscribe(
@@ -844,7 +863,7 @@ export class AllproducteditComponent {
             console.log("vendor code -->"+this.model.vendorcode);
             this.model.vendorcode=this.allproducedittlist[k].vendorname+"-"+this.allproducedittlist[k].vendorcode;
             console.log("vendor name & code -->"+this.model.vendorcode);
-
+            this.model.unit=this.allproducedittlist[k].unit;
 
           }
         }
@@ -861,6 +880,10 @@ export class AllproducteditComponent {
       }
     );
      
+  }
+
+  addProductEditClose(){
+    this.dialogRef.close();
   }
 
   marginPrice:any;
