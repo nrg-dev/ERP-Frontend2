@@ -14,9 +14,17 @@ constructor(private http: HttpClient) { }
     }
 
     // Load all categories
-    loadallcategoryitems() {
-        return this.http.get(`${environment.apiUrl}${API_ENDPOINTS.loadallcategoryItems}`);
-    }
+  //  loadallcategoryitems() {
+  //      return this.http.get(`${environment.apiUrl}${API_ENDPOINTS.loadallcategoryItems}`);
+   // }
+
+    // get 
+    loadallcategoryitems(id:string){
+
+   return this.http.get(`${environment.apiUrl}${API_ENDPOINTS.loadallcategoryItems}`+'?vendorcode='+id);
+ 
+ }
+
 
     // Load all categories
     loadallcategories() {

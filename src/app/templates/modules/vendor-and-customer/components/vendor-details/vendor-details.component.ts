@@ -54,12 +54,13 @@ export class VendorDetailsComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-
+    console.log("Data e-->"+this.data);
+    console.log("Vendor code-->"+this.data['vendorcode']);
     // this.vendorDetailsService.loadsidepanel(this.data.vendorcode).subscribe(data => {
     //   console.log(data);
     // })
-
-    this.vendorDetailsService.loadallcategoryitems().subscribe((data:any) => {
+    let id = this.data['vendorcode'];
+    this.vendorDetailsService.loadallcategoryitems(id).subscribe((data:any) => {
         if(!data.length) return;
         this.backAllCategoryItems = data;
         this.filterItems({ categorycode:null});
