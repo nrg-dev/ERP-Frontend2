@@ -90,8 +90,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, { 
       preloadingStrategy: PreloadAllModules, 
-      onSameUrlNavigation: 'ignore',
-      useHash:true
+      onSameUrlNavigation: 'ignore'
     }
     )
   ],
