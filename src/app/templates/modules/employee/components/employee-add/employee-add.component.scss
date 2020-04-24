@@ -20,11 +20,11 @@ span{
 }
 .container{
   background:$po-order-form-bg;
-  width: 150vh;
+  width: 130vh;
   border-radius: 25px;
   padding: 17px;
 }
-::ng-deep  .mat-dialog-container {
+::ng-deep .mat-dialog-container {
   overflow: hidden !important;
 }
 .mat-dialog-container {
@@ -71,24 +71,10 @@ input[type=submit]:hover {
   border-radius: 5px;
   padding: 10px;
 }
-.col-5{
-  float: left;
-  width: 5%;
-  margin-top: 6px;
-}
-.col-20{
-  float: left;
-  width: 10%;
-  margin-top: 6px;
-}
+
 .col-20{
   float: left;
   width: 20%;
-  margin-top: 6px;
-}
-.col-25 {
-  float: left;
-  width: 25%;
   margin-top: 6px;
 }
 .col-30 {
@@ -109,12 +95,6 @@ input[type=submit]:hover {
 .col-60 {
   float: left;
   width: 60%;
-  margin-top: 6px;
-}
-
-.col-70 {
-  float: left;
-  width: 70%;
   margin-top: 6px;
 }
 
@@ -159,7 +139,7 @@ input[type=submit]:hover {
   font-weight: bold;
 }
 #imageplaceholder{
-  width: 180px;
+  width: 35vh;
   height: 300px;
 }
 .image-wrap {
@@ -190,7 +170,6 @@ input[type=submit]:hover {
 .fileInputProfileWrap {
   width: 100%;
   height: auto;
-  margin: 25% 0% auto;
 }
 
 .fileInputProfile {
