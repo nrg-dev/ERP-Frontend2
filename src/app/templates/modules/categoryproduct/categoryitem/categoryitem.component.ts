@@ -199,6 +199,9 @@ export class AddpromotionComponent {
   freegiftShow:boolean;
   otherShow:boolean;
 
+  freegiftLabel:boolean;
+  discountLabel:boolean;
+
   local_data:any;
   constructor(
     public dialogRef: MatDialogRef<AddpromotionComponent>,
@@ -211,14 +214,14 @@ export class AddpromotionComponent {
       this.local_data = {...data};
       this.title = this.local_data.title;
       this.key = this.local_data.key;
-      /* if(this.key == "freegift") {
-        this.discountShow = false;
-        this.freegiftShow = true;
+      if(this.key == "freegift") {
+        this.discountLabel = false;
+        this.freegiftLabel = true;
       }
       if(this.key == "discount") {
-        this.discountShow = true;
-        this.freegiftShow = false;
-      } */
+        this.discountLabel = true;
+        this.freegiftLabel = false;
+      } 
       this.catprodservice.load()
       .subscribe(
          data => {
