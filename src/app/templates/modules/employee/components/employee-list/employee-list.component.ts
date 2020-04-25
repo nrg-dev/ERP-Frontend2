@@ -140,6 +140,8 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
     };
     this.dialog.open(EmployeeAddComponent,{
       panelClass: 'addpromotion',
+      width:'200vh',
+      height:'400vh',
       data: data,
     })
     .afterClosed().subscribe(result => {
