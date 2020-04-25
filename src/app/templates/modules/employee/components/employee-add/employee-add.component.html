@@ -1,5 +1,7 @@
 
 <div class="row">
+  <form name="employeeForm" (ngSubmit)="employeeForm.form.valid && saveEmployee()"
+  #employeeForm="ngForm" id="form" novalidate>
   <div class="column">
     <fieldset class="form-group"> 
       <div class="custom-file fileInputProfileWrap">
@@ -81,4 +83,5 @@
                 <button>Add</button>
 
   </div>
+  </form>
 </div>
