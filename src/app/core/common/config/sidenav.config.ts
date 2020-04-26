@@ -24,17 +24,8 @@ export const SidenavItems: MenuItem[] = [
     label: "Vendors",
     icon: "assets/images/vendor-customer.png",
     path: "/vendor-and-customer",
-    childern: [{
-      id: "vendors",
-      label: "Vendor",
-      path: "/vendor-and-customer/vendor",
-     },
-     {
-      id: "customers",
-      label: "Customer",
-       path: "/vendor-and-customer/customer",
-     }],
-    submenu: true
+    childern: [],
+    submenu: false
   },
  
   {
@@ -97,6 +88,11 @@ export const SidenavItems: MenuItem[] = [
       label: "Invoices",
       path: "/sales/invoice",
      },
+     {
+      id: "customers",
+      label: "Customer",
+       path: "/vendor-and-customer/customer",
+     },
       {
         id: "sales-invoice",
         label: "Returns",
@@ -105,6 +101,16 @@ export const SidenavItems: MenuItem[] = [
     ],
     submenu: true
   },
+
+  {
+    id: "stock",
+    label: "Stock",
+    icon: "assets/images/employee.png",
+    path: "/employment",
+    submenu: false,
+    childern: []
+  },
+
   /*{
     id: "finance",
     label: "Finance",
