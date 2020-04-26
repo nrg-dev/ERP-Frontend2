@@ -20,14 +20,39 @@ import { PrintDialogService } from "src/app/core/services/print-dialog/print-dia
 export class AddnewcategoryComponent {
   countryList:any;
   priorityList:any;
+  local_data:any;
   model: any = {};
   category:Category;
+  categorycode:string;
+  name:string;
+  description:string;
+  btnlabel:string;
+  show:boolean;
+
   constructor(
     private catprodservice: CategoryproductService,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: UsersData,
     public dialogRef: MatDialogRef<AddnewcategoryComponent>,
     private snackBar: MatSnackBar
 
     ) {
+      console.log(data);
+      this.local_data = {...data};
+      this.categorycode = this.local_data.categorycode;
+      this.name = this.local_data.name;
+      this.description = this.local_data.desc;
+      this.model.categorycode = this.categorycode;
+      this.model.name = this.name;
+      this.model.description = this.description;
+      if(this.categorycode!=null){
+       // alert("Yes code");
+        this.btnlabel="Update";
+        this.show=true;
+      }else {
+        this.btnlabel="Save";
+        this.show=false;
+        //alert("No code");
+      }
     }
 
     addCategoryClose() {
@@ -35,6 +60,7 @@ export class AddnewcategoryComponent {
     }
     saveCategory(){
       console.log("Inside saveCategory method");
+      console.log("Category Name-->"+this.model.categorycode);
       console.log("Category Name-->"+this.model.name);
       console.log("Category Desc-->"+this.model.description);
 
@@ -176,6 +202,9 @@ export class CategoryeditdeleteComponent {
 export interface UsersData {
   title: string;
   key: string;
+  categorycode: string;
+  name: string;
+  desc:string;
 }
 
 // add promostion start
@@ -910,36 +939,7 @@ export class AllproducteditComponent {
       this.model.sellingprice = Number.parseInt(price)+Number.parseInt(this.marginPrice)+Number.parseInt(this.taxPrice);
     }
   }
-  
-/*
-  setItem(category: string){
-    this.catprodservice.setItem(this.model)
-    .subscribe(
-      data => {
-        this.product =   data; 
-        this.dialogRef.close();
-        if(this.product.status=="success"){
-          this.alertService.success("Saved Successfully");
-          setTimeout(() => {
-            this.alertService.clear();
-          }, 2000);
-        } 
-        if(this.product.status=="failure"){
-          this.alertService.success("not saved");
-          setTimeout(() => {
-            this.alertService.clear();
-          }, 2000);
-        }
-      },
-      error => {
-        this.alertService.error("Serve Error ");
-        setTimeout(() => {
-          this.alertService.clear();
-        }, 2000);
-      }
-    ); 
-    }
-    */
+ 
   ngOnInit() {
   }
   setItem(){

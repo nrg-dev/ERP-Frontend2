@@ -2,23 +2,14 @@
 @import "_base";
 
 
- .create-button {
-  float: right;
-  color: $white;
-  background: $btn-bg;
-  border: 1px solid $btn-bg;
-  margin-right: 10px;
-  //font-family: $font-family;
-  //padding:8px 20px;
-  border-radius: 25px;
-}
 .col-12{ 
   overflow-y: auto; 
+  overflow-x: auto; 
   height: 75vh; 
 }
-#table-outer-div thead th { 
-  position: sticky; 
-  top: 0; 
+
+::ng-deep .mat-dialog-container {
+  background:$po-order-form-bg;
 }
 
 /* Just common table stuff. Really. */

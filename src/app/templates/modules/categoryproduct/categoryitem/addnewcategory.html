@@ -7,6 +7,9 @@
     (submit)="categoryForm.form.valid && saveCategory()"
     #categoryForm="ngForm" novalidate>   
         <div>
+           <div *ngIf="show">
+            <label> Code : {{model.categorycode}} </label>
+        </div>
             <input type="text"  [(ngModel)]="model.name" 
                 #name="ngModel" placeholder="Enter Name"
                 id="name" name="name"  required>
@@ -19,10 +22,11 @@
                 </span>
             </div>
 
-            <input type="text" [(ngModel)]="model.description" #description="ngModel" 
+            <input type="text" [(ngModel)]="model.description" #description="ngModel"  
+            id="description"
                 placeholder="Enter Description" name="description">
         </div>
-        <button type="submit">Save</button>
+        <button type="submit">{{btnlabel}}</button>
 
     </form>
 </div>

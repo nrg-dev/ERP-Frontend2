@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoryproductService } from '../services/categoryproduct.service';
-import { MatSnackBar } from "@angular/material";
+import { MatSnackBar, MatDialog, MatDialogConfig } from "@angular/material";
+import { AddnewcategoryComponent } from '../categoryitem/categoryitem.component';
 
 @Component({
   selector: 'app-category',
@@ -10,12 +11,14 @@ import { MatSnackBar } from "@angular/material";
 })
 export class CategoryComponent implements OnInit {
   constructor(private router: Router,
+    private dialog: MatDialog,
     private catprodservice: CategoryproductService,
     private snackBar: MatSnackBar
   ) { }
 
   categorylist:any = {};
   model:any = {};
+  dialogConfig = new MatDialogConfig();
 
   ngOnInit() {
     this.loadCategory();
@@ -38,8 +41,23 @@ export class CategoryComponent implements OnInit {
      );
   }
 
-  categoryedit(){
-    
+  categoryedit(categorycode:string,name:string,desc:string){
+    //alert(code);
+    //alert(name);
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+      'top': '100',
+      left: '100'
+    };
+    this.dialog.open(AddnewcategoryComponent,{ 
+      panelClass: 'addNewCategory',
+      data: {categorycode: categorycode, name: name,desc: desc},
+      height:'55vh',width:'80vh',
+    })
+    .afterClosed().subscribe(result => {
+      this.loadCategory();
+    }); 
     
   }
 
