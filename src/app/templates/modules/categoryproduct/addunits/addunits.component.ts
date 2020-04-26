@@ -1,7 +1,20 @@
-import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatSnackBar } from "@angular/material";
+import { MatSnackBar, MAT_DIALOG_DATA } from "@angular/material";
 import { CategoryproductService } from '../services/categoryproduct.service';
+import { Component, OnInit, Inject,Optional } from '@angular/core';
+
+// categoryeditdelete end
+export interface UsersData {
+  id: number;
+  unitname: string;
+  unitsymbol: string;
+  quantityname: string;
+  quantitysymbol: string;
+  dimensionsymbol: string;
+  //unitsymbol: string;
+  //desc:string;
+}
+
 
 @Component({
   selector: 'app-addunits',
@@ -10,12 +23,34 @@ import { CategoryproductService } from '../services/categoryproduct.service';
 })
 export class AddunitsComponent implements OnInit {
   model: any = {};
+  local_data:any;
+  showbackbtn:boolean;
+  btnsave:string;//="Save";
 
   constructor(
     private router: Router,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: UsersData,
     private catprodservice: CategoryproductService,
     private snackBar: MatSnackBar
-  ) { }
+  ) { 
+    console.log(data);
+    this.local_data = {...data};
+    this.model.id=this.local_data.id;
+    this.model.unitname=this.local_data.unitname;
+    this.model.quantityname=this.local_data.quantityname;
+    this.model.quantitysymbol=this.local_data.quantitysymbol;
+    this.model.dimensionsymbol=this.local_data.dimensionsymbol;    
+    if(this.local_data.id!=null){
+     // alert("Yes Value Update");
+      this.showbackbtn=false;
+      this.btnsave="Update";
+    }else{
+     // alert("No Value New");
+      this.showbackbtn=true;
+      this.btnsave="Save";
+     // this.showbackbtn=true;
+    }
+  }
 
   ngOnInit() {
   }

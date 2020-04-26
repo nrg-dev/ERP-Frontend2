@@ -1,5 +1,7 @@
-<div> <a (click)="unitClose()" style="color: #fff;float: left;"><i class="fas fa-chevron-left left-arrow"></i></a></div>
+<div *ngIf="showbackbtn"> <a (click)="unitClose()" style="color: #fff;float: left;">
+  <i class="fas fa-chevron-left left-arrow"></i></a></div>
 <br/>
+
 <div class="container">
   <form
     name="unitForm"
@@ -101,7 +103,7 @@
       <div class="col-25"></div>
       <div class="col-75">
        <!-- <button  [disabled]="!unitForm.form.valid" class="save-button">SAVE</button> -->
-        <button  class="save-button">SAVE</button>
+        <button  class="save-button">{{btnsave}}</button>
 
       </div>
     </div>

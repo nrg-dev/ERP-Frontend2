@@ -1,6 +1,12 @@
 
 @import "_base";
 
+
+::ng-deep .mat-dialog-container {
+  background:$po-order-form-bg !important;
+  color:$white;
+}
+
 #outer-div{ 
    height: 5vh; 
  }
