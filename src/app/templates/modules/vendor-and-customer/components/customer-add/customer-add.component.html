@@ -22,16 +22,33 @@
     </div>
     <div class="column">
 
-      <label>Customer Name </label>
-      <input type="text" name="customerName" id="textbox1" [(ngModel)]="this.model.customerName" 
-        #customerName="ngModel" required/>
+      <label>{{labelname}} </label>
+      <div [ngSwitch]="showTasksOf">
 
-      <div *ngIf="customerName.errors && (customerName.dirty || customerName.touched) ||
-        (customerForm.submitted && !customerName.valid )">
-        <span [hidden]="!customerName.errors.required" class="spanerror">
-            Required field cannot be left blank
-        </span>
+        <div *ngSwitchCase="'customer'">
+          <input type="text" id="textbox1" name="customerName"  [(ngModel)]="this.model.customerName" 
+          #customerName="ngModel" required/>
+  
+        <div *ngIf="customerName.errors && (customerName.dirty || customerName.touched) ||
+          (customerForm.submitted && !customerName.valid )">
+          <span [hidden]="!customerName.errors.required" class="spanerror">
+              Required field cannot be left blank
+          </span>
+        </div>        </div>
+        <div *ngSwitchCase="'vendor'">
+          <input type="text" id="textbox1" name="vendorName"  [(ngModel)]="this.model.vendorName" 
+          #vendorName="ngModel" required/>
+  
+        <div *ngIf="vendorName.errors && (vendorName.dirty || vendorName.touched) ||
+          (customerForm.submitted && !vendorName.valid )">
+          <span [hidden]="!vendorName.errors.required" class="spanerror">
+              Required field cannot be left blank
+          </span>
+        </div>        
       </div>
+      </div>
+
+
 
       
 

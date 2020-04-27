@@ -9,6 +9,16 @@
     top: 17px;}
   }
 */
+
+.button {
+  float: right;
+  color: $white;
+  background: $btn-bg;
+  border: 1px solid $btn-bg;
+  margin-right: 10px;
+  border-radius: 25px;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }

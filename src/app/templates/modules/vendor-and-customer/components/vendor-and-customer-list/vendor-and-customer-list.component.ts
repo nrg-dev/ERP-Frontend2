@@ -20,6 +20,8 @@ import { CustomerService } from "../../services/customer.service";
 import { Customer, Vendor } from "src/app/core/common/_models";
 import { PrintDialogService } from "src/app/core/services/print-dialog/print-dialog.service";
 import { VendorDetailsComponent } from './../vendor-details/vendor-details.component';
+import { CustomerAddComponent } from './../customer-add/customer-add.component';
+
 
 @Component({
   selector: "app-vendor-and-customer-list",
@@ -95,6 +97,7 @@ export class VendorAndCustomerListComponent implements OnInit, OnDestroy {
     )).style.overflow = "auto";
   }
 
+ 
   removeScrollBar() {
     setTimeout(function () {
       (<HTMLElement>(
@@ -144,7 +147,27 @@ export class VendorAndCustomerListComponent implements OnInit, OnDestroy {
       data: item
     });
   }
+
+  addVendor(){
+    let data = {key:"vendor"};
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+      'top': '1000',
+      left: '100'
+    };
+    this.dialog.open(CustomerAddComponent,{
+      panelClass: 'addcustomer',
+      data: data,
+    })
+    .afterClosed().subscribe(result => {
+     // this.getAllCustomerDetails();
+    });
+  }
+
+  
   removeVendor(vendorcode:string){
+    console.log("Remove Vendor......");
     this.vendorService.remove(vendorcode)
     .subscribe(
       data => {
