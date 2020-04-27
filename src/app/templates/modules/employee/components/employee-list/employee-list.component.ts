@@ -24,7 +24,7 @@ import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
   styleUrls: ["./employee-list.component.scss"]
 })
 export class EmployeeListComponent implements OnInit, OnDestroy {
-  employeesDS: any;
+  employeesDS: any = {};
   employees: MatTableDataSource<Employee>;
   employee;
   dialogConfig = new MatDialogConfig();
@@ -60,8 +60,10 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
 
   allemplist() {
     this.employeeService.load().subscribe(
-      (data: Employee[]) => { 
+      data => { 
         this.employeesDS = data;
+       // alert(this.employeesDS.length);
+        console.log(this.employeesDS);
       },
       error => {
         setTimeout(() => {

@@ -9,10 +9,13 @@
   }
 
   .over-flo{
-    overflow-y: scroll !important; overflow-x: hidden;
-    height:340px !important; 
+    overflow-y: scroll !important; 
+    //overflow-x: hidden;
+    overflow-x: scroll !important;
+    height: 100vh;// 500px !important; 
     display: table-caption;
     top: 58px;
+    //padding-bottom: 10px;
   }
 
 ::-webkit-scrollbar {
