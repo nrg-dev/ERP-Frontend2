@@ -8,7 +8,7 @@
   table>thead>tr>th>div.custom-control{position: relative;
     top: 17px;}
   }
-  .over-flo{overflow-y: scroll !important; height: 340px; display: table-caption;
+  .over-flo{overflow-y: scroll !important; height: 50vh; display: table-caption;
     position: absolute; top: 58px;}
 ::-webkit-scrollbar {
   width: 10px;
@@ -17,9 +17,12 @@
   box-shadow: inset 0 0 5px grey; 
   border-radius: 10px;
 }
- 
+tbody {
+  padding-bottom: 70px !important;
+}
 .table > tbody > tr:hover {
   background-color: $header-bg;
+  padding-bottom: 50px;
 }
 
 .table > tbody > tr:hover, .table > tbody > tr:hover span  {
@@ -27,7 +30,7 @@
 }
 
 
-.grid-align{position: absolute; top:60px; width: 98%;}
+.grid-align{position: absolute; height: 100vh; top:60px; width: 98%; }
 .header-align{position: absolute;
   top: 20px;
   width: 97%;}
