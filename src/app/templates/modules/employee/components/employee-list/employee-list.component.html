@@ -7,7 +7,7 @@
     <!-- <button class="create-button">
       <span class="fas fa-download" style="margin-right: 5px;"></span>Download
   </button> -->
-  <div style="float: right;"><button  class="create-button" style="float: left; margin-right: 10px; margin-top: 4px;" (click)="addEmployee()">
+  <div style="float: right;"><button class="create-button" style="float: left; margin-right: 10px; margin-top: 4px;" (click)="addEmployee()">
     <span class="fas fa-plus"></span> Add Employee 
   </button>
   <img src="assets/images/print.png" style="margin-right: 10px;" class="img-fluid logo" alt="print"/>
@@ -17,13 +17,12 @@
            
     </div>
     <div class="m-t-25 grid-align" style="position: absolute; top:60px; width: 90%;">
-    <table class="table"  style="margin-bottom: 0px !important; padding-top: 0px!important; text-align: left;">
+    <table class="table" style="margin-bottom: 0rem !important; padding-top: 0px!important;
+      margin-top: 4.5rem!important;text-align: left;height: 10vh !important;">
       <thead id="table-head" style="position: absolute;
       top: 0px;">
         <tr>
-      <th class="wid-50px" style="width: 4% !important;">
-       
-          </th>
+          <th class="wid-50px" style="width: 4% !important;"></th>
           <th class="wid-190px" style="cursor:pointer; width: 8% !important;">ID</th>
           <th class="wid-190px" style="cursor:pointer; width: 13% !important;">Name
            
@@ -33,7 +32,7 @@
           <th class="wid-190px" style="cursor:pointer; width: 5% !important;">Designation
           
           </th>
-      <th class="wid-190px" style="width: 22% !important;">Email</th>
+          <th class="wid-190px" style="width: 22% !important;">Email</th>
           <th class="wid-200px" style="width: 12% !important;">Phone</th>
           <th class="wid-200px" style="width: 10% !important;text-align: right;">Joined Date</th>
           <th class="wid-200px" style="width: 13% !important; text-align: right;">Status</th>
@@ -44,8 +43,8 @@
       </thead>
       <tbody class="over-flo"> 
         <tr *ngFor="let item of employeesDS; let i = index" class="purchase-order-row-invoiced" (dblclick)= "router.navigateByUrl('/employment/viewEmployee/'+item.employeecode)">
-      <td class="wid-50px" style="width: 4% !important;">
-        <img src="assets/images/employee.png" class="img-fluid logo" alt="Employee" />
+          <td class="wid-50px" style="width: 4% !important;">
+            <img src="assets/images/employee.png" class="img-fluid logo" alt="Employee" />
           </td>
           <td class="wid-190px" style="width: 8% !important;">{{item.employeecode}}</td>
           <td class="wid-190px" style="width: 13% !important;"><span >{{item.name}}</span></td>

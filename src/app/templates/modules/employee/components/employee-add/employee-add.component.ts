@@ -32,7 +32,7 @@ export class EmployeeAddComponent implements OnInit, AfterViewInit {
 
   cancelEmployee(){}
   saveEmployee() { 
-    this.model.cardImageBase64=this.cardImageBase64;
+    this.model.profilepic=this.cardImageBase64;
     this.employeeService.save(this.model)
       .subscribe(
       data => {

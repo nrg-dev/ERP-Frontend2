@@ -1,22 +1,22 @@
 @import "_common";
 
-  @media screen and (min-device-width: 320px) and (max-device-width: 767px){
+@media screen and (min-device-width: 320px) and (max-device-width: 767px){
   .back-colr{float:left;}
   body{font-size: 12px;}
   .table>thead>tr>th, .table>tbody>tr>td{font-size: 11px;}
   table>thead>tr>th>div.custom-control{position: relative;
     top: 17px;}
-  }
+}
 
-  .over-flo{
-    overflow-y: scroll !important; 
-    //overflow-x: hidden;
-    overflow-x: scroll !important;
-    height: 100vh;// 500px !important; 
-    display: table-caption;
-    top: 58px;
-    //padding-bottom: 10px;
-  }
+.over-flo{
+  overflow-y: scroll !important; 
+  //overflow-x: hidden;
+  overflow-x: scroll !important;
+  height: 100vh;// 500px !important; 
+  display: table-caption;
+  top: 58px;
+  //padding-bottom: 10px;
+} 
 
 ::-webkit-scrollbar {
   width: 10px;
