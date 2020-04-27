@@ -806,6 +806,11 @@ export class AllproducteditComponent {
   category:Category;
   product:Product;
   inputproductcode:string;
+  isImageSaved0:boolean;
+  isImageSaved1:boolean;
+  isImageSaved2:boolean;
+  isImageSaved3:boolean;
+
   constructor(
     public dialogRef: MatDialogRef<AllproducteditComponent>,
     private catprodservice: CategoryproductService,
@@ -831,7 +836,7 @@ export class AllproducteditComponent {
       
        }
       );
- 
+     
       this.vendorservice.loadvendornamecode()
       .subscribe(
          data => {
@@ -910,7 +915,9 @@ export class AllproducteditComponent {
     );
      
   }
-
+  fileChangeEvent(fileInput: any,number:number){
+        
+  }
   addProductEditClose(){
     this.dialogRef.close();
   }

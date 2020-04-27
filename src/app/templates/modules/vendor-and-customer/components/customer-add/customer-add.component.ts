@@ -15,6 +15,8 @@ export interface UsersData{
 export class CustomerAddComponent implements OnInit {
 //export class CustomerAddComponent implements OnInit, AfterViewInit {
 
+  imageError:string;
+  isImageSaved:boolean;
   model: any = {};
   local_data: any = {};
   key:string;
@@ -57,6 +59,39 @@ export class CustomerAddComponent implements OnInit {
    }
 
   cancelCustomer(){}
+  fileChangeEvent(fileInput: any){
+     // Size Filter Bytes
+     const max_size = 20971520;
+     const allowed_types = ['image/png', 'image/jpeg'];
+     const max_height = 15200;
+     const max_width = 25600;
+
+     if (fileInput.target.files[0].size > max_size) {
+         this.imageError =
+             'Maximum size allowed is ' + max_size / 1000 + 'Mb';
+
+         return false;
+     }
+     const reader = new FileReader();
+     reader.onload = (e: any) => {
+         const image = new Image();
+         image.src = e.target.result;
+         image.onload = rs => {
+             const img_height = rs.currentTarget['height'];
+             const img_width = rs.currentTarget['width'];
+
+             console.log(img_height, img_width);
+             if (img_height > max_height && img_width > max_width) {
+                 
+              return false;
+          } 
+          
+         }
+         reader.readAsDataURL(fileInput.target.files[0]);
+
+    }
+
+  }
   saveCustomer() { 
     this.customerService.save(this.model)
       .subscribe(
