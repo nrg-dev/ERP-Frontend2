@@ -3,6 +3,8 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Component, OnInit,Inject,Optional } from '@angular/core';
+import { VendorService } from '../../services/vendor.service';
+import * as _ from 'lodash';
 
 export interface UsersData{
   key:string;
@@ -17,6 +19,7 @@ export class CustomerAddComponent implements OnInit {
 
   imageError:string;
   isImageSaved:boolean;
+  cardImageBase64: string;
   model: any = {};
   local_data: any = {};
   key:string;
@@ -27,6 +30,7 @@ export class CustomerAddComponent implements OnInit {
   constructor( 
     @Optional() @Inject(MAT_DIALOG_DATA) public data: UsersData,
     private customerService: CustomerService, 
+    private vendorService: VendorService, 
     private snackBar: MatSnackBar,
     private dialogRef: MatDialogRef<CustomerAddComponent>
     ) { 
@@ -59,41 +63,84 @@ export class CustomerAddComponent implements OnInit {
    }
 
   cancelCustomer(){}
-  fileChangeEvent(fileInput: any){
-     // Size Filter Bytes
-     const max_size = 20971520;
-     const allowed_types = ['image/png', 'image/jpeg'];
-     const max_height = 15200;
-     const max_width = 25600;
+  fileChangeEvent(fileInput: any) {
+    this.imageError = null;
+    if (fileInput.target.files && fileInput.target.files[0]) {
+        // Size Filter Bytes
+        const max_size = 20971520;
+        const allowed_types = ['image/png', 'image/jpeg'];
+        const max_height = 15200;
+        const max_width = 25600;
 
-     if (fileInput.target.files[0].size > max_size) {
-         this.imageError =
-             'Maximum size allowed is ' + max_size / 1000 + 'Mb';
+        if (fileInput.target.files[0].size > max_size) {
+          this.imageError =
+              'Maximum size allowed is ' + max_size / 1000 + 'Mb';
+          return false;
+        }
 
-         return false;
-     }
-     const reader = new FileReader();
-     reader.onload = (e: any) => {
-         const image = new Image();
-         image.src = e.target.result;
-         image.onload = rs => {
-             const img_height = rs.currentTarget['height'];
-             const img_width = rs.currentTarget['width'];
-
-             console.log(img_height, img_width);
-             if (img_height > max_height && img_width > max_width) {
-                 
-              return false;
-          } 
-          
-         }
-         reader.readAsDataURL(fileInput.target.files[0]);
-
+        if (!_.includes(allowed_types, fileInput.target.files[0].type)) {
+          this.imageError = 'Only Images are allowed ( JPG | PNG )';
+          return false;
+        }
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          const image = new Image();
+          image.src = e.target.result;
+          image.onload = rs => {
+          const img_height = rs.currentTarget['height'];
+          const img_width = rs.currentTarget['width'];
+          console.log(img_height, img_width);
+          if (img_height > max_height && img_width > max_width) {
+            this.imageError =
+                'Maximum dimentions allowed ' +
+                max_height +
+                '*' +
+                max_width +
+                'px';
+            return false;
+          } else {
+            const imgBase64Path = e.target.result;
+            this.cardImageBase64 = imgBase64Path;
+            this.isImageSaved = true;
+          }
+        };
+      };
+      reader.readAsDataURL(fileInput.target.files[0]);
     }
-
   }
-  saveCustomer() { 
-    this.customerService.save(this.model)
+
+  removeImage() {
+    this.cardImageBase64 = null;
+    this.isImageSaved = false;
+  }
+
+  saveCustomer(labelname:string) { 
+    if(labelname == "Vendor Name"){
+      this.model.vendorbase64 = this.cardImageBase64;
+      this.vendorService.save(this.model)
+      .subscribe(
+        data => {
+          setTimeout(() => {
+            this.snackBar.open("Vendor created Successfully", "", {
+              panelClass: ["success"],
+              verticalPosition: 'top'      
+            });
+          });
+          this.addCustomerClose();
+          this.vendorService.load();
+        },
+        error => {
+          setTimeout(() => {
+            this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+              panelClass: ["error"],
+              verticalPosition: 'top'      
+            });
+          });  
+        }
+      );
+    }else if(labelname == "Customer Name"){
+      this.model.customerbase64 = this.cardImageBase64;
+      this.customerService.save(this.model)
       .subscribe(
         data => {
           setTimeout(() => {
@@ -114,6 +161,7 @@ export class CustomerAddComponent implements OnInit {
           });  
         }
       );
+    }
   }
 
   addCustomerClose() {
@@ -122,6 +170,7 @@ export class CustomerAddComponent implements OnInit {
 
   addCustomerFields() {
     this.model.customerName = '';
+    this.model.vendorName = '';
     this.model.address = '';
     this.model.phoneNumber = '';
     this.model.mobileNumber = '';
