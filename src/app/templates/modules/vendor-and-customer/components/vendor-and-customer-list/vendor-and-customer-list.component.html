@@ -1,58 +1,55 @@
-     
 <div class="row">
-  <div class="col-12">
-    <button (click)="addVendor()"> Add Vendor</button>
-  </div>
-</div>
-<br/>
-<div class="row">
-  <div class="container-fluid"> 
-    <div class="row back-colr">
-    <div class="container">
-    <div class="header-align"><h3 id="title">Vendor List</h3> 
-            
+    <div class="col-12">
+      <button (click)="addVendor()" class="create-button">
+        Add Vendor
+      </button>
     </div>
-    <div class="m-t-25 grid-align table-container">
-    <table class="table">
-      <thead id="table-head">
-        <tr>
-          <th class="wid-50px" style="width: 4% !important;"></th>
-          <th class="wid-150px" style="cursor:pointer;">Code
-            <i *ngIf="!isSortCodeDesc" class="sort-by-desc" (click)="sortByOrder('code','desc')"></i>
-            <i class="sort-by-asc" *ngIf="!isSortCodeAsc" (click)="sortByOrder('code','asc')"></i>
-          </th>
-          <th>Name</th>
-          <th class="wid-150px">Country</th>
-          <th>Email</th>
-          <th>Joining Date</th>
-          <th class="txt-right wid-150px">Contact Number</th>
-          <th>City</th>
-          <th class="txt-right wid-150px"></th> 
-         </tr>
-      </thead>
-      <tbody> 
-         <tr class="purchase-order-row-invoiced" *ngFor="let item of vendorsDS" (dblclick)="goToVendorDetails(item)">
-            <td class="wid-50px" style="width: 4% !important;">
-              <img src="assets/images/employee.png" class="img-fluid logo" alt="Employee" />
-            </td>
-            <td class="wid-150px">{{item.vendorcode}}</td>
-            <td><span>{{item.vendorName}}</span></td>
-            <td class="wid-150px">{{item.country}}</td>
-            <td><span>{{item.email}}</span></td>
-            <td class="txt-right wid-150px"><span>{{item.addeddate}}</span></td>
-            <td class="txt-right wid-150px">{{item.phoneNumber}}</td>
-            <td>{{ item.city }}</td>
-          <td class="txt-right wid-150px"><span class="edit-delete-icon">
-            <span (click)="removeVendor(item.vendorcode)" class="fas fa-trash"></span>
-              </span>
-            </td>
-         </tr>
-       </tbody>
-    </table>
   </div>
-  </div>
+  
+  <div class="row">
+    <div class="col-12">
+      <h3>Vendor List</h3> 
+  
+      <div id="table-outer-div">
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="width: 4%"></th>
+              <th style="cursor:pointer;">Code
+                <i *ngIf="!isSortCodeDesc" class="sort-by-desc" (click)="sortByOrder('code','desc')"></i>
+              <i class="sort-by-asc" *ngIf="!isSortCodeAsc" (click)="sortByOrder('code','asc')"></i>
+              </th>
+              <th>Name</th>
+              <th>Country</th>
+              <th style="width: 20%">Email</th>
+              <th class="txt-right">Joining Date</th>
+              <th>Contact Number</th>
+              <th>City</th>
+              <th class="txt-right"></th> 
+            </tr>
+          </thead>
+          <tbody> 
+            <tr *ngFor="let item of vendorsDS" (dblclick)="goToVendorDetails(item)">
+              <td style="width: 4%">
+                <img src="assets/images/employee.png" class="img-fluid logo" alt="Employee" />
+              </td>
+              <td>{{item.vendorcode}}</td>
+              <td>{{item.vendorName}}</td>
+              <td>{{item.country}}</td>
+              <td style="width: 20%">{{item.email}}</td>
+              <td class="txt-right">{{item.addeddate}}</td>
+              <td>{{item.phoneNumber}}</td>
+              <td>{{ item.city }}</td>
+              <td class="txt-right">
+                <span class="edit-delete-icon">
+                  <span (click)="removeVendor(item.vendorcode)" class="fas fa-trash"></span>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
+  
   </div>
-  
-  
+    
