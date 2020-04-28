@@ -55,14 +55,13 @@ export class CustomerAddComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.addCustomerFields();
+    this.emptyFields();
   }
 
   ngAfterViewInit() {
     (<HTMLElement>document.querySelector('.mat-dialog-container')).style.background = 'inherit';
-   }
+  }
 
-  cancelCustomer(){}
   fileChangeEvent(fileInput: any) {
     this.imageError = null;
     if (fileInput.target.files && fileInput.target.files[0]) {
@@ -114,7 +113,7 @@ export class CustomerAddComponent implements OnInit {
     this.isImageSaved = false;
   }
 
-  saveCustomer(labelname:string) { 
+  save(labelname:string) { 
     if(labelname == "Vendor Name"){
       this.model.vendorbase64 = this.cardImageBase64;
       this.vendorService.save(this.model)
@@ -126,7 +125,7 @@ export class CustomerAddComponent implements OnInit {
               verticalPosition: 'top'      
             });
           });
-          this.addCustomerClose();
+          this.dialogClose();
           this.vendorService.load();
         },
         error => {
@@ -149,7 +148,7 @@ export class CustomerAddComponent implements OnInit {
               verticalPosition: 'top'      
             });
           });
-          this.addCustomerClose();
+          this.dialogClose();
           this.customerService.load();
         },
         error => {
@@ -164,11 +163,11 @@ export class CustomerAddComponent implements OnInit {
     }
   }
 
-  addCustomerClose() {
+  dialogClose() {
     this.dialogRef.close();
   }
 
-  addCustomerFields() {
+  emptyFields() {
     this.model.customerName = '';
     this.model.vendorName = '';
     this.model.address = '';

@@ -1,7 +1,7 @@
 
 <div class="row">
-  <form name="customerForm" (ngSubmit)="customerForm.form.valid && saveCustomer(labelname)"
-  #customerForm="ngForm" novalidate>
+  <form name="registerForm" (ngSubmit)="registerForm.form.valid && save(labelname)"
+  #registerForm="ngForm" novalidate>
     <div class="column">
       <fieldset class="form-group"> 
         <div class="custom-file fileInputProfileWrap">
@@ -30,7 +30,7 @@
           #customerName="ngModel" required/>
   
         <div *ngIf="customerName.errors && (customerName.dirty || customerName.touched) ||
-          (customerForm.submitted && !customerName.valid )">
+          (registerForm.submitted && !customerName.valid )">
           <span [hidden]="!customerName.errors.required" class="spanerror">
               Required field cannot be left blank
           </span>
@@ -40,7 +40,7 @@
           #vendorName="ngModel" required/>
   
         <div *ngIf="vendorName.errors && (vendorName.dirty || vendorName.touched) ||
-          (customerForm.submitted && !vendorName.valid )">
+          (registerForm.submitted && !vendorName.valid )">
           <span [hidden]="!vendorName.errors.required" class="spanerror">
               Required field cannot be left blank
           </span>
