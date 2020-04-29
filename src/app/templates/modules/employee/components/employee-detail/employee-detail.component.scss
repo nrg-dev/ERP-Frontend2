@@ -6,12 +6,28 @@
 .side-profile-box{background-color:#1A2D39; margin: 30px 10px 10px 10px; width: 90%;padding: 15px; -webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
     -moz-box-shadow: 3px 2px 5px -1px rgba(0,0,0,.075);
     box-shadow:3px 2px 5px -1px rgba(0,0,0,.075)}
-.profile-div{float:left;background-color:#1A2D39;background-color: #1A2D39;
-    padding: 15px;
-    margin-top: 15px;
-    width: 100%;-webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
-    -moz-box-shadow: 3px 2px 5px -1px rgba(0,0,0,.075);
-    box-shadow:3px 2px 5px -1px rgba(0,0,0,.075)}
+
+.profile-div{
+    margin-right: 10px;
+    width: calc(30% - 10px);
+    overflow: hidden;
+    img {
+        max-width: 70%;
+        max-height: 75px;
+    }
+    //float:left;background-color:#1A2D39;background-color: #1A2D39;
+   // padding: 15px;
+   // margin-top: 15px;
+   // width: 100%;-webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
+   // -moz-box-shadow: 3px 2px 5px -1px rgba(0,0,0,.075);
+    //box-shadow:3px 2px 5px -1px rgba(0,0,0,.075)
+
+
+}
+
+
+
+
 .back-colr{background-color:#15222B;}
 .text-profile{float: left;
     margin-left: 10px;
