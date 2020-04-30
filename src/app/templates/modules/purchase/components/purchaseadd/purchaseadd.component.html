@@ -31,7 +31,7 @@
           
           <!-- name="qty" (input)="onSubTotalCalc($event.target.value, 'qty')"> -->
 
-          <label id="po-price">Price :  {{ this.model.unitPrice }} </label>
+          <label id="po-label">Unit :  {{ this.model.unit }} </label>
           <!-- <p style="font-size: 12px;">0.003</p>
           <input type="number" min="0" id="po-textbox" style="width:100%;border: none !important;" 
             [(ngModel)]="model.price" #price="ngModel" name="price" 
@@ -60,9 +60,9 @@
             {{ item.productname }} </option>
           </select>
 
-          <label id="po-label">Unit</label>
-          <input type="text" class="m-t-5px" id="po-textbox" [(ngModel)]="model.unit" #unit="ngModel" 
-            name="unit" value="{{ this.model.unit }}" readonly>
+          <label id="po-label">Price</label>
+          <label class="m-t-5px" id="po-textbox" 
+            name="unit">  {{ this.model.unitPrice }} </label>
           
         </div>
       </div>
