@@ -218,6 +218,8 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
     this.dialog
       .open(PurchaseAddComponent, {
         panelClass: "addpromotion",
+        width:'200vh',
+        height:'400vh',
         data: data,
       })
       .afterClosed()
