@@ -1,10 +1,10 @@
 <div class="mb-3" style="font-size: 12px;">        
   <div class="grid-container3">
     <div></div>
+    <button id="x" (click)="addPurchaseOrderClose()"> X </button>
     <form name="purchaseForm" (ngSubmit)="purchaseForm.form.valid && addPurchaseOrder(data)"
-    #purchaseForm="ngForm" novalidate>       
+      #purchaseForm="ngForm" novalidate>       
       <div>
-        <button id="x" (click)="addPurchaseOrderClose()"> X </button>
         <!-- <button type="button" class="close" style="color: #1c313e;" aria-label="Close" (click)="addPurchaseOrderClose()">
           <span aria-hidden="true">&times;</span>
         </button> -->
@@ -168,7 +168,7 @@
                   
         <div class="grid-container4">
           <div></div>
-          <div> <p id="h2ID">Total</p></div>
+          <div> <p id="totID">Total</p></div>
           <div>
             <p id="pID" *ngIf="this.model.productName !== undefined && this.model.qty === undefined">
               {{ this.model.unitPrice }}</p>
