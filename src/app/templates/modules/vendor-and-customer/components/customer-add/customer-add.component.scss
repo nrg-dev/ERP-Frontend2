@@ -1,7 +1,5 @@
 @import "_base";
 
-@import "_base";
-
 * {
   box-sizing: border-box;
 }
@@ -34,7 +32,7 @@ button{
   height: 35px;
   background: $btn-bg;
   border: none;
-  border-radius: 25px;
+  border-radius: 20px;
 }
 input, select, textarea {
   width: 80%;
