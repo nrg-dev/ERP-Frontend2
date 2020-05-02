@@ -11,7 +11,7 @@
   background: $btn-bg;
   border: 1px solid $btn-bg;
   margin-right: 10px;
-  border-radius: 20px;
+  border-radius: $btn-border-radius;
 }
 
 #table-outer-div thead th { 

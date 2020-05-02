@@ -58,6 +58,8 @@ $small: 12;
 $large: 18;
 $x-large: 26;
 
+$btn-border-radius: 20px;
+
 @mixin fontSize($size) {
   font-size: $size + px;
 }

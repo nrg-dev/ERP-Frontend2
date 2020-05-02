@@ -37,7 +37,7 @@ button[type="submit"]{
   background: $btn-bg;
   width: 100%;
   border: none;
-  border-radius: 20px;
+  border-radius: $btn-border-radius;
   box-sizing: border-box;
   margin-top: 6px;
   margin-bottom: 16px;

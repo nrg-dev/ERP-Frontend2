@@ -9,7 +9,7 @@
   margin-right: 10px;
   //font-family: $font-family;
   //padding:8px 20px;
-  border-radius: 20px;
+  border-radius: $btn-border-radius;
 }
 ::ng-deep .mat-drawer-content {
   position: relative;
