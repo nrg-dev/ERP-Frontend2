@@ -22,7 +22,7 @@
     </div>
     <div class="column">
 
-      <label>{{labelname}} </label>
+      <label class="heading">{{labelname}} </label>
       <div [ngSwitch]="showTasksOf">
 
         <div *ngSwitchCase="'customer'">
@@ -52,11 +52,11 @@
 
       
 
-      <label>Phone Number </label>
+      <label class="heading">Phone Number </label>
       <input type="text" name="phoneNumber" id="textbox3" [(ngModel)]="this.model.phoneNumber" 
         #phoneNumber="ngModel" />
 
-        <label>Address</label>
+        <label class="heading">Address</label>
         <input type="text" name="address" id="textbox4" [(ngModel)]="this.model.address" 
           #address="ngModel" />
   
@@ -64,11 +64,11 @@
     </div>
     <div class="column">
       
-      <label>Email </label>
+      <label class="heading">Email </label>
       <input type="text" name="email" id="textbox7" [(ngModel)]="this.model.email" 
         #email="ngModel" />
 
-      <label>Country </label>
+      <label class="heading">Country </label>
       <select name="country" id="textbox" [(ngModel)]="this.model.country" 
       #country="ngModel" class="m-t-5px">
       <option value="India">India</option>
@@ -77,7 +77,7 @@
       <option value="US">US</option>
       <option value="UK">UK</option>
     </select>
-      <label>City </label>
+      <label class="heading">City </label>
       <input type="text" name="city" id="textbox9" [(ngModel)]="this.model.city" 
         #city="ngModel" />
 

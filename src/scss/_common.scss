@@ -75,6 +75,20 @@ input[type=checkbox]:before {
     border-radius: 0px;
     background-color: $table-invoived-row-bg;
 }
+
+input[type=radio] {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: -3px;
+  left: 0;
+  border: 2px solid $header-bg;
+  border-radius: 0px;
+  background-color: $table-invoived-row-bg;
+}
+
 input[type=checkbox]:checked:after {
     content: "";
     display: block;

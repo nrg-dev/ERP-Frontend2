@@ -10,6 +10,7 @@ import {
 } from "@angular/material";
 import { PurchaseAddComponent } from "../purchaseadd/purchaseadd.component";
 import { PurchaseCreateInvoiceComponent } from "./../purchase-create-invoice/purchase-create-invoice.component";
+import { PurchaseCreateReturnComponent } from '../purchase-create-return/purchase-create-return.component';
 
 @Component({
   selector: "app-purchaselist",
@@ -318,7 +319,6 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
 
   createInvoice() {
     let data: any;
-
     data = {
       dialogPaneTitle: "Purchase Orders",
       dialogInvoiceTitle: "Create Invoice",
@@ -339,5 +339,26 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
       panelClass: "purchaseCreateInvoice",
       data: data,
     });
+  }
+
+  createReturn() {
+  console.log("createReturn");
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+    };
+
+    this.dialog.open(PurchaseCreateReturnComponent, {
+      panelClass: "purchaseCreateReturn",
+      width:'120vh',
+      height:'200vh'
+      //disableClose: true,
+      //hasBackdrop: false
+      //data: data,
+    })
+    .afterClosed().subscribe(result => {
+      // this.getAllCustomerDetails();
+     });
+    ;
   }
 }
