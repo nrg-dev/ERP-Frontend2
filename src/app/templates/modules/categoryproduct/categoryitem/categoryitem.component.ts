@@ -1430,10 +1430,12 @@ productlist(number: string){
     this.dialogConfig.autoFocus = true;
     this.dialogConfig.position = {
       'top': '100',
-      left: '100'
+       'left': '100',
+       'right': '0'
     };
     this.dialog.open(AddnewcategoryComponent,{
-      height:'55vh',width:'80vh',
+      //height:'55vh',
+      width:'70vh',
       panelClass: 'addnewcategory'
      // data: {dialogTitle: "hello", dialogText: "text"},
     })
@@ -1542,8 +1544,8 @@ productlist(number: string){
   //    left: '100'
     };
     this.dialog.open(AddnewproductComponent,{ 
-      height:'100vh',
-      width:'150vh',
+      height:'95%',
+    //  width:'150vh',
       panelClass: 'addnewproduct',
     })
     .afterClosed().subscribe(result => {

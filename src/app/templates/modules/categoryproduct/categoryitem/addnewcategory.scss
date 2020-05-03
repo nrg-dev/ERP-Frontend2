@@ -1,5 +1,8 @@
 @import "_base";
 
+::ng-deep .addnewcategory  .mat-dialog-container {
+  background:$po-order-form-bg;
+}
 
 .ng-valid[required], .ng-valid.required  {
   border-left: 5px solid #42A948; /* green */
@@ -14,9 +17,6 @@ span{
   font-size: 12px;
 }
 
-::ng-deep .addnewcategory  .mat-dialog-container {
-  background:$po-order-form-bg;
-}
 
 /* Style all input fields */
 input {
