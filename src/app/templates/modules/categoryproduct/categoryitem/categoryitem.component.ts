@@ -1436,7 +1436,9 @@ productlist(number: string){
     this.dialog.open(AddnewcategoryComponent,{
       //height:'55vh',
       width:'70vh',
-      panelClass: 'addnewcategory'
+      panelClass: 'addnewcategory',
+      disableClose: true,
+      hasBackdrop: false
      // data: {dialogTitle: "hello", dialogText: "text"},
     })
     .afterClosed().subscribe(result => {
@@ -1456,7 +1458,9 @@ productlist(number: string){
     };
     this.dialog.open(AddpromotionComponent,{
       panelClass: 'addpromotion',
-      data: {title: title, key: show}
+      data: {title: title, key: show},
+      disableClose: true,
+      hasBackdrop: false
     })
     .afterClosed().subscribe(result => {
       this.alldiscountList();
@@ -1547,6 +1551,8 @@ productlist(number: string){
       height:'95%',
     //  width:'150vh',
       panelClass: 'addnewproduct',
+      disableClose: true,
+      hasBackdrop: false
     })
     .afterClosed().subscribe(result => {
       this.allproductList();

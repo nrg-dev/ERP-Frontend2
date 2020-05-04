@@ -1,8 +1,9 @@
 <div class="container">
-    <button type="button" class="close" aria-label="Close" 
+    <!-- <button type="button" class="close" aria-label="Close" 
         (click)="addCategoryClose()" style="position: relative; left: 25px; top: -20px;">
         <span aria-hidden="true" id="close-icon">&times;</span>
-    </button>
+    </button> -->
+    <button id="x" (click)="addCategoryClose()"> X </button>
     <form name="categoryForm" 
     (submit)="categoryForm.form.valid && saveCategory()"
     #categoryForm="ngForm" novalidate>   

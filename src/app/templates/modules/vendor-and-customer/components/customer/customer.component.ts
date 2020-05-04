@@ -129,21 +129,23 @@ export class CustomerComponent implements OnInit {
 
   addCustomer() {
     let data = {};
-   this.dialogConfig.disableClose = true;
-   this.dialogConfig.autoFocus = true;
-   this.dialogConfig.position = {
-     'top': '1000',
-     left: '100'
-   };
-   this.dialog.open(CustomerAddComponent,{
-     panelClass: 'addcustomer',
-     data: data,
-   })
-   .afterClosed().subscribe(result => {
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+      'top': '1000',
+      left: '100'
+    };
+    this.dialog.open(CustomerAddComponent,{
+      panelClass: 'addcustomer',
+      data: data,
+      disableClose: true,
+      hasBackdrop: false
+    })
+    .afterClosed().subscribe(result => {
      this.getAllCustomerDetails();
-   });
+    });
    
- }
+  }
 
   toggleVendorDetailView(code?, edit?) {
     this.showDetail = !this.showDetail;

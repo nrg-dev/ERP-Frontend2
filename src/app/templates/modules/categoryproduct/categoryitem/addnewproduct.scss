@@ -18,7 +18,18 @@ span{
   font-size: 12px;
   margin: 5px 0px;
 }
-
+#x {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  margin: -5px -5px 0px 0px;
+  /* background: #16222B; */
+  border: red;
+  color: white;
+  top: -10px;
+  right: -10px;
+  border-radius: 25px;
+}
 ::ng-deep .addnewproduct .mat-dialog-container {
   background:$po-order-form-bg;
   //width: 180vh;
@@ -60,6 +71,7 @@ input[type=submit]:hover {
 .container {
   border-radius: 5px;
   padding: 10px;
+  position: relative;
 }
 .col-20{
   float: left;

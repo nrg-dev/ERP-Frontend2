@@ -1,6 +1,6 @@
 @import "_base";
 
-::ng-deep .addnewcategory  .mat-dialog-container {
+::ng-deep .addnewcategory .mat-dialog-container {
   background:$po-order-form-bg;
 }
 
@@ -16,7 +16,18 @@ span{
   color:white;
   font-size: 12px;
 }
-
+#x {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  margin: -15px -15px 0px 0px;
+  /* background: #16222B; */
+  border: red;
+  color: white;
+  top: -10px;
+  right: -10px;
+  border-radius: 25px;
+}
 
 /* Style all input fields */
 input {
@@ -52,6 +63,7 @@ h4{
 }
 /* Style the container for inputs */
 .container {
+  position: relative;
   background:$po-order-form-bg;
   padding: 20px;
 }

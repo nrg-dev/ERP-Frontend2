@@ -1,10 +1,10 @@
 <!--Dialouge box start-->
 <div id="box-dialouge">
-    <button type="button" class="close" aria-label="Close" 
+    <button id="x" (click)="addPromotionClose()"> X </button>
+    <!-- <button type="button" class="close" aria-label="Close" 
         (click)="addPromotionClose()" style="position: relative; left: 0px; top: 5px;">
         <span aria-hidden="true" id="close-icon">&times;</span>
-    </button>
-        
+    </button> --> 
     <br/>
     <form name="addpromotionForm" (ngSubmit)="addpromotionForm.form.valid && savePromotion()"
         #addpromotionForm="ngForm" novalidate> 

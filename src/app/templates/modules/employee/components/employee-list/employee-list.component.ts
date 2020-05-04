@@ -145,6 +145,8 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
       width:'200vh',
       height:'400vh',
       data: data,
+      disableClose: true,
+      hasBackdrop: false
     })
     .afterClosed().subscribe(result => {
       this.allemplist();

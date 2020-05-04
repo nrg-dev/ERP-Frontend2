@@ -159,6 +159,8 @@ export class VendorAndCustomerListComponent implements OnInit, OnDestroy {
     this.dialog.open(CustomerAddComponent,{
       panelClass: 'addcustomer',
       data: data,
+      disableClose: true,
+      hasBackdrop: false
     })
     .afterClosed().subscribe(result => {
      // this.getAllCustomerDetails();

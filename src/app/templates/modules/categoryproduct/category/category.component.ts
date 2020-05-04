@@ -54,6 +54,8 @@ export class CategoryComponent implements OnInit {
       panelClass: 'addNewCategory',
       data: {categorycode: categorycode, name: name,desc: desc},
       height:'55vh',width:'80vh',
+      disableClose: true,
+      hasBackdrop: false
     })
     .afterClosed().subscribe(result => {
       this.loadCategory();
