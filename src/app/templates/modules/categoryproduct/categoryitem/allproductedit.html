@@ -156,20 +156,24 @@
             <div class="row">
                 <div>
                     <fieldset> 
-                        <div class="custom-file fileInputProfileWrap">
-                            <input type="file" (change)="fileChangeEvent($event,0)" class="fileInputProfile">
-                            <div class="img-space">   
-                                <div *ngIf="isImageSaved0; else elseTemplate" id="addproductpic-box">
-                                    <img [src]="productImage[0]" />
-                                </div>
-                                <ng-template #elseTemplate>
-                                    <div id="addproductpic-box">
-                                        <i class="fa fa-plus-circle" id="addpicture-icon" aria-hidden="true"></i> 
+                            <div class="custom-file fileInputProfileWrap">
+                                <input type="file" (change)="fileChangeEvent($event,0)" class="fileInputProfile">
+                                <div class="img-space">   
+                                    <div id="addproductpic-box" *ngIf="div1">
+                                        <img [src]="getImage(model.productImage[0])" onerror="this.src='/assets/images/no-image.png'" />
                                     </div>
-                                </ng-template>
+                                    
+                                    <div *ngIf="isImageSaved0; else elseTemplate" id="addproductpic-box">
+                                        <img [src]="productImage[0]" />
+                                    </div>
+                                    <ng-template #elseTemplate>
+                                        <div id="addproductpic-box">
+                                            <i class="fa fa-plus-circle" id="addpicture-icon" aria-hidden="true"></i> 
+                                        </div>
+                                    </ng-template>
+                                </div>
                             </div>
-                        </div>
-                    </fieldset>
+                        </fieldset>
                     <div class="row">
                         <div>
                             <a class="btn btn-danger" *ngIf="isImageSaved0" (click)="removeImage(0)">Remove </a>
@@ -183,6 +187,9 @@
                         <div class="custom-file fileInputProfileWrap">
                             <input type="file" (change)="fileChangeEvent($event,1)" class="fileInputProfile">
                             <div class="img-space">   
+                                <div id="addproductpic-box" *ngIf="div2"> 
+                                    <img [src]="getImage(model.productImage[1])" onerror="this.src='/assets/images/no-image.png'" />
+                                </div>         
                                 <div *ngIf="isImageSaved1; else elseTemplate" id="addproductpic-box">
                                     <img [src]="productImage[1]" />
                                 </div>
@@ -209,7 +216,10 @@
                     <fieldset> 
                         <div class="custom-file fileInputProfileWrap">
                             <input type="file" (change)="fileChangeEvent($event,2)" class="fileInputProfile">
-                            <div class="img-space">   
+                            <div class="img-space">  
+                                <div id="addproductpic-box" *ngIf="div3"> 
+                                    <img [src]="getImage(model.productImage[2])" onerror="this.src='/assets/images/no-image.png'" />
+                                </div>
                                 <div *ngIf="isImageSaved2; else elseTemplate" id="addproductpic-box">
                                     <img [src]="productImage[2]" />
                                 </div>
@@ -233,6 +243,9 @@
                         <div class="custom-file fileInputProfileWrap">
                             <input type="file" (change)="fileChangeEvent($event,3)" class="fileInputProfile">
                             <div class="img-space">   
+                                <div id="addproductpic-box" *ngIf="div4"> 
+                                    <img [src]="getImage(model.productImage[3])" onerror="this.src='/assets/images/no-image.png'" />
+                                </div>
                                 <div *ngIf="isImageSaved3; else elseTemplate" id="addproductpic-box">
                                     <img [src]="productImage[3]" />
                                 </div>

@@ -102,6 +102,12 @@ export class CategoryproductService {
       `${environment.apiUrl}${API_ENDPOINTS.loadProduct}`+'?category='+category);
 
   }
+  loadEditItem(vendorcode: string){
+    console.log("Vendor Code -->" + vendorcode);
+    return this.http.get<Product>(
+      `${environment.apiUrl}${API_ENDPOINTS.loadProduct}`+'?vendorcode='+vendorcode);
+
+  }
   // Load only item name for auto search text box
   loadItemName() {
    // return this.http.get<String>(this.commonURL2 + "loadItemName");
