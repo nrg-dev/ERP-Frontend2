@@ -580,6 +580,7 @@ export class AddnewproductComponent {
 
   imgBase64Path:any;
   fileChangeEvent(fileInput: any,imageNumber:number) {
+    console.log("Add Product");
     this.imageError = null;
     if (fileInput.target.files && fileInput.target.files[0]) {
         // Size Filter Bytes
@@ -922,7 +923,9 @@ export class AllproducteditComponent {
             if(this.model.productImage[0]!=undefined){
               this.div1 = true;
               this.isImageSaved0 = false;
-            }
+              //alert(this.div1);
+            }           
+
             if(this.model.productImage[1]!=undefined){
               this.div2 = true;
               this.isImageSaved1 = false;
@@ -957,6 +960,7 @@ export class AllproducteditComponent {
     //}    
   }
   fileChangeEvent(fileInput: any,imageNumber:number) {
+    console.log("Edit Product");
     this.imageError = null;
     if (fileInput.target.files && fileInput.target.files[0]) {
         // Size Filter Bytes
@@ -997,6 +1001,7 @@ export class AllproducteditComponent {
                         console.log("First Time");
                         this.productImage.push(this.imgBase64Path);
                         this.isImageSaved0 = true;
+                        this.div1 = false;
                         this.imageIndex1=true;
                         console.log("First time Base 64 array value-->"+this.productImage[0]);
                       }
