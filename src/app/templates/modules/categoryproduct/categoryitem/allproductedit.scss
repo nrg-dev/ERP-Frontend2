@@ -23,7 +23,7 @@ span{
   background:$po-order-form-bg;
   width: 150vh;
   height: 100vh; 
-  border-radius: 25px;
+  border-radius: $dialog-border-radius;
   padding: 17px;
 }
 .mat-dialog-container {

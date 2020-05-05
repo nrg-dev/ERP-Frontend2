@@ -4,6 +4,7 @@
 
 ::ng-deep .mat-dialog-container {
   background:$po-order-form-bg;
+  border-radius: $dialog-border-radius;
 }
 label{
   color:white;

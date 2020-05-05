@@ -5,6 +5,7 @@
 }
 ::ng-deep .mat-dialog-container {
   overflow: hidden !important;
+  border-radius: $dialog-border-radius;
 }
 .ng-valid[required], .ng-valid.required  {
   border-left: 5px solid #42A948; /* green */

@@ -35,7 +35,7 @@ span{
   //height: 60vh;
  // width: 100vh;
   height: auto; 
-  border-radius: 25px;
+  border-radius: $dialog-border-radius;
   padding: 17px;
   overflow: hidden;
 }

@@ -39,7 +39,8 @@ span{
   grid-gap: 15px;
   padding: 15px;
   background:$po-order-form-bg;
-  border-radius: 8px; font-size: 14px;
+  border-radius: $dialog-border-radius; 
+  font-size: 14px;
 }
 #h2ID{
   color:$h2-bg;

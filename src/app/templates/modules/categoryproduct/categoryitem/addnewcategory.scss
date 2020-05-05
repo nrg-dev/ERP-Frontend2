@@ -2,6 +2,7 @@
 
 ::ng-deep .addnewcategory .mat-dialog-container {
   background:$po-order-form-bg;
+  border-radius: $dialog-border-radius;
 }
 
 .ng-valid[required], .ng-valid.required  {
