@@ -159,18 +159,22 @@
                             <div class="custom-file fileInputProfileWrap">
                                 <input type="file" (change)="fileChangeEvent($event,0)" class="fileInputProfile">
                                 <div class="img-space">   
-                                    <div id="addproductpic-box" *ngIf="div1">
+                                    <div id="addproductpic-box" *ngIf="div1 && !isImageSaved0">
                                         <img [src]="getImage(model.productImage[0])" onerror="this.src='/assets/images/no-image.png'" />
                                     </div>
                                     
-                                    <div *ngIf="isImageSaved0; else elseTemplate" id="addproductpic-box">
+                                <!--  <ng-template #isImageSaved0 id="addproductpic-box">
                                         <img [src]="productImage[0]" />
-                                    </div>
-                                    <ng-template #elseTemplate>
-                                        <div id="addproductpic-box">
+                                    </ng-template> -->
+
+                                     <div *ngIf="isImageSaved0" id="addproductpic-box">
+                                        <img [src]="productImage[0]" />
+                                    </div>  
+                                    <div *ngIf="!isImageSaved0 && !div1">    
+                                        <div  id="addproductpic-box">
                                             <i class="fa fa-plus-circle" id="addpicture-icon" aria-hidden="true"></i> 
                                         </div>
-                                    </ng-template>
+                                </div>
                                 </div>
                             </div>
                         </fieldset>
@@ -187,17 +191,18 @@
                         <div class="custom-file fileInputProfileWrap">
                             <input type="file" (change)="fileChangeEvent($event,1)" class="fileInputProfile">
                             <div class="img-space">   
-                                <div id="addproductpic-box" *ngIf="div2"> 
+                                <div id="addproductpic-box" *ngIf="div2 && !isImageSaved1"> 
                                     <img [src]="getImage(model.productImage[1])" onerror="this.src='/assets/images/no-image.png'" />
                                 </div>         
-                                <div *ngIf="isImageSaved1; else elseTemplate" id="addproductpic-box">
+                                <div *ngIf="isImageSaved1" id="addproductpic-box">
                                     <img [src]="productImage[1]" />
                                 </div>
-                                <ng-template #elseTemplate>
+
+                                    <div *ngIf="!isImageSaved1 && !div2">    
                                     <div id="addproductpic-box">
                                         <i class="fa fa-plus-circle" id="addpicture-icon" aria-hidden="true"></i> 
                                     </div>
-                                </ng-template>
+                                    </div>
                             </div>
                         </div>
                     </fieldset>
@@ -217,17 +222,17 @@
                         <div class="custom-file fileInputProfileWrap">
                             <input type="file" (change)="fileChangeEvent($event,2)" class="fileInputProfile">
                             <div class="img-space">  
-                                <div id="addproductpic-box" *ngIf="div3"> 
+                                <div id="addproductpic-box" *ngIf="div3 && !isImageSaved2"> 
                                     <img [src]="getImage(model.productImage[2])" onerror="this.src='/assets/images/no-image.png'" />
                                 </div>
-                                <div *ngIf="isImageSaved2; else elseTemplate" id="addproductpic-box">
+                                <div *ngIf="isImageSaved2" id="addproductpic-box">
                                     <img [src]="productImage[2]" />
                                 </div>
-                                <ng-template #elseTemplate>
+                                <div *ngIf="!isImageSaved2 && !div3">    
                                     <div id="addproductpic-box">
                                         <i class="fa fa-plus-circle" id="addpicture-icon" aria-hidden="true"></i> 
                                     </div>
-                                </ng-template>
+                                </div>
                             </div>
                         </div>
                     </fieldset>
@@ -243,17 +248,17 @@
                         <div class="custom-file fileInputProfileWrap">
                             <input type="file" (change)="fileChangeEvent($event,3)" class="fileInputProfile">
                             <div class="img-space">   
-                                <div id="addproductpic-box" *ngIf="div4"> 
+                                <div id="addproductpic-box" *ngIf="div4 && !isImageSaved3"> 
                                     <img [src]="getImage(model.productImage[3])" onerror="this.src='/assets/images/no-image.png'" />
                                 </div>
-                                <div *ngIf="isImageSaved3; else elseTemplate" id="addproductpic-box">
+                                <div *ngIf="isImageSaved3" id="addproductpic-box">
                                     <img [src]="productImage[3]" />
                                 </div>
-                                <ng-template #elseTemplate>
+                                <div *ngIf="!isImageSaved3 && !div4">    
                                     <div id="addproductpic-box">
                                         <i class="fa fa-plus-circle" id="addpicture-icon" aria-hidden="true"></i> 
                                     </div>
-                                </ng-template>
+                                </div>
                             </div>
                         </div>
                     </fieldset>
