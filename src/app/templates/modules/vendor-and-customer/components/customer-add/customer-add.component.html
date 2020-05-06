@@ -28,7 +28,7 @@
 
           <div *ngSwitchCase="'customer'">
             <input type="text" id="textbox1" name="customerName"  [(ngModel)]="this.model.customerName" 
-            #customerName="ngModel" required/>
+            #customerName="ngModel" autocomplete="off" required/>
     
           <div *ngIf="customerName.errors && (customerName.dirty || customerName.touched) ||
             (registerForm.submitted && !customerName.valid )">
@@ -38,7 +38,7 @@
           </div>        </div>
           <div *ngSwitchCase="'vendor'">
             <input type="text" id="textbox1" name="vendorName"  [(ngModel)]="this.model.vendorName" 
-            #vendorName="ngModel" required/>
+            #vendorName="ngModel" autocomplete="off" required/>
     
           <div *ngIf="vendorName.errors && (vendorName.dirty || vendorName.touched) ||
             (registerForm.submitted && !vendorName.valid )">
@@ -55,11 +55,11 @@
 
         <label class="heading">Phone Number </label>
         <input type="text" name="phoneNumber" id="textbox3" [(ngModel)]="this.model.phoneNumber" 
-          #phoneNumber="ngModel" />
+          #phoneNumber="ngModel" autocomplete="off"/>
 
           <label class="heading">Address</label>
           <input type="text" name="address" id="textbox4" [(ngModel)]="this.model.address" 
-            #address="ngModel" />
+            #address="ngModel" autocomplete="off"/>
     
       
       </div>
@@ -67,7 +67,7 @@
         
         <label class="heading">Email </label>
         <input type="text" name="email" id="textbox7" [(ngModel)]="this.model.email" 
-          #email="ngModel" />
+          #email="ngModel" autocomplete="off"/>
 
         <label class="heading">Country </label>
         <select name="country" id="textbox" [(ngModel)]="this.model.country" 
@@ -80,7 +80,7 @@
       </select>
         <label class="heading">City </label>
         <input type="text" name="city" id="textbox9" [(ngModel)]="this.model.city" 
-          #city="ngModel" />
+          #city="ngModel" autocomplete="off"/>
 
 
 
