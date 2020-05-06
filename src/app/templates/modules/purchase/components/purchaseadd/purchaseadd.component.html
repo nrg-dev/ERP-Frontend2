@@ -20,7 +20,7 @@
 
             <label id="po-label">Product Category</label>
             <select id="selected-box" class="m-t-5px" [(ngModel)]="model.category" #category="ngModel" name="category"
-              (change)="getNetAmount(model.productName,model.qty,model.category)" required>
+              (ngModelChange)="getNetAmount(model.productName,model.qty,model.category)" autocomplete="off" required>
               <option id="options-box" [ngValue]="undefined" hidden selected> Select Category </option>
               <option id="options-box" *ngFor="let itemcategory of productList" 
               [value]="itemcategory.categoryname+'-'+itemcategory.categorycode">
@@ -36,8 +36,8 @@
 
             <label id="po-label">Quantity</label>
             <input type="number" min="0" id="po-textbox" class="m-t-5px" [(ngModel)]="model.qty" #qty="ngModel" 
-              name="qty" (change)="getNetAmount(model.productName,model.qty,model.category)" 
-              required  />
+              name="qty" (ngModelChange)="getNetAmount(model.productName,model.qty,model.category)" 
+              autocomplete="off" required  />
             
             <div *ngIf="qty.errors && (qty.dirty || qty.touched) ||
               (purchaseForm.submitted && !qty.valid )">
@@ -60,8 +60,8 @@
           <div class="row">
             <label id="po-label" style="margin-left: auto;">Vendor</label>
             <select id="selected-box" class="text-field-align" [(ngModel)]="model.vendorName" #vendorName="ngModel" name="vendorName"
-              (change)="getVendorProduct(this.model.vendorName)" style="margin-left: auto;"
-              required >
+              (ngModelChange)="getVendorProduct(this.model.vendorName)" style="margin-left: auto;"
+              autocomplete="off" required >
               <option id="options-box" [value]="null"  class="text-field-align">Select Vendor</option>
               <option id="options-box" *ngFor="let item of vendorList" 
                 [value]="item.vendorName+'-'+item.vendorcode"> {{item.vendorName}} 
@@ -77,7 +77,7 @@
 
             <label id="po-label" style="margin-left: auto;">Product </label>
             <select id="selected-box" class="m-t-5px" [(ngModel)]="model.productName" #productName="ngModel" name="productName"
-              (change)="getNetAmount(model.productName,model.qty,model.category)" style="margin-left: auto;" required>
+              (ngModelChange)="getNetAmount(model.productName,model.qty,model.category)" style="margin-left: auto;" autocomplete="off" required>
               <option id="options-box" [ngValue]="undefined" hidden selected> Select Product </option>
               <option id="options-box" *ngFor="let item of productList" 
               [value]="item.productname+'-'+item.prodcode"> 

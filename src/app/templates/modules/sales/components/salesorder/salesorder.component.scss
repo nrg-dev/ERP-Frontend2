@@ -1,213 +1,187 @@
 @import "_base";
 
-button {
-  appearance: none;
-  background-color: transparent;
-  color: $white;
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
 }
 
-.actions {
-  i {
-    cursor: pointer;
-    padding: 0 15px;
-  }
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
 }
-button {
-  border: 1px solid $white;
-}
-textarea {
-  appearance: none;
-  border: none;
-  width: 185%;
-  height: 38px;
-
-  &:disabled {
-    background-color: $material-tab-bg;
-    color: $white;
-  }
-}
-
-::ng-deep .completer-input {
-  display: block;
-  /*background: #243641;
-  border-color: 1px solid white;
-  color: white;*/
-  width: 100%;
-  height: 30px;
-  line-height: 1.42857143;
-  border-radius: 4px;
-}
-
-::ng-deep .completer-dropdown {
-  width: 100% !important;
-  position: relative !important;
-}
-#textSize2{
-  background-color:#1B2931;
+#x {
+  position: absolute;
+  background: #16222B;
+  border: red;
   color: white;
-  width: 100%;
-}
+  top: -10px;
+  right: -10px;
+  border-radius: 25px;
 
-* {
-  margin: 0;
-  padding: 0;
-  font-size:13px;
 }
-
-table {
-  table-layout: fixed;
-  width: 100%;
-  border-collapse: collapse;
-  display:block;
-}
-th, td {
-  padding: 10px;
-  color: white;
-}
-tbody {
-  height: 250px;
-  overflow-y: auto;   
-  overflow-x: hidden;
-  width:  14.2857%;
-  color: white;
-}
-
-th{
-  color:#ffffff;
-  background-color:#21272D;
-  /*background-color:#033c5f;*/
-  border-left: 1px solid white;
-}
-tr:nth-child(odd){
-  background-color: #434F5B;
-}
-tr:nth-child(even){
-  background-color: #323B44;
-}
-td{
-  border-left: 1px solid white;
-}
-
-h3{
+span{
   color:white;
-  font-size: 18px;
+  font-size: 12px;
+  margin: 5px 0px;
 }
-#savebtn {
-  background-color:#51AF57;
-  border: #51AF57;
-  color:white;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 50px;
-  padding: 5px;
+.spanerror{
+  background-color: $error-code;
 }
-#textColor{
-  background-color:#243641;
-  border: 1px solid white;
-  color: white;
-  width: 100%;
-  height: 30px;
+.spanerror1{
+  background-color: $error-code;
+  margin-left: 8.3vh;
 }
-#middleContent {
-  vertical-align: middle;
-  text-align: center;
+::ng-deep .mat-dialog-container{
+  overflow: hidden !important;
 }
-.mat-tab-group {
-  display: flex;
-  flex-direction: column;
+.grid-container3 {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1rem auto 1rem;
+  grid-gap: 15px;
+  padding: 15px;
+  background:$po-order-form-bg;
+  border-radius: $dialog-border-radius; 
+  font-size: 14px;
+}
+#h2ID{
+  color:$h2-bg;
+  font-family: $font-family;
   font-size: 20px;
+  margin-top: 0px;
+  font-weight: bold;
+}
+#pID{
+  color:$h2-bg;
+  font-family: $font-family;
+  font-size: 20px;
+  font-weight: bold;
+  float: right;
+}
+#totID{
+  color:$h2-bg;
+  font-family: $font-family;
+  font-size: 20px;
+  font-weight: bold;
+  float: right;
+  margin-left: 50vh;
+}
+#date-box{
+  color:$h2-bg;
 }
 
-.mat-tab-label {
-  cursor: pointer;
+#po-label{
+  color:#7a8992;
+  width: 85%;
+  margin-bottom: 4px;
 }
-.addButton{
-  background-color: #27AE60;
-  border: 1px solid #27AE60;
-  padding: 10px 25px;
-  border-radius: $btn-border-radius;
+#po-price{
+  color: $white;
+  width: 35%;
+  margin-bottom: 4px;
 }
-#date-details{
-  width: 100%;
-  margin: 0 25px;
-  height:auto;
-  background-color: #151F25;
-}
-.text{
-  text-align: center;
-  padding: 10px;
-  margin: -10px 0 auto;
-}
-#purchasetext{
-  padding-left: 30px;
-  font-size: small;
-}
-#purchaseoutput{
-  font-size: small;
+#po-textbox{
+  color:$h2-bg;
+  background: $po-order-form-bg;
+  width: 85%;
+  color: #fff; 
+  padding: 0px 5px;
+  margin-bottom: 15px;
+  height: 30px;
 }
 hr{
-  background-color: white;
+  width: 100%;
+  background-color:#4D616D;
+  margin-top: 300px;
+}
+select,input{
+  border: 1px solid  #2C4655;
+}
+#selected-box{
   width: 85%;
-  margin: auto;
+  background: $po-order-form-bg;
+  color:$h2-bg;
+  margin-bottom: 15px;
+  height: 30px;
+  padding: 5px;
+}
+.m-t-5px{margin-top: 5px;}
+.m-t-15px{margin-top: 15px;}
+.m-t-20px{margin-top: 20px !important;}
+#options-box{
+  width: 85%;
+  height: 1.5rem;
+  background: none;
+  color:$h2-bg;
 }
 
-#checkIn-butn{
-  background-color: #27AE60;
-  border: 1px solid #27AE60;
-  height: 25px;
-  position: relative;
-  margin: -20px -50px;
-  width: 85px;
-  top: 50%;
-  left: 50%;
+#add-text{
   text-align: center;
-  color: white;
-  border-radius: $btn-border-radius;
-}
-#checkOut-butn{
-  background-color: #d40505;
-  border: 1px solid #d40505;
-  border-radius: $btn-border-radius;
-  height: 25px;
-  position: relative;
-  margin: -20px -50px;
-  width: 85px;
-  top: 50%;
-  left: 50%;
-  text-align: center;
-  color: white;
-}
-.radio-toolbar label {
-  display: inline-block;
-  padding: 4px 11px;
-  font-family: Arial;
-  font-size: 16px;
+  margin: 6px;
   cursor: pointer;
 }
-::placeholder {
-  color: white;
-}
-.regular-radio {
-	-webkit-appearance: none;
-	background-color: #fafafa;
-	border: 1px solid #cacece;
-	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
-	padding: 5px;
-	border-radius: 50px;
-	display: inline-block;
-	position: relative;
+
+#add-btn{
+  width: 90px;
+  height: 30px;
+  border: 1px solid #1186aa;
+  background: $btn-bg;
+  color:$h2-bg;
+  font-weight: bold;
+  border-radius: 20px;
 }
 
-.regular-radio:checked:after {
-	content: ' ';
-	width: 5px;
-  height: 5px;
-  top: 3px;
-	border-radius: 50px;
-	position: absolute;
-	background: #99a1a7;
-	box-shadow: inset 0px 0px 10px rgba(0,0,0,0.3);
-	text-shadow: 0px;
-	left: 3px;
-	font-size: 12px;
+
+body {background-color: #16222B;}
+
+.grid-container4 {
+  display: grid;
+  grid-template-columns: 8rem auto auto;
+  grid-gap: 10px;
+  padding: 10px;
+    background: $po-order-form-bg;
+    height: 3rem;
 }
+#date-borderbox{
+  width: 85%;
+  border: 1px solid  #2C4655;
+  margin-bottom: 15px;
+  height: 30px;
+  padding: 5px;
+}
+
+.text-field-align{padding: 1px 8px; height: 25px;}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+#font-size{
+  font-size: 12px;
+  color: #6E7D87;
+}
+
+
+.mat-dialog-container{
+  background: inherit !important;
+}
+.ng-trigger-dialogContainer {
+  background: inherit !important;
+}
+
+  /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.update-btn{width: 100px;
+  height: 30px;
+  line-height: 30px; font-weight: normal;
+  float: right;}

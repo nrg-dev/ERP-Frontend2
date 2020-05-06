@@ -1,0 +1,44 @@
+@import "_common";
+
+  @media screen and (min-device-width: 320px) and (max-device-width: 767px){
+  .back-colr{float:left;}
+  body{font-size: 12px;}
+  .table>thead>tr>th, .table>tbody>tr>td{font-size: 11px;}
+  table>thead>tr>th>div.custom-control{position: relative;
+    top: 17px;}
+  }
+  .over-flo{
+    overflow-y: scroll !important; 
+    height: 340px; 
+    display: table-caption;
+    position: absolute; 
+    top: 58px;
+}
+
+.table > tbody > tr:hover {
+  background-color: $header-bg;
+}
+
+
+.table > tbody > tr:hover, .table > tbody > tr:hover span  {
+  background-color: $header-bg;
+}
+
+
+tr[ng-click] {
+  cursor: pointer;
+}
+
+.grid-align{position: absolute; top:60px; width: 98%;}
+.header-align{position: absolute;
+  top: 20px;
+  width: 97%;}
+.wid-50px{width: 50px!important;}
+.wid-110px{width: 110px!important;}
+.wid-180px{width: 180px!important;}
+.wid-190px{width: 190px!important;}
+.wid-150px{width: 150px!important;}
+.font-bld{ font-weight: bold;}
+.font-norm{ font-weight: normal;}
+.mar-let-40px{margin-left: 40px;}
+

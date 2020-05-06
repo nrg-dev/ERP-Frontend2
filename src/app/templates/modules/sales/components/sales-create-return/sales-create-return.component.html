@@ -1,0 +1,116 @@
+<h3> Create Sales Return</h3>  <br/>
+  <div class="container">
+    <form
+      name="returnForm"
+      (submit)="returnForm.form.valid && addReturn()"
+      #returnForm="ngForm"
+      novalidate>
+
+    <div class="row marginRow">
+        <div class="col-25">
+            <label class="heading">Customer	</label>
+        </div>
+        <div class="col-75">
+            <label>Alex Ubalton	</label>
+        </div>
+    </div>
+    
+  
+    <div class="row marginRow">
+        <div class="col-25">
+          <label class="heading">Product Name	</label>
+        </div>
+        <div class="col-75">
+            <label>iPhone X	</label>
+        </div>
+    </div>
+  
+    <div class="row marginRow">
+        <div class="col-25">
+           <label class="heading">Quantity Invoiced</label>
+        </div>
+        <div class="col-75">
+            <label >10000     </label> 
+          </div>
+    </div>
+    
+    <div class="row marginRow">
+        <div class="col-25">
+          <label class="heading">Date Invoiced		</label>
+        </div>
+        <div class="col-75">
+            <label >10/Jan/2020  </label>
+        </div>
+    </div>
+    
+    <div style="height: 20px;"></div>
+
+
+    <div class="row marginRow">
+        <div class="col-25">
+          <label class="heading">Item Status		</label>
+        </div>
+    </div>
+    
+    <div class="row marginRow">
+      <div class="col-100">
+      <input id="damaged" type="radio" class="regular-radio" value="damanged" [(ngModel)]="returnType" name="itemstatus" required>
+      <label for="damaged">Damaged</label>
+      &nbsp;&nbsp;&nbsp;
+
+      <input id="expired" type="radio" class="regular-radio" value="model.expired" [(ngModel)]="returnType" name="itemstatus" required>
+      <label for="expired">Expired</label>
+      &nbsp;&nbsp;&nbsp;
+
+      <input id="expired" type="radio" class="regular-radio" value="model.expired" [(ngModel)]="returnType" name="itemstatus" required>
+      <label for="expired">Others</label>
+      </div>
+    </div>
+
+    <div class="row marginRow">
+        <div class="col-25">
+          <label class="heading">Repayment Method	</label>
+        </div>        
+    </div>
+
+    <div class="row marginRow">
+        <div class="col-100">
+            <input type="radio" class="regular-radio" value="cash"  [(ngModel)]="paymentType" 
+            name="paymentType" required>
+            <label>Cash</label>  
+            &nbsp;&nbsp;&nbsp;
+            <input  type="radio"   class="regular-radio" value="credit"   [(ngModel)]="paymentType"
+             name="paymentType" required>
+            <label>Credit</label>
+            &nbsp;&nbsp;&nbsp;
+        
+            <input  type="radio"   class="regular-radio" value="voucher"   [(ngModel)]="paymentType"
+            name="paymentType" required>
+           <label>Voucher</label>
+        </div>        
+    </div>
+
+    <div class="row marginRow">
+        <div class="col-25">
+          <label class="heading">Quantity	</label>
+        </div>
+       
+    </div>
+
+    <div class="row marginRow">        
+        <div class="col-100">
+            <input type="text" value="quantity"  [(ngModel)]="quantity" 
+            name="quantity" required>        </div>
+    </div>
+
+
+    <br/>
+  
+    <div class="row">
+        <div class="col-25"></div>
+        <div class="col-75">
+          <button  class="save-button">{{btnsave}} </button>
+        </div>
+    </div>
+    </form>
+  </div>

@@ -1,17 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray,Validators, FormControl } from '@angular/forms';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ChangeDetectorRef, ElementRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Renderer2,
+  AfterViewInit,
+  Input,
+  Inject,
+} from "@angular/core";
 import { Sales } from 'src/app/core/common/_models';
 import { AlertService } from 'src/app/core/common/_services';
 import { Router } from '@angular/router';
-import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {MatDialog, MatDialogConfig} from "@angular/material";
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { MatDialog, MatDialogConfig } from "@angular/material";
 import { CompleterService, CompleterData } from 'ng2-completer';
 import { PurchaseService } from 'src/app/templates/modules/purchase/services/purchase.service';
 import { SalesService } from '../../services/sales.service';
 import { MatSnackBar } from "@angular/material/snack-bar";
-
+import { formatDate } from "@angular/common";
 
 @Component({
   selector: 'app-salesorder',
@@ -20,19 +24,22 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 })
 export class SalesorderComponent implements OnInit {
   sales:Sales = new Sales();
-  model: any ={};
+  model: any = {};
   public salestable = false;
-  headElements = ['#ID', 'Product Name', 'Category Name', 'Quantity'];
-  todayDate : Date = new Date();
+  headElements = ["#ID", "Product Name", "Category Name", "Quantity"];
+  todayDate: Date = new Date();
   dialogConfig = new MatDialogConfig();
 
   fieldArray: Array<any> = [];
-  firstField = true;
   salesarray: Array<any> = [];
 
-  productList: any = {};
-  categoryList: any = {};
-  customerList:  any = {};
+  productList: any;
+  categoryList: any;
+  firstField = true;
+  customerList: any;
+  currentDate = new Date();
+  salesDate: any;
+
 
   public dataService: CompleterData;
   public searchData :any=[];
@@ -41,54 +48,42 @@ export class SalesorderComponent implements OnInit {
   public nonStock = false;
   public Stock = false;
   constructor(
-    public fb: FormBuilder,
     private dialog: MatDialog,
-    private purchaseService:PurchaseService,
+    public dialogRef: MatDialogRef<SalesorderComponent>,
+    private purchaseService: PurchaseService,
     private salesService:SalesService,
-    private cd: ChangeDetectorRef, 
-    private router: Router, 
+    private router: Router,
     private alertService: AlertService,
-    private completerService: CompleterService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private renderer: Renderer2,
+    @Inject(MAT_DIALOG_DATA) public data    
   ) { 
-    this.salesService.loadCustomerName()
-    .subscribe(
-      customername => { 
-        this.searchData = customername;
-        if (this.searchData == undefined || this.searchData == null) {
-          this.ErrorHandle = true;
-          this.ErrorMsg="No Such Record is Present......."
-        } else {
-          this.ErrorHandle = false;
-          this.dataService = completerService.local(this.searchData); 
-        }  
-      },
-      error => {
-        setTimeout(() => {
-          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-            panelClass: ["error"],
-            verticalPosition: 'top'      
-          });
-        });
-      }
-    );
+    this.salesDate = formatDate(this.currentDate, "dd/MMM/yyy", "en-US");
+    this.model.title = data.dialogTitle;
   }
 
   ngOnInit() {
+    this.model.subtotal = 0;
+    this.editSalesOrder(this.data);
     this.salestable = false;
-    this.ErrorHandle = false;
-    this.getcategoryList();
-    this.getProductList();
     this.model.sNo = 0;
-    this.model.totalItem = 0;
     this.model.deliveryCost = 0;
     this.model.subTotal = 0;
-    this.nonStock = false;
-    this.Stock = false;
+    this.model.totalItem = 0;
+    this.getcategoryList();
+    this.getProductList();
+    this.getCustomerLists();
+    this.ErrorHandle = false;
+  }
+
+  ngAfterViewInit() {
+    (<HTMLElement>(
+      document.querySelector(".mat-dialog-container")
+    )).style.background = "inherit";
   }
 
   getcategoryList(){
-    this.purchaseService.loadCategoryName()
+    this.purchaseService.loadCategory()
     .subscribe(res => { 
       this.categoryList = res;
       console.log("Category list size -->"+this.categoryList.length);
@@ -106,10 +101,9 @@ export class SalesorderComponent implements OnInit {
   }
 
   getProductList(){
-    this.purchaseService.loadItemName()
-    .subscribe(res => { 
-      this.productList = res;
-      console.log("Item list size -->"+this.productList.length);
+    this.purchaseService.loadItem()
+      .subscribe(res => { 
+        this.productList = res;
       },
       error => {
         setTimeout(() => {
@@ -122,21 +116,28 @@ export class SalesorderComponent implements OnInit {
     );
   }
 
-  getNetAmount(productName:string,quantity:string,category:string){
+  getNetAmount(productName: string, quantity: string, category: string) {
     console.log("productName -->"+productName);
     console.log("quantity -->"+quantity);
     if(quantity == '' || quantity == undefined){
       console.log("--- No Quantity are available ---");
+      this.salesService.getUnitPrice(productName,category).subscribe(
+        (data) => {
+          this.sales = data;
+          this.model.unitPrice = this.sales.sellingprice;     
+        }
+      );
     }else{
       this.salesService.getUnitPrice(productName,category)
       .subscribe(
         data => {
           this.sales = data; 
           this.model.unitPrice = this.sales.sellingprice;
+          this.model.netAmount = Number.parseInt(quantity) * this.sales.sellingprice;
           //this.model.customerName = this.sales.customername+"-"+this.sales.customercode;
-          let res = quantity.replace(/\D/g, "");
+          /* let res = quantity.replace(/\D/g, "");
           this.model.netAmount = Number.parseInt(res) * this.sales.sellingprice;
-          console.log("Price ---->"+this.model.unitPrice +" --netAmount -->"+this.model.netAmount);
+          console.log("Price ---->"+this.model.unitPrice +" --netAmount -->"+this.model.netAmount);*/
         },
         error => {
           
@@ -209,7 +210,7 @@ export class SalesorderComponent implements OnInit {
       });
     }else{
       this.salesarray.push(this.fieldArray);
-      console.log("Purchase Array -->"+this.salesarray);
+      console.log("Sales Array -->"+this.salesarray);
       console.log(this.salesarray);
       this.sales.customerName = this.model.customerName;
   
@@ -258,16 +259,161 @@ export class SalesorderComponent implements OnInit {
     this.model.subTotal = '';
     this.model.deliveryCost = '';   
   }
+  
+  getCustomerLists() {
+    this.salesService.loadCustomerName().subscribe(
+      (data) => {
+        this.customerList = data;
+      },
+      (error) => {
+        setTimeout(() => {
+          this.snackBar.open(
+            "Network error: server is temporarily unavailable",
+            "dismss",
+            {
+              panelClass: ["error"],
+              verticalPosition: "top",
+            }
+          );
+        });
+      }
+    );
+  }
 
-  getStock(){
-    var actType = $('form input[type=radio]:checked').val();
-    if(actType == "non-stock"){
-      this.nonStock = true;
-      this.Stock = false;
-    }else if(actType == "stock"){
-      this.nonStock = false;
-      this.Stock = true;
+  addSalesOrder(data: any) {
+    let categoryname = "";
+    let categorycode = "";
+    let productname = "";
+    let productcode = "";
+    let customername = "";
+    let customercode = "";
+    let qty = "";
+    let addSalesData: any;
+
+    if (this.model.qty !== null && this.model.price !== null) {
+      this.model.subtotal = Number.parseInt(this.model.qty) * this.model.unitPrice;
     }
+
+    if (this.model.category !== undefined) {
+      const splitCategory = this.model.category.split("-");
+      categoryname = splitCategory[0];
+      categorycode = splitCategory[1];
+    }
+
+    if (this.model.customerName !== undefined) {
+      const splitCustomer = this.model.customerName.split("-");
+      customername = splitCustomer[0];
+      customercode = splitCustomer[1];
+    }
+
+    if (this.model.productName !== undefined) {
+      const splitProduct = this.model.productName.split("-");
+      productname = splitProduct[0];
+      productcode = splitProduct[1];
+    }
+
+    addSalesData = {
+      categoryname: categoryname,
+      categorycode: categorycode,
+      productname: productname,
+      productcode: productcode,
+      customername: customername,
+      customercode: customercode,
+      qty: this.model.qty !== null ? this.model.qty : 0,
+      subtotal: this.model.subtotal,
+      unit: this.model.unit,
+      unitprice: this.model.unitPrice,
+      date: data.id !== undefined ? data.date : this.salesDate,
+      description: "",
+      status: data.id !== undefined ? data.status : "Open",
+    };
+
+    if (data.id !== undefined) {
+      addSalesData.id = data.id;
+      this.updateSalesOrderData(addSalesData);
+    } else {
+      this.addSalesOrderData(addSalesData);
+    }
+    this.addSalesOrderClose();
+  }
+
+  addSalesOrderClose() {
+    this.dialogRef.close();
+  }
+
+  editSalesOrder(data: any) {
+    if (data.id !== undefined) {
+      this.model.qty = data.qty;
+      this.model.unit = data.unit;
+      this.model.price = data.unitprice;
+      this.model.category = data.categoryname + "-" + data.categorycode;
+      this.model.customerName = data.customername + "-" + data.customercode;
+      this.model.productName = data.productname + "-" + data.productcode;
+      this.model.subtotal = data.subtotal;
+    }
+  }
+
+  addSalesOrderData(addSalesData: any) {
+    this.salesService.addSalesOrder(addSalesData).subscribe(
+      (res) => {
+        if (res === null) {
+          setTimeout(() => {
+            this.snackBar.open(
+              "Sales Order created Successfully",
+              "dismss",
+              {
+                panelClass: ["success"],
+                verticalPosition: "top",
+              }
+            );
+          });
+          this.getProductList();
+        }
+      },
+      (error) => {
+        setTimeout(() => {
+          this.snackBar.open(
+            "Network error: server is temporarily unavailable",
+            "dismss",
+            {
+              panelClass: ["error"],
+              verticalPosition: "top",
+            }
+          );
+        });
+      }
+    );
+  }
+
+  updateSalesOrderData(addSalesData: any) {
+    this.salesService.updateSalesOrder(addSalesData).subscribe(
+      (res) => {
+        if (res === null) {
+          setTimeout(() => {
+            this.snackBar.open(
+              "Sales Order updated Successfully",
+              "dismss",
+              {
+                panelClass: ["success"],
+                verticalPosition: "top",
+              }
+            );
+          });
+        }
+      },
+      (error) => {
+        setTimeout(() => {
+          this.snackBar.open(
+            "Network error: server is temporarily unavailable",
+            "dismss",
+            {
+              panelClass: ["error"],
+              verticalPosition: "top",
+            }
+          );
+        });
+      }
+    );
   }
   
 }

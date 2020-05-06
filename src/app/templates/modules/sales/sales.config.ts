@@ -11,4 +11,10 @@ export const API_ENDPOINTS = {
   saveReturn: `/sales/saveReturn`,
   loadfilterData: `/sales/loadfilterData`, 
   loadCustomerName: `/sales/loadCustomerName`, 
+
+  ADD_SALES_ORDER_LIST: `/sales/saveSO`,
+  UPDATE_SALES_ORDER: `/sales/updateSalesOrder`,
+  REMOVE_SALES_ORDER: `/sales/removeSO`,
+  GET_SALES_ORDER_LIST: `/sales/loadSO`,
+  CREATE_INVOICE:`/sales/createInvoice`
 };
