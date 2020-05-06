@@ -104,7 +104,7 @@
                     <div class="col-70">
                         <input type="text" id="price-box" 
                             [(ngModel)]="model.price" 
-                            #price="ngModel" (change)="getSellingPrice(model.price,model.tax,model.margin)"
+                            #price="ngModel" (ngModelChange)="getSellingPrice(model.price,model.tax,model.margin)"
                                 placeholder="IDR X.XXX.XXX" name="price"/>
                     </div>
                 </div>
@@ -115,7 +115,7 @@
                     <div class="col-20">
                         <input type="text" id="tax-box"
                             [(ngModel)]="model.tax" 
-                            #tax="ngModel" (change)="getSellingPrice(model.price,model.tax,model.margin)"
+                            #tax="ngModel" (ngModelChange)="getSellingPrice(model.price,model.tax,model.margin)"
                             placeholder="10%" name="tax"/>
                     </div>
                     <div class="col-20">
@@ -124,7 +124,7 @@
                     <div class="col-20">
                         <input type="text" id="margin-box"
                             [(ngModel)]="model.margin" 
-                            #margin="ngModel" (change)="getSellingPrice(model.price,model.tax,model.margin)"
+                            #margin="ngModel" (ngModelChange)="getSellingPrice(model.price,model.tax,model.margin)"
                             placeholder="40%" name="margin"/>
                     </div>
                 </div>

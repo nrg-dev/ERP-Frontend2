@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild ,ElementRef,Inject,Optional } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, ViewChild ,ElementRef,Inject,Optional } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
@@ -1106,6 +1106,7 @@ export class AllproducteditComponent {
 
   marginPrice:any;
   taxPrice:any;
+ 
   getSellingPrice(price:string,tax:string,margin:string){
     console.log("price-->"+price + "--- Tax --->"+tax+"-- Margin ---->"+margin);
     if(tax == null || tax == undefined){
