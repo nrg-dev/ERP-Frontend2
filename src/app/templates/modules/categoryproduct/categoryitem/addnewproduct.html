@@ -37,7 +37,7 @@
                     </div>
                     <div class="col-70">
                         <input id="name-box" name="productname" [(ngModel)]="model.productname" 
-                            #productname="ngModel" placeholder="Product Name" required>             
+                            #productname="ngModel" placeholder="Product Name" autocomplete="off" required>             
 
                         <div *ngIf="productname.errors  && (productname.dirty || productname.touched) ||
                             (productForm.submitted && !productname.valid )">
@@ -105,7 +105,7 @@
                         <input type="text" id="price-box" 
                             [(ngModel)]="model.price" 
                             #price="ngModel" (ngModelChange)="getSellingPrice(model.price,model.tax,model.margin)"
-                                placeholder="IDR X.XXX.XXX" name="price"/>
+                                placeholder="IDR X.XXX.XXX" name="price" autocomplete="off"/>
                     </div>
                 </div>
                 <div class="row">
@@ -116,7 +116,7 @@
                         <input type="text" id="tax-box"
                             [(ngModel)]="model.tax" 
                             #tax="ngModel" (ngModelChange)="getSellingPrice(model.price,model.tax,model.margin)"
-                            placeholder="10%" name="tax"/>
+                            placeholder="10%" name="tax" autocomplete="off"/>
                     </div>
                     <div class="col-20">
                         <label>Margin </label>
@@ -125,7 +125,7 @@
                         <input type="text" id="margin-box"
                             [(ngModel)]="model.margin" 
                             #margin="ngModel" (ngModelChange)="getSellingPrice(model.price,model.tax,model.margin)"
-                            placeholder="40%" name="margin"/>
+                            placeholder="40%" name="margin" autocomplete="off"/>
                     </div>
                 </div>
                 <div class="row">
