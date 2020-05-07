@@ -135,4 +135,8 @@ export class SalesService {
             data
         )
     }
+
+    loadInvoice(){
+        return this.http.get<Sales>(`${environment.apiUrl}${API_ENDPOINTS.loadInvoice}`); 
+    }
 }

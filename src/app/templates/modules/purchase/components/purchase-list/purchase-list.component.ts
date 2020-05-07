@@ -39,6 +39,8 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
   title: string = "";
   button: string = "";
 
+  public purchaseTable = false;
+
   constructor(
     private purchaseService: PurchaseService,
     private snackBar: MatSnackBar,
@@ -114,6 +116,11 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
     this.purchaseService.getPurchaseOrderLists().subscribe(
       (res: []) => {
         this.purchaseOrderList = res;
+        if(this.purchaseOrderList.length == 0){
+          this.purchaseTable = false;
+        }else{
+          this.purchaseTable = true;
+        }
       },
       (error) => {
         setTimeout(() => {
@@ -225,8 +232,7 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
         disableClose: true,
         hasBackdrop: false
       })
-      .afterClosed()
-      .subscribe((result) => {
+      .afterClosed().subscribe(result => {
         this.getPurchaseOrderLists();
       });
   }

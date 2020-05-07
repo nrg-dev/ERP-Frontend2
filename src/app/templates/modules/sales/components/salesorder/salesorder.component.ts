@@ -119,12 +119,14 @@ export class SalesorderComponent implements OnInit {
   getNetAmount(productName: string, quantity: string, category: string) {
     console.log("productName -->"+productName);
     console.log("quantity -->"+quantity);
+    this.model.unit = '';
     if(quantity == '' || quantity == undefined){
       console.log("--- No Quantity are available ---");
       this.salesService.getUnitPrice(productName,category).subscribe(
         (data) => {
           this.sales = data;
-          this.model.unitPrice = this.sales.sellingprice;     
+          this.model.unitPrice = this.sales.sellingprice;   
+          this.model.unit = this.sales.unit;
         }
       );
     }else{
@@ -133,6 +135,7 @@ export class SalesorderComponent implements OnInit {
         data => {
           this.sales = data; 
           this.model.unitPrice = this.sales.sellingprice;
+          this.model.unit = this.sales.unit;
           this.model.netAmount = Number.parseInt(quantity) * this.sales.sellingprice;
           //this.model.customerName = this.sales.customername+"-"+this.sales.customercode;
           /* let res = quantity.replace(/\D/g, "");

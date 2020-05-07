@@ -121,12 +121,14 @@ export class PurchaseAddComponent implements OnInit, AfterViewInit {
   getNetAmount(productName: string, quantity: string, category: string) {
     console.log("productName -->" + productName);
     console.log("quantity -->" + quantity);
+    this.model.unit = '';
     if (quantity == "" || quantity == undefined) {
       console.log("--- No Quantity are available ---");
       this.purchaseService.getUnitPrice(productName, category).subscribe(
         (data) => {
           this.purchase = data;
-          this.model.unitPrice = this.purchase.sellingprice;     
+          this.model.unitPrice = this.purchase.sellingprice;   
+          this.model.unit = this.purchase.unit;  
         }
       );
     } else {
@@ -134,6 +136,7 @@ export class PurchaseAddComponent implements OnInit, AfterViewInit {
         (data) => {
           this.purchase = data;
           this.model.unitPrice = this.purchase.sellingprice;
+          this.model.unit = this.purchase.unit;  
           this.model.vendorName =
             this.purchase.vendorname + "-" + this.purchase.vendorcode;
           this.model.netAmount = Number.parseInt(quantity) * this.purchase.sellingprice;

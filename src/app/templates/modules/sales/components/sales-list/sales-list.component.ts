@@ -39,6 +39,8 @@ export class SalesListComponent implements OnInit, OnDestroy {
   title: string = "";
   button: string = "";
 
+  public salesTable = false;
+
   constructor(
     private salesService: SalesService,
     private snackBar: MatSnackBar,
@@ -110,10 +112,16 @@ export class SalesListComponent implements OnInit, OnDestroy {
       return myStyles;
     }
   }
+  
   getSalesOrderLists() {
     this.salesService.getSalesOrderLists().subscribe(
       (res: []) => {
         this.salesOrderList = res;
+        if(this.salesOrderList.length == 0){
+          this.salesTable = false;
+        }else{
+          this.salesTable = true;
+        }
       },
       (error) => {
         setTimeout(() => {
@@ -204,10 +212,9 @@ export class SalesListComponent implements OnInit, OnDestroy {
       item.selected = false;
       item.selected = true;
       data = item;
-      alert("Unit Price -->"+item.unitPrice)
     } else {
       this.title = "Add Sales Order";
-      this.button = "Add";
+      this.button = "Add Cart";
       data = { dialogTitle: this.title, dialogText: this.button };
     }
 
@@ -226,8 +233,7 @@ export class SalesListComponent implements OnInit, OnDestroy {
         disableClose: true,
         hasBackdrop: false
       })
-      .afterClosed()
-      .subscribe((result) => {
+      .afterClosed().subscribe(result => {
         this.getSalesOrderLists();
       });
   }
