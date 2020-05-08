@@ -1498,8 +1498,8 @@ export class CategoryItemComponent implements OnInit {
         this.allproductlist = data;
         console.log("Product length -->"+this.allproductlist.length);
         this.dataSource = new MatTableDataSource(this.allproductlist);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       },
       error => {
         setTimeout(() => {

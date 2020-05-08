@@ -53,9 +53,9 @@
             <td>{{a.tax}}</td>
             <td>{{a.margin}}</td>
             <td>{{a.sellingprice}} 
-              <span class="edit-delete-icon" *ngIf="a.productname === a.productname">
-                <span class="fas fa-pen mar-let-40px" (click)="allproducteditcall(a.prodcode,a.vendorcode)" ></span>
-                <span class="fas fa-trash mar-let-30px" (click)="allproductdelete(a.prodcode)"></span>
+              <span class="edit-delete-icon">
+                <span class="fas fa-pen mar-let-40px" (click)="allproducteditcall(a.prodcode,a.vendorcode)"></span>
+                <span class="fas fa-trash" (click)="allproductdelete(a.prodcode)"></span>
               </span>
             </td>
           </tr>

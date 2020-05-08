@@ -86,19 +86,39 @@ table tbody tr:hover td span{
 tr[ng-click] {
   cursor: pointer;
 }
-.mar-let-40px{
+/* .mar-let-40px{
   margin: -18px 60px 0px 0px;
   float: right;
 }
 .mar-let-30px{
   margin: -18px 10px 0px 0px;
   float: right;
-}
+} */
 
 .loadingimage{
 	left: 90%;
 	position: absolute;
 	margin-top: 30%;
+}
+
+.edit-delete-icon {
+  display: none;
+  background: $table-invoived-row-bg;
+  position: relative;
+  height: 20px;
+  top: 0px;
+  margin-top: 5px;
+}
+
+.fa-pen {
+  float: left;
+  cursor: pointer;
+  margin-top: 2px;
+}
+
+.fa-trash {
+  float: right;
+  cursor: pointer;
 }
 // iPhone media query start
 
