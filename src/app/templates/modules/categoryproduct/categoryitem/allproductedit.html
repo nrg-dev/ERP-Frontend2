@@ -13,7 +13,7 @@
                 #productEditForm="ngForm" novalidate>
                 <div class="row">
                     <div class="col-30">
-                        <label for="fname">Category </label>
+                        <label for="fname" class="heading">Category </label>
                     </div>
                     <div class="col-70">
                         <select id="editselect-box"  name="categorycode" [(ngModel)]="model.categorycode" 
@@ -34,7 +34,7 @@
                 </div>
                 <div class="row">
                     <div class="col-30">
-                        <label for="fname">Product Name </label>
+                        <label for="fname" class="heading">Product Name </label>
                     </div>
                     <div class="col-70">
                         <input id="name-box" name="productname" [(ngModel)]="model.productname" autocomplete="off"
@@ -50,7 +50,7 @@
                 </div>
                 <div class="row">
                     <div class="col-30">
-                        <label for="fname">Description </label>
+                        <label for="fname" class="heading">Description </label>
                     </div>
                     <div class="col-70">
                         <textarea type="text" id="description-box" [(ngModel)]="model.description" 
@@ -61,7 +61,7 @@
                 </div>
                 <div class="row">
                     <div class="col-30">
-                        <label for="fname">Vendor </label>
+                        <label for="fname" class="heading">Vendor </label>
                     </div>
                     <div class="col-70">
                         <select id="editselect-box" name ="vendorcode" [(ngModel)]="model.vendorcode"
@@ -82,7 +82,7 @@
                 </div>
                 <div class="row">
                     <div class="col-30">
-                        <label for="fname">Unit </label>
+                        <label for="fname" class="heading">Unit </label>
                     </div>
                     <div class="col-70">
                         <select id="editselect-box" name="unit" [(ngModel)]="model.unit"
@@ -103,7 +103,7 @@
                 </div>
                 <div class="row">
                     <div class="col-30">
-                        <label for="fname">Price </label>
+                        <label for="fname" class="heading">Price </label>
                     </div>
                     <div class="col-70">
                         <input type="text" id="price-box" 
@@ -114,7 +114,7 @@
                 </div>
                 <div class="row">
                     <div class="col-30">
-                        <label>Tax </label>
+                        <label class="heading">Tax </label>
                     </div>
                     <div class="col-20">
                         <input type="text" id="tax-box"
@@ -123,7 +123,7 @@
                             placeholder="10%" autocomplete="off" name="tax"/>
                     </div>
                     <div class="col-20">
-                        <label>Margin </label>
+                        <label class="heading">Margin </label>
                     </div>
                     <div class="col-20">
                         <input type="text" id="margin-box"
@@ -134,7 +134,7 @@
                 </div>
                 <div class="row">
                     <div class="col-30">
-                        <label for="fname">Selling Price </label>
+                        <label for="fname" class="heading">Selling Price </label>
                     </div>
                     <div class="col-70">
                         <input type="text" id="productcode-box" [(ngModel)]="model.sellingprice" 

@@ -24,7 +24,9 @@ input[type=text], select, textarea {
   color:white;
   border: 1px solid  $header-bg; 
 }
-
+.heading {
+  color:$table-header-font !important;
+}
 label {
   padding: 12px 12px 12px 0;
   display: inline-block;

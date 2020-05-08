@@ -18,7 +18,9 @@ span{
   font-size: 12px;
   margin: 5px 0px;
 }
-
+.heading {
+  color:$table-header-font !important;
+}
 ::ng-deep .allproductedit .mat-dialog-container {
   background:$po-order-form-bg;
   width: 150vh;

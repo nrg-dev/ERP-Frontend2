@@ -37,7 +37,9 @@ span{
   border-radius: $dialog-border-radius;
   //padding: 17px;
 }
-
+.heading {
+  color:$table-header-font !important;
+}
 input, select, textarea {
   width: 80%;
   padding: 5px;

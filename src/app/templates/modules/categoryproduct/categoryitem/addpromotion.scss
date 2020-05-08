@@ -39,6 +39,11 @@ span{
   padding: 17px;
   overflow: hidden;
 }
+
+.heading {
+  color:$table-header-font !important;
+}
+
 .autosearch1 .completer-input {
   font-family: fontawesome;
   font-size: 12px;
