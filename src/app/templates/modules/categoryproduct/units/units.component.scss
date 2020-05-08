@@ -8,10 +8,7 @@
   color:$white;
 }
 
-#outer-div{ 
-   height: 5vh; 
- }
- .create-button {
+.create-button {
   float: right;
   color: $white;
   background: $btn-bg;
@@ -75,13 +72,25 @@ table tbody tr:hover td span{
 tr[ng-click] {
   cursor: pointer;
 }
-.mar-let-40px{
-  margin: -18px 60px 0px 0px;
-  float: right;
+
+.edit-delete-icon {
+  display: none;
+  background: $table-invoived-row-bg;
+  position: relative;
+  height: 20px;
+  top: 0px;
+  margin-top: 5px;
 }
-.mar-let-30px{
-  margin: -18px 10px 0px 0px;
+
+.fa-pen {
+  float: left;
+  cursor: pointer;
+  margin: 2px 40px 0px 60px;
+}
+
+.fa-trash {
   float: right;
+  cursor: pointer;
 }
 // iPhone media query start
 
@@ -89,67 +98,67 @@ tr[ng-click] {
 @media only screen and (min-width: 375px) and (max-width: 667px) { 
   h3 {
      font-size:12px;
- }
- .table>tbody>tr>td{
- font-size:10px;
- }
- .table>thead>tr>th{
-   font-size:10px;
- } 
- }
+  }
+  .table>tbody>tr>td{
+  font-size:10px;
+  }
+  .table>thead>tr>th{
+    font-size:10px;
+  } 
+}
 
  // iPhone 6, 7, & 8 Plus in portrait & landscape
 @media only screen and (min-width: 414px) and (max-width: 736px) { 
   h3 {
      font-size:12px;
- }
- .table>tbody>tr>td{
- font-size:10px;
- }
- .table>thead>tr>th{
-   font-size:10px;
- } 
- }
+  }
+  .table>tbody>tr>td{
+  font-size:10px;
+  }
+  .table>thead>tr>th{
+    font-size:10px;
+  } 
+}
 
 
  // iPhone X in landscape & iPhone X in portrait
 @media only screen and (min-width: 375px) and (max-width: 812px) { 
   h3 {
      font-size:12px;
- }
- .table>tbody>tr>td{
- font-size:10px;
- }
- .table>thead>tr>th{
-   font-size:10px;
- } 
- }
+  }
+  .table>tbody>tr>td{
+  font-size:10px;
+  }
+  .table>thead>tr>th{
+    font-size:10px;
+  } 
+}
 
 
 // iPhone 5 & 5S in portrait & landscape
 @media only screen and (min-width: 320px) and (max-width: 568px) { 
   h3 {
      font-size:12px;
- }
- .table>tbody>tr>td{
- font-size:10px;
- }
- .table>thead>tr>th{
-   font-size:10px;
- } 
- }
- // iPhone 2G-4S in portrait
- @media only screen and (min-width: 320px) and (max-width: 480px) { 
+  }
+  .table>tbody>tr>td{
+  font-size:10px;
+  }
+  .table>thead>tr>th{
+    font-size:10px;
+  } 
+}
+// iPhone 2G-4S in portrait
+@media only screen and (min-width: 320px) and (max-width: 480px) { 
   h3 {
      font-size:12px;
- }
- .table>tbody>tr>td{
- font-size:10px;
- }
- .table>thead>tr>th{
-   font-size:10px;
- } 
- }
+  }
+  .table>tbody>tr>td{
+  font-size:10px;
+  }
+  .table>thead>tr>th{
+    font-size:10px;
+  } 
+}
 
  // iPhone media query end
 

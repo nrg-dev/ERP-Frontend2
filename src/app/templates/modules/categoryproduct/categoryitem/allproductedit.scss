@@ -74,19 +74,10 @@ input[type=submit]:hover {
   border-radius: 5px;
   padding: 10px;
 }
-.col-20{
-  float: left;
-  width: 10%;
-  margin-top: 6px;
-}
+
 .col-20{
   float: left;
   width: 20%;
-  margin-top: 6px;
-}
-.col-25 {
-  float: left;
-  width: 25%;
   margin-top: 6px;
 }
 .col-30 {
@@ -99,7 +90,6 @@ input[type=submit]:hover {
   width: 70%;
   margin-top: 6px;
 }
-
 .col-50 {
   float: left;
   width: 50%;
@@ -133,16 +123,7 @@ input[type=submit]:hover {
 #close-icon{
   font-size: 1.5rem;
 }
-.close.mat-button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translate(50%, -50%);
-  background:red;
-  padding: 5px;
-  line-height: 14px;
-  min-width: auto;
-}
+
 .cdk-overlay-pane.my-dialog {
   position: relative!important;
 }

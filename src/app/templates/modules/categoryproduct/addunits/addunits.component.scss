@@ -10,8 +10,6 @@
 }
 
 span{
-//  color:#a94442;
-  //color:white;
   background-color:$error-code; 
   font-size: 12px;
 }
@@ -83,19 +81,7 @@ input[type=submit]:hover {
   float: left;
   margin-right: 20px;
 }
-.close {
-  width: 90px;
-  height: 30px;
-  background: #1186aa;
-  border: 1px solid #1186aa;
-  border-radius: 20px;
-  color: $white;
-  display: block;
-  position: absolute;
-  right: 10px;
-  top: 30px;
-  font-size: 15px;
-}
+
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .col-25, .col-75, input[type=submit] {

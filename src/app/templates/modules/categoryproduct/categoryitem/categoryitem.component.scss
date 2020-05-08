@@ -19,24 +19,10 @@
   overflow: hidden !important;
 }
 
-#outer-div{ 
- // overflow-y: auto; 
-  height: 5vh; 
-}
-#table-outer-div{ 
-  font-family:$font-family;
-  //overflow-y: auto; 
-  //height: 75vh; 
-}
-
 .col-12{
   overflow-y: auto; 
   height: 75vh;
   font-family:$font-family;
-}
-#table-outer-div thead th { 
-  position: sticky; 
-  top: 0; 
 }
 
 /* Just common table stuff. Really. */
@@ -44,7 +30,6 @@ table  {
   border-collapse: collapse; 
   width: 100%; 
 }
-
 
 th { 
   background:$table-header-bg; 
@@ -126,67 +111,67 @@ tr[ng-click] {
 @media only screen and (min-width: 375px) and (max-width: 667px) { 
   h3 {
      font-size:12px;
- }
- .table>tbody>tr>td{
- font-size:10px;
- }
- .table>thead>tr>th{
-   font-size:10px;
- } 
- }
+  }
+  .table>tbody>tr>td{
+  font-size:10px;
+  }
+  .table>thead>tr>th{
+    font-size:10px;
+  } 
+}
 
  // iPhone 6, 7, & 8 Plus in portrait & landscape
 @media only screen and (min-width: 414px) and (max-width: 736px) { 
   h3 {
      font-size:12px;
- }
- .table>tbody>tr>td{
- font-size:10px;
- }
- .table>thead>tr>th{
-   font-size:10px;
- } 
- }
+  }
+  .table>tbody>tr>td{
+  font-size:10px;
+  }
+  .table>thead>tr>th{
+    font-size:10px;
+  } 
+}
 
 
  // iPhone X in landscape & iPhone X in portrait
 @media only screen and (min-width: 375px) and (max-width: 812px) { 
   h3 {
      font-size:12px;
- }
- .table>tbody>tr>td{
- font-size:10px;
- }
- .table>thead>tr>th{
-   font-size:10px;
- } 
- }
+  }
+  .table>tbody>tr>td{
+  font-size:10px;
+  }
+  .table>thead>tr>th{
+    font-size:10px;
+  } 
+}
 
 
 // iPhone 5 & 5S in portrait & landscape
 @media only screen and (min-width: 320px) and (max-width: 568px) { 
   h3 {
      font-size:12px;
- }
- .table>tbody>tr>td{
- font-size:10px;
- }
- .table>thead>tr>th{
-   font-size:10px;
- } 
- }
- // iPhone 2G-4S in portrait
- @media only screen and (min-width: 320px) and (max-width: 480px) { 
+  }
+  .table>tbody>tr>td{
+  font-size:10px;
+  }
+  .table>thead>tr>th{
+    font-size:10px;
+  } 
+}
+// iPhone 2G-4S in portrait
+@media only screen and (min-width: 320px) and (max-width: 480px) { 
   h3 {
      font-size:12px;
- }
- .table>tbody>tr>td{
- font-size:10px;
- }
- .table>thead>tr>th{
-   font-size:10px;
- } 
- }
+  }
+  .table>tbody>tr>td{
+  font-size:10px;
+  }
+  .table>thead>tr>th{
+    font-size:10px;
+  } 
+}
 
  // iPhone media query end
 
