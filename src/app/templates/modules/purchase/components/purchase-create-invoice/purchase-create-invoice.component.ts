@@ -50,7 +50,7 @@ export class PurchaseCreateInvoiceComponent implements OnInit {
     return this.invoiceList.map(item => item.pocode);
   }
 
-  getQty():LongRange[] {
+  getQty():any {
     return this.invoiceList.map(item => item.qty);
   }
 

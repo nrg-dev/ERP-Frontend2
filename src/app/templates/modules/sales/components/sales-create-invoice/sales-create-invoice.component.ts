@@ -56,7 +56,7 @@ export class SalesCreateInvoiceComponent implements OnInit {
     }
   }
 
-  getQty():LongRange[] {
+  getQty():any[] {
     return this.invoiceList.map(item => item.qty);
   }
 
