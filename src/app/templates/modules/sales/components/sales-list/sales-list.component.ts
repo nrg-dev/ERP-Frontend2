@@ -345,6 +345,9 @@ export class SalesListComponent implements OnInit, OnDestroy {
     this.dialog.open(SalesCreateInvoiceComponent, {
       panelClass: "purchaseCreateInvoice",
       data: data,
+    })
+    .afterClosed().subscribe(result => {
+      this.getSalesOrderLists();
     });
   }
 

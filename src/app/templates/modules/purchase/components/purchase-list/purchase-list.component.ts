@@ -344,6 +344,9 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
     this.dialog.open(PurchaseCreateInvoiceComponent, {
       panelClass: "purchaseCreateInvoice",
       data: data,
+    })
+    .afterClosed().subscribe(result => {
+      this.getPurchaseOrderLists();
     });
   }
 

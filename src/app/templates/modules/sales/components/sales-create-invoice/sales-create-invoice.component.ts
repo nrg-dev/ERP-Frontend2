@@ -56,6 +56,14 @@ export class SalesCreateInvoiceComponent implements OnInit {
     }
   }
 
+  getQty():LongRange[] {
+    return this.invoiceList.map(item => item.qty);
+  }
+
+  getCustomerCode():any {
+    return this.invoiceList.map(item => item.customercode);
+  }
+
   createInvoice() {
 
     this.createSalesInvoiceClose();
@@ -65,7 +73,9 @@ export class SalesCreateInvoiceComponent implements OnInit {
       "ordernumbers" : this.getOrderNumbers(),
       "subtotal": this.getSubTotal(),
       "deliverycharge": this.delivery,
-      "totalprice": this.getTotal()
+      "totalprice": this.getTotal(),
+      "qty": this.getQty(),
+      "customercode" : this.getCustomerCode()
     }
 
     this.salesService.createInvoice(invoice).subscribe(
@@ -73,7 +83,7 @@ export class SalesCreateInvoiceComponent implements OnInit {
         if (respose === null) {
           setTimeout(() => {
             this.snackBar.open(
-              "Sales Order updated Successfully",
+              "Sales Invoice Created Successfully",
               "dismss",
               {
                 panelClass: ["success"],
