@@ -138,6 +138,7 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
   }
 
   rowSelected(index: number, item: any, isChecked: boolean) {
+    
     if (isChecked) {
       item.indexVal = index;
       this.prodArr.push(item);
@@ -202,6 +203,7 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
   }
  
   addPurchaseOrder(id: string, item: any) {
+    
     let data: any;
     if (id !== null) {
       this.title = "Edit Purchase Order";
@@ -292,6 +294,7 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
   }
 
   removePurchaseOrder(id: string) {
+    
     this.purchaseService.removePurchaseOrder(id).subscribe((data: any) => {
       if (data === null) {
         setTimeout(() => {
@@ -347,6 +350,7 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
     })
     .afterClosed().subscribe(result => {
       this.getPurchaseOrderLists();
+      this.prodArr = [];
     });
   }
 
