@@ -348,6 +348,8 @@ export class SalesListComponent implements OnInit, OnDestroy {
     })
     .afterClosed().subscribe(result => {
       this.getSalesOrderLists();
+      this.prodArr = [];
+      this.isCheckedArr = [];
     });
   }
 

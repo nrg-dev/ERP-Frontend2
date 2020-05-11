@@ -351,6 +351,7 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
     .afterClosed().subscribe(result => {
       this.getPurchaseOrderLists();
       this.prodArr = [];
+      this.isCheckedArr = [];
     });
   }
 
