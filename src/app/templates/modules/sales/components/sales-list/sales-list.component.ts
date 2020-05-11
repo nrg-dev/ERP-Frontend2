@@ -364,8 +364,7 @@ export class SalesListComponent implements OnInit, OnDestroy {
       height:'200vh'
     })
     .afterClosed().subscribe(result => {
-      // this.getAllCustomerDetails();
-     });
-    ;
+      this.getSalesOrderLists();
+    });
   }
 }
