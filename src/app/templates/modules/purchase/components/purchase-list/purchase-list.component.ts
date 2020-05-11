@@ -328,7 +328,7 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
     data = {
       dialogPaneTitle: "Purchase Orders",
       dialogInvoiceTitle: "Create Invoice",
-      dialogText: "Add",
+      dialogText: "Create",
       invoiceItems: this.prodArr,
       venderName: this.prodArr[0].vendorname,
       date: new Date()
