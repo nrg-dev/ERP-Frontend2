@@ -316,6 +316,7 @@ export class Filter {
 })
 export class SalesinvoiceComponent implements OnInit {
   invoiceList: any;
+  public invTale = false;
   constructor(
     private salesService: SalesService,
     private snackBar: MatSnackBar
@@ -347,6 +348,11 @@ export class SalesinvoiceComponent implements OnInit {
   getInvoiceLists() {
     this.salesService.loadInvoice().subscribe(res => { 
       this.invoiceList = res;
+      if(this.invoiceList.length == 0 ){
+        this.invTale = false;
+      }else{
+        this.invTale = true;
+      }
     },
     error => {
       setTimeout(() => {

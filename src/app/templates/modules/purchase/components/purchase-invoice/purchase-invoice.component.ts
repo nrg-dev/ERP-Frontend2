@@ -10,6 +10,7 @@ import { PurchaseService } from '../../services/purchase.service';
 export class PurchaseInvoiceComponent implements OnInit, OnDestroy {
   
   invoiceList: any;
+  public invTale = false;
   constructor(
     private purchaseservice: PurchaseService,
     private snackBar: MatSnackBar
@@ -41,6 +42,11 @@ export class PurchaseInvoiceComponent implements OnInit, OnDestroy {
   getInvoiceLists() {
     this.purchaseservice.load().subscribe(res => { 
       this.invoiceList = res;
+      if(this.invoiceList.length == 0 ){
+        this.invTale = false;
+      }else{
+        this.invTale = true;
+      }
     },
     error => {
       setTimeout(() => {
