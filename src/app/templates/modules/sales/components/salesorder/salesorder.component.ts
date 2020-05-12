@@ -348,11 +348,12 @@ export class SalesorderComponent implements OnInit {
     if (data.id !== undefined) {
       this.model.qty = data.qty;
       this.model.unit = data.unit;
-      this.model.price = data.unitprice;
       this.model.category = data.categoryname + "-" + data.categorycode;
       this.model.customerName = data.customername + "-" + data.customercode;
       this.model.productName = data.productname + "-" + data.productcode;
       this.model.subtotal = data.subtotal;
+      this.model.netAmount = data.subtotal;
+      this.model.unitPrice = data.subtotal / data.qty;
     }
   }
 
