@@ -97,13 +97,17 @@ tr[ng-click] {
 
 .fa-pen {
   float: left;
+  font-size: 12px;
   cursor: pointer;
-  margin-top: 2px;
+  margin-top: -15px;
+  margin-left: 50px
 }
 
 .fa-trash {
   float: right;
+  font-size: 12px;
   cursor: pointer;
+  margin-top: -15px;
 }
 // iPhone media query start
 
