@@ -84,6 +84,26 @@
             position: relative;
             top:10px;
         }
+
+        .icon-edit{
+            background: url(/assets/images/edit.PNG) no-repeat center center;
+            display: block;
+            padding: 15px 0px 10px 130px;
+            background-size: 25px;
+            width: 30px;
+            position: relative;
+            top: -17px;
+        }
+
+        .icon-delete{
+            background: url(/assets/images/delete.PNG) no-repeat center center;
+            display: block;
+            padding: 15px 0px 10px 35px;
+            background-size: 25px;
+            width: 30px;
+            position: relative;
+            top: -43px;
+        }
     }
 
     .address-box {

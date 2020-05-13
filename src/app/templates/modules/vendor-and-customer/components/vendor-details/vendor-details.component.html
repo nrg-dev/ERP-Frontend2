@@ -12,10 +12,10 @@
         </div>
         <div class="org-info">
             <div class="org-address">
-                <div class="address-box">
+                <!-- <div class="address-box">
                     <span>contact Number</span>
                     <h3>{{data.mobileNumber}}</h3>
-                </div>
+                </div> -->
                 <div class="address-box">
                     <span>Phone</span>
                     <h3>{{data.phoneNumber}}</h3>
@@ -42,8 +42,11 @@
                 </div>
             </div>
         </div>
+
         <div class="org-footer">
             <a [routerLink]="" class="icon-printer"></a>
+            <div class="icon-edit" (click)="editVenddor()"></div>
+            <div class="icon-delete" (click)="deleteVenddor()"></div>
         </div>
     </div>
     <div class="vendor-categories">
