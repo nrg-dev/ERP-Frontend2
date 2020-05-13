@@ -163,7 +163,7 @@ export class VendorAndCustomerListComponent implements OnInit, OnDestroy {
       hasBackdrop: false
     })
     .afterClosed().subscribe(result => {
-     // this.getAllCustomerDetails();
+      this.ngOnInit();
     });
   }
 
