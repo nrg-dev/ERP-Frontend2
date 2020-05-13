@@ -209,4 +209,8 @@ export class VendorDetailsComponent implements OnInit {
         })
   }
 
+  editVenddor(){
+    
+  }
+
 }

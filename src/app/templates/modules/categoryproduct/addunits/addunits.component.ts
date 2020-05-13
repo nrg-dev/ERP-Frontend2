@@ -59,7 +59,15 @@ export class AddunitsComponent implements OnInit {
     this.router.navigate(["category-and-product/units"]);
   }
 
-  addUnit() {
+  addUnit(btnsave:string) {
+    if(btnsave == "Save"){
+      this.saveUnit();
+    }else if(btnsave == "Update"){
+      this.updateUnit();
+    }
+  }
+  
+  saveUnit(){
     console.log(this.model.unitname);
     console.log(this.model.unitsymbol);
     console.log(this.model.quantityname);
@@ -70,6 +78,33 @@ export class AddunitsComponent implements OnInit {
         data => {
           setTimeout(() => {
             this.snackBar.open("Unit Saved Successfully", "", {
+              panelClass: ["success"],
+              verticalPosition: 'top'      
+            });
+          });
+      },
+      error => {
+        setTimeout(() => {
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        }); 
+      }
+    ); 
+  }
+
+  updateUnit(){
+    console.log(this.model.unitname);
+    console.log(this.model.unitsymbol);
+    console.log(this.model.quantityname);
+    console.log(this.model.quantitysymbol);
+    console.log(this.model.dimensionsymbol);
+    this.catprodservice.saveUnit(this.model)
+      .subscribe(
+        data => {
+          setTimeout(() => {
+            this.snackBar.open("Unit Updated Successfully", "", {
               panelClass: ["success"],
               verticalPosition: 'top'      
             });
