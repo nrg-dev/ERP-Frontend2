@@ -58,6 +58,10 @@ export class PurchaseCreateInvoiceComponent implements OnInit {
     return this.invoiceList.map(item => item.vendorcode);
   }
 
+  getProductName():string[] {
+    return this.invoiceList.map(item => item.productname);
+  }
+
   setDefaultNumber() {
     if (!this.delivery) {
       this.delivery = 0;
@@ -75,7 +79,8 @@ export class PurchaseCreateInvoiceComponent implements OnInit {
       "deliverycharge": this.delivery,
       "totalprice": this.getTotal(),
       "qty": this.getQty(),
-      "vendorcode" : this.getVendorCode()
+      "vendorcode" : this.getVendorCode(),
+      "productname" : this.getProductName()
     }
     this.purchaseService.createInvoice(invoice).subscribe(
       (respose) => {

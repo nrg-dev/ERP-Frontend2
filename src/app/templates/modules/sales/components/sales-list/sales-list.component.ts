@@ -234,7 +234,7 @@ export class SalesListComponent implements OnInit, OnDestroy {
         hasBackdrop: false
       })
       .afterClosed().subscribe(result => {
-        this.getSalesOrderLists();
+        this.ngOnInit();
       });
   }
 
@@ -347,7 +347,7 @@ export class SalesListComponent implements OnInit, OnDestroy {
       data: data,
     })
     .afterClosed().subscribe(result => {
-      this.getSalesOrderLists();
+      this.ngOnInit();
       this.prodArr = [];
       this.isCheckedArr = [];
     });
@@ -366,7 +366,7 @@ export class SalesListComponent implements OnInit, OnDestroy {
       height:'200vh'
     })
     .afterClosed().subscribe(result => {
-      this.getSalesOrderLists();
+      this.ngOnInit();
     });
   }
 }

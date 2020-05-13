@@ -64,6 +64,10 @@ export class SalesCreateInvoiceComponent implements OnInit {
     return this.invoiceList.map(item => item.customercode);
   }
 
+  getProductName():string[] {
+    return this.invoiceList.map(item => item.productname);
+  }
+
   createInvoice() {
 
     this.createSalesInvoiceClose();
@@ -75,7 +79,8 @@ export class SalesCreateInvoiceComponent implements OnInit {
       "deliverycharge": this.delivery,
       "totalprice": this.getTotal(),
       "qty": this.getQty(),
-      "customercode" : this.getCustomerCode()
+      "customercode" : this.getCustomerCode(),
+      "productname" : this.getProductName()
     }
 
     this.salesService.createInvoice(invoice).subscribe(

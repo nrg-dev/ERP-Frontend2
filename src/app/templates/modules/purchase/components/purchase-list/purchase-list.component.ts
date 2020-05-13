@@ -235,7 +235,7 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
         hasBackdrop: false
       })
       .afterClosed().subscribe(result => {
-        this.getPurchaseOrderLists();
+        this.ngOnInit();
       });
   }
 
@@ -349,7 +349,7 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
       data: data,
     })
     .afterClosed().subscribe(result => {
-      this.getPurchaseOrderLists();
+      this.ngOnInit();
       this.prodArr = [];
       this.isCheckedArr = [];
     });
