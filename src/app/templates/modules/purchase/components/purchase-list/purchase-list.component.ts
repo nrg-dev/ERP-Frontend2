@@ -356,7 +356,15 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
   }
 
   createReturn() {
-  console.log("createReturn");
+    console.log("createReturn");
+    let data: any;
+    data = {
+      vendorname: this.prodArr[0].vendorname,
+      vendorcode: this.prodArr[0].vendorcode,
+      productname: this.prodArr[0].productname,
+      invqty: this.prodArr[0].qty,
+      date: this.prodArr[0].date
+    };
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
     this.dialogConfig.position = {
@@ -365,13 +373,13 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
     this.dialog.open(PurchaseCreateReturnComponent, {
       panelClass: "purchaseCreateReturn",
       width:'120vh',
-      height:'200vh'
+      height:'200vh',
       //disableClose: true,
       //hasBackdrop: false
-      //data: data,
+      data: data,
     })
     .afterClosed().subscribe(result => {
-      // this.getAllCustomerDetails();
+      this.ngOnInit();
      });
     ;
   }

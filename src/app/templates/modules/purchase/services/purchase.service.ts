@@ -161,4 +161,11 @@ export class PurchaseService {
         )
     }
 
+    createReturn(data:any) {
+        return this.http.post(
+            `${environment.apiUrl}${API_ENDPOINTS.CREATE_RETURN}`,
+            data
+        )
+    }
+
 }
