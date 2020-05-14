@@ -51,6 +51,7 @@ export class VendorDetailsComponent implements OnInit {
     private _sanitizer: DomSanitizer,
     private vendorDetailsService:VendorDetailsService,
     private snackBar: MatSnackBar
+
     ) { }
 
   ngOnInit() {
@@ -209,8 +210,7 @@ export class VendorDetailsComponent implements OnInit {
         })
   }
 
-  editVenddor(){
-    
+  editVendor(){
   }
 
 }

@@ -30,23 +30,24 @@
             <input type="text" id="textbox1" name="customerName"  [(ngModel)]="this.model.customerName" 
             #customerName="ngModel" autocomplete="off" required/>
     
-          <div *ngIf="customerName.errors && (customerName.dirty || customerName.touched) ||
-            (registerForm.submitted && !customerName.valid )">
-            <span [hidden]="!customerName.errors.required" class="spanerror">
-                Required field cannot be left blank
-            </span>
-          </div>        </div>
+            <div *ngIf="customerName.errors && (customerName.dirty || customerName.touched) ||
+              (registerForm.submitted && !customerName.valid )">
+              <span [hidden]="!customerName.errors.required" class="spanerror">
+                  Required field cannot be left blank
+              </span>
+            </div>        
+          </div>
           <div *ngSwitchCase="'vendor'">
-            <input type="text" id="textbox1" name="vendorName"  [(ngModel)]="this.model.vendorName" 
+            <input type="text" id="textbox1" name="vendorName" [(ngModel)]="this.model.vendorName" 
             #vendorName="ngModel" autocomplete="off" required/>
     
-          <div *ngIf="vendorName.errors && (vendorName.dirty || vendorName.touched) ||
-            (registerForm.submitted && !vendorName.valid )">
-            <span [hidden]="!vendorName.errors.required" class="spanerror">
-                Required field cannot be left blank
-            </span>
-          </div>        
-        </div>
+            <div *ngIf="vendorName.errors && (vendorName.dirty || vendorName.touched) ||
+              (registerForm.submitted && !vendorName.valid )">
+              <span [hidden]="!vendorName.errors.required" class="spanerror">
+                  Required field cannot be left blank
+              </span>
+            </div>        
+          </div>
         </div>
 
 

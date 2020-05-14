@@ -37,6 +37,7 @@ export class AddunitsComponent implements OnInit {
     this.local_data = {...data};
     this.model.id=this.local_data.id;
     this.model.unitname=this.local_data.unitname;
+    this.model.unitsymbol=this.local_data.unitsymbol;
     this.model.quantityname=this.local_data.quantityname;
     this.model.quantitysymbol=this.local_data.quantitysymbol;
     this.model.dimensionsymbol=this.local_data.dimensionsymbol;    
