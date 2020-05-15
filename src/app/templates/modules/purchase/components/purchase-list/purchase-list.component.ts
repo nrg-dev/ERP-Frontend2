@@ -363,7 +363,8 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
       vendorcode: this.prodArr[0].vendorcode,
       productname: this.prodArr[0].productname,
       invqty: this.prodArr[0].qty,
-      date: this.prodArr[0].date
+      date: this.prodArr[0].date,
+      subtotal: this.prodArr[0].subtotal
     };
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;

@@ -18,4 +18,6 @@ export const API_ENDPOINTS = {
   GET_SALES_ORDER_LIST: `/sales/loadSO`,
   CREATE_INVOICE:`/sales/createInvoice`,
   loadInvoice: `/sales/loadInvoice`,
+  CREATE_RETURN:`/sales/createReturn`,
+  lOADRETURN:`/sales/loadReturn`,
 };

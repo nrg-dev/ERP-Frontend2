@@ -1,49 +1,41 @@
 
-  <div class="row">
-    <div class="col-4">
-      <h4>Purchase Return List</h4> 
-    </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Hand Phone</th>
-        <th>Email</th>
-        <th>State</th>
-        <th>Country</th>
-        <th>Office Phone</th>
-        <th>Salary</th>
-        <th>Qualification</th>
-        <th>Gender</th>
-        <th>Status</th>
-        <th>Location</th>
-      </tr>
-  </thead>
-  <tbody *ngFor="let a of NAMES; let i = index"> 
-      <tr>
-        <td>{{a.id}}</td>
-        <td>{{a.value1}}</td>
-        <td>{{a.value2}}</td>
-        <td>{{a.value3}}</td>
-        <td>{{a.value4}}</td>
-        <td>{{a.value5}}</td>
-        <td>{{a.value6}}</td>
-        <td>{{a.value7}}</td>
-        <td>{{a.value8}}</td>
-        <td>{{a.value9}}</td>
-        <td>{{a.value10}}</td>
-        <td>{{a.value11}}</td>
-      </tr>
-     
-    </tbody>
-  </table>
+<div class="row">
+  <div class="col-4">
+    <h4>Purchase Return List</h4> 
+  </div>
 </div>
-    </div>
+
+<div class="row">
+  <div class="col-12">
+    <table class="table" *ngIf="returntable">
+      <thead>
+        <tr>
+          <th>Invoice Number</th>
+          <th>Vendor Name</th>
+          <th>Product Name</th>
+          <th>Invoiced Date</th>
+          <th>Quantity Invoiced</th>
+          <th>Item Status</th>
+          <th>Payment Method</th>
+          <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let ret of poreturnList; let i = index"> 
+        <tr>
+          <td>{{ret.invoicenumber}}</td>
+          <td>{{ret.vendorname}}</td>
+          <td>{{ret.itemname}}</td>
+          <td>{{ret.invoiceddate}}</td>
+          <td>{{ret.invoicedqty}}</td>
+          <td>{{ret.itemStatus}}</td>
+          <td>{{ret.returnStatus}}</td>
+          <td>{{ret.qty}}</td>
+        </tr>
+      
+      </tbody>
+    </table>
+  </div>
+</div>
 
 
 

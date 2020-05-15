@@ -168,4 +168,7 @@ export class PurchaseService {
         )
     }
 
+    loadReturn(){
+        return this.http.get<Purchase>(`${environment.apiUrl}${API_ENDPOINTS.lOADRETURN}`);
+    }
 }

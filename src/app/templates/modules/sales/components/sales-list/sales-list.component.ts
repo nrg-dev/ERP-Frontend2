@@ -354,7 +354,16 @@ export class SalesListComponent implements OnInit, OnDestroy {
   }
 
   createReturn() {
-  console.log("createReturn");
+    console.log("createReturn");
+    let data: any;
+    data = {
+      customername: this.prodArr[0].customername,
+      customercode: this.prodArr[0].customercode,
+      productname: this.prodArr[0].productname,
+      invqty: this.prodArr[0].qty,
+      date: this.prodArr[0].date,
+      subtotal: this.prodArr[0].subtotal
+    };
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
     this.dialogConfig.position = {
@@ -363,7 +372,8 @@ export class SalesListComponent implements OnInit, OnDestroy {
     this.dialog.open(SalesCreateReturnComponent, {
       panelClass: "purchaseCreateReturn",
       width:'120vh',
-      height:'200vh'
+      height:'200vh',
+      data: data,
     })
     .afterClosed().subscribe(result => {
       this.ngOnInit();

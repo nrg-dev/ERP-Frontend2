@@ -26,10 +26,18 @@ label{
   padding-left: 10px;
 }
 #qtyBox{
-  margin: 20px 0px 0px 0px;
+  background: #1A2D39;
+  color: $white;
+  border: 1px solid #2C4655;
+  margin: 20px 0px 0px 15px;
   height: 30px;
-  width: 100px;
-  padding: 0px 0px 0px 10px;
+  width: 85px;
+  padding: 0px 0px 0px 5px;
+}
+#priceBox{
+  margin: 20px 0px 0px 15px;
+  height: 30px;
+  width: 85px;
 }
 .marginRow{
   margin-bottom: -30px !important; 
@@ -78,7 +86,7 @@ input[type=submit]:hover {
 }
 h5{
   color:white;
-  margin-left: 35px;
+  margin-left: 40px;
 }
 .container {
   width: 90%;
@@ -87,7 +95,11 @@ h5{
   height: 80%;
   border-radius: 5px;
 }
-
+.col-20{
+  float: left;
+  width: 30%;
+  margin-top: 6px;
+}
 .col-25 {
   float: left;
   width: 50%;
@@ -140,8 +152,8 @@ h5{
 }
 
 .save-button {
-  width: 90px;
-  height: 30px;
+  width: 250px;
+  height: 40px;
   color: white;
   background: #1186aa;
   border: 1px solid #1186aa;
@@ -151,19 +163,6 @@ h5{
   font-size: 25px;
   float: left;
   margin-right: 20px;
-}
-.close {
-  width: 90px;
-  height: 30px;
-  background: #1186aa;
-  border: 1px solid #1186aa;
-  border-radius: 20px;
-  color: $white;
-  display: block;
-  position: absolute;
-  right: 10px;
-  top: 30px;
-  font-size: 15px;
 }
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {

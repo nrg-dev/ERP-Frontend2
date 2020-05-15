@@ -21,4 +21,5 @@ export const API_ENDPOINTS = {
   UPDATE_PURCHASE_ORDER: `/purchase/updatePurchaseOrder`,
   CREATE_INVOICE:`/purchase/createInvoice`,
   CREATE_RETURN:`/purchase/createReturn`,
+  lOADRETURN:`/purchase/loadReturn`,
 };

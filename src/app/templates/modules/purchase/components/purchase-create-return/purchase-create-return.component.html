@@ -94,25 +94,35 @@
         <br/>
 
         <div class="row marginRow">
-            <div class="col-15">
-                <label class="heading1">Quantity	</label>
+            <div class="col-40">
+                <label class="heading1">Quantity</label>
             </div>
-            <div class="col-30">
+            <div class="col-2"></div>
+            <div class="col-40">
+                <label class="heading1">Price</label>
+            </div>
+        </div>
+
+        <div class="row marginRow">
+            <div class="col-40">
                 <input type="number" value="quantity"  [(ngModel)]="quantity" 
-                    name="quantity" id="qtyBox">  
+                    name="quantity" id="qtyBox" (ngModelChange)="getPrice(quantity)">  
             </div>
-            <div class="col-55"></div>
+            <div class="col-2"></div>
+            <div class="col-40">
+                <label id="priceBox">{{ this.model.price }}</label>
+            </div>
         </div>
 
 
-        <br/>
+        <br/><br/>
     
-        <div class="row">
-            <div class="col-25"></div>
+        <div class="row marginRow">
+            <div class="col-20"></div>
             <div class="col-50">
-                <button  class="save-button">{{btnsave}} </button>
+                <button class="save-button">{{btnsave}} </button>
             </div>
-            <div class="col-25"></div>
+            <div class="col-20"></div>
         </div>
     </form>
 </div>
