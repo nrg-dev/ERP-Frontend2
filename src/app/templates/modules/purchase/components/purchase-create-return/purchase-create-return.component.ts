@@ -37,6 +37,18 @@ export class PurchaseCreateReturnComponent implements OnInit {
 
   getPrice(quantity:number){
     let price = this.model.subtotal/quantity;
+    if(this.model.quantity > this.model.invqty){
+      setTimeout(() => {
+        this.snackBar.open(
+          "Qty cannot be more than Invoiced Qty.",
+          "dismss",
+          {
+            panelClass: ["warning"],
+            verticalPosition: "top",
+          }
+        );
+      });
+    }
     if(price == Infinity){
       this.model.price = 0;
     }else{
@@ -56,7 +68,7 @@ export class PurchaseCreateReturnComponent implements OnInit {
       "itemname" : this.model.productname,
       "itemStatus" : this.model.itemstatus,
       "returnStatus" : this.model.paymentType,
-      "qty" : this.quantity,
+      "qty" : this.model.quantity,
       "invoiceddate" : this.model.date,
       "price" : this.model.price
     }

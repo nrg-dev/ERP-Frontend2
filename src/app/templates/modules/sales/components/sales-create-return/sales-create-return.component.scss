@@ -28,7 +28,6 @@ label{
 #qtyBox{
   background: #1A2D39;
   color: $white;
-  border: 1px solid #2C4655;
   margin: 20px 0px 0px 15px;
   height: 30px;
   width: 85px;
@@ -38,6 +37,9 @@ label{
   margin: 20px 0px 0px 15px;
   height: 30px;
   width: 85px;
+}
+input{
+  border: 1px solid $header-bg; 
 }
 .marginRow{
   margin-bottom: -30px !important; 
@@ -50,11 +52,14 @@ label{
   border-left: 5px solid #a94442; /* red */
 }
 
+.spanerror{
+  margin-left: 0px !important;
+}
 span{
-//  color:#a94442;
-  //color:white;
+  color: $white;
   background-color:$error-code; 
   font-size: 12px;
+  margin-left: 15px;
 }
 input[type=text], select, textarea {
   width: 50%;
@@ -63,7 +68,7 @@ input[type=text], select, textarea {
   border-radius: 4px;
   resize: vertical;
   color:white;
-  border: 1px solid  $header-bg; 
+  border: 1px solid $header-bg; 
 }
 
 label {

@@ -1,10 +1,8 @@
 <h5> Create Sales Return</h5>  <br/>
   <div class="container">
-    <form
-      name="returnForm"
+    <form name="returnForm"
       (submit)="returnForm.form.valid && addReturn()"
-      #returnForm="ngForm"
-      novalidate>
+      #returnForm="ngForm" novalidate>
 
         <div style="background: #253F4B;">
 
@@ -50,25 +48,35 @@
         <br/>
         <div class="row marginRow">
             <div class="col-25">
-            <label class="heading1">Item Status		</label>
+            <label class="heading1">Item Status </label>
             </div>
         </div>
         
         <div class="row marginRow">
-        <div class="col-100">
-        <input id="damaged" type="radio" class="regular-radio" value="damanged" [(ngModel)]="model.itemstatus" #itemstatus="ngModel" name="itemstatus" >
-        <label for="damaged" id="radiolabel">Damaged</label>
-        &nbsp;&nbsp;&nbsp;
+            <div class="col-100">
+                <input id="damaged" type="radio" class="regular-radio" value="damanged" 
+                [(ngModel)]="model.itemstatus" #itemstatus="ngModel" name="itemstatus" required>
+                <label for="damaged" id="radiolabel">Damaged</label>
+                &nbsp;&nbsp;&nbsp;
 
-        <input id="expired" type="radio" class="regular-radio" value="expired" [(ngModel)]="model.itemstatus" #itemstatus="ngModel" name="itemstatus" >
-        <label for="expired" id="radiolabel">Expired</label>
-        &nbsp;&nbsp;&nbsp;
+                <input id="expired" type="radio" class="regular-radio" value="expired" 
+                [(ngModel)]="model.itemstatus" #itemstatus="ngModel" name="itemstatus" required>
+                <label for="expired" id="radiolabel">Expired</label>
+                &nbsp;&nbsp;&nbsp;
 
-        <input id="others" type="radio" class="regular-radio" value="others" [(ngModel)]="model.itemstatus" #itemstatus="ngModel" name="itemstatus">
-        <label for="others" id="radiolabel">Others</label>
+                <input id="others" type="radio" class="regular-radio" value="others" 
+                [(ngModel)]="model.itemstatus" #itemstatus="ngModel" name="itemstatus" required>
+                <label for="others" id="radiolabel">Others</label>
+            </div>
+
+            <div *ngIf="itemstatus.errors && (itemstatus.dirty || itemstatus.touched) ||
+              (returnForm.submitted && !itemstatus.valid )">
+              <span [hidden]="!itemstatus.errors.required">
+                  Required field cannot be left blank
+              </span>
+            </div>
         </div>
-        </div>
-
+        <br/>
         <div class="row marginRow">
             <div class="col-25">
             <label class="heading1">Repayment Method	</label>
@@ -77,19 +85,27 @@
 
         <div class="row marginRow">
             <div class="col-100">
-            <input type="radio" class="regular-radio" value="cash"  [(ngModel)]="model.paymentType" #paymentType="ngModel"
-                name="paymentType" >
-            <label id="radiolabel">Cash</label>  
-                &nbsp;&nbsp;&nbsp;
-            <input type="radio"   class="regular-radio" value="credit" [(ngModel)]="model.paymentType" #paymentType="ngModel"
-                name="paymentType" >
-            <label id="radiolabel">Credit</label>
-                &nbsp;&nbsp;&nbsp;
-            
-            <input  type="radio"   class="regular-radio" value="voucher" [(ngModel)]="model.paymentType" #paymentType="ngModel"
-                name="paymentType" >
-            <label id="radiolabel">Voucher</label>
+                <input type="radio" class="regular-radio" value="cash"  [(ngModel)]="model.paymentType" #paymentType="ngModel"
+                    name="paymentType" required>
+                <label id="radiolabel">Cash</label>  
+                    &nbsp;&nbsp;&nbsp;
+                <input type="radio" class="regular-radio" value="credit" [(ngModel)]="model.paymentType" #paymentType="ngModel"
+                    name="paymentType" required>
+                <label id="radiolabel">Credit</label>
+                    &nbsp;&nbsp;&nbsp;
+                
+                <input  type="radio" class="regular-radio" value="voucher" [(ngModel)]="model.paymentType" #paymentType="ngModel"
+                    name="paymentType" required>
+                <label id="radiolabel">Voucher</label>
             </div>        
+
+            <div *ngIf="paymentType.errors && (paymentType.dirty || paymentType.touched) ||
+              (returnForm.submitted && !paymentType.valid )">
+              <span [hidden]="!paymentType.errors.required">
+                  Required field cannot be left blank
+              </span>
+            </div>
+
         </div>
         <br/>
 
@@ -104,18 +120,26 @@
         </div>
 
         <div class="row marginRow">
-            <div class="col-40">
-                <input type="number" value="quantity"  [(ngModel)]="quantity" 
-                    name="quantity" id="qtyBox" (ngModelChange)="getPrice(quantity)">  
+                <div class="col-40">
+                    <input type="number" id="qtyBox" [(ngModel)]="model.quantity" #quantity="ngModel" 
+                        min="0" [max]="this.model.invqty" name="quantity" (ngModelChange)="getPrice(model.quantity)" 
+                        autocomplete="off" required  />
+                </div>
+                <div class="col-2"></div>
+                <div class="col-40">
+                    <label id="priceBox">{{ this.model.price }}</label>
+                </div>
             </div>
-            <div class="col-2"></div>
-            <div class="col-40">
-                <label id="priceBox">{{ this.model.price }}</label>
+    
+            <br/>
+            <div *ngIf="quantity.errors && (quantity.dirty || quantity.touched) ||
+                (returnForm.submitted && !quantity.valid )">
+                <span [hidden]="!quantity.errors.required" class="spanerror">
+                    Required field cannot be left blank
+                </span>
             </div>
-        </div>
 
-
-        <br/><br/>
+        <br/>
     
         <div class="row marginRow">
             <div class="col-20"></div>
