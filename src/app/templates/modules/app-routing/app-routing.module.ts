@@ -62,6 +62,12 @@ const routes: Routes = [
             (m) => m.SalesModule)
       },
       {
+        path: "stock",
+        loadChildren: () =>
+          import("../stock/stock.module").then(
+            (m) => m.StockModule)
+      },
+      {
         path: "finance",
         loadChildren: () =>
           import("../../../shared/components/finance/finance.module").then(

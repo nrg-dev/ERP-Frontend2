@@ -1,7 +1,14 @@
 
 <div class="row">
   <div class="col-4">
-    <h4>Purchase Invoices</h4> 
+        <h4>Purchase Invoices</h4>             
+  </div>
+  <div class="col-8">
+    <button [disabled]="!isAddStock ? true:false"
+      (click)="addStock()"
+      class="create-button" [ngStyle]="getaddStockStyle()">
+        Add Stock
+    </button>  
   </div>
 </div>
 <br/>
@@ -10,6 +17,12 @@
     <table class="table" *ngIf="invTale">
       <thead>
         <tr>
+          <th>
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input1" id="customChecks2">
+                <label class="custom-control-label1" for="customCheck2"></label>
+            </div>
+          </th>
           <th>Created Date</th>
           <th>Invoice Number</th>
           <!--  <th>Product List</th> -->
@@ -22,8 +35,16 @@
           <th class="txt-right"></th>
         </tr>
       </thead>
-      <tbody class="purchase-order-row-invoiced" *ngFor="let item of invoiceList"> 
+      <tbody class="purchase-order-row-invoiced" *ngFor="let item of invoiceList; let i = index"> 
         <tr>
+          <td>
+            <div class="custom-control custom-checkbox">
+              <label>
+                <input type="checkbox" class="custom-control-input1" id="customCheck{{i}}" 
+                (click)="rowSelected(i,item, $event.target.checked)">
+              </label>
+            </div>
+          </td>
           <td>{{item.invoicedate}}</td>
           <td>{{item.invoicenumber}}</td>
           <!--  <td>{{item.productName}}</td> -->

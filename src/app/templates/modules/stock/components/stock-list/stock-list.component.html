@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-4">
+  <h3>Stock List</h3> 
+</div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+
+      <table class="table" *ngIf="stockTable">
+        <thead>
+          <tr>
+            <th>Invoice Date</th>
+            <th>Category Name</th>
+            <th>Item Code</th>
+            <th>Stock</th>
+            <th>Status</th>
+            <th>Invoice Number</th>
+            <th>Unit</th>
+          </tr>
+      </thead>
+      <tbody *ngFor="let c of stockList; let i = index"> 
+          <tr>
+            <td>{{c.invoicedate}}</td>
+            <td>{{c.category}}</td>
+            <td>{{c.itemcode}}</td>
+            <td>{{c.recentStock}}</td>
+            <td>{{c.status}}</td>
+            <td>{{c.invoicenumber}}</td>
+            <td>{{c.unit}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

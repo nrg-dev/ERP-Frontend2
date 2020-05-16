@@ -22,4 +22,6 @@ export const API_ENDPOINTS = {
   CREATE_INVOICE:`/purchase/createInvoice`,
   CREATE_RETURN:`/purchase/createReturn`,
   lOADRETURN:`/purchase/loadReturn`,
+
+  CREATE_STOCK:`/stock/createStock`,
 };

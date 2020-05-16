@@ -105,8 +105,8 @@ export const SidenavItems: MenuItem[] = [
   {
     id: "stock",
     label: "Stock",
-    icon: "assets/images/employee.png",
-    path: "/employment",
+    icon: "assets/images/stock.png",
+    path: "/stock",
     submenu: false,
     childern: []
   },
