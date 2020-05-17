@@ -32,10 +32,8 @@ header {
 
     button[type="submit"] {
       background: $btn-bg;
-//      background: $login-title-color;
-      padding: 8px 40px;
       font-family: $font-family;
-      border-radius: 5px;
+      border-radius: $btn-border-radius;
       border: none;
     }
     input{
