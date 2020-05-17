@@ -1,5 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { InteractionService } from './../../common/_services/interaction.service';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../../common/_services';
 
 @Component({
   selector: 'app-header',
@@ -28,7 +30,7 @@ export class HeaderComponent implements OnInit {
     this.interactionService.toggleSideNavi(false);
   }
   
-  constructor(private interactionService: InteractionService) { }
+  constructor(private authenticationService:AuthenticationService,private router: Router,private interactionService: InteractionService) { }
 
   ngOnInit() { }
 
@@ -38,6 +40,11 @@ export class HeaderComponent implements OnInit {
 
   optionListToggle(value) {
     this.showMenu = value;
+  }
+
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
   }
 
 }

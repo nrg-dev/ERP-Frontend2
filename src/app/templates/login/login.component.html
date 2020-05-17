@@ -33,8 +33,8 @@
           required
           autofocus
         />
-      </div>
-      <p
+
+        <p
         class="font-sm my-1 text-danger"
         [ngStyle]="{
           visibility:
@@ -43,6 +43,10 @@
       >
         Username is required
       </p>
+      </div>
+      
+      <br/>
+
       <div class="row">
         <label
           for="password"
@@ -60,8 +64,10 @@
           #currentpassword="ngModel"
           required
         />
-      </div>
-      <p
+
+
+
+        <p
         class="font-sm my-1 text-danger"
         [ngStyle]="{
           visibility:
@@ -70,6 +76,9 @@
       >
         Password is required
       </p>
+      </div>
+      
+    
       <div class="row mb-3 mt-1">
         <button class="col-6" type="submit">Sign In</button>
         <div class="col-6 text-right p-0">

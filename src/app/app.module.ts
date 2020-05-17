@@ -3,6 +3,8 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+//import { ModalModule } from 'ngx-bootstrap/modal';
+import { ModalModule } from "ngx-bootstrap";
 
 // Custom Modules
 import { AppRoutingModule } from "./templates/modules/app-routing/app-routing.module";
@@ -23,6 +25,9 @@ import { DashboardWidgetComponent } from "./shared/components/dashboard-widget/d
 import { DataWidgetComponent } from "./shared/components/data-widget/data-widget.component";
 import { NavigationComponent } from "./core/components/navigation/navigation.component";
 
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive'; // this includes the core NgIdleModule but includes keepalive providers for easy wireup
+import { MomentModule } from 'angular2-moment'; // optional, provides moment-style pipes for date formatting
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +45,10 @@ import { NavigationComponent } from "./core/components/navigation/navigation.com
     BrowserAnimationsModule,
     CommonModule,
     HttpClientModule,
-    CustomMaterialModule
+    CustomMaterialModule,
+    NgIdleKeepaliveModule.forRoot(),
+    ModalModule.forRoot(),
+    MomentModule,
   ],
   providers: [AlertService, AuthenticationService, UserService],
   bootstrap: [AppComponent]

@@ -104,9 +104,9 @@
     flex-basis: 57%;
     padding: 25px;
     padding-left: 80px;
-    border-left: 1px solid #15222b;
+    border-left: 1px solid $main-bg;
     font-size: 14px;
-    background: #17252f;
+    background: $table-header-bg;
 
     .create-invoice-header {
       padding-top: 40px;
