@@ -34,9 +34,6 @@ export class PurchaseInvoiceComponent implements OnInit, OnDestroy {
       document.querySelector(".mat-drawer-content")
     )).style.overflow = "auto";
   }
-  createReturn(){
-    alert("Create Return");
-  }
   removeScrollBar() {
     setTimeout(function () {
       (<HTMLElement>(
@@ -178,6 +175,8 @@ export class PurchaseInvoiceComponent implements OnInit, OnDestroy {
             );
 
           });
+
+          this.getInvoiceLists();
       },
       (error) => {
         setTimeout(() => {
