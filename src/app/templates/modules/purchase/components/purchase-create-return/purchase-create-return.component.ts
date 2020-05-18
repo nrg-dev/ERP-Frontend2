@@ -17,6 +17,8 @@ export class PurchaseCreateReturnComponent implements OnInit {
   returnType:string;
   quantity:number;
 
+  public itemstatuserror = false;
+  public paymentTypeerrors = false;
 
   constructor(    
     public dialogRef: MatDialogRef<PurchaseCreateReturnComponent>,
@@ -33,6 +35,8 @@ export class PurchaseCreateReturnComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.itemstatuserror = false;
+    this.paymentTypeerrors = false;
   }
 
   getPrice(quantity:number){
@@ -59,49 +63,75 @@ export class PurchaseCreateReturnComponent implements OnInit {
   close() {
     this.dialogRef.close();
   }
-  addReturn() {
-    const invoice = {
-      "createddate": new Date().toJSON().slice(0, 10).split('-').reverse().join('/'),
-      "invoicedqty": this.model.invqty,
-      "vendorcode" : this.model.vendorcode,
-      "vendorname" : this.model.vendorname,
-      "itemname" : this.model.productname,
-      "itemStatus" : this.model.itemstatus,
-      "returnStatus" : this.model.paymentType,
-      "qty" : this.model.quantity,
-      "invoiceddate" : this.model.date,
-      "price" : this.model.price
+
+  getPaymentValid(paymentType:string){
+    if(paymentType == null){
+      this.paymentTypeerrors = true;
+    }else{
+      this.paymentTypeerrors = false;
     }
-    this.purchaseService.createReturn(invoice).subscribe(
-      (respose) => {
-        if (respose === null) {
+  }
+
+  getItemValid(itemstatus:string){
+    if(itemstatus == null){
+      this.itemstatuserror = true;
+    }else{
+      this.itemstatuserror = false;
+    }
+  }
+
+  addReturn() {
+    if(this.model.itemstatus == null){
+      console.log("ItemStatus not chosen");
+      this.itemstatuserror = true;
+    }
+    if(this.model.paymentType == null){
+      console.log("Payment not chosen");
+      this.paymentTypeerrors = true;
+    }else{
+      const invoice = {
+        "createddate": new Date().toJSON().slice(0, 10).split('-').reverse().join('/'),
+        "invoicedqty": this.model.invqty,
+        "vendorcode" : this.model.vendorcode,
+        "vendorname" : this.model.vendorname,
+        "itemname" : this.model.productname,
+        "itemStatus" : this.model.itemstatus,
+        "returnStatus" : this.model.paymentType,
+        "qty" : this.model.quantity,
+        "invoiceddate" : this.model.date,
+        "price" : this.model.price
+      }
+      this.purchaseService.createReturn(invoice).subscribe(
+        (respose) => {
+          if (respose === null) {
+            setTimeout(() => {
+              this.snackBar.open(
+                "Purchase Return Created Successfully",
+                "dismss",
+                {
+                  panelClass: ["success"],
+                  verticalPosition: "top",
+                }
+              );
+  
+            });
+            this.close();
+          }
+        },
+        (error) => {
           setTimeout(() => {
             this.snackBar.open(
-              "Purchase Return Created Successfully",
+              "Network error: server is temporarily unavailable",
               "dismss",
               {
-                panelClass: ["success"],
+                panelClass: ["error"],
                 verticalPosition: "top",
               }
             );
-
           });
-          this.close();
         }
-      },
-      (error) => {
-        setTimeout(() => {
-          this.snackBar.open(
-            "Network error: server is temporarily unavailable",
-            "dismss",
-            {
-              panelClass: ["error"],
-              verticalPosition: "top",
-            }
-          );
-        });
-      }
-    );
+      );
+    }
   }
 
 }
