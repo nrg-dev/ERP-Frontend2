@@ -49,7 +49,7 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getPurchaseOrderLists();
-    this.removeScrollBar();
+   // this.removeScrollBar();
   }
 
   ngOnDestroy() {
@@ -57,14 +57,14 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
       document.querySelector(".mat-drawer-content")
     )).style.overflow = "auto";
   }
-
+/*
   removeScrollBar() {
     setTimeout(function () {
       (<HTMLElement>(
         document.querySelector(".mat-drawer-content")
       )).style.overflow = "inherit";
     }, 300);
-  }
+  } */
   getDeleteButtonStyle() {
     if (!this.isDeleteButton) {
       let myStyles = {

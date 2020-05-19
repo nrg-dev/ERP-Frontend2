@@ -49,7 +49,7 @@ export class SalesListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getSalesOrderLists();
-    this.removeScrollBar();
+   // this.removeScrollBar();
   }
 
   ngOnDestroy() {
@@ -58,13 +58,13 @@ export class SalesListComponent implements OnInit, OnDestroy {
     )).style.overflow = "auto";
   }
 
-  removeScrollBar() {
+ /* removeScrollBar() {
     setTimeout(function () {
       (<HTMLElement>(
         document.querySelector(".mat-drawer-content")
       )).style.overflow = "inherit";
     }, 300);
-  }
+  } */
   getDeleteButtonStyle() {
     if (!this.isDeleteButton) {
       let myStyles = {
