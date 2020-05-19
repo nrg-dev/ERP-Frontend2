@@ -15,6 +15,7 @@ header {
 
   .login-form {
     border-radius: 5px;
+    width: 35rem;
     background-color: $table-invoived-row-bg;
     padding: 40px 80px;
     color: $login-title-color !important;
@@ -47,6 +48,9 @@ header {
      // background-color: $login-title-color;
       height: 50px;
       width: 50px;
+    }
+    .text-danger{
+      padding-left: 2rem;
     }
   }
 }
