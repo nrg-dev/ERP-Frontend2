@@ -72,11 +72,12 @@
                 <label for="others" id="radiolabel">Others</label>
             </div>
 
-            <div *ngIf="itemstatuserror">
-              <span>
+         <!--  <div *ngIf="itemstatus.errors && (itemstatus.dirty || itemstatus.touched) ||
+              (returnForm.submitted && !itemstatus.valid )">
+              <span [hidden]="!itemstatus.errors.required">
                   Required field cannot be left blank
               </span>
-            </div>
+            </div> --> 
         </div>
         <br/>
         <div class="row marginRow">
@@ -101,11 +102,12 @@
                 <label id="radiolabel">Voucher</label>
             </div>  
             
-            <div *ngIf="paymentTypeerrors">
-                <span>
+          <!--  <div *ngIf="paymentType.errors && (paymentType.dirty || paymentType.touched) ||
+                (returnForm.submitted && !paymentType.valid )">
+                <span [hidden]="!paymentType.errors.required">
                     Required field cannot be left blank
                 </span>
-            </div>
+            </div> -->
         </div>
         <br/>
 
@@ -132,12 +134,12 @@
         </div>
 
         <br/>
-        <div *ngIf="quantity.errors && (quantity.dirty || quantity.touched) ||
+    <!--    <div *ngIf="quantity.errors && (quantity.dirty || quantity.touched) ||
             (returnForm.submitted && !quantity.valid )">
             <span [hidden]="!quantity.errors.required" class="spanerror">
                 Required field cannot be left blank
             </span>
-        </div>
+        </div> -->
         <br/>
     
         <div class="row marginRow">
