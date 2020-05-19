@@ -123,8 +123,10 @@ h5{
 }
 .regular-radio {
 	-webkit-appearance: none;
-  background-color: #c18484; 
-	border: 1px solid red;
+  background-color: $table-invoived-row-bg; 
+	border: 1px solid $btn-bg;
+  /* background-color: #c18484; 
+	border: 1px solid red; */
 	box-shadow: 0 1px 2px $white, inset 0px -15px 10px -12px $white;
 	padding: 6px;
 	border-radius: 50px;
@@ -139,8 +141,6 @@ h5{
   height: 6px;
 	border-radius: 50px;
   position: absolute;
-  background-color: $table-invoived-row-bg; 
-	border: 1px solid $btn-bg;
 	/*background: #99a1a7;
   box-shadow: inset 0px 0px 10px rgba(0,0,0,0.3);*/
   box-shadow: inset 0px 0px 10px $btn-bg;

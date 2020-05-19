@@ -67,16 +67,20 @@ export class PurchaseCreateReturnComponent implements OnInit {
   getPaymentValid(paymentType:string){
     if(paymentType == null){
       this.paymentTypeerrors = true;
+      document.getElementById("paymentType").style.background = '#c18484';
     }else{
       this.paymentTypeerrors = false;
+      document.getElementById("paymentType").style.background = '#1A2D39';
     }
   }
 
   getItemValid(itemstatus:string){
     if(itemstatus == null){
       this.itemstatuserror = true;
+      document.getElementById("itemstatus").style.background = '#c18484';
     }else{
       this.itemstatuserror = false;
+      document.getElementById("itemstatus").style.background = '#1A2D39';
     }
   }
 
@@ -84,10 +88,12 @@ export class PurchaseCreateReturnComponent implements OnInit {
     if(this.model.itemstatus == null){
       console.log("ItemStatus not chosen");
       this.itemstatuserror = true;
+      document.getElementById("itemstatus").style.background = '#c18484';
     }
     if(this.model.paymentType == null){
       console.log("Payment not chosen");
       this.paymentTypeerrors = true;
+      document.getElementById("paymentType").style.background = '#c18484';
     }else{
       const invoice = {
         "createddate": new Date().toJSON().slice(0, 10).split('-').reverse().join('/'),
