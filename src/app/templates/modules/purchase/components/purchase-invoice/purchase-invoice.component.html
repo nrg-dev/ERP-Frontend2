@@ -23,15 +23,16 @@
                 <label class="custom-control-label1" for="customCheck2"></label>
             </div>
           </th>
-          <th>Created Date</th>
-          <th>Invoice Number</th>
+          <th>Invoice Date</th>
+          <th>Invoice #</th>
           <!--  <th>Product List</th> -->
           <th>Vendor</th>
           <th>Qty</th>
           <th class="txt-right">Sub Total</th>
           <th class="txt-right">Delivery Cost</th>
           <th class="txt-right">Total</th>
-          <th class="txt-right">Status</th>
+          <th class="txt-right">Invoice Status</th>
+          <th class="txt-right">Stock Status</th>
           <th class="txt-right"></th>
         </tr>
       </thead>
@@ -54,6 +55,7 @@
           <td class="txt-right">{{item.deliveryprice}}</td>
           <td class="txt-right">{{item.totalprice}}</td>
           <td class="txt-right">{{item.status}}</td>
+          <td class="txt-right">{{item.stockstatus}}</td>
           <td class="txt-right">
             <span class="edit-delete-icon invoice-view">
               <a href="javascript:0" (click)="generatePdf(item.base64)" class="pdf-icon"><i  class="fa">&#xf1c1;</i></a>
