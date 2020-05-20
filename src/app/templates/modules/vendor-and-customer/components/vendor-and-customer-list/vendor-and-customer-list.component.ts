@@ -87,7 +87,7 @@ export class VendorAndCustomerListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
      this.getAllVendorDetails();
-     this.removeScrollBar();
+   //  this.removeScrollBar();
     // this.goToVendorDetails(null);
   }
  
@@ -97,14 +97,14 @@ export class VendorAndCustomerListComponent implements OnInit, OnDestroy {
     )).style.overflow = "auto";
   }
 
- 
+ /*
   removeScrollBar() {
     setTimeout(function () {
       (<HTMLElement>(
         document.querySelector(".mat-drawer-content")
       )).style.overflow = "inherit";
     }, 300);
-  }
+  } */
 
   getAllVendorDetails() {
     console.log("getAllVendorDetails");

@@ -51,7 +51,7 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
 
   ngOnInit() { 
     this.allemplist();
-    this.removeScrollBar();
+    //this.removeScrollBar();
   }
 
   printPage(data) {
@@ -158,12 +158,12 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
     (<HTMLElement>document.querySelector('.mat-drawer-content')).style.overflow = 'auto';
   }
 
-  removeScrollBar() {
+/*  removeScrollBar() {
     setTimeout(function () {
         (<HTMLElement>document.querySelector('.mat-drawer-content')).style.overflow = 'inherit';
       }, 300);
   }
-
+*/
   dailyReport(index: number, item: any) { 
     this.showHideDailyReport = [];
     this.isShowHideAbsent = [];

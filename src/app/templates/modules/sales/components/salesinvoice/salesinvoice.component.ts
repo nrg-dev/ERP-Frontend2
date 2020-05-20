@@ -327,7 +327,7 @@ export class SalesinvoiceComponent implements OnInit {
 
   ngOnInit() { 
       this.getInvoiceLists();
-      this.removeScrollBar();
+     // this.removeScrollBar();
   }
 
   ngOnDestroy() {
@@ -338,13 +338,13 @@ export class SalesinvoiceComponent implements OnInit {
   createReturn(){
     alert("Create Return");
   }
-  removeScrollBar() {
+ /* removeScrollBar() {
     setTimeout(function () {
       (<HTMLElement>(
         document.querySelector(".mat-drawer-content")
       )).style.overflow = "inherit";
     }, 300);
-  }
+  } */
   getInvoiceLists() {
     this.salesService.loadInvoice().subscribe(res => { 
       this.invoiceList = res;

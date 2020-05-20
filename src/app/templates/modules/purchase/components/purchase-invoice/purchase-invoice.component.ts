@@ -26,7 +26,7 @@ export class PurchaseInvoiceComponent implements OnInit, OnDestroy {
 
   ngOnInit() { 
       this.getInvoiceLists();
-      this.removeScrollBar();
+     // this.removeScrollBar();
   }
 
   ngOnDestroy() {
@@ -34,13 +34,13 @@ export class PurchaseInvoiceComponent implements OnInit, OnDestroy {
       document.querySelector(".mat-drawer-content")
     )).style.overflow = "auto";
   }
-  removeScrollBar() {
+ /* removeScrollBar() {
     setTimeout(function () {
       (<HTMLElement>(
         document.querySelector(".mat-drawer-content")
       )).style.overflow = "inherit";
     }, 300);
-  }
+  } */
   getInvoiceLists() {
     this.purchaseservice.load().subscribe(res => { 
       this.invoiceList = res;
