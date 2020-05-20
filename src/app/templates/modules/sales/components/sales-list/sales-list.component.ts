@@ -199,7 +199,7 @@ export class SalesListComponent implements OnInit, OnDestroy {
                     if(this.soreturnList[i].socode == this.prodArr[0].socode ){
                       this.isCreateReturn = false;
                       setTimeout(() => {
-                        this.snackBar.open("Purchase was Returnrd already.", "dismss", {
+                        this.snackBar.open("Sales was Returnrd already.", "dismss", {
                           panelClass: ["warn"],
                           verticalPosition: "top",
                         });

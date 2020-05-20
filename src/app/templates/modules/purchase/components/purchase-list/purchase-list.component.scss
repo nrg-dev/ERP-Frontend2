@@ -42,3 +42,14 @@ tr[ng-click] {
 .font-norm{ font-weight: normal;}
 .mar-let-40px{margin-left: 40px;}
 
+input[type=checkbox]:before {
+  border: 1px solid #1186aa;
+  /* background: #174E76; */
+  width: 15px;
+  height: 15px;
+}
+
+input[type=checkbox]:checked:after {
+  top: -2px;
+  left: 6px;
+}

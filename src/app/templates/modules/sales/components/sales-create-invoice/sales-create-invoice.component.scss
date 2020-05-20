@@ -45,6 +45,22 @@
 
       .option {
         padding-right: 15px;
+
+        input[type=checkbox]:before {
+          border: 2px solid #1186aa;
+          width: 15px;
+          height: 15px;
+        }
+
+        input[type=checkbox]:checked:after {
+          top: -2px;
+          left: 6px;
+        }
+       
+      }
+
+      .option.custom-control{
+        padding-top: 0;
       }
 
       .details {
@@ -56,8 +72,9 @@
             display: inline-block;
             padding-right: 10px;
             margin-right: 15px;
-            border-right: 1px solid #1a2d39;
+            border-right: 1px solid #26474c;
             color: #dadddf;
+            line-height: 1.25;
           }
           span:last-child {
             border: 0;
@@ -87,9 +104,9 @@
     flex-basis: 57%;
     padding: 25px;
     padding-left: 80px;
-    border-left: 1px solid #15222b;
+    border-left: 1px solid $main-bg;
     font-size: 14px;
-    background: #17252f;
+    background: $table-header-bg;
 
     .create-invoice-header {
       padding-top: 40px;
@@ -182,6 +199,7 @@
     .invoice-body div:nth-child(2) {
       width: 20%;
       text-align: left;
+      padding-left: 5px;
     }
 
     .invoice-body {
@@ -207,6 +225,10 @@
     .invoice-footer > div:first-child {
       padding-top: 15px;
       padding-right: 10px;
+
+      & div:first-child {
+        padding-right: 5px;
+      }
     }
 
     .invoice-footer > div {
