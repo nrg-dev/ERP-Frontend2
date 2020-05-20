@@ -172,9 +172,20 @@
   top: 10px;">
   <div class="col-md-3 col-xs-12 col-sm-3 side-wapper">
   
-      <div class="profile-div"><img [src]="getImage(employeeDet.profilepic)" onerror="this.src='/assets/images/no-image.png'" class="float-left"/>
+    <div class="org-header">
+      <div>
+        <img [src]="getImage(employeeDet.profilepic)" onerror="this.src='/assets/images/no-image.png'" />
+      </div>
+      <div>
+          <h5>{{employeeDet.rank}}</h5>
+          <span>{{employeeDet.employeecode}}</span>
+      </div>
+  </div>
+
+    <!-- <div class="profile-div">
       <div class="text-profile">{{employeeDet.rank}}<br />
-      {{employeeDet.employeecode}}</div></div>
+      {{employeeDet.employeecode}}</div>
+    </div> -->
   
   <div style="clear:both"></div>
   <div style="margin-left:25px;">

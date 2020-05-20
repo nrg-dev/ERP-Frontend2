@@ -42,9 +42,9 @@ export class EmployeeDetailComponent implements OnInit {
   }
 
   getImage(imgData) {
-    if (Array.isArray(imgData)){
-      return this._sanitizer.bypassSecurityTrustResourceUrl(imgData[0]);
-    }    
+    //if (Array.isArray(imgData)){
+      return this._sanitizer.bypassSecurityTrustResourceUrl(imgData);
+    //}    
   }
 
   viewEmployee(empCode: string) {
