@@ -405,6 +405,7 @@ export class PurchaseAddComponent implements OnInit, AfterViewInit {
       this.model.subtotal = data.subtotal;
       this.model.netAmount = data.subtotal;
       this.model.unitPrice = data.subtotal / data.qty;
+      this.getVendorProduct(this.model.vendorName);
     }
   }
 
