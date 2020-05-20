@@ -40,6 +40,7 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
   button: string = "";
 
   public purchaseTable = false;
+  poreturnList: any = {};
 
   constructor(
     private purchaseService: PurchaseService,
@@ -188,7 +189,30 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
             this.isCreateInvoice = false;
           }
           if (status === "Invoiced" && this.isCheckedArr[0].checked) {
-            this.isCreateReturn = true;
+            this.purchaseService.loadReturn()
+              .subscribe(res => { 
+                this.poreturnList = res;
+                if(this.poreturnList.length == 0){
+                  this.isCreateReturn = true;
+                }else{
+                  for(let i=0; i<this.poreturnList.length; i++){
+                    if(this.poreturnList[i].pocode == this.prodArr[0].pocode ){
+                      this.isCreateReturn = false;
+                      setTimeout(() => {
+                        this.snackBar.open("Purchase was Returnrd already.", "dismss", {
+                          panelClass: ["warn"],
+                          verticalPosition: "top",
+                        });
+                      });
+                    }else{
+                      this.isCreateReturn = true;
+                    }
+                  }
+                }
+                                
+              },
+              error => { }
+            );
           } else {
             this.isCreateReturn = false;
           }
@@ -366,7 +390,8 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
       productname: this.prodArr[0].productname,
       invqty: this.prodArr[0].qty,
       date: this.prodArr[0].date,
-      subtotal: this.prodArr[0].subtotal
+      subtotal: this.prodArr[0].subtotal,
+      pocode: this.prodArr[0].pocode
     };
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;

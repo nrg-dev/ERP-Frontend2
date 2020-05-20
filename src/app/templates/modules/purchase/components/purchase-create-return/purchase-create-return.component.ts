@@ -29,6 +29,7 @@ export class PurchaseCreateReturnComponent implements OnInit {
       this.model.invqty = this.data.invqty;
       this.model.date = this.data.date;
       this.model.subtotal = this.data.subtotal;
+      this.model.pocode = this.data.pocode;
     }
 
   ngOnInit() {
@@ -115,7 +116,8 @@ export class PurchaseCreateReturnComponent implements OnInit {
         "returnStatus" : this.model.paymentType,
         "qty" : this.model.quantity,
         "invoiceddate" : this.model.date,
-        "price" : this.model.price
+        "price" : this.model.price,
+        "pocode" : this.model.pocode
       }
       this.purchaseService.createReturn(invoice).subscribe(
         (respose) => {

@@ -30,6 +30,7 @@ export class SalesCreateReturnComponent implements OnInit {
       this.model.invqty = this.data.invqty;
       this.model.date = this.data.date;
       this.model.subtotal = this.data.subtotal;
+      this.model.socode = this.data.socode;
   }
 
   ngOnInit() {
@@ -116,7 +117,8 @@ export class SalesCreateReturnComponent implements OnInit {
         "returnStatus" : this.model.paymentType,
         "qty" : this.model.quantity,
         "invoiceddate" : this.model.date,
-        "price" : this.model.price
+        "price" : this.model.price,
+        "socode" : this.model.socode
       }
       this.salesService.createReturn(invoice).subscribe(
         (respose) => {

@@ -40,6 +40,7 @@ export class SalesListComponent implements OnInit, OnDestroy {
   button: string = "";
 
   public salesTable = false;
+  soreturnList: any = {};
 
   constructor(
     private salesService: SalesService,
@@ -188,7 +189,30 @@ export class SalesListComponent implements OnInit, OnDestroy {
             this.isCreateInvoice = false;
           }
           if (status === "Invoiced" && this.isCheckedArr[0].checked) {
-            this.isCreateReturn = true;
+            this.salesService.loadReturn()
+              .subscribe(res => { 
+                this.soreturnList = res;
+                if(this.soreturnList.length == 0){
+                  this.isCreateReturn = true;
+                }else{
+                  for(let i=0; i<this.soreturnList.length; i++){
+                    if(this.soreturnList[i].socode == this.prodArr[0].socode ){
+                      this.isCreateReturn = false;
+                      setTimeout(() => {
+                        this.snackBar.open("Purchase was Returnrd already.", "dismss", {
+                          panelClass: ["warn"],
+                          verticalPosition: "top",
+                        });
+                      });
+                    }else{
+                      this.isCreateReturn = true;
+                    }
+                  }
+                }
+                                
+              },
+              error => { }
+            );
           } else {
             this.isCreateReturn = false;
           }
@@ -364,7 +388,8 @@ export class SalesListComponent implements OnInit, OnDestroy {
       productname: this.prodArr[0].productname,
       invqty: this.prodArr[0].qty,
       date: this.prodArr[0].date,
-      subtotal: this.prodArr[0].subtotal
+      subtotal: this.prodArr[0].subtotal,
+      socode: this.prodArr[0].socode
     };
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
