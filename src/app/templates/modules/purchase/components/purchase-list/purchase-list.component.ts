@@ -350,8 +350,10 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
     })
     .afterClosed().subscribe(result => {
       this.ngOnInit();
-      this.prodArr = [];
-      this.isCheckedArr = [];
+      let indexx = this.prodArr.indexOf(this.prodArr[0].pocode);
+      this.prodArr.splice(indexx, 1);
+      this.isCreateInvoice = false;
+      this.isAddPurchaseOrder = true; 
     });
   }
 
@@ -381,7 +383,10 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
     })
     .afterClosed().subscribe(result => {
       this.ngOnInit();
+      let indexx = this.prodArr.indexOf(this.prodArr[0].pocode);
+      this.prodArr.splice(indexx, 1);
+      this.isCreateReturn = false;
+      this.isAddPurchaseOrder = true; 
      });
-    ;
   }
 }
