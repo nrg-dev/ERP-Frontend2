@@ -248,7 +248,7 @@ export class SalesListComponent implements OnInit, OnDestroy {
       top: "1000",
       left: "100",
     };
-    this.dialog
+    let dialogRef = this.dialog
       .open(SalesorderComponent, {
         panelClass: "addpromotion",
         width:'200vh',
@@ -257,7 +257,12 @@ export class SalesListComponent implements OnInit, OnDestroy {
         disableClose: true,
         hasBackdrop: false
       })
-      .afterClosed().subscribe(result => {
+      dialogRef.backdropClick().subscribe(result => {
+        console.log('Sales Order backdropClick');
+        this.ngOnInit();
+      });                
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The Sales Order dialog was closed');
         this.ngOnInit();
       });
   }
@@ -366,15 +371,21 @@ export class SalesListComponent implements OnInit, OnDestroy {
       left: "100",
     };
 
-    this.dialog.open(SalesCreateInvoiceComponent, {
+    let dialogRef = this.dialog.open(SalesCreateInvoiceComponent, {
       panelClass: "purchaseCreateInvoice",
       data: data,
     })
-    .afterClosed().subscribe(result => {
+    dialogRef.backdropClick().subscribe(result => {
+      console.log('Sales Invoice backdropClick');
+      this.ngOnInit();
+    });                
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The Sales Invoice dialog was closed');
       this.ngOnInit();
       let indexx = this.prodArr.indexOf(this.prodArr[0].socode);
       this.prodArr.splice(indexx, 1);
       this.isCreateInvoice = false;
+      this.isDeleteButton = false;
       this.isAddSalesOrder = true; 
     });
   }
@@ -396,13 +407,18 @@ export class SalesListComponent implements OnInit, OnDestroy {
     this.dialogConfig.position = {
     };
 
-    this.dialog.open(SalesCreateReturnComponent, {
+    let dialogRef = this.dialog.open(SalesCreateReturnComponent, {
       panelClass: "purchaseCreateReturn",
       width:'120vh',
       height:'200vh',
       data: data,
     })
-    .afterClosed().subscribe(result => {
+    dialogRef.backdropClick().subscribe(result => {
+      console.log('Sales Return backdropClick');
+      this.ngOnInit();
+    });                
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The Sales Return dialog was closed');
       this.ngOnInit();
       let indexx = this.prodArr.indexOf(this.prodArr[0].socode);
       this.prodArr.splice(indexx, 1);

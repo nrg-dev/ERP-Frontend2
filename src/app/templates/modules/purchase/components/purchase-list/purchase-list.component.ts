@@ -249,7 +249,7 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
       top: "1000",
       left: "100",
     };
-    this.dialog
+    let dialogRef = this.dialog
       .open(PurchaseAddComponent, {
         panelClass: "addpromotion",
         width:'200vh',
@@ -258,7 +258,12 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
         disableClose: true,
         hasBackdrop: false
       })
-      .afterClosed().subscribe(result => {
+      dialogRef.backdropClick().subscribe(result => {
+        console.log('backdropClick');
+        this.ngOnInit();
+      });                
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
         this.ngOnInit();
       });
   }
@@ -368,15 +373,20 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
       left: "100",
     };
 
-    this.dialog.open(PurchaseCreateInvoiceComponent, {
+    let dialogRef = this.dialog.open(PurchaseCreateInvoiceComponent, {
       panelClass: "purchaseCreateInvoice",
       data: data,
     })
-    .afterClosed().subscribe(result => {
+    dialogRef.backdropClick().subscribe(result => {
+      console.log('backdropClick');
+      this.ngOnInit();
+    }); 
+    dialogRef.afterClosed().subscribe(result => {
       this.ngOnInit();
       let indexx = this.prodArr.indexOf(this.prodArr[0].pocode);
       this.prodArr.splice(indexx, 1);
       this.isCreateInvoice = false;
+      this.isDeleteButton = false;
       this.isAddPurchaseOrder = true; 
     });
   }
@@ -398,7 +408,7 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
     this.dialogConfig.position = {
     };
 
-    this.dialog.open(PurchaseCreateReturnComponent, {
+    let dialogRef = this.dialog.open(PurchaseCreateReturnComponent, {
       panelClass: "purchaseCreateReturn",
       width:'120vh',
       height:'200vh',
@@ -406,7 +416,11 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
       //hasBackdrop: false
       data: data,
     })
-    .afterClosed().subscribe(result => {
+    dialogRef.backdropClick().subscribe(result => {
+      console.log('backdropClick');
+      this.ngOnInit();
+    }); 
+    dialogRef.afterClosed().subscribe(result => {
       this.ngOnInit();
       let indexx = this.prodArr.indexOf(this.prodArr[0].pocode);
       this.prodArr.splice(indexx, 1);
