@@ -8,11 +8,18 @@
     top: 17px;}
 }
 
+::ng-deep .mat-drawer-content {
+  overflow: hidden !important;
+}
+
+
+
+
 .over-flo{
   //overflow-y: scroll !important; 
   //overflow-x: hidden;
   //overflow-x: scroll !important;
-  height: 60vh !important;// 500px !important; 
+  height: 75vh !important;// 500px !important; 
   display: table-caption;
   top: 58px;
   //padding-bottom: 10px;
