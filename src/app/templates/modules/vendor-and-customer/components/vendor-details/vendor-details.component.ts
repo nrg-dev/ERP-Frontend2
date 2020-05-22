@@ -57,9 +57,9 @@ export class VendorDetailsComponent implements OnInit {
   ngOnInit() {
     console.log("Data e-->"+this.data);
     console.log("Vendor code-->"+this.data['vendorcode']);
-    // this.vendorDetailsService.loadsidepanel(this.data.vendorcode).subscribe(data => {
-    //   console.log(data);
-    // })
+     this.vendorDetailsService.loadsidepanel(this.data.vendorcode).subscribe(data => {
+       console.log(data);
+     })
     let id = this.data['vendorcode'];
     this.vendorDetailsService.loadallcategoryitems(id).subscribe((data:any) => {
         if(!data.length) return;
@@ -70,7 +70,9 @@ export class VendorDetailsComponent implements OnInit {
     this.getCategoryItems();
 
   }
-
+  deleteVendor() {
+    
+  }
   getCategoryItems() {
     this.vendorDetailsService.loadallcategories().subscribe((data: any) => {
       this.categoriesForFilter = data;
