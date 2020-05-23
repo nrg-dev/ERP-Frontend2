@@ -3,7 +3,7 @@
     <div class="vendor-selected" >
         <div class="org-header">
             <div>
-                <img src="assets/images/flower.jpg" />
+                <img [src]="data.vendorbase64" onerror="this.src='/assets/images/no-image.png'" />
             </div>
             <div>
                 <h2>{{data.vendorName}}</h2>
