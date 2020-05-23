@@ -8,11 +8,18 @@
     top: 17px;}
 }
 
+::ng-deep .mat-drawer-content {
+  overflow: hidden !important;
+}
+
+
+
+
 .over-flo{
-  overflow-y: scroll !important; 
+  //overflow-y: scroll !important; 
   //overflow-x: hidden;
-  overflow-x: scroll !important;
-  height: 60vh !important;// 500px !important; 
+  //overflow-x: scroll !important;
+  height: 65vh !important;// 500px !important; 
   display: table-caption;
   top: 58px;
   //padding-bottom: 10px;
@@ -33,7 +40,7 @@
   background-color: $header-bg;;
 }
 
-.grid-align{position: absolute; top:60px; width: 98%;}
+.grid-align{position: absolute; top:60px; width: 89%;}
 .header-align{position: absolute;
   top: 20px;
   width: 89%;}
