@@ -42,11 +42,11 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
     private alertService: AlertService,
     private printDialogService: PrintDialogService,
     private snackBar: MatSnackBar,
+    //private config: MatSnackBarConfig,
     private dialog: MatDialog,
     public commonService: CommonService,
     public router: Router
   ) {
-    
   }
 
   ngOnInit() { 
@@ -57,11 +57,25 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
   printPage(data) {
     this.printDialogService.openDialog(data);
   }
-
+enable: boolean;
   allemplist() {
     this.employeeService.load().subscribe(
       data => { 
         this.employeesDS = data;
+        if(this.employeesDS.length > 0) {
+          this.enable = true;
+
+        } else {
+          this.enable = false;
+          setTimeout(() => {
+            this.snackBar.open("Employee data is empty", "dismiss", {
+              duration: 300000, // 5 mints
+              panelClass: ["warning"],
+              verticalPosition: "top",
+              horizontalPosition: 'center'
+            });
+          });
+        }
        // alert(this.employeesDS.length);
         console.log(this.employeesDS);
       },
@@ -133,6 +147,9 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
   }
 
   addEmployee() {
+    if(this.snackBar.open) {
+      this.snackBar.dismiss();
+    }
      let data = {};
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
@@ -155,6 +172,7 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
+    this.snackBar.dismiss();
     (<HTMLElement>document.querySelector('.mat-drawer-content')).style.overflow = 'auto';
   }
 

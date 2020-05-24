@@ -76,7 +76,8 @@ export class VendorAndCustomerListComponent implements OnInit, OnDestroy {
 
   isSortCodeDesc: boolean = false;
   isSortCodeAsc: boolean = true;
-  
+  enable: boolean;
+
   constructor(
     private vendorService: VendorService,
     private customerService: CustomerService,
@@ -92,6 +93,7 @@ export class VendorAndCustomerListComponent implements OnInit, OnDestroy {
   }
  
   ngOnDestroy() {
+    this.snackBar.dismiss();
     (<HTMLElement>(
       document.querySelector(".mat-drawer-content")
     )).style.overflow = "auto";
@@ -111,6 +113,19 @@ export class VendorAndCustomerListComponent implements OnInit, OnDestroy {
     this.vendorService.load().subscribe(
       (data: Vendor[]) => {
         this.vendorsDS = data;
+        if(this.vendorsDS.length > 0) {
+          this.enable = true;
+        } else {
+          this.enable = false;
+          setTimeout(() => {
+            this.snackBar.open("Vendor data is empty", "dismiss", {
+              duration: 300000, // 5 mints
+              panelClass: ["warning"],
+              verticalPosition: "top",
+              horizontalPosition: 'center'
+            });
+          });
+        }
         this.vendors = new MatTableDataSource(this.vendorsDS);
         this.vendors.paginator = this.paginator;
       },
@@ -118,7 +133,7 @@ export class VendorAndCustomerListComponent implements OnInit, OnDestroy {
         setTimeout(() => {
           this.snackBar.open(
             "Network error: server is temporarily unavailable",
-            "dismss",
+            "dismiss",
             {
               panelClass: ["error"],
               verticalPosition: "top"
@@ -149,6 +164,9 @@ export class VendorAndCustomerListComponent implements OnInit, OnDestroy {
   }
 
   addVendor(){
+    if(this.snackBar.open) {
+      this.snackBar.dismiss();
+    }
     let data = {key:"vendor"};
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
