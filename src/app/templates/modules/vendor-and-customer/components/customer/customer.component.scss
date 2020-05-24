@@ -45,37 +45,8 @@
   cursor: pointer;
   padding-right: 10px;
 }
-::ng-deep .mat-drawer-content {
-  position: relative;
-  z-index: 1;
-  display: block;
-  height: 100%;
-  overflow: hidden !important;
-}
 
-.table-container {
-  width: 96.5%;
-  overflow: auto;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-thead tr th:first-child,
-tbody tr td:first-child {
-  width: 50px;
-}
-
-tbody {
-  height: 525px;
-  overflow-y: auto;
-  display: block;
-}
-
-thead, tbody tr {
-  display: table;
-  width: 100%;
-  table-layout: fixed;
+::ng-deep  tbody {
+  height: 200px;
+  overflow-y: scroll;
 }

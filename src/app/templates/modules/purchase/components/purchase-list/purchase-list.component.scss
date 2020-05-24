@@ -1,5 +1,10 @@
 @import "_common";
 
+::ng-deep .mat-drawer-content {
+  overflow: hidden !important;
+}
+
+
   @media screen and (min-device-width: 320px) and (max-device-width: 767px){
   .back-colr{float:left;}
   body{font-size: 12px;}
@@ -9,7 +14,7 @@
   }
   .over-flo{
     overflow-y: scroll !important; 
-    height: 340px; 
+    height: 35vh; 
     display: table-caption;
     position: absolute; 
     top: 58px;
