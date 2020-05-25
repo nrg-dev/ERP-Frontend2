@@ -25,6 +25,8 @@
     "@fortawesome/fontawesome-free": "^5.12.1",
     "@ng-idle/core": "^8.0.0-beta.4",
     "@ng-idle/keepalive": "^8.0.0-beta.4",
+    "@syncfusion/ej2-angular-buttons": "^18.1.52",
+    "@syncfusion/ej2-angular-dropdowns": "^18.1.53",
     "angular-datatables": "^8.0.0",
     "angular2-moment": "^1.9.0",
     "bootstrap": "^4.4.1",

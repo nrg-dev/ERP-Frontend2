@@ -70,7 +70,7 @@ const routes: Routes = [
       {
         path: "finance",
         loadChildren: () =>
-          import("../../../shared/components/finance/finance.module").then(
+        import("../../../shared/components/finance/finance.module").then(
             (m) => m.FinanceModule)
       },
      
@@ -83,8 +83,8 @@ const routes: Routes = [
       {
         path: "user-management",
         loadChildren: () =>
-          import("../../../core/components/usermgt/usermgt.module").then(
-            (m) => m.UsermgtModule)
+          import("./../../modules/usermanagement/usermgt.module").then(
+            (m) => m.UserMgtModule)
       }
     ]
   },

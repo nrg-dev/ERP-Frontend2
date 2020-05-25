@@ -111,6 +111,28 @@ export const SidenavItems: MenuItem[] = [
     childern: []
   },
 
+  {
+    id: "finance",
+    label: "Finanace",
+    icon: "assets/images/finance.png",
+    path: "/finance",
+    childern: [{
+      id: "pettycash",
+      label: "pettycash",
+      path: "/finance/pettycashlist",
+     }],
+    submenu: true
+  },
+
+  {
+    id: "userManagement",
+    label: "User Management",
+    icon: "assets/images/usermgt.png",
+    path: "/user-management",
+    submenu: false,
+    childern: []
+  },
+
   /*{
     id: "finance",
     label: "Finance",

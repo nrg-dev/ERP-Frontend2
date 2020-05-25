@@ -11,4 +11,5 @@ export * from './sales';
 export * from './stock';
 export * from './usermgt';
 export * from './units';
+export * from './finance';
 
