@@ -1,18 +1,57 @@
-import { Component, ViewEncapsulation, OnInit, ViewChild } from '@angular/core';
-import { MultiSelectComponent } from '@syncfusion/ej2-angular-dropdowns';
-import { CheckBoxComponent } from '@syncfusion/ej2-angular-buttons';
+import { Component, OnInit } from '@angular/core';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 
 @Component({
   selector: "app-usermgt",
   templateUrl: "./usermgt.component.html",
-  styleUrls: ["./usermgt.component.scss"],
-  encapsulation: ViewEncapsulation.None
-
+  styleUrls: ["./usermgt.component.scss"]
 })
 export class UserManagementComponent implements OnInit {
   activeTab: number = 0;
+  disabled = false;
+  showFilter = false;
+  limitSelection = false;
+  dropdownList:any = [];
+  selectedItems:any = [];
+  dropdownSettings:any = {};
 
-  constructor() {}
+  constructor() {
+    
+  }
+
+
+  ngOnInit() {
+    this.dropdownList = [
+      { item_id: 1, item_text: 'Mumbai' },
+      { item_id: 2, item_text: 'Bangaluru' },
+      { item_id: 3, item_text: 'Pune' },
+      { item_id: 4, item_text: 'Navsari' },
+      { item_id: 5, item_text: 'New Delhi' }
+    ];
+    this.selectedItems = [
+      { item_id: 3, item_text: 'Pune' },
+      { item_id: 4, item_text: 'Navsari' }
+    ];
+
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'item_id',
+      textField: 'item_text',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 3,
+      allowSearchFilter: this.showFilter,
+      closeDropDownOnSelection: true,
+    };
+
+  }
+
+  onItemSelect(item: any) {
+    console.log('onItemSelect',item);
+  }
+  onSelectAll(items: any) {
+    console.log('onSelectAll',items);
+  }
 
   tabChanged(event) {
     this.activeTab = event;
@@ -22,59 +61,5 @@ export class UserManagementComponent implements OnInit {
     this.activeTab = tabIndex;
   }
 
-  @ViewChild('checkbox', {static: false})
-  public mulObj: MultiSelectComponent;
-  @ViewChild('selectall', {static: false})
-  public checkboxObj: CheckBoxComponent;
-  @ViewChild('dropdown', {static: false})
-  public dropdownObj: CheckBoxComponent;
-  @ViewChild('select', {static: false})
-  public reorderObj: CheckBoxComponent;
-  public mode: string;
-  public filterPlaceholder: string;
-    //define the data with category
-    public countries: { [key: string]: Object }[] = [
-        { Name: 'Australia', Code: 'AU' },
-        { Name: 'Bermuda', Code: 'BM' },
-        { Name: 'Canada', Code: 'CA' },
-        { Name: 'Cameroon', Code: 'CM' },
-        { Name: 'Denmark', Code: 'DK' },
-        { Name: 'France', Code: 'FR' },
-        { Name: 'Finland', Code: 'FI' },
-        { Name: 'Germany', Code: 'DE' },
-        { Name: 'Greenland', Code: 'GL' },
-        { Name: 'Hong Kong', Code: 'HK' },
-        { Name: 'India', Code: 'IN' },
-        { Name: 'Italy', Code: 'IT' },
-        { Name: 'Japan', Code: 'JP' },
-        { Name: 'Mexico', Code: 'MX' },
-        { Name: 'Norway', Code: 'NO' },
-        { Name: 'Poland', Code: 'PL' },
-        { Name: 'Switzerland', Code: 'CH' },
-        { Name: 'United Kingdom', Code: 'GB' },
-        { Name: 'United States', Code: 'US' }
-    ];
-    // map the groupBy field with category column
-    public checkFields: Object = { text: 'Name', value: 'Code' };
-    // set the placeholder to the MultiSelect input
-    public checkWaterMark: string = 'Select countries';
-    // set the MultiSelect popup height
-    public popHeight: string = '350px';
-    ngOnInit(): void {
-        this.mode = 'CheckBox';
-        this.filterPlaceholder = 'Search countries';
-    }
-    public onChange(): void {
-        // enable or disable the select all in Multiselect based on CheckBox checked state
-        this.mulObj.showSelectAll = this.checkboxObj.checked;
-    }
-    public onChangeDrop(): void {
-        // enable or disable the dropdown button in Multiselect based on CheckBox checked state
-        this.mulObj.showDropDownIcon = this.dropdownObj.checked;
-    }
-    public onChangeReorder(): void {
-        // enable or disable the list reorder in Multiselect based on CheckBox checked state
-        this.mulObj.enableSelectionOrder = this.reorderObj.checked;
-    }
 
 }

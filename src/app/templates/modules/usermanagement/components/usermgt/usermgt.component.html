@@ -1,49 +1,50 @@
+<div class="container">
+    <div>
+        <h4 id="h2ID" class="m-t-20px">User Management</h4>
 
-<h4>User Management</h4>
+        <div class="column">
+            <div class="row">
 
+                <label id="po-label">User Name</label>
+                <input type="text" id="po-textbox" class="m-t-5px" [(ngModel)]="model.username" #username="ngModel" 
+                    name="username" required  />
 
-<div id="action-description">
-    <p>This sample demonstrates the checkbox functionalities of the MultiSelect. 
-        Click the MultiSelect element and then type a character in the search box. It will display the filtered list items 
-        based on the typed characters and then select the multiple values through the checkbox.</p>
-</div>
-
-<div id="multiselect-sample" class="control-section">
-    <div class="col-lg-8 content-wrapper">
-        <div class="control-styles">
-            <h4>CheckBox</h4>
-            <ejs-multiselect id='multiselect-checkbox' #checkbox [dataSource]='countries' [placeholder]='checkWaterMark' [fields]='checkFields'
-                [mode]='mode' [popupHeight]='popHeight' [showDropDownIcon]='true' showSelectAll='true' [filterBarPlaceholder]='filterPlaceholder'></ejs-multiselect>
-        </div>
-    </div>
-    <div class="col-lg-4 property-section">
-        <div class="property-panel-section">
-            <div class="property-panel-header">Properties</div>
-            <div class="property-panel-content">
-                <table id="property" class="property-panel-table" title="Properties">
-                    <tr>
-                        <td style="width: 50%;">
-                            <div>
-                                <ejs-checkbox #selectall label="Show Select All" [checked]="true" (change)="onChange()"></ejs-checkbox>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 50%;">
-                            <div>
-                                <ejs-checkbox #dropdown label="Dropdown Button" [checked]="true" (change)="onChangeDrop()"></ejs-checkbox>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 50%;">
-                            <div>
-                                <ejs-checkbox #select label="Selection Reorder" [checked]="true" (change)="onChangeReorder()"></ejs-checkbox>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
+                <label id="po-label">Ref Menu </label>
+                <div id="selected-box">
+                    <ng-multiselect-dropdown
+                        [placeholder]="'custom placeholder'"
+                        [data]="dropdownList"
+                        [(ngModel)]="selectedItems"
+                        [settings]="dropdownSettings"
+                        [disabled]="disabled"
+                        (onSelect)="onItemSelect($event)"
+                        (onSelectAll)="onSelectAll($event)">
+                    </ng-multiselect-dropdown>
+                </div>
+                    
             </div>
         </div>
-    </div>
+
+        <div class="column">
+            <div class="row">
+
+                <label id="po-label" style="margin-left: auto;">Password</label>
+                <input type="text" id="po-textbox" class="m-t-5px" [(ngModel)]="model.password" #password="ngModel" 
+                    name="password" style="margin-left: auto;" required  />
+
+                <label id="po-label" style="margin-left: auto;">Department</label>
+                <select id="selected-box" class="text-field-align" [(ngModel)]="model.vendorName" #vendorName="ngModel" name="vendorName"
+                    style="margin-left: auto;" required >
+                    <option id="options-box" *ngFor="let item of departmentList" 
+                    [value]="item.departmentname"> {{item.departmentname}} 
+                    </option>
+                </select>
+                    
+            </div>
+        </div>
+
+        <div class="update-btn" style="margin: 20px 0px;">
+            <button id="add-btn">Add</button>
+        </div>
+    
 </div>

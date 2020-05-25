@@ -1,0 +1,82 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FinanceService } from "../../services/finance.service";
+import { MatSnackBar, MatDialogConfig, MatDialog } from "@angular/material";
+import { AddPettycashComponent } from '../addpettycash/addpettycash.component';
+
+@Component({
+  selector: 'app-pettycashlist',
+  templateUrl: './pettycashlist.component.html',
+  styleUrls: ['./pettycashlist.component.scss']
+})
+export class PettycashlistComponent implements OnInit {
+  model: any = {};
+  pettyCashList: any = {};
+  financeList: any = {};
+  dialogConfig = new MatDialogConfig();
+  title: string = "";
+  button: string = "";
+
+  constructor(
+    private dialog: MatDialog,
+    private router: Router,
+    private financeService:FinanceService,
+    private snackBar: MatSnackBar
+  ) {
+    
+  }
+
+  
+  load(){
+    this.financeService.load()
+    .subscribe(
+      data => { 
+        this.pettyCashList = data;
+       
+      },
+      error => {
+      }
+    );
+  }
+  ngOnInit() {   
+    this.load();
+  }
+
+  addPetty(){
+    let data: any;
+    this.title = "Add Petty Cash";
+    this.button = "Add";
+    data = { dialogTitle: this.title, dialogText: this.button };
+
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+      top: "1000",
+      left: "100",
+    };
+    let dialogRef = this.dialog
+    .open(AddPettycashComponent, {
+      width:'150vh',
+      height:'80vh',
+      data: data,
+      disableClose: true,
+      hasBackdrop: false
+    })
+    dialogRef.backdropClick().subscribe(result => {
+      this.ngOnInit();
+    });                
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit();
+    });
+  }
+
+  pettyedit(){
+
+  }
+
+  pettydelete(){
+
+  }
+
+
+}

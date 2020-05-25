@@ -39,6 +39,7 @@
     "jquery": "^3.4.1",
     "jspdf": "1.4.1",
     "moment": "^2.24.0",
+    "ng-multiselect-dropdown": "^0.2.10",
     "ng2-completer": "^3.0.3",
     "ngx-bootstrap": "^5.2.0",
     "rxjs": "^6.5.4",

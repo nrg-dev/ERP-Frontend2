@@ -1,0 +1,53 @@
+<div class="mb-3" style="font-size: 12px;">        
+    <div class="grid-container3">
+      <div></div>
+      <button id="x" (click)="addPettyClose()"> X </button>
+      <form name="pettyForm" (ngSubmit)="pettyForm.form.valid && savePetty()"
+        #pettyForm="ngForm" novalidate>       
+        <div>
+          <h2 id="h2ID" class="m-t-20px">{{data.dialogTitle}}</h2>
+  
+          <div class="column">
+            <div class="row">
+              <label id="po-label">Description </label>
+              <textarea type="text" id="po-textbox" class="m-t-5px" [(ngModel)]="model.description"
+                #description="ngModel" name="description" class="form-control">
+              </textarea>
+  
+              <label id="po-label">Date</label>
+              <input type="date" id="po-textbox" class="m-t-5px" [(ngModel)]="model.addedDate"
+                name="addedDate" placeholder="xx/xx/xx" #addedDate="ngModel" />
+  
+              <label id="po-label">Type</label>
+              <select id="selected-box" [(ngModel)]="model.type" name="type" #type="ngModel">
+                <option>-- Select --</option>
+                <option *ngFor="let itemType of typeList" value="{{ itemType }}">
+                  {{ itemType }}
+                </option>
+              </select>
+
+            </div>
+          </div>
+  
+          <div class="column">
+            <div class="row">  
+              <label id="po-label" style="margin-left: auto;">Paid To </label>
+              <input type="text" id="po-textbox" class="m-t-5px" class="form-control" [(ngModel)]="model.toPerson"
+                name="toPerson" #toPerson="ngModel" style="margin-left: auto;" />
+  
+              <label id="po-label" style="margin-left: auto;">Value</label>
+              <input type="text" id="po-textbox" class="m-t-5px" class="form-control" [(ngModel)]="model.totalAmount"
+                name="totalAmount" placeholder="IDR" #totalAmount="ngModel" style="margin-left: auto;" />
+              
+            </div>
+          </div>
+                    
+          <div class="update-btn" style="margin: 20px 0px;">
+            <button id="add-btn">{{data.dialogText}}</button>
+          </div>
+        </div>
+                     
+      </form>                   
+    </div>
+  
+  </div>      

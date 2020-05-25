@@ -70,7 +70,7 @@ const routes: Routes = [
       {
         path: "finance",
         loadChildren: () =>
-        import("../../../shared/components/finance/finance.module").then(
+          import("./../../modules/finance/finance.module").then(
             (m) => m.FinanceModule)
       },
      

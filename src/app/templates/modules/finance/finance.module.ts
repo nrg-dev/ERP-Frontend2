@@ -39,32 +39,31 @@ import {
   MatTreeModule
 } from "@angular/material";
 
-import { UserMgtRoutingModule } from "./usermgt-routing.module";
+import { FinanceRoutingModule } from "./finance-routing.module";
 import { DataTablesModule } from "angular-datatables";
 import { CoreModule } from "src/app/core/core.module";
 
 // Services
-import { UserManagementService } from "./services/usermanagement.service";
+import { FinanceService } from "./services/finance.service";
 
 // Components
-import { UserManagementComponent } from "./components/usermgt/usermgt.component";
+import { FinanceComponent } from "./components/finance/finance.component";
+import { PettycashlistComponent } from "./components/pettycashlist/pettycashlist.component";
 import { CustomMaterialModule } from "src/app/core/material.module";
-import { FormsModule } from "@angular/forms";
+import { AddPettycashComponent } from "./components/addpettycash/addpettycash.component";
 
-import { MultiSelectComponent } from '@syncfusion/ej2-angular-dropdowns';
-import { CheckBoxComponent } from '@syncfusion/ej2-angular-buttons';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
-    UserManagementComponent,
-    MultiSelectComponent,
-    CheckBoxComponent,
+    FinanceComponent,
+    PettycashlistComponent,
+    AddPettycashComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    UserMgtRoutingModule,
+    FinanceRoutingModule,
     CustomMaterialModule,
     CoreModule,
     MatAutocompleteModule,
@@ -101,10 +100,9 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-    NgMultiSelectDropDownModule.forRoot(),
     DataTablesModule.forRoot()
   ],
   entryComponents: [ ],
-  providers: [UserManagementService]
+  providers: [FinanceService]
 })
-export class UserMgtModule {}
+export class FinanceModule {}

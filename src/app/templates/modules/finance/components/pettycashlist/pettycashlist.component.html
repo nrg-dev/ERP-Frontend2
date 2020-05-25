@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-6">
+    <h4>Petty Cash List</h4> 
+  </div>
+  <div class="col-6">
+    <button (click)="addPetty()" class="create-button">
+      <span class="fas fa-plus"></span> Add Petty 
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <br/>
+  <div class="col-12">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>PettyCash Description</th>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Paid To</th>
+            <th>Value</th>
+          </tr>
+      </thead>
+      <tbody *ngFor="let p of pettyCashList; let i = index"> 
+          <tr>
+            <td>{{p.description}}</td>
+            <td>{{p.addedDate}}</td>
+            <td>{{p.type}}</td>
+            <td>{{p.toPerson}}</td>
+            <td>{{p.totalAmount}}
+              <span>
+                <span (click)="pettyedit(p.id,p.description,p.addedDate,p.type,
+                  p.fromPerson,p.toPerson,p.totalAmount)" class="fas fa-pen mar-let-40px"></span>
+                <span (click)="pettydelete(p.id)" class="fas fa-trash mar-let-30px"></span>
+              </span>
+            </td>
+      
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
