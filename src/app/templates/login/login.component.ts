@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   user: User;
   loading = false;
   passwordtype = "password";
+  emptyvalidation = "This field is required.";
 
   constructor(private router: Router, 
     private alertService: AlertService,
