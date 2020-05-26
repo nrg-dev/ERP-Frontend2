@@ -16,6 +16,7 @@ export class PettycashlistComponent implements OnInit {
   dialogConfig = new MatDialogConfig();
   title: string = "";
   button: string = "";
+  enable: boolean;
 
   constructor(
     private dialog: MatDialog,
@@ -32,6 +33,19 @@ export class PettycashlistComponent implements OnInit {
     .subscribe(
       data => { 
         this.pettyCashList = data;
+        if(this.pettyCashList.length > 0) {
+          this.enable = true;
+        } else {
+          this.enable = false;
+          setTimeout(() => {
+            this.snackBar.open("Petty Cash data is empty", "dismiss", {
+              duration: 300000, // 3mints
+              panelClass: ["warning"],
+              verticalPosition: "top",
+              horizontalPosition: 'center'
+            });
+          });
+        }
        
       },
       error => {
@@ -44,6 +58,11 @@ export class PettycashlistComponent implements OnInit {
 
   addPetty(id:string,description:string,addedDate:string,type:string,
     toPerson:string,totalAmount:string){
+
+    if(this.snackBar.open) {
+      this.snackBar.dismiss();
+    }
+
     let data: any;
     if (id !== null) {
       this.title = "Edit Petty Cash";
@@ -110,5 +129,9 @@ export class PettycashlistComponent implements OnInit {
     });
   }
 
-
+  ngOnDestroy(){
+    this.snackBar.dismiss();
+    (<HTMLElement>document.querySelector('.mat-drawer-content')).style.overflow = 'auto';
+  }
+  
 }
