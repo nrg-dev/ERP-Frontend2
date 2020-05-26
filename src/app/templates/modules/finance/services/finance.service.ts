@@ -22,4 +22,8 @@ export class FinanceService {
     )
   }
 
+  remove(id:string){
+    return this.http.delete<String>(`${environment.apiUrl}${API_ENDPOINTS.REMOVE_PETTY+'?id='+id}`); 
+  }
+
 }

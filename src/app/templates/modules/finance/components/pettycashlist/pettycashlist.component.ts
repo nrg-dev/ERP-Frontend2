@@ -42,11 +42,19 @@ export class PettycashlistComponent implements OnInit {
     this.load();
   }
 
-  addPetty(){
+  addPetty(id:string,description:string,addedDate:string,type:string,
+    toPerson:string,totalAmount:string){
     let data: any;
-    this.title = "Add Petty Cash";
-    this.button = "Add";
-    data = { dialogTitle: this.title, dialogText: this.button };
+    if (id !== null) {
+      this.title = "Edit Petty Cash";
+      this.button = "Update";
+    } else {
+      this.title = "Add Petty Cash";
+      this.button = "Add";
+    }
+    data = { dialogTitle: this.title, dialogText: this.button, id: id,
+      description: description, addedDate: addedDate, type: type,
+      toPerson: toPerson, totalAmount: totalAmount };
 
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
@@ -63,19 +71,43 @@ export class PettycashlistComponent implements OnInit {
       hasBackdrop: false
     })
     dialogRef.backdropClick().subscribe(result => {
-      this.ngOnInit();
+      this.load();
     });                
     dialogRef.afterClosed().subscribe(result => {
-      this.ngOnInit();
+      this.load();
     });
   }
 
-  pettyedit(){
-
-  }
-
-  pettydelete(){
-
+  pettydelete(id:string){
+    this.financeService.remove(id).subscribe((data: any) => {
+      if (data === null) {
+        setTimeout(() => {
+          this.snackBar.open(
+            "Petty Cash has been deleted successfully",
+            "dismss",
+            {
+              panelClass: ["success"],
+              verticalPosition: "top",
+            }
+          );
+        });
+        this.load();
+      } else if (data === 500) {
+        setTimeout(() => {
+          this.snackBar.open("Internal server error", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: "top",
+          });
+        });
+      } else {
+        setTimeout(() => {
+          this.snackBar.open("Bad request data", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: "top",
+          });
+        });
+      }
+    });
   }
 
 

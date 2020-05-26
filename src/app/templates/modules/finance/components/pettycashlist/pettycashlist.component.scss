@@ -1,27 +1,32 @@
 
 @import "_base";
 
-
 ::ng-deep .mat-dialog-container {
   background:$po-order-form-bg !important;
   border-radius: $dialog-border-radius;
   color:$white;
 }
-
 .create-button {
+  overflow: visible;
+  white-space: nowrap;
+  text-align: left;
+  font-family: Open Sans;
+  font-style: normal;
   float: right;
   color: $white;
   background: $btn-bg;
   border: 1px solid $btn-bg;
-  margin-right: 10px;
-  //font-family: $font-family;
-  //padding:8px 20px;
   border-radius: $btn-border-radius;
+  padding: 0.5rem;
+  font-size: 14px;
+  margin-top: 12px;
+  margin-right: 10px;
 }
 .col-12{ 
   overflow-y: auto; 
   overflow-x: auto; 
   height: 75vh; 
+  margin-top:25px;
 }
 
 /* Just common table stuff. Really. */
@@ -69,13 +74,13 @@ table tbody tr:hover td span{
 tr[ng-click] {
   cursor: pointer;
 }
+.wid-150px{width: 150px!important;}
+
 .mar-let-40px{
-  margin: -18px 60px 0px 0px;
-  float: right;
+  margin: -13px 0px 0px 50px;
 }
 .mar-let-30px{
-  margin: -18px 10px 0px 0px;
-  float: right;
+  margin: -13px 0px 0px 100px;
 }
 // iPhone media query start
 

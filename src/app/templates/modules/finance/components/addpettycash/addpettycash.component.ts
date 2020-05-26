@@ -7,11 +7,11 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 // categoryeditdelete end
 export interface UsersData {
   id: number;
-  unitname: string;
-  unitsymbol: string;
-  quantityname: string;
-  quantitysymbol: string;
-  dimensionsymbol: string;
+  description: string;
+  addedDate: string;
+  type: string;
+  toPerson: string;
+  totalAmount: string;
 }
 
 
@@ -24,48 +24,45 @@ export class AddPettycashComponent implements OnInit {
   model: any = {};
   local_data:any;
   showbackbtn:boolean;
-  btnsave:string;//="Save";
+  dialogText:string;
   typeList:any = {};
-
+  
   constructor(
     private router: Router,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: UsersData,
     public dialogRef: MatDialogRef<AddPettycashComponent>,
     private financeService: FinanceService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
   ) { 
     console.log(data);
     this.local_data = {...data};
     this.model.id=this.local_data.id;
-    this.model.unitname=this.local_data.unitname;
-    this.model.unitsymbol=this.local_data.unitsymbol;
-    this.model.quantityname=this.local_data.quantityname;
-    this.model.quantitysymbol=this.local_data.quantitysymbol;
-    this.model.dimensionsymbol=this.local_data.dimensionsymbol;    
+    this.model.description=this.local_data.description;
+    this.model.addedDate=this.local_data.addedDate;
+    this.model.type=this.local_data.type;
+    this.model.toPerson=this.local_data.toPerson;
+    this.model.totalAmount=this.local_data.totalAmount;    
     if(this.local_data.id!=null){
       this.showbackbtn=false;
-      this.btnsave="Update";
     }else{
       this.showbackbtn=true;
-      this.btnsave="Save";
-     // this.showbackbtn=true;
     }
   }
 
   ngOnInit() {
-    this.typeList = ['Cash','Credit'];
-  }
-
-  addPetty(btnsave:string) {
-    if(btnsave == "Save"){
-      this.savePetty();
-    }else if(btnsave == "Update"){
-      //this.updateUnit();
-    }
+    this.typeList = ['Credit','Debit'];
   }
 
   addPettyClose(){
     this.dialogRef.close();
+  }
+
+  pettyCash(btn:any){
+    if(btn == "Add"){
+      this.savePetty();
+    }else if(btn == "Update"){
+      this.updatePetty();  
+    }
   }
   
   savePetty(){
@@ -78,12 +75,13 @@ export class AddPettycashComponent implements OnInit {
     this.financeService.save(this.model)
       .subscribe(
       data => {
-          setTimeout(() => {
-            this.snackBar.open("Petty Cash Saved Successfully", "", {
-              panelClass: ["success"],
-              verticalPosition: 'top'      
-            });
+        setTimeout(() => {
+          this.snackBar.open("Petty Cash Saved Successfully", "", {
+            panelClass: ["success"],
+            verticalPosition: 'top'      
           });
+        });
+        this.addPettyClose();
       },
       error => {
         setTimeout(() => {
@@ -96,15 +94,15 @@ export class AddPettycashComponent implements OnInit {
     ); 
   }
 
-  /* updatePetty(){
+  updatePetty(){
     console.log("Update PettyCash");
-    console.log("description-->"+this.model.description);
-    console.log("addedDate-->"+this.model.addedDate);
-    console.log("type-->"+this.model.type);
-    console.log("fromPerson-->"+this.model.fromPerson);
-    console.log("toPerson-->"+this.model.toPerson);
-    console.log("totalAmount-->"+this.model.totalAmount);
-    this.financeService.update(this.model)
+    console.log("Update ID-->"+this.model.id);
+    console.log("Update description-->"+this.model.description);
+    console.log("Update AddedDate-->"+this.model.addedDate);
+    console.log("Update Type-->"+this.model.type);
+    console.log("Update ToPerson-->"+this.model.toPerson);
+    console.log("Update TotalAmount-->"+this.model.totalAmount);
+    this.financeService.save(this.model)
       .subscribe(
         data => {
           setTimeout(() => {
@@ -113,6 +111,7 @@ export class AddPettycashComponent implements OnInit {
               verticalPosition: 'top'      
             });
           });
+          this.addPettyClose();
       },
       error => {
         setTimeout(() => {
@@ -123,6 +122,6 @@ export class AddPettycashComponent implements OnInit {
         }); 
       }
     ); 
-  } */
+  } 
 
 }
