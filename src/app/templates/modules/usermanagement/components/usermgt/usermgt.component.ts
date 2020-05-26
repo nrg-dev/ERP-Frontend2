@@ -14,6 +14,7 @@ export class UserManagementComponent implements OnInit {
   dropdownList:any = [];
   selectedItems:any = [];
   dropdownSettings:any = {};
+  model:any = {};
 
   constructor() {
     
