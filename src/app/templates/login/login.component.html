@@ -1,98 +1,138 @@
-<header class="w-100 d-flex align-items-center justify-content-center">
-  <h1 hidden>ERP</h1>
-  <img src="assets/images/LOGO-nrg.svg" class="img-fluid logo" alt="app logo" />
-</header>
-<div 
-  class="d-flex align-items-center justify-content-center login-page-main-container"
->
+<div class="container-fluid" style="height:15vh;width: 100vh;">
+</div>
+<div class="container-fluid" style="height: 60vh;width: 100vh;">
+  <div class="row">
  
-<div class="login-form m-3" style="padding-right: 120px;padding-bottom: -20px;">
+  <div class="col-md-3" style="height: 70vh;background-color: #17252F;">
+    <div class="row">
+      <div class="col-md-12" style="height: 10vh;">  </div>    
+    </div>
+        
 
-    <!--
-    <p class="font-x-lg title text-center mb-4">Employment Sign In</p>
-    -->
-    <form 
-      name="loginForm"
-      (submit)="loginForm.form.valid && login()"
-      #loginForm="ngForm"
-      novalidate
-    >
-    <p style="padding-left: 130px;">Employment Sign In</p>
+    <img src="assets/images/LOGO-nrg.svg" class="img-fluid logo" alt="app logo" />
 
-      <div class="row">
-
-        <label
-          class="m-0 p-0 icon-placeholder text-white d-flex align-items-center justify-content-center"
-          for="userName"
-          ><i class="fas fa-user"></i
-        ></label>
-        <input
-          class="col p-2 m-0 border-0"
-          id="userName"
-          type="text"
-          placeholder="Username/Email"
-          name="currentusername"
-          [(ngModel)]="model.currentusername"
-          #currentusername="ngModel"
-          required
-          autofocus
-        />
-      </div>
-      <p
-        class="font-sm my-1 text-danger"
-        [ngStyle]="{
-          visibility:
-            loginForm.submitted && !currentusername.valid ? 'visible' : 'hidden'
-        }"
-      >
-      {{emptyvalidation}}
-      </p>
-      <div class="row">
-        <label
-          for="password"
-          class="m-0 p-0 icon-placeholder text-white d-flex align-items-center justify-content-center"
-          ><i class="fas fa-lock"></i
-        ></label>
-        <input
-          id="password"
-          class="col p-2 m-0 border-0"
-          type="{{ passwordtype }}"
-          placeholder="Password"
-          id="typebox-with"
-          name="currentpassword"
-          [(ngModel)]="model.currentpassword"
-          #currentpassword="ngModel"
-          required
-        />
-      </div>
-      <p
-        class="font-sm my-1 text-danger"
-        [ngStyle]="{
-          visibility:
-            loginForm.submitted && !currentpassword.valid ? 'visible' : 'hidden'
-        }"
-      >
-      {{emptyvalidation}}
-      </p>
-      <div class="row mb-3 mt-1">
-        <div class="col-4"> </div>
-        <button class="col-4" type="submit">Sign In</button>
-        <div class="col-4"> </div>
-      </div>
-
-      <div class="row mb-3 mt-1">
-        <div class="col-8"></div>
-        <div class="col-4 text-right p-0">
-          <input type="checkbox" id="remember" />
-          <label for="remember" class="font-sm cursor-pointer ml-2"
-            >Remember me</label
-          >
-          <p class="d-inline-block font-sm m-0">
-            <a href="#">Forgot password?</a>
-          </p>
-        </div>
-      </div>
-
-    </form>
+    <div class="row">
+      <div class="col-md-12" style="height: 10vh;">  </div>    
+    </div>
+        
+  <div class="row">
+    <div class="col-md-12" >Inventory </div>    
   </div>
+
+  <div class="row">
+    <div class="col-md-12">Management System </div>    
+  </div>
+
+  <div class="row">
+    <div class="col-md-12"> System </div>    
+  </div>
+
+
+ </div>
+
+
+
+
+ <div class="col-md-9" style="height: 70vh;background-color: #1A2D39;">
+  <form 
+  name="loginForm"
+  (submit)="loginForm.form.valid && login()"
+  #loginForm="ngForm"
+  novalidate
+ >
+  <div class="row">
+  <div class="col-md-3" >  </div>
+
+  <div class="col-md-6" >  
+   
+    <div class="row" style="height: 10vh;"> 
+      <div class="col-md-12" >  </div>
+      </div>
+      
+     
+<div class="row">
+    <label class="col-md-12" > UserName* </label>    
+</div>
+
+
+<div class="row">
+   <input type="text" class="col-md-12" 
+   id="currentusername" 
+   name="currentusername"
+   [(ngModel)]="model.currentusername" #currentusername="ngModel" 
+   name="currentusername" required  /> 
+
+   <p
+   class="font-sm my-1 text-danger"
+   [ngStyle]="{
+     visibility:
+       loginForm.submitted && !currentusername.valid ? 'visible' : 'hidden'
+   }"
+ >
+ {{emptyvalidation}}
+ </p>
+
+</div>
+
+
+
+<div class="row">
+  <label class="col-md-12" > Password* </label>    
+</div>
+
+
+<div class="row">
+ <input type="{{ passwordtype }}" class="col-md-12" [(ngModel)]="model.currentpassword" #currentpassword="ngModel" 
+  name="currentpassword" required  /> 
+
+  <p
+  class="font-sm my-1 text-danger"
+  [ngStyle]="{
+    visibility:
+      loginForm.submitted && !currentpassword.valid ? 'visible' : 'hidden'
+  }"
+>
+{{emptyvalidation}}
+</p>
+
+</div>
+
+
+
+
+<div class="row">
+
+  <button type="submit" class="col-md-12" id="loginbtn" name="loginbtn"> Login </button>
+  
+ </div>
+
+ 
+
+
+  </div>
+  
+  <div class="col-md-3" > </div>
+</div>
+</form>
+
+ </div>
+ 
+
+
+  
+
+
+</div>
+</div>
+
+<div class="container-fluid" style="height: 10vh;width: 100vh;">
+  <div class="row"> 
+    <div class="col-md-6" > 
+    </div>
+    <div class="col-md-6" > 
+      <label> English | Malay | Indo</label>
+    </div>
+
+    </div>
+    
 </div>
