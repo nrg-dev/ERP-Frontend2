@@ -1,44 +1,38 @@
-
 @import "_base";
 
-:host {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
 }
 
-:host ::ng-deep .mat-tab-labels {
-  flex-direction: column;
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
 }
-
-mat-tab-group {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: row;
+#x {
+  position: absolute;
+  background: #16222B;
+  border: red;
+  color: white;
+  top: -10px;
+  right: -10px;
+  border-radius: 25px;
+  width: 30px;
+  height: 30px;
 }
-
-:host ::ng-deep .mat-tab-body-wrapper {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
+span{
+  color:white;
+  font-size: 12px;
+  margin: 5px 0px;
 }
-
-mat-tab-body {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
+.spanerror{
+  background-color: $error-code;
 }
-
-:host ::ng-deep mat-ink-bar {
-  display: none;
+.spanerror1{
+  background-color: $error-code;
+  margin-left: 8.3vh;
 }
-
-
-.container{
-  height: 100%;
-  width: 100%;
+::ng-deep .mat-dialog-container{
+  background: $po-order-form-bg;
 }
-
 .grid-container3 {
   position: relative;
   display: grid;
@@ -80,10 +74,25 @@ mat-tab-body {
   width: 85%;
   margin-bottom: 4px;
 }
-#po-price{
-  color: $white;
-  width: 35%;
+#po-label2{
+  color:#7a8992;
+  width: 100%;
   margin-bottom: 4px;
+  word-wrap: break-word;
+  line-height: 150%;
+  white-space: pre-wrap;
+}
+#menu-label{
+  color:#7a8992;
+  width: 100%;
+  margin-bottom: 4px;
+  padding-left: 75px;
+}
+#sub-label{
+  color:#7a8992;
+  width: 85%;
+  margin-bottom: -5px;
+  margin-top: 10px;
 }
 #po-textbox{
   color:$h2-bg;
@@ -94,31 +103,37 @@ mat-tab-body {
   margin-bottom: 15px;
   height: 30px;
 }
+
 hr{
   width: 100%;
   background-color:#4D616D;
   margin-top: 300px;
 }
-select,input{
-  border: 1px solid  #2C4655;
+select,input,textarea,ng-multiselect-dropdown{
+  border: 1px solid #2C4655;
+}
+#multiselect {
+  display: inline-block;
+  border: none !important;
+  color: $white;
+  width: 85%;
+  height: 30px;
+  padding: 0px;
+  cursor: pointer;
+  background-image: none;
+  margin: 15px 0px;
 }
 #selected-box{
   width: 85%;
   background: $po-order-form-bg;
   color:$h2-bg;
   margin-bottom: 15px;
-  height: 30px;
+  height: auto;
   padding: 5px;
 }
 .m-t-5px{margin-top: 5px;}
 .m-t-15px{margin-top: 15px;}
 .m-t-20px{margin-top: 20px !important;}
-#options-box{
-  width: 85%;
-  height: 1.5rem;
-  background: none;
-  color:$h2-bg;
-}
 
 #add-text{
   text-align: center;
@@ -126,21 +141,13 @@ select,input{
   cursor: pointer;
 }
 
-.create-button {
-  overflow: visible;
-  white-space: nowrap;
-  text-align: left;
-  font-family: Open Sans;
-  font-style: normal;
-  float: right;
-  color: $white;
+#add-btn{
+  width: 90px;
+  border: 1px solid #1186aa;
   background: $btn-bg;
-  border: 1px solid $btn-bg;
-  border-radius: $btn-border-radius;
-  padding: 0.5rem 1.5rem;
-  font-size: 14px;
-  margin-top: 12px;
-  margin-right: 10px;
+  color:$h2-bg;
+  font-weight: bold;
+  border-radius: 20px;
 }
 
 
@@ -151,8 +158,8 @@ body {background-color: #16222B;}
   grid-template-columns: 8rem auto auto;
   grid-gap: 10px;
   padding: 10px;
-    background: $po-order-form-bg;
-    height: 3rem;
+  background: $po-order-form-bg;
+  height: 3rem;
 }
 #date-borderbox{
   width: 85%;
@@ -168,6 +175,7 @@ body {background-color: #16222B;}
 .column {
   float: left;
   width: 50%;
+  height: 90vh;
   padding: 10px;
 }
 
@@ -176,10 +184,6 @@ body {background-color: #16222B;}
   color: #6E7D87;
 }
 
-
-.mat-dialog-container{
-  background: inherit !important;
-}
 .ng-trigger-dialogContainer {
   background: inherit !important;
 }
@@ -191,10 +195,50 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 .update-btn{
   width: 100px;
   height: 30px;
   line-height: 30px; 
   font-weight: normal;
   float: right;
+}
+
+input[type=checkbox] {
+  position: relative;
+  cursor: pointer;
+  vertical-align: middle;
+  top: 15px;
+  left: 35px;
+}
+
+input[type=checkbox]:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 0px;
+  left: 0;
+  border: 1px solid #1186aa;
+  border-radius: 0px;
+  background-color: $table-invoived-row-bg;
+}
+
+input[type=checkbox]:checked:after {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 10px;
+  border: solid $white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  top: 4px;
+  left: 8px;
 }

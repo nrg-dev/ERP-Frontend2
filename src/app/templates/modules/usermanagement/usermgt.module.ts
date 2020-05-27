@@ -48,6 +48,7 @@ import { UserManagementService } from "./services/usermanagement.service";
 
 // Components
 import { UserManagementComponent } from "./components/usermgt/usermgt.component";
+import { AddUserMgtComponent } from "./components/addusermgt/addusermgt.component";
 import { CustomMaterialModule } from "src/app/core/material.module";
 import { FormsModule } from "@angular/forms";
 
@@ -58,6 +59,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 @NgModule({
   declarations: [
     UserManagementComponent,
+    AddUserMgtComponent,
     MultiSelectComponent,
     CheckBoxComponent,
   ],

@@ -1,48 +1,12 @@
 <div class="container">
-    <div>
-        <h4 id="h2ID" class="m-t-20px">User Management</h4>
-
-        <div class="column">
-            <div class="row">
-
-                <label id="po-label">User Name</label>
-                <input type="text" id="po-textbox" class="m-t-5px" [(ngModel)]="model.username" #username="ngModel" 
-                    name="username" required  />
-
-                <label id="po-label">Menu </label>
-                <ng-multiselect-dropdown id="selected-box"
-                    [placeholder]="'custom placeholder'"
-                    [data]="dropdownList"
-                    [(ngModel)]="selectedItems"
-                    [settings]="dropdownSettings"
-                    [disabled]="disabled"
-                    (onSelect)="onItemSelect($event)"
-                    (onSelectAll)="onSelectAll($event)">
-                </ng-multiselect-dropdown>
-                    
-            </div>
+    <div class="row">
+        <div class="col-6">
+            <h2 id="h2ID" class="m-t-20px">User Management</h2>
         </div>
-
-        <div class="column">
-            <div class="row">
-
-                <label id="po-label" style="margin-left: auto;">Password</label>
-                <input type="text" id="po-textbox" class="m-t-5px" [(ngModel)]="model.password" #password="ngModel" 
-                    name="password" style="margin-left: auto;" required  />
-
-                <label id="po-label" style="margin-left: auto;">Department</label>
-                <select id="selected-box" class="text-field-align" [(ngModel)]="model.vendorName" #vendorName="ngModel" name="vendorName"
-                    style="margin-left: auto;" required >
-                    <option id="options-box" *ngFor="let item of departmentList" 
-                    [value]="item.departmentname"> {{item.departmentname}} 
-                    </option>
-                </select>
-                    
-            </div>
+        <div class="col-6">
+            <button (click)="addUserMgt()" class="create-button">
+                <span class="fas fa-plus"></span> Add User 
+            </button>
         </div>
-
-        <div class="update-btn" style="margin: 20px 0px;">
-            <button id="add-btn">Add</button>
-        </div>
-    
+    </div>    
 </div>

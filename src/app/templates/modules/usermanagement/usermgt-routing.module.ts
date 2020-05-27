@@ -3,6 +3,8 @@ import { RouterModule, Routes } from "@angular/router";
 
 // Components
 import { UserManagementComponent } from "./components/usermgt/usermgt.component";
+import { AddUserMgtComponent } from "./components/addusermgt/addusermgt.component";
+
 
 const routes: Routes = [
   {
@@ -13,7 +15,11 @@ const routes: Routes = [
   {
     path: 'user-management',
     component: UserManagementComponent,
-  }
+  },
+  {
+    path: 'addusermgt',
+    component: AddUserMgtComponent,
+  },
 ];
 
 @NgModule({

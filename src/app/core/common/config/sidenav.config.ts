@@ -113,7 +113,7 @@ export const SidenavItems: MenuItem[] = [
 
   {
     id: "finance",
-    label: "Finanace",
+    label: "Finance",
     icon: "assets/images/finance.png",
     path: "/finance",
     childern: [{

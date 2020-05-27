@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { Router } from '@angular/router';
+import { MatSnackBar, MatDialogConfig, MatDialog } from "@angular/material";
+import { AddUserMgtComponent } from '../addusermgt/addusermgt.component';
 
 @Component({
   selector: "app-usermgt",
@@ -8,50 +10,19 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 })
 export class UserManagementComponent implements OnInit {
   activeTab: number = 0;
-  disabled = false;
-  showFilter = false;
-  limitSelection = false;
-  dropdownList:any = [];
-  selectedItems:any = [];
-  dropdownSettings:any = {};
-  model:any = {};
+  dialogConfig = new MatDialogConfig();
 
-  constructor() {
+  constructor(
+    private dialog: MatDialog,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {
     
   }
 
 
   ngOnInit() {
-    this.dropdownList = [
-      { item_id: 1, item_text: 'Mumbai' },
-      { item_id: 2, item_text: 'Bangaluru' },
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' },
-      { item_id: 5, item_text: 'New Delhi' }
-    ];
-    this.selectedItems = [
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' }
-    ];
-
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 3,
-      allowSearchFilter: this.showFilter,
-      closeDropDownOnSelection: true,
-    };
-
-  }
-
-  onItemSelect(item: any) {
-    console.log('onItemSelect',item);
-  }
-  onSelectAll(items: any) {
-    console.log('onSelectAll',items);
+    
   }
 
   tabChanged(event) {
@@ -60,6 +31,29 @@ export class UserManagementComponent implements OnInit {
 
   setTabIndex(tabIndex) {
     this.activeTab = tabIndex;
+  }
+
+  addUserMgt(){
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+      top: "1000",
+      left: "100",
+    };
+    let dialogRef = this.dialog
+    .open(AddUserMgtComponent, {
+      width:'150vh',
+      height:'80vh',
+      //data: data,
+      disableClose: true,
+      hasBackdrop: false
+    })
+    dialogRef.backdropClick().subscribe(result => {
+      this.ngOnInit();
+    });                
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit();
+    });
   }
 
 
