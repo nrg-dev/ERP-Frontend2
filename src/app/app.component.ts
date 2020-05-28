@@ -1,4 +1,4 @@
-import { MatDialog } from '@angular/material';
+import { MatDialog  } from '@angular/material';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './core/common/_services';
 import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
@@ -55,7 +55,7 @@ idle.onTimeout.subscribe(() => {
   this.idleState = 'Timed out!';
   this.timedOut = true;
   console.log(this.idleState);
-  this.router.navigate(['/']);
+  //this.router.navigate(['/']);
 });
 
 idle.onIdleStart.subscribe(() => {
@@ -100,6 +100,9 @@ stay() {
 }
 
 logout() {
+  if(this.dialog.open) {
+    this.dialog.closeAll();
+  }
   this.childModal.hide();
   this.authenticationService.logout();
   this.router.navigate(['/login']);
