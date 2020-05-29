@@ -63,6 +63,7 @@ $x-large: 26;
 
 $btn-border-radius: 20px;
 $dialog-border-radius: 5px;
+$btn-padding: 0.5rem 1.5rem;
 
 @mixin fontSize($size) {
   font-size: $size + px;

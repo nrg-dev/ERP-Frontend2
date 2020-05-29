@@ -82,9 +82,9 @@ button {
   background:$btn-bg;
   border: 1px solid $btn-bg;
   border-radius: 20px;
-  padding: 0.5rem;
   font-size: $table-font-size;
   margin-top: 12px;
+  padding: $btn-padding;
 }
 
 input[type=checkbox] {
@@ -97,10 +97,10 @@ input[type=checkbox]:before {
   content: "";
   display: block;
   position: absolute;
-  width: 17px;
-  height: 17px;
-  top: -3px;
-  left: 0;
+  width: 18px;
+  height: 19px;
+  top: -2px;
+  left: 0px;
   border: 1px solid #1186aa;
   //border: 2px solid $header-bg;
   border-radius: 0px;
