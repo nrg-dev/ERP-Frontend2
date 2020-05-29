@@ -112,6 +112,9 @@ hr{
 select,input,textarea,ng-multiselect-dropdown{
   border: 1px solid #2C4655;
 }
+::ng-deep .dropdown-list{
+  margin-top: 0px !important;
+}
 #multiselect {
   display: inline-block;
   border: none !important;
@@ -241,4 +244,10 @@ input[type=checkbox]:checked:after {
   position: absolute;
   top: 4px;
   left: 8px;
+}
+
+.newline{
+  white-space: pre-wrap;
+  color: $po-order-form-bg;
+  height: 25ch;
 }

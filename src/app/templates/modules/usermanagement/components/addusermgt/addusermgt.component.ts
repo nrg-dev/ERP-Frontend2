@@ -25,6 +25,11 @@ export class AddUserMgtComponent implements OnInit {
   public purchase = false;
   public product = false;
   public sales = false;
+
+  passwordtype = "password";
+  purchaseArray: Array<any> = [];
+  prodArray: Array<any> = [];
+  salesArray: Array<any> = [];
   
   constructor(
     private router: Router,
@@ -36,6 +41,7 @@ export class AddUserMgtComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.model.password = "";
     this.userMgtService.loadDepartment().subscribe(
       data => { 
         this.departmentList = data;
@@ -73,12 +79,46 @@ export class AddUserMgtComponent implements OnInit {
       closeDropDownOnSelection: true,
     };
   }
-
-  onItemSelect(item: any) {
-    console.log('onItemSelect',item);
+  
+  onPurchaseSelect(item: any) {
+    alert('Purchase onItemSelect'+item);
+    this.purchaseArray.push({
+      pursubmenu : item
+    });
   }
-  onSelectAll(items: any) {
-    console.log('onSelectAll',items);
+  onPurSelectAll(items: any) {
+    alert('purchase onSelectAll'+items);
+    this.purchaseArray.push({
+      pursubmenu : items
+    });
+  }
+
+  onProductSelect(item: any) {
+    alert('Product onItemSelect'+item);
+    this.prodArray.push({
+      productsubmenu : item
+    });
+  }
+
+  onprodSelectAll(items: any) {
+    alert('product onSelectAll'+items);
+    this.prodArray.push({
+      productsubmenu : items
+    });
+  }
+
+  onSalesSelect(item: any) {
+    alert('Sales onItemSelect'+item);
+    this.salesArray.push({
+      productsubmenu : item
+    });
+  }
+
+  onSalesAll(items: any) {
+    alert('Sales onSelectAll'+items);
+    this.salesArray.push({
+      productsubmenu : items
+    });
   }
 
   userMgtClose(){
@@ -97,4 +137,21 @@ export class AddUserMgtComponent implements OnInit {
     this.sales = true;
   }
 
+  saveUserMgt(){
+    alert("user Name -->"+this.model.username);
+    alert("Password -->"+this.model.password);
+    alert("Department Name -->"+this.model.departmentname);
+    alert("Menu Name1 -->"+this.model.menuItem1);
+    alert("Menu Name2 -->"+this.model.menuItem2);
+    alert("Menu Name3 -->"+this.model.menuItem3);
+    alert("Menu Name4 -->"+this.model.menuItem4);
+    alert("Menu Name5 -->"+this.model.menuItem5);
+    alert("Menu Name6 -->"+this.model.menuItem6);
+    alert("Menu Name7 -->"+this.model.menuItem7);
+    alert("Menu Name8 -->"+this.model.menuItem8);
+    alert("Menu Name9 -->"+this.model.menuItem9);
+    alert("Purchase Sub Name -->"+this.purchaseArray);
+    alert("Product Sub Name -->"+this.prodArray);
+    alert("Sales Name -->"+this.salesArray);
+  }
 }
