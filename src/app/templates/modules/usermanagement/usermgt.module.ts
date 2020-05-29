@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 
 // Modules
 import {
-  MatAutocompleteModule,
+  MatAutocompleteModule,  
   MatBadgeModule,
   MatBottomSheetModule,
   MatButtonModule,
@@ -52,8 +52,8 @@ import { AddUserMgtComponent } from "./components/addusermgt/addusermgt.componen
 import { CustomMaterialModule } from "src/app/core/material.module";
 import { FormsModule } from "@angular/forms";
 
-import { MultiSelectComponent } from '@syncfusion/ej2-angular-dropdowns';
-import { CheckBoxComponent } from '@syncfusion/ej2-angular-buttons';
+import { MultiSelectComponent, MultiSelectModule } from '@syncfusion/ej2-angular-dropdowns';
+import { CheckBoxComponent, CheckBoxModule } from '@syncfusion/ej2-angular-buttons';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
@@ -62,6 +62,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     AddUserMgtComponent,
     MultiSelectComponent,
     CheckBoxComponent,
+
   ],
   imports: [
     CommonModule,
@@ -103,6 +104,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+    MultiSelectModule,
+    CheckBoxModule,
     NgMultiSelectDropDownModule.forRoot(),
     DataTablesModule.forRoot()
   ],

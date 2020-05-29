@@ -16,15 +16,15 @@
     </div>
         
   <div class="row">
-    <div class="col-md-12" >Inventory </div>    
+    <div class="col-md-12" >{{label4}} </div>    
   </div>
 
   <div class="row">
-    <div class="col-md-12">Management </div>    
+    <div class="col-md-12">{{label5}} </div>    
   </div>
 
   <div class="row">
-    <div class="col-md-12"> System </div>    
+    <div class="col-md-12"> {{label6}} </div>    
   </div>
 
 
@@ -51,7 +51,7 @@
       
      
 <div class="row">
-    <label class="col-md-12" > UserName* </label>    
+    <label class="col-md-12" > {{label1}}* </label>    
 </div>
 
 
@@ -77,7 +77,7 @@
 
 
 <div class="row">
-  <label class="col-md-12" > Password* </label>    
+  <label class="col-md-12" > {{label2}}* </label>    
 </div>
 
 
@@ -102,7 +102,7 @@
 
 <div class="row">
 
-  <button type="submit" class="col-md-12" id="loginbtn" name="loginbtn"> Login </button>
+  <button type="submit" class="col-md-12" id="loginbtn" name="loginbtn"> {{label3}} </button>
   
  </div>
 
@@ -130,7 +130,7 @@
     <div class="col-md-5" > 
     </div>
     <div class="col-md-7" > 
-      <label> English | Malay | Indonesian</label>
+      <label> <a  (click)="lang('english')">English </a>| <a  (click)="lang('malay')">Malay </a>  | <a  (click)="lang('indo')">Indonesian </a> </label>
     </div>
 
     </div>
