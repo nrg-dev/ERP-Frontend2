@@ -32,6 +32,7 @@ span{
 }
 ::ng-deep .mat-dialog-container{
   background: $po-order-form-bg;
+  overflow: auto !important;
 }
 .grid-container3 {
   position: relative;
