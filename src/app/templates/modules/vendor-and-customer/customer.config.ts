@@ -4,5 +4,5 @@ export const API_ENDPOINTS = {
   loadvendornamecode: `/customer/loadvendornamecode`,
   get: `/customer/get`,
   update: `/customer/update`,
-  remove: `/customer/remove`,  
+  remove: `/customer/remove`
 };

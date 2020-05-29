@@ -12,7 +12,6 @@ import { CommonService } from "../../../../../core/common/_services/common.servi
 import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import { DomSanitizer } from '@angular/platform-browser';
-import { AlertService } from "src/app/core/common/_services/index";
 
 @Component({
   selector: "app-employee-detail",
@@ -28,12 +27,11 @@ export class EmployeeDetailComponent implements OnInit {
   
    constructor(
     private employeeService: EmployeeService,
-    private alertService: AlertService,
     private router: Router,
     private snackBar: MatSnackBar,
     public commonService: CommonService,
-    private activatedRoute: ActivatedRoute,
-    private sanitizer:DomSanitizer
+    private _sanitizer: DomSanitizer,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -43,6 +41,12 @@ export class EmployeeDetailComponent implements OnInit {
     // setTimeout(function () {
     //   (<HTMLElement>document.querySelector('#date-picker')).click();
     // }, 500);
+  }
+
+  getImage(imgData) {
+    //if (Array.isArray(imgData)){
+      return this._sanitizer.bypassSecurityTrustResourceUrl(imgData);
+    //}    
   }
 
   viewEmployee(empCode: string) {

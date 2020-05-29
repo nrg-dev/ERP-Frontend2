@@ -1,429 +1,83 @@
-<div class="row" id="categoryhole-div">
-  <div class="col-12 col-sm-5 col-md-6  col-lg-3">
-    <br />
-    <div id="category">
-      <br />
-      <div id="adddelete-div">
-        <br />
-        <h2 id="text-category">Category</h2>
-        <div class="row">
-          <span
-            id="addfont-size"
-            (click)="addNewCategory()"
-            style="margin-left: auto;"
-          >
-            <i class="fa fa-plus-circle" aria-hidden="true"></i>
-            Add
-          </span>
-          &nbsp; &nbsp;
-          <span
-            id="editfont-size"
-            (click)="categoryEditDelete()"
-            style="margin-right: auto;"
-          >
-            <i class="fas fa-edit" aria-hidden="true"></i>
-            Edit/Delete
-          </span>
-        </div>
-      </div>
-      <br />
-      <div id="categorylist-div">
-        <div id="border-bottom">
-          <div
-            *ngFor="let list of masterlist"
-            (click)="categorydetails(list.number)"
-            class="categorylist-alignment"
-            id="{{ list.number }}"
-          >
-            <p>{{ list.name }}</p>
-          </div>
-        </div>
+  <div class="row">
+    <div class="col-11"> 
+      <button  (click)="addNewCategory()" class="create-button">
+        <span class="fas fa-plus"></span> Category 
+      </button>
 
-        <div class="category-list-container overflow-scroll">
-          <div
-            *ngFor="let list of categorylist"
-            (click)="showCategoryItems(list.categorycode, list.name)"
-            class="productlists-alignment"
-            id="{{ list.categorycode }}"
-          >
-            <p id="productlist-style">{{ list.name }}</p>
-          </div>
-        </div>
-      </div>
+      <button  (click)="addNewProduct()" class="create-button">
+        <span class="fas fa-plus"></span> 
+        Product 
+      </button>
+  
+      <button  (click)="addpromotion('Add Discount','discount')" class="create-button">
+        <span class="fas fa-plus"></span> Discount 
+      </button>
+      
+
+      <button  (click)="addpromotion('Add Free Gift','freegift')" class="create-button">
+        <span class="fas fa-plus"></span> Free Gift 
+      </button>
     </div>
   </div>
 
-  <!--Leftside div start-->
-  <div class="col-12 col-sm-7 col-md-6 col-lg-9">
-    <br />
-    <div id="leftside-div">
-      <div>
-        <!-- discount details start -->
-
-        <div [ngStyle]="{ display: discountdetails }">
-          <div class="col-12 col-sm-12 col-md-12  col-lg-12">
-            <br />
-            <div class="row">
-              <div class="col-5 col-sm-5 col-md-5  col-lg-5">
-                <h2>Discount Product</h2>
-                <div class="row" id="editdelete-button">
-                  <span (click)="addpromotion()">
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                    Add
-                  </span>
-                </div>
-              </div>
-              <div class="col-7 col-sm-7 col-md-7 col-lg-7">
-                <div class="row">
-                  <div class="col-auto">
-                    <div
-                      class="row"
-                      id="button-printpage"
-                      (click)="printPage(DiscountListTable)"
-                    >
-                      <i
-                        class="fa fa-print"
-                        aria-hidden="true"
-                        id="icon-align"
-                      ></i>
-                      <p id="font-size15">Print Page</p>
-                    </div>
-                  </div>
-
-                  <div class="col">
-                    <div class="search-box">
-                      <i
-                        class="fas fa-search search-icon"
-                        aria-hidden="true"
-                      ></i>
-                      <input
-                        class="search-text-box"
-                        type="search"
-                        (keyup)="allproductFilter($event.target.value)"
-                        placeholder="Search Product"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <br />
-
-            <ng-container *ngTemplateOutlet="DiscountListTable"></ng-container>
-            <ng-template #DiscountListTable>
-              <table
-                class="w-100 mt-4"
-                mat-table
-                [dataSource]="dataSource3"
-                matSort
-              >
-                <ng-container matColumnDef="Product">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Product Name
-                  </th>
-                  <td mat-cell *matCellDef="let row">{{ row.productname }}</td>
-                </ng-container>
-
-                <ng-container matColumnDef="discount">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Discount
-                  </th>
-                  <td mat-cell *matCellDef="let row">{{ row.discount }}</td>
-                </ng-container>
-
-                <ng-container matColumnDef="discounttime">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Discount Time
-                  </th>
-                  <td mat-cell *matCellDef="let row">
-                    {{ row.fromdate_promotionperiod }}-{{
-                      row.todate_promotionperiod
-                    }}
-                  </td>
-                </ng-container>
-
-                <ng-container matColumnDef="Qty">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Qty</th>
-                  <td mat-cell *matCellDef="let row">{{ row.qty }}</td>
-                </ng-container>
-
-                <ng-container matColumnDef="price">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Price
-                  </th>
-                  <td mat-cell *matCellDef="let row">{{ row.price }}</td>
-                </ng-container>
-
-                <ng-container matColumnDef="Action">
-                  <th mat-header-cell *matHeaderCellDef hideInPrint>Action</th>
-                  <td
-                    mat-cell
-                    *matCellDef="let row"
-                    class="actions"
-                    hideInPrint
-                  >
-                    <i
-                      class="fas fa-edit"
-                      (click)="discountEdit(row.discountcode)"
-                    ></i>
-                    <i
-                      class="fas fa-trash"
-                      (click)="discountDelete(row.discountcode)"
-                    ></i>
-                  </td>
-                </ng-container>
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
-                <tr
-                  mat-row
-                  [ngClass]="table - row"
-                  tabindex="1"
-                  *matRowDef="let row; columns: displayedColumns3"
-                ></tr>
-              </table>
-            </ng-template>
-
-            <mat-paginator [pageSize]="5" [hidePageSize]="true"></mat-paginator>
-          </div>
-        </div>
-
-        <!--All Items data table start-->
-        <div [ngStyle]="{ display: alldetails }">
-          <div class="col-12 col-sm-12 col-md 12 col-lg-12">
-            <br />
-            <div class="row">
-              <div class="col-5 col-sm-5 col-md 5 col-lg-5">
-                <h2>{{ itemtitle }}</h2>
-                <div class="row" id="editdelete-button">
-                  <span (click)="addNewProduct()">
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                    Add
-                  </span>
-                </div>
-              </div>
-              <div class="col-7 col-sm-7 col-md 7 col-lg-7">
-                <div class="row">
-                  <div class="col-auto">
-                    <div
-                      class="row"
-                      id="button-printpage"
-                      (click)="printPage(AllProductList)"
-                    >
-                      <i
-                        class="fa fa-print"
-                        aria-hidden="true"
-                        id="icon-align"
-                      ></i>
-                      <p id="font-size15">Print Page</p>
-                    </div>
-                  </div>
-
-                  <div class="col">
-                    <div class="search-box">
-                      <i
-                        class="fas fa-search search-icon"
-                        aria-hidden="true"
-                      ></i>
-                      <input
-                        class="search-text-box"
-                        type="search"
-                        (keyup)="allproductFilter($event.target.value)"
-                        placeholder="Search Product"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <ng-container *ngTemplateOutlet="AllProductList"></ng-container>
-            <ng-template #AllProductList>
-              <table
-                class="w-100 mt-4"
-                mat-table
-                [dataSource]="dataSource"
-                matSort
-              >
-                <ng-container matColumnDef="productname">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Product Name
-                  </th>
-                  <td mat-cell *matCellDef="let row">{{ row.productname }}</td>
-                </ng-container>
-
-                <ng-container matColumnDef="description">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Description
-                  </th>
-                  <td mat-cell *matCellDef="let row">{{ row.description }}</td>
-                </ng-container>
-
-                <ng-container matColumnDef="vendorcode">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Vendor Code
-                  </th>
-                  <td mat-cell *matCellDef="let row">{{ row.vendorcode }}</td>
-                </ng-container>
-
-                <ng-container matColumnDef="sellingprice">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Selling Price
-                  </th>
-                  <td mat-cell *matCellDef="let row">{{ row.sellingprice }}</td>
-                </ng-container>
-
-                <ng-container matColumnDef="price">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Price
-                  </th>
-                  <td mat-cell *matCellDef="let row">{{ row.price }}</td>
-                </ng-container>
-
-                <ng-container matColumnDef="editdelete">
-                  <th mat-header-cell *matHeaderCellDef hideInPrint>Action</th>
-                  <td
-                    mat-cell
-                    *matCellDef="let row"
-                    class="actions"
-                    hideInPrint
-                  >
-                    <i
-                      class="fas fa-edit"
-                      (click)="allproducteditcall(row.prodcode)"
-                    ></i>
-                    <i
-                      class="fas fa-trash"
-                      (click)="allproductdelete(row.prodcode)"
-                    ></i>
-                  </td>
-                </ng-container>
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr
-                  mat-row
-                  [ngClass]="table - row"
-                  tabindex="1"
-                  *matRowDef="let row; columns: displayedColumns"
-                ></tr>
-              </table>
-            </ng-template>
-
-            <mat-paginator [pageSize]="5" [hidePageSize]="true"></mat-paginator>
-          </div>
-        </div>
-        <!--All Item data table details end-->
-
-        <!--Free gift Items data table start-->
-        <div [ngStyle]="{ display: freegiftdetails }">
-          <div class="col-12 col-sm-12 col-md 12 col-lg-12">
-            <br />
-            <div class="row">
-              <div class="col-5 col-sm-5 col-md 5 col-lg-5">
-                <h2>{{ itemtitle }}</h2>
-                <div class="row" id="editdelete-button">
-                  <span (click)="addpromotion()">
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                    Add
-                  </span>
-                </div>
-              </div>
-              <div class="col-7 col-sm-7 col-md-7 col-lg-7">
-                <div class="row">
-                  <div class="col-auto">
-                    <div
-                      class="row"
-                      id="button-printpage"
-                      (click)="printPage(FreeGiftListTable)"
-                    >
-                      <i
-                        class="fa fa-print"
-                        aria-hidden="true"
-                        id="icon-align"
-                      ></i>
-                      <p id="font-size15">Print Page</p>
-                    </div>
-                  </div>
-
-                  <div class="col">
-                    <div class="search-box">
-                      <i
-                        class="fas fa-search search-icon"
-                        aria-hidden="true"
-                      ></i>
-                      <input
-                        class="search-text-box"
-                        type="search"
-                        (keyup)="freegiftFilter($event.target.value)"
-                        placeholder="Search For Free Gift"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <br />
-
-            <ng-container *ngTemplateOutlet="FreeGiftListTable"></ng-container>
-            <ng-template #FreeGiftListTable>
-              <table
-                class="w-100 mt-4"
-                mat-table
-                [dataSource]="dataSource2"
-                matSort
-              >
-                <ng-container matColumnDef="productname">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Product Name
-                  </th>
-                  <td mat-cell *matCellDef="let row">{{ row.productname }}</td>
-                </ng-container>
-
-                <ng-container matColumnDef="discounttime">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Discount Time
-                  </th>
-                  <td mat-cell *matCellDef="let row">
-                    {{ row.fromdate_promotionperiod }}
-                  </td>
-                </ng-container>
-
-                <ng-container matColumnDef="action">
-                  <th mat-header-cell *matHeaderCellDef hideInPrint>Action</th>
-                  <td
-                    mat-cell
-                    *matCellDef="let row"
-                    class="actions"
-                    hideInPrint
-                  >
-                    <i
-                      class="fas fa-edit"
-                      (click)="discountEdit(row.discountcode)"
-                    >
-                    </i>
-                    <i
-                      class="fas fa-trash"
-                      (click)="discountDelete(row.discountcode)"
-                    >
-                    </i>
-                  </td>
-                </ng-container>
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
-                <tr
-                  mat-row
-                  [ngClass]="table - row"
-                  tabindex="1"
-                  *matRowDef="let row; columns: displayedColumns2"
-                ></tr>
-              </table>
-            </ng-template>
-            <mat-paginator [pageSize]="5" [hidePageSize]="true"></mat-paginator>
-          </div>
-        </div>
-        <!--Free gift Item data table details end-->
-      </div>
+  <div class="row" *ngIf="productTable">
+    <div class="col-12"> 
+      <h3>Product List</h3> 
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Product Image</th>
+            <th>Product Code</th>
+            <th>Product Name</th>
+            <th>Category Name</th>
+            <th>Vendor Name</th>
+            <th>Actual Price / Unit</th>
+            <th class="txt-right">Margin</th>
+            <th class="txt-right">Tax</th>
+            <th>Selling Price / Unit</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let a of allproductlist; let i = index"> 
+          <tr>
+            <td>{{i}}</td>
+            <td>{{a.prodcode}}</td>
+            <td>{{a.productname}}</td>
+            <td>{{a.categoryname}}</td>
+            <td>{{a.vendorname}}</td>
+            <td>
+              <label *ngIf="a.price == null && a.unit == null"></label>
+              <label *ngIf="a.price == null && a.unit !== null">{{a.unit}}</label>
+              <label *ngIf="a.unit == null && a.price !== null">{{a.price}}</label>
+              <label *ngIf="a.unit !== null && a.price !== null">{{a.price}}/{{a.unit}}</label>
+            </td>
+            <td class="txt-right">{{a.tax}}</td>
+            <td class="txt-right">{{a.margin}}</td>
+            <td class="txt-right wid-150px">{{a.sellingprice}} 
+              <span>
+                <span class="fas fa-pen mar-let-40px" (click)="allproducteditcall(a.prodcode,a.vendorcode)"></span>
+                <span class="fas fa-trash mar-let-30px" (click)="allproductdelete(a.prodcode)"></span>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-  <!--Leftside div end-->
+
+
+<!-- Loading Image Start -->
+<div class="row">
+  <div class="col-6 col-md-6 col-xs-6 col-lg-6">			
+    <img *ngIf="loadinggif" class="loadingimage" src="/assets/images/rotateload.gif"/> 
+  </div>
+  <div class="col-6 col-md-6 col-xs-6 col-lg-6">
+  </div>
 </div>
+<!-- Loading Image End -->
+
+
+
+ 
+
+ 
+

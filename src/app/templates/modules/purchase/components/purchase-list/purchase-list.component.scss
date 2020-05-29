@@ -1,19 +1,23 @@
 @import "_base";
 
-@media screen and (min-device-width: 320px) and (max-device-width: 767px){
-  .back-colr{
-    float:left;
+::ng-deep .mat-drawer-content {
+  overflow: hidden !important;
+}
+
+
+  @media screen and (min-device-width: 320px) and (max-device-width: 767px){
+  .back-colr{float:left;}
+  body{font-size: 12px;}
+  .table>thead>tr>th, .table>tbody>tr>td{font-size: 11px;}
+  table>thead>tr>th>div.custom-control{position: relative;
+    top: 17px;}
   }
-  body{
-    font-size: 12px;
-  }
-  .table>thead>tr>th, .table>tbody>tr>td{
-    font-size: 11px;
-  }
-  table>thead>tr>th>div.custom-control{
-    position: relative;
-    top: 17px;
-  }
+  .over-flo{
+    overflow-y: scroll !important; 
+    height: 35vh; 
+    display: table-caption;
+    position: absolute; 
+    top: 58px;
 }
 
 ::-webkit-scrollbar {
@@ -200,126 +204,27 @@ tr[ng-click] {
     border-bottom-width: 0;
 }
 
-.sort-by-asc
-{
-    left: 3px;
-    display: inline-block;
-    width: 0;
-    height: 0;
-    border: solid 5px transparent;
-    margin: 4px 4px 0 3px;
-    background: transparent;
-    border-bottom: solid 7px $white;
-    border-top-width: 0;
+.grid-align{position: absolute; top:60px; width: 98%;}
+.header-align{position: absolute;
+  top: 20px;
+  width: 97%;}
+.wid-50px{width: 50px!important;}
+.wid-110px{width: 110px!important;}
+.wid-180px{width: 180px!important;}
+.wid-190px{width: 190px!important;}
+.wid-150px{width: 150px!important;}
+.font-bld{ font-weight: bold;}
+.font-norm{ font-weight: normal;}
+.mar-let-40px{margin-left: 40px;}
+
+input[type=checkbox]:before {
+  border: 1px solid #1186aa;
+  /* background: #174E76; */
+  width: 15px;
+  height: 15px;
 }
 
-.selected {
-  background-color: #334F5F !important;
+input[type=checkbox]:checked:after {
+  top: -2px;
+  left: 6px;
 }
-
-.checkbox-selected:before {
-  border: 2px solid $btn-bg !important;
-  background-color: $table-open-row-bg !important;
-}
-
-.table td, .table th {
-  padding: .75rem;
-  vertical-align: top;
-}
-// iPhone media query start
-
-// iPhone 6, 7, & 8 in portrait & landscape
-@media only screen and (min-width: 375px) and (max-width: 667px) { 
-  h3 {
-     font-size:12px;
- }
- .table>tbody>tr>td{
- font-size:10px;
- }
- .table>thead>tr>th{
-   font-size:10px;
- } 
-}
-
- // iPhone 6, 7, & 8 Plus in portrait & landscape
-@media only screen and (min-width: 414px) and (max-width: 736px) { 
-  h3 {
-     font-size:12px;
- }
- .table>tbody>tr>td{
-    font-size:10px;
- }
- .table>thead>tr>th{
-   font-size:10px;
- } 
-}
-
-
- // iPhone X in landscape & iPhone X in portrait
-@media only screen and (min-width: 375px) and (max-width: 812px) { 
-  h3 {
-     font-size:12px;
- }
- .table>tbody>tr>td{
-  font-size:10px;
- }
- .table>thead>tr>th{
-   font-size:10px;
- } 
-}
-
-
-// iPhone 5 & 5S in portrait & landscape
-@media only screen and (min-width: 320px) and (max-width: 568px) { 
-  h3 {
-     font-size:12px;
-  }
-  .table>tbody>tr>td{
-    font-size:10px;
-  }
-  .table>thead>tr>th{
-    font-size:10px;
-  } 
-}
- // iPhone 2G-4S in portrait
- @media only screen and (min-width: 320px) and (max-width: 480px) { 
-  h3 {
-     font-size:12px;
-  }
-  .table>tbody>tr>td{
-    font-size:10px;
-  }
-  .table>thead>tr>th{
-    font-size:10px;
-  } 
-}
-
- // iPhone media query end
-
- // Galaxy S6
-
- // Xperia Z3
-
- // Lumia 920
-
- // Nexus 6
-
- // Iphone 6 Plus
-
- // Galaxy Note 4 
-
- // Galaxy Note II 
-
- // iPad Air
-
- // Galaxy Tab 2 10.1
-
- // Galaxy Nexus 7
-
- // Kindle Fire
-
- // Kindle Fire HD 7"
-
- // Kindle Fire HD 8.9"
-
-

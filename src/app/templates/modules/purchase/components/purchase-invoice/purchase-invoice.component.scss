@@ -1,11 +1,25 @@
 
-
 @import "_base";
 
-#table-outer-div{ 
+.col-12 {
   overflow-y: auto; 
-  height: 75vh; 
+  height: 90vh; 
 }
+
+//#title{
+ //height: 6vh; 
+  //position:fixed;
+  //.col-12[_ngcontent-hsx-c7] {
+  //  overflow-y: none !important;
+   // height: 75vh;
+//}
+//  width: 100%;
+//}
+
+//#table-outer-div{ 
+  //overflow-y: auto; 
+  //height: 75vh; 
+//}
 #table-outer-div thead th { 
   position: sticky; 
   top: 0; 
@@ -15,6 +29,7 @@
 table  { 
   border-collapse: collapse; 
   width: 100%; 
+  overflow-y: auto; 
 }
 th { 
   background:$table-header-bg; 
@@ -46,13 +61,6 @@ tbody {
 .table > tbody > tr:hover, .table > tbody > tr:hover span  {
   background-color: $header-bg;
 }
-table tbody tr:hover td span{
-  display: block !important;
-  margin-top: auto;
-}
-.invoice-view {
-  margin-top: 0px;
-}
 
 .pdf-icon {
   font-size: 18px;
@@ -60,6 +68,159 @@ table tbody tr:hover td span{
   padding: 0px !important;
   text-align: inherit !important;
 }
+// iPhone media query start
+
+// iPhone 6, 7, & 8 in portrait & landscape
+@media only screen and (min-width: 375px) and (max-width: 667px) { 
+  h3 {
+     font-size:12px;
+ }
+ .table>tbody>tr>td{
+ font-size:10px;
+ }
+ .table>thead>tr>th{
+   font-size:10px;
+ } 
+ }
+
+ // iPhone 6, 7, & 8 Plus in portrait & landscape
+@media only screen and (min-width: 414px) and (max-width: 736px) { 
+  h3 {
+     font-size:12px;
+ }
+ .table>tbody>tr>td{
+ font-size:10px;
+ }
+ .table>thead>tr>th{
+   font-size:10px;
+ } 
+ }
+
+
+ // iPhone X in landscape & iPhone X in portrait
+@media only screen and (min-width: 375px) and (max-width: 812px) { 
+  h3 {
+     font-size:12px;
+ }
+ .table>tbody>tr>td{
+ font-size:10px;
+ }
+ .table>thead>tr>th{
+   font-size:10px;
+ } 
+ }
+
+
+// iPhone 5 & 5S in portrait & landscape
+@media only screen and (min-width: 320px) and (max-width: 568px) { 
+  h3 {
+     font-size:12px;
+ }
+ .table>tbody>tr>td{
+ font-size:10px;
+ }
+ .table>thead>tr>th{
+   font-size:10px;
+ } 
+ }
+ // iPhone 2G-4S in portrait
+ @media only screen and (min-width: 320px) and (max-width: 480px) { 
+  h3 {
+     font-size:12px;
+ }
+ .table>tbody>tr>td{
+ font-size:10px;
+ }
+ .table>thead>tr>th{
+   font-size:10px;
+ } 
+ }
+
+ // iPhone media query end
+
+ // Galaxy S6
+
+ // Xperia Z3
+
+ // Lumia 920
+
+ // Nexus 6
+
+ // Iphone 6 Plus
+
+ // Galaxy Note 4 
+
+ // Galaxy Note II 
+
+ // iPad Air
+
+.txt-right{text-align:right; padding-right: 25px!important;}
+
+button {
+  overflow: visible;
+  white-space: nowrap;
+  text-align: left;
+  font-family: $font-family;
+  font-style: normal;
+  float: right;
+  color: $white;
+  background:$btn-bg;
+  border: 1px solid $btn-bg;
+  border-radius: 20px;
+  font-size: $table-font-size;
+  margin-top: 12px;
+  padding: $btn-padding;
+}
+
+input[type=checkbox] {
+  position: relative;
+  border: 1px solid #1186aa;
+  cursor: pointer;
+  vertical-align: middle;
+}
+input[type=checkbox]:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 18px;
+  height: 19px;
+  top: -2px;
+  left: 0px;
+  border: 1px solid #1186aa;
+  //border: 2px solid $header-bg;
+  border-radius: 0px;
+  background-color: $table-invoived-row-bg;
+}
+
+input[type=checkbox]:checked:after {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 10px;
+  border: solid $white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  top: 1px;
+  left: 8px;
+}
+
+.custom-control {
+  padding-left: 0px;
+  padding-top: 3px;
+}
+
+.selected {
+  background-color: #334F5F !important;
+}
+
+.checkbox-selected:before {
+  border: 2px solid $btn-bg !important;
+  background-color: $table-open-row-bg !important;
+}
+
 // iPhone media query start
 
 // iPhone 6, 7, & 8 in portrait & landscape
@@ -155,4 +316,3 @@ table tbody tr:hover td span{
  // Kindle Fire HD 7"
 
  // Kindle Fire HD 8.9"
-

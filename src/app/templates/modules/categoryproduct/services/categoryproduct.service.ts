@@ -1,6 +1,6 @@
 ﻿import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Category, Product } from "../../../../core/common/_models";
+import { Category, Product, Units } from "../../../../core/common/_models";
 import { Discount } from "../../../../core/common/_models/discount";
 import { environment } from "src/environments/environment";
 import { API_ENDPOINTS } from "./../categoryproduct.config";
@@ -102,6 +102,12 @@ export class CategoryproductService {
       `${environment.apiUrl}${API_ENDPOINTS.loadProduct}`+'?category='+category);
 
   }
+  loadEditItem(vendorcode: string){
+    console.log("Vendor Code -->" + vendorcode);
+    return this.http.get<Product>(
+      `${environment.apiUrl}${API_ENDPOINTS.loadProduct}`+'?vendorcode='+vendorcode);
+
+  }
   // Load only item name for auto search text box
   loadItemName() {
    // return this.http.get<String>(this.commonURL2 + "loadItemName");
@@ -160,4 +166,23 @@ export class CategoryproductService {
     return this.http.delete<Discount>(
       `${environment.apiUrl}${API_ENDPOINTS.discountremove}`+'?discountremove='+discountcode);
   }
+
+  saveUnit(units: Units) {
+    console.log("saveUnit service");
+    console.log("URL-->"+`${environment.apiUrl}${API_ENDPOINTS.saveUnit}`);
+    return this.http.post<Units>(
+      `${environment.apiUrl}${API_ENDPOINTS.saveUnit}`,
+      units
+    ); 
+  }
+
+  loadUnitList(id: string){
+    console.log("Load Unit List..");
+    return this.http.get(`${environment.apiUrl}${API_ENDPOINTS.loadUnitList}`+'?id='+id);
+  }
+
+  removeUnit(id: string) {
+     return this.http.delete<Units>(
+       `${environment.apiUrl}${API_ENDPOINTS.removeUnit}`+'?id='+id);
+   }
 }

@@ -26,4 +26,5 @@ export class Purchase extends Common {
    vendorname: string;
    vendorcode: string;
    totalAmount:number;
+   unit:string;
 }

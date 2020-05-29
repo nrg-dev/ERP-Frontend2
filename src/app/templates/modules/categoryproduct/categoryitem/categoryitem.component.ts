@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild ,ElementRef,Inject} from '@angular/core';
+import { Component, OnInit, OnChanges, Input, ViewChild ,ElementRef,Inject,Optional } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
@@ -10,6 +10,7 @@ import { CategoryproductService } from '../services/categoryproduct.service';
 import { Category, Product } from '../../../../core/common/_models';
 import { Discount } from '../../../../core/common/_models/discount';
 import { PrintDialogService } from "src/app/core/services/print-dialog/print-dialog.service";
+import { DomSanitizer } from '@angular/platform-browser';
 
 // addnewcategory start
 @Component({
@@ -20,23 +21,56 @@ import { PrintDialogService } from "src/app/core/services/print-dialog/print-dia
 export class AddnewcategoryComponent {
   countryList:any;
   priorityList:any;
+  local_data:any;
   model: any = {};
   category:Category;
+  categorycode:string;
+  name:string;
+  description:string;
+  btnlabel:string;
+  show:boolean;
+
   constructor(
     private catprodservice: CategoryproductService,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: UsersData,
     public dialogRef: MatDialogRef<AddnewcategoryComponent>,
     private snackBar: MatSnackBar
 
     ) {
+      console.log(data);
+      this.local_data = {...data};
+      this.categorycode = this.local_data.categorycode;
+      this.name = this.local_data.name;
+      this.description = this.local_data.desc;
+      this.model.categorycode = this.categorycode;
+      this.model.name = this.name;
+      this.model.description = this.description;
+      if(this.categorycode!=null){
+       // alert("Yes code");
+        this.btnlabel="Update";
+        this.show=true;
+      }else {
+        this.btnlabel="Save";
+        this.show=false;
+        //alert("No code");
+      }
     }
-  saveCategory(){
-    this.catprodservice.save(this.model)
-    .subscribe(
-      (data) => {
-        this.category =   data; 
-        this.dialogRef.close();
-        console.log("Category Save Response-->"+data.status);
-        if(this.category.status=="success"){   
+
+    addCategoryClose() {
+      this.dialogRef.close();
+    }
+    saveCategory(){
+      console.log("Inside saveCategory method");
+      console.log("Category Name-->"+this.model.categorycode);
+      console.log("Category Name-->"+this.model.name);
+      console.log("Category Desc-->"+this.model.description);
+
+      this.catprodservice.save(this.model)
+      .subscribe(
+        data => {
+        //  this.category =   data; 
+        //   console.log("Response-->"+data);
+          this.dialogRef.close();
           setTimeout(() => {
             this.snackBar.open("Category Saved Successfully", "", {
               panelClass: ["success"],
@@ -44,15 +78,14 @@ export class AddnewcategoryComponent {
             });
           });
 
-        } 
-        if(this.category.status=="failure"){
+        /*if(this.category.status=="failure"){
           setTimeout(() => {
             this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
               panelClass: ["error"],
               verticalPosition: 'top'      
             });
           }); 
-        }
+        } */
       },
       error => {
         setTimeout(() => {
@@ -167,6 +200,13 @@ export class CategoryeditdeleteComponent {
   }
 }
 // categoryeditdelete end
+export interface UsersData {
+  title: string;
+  key: string;
+  categorycode: string;
+  name: string;
+  desc:string;
+}
 
 // add promostion start
 @Component({
@@ -183,13 +223,35 @@ export class AddpromotionComponent {
   discount:Discount;
   //protected dataService: CompleterData;
   public dataService: CompleterData;
-  
+  title:string;
+  key:string;
+  discountShow:boolean;
+  freegiftShow:boolean;
+  otherShow:boolean;
+
+  freegiftLabel:boolean;
+  discountLabel:boolean;
+
+  local_data:any;
   constructor(
     public dialogRef: MatDialogRef<AddpromotionComponent>,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: UsersData,
     private catprodservice: CategoryproductService,
     private completerService: CompleterService,
     private snackBar: MatSnackBar
     ) {
+      console.log(data);
+      this.local_data = {...data};
+      this.title = this.local_data.title;
+      this.key = this.local_data.key;
+      if(this.key == "freegift") {
+        this.discountLabel = false;
+        this.freegiftLabel = true;
+      }
+      if(this.key == "discount") {
+        this.discountLabel = true;
+        this.freegiftLabel = false;
+      } 
       this.catprodservice.load()
       .subscribe(
          data => {
@@ -223,6 +285,10 @@ export class AddpromotionComponent {
         }
       );
  
+    }
+
+    addPromotionClose() {
+      this.dialogRef.close();
     }
 
     savePromotion(){
@@ -268,9 +334,28 @@ export class AddpromotionComponent {
         }
       ); 
     }
+
+    freediscountBox(title:string){
+      if(title == "Add Free Gift"){
+        this.freegiftShow = true;
+        this.discountShow = false;
+        this.otherShow = false;
+      }else if(title == "Add Discount"){
+        this.freegiftShow = false;
+        this.discountShow = true;
+        this.otherShow = false;
+      }
+    }
+
+    otherBox(){
+      this.freegiftShow = false;
+      this.discountShow = false;
+      this.otherShow = true;
+    }
+
     close(e) {
-    this.dialogRef.close();
-  }
+      this.dialogRef.close();
+    }
 }
 // add promostion end
 
@@ -410,11 +495,15 @@ export class DiscountdeleteComponent {
 })
 export class AddnewproductComponent {
   model: any = {};
-  allcategorylist:any= {};
+  allcategorylist:any = {};
   vendornamelist: any = {};
+  allUnitlist:any = {};
+  unitlist: any = {};
   data: any = {};
   category:Category;
   product:Product;
+  selectedFiles: any = {};
+
   constructor(
     public dialogRef: MatDialogRef<AddnewproductComponent>,
     private catprodservice: CategoryproductService,
@@ -423,21 +512,18 @@ export class AddnewproductComponent {
 
     ) {
       this.catprodservice.load()
-     .subscribe(
+      .subscribe(
         data => {
           this.allcategorylist = data;
-          //console.log("category name"+this.allcategorylist);
         },
-       error => {
-       	
-		setTimeout(() => {
-      this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-        panelClass: ["error"],
-        verticalPosition: 'top'      
-      });
-    });   
-
-      }
+        error => {	
+          setTimeout(() => {
+            this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+              panelClass: ["error"],
+              verticalPosition: 'top'      
+            });
+          });   
+        }
      );
 
      this.vendorservice.load()
@@ -446,18 +532,192 @@ export class AddnewproductComponent {
           this.vendornamelist = data;
           console.log("category name"+this.vendornamelist);
         },
-       error => {
-         	
-		setTimeout(() => {
-      this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-        panelClass: ["error"],
-        verticalPosition: 'top'      
-      });
-    });   
-
+       error => {	
+        setTimeout(() => {
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });   
       }
      );
-     this.model.sellingprice = 0;
+     
+     //--load unitList
+     let id = "all";
+     this.catprodservice.loadUnitList(id)
+      .subscribe(
+        data => {
+          this.allUnitlist = data;
+        },
+        error => {
+          setTimeout(() => {
+            this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+              panelClass: ["error"],
+              verticalPosition: 'top'      
+            });
+          });   
+        }
+      );
+      this.model.sellingprice = 0;
+  }
+  /*fileChangeEvent(event) {
+    this.selectedFiles = event.target.files;
+    for (let i = 0; i < event.target.files; i++) {
+      this.selectedFiles.push(event.target.files[i]);
+    }
+  }*/
+  isImageSaved0: boolean;
+  isImageSaved1:boolean;
+  isImageSaved2: boolean;
+  isImageSaved3:boolean;
+  
+  imageError: string;
+  productImage: Array<any> = [];
+  imageIndex0:boolean = false;
+  imageIndex1:boolean = false;
+  imageIndex2:boolean = false;
+  imageIndex3:boolean = false;
+
+  imgBase64Path:any;
+  fileChangeEvent(fileInput: any,imageNumber:number) {
+    console.log("Add Product");
+    this.imageError = null;
+    if (fileInput.target.files && fileInput.target.files[0]) {
+        // Size Filter Bytes
+        const max_size = 20971520;
+        const allowed_types = ['image/png', 'image/jpeg'];
+        const max_height = 15200;
+        const max_width = 25600;
+
+        if (fileInput.target.files[0].size > max_size) {
+            this.imageError =
+                'Maximum size allowed is ' + max_size / 1000 + 'Mb';
+
+            return false;
+        }
+
+      
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+            const image = new Image();
+            image.src = e.target.result;
+            image.onload = rs => {
+                const img_height = rs.currentTarget['height'];
+                const img_width = rs.currentTarget['width'];
+
+                console.log(img_height, img_width);
+
+
+                if (img_height > max_height && img_width > max_width) {
+                 
+                    return false;
+                } else {
+                    this.imgBase64Path = e.target.result;
+                   // this.cardImageBase64 = imgBase64Path;
+                   if(this.productImage[imageNumber]!=null){
+                     console.log("no value...");
+                   }
+                   if(imageNumber==0){
+                      if(this.imageIndex1==false){
+                        console.log("First Time");
+                        this.productImage.push(this.imgBase64Path);
+                        this.isImageSaved0 = true;
+                        this.imageIndex1=true;
+                        console.log("First time Base 64 array value-->"+this.productImage[0]);
+                      }
+                      else{
+                        console.log("else");
+                        console.log("Second time Before update Base 64 array value-->"+this.productImage[0]);
+                        console.log("Second time Base 64-->"+this.imgBase64Path);
+                        this.productImage[0] = this.imgBase64Path;
+                        this.isImageSaved0 = true;
+                        console.log("Second time Base 64 array value-->"+this.productImage[0]);
+                        //this.imageIndex1=true;
+                      }
+                  }
+                  // Second Image
+                  if(imageNumber==1){
+                    if(this.imageIndex1==false){
+                      console.log("First Time");
+                      this.productImage.push(this.imgBase64Path);
+                      this.isImageSaved1 = true;
+                      this.imageIndex1=true;
+                      console.log("First time Base 64 array value-->"+this.productImage[1]);
+                    }
+                    else{
+                      console.log("else");
+                      console.log("Second time Before update Base 64 array value-->"+this.productImage[1]);
+                      console.log("Second time Base 64-->"+this.imgBase64Path);
+                      this.productImage[1] = this.imgBase64Path;
+                      this.isImageSaved1 = true;
+                      console.log("Second time Base 64 array value-->"+this.productImage[1]);
+                    }
+                }
+
+                // Third Image
+                if(imageNumber==2){
+                  if(this.imageIndex2==false){
+                    console.log("First Time");
+                    this.productImage.push(this.imgBase64Path);
+                    this.isImageSaved2 = true;
+                    this.imageIndex2=true;
+                    console.log("First time Base 64 array value-->"+this.productImage[2]);
+                  }
+                  else{
+                    console.log("else");
+                    console.log("Third time Before update Base 64 array value-->"+this.productImage[2]);
+                    console.log("Third time Base 64-->"+this.imgBase64Path);
+                    this.productImage[2] = this.imgBase64Path;
+                    this.isImageSaved2 = true;
+                    console.log("Third time Base 64 array value-->"+this.productImage[2]);
+                  }
+              }
+
+              // Fourth Image
+              if(imageNumber==3){
+                if(this.imageIndex3==false){
+                  console.log("First Time");
+                  this.productImage.push(this.imgBase64Path);
+                  this.isImageSaved3 = true;
+                  this.imageIndex3=true;
+                  console.log("First time Base 64 array value-->"+this.productImage[1]);
+                }
+                else{
+                  console.log("else");
+                  console.log("Fourth time Before update Base 64 array value-->"+this.productImage[3]);
+                  console.log("Fourth time Base 64-->"+this.imgBase64Path);
+                  this.productImage[3] = this.imgBase64Path;
+                  this.isImageSaved3 = true;
+                  console.log("Fourth time Base 64 array value-->"+this.productImage[1]);
+                }
+            }
+                 
+              }
+            };
+        };
+
+        reader.readAsDataURL(fileInput.target.files[0]);
+    }
+  }
+
+  addProductClose() {
+    this.dialogRef.close();
+  }
+
+  removeImage(i:number) {
+    this.productImage[i]=null;
+    if(i==0){
+      this.isImageSaved0 = false;
+    }
+    if(i==1){
+      this.isImageSaved1 = false;
+    }
+    if(i==2){
+      this.isImageSaved2 = false;
+    }
+    if(i==3){
+      this.isImageSaved3 = false;
+    }
   }
 
   marginPrice:any;
@@ -486,13 +746,14 @@ export class AddnewproductComponent {
   }
 
   saveAddNewProduct(category: string){
+    this.model.productImage = this.productImage;
     console.log("Selling Price -->"+this.model.sellingprice);
     this.catprodservice.producsave(this.model)
     .subscribe(
       data => {
         this.product =   data; 
         this.dialogRef.close();
-        if(this.product.status=="success"){
+       // if(this.product.status=="success"){
           setTimeout(() => {
             this.snackBar.open("Productr saved Successfully", "", {
               panelClass: ["success"],
@@ -502,8 +763,8 @@ export class AddnewproductComponent {
 
      
           this.model.sellingprice = 0;
-        } 
-        if(this.product.status=="failure"){
+      //  } 
+    /*   if(this.product.status=="failure"){
           setTimeout(() => {
             this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
               panelClass: ["error"],
@@ -511,7 +772,7 @@ export class AddnewproductComponent {
             });
           });   
       
-        }
+        } */
       },
       error => {
         setTimeout(() => {
@@ -543,16 +804,43 @@ export class AllproducteditComponent {
   allcategorylist:any= {};
   vendornamecodelist: any = {};
   allproducedittlist: any = {};
+  allUnitlist:any = {};
   category:Category;
   product:Product;
+  inputproductcode:string;
+  isImageSaved0:boolean;
+  isImageSaved1:boolean;
+  isImageSaved2:boolean;
+  isImageSaved3:boolean;
+
+  vendorcode:string;
+  local_data:any;
+  public div1 = false;
+  public div2 = false;
+  public div3 = false;
+  public div4 = false;
+  imageError: string;
+  productImage: Array<any> = [];
+  imageIndex0:boolean = false;
+  imageIndex1:boolean = false;
+  imageIndex2:boolean = false;
+  imageIndex3:boolean = false;
+  imgBase64Path:any;
+
   constructor(
     public dialogRef: MatDialogRef<AllproducteditComponent>,
     private catprodservice: CategoryproductService,
     private vendorservice: VendorService,
     private snackBar: MatSnackBar,
-
-    @Inject(MAT_DIALOG_DATA) public data: any
+    private _sanitizer: DomSanitizer,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: UsersData,
     ) {
+      console.log(data);
+      this.local_data = {...data};
+      this.inputproductcode = this.local_data.prodcode;
+      this.vendorcode = this.local_data.vendorcode;
+      this.model.vendorcode = this.vendorcode;
+      //alert(data);
       this.catprodservice.loadCategoryName()
       .subscribe(
          data => {
@@ -569,7 +857,7 @@ export class AllproducteditComponent {
       
        }
       );
- 
+     
       this.vendorservice.loadvendornamecode()
       .subscribe(
          data => {
@@ -587,14 +875,31 @@ export class AllproducteditComponent {
        }
       );
 
+      //--load unitList
+     let id = "all";
+     this.catprodservice.loadUnitList(id)
+      .subscribe(
+        data => {
+          this.allUnitlist = data;
+        },
+        error => {
+          setTimeout(() => {
+            this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+              panelClass: ["error"],
+              verticalPosition: 'top'      
+            });
+          });   
+        }
+      );
+
        //this.allproductlist="";
-    this.catprodservice.loadItem("all")
+    this.catprodservice.loadEditItem(this.model.vendorcode)
     .subscribe(
       data => {
         this.allproducedittlist = data;
         console.log("productedit code -->"+this.allproducedittlist[0].prodcode);
         for(let k=0;k<this.allproducedittlist.length;k++){
-          if(this.allproducedittlist[k].prodcode==this.data){
+          if(this.allproducedittlist[k].prodcode==this.inputproductcode){
             this.model.productname=this.allproducedittlist[k].productname;
             this.model.description=this.allproducedittlist[k].description;
             this.model.price=this.allproducedittlist[k].price;
@@ -613,8 +918,26 @@ export class AllproducteditComponent {
             console.log("vendor code -->"+this.model.vendorcode);
             this.model.vendorcode=this.allproducedittlist[k].vendorname+"-"+this.allproducedittlist[k].vendorcode;
             console.log("vendor name & code -->"+this.model.vendorcode);
+            this.model.unit=this.allproducedittlist[k].unit;
+            this.model.productImage=this.allproducedittlist[k].productImage;
+            if(this.model.productImage[0]!=undefined){
+              this.div1 = true;
+              this.isImageSaved0 = false;
+              //alert(this.div1);
+            }           
 
-
+            if(this.model.productImage[1]!=undefined){
+              this.div2 = true;
+              this.isImageSaved1 = false;
+            }
+            if(this.model.productImage[2]!=undefined){
+              this.div3 = true;
+              this.isImageSaved2 = false;
+            }
+            if(this.model.productImage[3]!=undefined){
+              this.div4 = true;
+              this.isImageSaved3 = false;
+            }
           }
         }
         this.model.prodcode=this.allproducedittlist[0].prodcode;
@@ -631,9 +954,159 @@ export class AllproducteditComponent {
     );
      
   }
+  getImage(imgData) {
+    //if (Array.isArray(imgData)){
+      return this._sanitizer.bypassSecurityTrustResourceUrl(imgData);
+    //}    
+  }
+  fileChangeEvent(fileInput: any,imageNumber:number) {
+    console.log("Edit Product");
+    this.imageError = null;
+    if (fileInput.target.files && fileInput.target.files[0]) {
+        // Size Filter Bytes
+        const max_size = 20971520;
+        const allowed_types = ['image/png', 'image/jpeg'];
+        const max_height = 15200;
+        const max_width = 25600;
+
+        if (fileInput.target.files[0].size > max_size) {
+            this.imageError =
+                'Maximum size allowed is ' + max_size / 1000 + 'Mb';
+            return false;
+        }
+
+      
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+            const image = new Image();
+            image.src = e.target.result;
+            image.onload = rs => {
+                const img_height = rs.currentTarget['height'];
+                const img_width = rs.currentTarget['width'];
+
+                console.log(img_height, img_width);
+
+
+                if (img_height > max_height && img_width > max_width) {
+                 
+                    return false;
+                } else {
+                    this.imgBase64Path = e.target.result;
+                   // this.cardImageBase64 = imgBase64Path;
+                   if(this.productImage[imageNumber]!=null){
+                     console.log("no value...");
+                   }
+                   if(imageNumber==0){
+                      if(this.imageIndex1==false){
+                        console.log("First Time");
+                        this.productImage.push(this.imgBase64Path);
+                        this.isImageSaved0 = true;
+                        this.div1 = false;
+                        this.imageIndex1=true;
+                        console.log("First time Base 64 array value-->"+this.productImage[0]);
+                      }
+                      else{
+                        console.log("else");
+                        console.log("Second time Before update Base 64 array value-->"+this.productImage[0]);
+                        console.log("Second time Base 64-->"+this.imgBase64Path);
+                        this.productImage[0] = this.imgBase64Path;
+                        this.isImageSaved0 = true;
+                        console.log("Second time Base 64 array value-->"+this.productImage[0]);
+                        //this.imageIndex1=true;
+                      }
+                  }
+                  // Second Image
+                  if(imageNumber==1){
+                    if(this.imageIndex1==false){
+                      console.log("First Time");
+                      this.productImage.push(this.imgBase64Path);
+                      this.isImageSaved1 = true;
+                      this.imageIndex1=true;
+                      console.log("First time Base 64 array value-->"+this.productImage[1]);
+                    }
+                    else{
+                      console.log("else");
+                      console.log("Second time Before update Base 64 array value-->"+this.productImage[1]);
+                      console.log("Second time Base 64-->"+this.imgBase64Path);
+                      this.productImage[1] = this.imgBase64Path;
+                      this.isImageSaved1 = true;
+                      console.log("Second time Base 64 array value-->"+this.productImage[1]);
+                    }
+                }
+
+                // Third Image
+                if(imageNumber==2){
+                  if(this.imageIndex2==false){
+                    console.log("First Time");
+                    this.productImage.push(this.imgBase64Path);
+                    this.isImageSaved2 = true;
+                    this.imageIndex2=true;
+                    console.log("First time Base 64 array value-->"+this.productImage[2]);
+                  }
+                  else{
+                    console.log("else");
+                    console.log("Third time Before update Base 64 array value-->"+this.productImage[2]);
+                    console.log("Third time Base 64-->"+this.imgBase64Path);
+                    this.productImage[2] = this.imgBase64Path;
+                    this.isImageSaved2 = true;
+                    console.log("Third time Base 64 array value-->"+this.productImage[2]);
+                  }
+              }
+
+              // Fourth Image
+              if(imageNumber==3){
+                if(this.imageIndex3==false){
+                  console.log("First Time");
+                  this.productImage.push(this.imgBase64Path);
+                  this.isImageSaved3 = true;
+                  this.imageIndex3=true;
+                  console.log("First time Base 64 array value-->"+this.productImage[1]);
+                }
+                else{
+                  console.log("else");
+                  console.log("Fourth time Before update Base 64 array value-->"+this.productImage[3]);
+                  console.log("Fourth time Base 64-->"+this.imgBase64Path);
+                  this.productImage[3] = this.imgBase64Path;
+                  this.isImageSaved3 = true;
+                  console.log("Fourth time Base 64 array value-->"+this.productImage[1]);
+                }
+            }else{
+              this.productImage.push(this.model.productImage[0]);
+              this.productImage.push(this.model.productImage[1]);
+              this.productImage.push(this.model.productImage[2]);
+              this.productImage.push(this.model.productImage[3]);
+            }
+                 
+              }
+            };
+        };
+
+        reader.readAsDataURL(fileInput.target.files[0]);
+    }
+  } 
+
+  removeImage(i:number) {
+    this.productImage[i]=null;
+    if(i==0){
+      this.isImageSaved0 = false;
+    }
+    if(i==1){
+      this.isImageSaved1 = false;
+    }
+    if(i==2){
+      this.isImageSaved2 = false;
+    }
+    if(i==3){
+      this.isImageSaved3 = false;
+    }
+  }
+  addProductEditClose(){
+    this.dialogRef.close();
+  }
 
   marginPrice:any;
   taxPrice:any;
+ 
   getSellingPrice(price:string,tax:string,margin:string){
     console.log("price-->"+price + "--- Tax --->"+tax+"-- Margin ---->"+margin);
     if(tax == null || tax == undefined){
@@ -656,40 +1129,13 @@ export class AllproducteditComponent {
       this.model.sellingprice = Number.parseInt(price)+Number.parseInt(this.marginPrice)+Number.parseInt(this.taxPrice);
     }
   }
-  
-/*
-  setItem(category: string){
-    this.catprodservice.setItem(this.model)
-    .subscribe(
-      data => {
-        this.product =   data; 
-        this.dialogRef.close();
-        if(this.product.status=="success"){
-          this.alertService.success("Saved Successfully");
-          setTimeout(() => {
-            this.alertService.clear();
-          }, 2000);
-        } 
-        if(this.product.status=="failure"){
-          this.alertService.success("not saved");
-          setTimeout(() => {
-            this.alertService.clear();
-          }, 2000);
-        }
-      },
-      error => {
-        this.alertService.error("Serve Error ");
-        setTimeout(() => {
-          this.alertService.clear();
-        }, 2000);
-      }
-    ); 
-    }
-    */
+ 
   ngOnInit() {
   }
   setItem(){
-    console.log("setItem method");
+    console.log("Product Code-->"+this.inputproductcode);
+    this.model.productImage = this.productImage;
+    this.model.prodcode=this.inputproductcode;
     this.catprodservice.setItem(this.model)
     .subscribe(
       data => {
@@ -809,7 +1255,7 @@ export class CategorytableComponent {
   styleUrls: ['./categoryitem.component.scss']
 })
 export class CategoryItemComponent implements OnInit {
- allproductlist : any= {};// Product;  
+  allproductlist : any= {};// Product;  
   product:Product;
   categorylist: any= {};
   allproducedittlist:any;
@@ -820,6 +1266,9 @@ export class CategoryItemComponent implements OnInit {
   model: any = {};
   discount:Discount;
   itemtitle:string="All Items";
+  loadinggif:boolean = false;
+  public productTable = false;
+
   // All Product
   displayedColumns: string[] = [
     'productname',
@@ -889,7 +1338,8 @@ export class CategoryItemComponent implements OnInit {
     private router: Router,
     private catprodservice: CategoryproductService,
     private snackBar: MatSnackBar,
-    private printDialogService: PrintDialogService
+    private printDialogService: PrintDialogService,
+
     ) { 
 
       this.dataSource = new MatTableDataSource(this.allproductlist);
@@ -898,9 +1348,10 @@ export class CategoryItemComponent implements OnInit {
     }
 
    
-    
+  //  public NAMES = [];
+
   ngOnInit() {
-   
+    this.productTable = false;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.leftdetails=true;
@@ -910,7 +1361,26 @@ export class CategoryItemComponent implements OnInit {
     this.alldiscountList();
     this.allfreegiftList();
 
+  /*  for (let i = 1; i < 100; i++) {
+      let newName = {
+         id:i.toString(),
+         value1:"Ubalton",
+         value2:"+91 88704662431",
+         value3:"alex@gmail.com",
+         value4:"Tamil Nadu",
+         value5:"India",
+         value6:"+91 4763212",
+         value7:"10000",
+         value8:"MCA",
+         value9:"Male",
+         value10:"Active",
+         value11:"Delhi",
+      };
+      this.NAMES.push(newName);
+  } */
   }
+
+  
 
   printPage(data) {
     this.printDialogService.openDialog(data);
@@ -936,16 +1406,22 @@ export class CategoryItemComponent implements OnInit {
   }
 
   allproductList(){
+    this.loadinggif=true;
+    this.productTable = false;
     this.catprodservice.loadItem("all")
     .subscribe(
       data => {
         this.allproductlist = data;
+        this.loadinggif=false;
+        this.productTable = true;
         console.log("Product length -->"+this.allproductlist.length);
         this.dataSource = new MatTableDataSource(this.allproductlist);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
       error => {
+        this.loadinggif=false;
+        this.productTable = true;
         setTimeout(() => {
           this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
             panelClass: ["error"],
@@ -1022,8 +1498,8 @@ export class CategoryItemComponent implements OnInit {
         this.allproductlist = data;
         console.log("Product length -->"+this.allproductlist.length);
         this.dataSource = new MatTableDataSource(this.allproductlist);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       },
       error => {
         setTimeout(() => {
@@ -1137,11 +1613,16 @@ productlist(number: string){
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
     this.dialogConfig.position = {
-      'top': '1000',
-      left: '100'
+      'top': '100',
+       'left': '100',
+       'right': '0'
     };
     this.dialog.open(AddnewcategoryComponent,{
-      panelClass: 'addnewcategory'
+      //height:'55vh',
+      width:'70vh',
+      panelClass: 'addnewcategory',
+      disableClose: true,
+      hasBackdrop: false
      // data: {dialogTitle: "hello", dialogText: "text"},
     })
     .afterClosed().subscribe(result => {
@@ -1150,7 +1631,7 @@ productlist(number: string){
     );
   }
 
-  addpromotion(){
+  addpromotion(title:string,show:string){
     //this.successdialog = 'block';
 
     this.dialogConfig.disableClose = true;
@@ -1160,8 +1641,10 @@ productlist(number: string){
       left: '100'
     };
     this.dialog.open(AddpromotionComponent,{
-      panelClass: 'addpromotion'
-     // data: {dialogTitle: "hello", dialogText: "text"},
+      panelClass: 'addpromotion',
+      data: {title: title, key: show},
+      disableClose: true,
+      hasBackdrop: false
     })
     .afterClosed().subscribe(result => {
       this.alldiscountList();
@@ -1243,11 +1726,17 @@ productlist(number: string){
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
     this.dialogConfig.position = {
-      'top': '100',
-      left: '100'
+
+
+//      'top': '100',
+  //    left: '100'
     };
     this.dialog.open(AddnewproductComponent,{ 
+      height:'95%',
+    //  width:'150vh',
       panelClass: 'addnewproduct',
+      disableClose: true,
+      hasBackdrop: false
     })
     .afterClosed().subscribe(result => {
       this.allproductList();
@@ -1283,46 +1772,48 @@ productlist(number: string){
     }); 
   }
 
-  allproducteditcall(prodcode: string){
+  allproducteditcall(prodcode: string,vendorcode:string){  
+    console.log("allproducteditcall");
     this.dialogConfig.disableClose = true;
-  this.dialogConfig.autoFocus = true;
-  this.dialogConfig.position = {
-    'top': '1000',
-    left: '100'
-  };
-  this.dialog.open(AllproducteditComponent,{
-    panelClass: 'allproductedit',
-    data: prodcode,
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+      'top': '1000',
+      left: '100'
+    };
+    this.dialog.open(AllproducteditComponent,{
+      panelClass: 'allproductedit',
+      data: {prodcode:prodcode,vendorcode:vendorcode}
+      
+    })
+    .afterClosed().subscribe(result => {
+      this.allproductList();
 
-  })
-  .afterClosed().subscribe(result => {
-    this.allproductList();
-
-  });
+    });
 
   }
   allproductdelete(prodcode: string){
+    console.log("detete product");
     this.catprodservice.productremove(prodcode)
       .subscribe(
         data => {
           this.product =  data;  
-          if(this.product.status == "Success"){
+          //if(this.product.status == "Success"){
             setTimeout(() => {
               this.snackBar.open("Product Deleted Successfully", "", {
                 panelClass: ["error"],
                 verticalPosition: 'top'      
               });
             });
-        
-        }else if(this.product.status == "failure"){
-          
-			 setTimeout(() => {
-        this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-          panelClass: ["error"],
-          verticalPosition: 'top'      
-        });
-      });  
-        }
+            this.allproductList();
+          /*}else if(this.product.status == "failure"){
+            setTimeout(() => {
+              this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+                panelClass: ["error"],
+                verticalPosition: 'top'      
+              });
+          }); 
+        }*/ 
+
       },
       error => {
         setTimeout(() => {
@@ -1330,8 +1821,9 @@ productlist(number: string){
             panelClass: ["error"],
             verticalPosition: 'top'      
           });
-        });      }
+        });      
+      }
     );
   }
 
-  }
+}

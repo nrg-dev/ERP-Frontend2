@@ -423,7 +423,7 @@ export class PettycashaddComponent implements OnInit {
 
   }
 
-  searchPrettyCash(){
+  searchPettyCash(){
     
   }
 

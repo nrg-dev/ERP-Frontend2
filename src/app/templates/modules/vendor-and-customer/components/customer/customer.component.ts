@@ -49,7 +49,7 @@ export class CustomerComponent implements OnInit {
   customerListshow: boolean;
   //vendorsDS: Vendor[];
   vendorsDS: any = {};
-  customersDS: any = {};
+  customersDS: any;
   vendors: MatTableDataSource<Vendor>;
   vendor: Vendor;
   isEditMode: boolean;
@@ -107,10 +107,10 @@ export class CustomerComponent implements OnInit {
   getAllCustomerDetails() {
     console.log("getAllCustomerDetails");
     this.customerService.load().subscribe(
-      (data: Customer[]) => {
-        this.customersDS = data;
-        this.customers = new MatTableDataSource(this.customersDS);
-        this.customers.paginator = this.paginator;
+      (res) => {
+        this.customersDS = res;
+       // this.customers = new MatTableDataSource(this.customersDS);
+       // this.customers.paginator = this.paginator;
       },
       error => {
         setTimeout(() => {
@@ -129,21 +129,23 @@ export class CustomerComponent implements OnInit {
 
   addCustomer() {
     let data = {};
-   this.dialogConfig.disableClose = true;
-   this.dialogConfig.autoFocus = true;
-   this.dialogConfig.position = {
-     'top': '1000',
-     left: '100'
-   };
-   this.dialog.open(CustomerAddComponent,{
-     panelClass: 'addcustomer',
-     data: data,
-   })
-   .afterClosed().subscribe(result => {
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+      'top': '1000',
+      left: '100'
+    };
+    this.dialog.open(CustomerAddComponent,{
+      panelClass: 'addcustomer',
+      data: data,
+      disableClose: true,
+      hasBackdrop: false
+    })
+    .afterClosed().subscribe(result => {
      this.getAllCustomerDetails();
-   });
+    });
    
- }
+  }
 
   toggleVendorDetailView(code?, edit?) {
     this.showDetail = !this.showDetail;

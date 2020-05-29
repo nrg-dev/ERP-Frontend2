@@ -161,4 +161,21 @@ export class PurchaseService {
         )
     }
 
+    createReturn(data:any) {
+        return this.http.post(
+            `${environment.apiUrl}${API_ENDPOINTS.CREATE_RETURN}`,
+            data
+        )
+    }
+
+    loadReturn(){
+        return this.http.get<Purchase>(`${environment.apiUrl}${API_ENDPOINTS.lOADRETURN}`);
+    }
+
+    createStock(invoiceNumber:String) {
+        return this.http.post(
+            `${environment.apiUrl}${API_ENDPOINTS.CREATE_STOCK}`,
+            invoiceNumber
+        )
+    }
 }

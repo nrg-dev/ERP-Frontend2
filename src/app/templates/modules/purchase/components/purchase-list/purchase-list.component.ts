@@ -10,6 +10,7 @@ import {
 } from "@angular/material";
 import { PurchaseAddComponent } from "../purchaseadd/purchaseadd.component";
 import { PurchaseCreateInvoiceComponent } from "./../purchase-create-invoice/purchase-create-invoice.component";
+import { PurchaseCreateReturnComponent } from '../purchase-create-return/purchase-create-return.component';
 
 @Component({
   selector: "app-purchaselist",
@@ -37,6 +38,9 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
   title: string = "";
   button: string = "";
 
+  public purchaseTable = false;
+  poreturnList: any = {};
+
   constructor(
     private purchaseService: PurchaseService,
     private snackBar: MatSnackBar,
@@ -45,7 +49,7 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getPurchaseOrderLists();
-    this.removeScrollBar();
+   // this.removeScrollBar();
   }
 
   ngOnDestroy() {
@@ -53,14 +57,14 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
       document.querySelector(".mat-drawer-content")
     )).style.overflow = "auto";
   }
-
+/*
   removeScrollBar() {
     setTimeout(function () {
       (<HTMLElement>(
         document.querySelector(".mat-drawer-content")
       )).style.overflow = "inherit";
     }, 300);
-  }
+  } */
   getDeleteButtonStyle() {
     if (!this.isDeleteButton) {
       let myStyles = {
@@ -112,6 +116,11 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
     this.purchaseService.getPurchaseOrderLists().subscribe(
       (res: []) => {
         this.purchaseOrderList = res;
+        if(this.purchaseOrderList.length == 0){
+          this.purchaseTable = false;
+        }else{
+          this.purchaseTable = true;
+        }
       },
       (error) => {
         setTimeout(() => {
@@ -129,6 +138,7 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
   }
 
   rowSelected(index: number, item: any, isChecked: boolean) {
+    
     if (isChecked) {
       item.indexVal = index;
       this.prodArr.push(item);
@@ -178,7 +188,30 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
             this.isCreateInvoice = false;
           }
           if (status === "Invoiced" && this.isCheckedArr[0].checked) {
-            this.isCreateReturn = true;
+            this.purchaseService.loadReturn()
+              .subscribe(res => { 
+                this.poreturnList = res;
+                if(this.poreturnList.length == 0){
+                  this.isCreateReturn = true;
+                }else{
+                  for(let i=0; i<this.poreturnList.length; i++){
+                    if(this.poreturnList[i].pocode == this.prodArr[0].pocode ){
+                      this.isCreateReturn = false;
+                      setTimeout(() => {
+                        this.snackBar.open("Purchase was Returnrd already.", "dismss", {
+                          panelClass: ["warn"],
+                          verticalPosition: "top",
+                        });
+                      });
+                    }else{
+                      this.isCreateReturn = true;
+                    }
+                  }
+                }
+                                
+              },
+              error => { }
+            );
           } else {
             this.isCreateReturn = false;
           }
@@ -193,6 +226,7 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
   }
  
   addPurchaseOrder(id: string, item: any) {
+    
     let data: any;
     if (id !== null) {
       this.title = "Edit Purchase Order";
@@ -214,14 +248,22 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
       top: "1000",
       left: "100",
     };
-    this.dialog
+    let dialogRef = this.dialog
       .open(PurchaseAddComponent, {
         panelClass: "addpromotion",
+        width:'200vh',
+        height:'400vh',
         data: data,
+        disableClose: true,
+        hasBackdrop: false
       })
-      .afterClosed()
-      .subscribe((result) => {
-        this.getPurchaseOrderLists();
+      dialogRef.backdropClick().subscribe(result => {
+        console.log('backdropClick');
+        this.ngOnInit();
+      });                
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        this.ngOnInit();
       });
   }
 
@@ -280,6 +322,7 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
   }
 
   removePurchaseOrder(id: string) {
+    
     this.purchaseService.removePurchaseOrder(id).subscribe((data: any) => {
       if (data === null) {
         setTimeout(() => {
@@ -313,11 +356,10 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
 
   createInvoice() {
     let data: any;
-
     data = {
       dialogPaneTitle: "Purchase Orders",
       dialogInvoiceTitle: "Create Invoice",
-      dialogText: "Add",
+      dialogText: "Create",
       invoiceItems: this.prodArr,
       venderName: this.prodArr[0].vendorname,
       date: new Date()
@@ -330,9 +372,59 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
       left: "100",
     };
 
-    this.dialog.open(PurchaseCreateInvoiceComponent, {
+    let dialogRef = this.dialog.open(PurchaseCreateInvoiceComponent, {
       panelClass: "purchaseCreateInvoice",
       data: data,
+    })
+    dialogRef.backdropClick().subscribe(result => {
+      console.log('backdropClick');
+      this.ngOnInit();
+    }); 
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit();
+      let indexx = this.prodArr.indexOf(this.prodArr[0].pocode);
+      this.prodArr.splice(indexx, 1);
+      this.isCreateInvoice = false;
+      this.isDeleteButton = false;
+      this.isAddPurchaseOrder = true; 
     });
+  }
+
+  createReturn() {
+    console.log("createReturn");
+    let data: any;
+    data = {
+      vendorname: this.prodArr[0].vendorname,
+      vendorcode: this.prodArr[0].vendorcode,
+      productname: this.prodArr[0].productname,
+      invqty: this.prodArr[0].qty,
+      date: this.prodArr[0].date,
+      subtotal: this.prodArr[0].subtotal,
+      pocode: this.prodArr[0].pocode
+    };
+    this.dialogConfig.disableClose = true;
+    this.dialogConfig.autoFocus = true;
+    this.dialogConfig.position = {
+    };
+
+    let dialogRef = this.dialog.open(PurchaseCreateReturnComponent, {
+      panelClass: "purchaseCreateReturn",
+      width:'120vh',
+      height:'200vh',
+      //disableClose: true,
+      //hasBackdrop: false
+      data: data,
+    })
+    dialogRef.backdropClick().subscribe(result => {
+      console.log('backdropClick');
+      this.ngOnInit();
+    }); 
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit();
+      let indexx = this.prodArr.indexOf(this.prodArr[0].pocode);
+      this.prodArr.splice(indexx, 1);
+      this.isCreateReturn = false;
+      this.isAddPurchaseOrder = true; 
+     });
   }
 }

@@ -1,20 +1,29 @@
-@import "_base";
+@import "_common";
 
 @media screen and (min-device-width: 320px) and (max-device-width: 767px){
-  .back-colr{
-    float:left;
-  }
-  body{
-    font-size: 12px;
-  }
-  .table>thead>tr>th, .table>tbody>tr>td{
-    font-size: 11px;
-  }
-  table>thead>tr>th>div.custom-control{
-    position: relative;
-    top: 17px;
-  }
+  .back-colr{float:left;}
+  body{font-size: 12px;}
+  .table>thead>tr>th, .table>tbody>tr>td{font-size: 11px;}
+  table>thead>tr>th>div.custom-control{position: relative;
+    top: 17px;}
 }
+
+::ng-deep .mat-drawer-content {
+  overflow: hidden !important;
+}
+
+
+
+
+.over-flo{
+  //overflow-y: scroll !important; 
+  //overflow-x: hidden;
+  //overflow-x: scroll !important;
+  height: 65vh !important;// 500px !important; 
+  display: table-caption;
+  top: 58px;
+  //padding-bottom: 10px;
+} 
 
 ::-webkit-scrollbar {
   width: 10px;
@@ -32,6 +41,17 @@
   width: 90%;
 }
 
+.grid-align{position: absolute; top:60px; width: 89%;}
+.header-align{position: absolute;
+  top: 20px;
+  width: 89%;}
+.wid-50px{width: 50px!important;}
+.wid-110px{width: 110px!important;}
+.wid-180px{width: 180px!important;}
+.wid-190px{width: 190px!important;}
+.wid-200px{width: 220px!important;}
+.wid-150px{width: 150px!important;}
+.wid-350px{width: 350px!important;}
 .font-bld{ font-weight: bold;}
 .font-norm{ font-weight: normal;}
 .user-icon { margin-top: 0;}

@@ -15,9 +15,7 @@ import { PurchaseService } from '../../services/purchase.service';
 export class PurchaseReturnComponent implements OnInit {
 
   model: any ={};
-  public vendorList : any;
-  public productList : any;
-  public categoryList : any;
+  public poreturnList : any;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false;
   todayDate : Date = new Date();
@@ -36,36 +34,19 @@ export class PurchaseReturnComponent implements OnInit {
   
 
    }
-   public NAMES = [];
   ngOnInit() {
-   
-for (let i = 1; i < 100; i++) {
-    let newName = {
-       id:i.toString(),
-       value1:"Ubalton",
-       value2:"+91 88704662431",
-       value3:"alex@gmail.com",
-       value4:"Tamil Nadu",
-       value5:"India",
-       value6:"+91 4763212",
-       value7:"10000",
-       value8:"MCA",
-       value9:"Male",
-       value10:"Active",
-       value11:"Delhi",
-    };
-    this.NAMES.push(newName);
-}
-    this.getVendorList();
-    this.getcategoryList();
-    this.getProductList();
-    this.returntable = false;
+    this.returnList();
   }
 
-  getVendorList(){
-    this.purchaseService.loadVendor()
-    .subscribe(res => { 
-      this.vendorList = res;
+  returnList(){
+    this.purchaseService.loadReturn()
+      .subscribe(res => { 
+        this.poreturnList = res;
+        if(this.poreturnList.length == 0){
+          this.returntable = false;
+        }else{
+          this.returntable = true;
+        }
       },
       error => {
         setTimeout(() => {
@@ -75,116 +56,6 @@ for (let i = 1; i < 100; i++) {
     );
   }
 
-  getcategoryList(){
-    this.purchaseService.loadCategory()
-    .subscribe(res => { 
-      this.categoryList = res;
-      },
-      error => {
-        setTimeout(() => {
-          this.alertService.error("Network error: server is temporarily unavailable");
-        }, 2000);
-      }
-    );
-  }
-
-  getProductList(){
-    this.purchaseService.loadItem()
-    .subscribe(res => { 
-      this.productList = res;
-      },
-      error => {
-        setTimeout(() => {
-          this.alertService.error("Network error: server is temporarily unavailable");
-        }, 2000);
-      }
-    );
-  }
-
-  addProduct(){
-    this.returntable = true;
-    this.fieldArray.push( {vendorName: this.model.vendorName, category: this.model.category,productName: this.model.productName,
-      quantity: this.model.quantity, itemStatus: this.model.itemStatus, returnStatus: this.model.returnStatus } );
-    console.log(this.fieldArray);
-
-    this.model.vendorName = null;
-    this.model.category = null;
-    this.model.productName = null;
-    this.model.quantity = '';
-    this.model.netAmount = '';
-    this.model.unitPrice = '';
-    this.model.description = '';
-    $('input[type="radio"]').prop('checked', false);
-    $(".itemStatus").val('');
-    $(".returnStatus").val('');
-  }
-
-  deleteFieldValue(index) {
-    this.fieldArray.splice(index, 1);
-    console.log("Size -->"+this.fieldArray.length);
-    if(this.fieldArray.length==0){
-      this.fieldArray = [];
-      this.model.vendorName = '';
-    }
-    if(this.fieldArray[0]){
-      this.returntable = true;
-    }else{
-      this.returntable = false;
-    }    
-  }
-
-  savePurchaseReturn(){
-    this.returnarray=[];
-    console.log(this.fieldArray);
-    this.returnarray.push(this.fieldArray);
-    console.log("Purchase ReturnArray -->");
-    console.log(this.returnarray);
-    //this.purchase.vendorName = this.model.vendorName;
-    this.purchaseService.savePurchaseReturn(this.returnarray)
-    .subscribe(
-      res => {
-        console.log('............1 ....');
-        this.alertService.success("Successfully saved ");
-        setTimeout(() => {
-          this.alertService.clear();
-        }, 2000);
-        this.fieldArray = [];
-        this.returntable = false;
-        this.model.vendorName = null;
-        this.model.category = null;
-        this.model.productName = null;
-        this.model.quantity = '';
-        this.model.netAmount = '';
-        this.model.unitPrice = '';
-        this.model.description = '';
-        $('input[type="radio"]').prop('checked', false);
-        $(".itemStatus").val('');
-        $(".returnStatus").val('');    
-                        
-    },
-    error => {
-        this.alertService.success("API server Issue..");
-        setTimeout(() => {
-          this.alertService.clear();
-        }, 2000);
-    });
-  }
-
-  cancelPurchaseReturn(){
-    console.log("-------- cancel PurchaseReturn Calling -------");
-    this.fieldArray = [];
-    this.returntable = false;
-    this.model.vendorName = null;
-    this.model.category = null;
-    this.model.productName = null;
-    this.model.quantity = '';
-    this.model.netAmount = '';
-    this.model.unitPrice = '';
-    this.model.description = '';
-    $('input[type="radio"]').prop('checked', false);
-    $(".itemStatus").val('');
-    $(".returnStatus").val('');
-  }
   
 }
 

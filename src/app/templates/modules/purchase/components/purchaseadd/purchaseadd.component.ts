@@ -58,15 +58,15 @@ export class PurchaseAddComponent implements OnInit, AfterViewInit {
     this.model.subtotal = 0;
     this.editPurchaseOrder(this.data);
     this.purchasetable = false;
-    this.getcategoryList();
+    //this.getcategoryList();
     this.model.sNo = 0;
     this.model.deliveryCost = 0;
     this.model.subTotal = 0;
     this.model.totalItem = 0;
-    if (this.model.sNo == 0) {
+    /* if (this.model.sNo == 0) {
       this.getProductList();
     } else {
-    }
+    } */
     this.getVendorLists();
   }
   ngAfterViewInit() {
@@ -121,18 +121,28 @@ export class PurchaseAddComponent implements OnInit, AfterViewInit {
   getNetAmount(productName: string, quantity: string, category: string) {
     console.log("productName -->" + productName);
     console.log("quantity -->" + quantity);
+    this.model.unit = '';
     if (quantity == "" || quantity == undefined) {
       console.log("--- No Quantity are available ---");
+      this.purchaseService.getUnitPrice(productName, category).subscribe(
+        (data) => {
+          this.purchase = data;
+          this.model.unitPrice = this.purchase.sellingprice;   
+          this.model.unit = this.purchase.unit;  
+        }
+      );
     } else {
       this.purchaseService.getUnitPrice(productName, category).subscribe(
         (data) => {
           this.purchase = data;
           this.model.unitPrice = this.purchase.sellingprice;
+          this.model.unit = this.purchase.unit;  
           this.model.vendorName =
             this.purchase.vendorname + "-" + this.purchase.vendorcode;
-          let res = quantity.replace(/\D/g, "");
+          this.model.netAmount = Number.parseInt(quantity) * this.purchase.sellingprice;
+          /* let res = quantity.replace(/\D/g, "");
           this.model.netAmount =
-            Number.parseInt(res) * this.purchase.sellingprice;
+            Number.parseInt(res) * this.purchase.sellingprice; */
           console.log(
             "Price ---->" +
               this.model.unitPrice +
@@ -173,11 +183,11 @@ export class PurchaseAddComponent implements OnInit, AfterViewInit {
       console.log("Add Total Item -->" + this.model.totalItem);
     }
 
-    if (this.model.sNo == 0) {
+    /* if (this.model.sNo == 0) {
       console.log("--- NO Vendor Choose ---");
     } else {
       this.getVendorProduct(this.model.vendorName);
-    }
+    } */
     // CLEAR TEXTBOX.
     this.model.category = null;
     this.model.productName = null;
@@ -321,7 +331,7 @@ export class PurchaseAddComponent implements OnInit, AfterViewInit {
     let addPurchaseData: any;
 
     if (this.model.qty !== null && this.model.price !== null) {
-      this.model.subtotal = Number.parseInt(this.model.qty) * this.model.price;
+      this.model.subtotal = Number.parseInt(this.model.qty) * this.model.unitPrice;
     }
 
     if (this.model.category !== undefined) {
@@ -352,7 +362,7 @@ export class PurchaseAddComponent implements OnInit, AfterViewInit {
       qty: this.model.qty !== null ? this.model.qty : 0,
       subtotal: this.model.subtotal,
       unit: this.model.unit,
-      unitprice: this.model.price,
+      unitprice: this.model.unitPrice,
       date: data.id !== undefined ? data.date : this.purchaseDate,
       description: "",
       status: data.id !== undefined ? data.status : "Open",
@@ -389,11 +399,13 @@ export class PurchaseAddComponent implements OnInit, AfterViewInit {
     if (data.id !== undefined) {
       this.model.qty = data.qty;
       this.model.unit = data.unit;
-      this.model.price = data.unitprice;
       this.model.category = data.categoryname + "-" + data.categorycode;
       this.model.vendorName = data.vendorname + "-" + data.vendorcode;
       this.model.productName = data.productname + "-" + data.productcode;
       this.model.subtotal = data.subtotal;
+      this.model.netAmount = data.subtotal;
+      this.model.unitPrice = data.subtotal / data.qty;
+      this.getVendorProduct(this.model.vendorName);
     }
   }
 

@@ -6,12 +6,28 @@
 .side-profile-box{background-color:#1A2D39; margin: 30px 10px 10px 10px; width: 90%;padding: 15px; -webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
     -moz-box-shadow: 3px 2px 5px -1px rgba(0,0,0,.075);
     box-shadow:3px 2px 5px -1px rgba(0,0,0,.075)}
-.profile-div{float:left;background-color:#1A2D39;background-color: #1A2D39;
-    padding: 15px;
-    margin-top: 15px;
-    width: 100%;-webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
-    -moz-box-shadow: 3px 2px 5px -1px rgba(0,0,0,.075);
-    box-shadow:3px 2px 5px -1px rgba(0,0,0,.075)}
+
+.profile-div{
+    margin-right: 10px;
+    width: calc(30% - 10px);
+    overflow: hidden;
+    img {
+        max-width: 70%;
+        max-height: 75px;
+    }
+    //float:left;background-color:#1A2D39;background-color: #1A2D39;
+   // padding: 15px;
+   // margin-top: 15px;
+   // width: 100%;-webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
+   // -moz-box-shadow: 3px 2px 5px -1px rgba(0,0,0,.075);
+    //box-shadow:3px 2px 5px -1px rgba(0,0,0,.075)
+
+
+}
+
+
+
+
 .back-colr{background-color:#15222B;}
 .text-profile{float: left;
     margin-left: 10px;
@@ -43,7 +59,8 @@
 .p-t-20{padding-top:20px;}
 .p-t-10{padding-top:10px;}
 .left-arrow{font-size: 25px; float: left;margin-right: 20px;}
-.text-area-style{background-color: #17252F;
+.text-area-style{
+    background-color: #17252F;
     color: #fff;
     border: 1px solid #334F5F;
     border-radius: 0px;
@@ -81,43 +98,26 @@
     color: rgba(85,112,129,1) !important;
 }
 
-.image-wrap {
-  padding: 10px;
-  border: solid 1px #e0e0e0;
-  display: inline-block;
-}
+.org-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 35px;
+    box-shadow: 0 0 8px #0c141a !important;
+    padding: 10px;
+    background: #1a2d39;
 
-.img-space {
-  border: dashed 1px #d3d3d3;
-  border-radius: 8px;
-  background-color: #f2f2f2;
-  height: auto;
-  width: 100%;
-  padding: 10px;
-  min-height:175px;
-}
+    img {
+        width: 10vh;
+        height: 10vh;
+        border-radius: 50%;
+    }
 
-.img-space img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  margin: auto;
-  cursor: pointer;
-}
+    & div:last-child{
+        padding-left: 10px;
 
-.fileInputProfileWrap {
-  width: 100%;
-  height: auto;
-}
+        & span {
+            color: #bfc5c8;
+        }
+    }
 
-.fileInputProfile {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  z-index: 99;
-  opacity: 0;
-}
-.fileInputProfile[disabled] + .img-space{
-  pointer-events: none;
-  cursor: not-allowed!important;
 }

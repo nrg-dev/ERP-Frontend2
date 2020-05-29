@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild ,ElementRef,Inject} from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild ,ElementRef,Inject} from '@angular/core';
 import { Sales, User, Category } from 'src/app/core/common/_models';
 import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
@@ -7,7 +7,7 @@ import { MatExpansionPanel, MatSnackBar, Sort } from "@angular/material";
 import { PurchaseService } from 'src/app/templates/modules/purchase/services/purchase.service';
 import { SalesService } from '../../services/sales.service';
 
-//---------- View Invoice Calling -----------
+/*
 @Component({
   selector: 'viewInvoice',
   styleUrls: ['./viewInvoice.css'],
@@ -307,7 +307,7 @@ export class Filter {
   apply(){
 
   }
-}
+}*/
 
 @Component({
   selector: 'app-salesinvoice',
@@ -315,166 +315,84 @@ export class Filter {
   styleUrls: ['./salesinvoice.component.scss']
 })
 export class SalesinvoiceComponent implements OnInit {
-  sales:Sales;
-  model: any ={};
-  public salesList : any;
-  dialogConfig = new MatDialogConfig();
-  isDtInitialized:boolean = false;
-  isSortDateDesc: boolean = false;
-  isSortDateAsc: boolean = true;
-
-
-  
-  @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort,{ static: true }) sort: MatSort;
-
+  invoiceList: any;
+  public invTale = false;
   constructor(
-    private dialog: MatDialog,
-    private router: Router, 
-    private salesservice: SalesService,
+    private salesService: SalesService,
     private snackBar: MatSnackBar
+  ) { 
+       
+  }
+  
 
-    ) { 
-      this.salesservice.load().subscribe(res => { 
-        this.salesList = res;
-      },
-      error => {
-        setTimeout(() => {
-          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-            panelClass: ["error"],
-            verticalPosition: 'top'      
-          });
-        });   
+  ngOnInit() { 
+      this.getInvoiceLists();
+     // this.removeScrollBar();
+  }
+
+  ngOnDestroy() {
+    (<HTMLElement>(
+      document.querySelector(".mat-drawer-content")
+    )).style.overflow = "auto";
+  }
+  createReturn(){
+    alert("Create Return");
+  }
+ /* removeScrollBar() {
+    setTimeout(function () {
+      (<HTMLElement>(
+        document.querySelector(".mat-drawer-content")
+      )).style.overflow = "inherit";
+    }, 300);
+  } */
+  getInvoiceLists() {
+    this.salesService.loadInvoice().subscribe(res => { 
+      this.invoiceList = res;
+      if(this.invoiceList.length == 0 ){
+        this.invTale = false;
+      }else{
+        this.invTale = true;
       }
-    );
-  }
-
-  ngOnInit() {
-  }
-
-  sortByOrder(column: string, order: string) {
-    
-    if (column === 'date' && order === 'desc') {
-      this.isSortDateDesc = true;
-      this.isSortDateAsc  = false;  
-      this.salesList.sort((a,b)=>b.date.localeCompare(a.date));
-    } else {
-      this.isSortDateDesc = false;
-      this.isSortDateAsc  = true;  
-      this.salesList.sort((a,b)=>a.date.localeCompare(b.date));
+    },
+    error => {
+      setTimeout(() => {
+        this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+          panelClass: ["error"],
+          verticalPosition: 'top'      
+        });
+      });   
     }
+  );
   }
 
-  openfilter() { 
-    this.salesservice.loadfilterData(this.model)
-    .subscribe(
-      res => { 
-        this.salesList = res;
-        if(this.salesList.length == 0){
-          setTimeout(() => {
-            this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-              panelClass: ["error"],
-              verticalPosition: 'top'      
-            });
-          });  
+  generatePdf(data: any){
+    if (data === null) {
+      setTimeout(() => {
+        this.snackBar.open("PDF data is empty", "dismss", {
+          panelClass: ["error"],
+          verticalPosition: 'top'      
+        });
+      });
+    } else {  
+      const width = 800;
+      const height = 370;
+      var left = (screen.width/2)-(width/2);
+      var top = (screen.height/2)-(height/2);
+      const win = window.open("","", 'toolbar=0, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+width+', height='+height+', top='+top+', left='+left);
 
-        }else{
+      //const win = window.open("","", 'width='+width+', height='+height+', top='+top+', left='+left);
+      let html = '';
 
-        }     
-      },
-      error => {
-        setTimeout(() => {
-          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-            panelClass: ["error"],
-            verticalPosition: 'top'      
-          });
-        });  
-      }
-    );
-    
-  }  
+      html += '<html>';
+      html += '<body style="margin:0!important">';
+      html += '<embed width="100%" height="100%" src="data:application/pdf;base64,'+data+'" type="application/pdf" />';
+      html += '</body>';
+      html += '</html>';
 
-  public viewinvoice(invoiceNumber:string,customerName:string,invoicedate: string,status:string){
-    console.log("View Invoice Number  --->"+invoiceNumber);
-    this.dialogConfig.disableClose = true;
-    this.dialogConfig.autoFocus = true;
-    this.dialogConfig.position = {
-      'top': '1000',
-      left: '100'
-    };
-    this.dialog.open(ViewInvoice,{
-      panelClass: 'viewInvoice',
-      data: { invoice: invoiceNumber, name: customerName,date: invoicedate,currentStatus:status },
-      height: '80%'
-    }).afterClosed().subscribe(result => {
-      // this.refresh();
-    });
-  }
-
-  public editinvoice(invoiceNumber:string,status:string){
-    console.log("Edit Invoice Number  --->"+invoiceNumber);
-    this.dialogConfig.disableClose = true;
-    this.dialogConfig.autoFocus = true;
-    this.dialogConfig.position = {
-      'top': '1000',
-      left: '100'
-    };
-    this.dialog.open(EditInvoice,{
-      panelClass: 'editInvoice',
-      data: { invoice: invoiceNumber, status: status },
-      height: '80%'
-    }).afterClosed().subscribe(result => {
-      // this.refresh();
-      this.getAllSODetails();
-    });
-  }
-
-  getAllSODetails(){
-    this.salesservice.load().subscribe(res => { 
-      this.salesList = res;
-      },
-      error => {
-        setTimeout(() => {
-          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-            panelClass: ["error"],
-            verticalPosition: 'top'      
-          });
-        });         }
-    );
-  }
-
-  public deleteSale(invoiceNumber:string){
-    console.log("Delete Invoice Number  --->"+invoiceNumber);
-    this.salesservice.remove(invoiceNumber)
-    .subscribe(
-      data => {
-        this.model = data;
-        if(this.model.status == "Success"){
-          setTimeout(() => {
-            this.snackBar.open("Sales Invoice deteted Successfully", "dismss", {
-              panelClass: ["success"],
-              verticalPosition: 'top'      
-            });
-          });
-          this.getAllSODetails();
-        }else{
-          setTimeout(() => {
-            this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-              panelClass: ["error"],
-              verticalPosition: 'top'      
-            });
-          });           }
-        
-      },
-      error => {
-        setTimeout(() => {
-          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
-            panelClass: ["error"],
-            verticalPosition: 'top'      
-          });
-        });   
-      }
-    ); 
+      setTimeout(() => {
+        win.document.write(html);
+      }, 0);
+    }
   }
 
 }

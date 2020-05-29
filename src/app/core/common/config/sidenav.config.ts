@@ -24,17 +24,8 @@ export const SidenavItems: MenuItem[] = [
     label: "Vendors",
     icon: "assets/images/vendor-customer.png",
     path: "/vendor-and-customer",
-    childern: [{
-      id: "vendors",
-      label: "Vendor",
-      path: "/vendor-and-customer/vendor",
-     },
-     {
-      id: "customers",
-      label: "Customer",
-       path: "/vendor-and-customer/customer",
-     }],
-    submenu: true
+    childern: [],
+    submenu: false
   },
  
   {
@@ -59,12 +50,28 @@ export const SidenavItems: MenuItem[] = [
     submenu: true
   },
   {
-    id: "categoryAndProduct",
-    label: "Stock",
+    id: "product",
+    label: "Product",
     icon: "assets/images/category-product.png",
     path: "/category-and-product",
-    childern: [],
-    submenu: false
+    childern: [
+      {
+        id: "product",
+        label: "product",
+        path: "/category-and-product",
+       },
+       {
+        id: "units",
+        label: "units",
+        path: "/category-and-product/units",
+       },
+       {
+        id: "category",
+        label: "category",
+        path: "/category-and-product/category",
+       }
+    ],
+    submenu: true
   },
   {
     id: "sales",
@@ -81,6 +88,11 @@ export const SidenavItems: MenuItem[] = [
       label: "Invoices",
       path: "/sales/invoice",
      },
+     {
+      id: "customers",
+      label: "Customer",
+       path: "/vendor-and-customer/customer",
+     },
       {
         id: "sales-invoice",
         label: "Returns",
@@ -89,6 +101,38 @@ export const SidenavItems: MenuItem[] = [
     ],
     submenu: true
   },
+
+  {
+    id: "stock",
+    label: "Stock",
+    icon: "assets/images/stock.png",
+    path: "/stock",
+    submenu: false,
+    childern: []
+  },
+
+  {
+    id: "finance",
+    label: "Finance",
+    icon: "assets/images/finance.png",
+    path: "/finance",
+    childern: [{
+      id: "pettycash",
+      label: "pettycash",
+      path: "/finance/pettycashlist",
+     }],
+    submenu: true
+  },
+
+  {
+    id: "userManagement",
+    label: "User Management",
+    icon: "assets/images/usermgt.png",
+    path: "/user-management",
+    submenu: false,
+    childern: []
+  },
+
   /*{
     id: "finance",
     label: "Finance",

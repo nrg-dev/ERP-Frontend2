@@ -13,11 +13,11 @@ const routes: Routes = [
   {
     path: 'invoice',
     component: PurchaseInvoiceComponent
-},
-{
-  path: 'return',
-  component: PurchaseReturnComponent
-}
+  },
+  {
+    path: 'return',
+    component: PurchaseReturnComponent
+  }
 ];
 
 @NgModule({

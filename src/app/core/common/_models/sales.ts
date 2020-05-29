@@ -27,6 +27,7 @@ export class Sales extends Common {
    customername: string;
    categorycode: string;
    totalAmount:number;
+   unit:string;
 }
 
 /*export const TEXT_NO_RESULTS = "No results found";

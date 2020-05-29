@@ -19,5 +19,9 @@ export const API_ENDPOINTS = {
   ADD_PURCHASE_ORDER_LIST: `/purchase/savePO`,
   REMOVE_PURCHASE_ORDER: `/purchase/removePO`,
   UPDATE_PURCHASE_ORDER: `/purchase/updatePurchaseOrder`,
-  CREATE_INVOICE:`/purchase/createInvoice`
+  CREATE_INVOICE:`/purchase/createInvoice`,
+  CREATE_RETURN:`/purchase/createReturn`,
+  lOADRETURN:`/purchase/loadReturn`,
+
+  CREATE_STOCK:`/stock/createStock`,
 };

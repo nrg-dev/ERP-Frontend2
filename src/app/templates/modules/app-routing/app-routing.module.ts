@@ -62,9 +62,15 @@ const routes: Routes = [
             (m) => m.SalesModule)
       },
       {
+        path: "stock",
+        loadChildren: () =>
+          import("../stock/stock.module").then(
+            (m) => m.StockModule)
+      },
+      {
         path: "finance",
         loadChildren: () =>
-          import("../../../shared/components/finance/finance.module").then(
+          import("./../../modules/finance/finance.module").then(
             (m) => m.FinanceModule)
       },
      
@@ -77,8 +83,8 @@ const routes: Routes = [
       {
         path: "user-management",
         loadChildren: () =>
-          import("../../../core/components/usermgt/usermgt.module").then(
-            (m) => m.UsermgtModule)
+          import("./../../modules/usermanagement/usermgt.module").then(
+            (m) => m.UserMgtModule)
       }
     ]
   },
@@ -90,7 +96,8 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, { 
       preloadingStrategy: PreloadAllModules, 
-      onSameUrlNavigation: 'ignore', }
+      onSameUrlNavigation: 'ignore'
+    }
     )
   ],
   exports: [RouterModule]

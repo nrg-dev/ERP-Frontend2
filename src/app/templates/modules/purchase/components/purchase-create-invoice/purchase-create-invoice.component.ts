@@ -50,6 +50,18 @@ export class PurchaseCreateInvoiceComponent implements OnInit {
     return this.invoiceList.map(item => item.pocode);
   }
 
+  getQty():any[] {
+    return this.invoiceList.map(item => item.qty);
+  }
+
+  getVendorCode():any {
+    return this.invoiceList.map(item => item.vendorcode);
+  }
+
+  getProductName():string[] {
+    return this.invoiceList.map(item => item.productname);
+  }
+
   setDefaultNumber() {
     if (!this.delivery) {
       this.delivery = 0;
@@ -65,15 +77,17 @@ export class PurchaseCreateInvoiceComponent implements OnInit {
       "ordernumbers" : this.getOrderNumbers(),
       "subtotal": this.getSubTotal(),
       "deliverycharge": this.delivery,
-      "totalprice": this.getTotal()
+      "totalprice": this.getTotal(),
+      "qty": this.getQty(),
+      "vendorcode" : this.getVendorCode(),
+      "productname" : this.getProductName()
     }
-
     this.purchaseService.createInvoice(invoice).subscribe(
       (respose) => {
         if (respose === null) {
           setTimeout(() => {
             this.snackBar.open(
-              "Purchase Order updated Successfully",
+              "Purchase Invoice Created Successfully",
               "dismss",
               {
                 panelClass: ["success"],

@@ -1,47 +1,55 @@
-<div id="table-save-btn-div">
-  <button  class="create-button" (click)="addVendor()">
-  <span class="fas fa-plus"></span> Add Vendor 
-  </button>
+<div class="row">
+    <div class="col-12">
+      <button (click)="addVendor()" class="create-button">
+        Add Vendor
+      </button>
+    </div>
 </div>
-<h3>Vendor List</h3> 
-
-<div id="table-outer-div">
-  <table class="table">
-    <thead>
-      <tr>
-        <th></th>
-        <th style="cursor:pointer;">Code
-          <i *ngIf="!isSortCodeDesc" class="sort-by-desc" (click)="sortByOrder('code','desc')"></i>
-          <i class="sort-by-asc" *ngIf="!isSortCodeAsc" (click)="sortByOrder('code','asc')"></i>
-        </th>
-        <th>Name</th>
-        <th>Country</th>
-        <th>Email</th>
-        <th>Joining Date</th>
-        <th>Contact Number</th>
-        <th>City</th>
-        <th></th>
-      </tr>
-  </thead>
-  <tbody *ngFor="let v of vendorsDS; let i = index"> 
-      <tr>
-        <td class="wid-50px" style="width: 4% !important;">
-          <img [src]="transform(v.cardImageBase64)"  class="img-fluid logo">
-        </td>
-        <td>{{v.vendorcode}}</td>
-        <td><span>{{v.vendorName}}</span></td>
-        <td>{{v.country}}</td>
-        <td><span>{{v.email}}</span></td>
-        <td><span>{{v.addeddate}}</span></td>
-        <td>{{v.phoneNumber}}</td>
-        <td>{{v.city}}</td>
-        <td>
-          <span class="edit-delete-icon">
-            <span class="fas fa-trash"></span>
-          </span>
-        </td>
-      </tr>
-     
-    </tbody>
-  </table>
-</div>
+  
+  <div *ngIf="enable" class="row">
+    <div class="col-12">
+      <h3>Vendor List</h3> 
+  
+      <div id="table-outer-div">
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="width: 4%"></th>
+              <th style="cursor:pointer;">Code
+                <i *ngIf="!isSortCodeDesc" class="sort-by-desc" (click)="sortByOrder('code','desc')"></i>
+              <i class="sort-by-asc" *ngIf="!isSortCodeAsc" (click)="sortByOrder('code','asc')"></i>
+              </th>
+              <th>Name</th>
+              <th>Country</th>
+              <th style="width: 20%">Email</th>
+              <th class="txt-right">Joining Date</th>
+              <th>Contact Number</th>
+              <th>City</th>
+              <!-- <th class="txt-right"></th> --> 
+            </tr>
+          </thead>
+          <tbody> 
+            <tr *ngFor="let item of vendorsDS" (dblclick)="goToVendorDetails(item)">
+              <td style="width: 4%">
+                <img src="assets/images/employee.png" class="img-fluid logo" alt="Employee" />
+              </td>
+              <td>{{item.vendorcode}}</td>
+              <td>{{item.vendorName}}</td>
+              <td>{{item.country}}</td>
+              <td style="width: 20%">{{item.email}}</td>
+              <td class="txt-right">{{item.addeddate}}</td>
+              <td>{{item.phoneNumber}}</td>
+              <td>{{ item.city }}</td>
+              <!-- <td class="txt-right">
+                <span class="edit-delete-icon">
+                  <span (click)="removeVendor(item.vendorcode)" class="fas fa-trash"></span>
+                </span>
+              </td> -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+  </div>
+    

@@ -9,7 +9,13 @@ import { PurchaseService } from '../../services/purchase.service';
 })
 export class PurchaseInvoiceComponent implements OnInit, OnDestroy {
   
+  model:any = {};
   invoiceList: any;
+  public invTale = false;
+  isCheckedArr = [];
+  invArr = [];
+  isShowEditDelete = [];
+  isAddStock: boolean = false;
   constructor(
     private purchaseservice: PurchaseService,
     private snackBar: MatSnackBar
@@ -20,7 +26,7 @@ export class PurchaseInvoiceComponent implements OnInit, OnDestroy {
 
   ngOnInit() { 
       this.getInvoiceLists();
-      this.removeScrollBar();
+     // this.removeScrollBar();
   }
 
   ngOnDestroy() {
@@ -28,17 +34,21 @@ export class PurchaseInvoiceComponent implements OnInit, OnDestroy {
       document.querySelector(".mat-drawer-content")
     )).style.overflow = "auto";
   }
-
-  removeScrollBar() {
+ /* removeScrollBar() {
     setTimeout(function () {
       (<HTMLElement>(
         document.querySelector(".mat-drawer-content")
       )).style.overflow = "inherit";
     }, 300);
-  }
+  } */
   getInvoiceLists() {
     this.purchaseservice.load().subscribe(res => { 
       this.invoiceList = res;
+      if(this.invoiceList.length == 0 ){
+        this.invTale = false;
+      }else{
+        this.invTale = true;
+      }
     },
     error => {
       setTimeout(() => {
@@ -79,6 +89,108 @@ export class PurchaseInvoiceComponent implements OnInit, OnDestroy {
         win.document.write(html);
       }, 0);
     }
+  }
+
+  getaddStockStyle() {
+    if (!this.isAddStock) {
+      let myStyles = {
+        color: "gray",
+        background: "#1A2D39",
+        border: "1px solid #1A2D39",
+        display: "none",
+      };
+      return myStyles;
+    }
+  }
+
+  rowSelected(index: number, item: any, isChecked: boolean) {
+    
+    if (isChecked) {
+      item.indexVal = index;
+      this.invArr.push(item);
+      this.isCheckedArr.push({ checked: true, indexVal: index });
+      this.isShowEditDelete[index] = false;
+    } else {
+      this.removeItem(this.isCheckedArr, index, "checked");
+      this.removeItem(this.invArr, index, "product");
+    }
+
+    if (this.invArr.length > 0) {
+      this.invArr.forEach((item, index) => {
+        if (this.invArr.length > 1) {
+          this.isAddStock = false;
+          this.getErrorMsg(false);
+        } else {
+          if (this.isCheckedArr[0].checked) {
+            this.isAddStock = true;
+          } else{
+            this.isAddStock = false;
+          }
+        }
+      });
+    } else {
+      this.isAddStock = false;
+    }
+  }
+
+  removeItem(isCheckedArr: any, index: number, type: string) {
+    isCheckedArr.forEach((item, indexCheck) => {
+      if (item.indexVal === index) {
+        isCheckedArr.splice(indexCheck, 1);
+      }
+    });
+
+    if (type === "checked") {
+      this.isCheckedArr = isCheckedArr;
+    } else if (type === "product") {
+      this.invArr = isCheckedArr;
+    }
+  }
+
+  getErrorMsg(isErrMsg: boolean) {
+    if (isErrMsg) {
+      setTimeout(() => {
+        this.snackBar.open("Select only one Invoice", "dismss", {
+          panelClass: ["warn"],
+          verticalPosition: "top",
+        });
+      });
+    } else {
+      return "";
+    }
+  }
+
+  addStock(){
+    this.model.invoiceNumber = this.invArr[0].invoicenumber;
+    this.purchaseservice.createStock(this.model.invoiceNumber).subscribe(
+      (respose) => {
+          setTimeout(() => {
+            this.snackBar.open(
+              "Stock was added Successfully",
+              "dismss",
+              {
+                panelClass: ["success"],
+                verticalPosition: "top",
+              }
+            );
+
+          });
+
+          this.getInvoiceLists();
+      },
+      (error) => {
+        setTimeout(() => {
+          this.snackBar.open(
+            "Network error: server is temporarily unavailable",
+            "dismss",
+            {
+              panelClass: ["error"],
+              verticalPosition: "top",
+            }
+          );
+        });
+      }
+    );
   }
 
 }

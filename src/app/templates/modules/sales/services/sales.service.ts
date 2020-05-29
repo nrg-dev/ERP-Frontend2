@@ -105,4 +105,49 @@ export class SalesService {
             sales
           );  
     }
+
+    addSalesOrder(data: any){
+        return this.http.post(
+           `${environment.apiUrl}${API_ENDPOINTS.ADD_SALES_ORDER_LIST}`,
+           data
+         );   
+    }
+
+    updateSalesOrder(data: any){
+        return this.http.put(
+        `${environment.apiUrl}${API_ENDPOINTS.UPDATE_SALES_ORDER}`,
+            data
+        );   
+    }
+
+    // Remove Sales order
+    removeSalesOrder(id:string){ 
+        return this.http.delete<String>(`${environment.apiUrl}${API_ENDPOINTS.REMOVE_SALES_ORDER+'?id='+id}`); 
+    }
+
+    getSalesOrderLists(){
+        return this.http.get(`${environment.apiUrl}${API_ENDPOINTS.GET_SALES_ORDER_LIST}`);
+    }
+
+    createInvoice(data:any) {
+        return this.http.post(
+            `${environment.apiUrl}${API_ENDPOINTS.CREATE_INVOICE}`,
+            data
+        )
+    }
+
+    loadInvoice(){
+        return this.http.get<Sales>(`${environment.apiUrl}${API_ENDPOINTS.loadInvoice}`); 
+    }
+
+    createReturn(data:any) {
+        return this.http.post(
+            `${environment.apiUrl}${API_ENDPOINTS.CREATE_RETURN}`,
+            data
+        )
+    }
+
+    loadReturn(){
+        return this.http.get<Sales>(`${environment.apiUrl}${API_ENDPOINTS.lOADRETURN}`);
+    }
 }

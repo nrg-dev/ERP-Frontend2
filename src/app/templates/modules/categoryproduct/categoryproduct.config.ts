@@ -16,9 +16,9 @@ export const API_ENDPOINTS = {
   update: `/item/update`,  
   discountload: `/item/discountload`, 
   loadProduct: `/item/load`,  
- 
   
 
-  
-  
+  saveUnit: `/item/saveunits`,
+  loadUnitList:'item/loadunits',
+  removeUnit: `/item/removeUnit`, 
 };

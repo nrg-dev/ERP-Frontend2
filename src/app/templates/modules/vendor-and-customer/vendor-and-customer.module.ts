@@ -13,7 +13,9 @@ import { VendorAddComponent } from "./components/vendor-add/vendor-add.component
 import { CoreModule } from "../../../core/core.module";
 import { CustomerService } from "./services/customer.service";
 import { VendorService } from "./services/vendor.service";
+import { VendorDetailsService } from "./services/vendorDetails.service";
 import { MAT_TABS_CONFIG } from "@angular/material";
+import { VendorDetailsComponent } from './components/vendor-details/vendor-details.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,7 @@ import { MAT_TABS_CONFIG } from "@angular/material";
     VendorAndCustomerDetailComponent,
     CustomerComponent,
     CustomerAddComponent,
-    VendorAddComponent
+    VendorDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +35,9 @@ import { MAT_TABS_CONFIG } from "@angular/material";
   providers: [
     CustomerService,
     VendorService,
+    VendorDetailsService,
     { provide: MAT_TABS_CONFIG, useValue: { animationDuration: "0ms" } }
-  ]
+  ],
+  entryComponents: [VendorDetailsComponent]
 })
 export class VendorAndCustomerModule {}
