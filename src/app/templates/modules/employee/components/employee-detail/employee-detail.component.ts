@@ -96,7 +96,7 @@ export class EmployeeDetailComponent implements OnInit {
           });
         });
         setTimeout(() => {
-          this.alertService.clear();
+         // this.alertService.clear();
         }, 1500);
         this.router.navigate(['/employment']);
       },
