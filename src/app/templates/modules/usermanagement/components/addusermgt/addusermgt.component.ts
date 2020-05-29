@@ -14,7 +14,7 @@ export class AddUserMgtComponent implements OnInit {
   disabled = false;
   showFilter = false;
   limitSelection = false;
-  purdropdownList:any = [];
+  purdropdownList:any = {};
   proddropdownList:any = [];
   saledropdownList:any = [];
   selectedItems:any = [];
@@ -81,41 +81,41 @@ export class AddUserMgtComponent implements OnInit {
   }
   
   onPurchaseSelect(item: any) {
-    alert('Purchase onItemSelect'+item);
+    console.log('Purchase onItemSelect'+item);
     this.purchaseArray.push({
       pursubmenu : item
     });
   }
   onPurSelectAll(items: any) {
-    alert('purchase onSelectAll'+items);
+    console.log('purchase onSelectAll'+items);
     this.purchaseArray.push({
       pursubmenu : items
     });
   }
 
   onProductSelect(item: any) {
-    alert('Product onItemSelect'+item);
+    console.log('Product onItemSelect'+item);
     this.prodArray.push({
       productsubmenu : item
     });
   }
 
   onprodSelectAll(items: any) {
-    alert('product onSelectAll'+items);
+    console.log('product onSelectAll'+items);
     this.prodArray.push({
       productsubmenu : items
     });
   }
 
   onSalesSelect(item: any) {
-    alert('Sales onItemSelect'+item);
+    console.log('Sales onItemSelect'+item);
     this.salesArray.push({
       productsubmenu : item
     });
   }
 
   onSalesAll(items: any) {
-    alert('Sales onSelectAll'+items);
+    console.log('Sales onSelectAll'+items);
     this.salesArray.push({
       productsubmenu : items
     });
@@ -138,20 +138,31 @@ export class AddUserMgtComponent implements OnInit {
   }
 
   saveUserMgt(){
-    alert("user Name -->"+this.model.username);
-    alert("Password -->"+this.model.password);
-    alert("Department Name -->"+this.model.departmentname);
-    alert("Menu Name1 -->"+this.model.menuItem1);
-    alert("Menu Name2 -->"+this.model.menuItem2);
-    alert("Menu Name3 -->"+this.model.menuItem3);
-    alert("Menu Name4 -->"+this.model.menuItem4);
-    alert("Menu Name5 -->"+this.model.menuItem5);
-    alert("Menu Name6 -->"+this.model.menuItem6);
-    alert("Menu Name7 -->"+this.model.menuItem7);
-    alert("Menu Name8 -->"+this.model.menuItem8);
-    alert("Menu Name9 -->"+this.model.menuItem9);
-    alert("Purchase Sub Name -->"+this.purchaseArray);
-    alert("Product Sub Name -->"+this.prodArray);
-    alert("Sales Name -->"+this.salesArray);
+    console.log("user Name -->"+this.model.username);
+    console.log("Password -->"+this.model.password);
+    console.log("Department Name -->"+this.model.departmentname);
+    console.log("Menu Name1 -->"+this.model.menuItem1);
+    console.log("Menu Name2 -->"+this.model.menuItem2);
+    console.log("Menu Name3 -->"+this.model.menuItem3);
+    console.log("Menu Name4 -->"+this.model.menuItem4);
+    console.log("Menu Name5 -->"+this.model.menuItem5);
+    console.log("Menu Name6 -->"+this.model.menuItem6);
+    console.log("Menu Name7 -->"+this.model.menuItem7);
+    console.log("Menu Name8 -->"+this.model.menuItem8);
+    console.log("Menu Name9 -->"+this.model.menuItem9);
+    console.log("Purchase Sub Name -->"+this.purchaseArray);
+    console.log("Product Sub Name -->"+this.prodArray);
+    console.log("Sales Name -->"+this.salesArray);
+
+    setTimeout(() => {
+      this.snackBar.open(
+        "User Login was created Successfully",
+        "dismss",
+        {
+          panelClass: ["success"],
+          verticalPosition: "top",
+        }
+      );
+    });
   }
 }
