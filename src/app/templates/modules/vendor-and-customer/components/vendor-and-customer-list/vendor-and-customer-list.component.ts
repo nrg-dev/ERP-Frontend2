@@ -55,7 +55,7 @@ export class VendorAndCustomerListComponent implements OnInit, OnDestroy {
   vendorsDS = [];
   customersDS: any = {};
   vendors: MatTableDataSource<Vendor>;
-  dialogConfig = new MatDialogConfig();
+  //dialogConfig = new MatDialogConfig();
   vendor: Vendor;
   isEditMode: boolean;
   displayedColumns: string[] = [

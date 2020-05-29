@@ -30,7 +30,7 @@ export class EmployeeDetailComponent implements OnInit {
     private router: Router,
     private snackBar: MatSnackBar,
     public commonService: CommonService,
-    private _sanitizer: DomSanitizer,
+    private sanitizer: DomSanitizer,
     private activatedRoute: ActivatedRoute
   ) {}
 
@@ -45,7 +45,7 @@ export class EmployeeDetailComponent implements OnInit {
 
   getImage(imgData) {
     //if (Array.isArray(imgData)){
-      return this._sanitizer.bypassSecurityTrustResourceUrl(imgData);
+      return this.sanitizer.bypassSecurityTrustResourceUrl(imgData);
     //}    
   }
 
