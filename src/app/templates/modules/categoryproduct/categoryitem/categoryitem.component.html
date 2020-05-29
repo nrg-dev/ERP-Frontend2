@@ -52,10 +52,10 @@
             </td>
             <td>{{a.tax}}</td>
             <td>{{a.margin}}</td>
-            <td>{{a.sellingprice}} 
+            <td class="txt-right wid-150px">{{a.sellingprice}} 
               <span>
                 <span class="fas fa-pen mar-let-40px" (click)="allproducteditcall(a.prodcode,a.vendorcode)"></span>
-                <span class="fas fa-trash" (click)="allproductdelete(a.prodcode)"></span>
+                <span class="fas fa-trash mar-let-30px" (click)="allproductdelete(a.prodcode)"></span>
               </span>
             </td>
           </tr>
