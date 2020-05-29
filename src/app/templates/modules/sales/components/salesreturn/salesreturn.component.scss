@@ -46,7 +46,9 @@ tbody {
 .table > tbody > tr:hover, .table > tbody > tr:hover span  {
   background-color: $header-bg;
 }
-
+.txt-right{
+  text-align: right;
+}
 // iPhone media query start
 
 // iPhone 6, 7, & 8 in portrait & landscape

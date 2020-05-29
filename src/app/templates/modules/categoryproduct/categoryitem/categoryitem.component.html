@@ -32,8 +32,8 @@
             <th>Category Name</th>
             <th>Vendor Name</th>
             <th>Actual Price / Unit</th>
-            <th>Margin</th>
-            <th>Tax</th>
+            <th class="txt-right">Margin</th>
+            <th class="txt-right">Tax</th>
             <th>Selling Price / Unit</th>
           </tr>
         </thead>
@@ -50,8 +50,8 @@
               <label *ngIf="a.unit == null && a.price !== null">{{a.price}}</label>
               <label *ngIf="a.unit !== null && a.price !== null">{{a.price}}/{{a.unit}}</label>
             </td>
-            <td>{{a.tax}}</td>
-            <td>{{a.margin}}</td>
+            <td class="txt-right">{{a.tax}}</td>
+            <td class="txt-right">{{a.margin}}</td>
             <td class="txt-right wid-150px">{{a.sellingprice}} 
               <span>
                 <span class="fas fa-pen mar-let-40px" (click)="allproducteditcall(a.prodcode,a.vendorcode)"></span>

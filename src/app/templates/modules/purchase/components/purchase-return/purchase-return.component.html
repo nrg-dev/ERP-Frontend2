@@ -14,10 +14,10 @@
           <th>Vendor Name</th>
           <th>Product Name</th>
           <th>Invoiced Date</th>
-          <th>Quantity Invoiced</th>
+          <th class="txt-right">Quantity Invoiced</th>
           <th>Item Status</th>
           <th>Payment Method</th>
-          <th>Quantity</th>
+          <th class="txt-right">Quantity</th>
         </tr>
     </thead>
     <tbody *ngFor="let ret of poreturnList; let i = index"> 
@@ -26,10 +26,10 @@
           <td>{{ret.vendorname}}</td>
           <td>{{ret.itemname}}</td>
           <td>{{ret.invoiceddate}}</td>
-          <td>{{ret.invoicedqty}}</td>
+          <td class="txt-right">{{ret.invoicedqty}}</td>
           <td>{{ret.itemStatus}}</td>
           <td>{{ret.returnStatus}}</td>
-          <td>{{ret.qty}}</td>
+          <td class="txt-right">{{ret.qty}}</td>
         </tr>
       
       </tbody>
