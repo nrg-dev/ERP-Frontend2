@@ -14,10 +14,12 @@ import { PlaceholderComponent } from "./components/placeholder/placeholder.compo
 import { HideInPrintDirective } from "./directives/hide-in-print/hide-in-print.directive";
 import { IdFilterPipe } from "./pipes/id-filter.pipe";
 import { CommonService } from "./common/_services/common.service";
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
+    FooterComponent,
     UserAvatarComponent,
     SidebarNavComponent,
     PlaceholderComponent,
