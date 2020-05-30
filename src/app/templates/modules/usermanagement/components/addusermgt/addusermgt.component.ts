@@ -164,5 +164,7 @@ export class AddUserMgtComponent implements OnInit {
         }
       );
     });
+
+    this.dialogRef.close();
   }
 }

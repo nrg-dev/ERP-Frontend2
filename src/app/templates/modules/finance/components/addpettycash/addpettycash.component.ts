@@ -12,6 +12,8 @@ export interface UsersData {
   type: string;
   toPerson: string;
   totalAmount: string;
+  dialogText: string;
+  dialogTitle: string;
 }
 
 

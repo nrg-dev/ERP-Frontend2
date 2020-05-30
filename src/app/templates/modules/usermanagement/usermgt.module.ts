@@ -52,16 +52,16 @@ import { AddUserMgtComponent } from "./components/addusermgt/addusermgt.componen
 import { CustomMaterialModule } from "src/app/core/material.module";
 import { FormsModule } from "@angular/forms";
 
-import { MultiSelectComponent, MultiSelectModule } from '@syncfusion/ej2-angular-dropdowns';
-import { CheckBoxComponent, CheckBoxModule } from '@syncfusion/ej2-angular-buttons';
+//import { MultiSelectComponent, MultiSelectModule } from '@syncfusion/ej2-angular-dropdowns';
+//import { CheckBoxComponent, CheckBoxModule } from '@syncfusion/ej2-angular-buttons';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
     UserManagementComponent,
     AddUserMgtComponent,
-    MultiSelectComponent,
-    CheckBoxComponent,
+    //MultiSelectComponent,
+    //CheckBoxComponent,
 
   ],
   imports: [
@@ -104,8 +104,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-    MultiSelectModule,
-    CheckBoxModule,
+    //MultiSelectModule,
+    //CheckBoxModule,
     NgMultiSelectDropDownModule.forRoot(),
     DataTablesModule.forRoot()
   ],
