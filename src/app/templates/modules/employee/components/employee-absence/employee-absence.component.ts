@@ -69,6 +69,6 @@ export class EmployeeAbsenceComponent implements OnInit {
     //       }
     //     });
     // } 
-  }
+    }
   }
 }
