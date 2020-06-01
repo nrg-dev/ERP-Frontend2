@@ -26,7 +26,7 @@
           <th>Email</th>
           <th>Phone</th>
           <th>Joined Date</th>
-          <th style="width: 13% !important;">Status</th>
+          <th>Status</th>
         </tr>
       </thead>
       <tbody *ngFor="let item of employeesDS; let i = index"
@@ -48,7 +48,7 @@
             <app-employee-checkin-checkout *ngIf="isShowHideCheckinCheckout[i]" (closeCheckinCheckoutPopup)="closePopup($event, i,'checkinCheckout')" (enableAbsentIcon)="enableAbsentIcon($event, i)" [absenceItem]="item" [getAbsentDetail]="getAbsentDetail" [currentTime]="todayTime"></app-employee-checkin-checkout>
             {{item.addeddate}}
           </td>
-          <td style="width: 13% !important;">{{item.status}}
+          <td>{{item.status}}
             <span class="edit-delete-icon user-icon" class="edit-delete-icon user-icon">
               <span class="fas fa-list-alt" style="font-size: 16px;margin-top: -20px;margin-right: 5px;text-align: right;" (click) = "dailyReport(i, item)"></span>
               <span class="fas fa-user-clock" style="margin-right: 5px;font-size: 16px;text-align: right;" (click)="checkinCheckout(i, item)"></span>
