@@ -1,8 +1,5 @@
 @import "_base";
 
-.col-12 {
-  height: 90vh; 
-}
 h4{
   font-size: 18px;
 }
@@ -40,6 +37,7 @@ tbody {
   font-size: $table-font-size;
   border-top:5px solid $main-bg;   
   color:$table-row-font-color;
+  vertical-align: middle;
 }
 .table > tbody > tr:hover {
   background-color: $header-bg;
