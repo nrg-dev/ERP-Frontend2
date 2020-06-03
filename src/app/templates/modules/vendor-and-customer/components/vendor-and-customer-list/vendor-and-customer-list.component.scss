@@ -1,7 +1,7 @@
 @import "_base";
 
 h4{
-  font-size: 18px;
+  font-size: $header-label;
 }
 #table-outer-div thead th { 
   position: sticky; 

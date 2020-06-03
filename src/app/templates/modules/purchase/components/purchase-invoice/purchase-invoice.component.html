@@ -1,7 +1,7 @@
 
 <div class="row">
   <div class="col-4">
-        <h4>Purchase Invoices</h4>             
+      <h4>Purchase Invoices</h4>             
   </div>
   <div class="col-8">
     <button [disabled]="!isAddStock ? true:false"
@@ -31,8 +31,8 @@
           <th class="txt-right">Sub Total</th>
           <th class="txt-right">Delivery Cost</th>
           <th class="txt-right">Total</th>
-          <th class="txt-right">Invoice Status</th>
-          <th class="txt-right">Stock Status</th>
+          <th>Invoice Status</th>
+          <th>Stock Status</th>
           <th class="txt-right"></th>
         </tr>
       </thead>
@@ -54,8 +54,8 @@
           <td class="txt-right">{{item.subtotal}}</td>
           <td class="txt-right">{{item.deliveryprice}}</td>
           <td class="txt-right">{{item.totalprice}}</td>
-          <td class="txt-right">{{item.status}}</td>
-          <td class="txt-right">{{item.stockstatus}}</td>
+          <td>{{item.status}}</td>
+          <td>{{item.stockstatus}}</td>
           <td class="txt-right">
             <span class="edit-delete-icon invoice-view">
               <a href="javascript:0" (click)="generatePdf(item.base64)" class="pdf-icon"><i  class="fa">&#xf1c1;</i></a>

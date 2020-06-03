@@ -1,7 +1,7 @@
 @import "_base";
 
 h4{
-  font-size: 18px;
+  font-size: $header-label;
 }
 
 table  { 
@@ -53,21 +53,6 @@ tr[ng-click] {
   padding-left: 0px;
   padding-top: 3px;
 }
-button {
-  overflow: visible;
-  white-space: nowrap;
-  text-align: left;
-  font-family: $font-family;
-  font-style: normal;
-  float: right;
-  color: $white;
-  background:$btn-bg;
-  border: 1px solid $btn-bg;
-  border-radius: 20px;
-  padding: 0.5rem;
-  font-size: $table-font-size;
-  margin-top: 12px;
-}
 
 .create-button {
   float: right;
@@ -75,7 +60,11 @@ button {
   background: $btn-bg;
   border: 1px solid $btn-bg;
   margin-right: 10px;
-  padding:8px 20px;
+  font-family: $font-family;
+  border-radius: $btn-border-radius;
+  padding: $btn-padding;
+  font-style: normal;
+  font-size: $table-font-size;
 }
 
 .wid-50px{width: 50px!important;}
@@ -108,7 +97,6 @@ input[type=checkbox]:checked:after {
   width: 5px;
   height: 10px;
   border: solid $white;
-  /* background: #174E76; */
   border-width: 0 2px 2px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
@@ -116,6 +104,9 @@ input[type=checkbox]:checked:after {
   position: absolute;
   top: 1px;
   left: 8px;
+}
+input[type=checkbox]:checked:before{
+  background: #174E76;
 }
 .edit-delete-icon {
   display: none;
