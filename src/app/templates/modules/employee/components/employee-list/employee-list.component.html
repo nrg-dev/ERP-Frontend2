@@ -25,7 +25,7 @@
           <th>Email</th>
           <th>Phone</th>
           <th>Joined Date</th>
-          <th>Status</th>
+          <th class="wid-90px">Status</th>
         </tr>
       </thead>
       <tbody *ngFor="let item of employeesDS; let i = index"
@@ -47,15 +47,14 @@
             <app-employee-checkin-checkout *ngIf="isShowHideCheckinCheckout[i]" (closeCheckinCheckoutPopup)="closePopup($event, i,'checkinCheckout')" (enableAbsentIcon)="enableAbsentIcon($event, i)" [absenceItem]="item" [getAbsentDetail]="getAbsentDetail" [currentTime]="todayTime"></app-employee-checkin-checkout>
             {{item.addeddate}}
           </td>
-          <td>{{item.status}}
+          <td class="wid-75px">{{item.status}}
             <span class="edit-delete-icon user-icon">
-              <span class="fas fa-list-alt" style="font-size: 16px;margin-top: -20px;margin-right: 5px;text-align: right;" (click) = "dailyReport(i, item)"></span>
-              <span class="fas fa-user-clock" style="margin-right: 5px;font-size: 16px;text-align: right;" (click)="checkinCheckout(i, item)"></span>
-              <span class="fas fa-calendar-times" [ngClass]="isAbsentMouseover[i] ? 'absent-disabled' : ''" (mouseover)="absentMouseover(i, item)" style="margin-right: 10px;font-size: 16px;text-align: right;" (click)="absentPopup(i, item)"></span>
+              <span class="fas fa-list-alt" (click)="dailyReport(i, item)"></span>
+              <span class="fas fa-user-clock" (click)="checkinCheckout(i, item)"></span>
+              <span class="fas fa-calendar-times" [ngClass]="isAbsentMouseover[i] ? 'absent-disabled' : ''" (mouseover)="absentMouseover(i, item)" (click)="absentPopup(i, item)"></span>
             </span>
           </td>
         </tr>
-      
       </tbody>
     </table>
   </div>
