@@ -19,6 +19,7 @@ export class UnitsComponent implements OnInit {
   unitlist:any = {};
   model:any = {};
   dialogConfig = new MatDialogConfig();
+  enable: boolean;
 
   ngOnInit() {
     this.model.rowId = "RowId";
@@ -31,6 +32,19 @@ export class UnitsComponent implements OnInit {
      .subscribe(
        data => {
          this.unitlist = data;
+         if(this.unitlist.length > 0) {
+          this.enable = true;
+        } else {
+          this.enable = false;
+          setTimeout(() => {
+            this.snackBar.open("Unit data is empty", "dismiss", {
+              duration: 300000, // 5 mints
+              panelClass: ["warning"],
+              verticalPosition: "top",
+              horizontalPosition: 'center'
+            });
+          });
+        }
        },
        error => {
          setTimeout(() => {
@@ -52,14 +66,23 @@ export class UnitsComponent implements OnInit {
       'top': '100',
       left: '100'
     };
-    this.dialog.open(AddunitsComponent,{ 
-      panelClass: 'addNewUnit',
-      data: {id: id, unitname: unitname,unitsymbol: unitsymbol,quantityname:quantityname,quantitysymbol:quantitysymbol,dimensionsymbol:dimensionsymbol},
-      height:'90vh',width:'150vh',
-    })
-    .afterClosed().subscribe(result => {
-      this.loadUnits();
-    }); 
+    let dialogRef = this.dialog
+      .open(AddunitsComponent, {
+        panelClass: 'addNewUnit',
+        data: {id: id, unitname: unitname,unitsymbol: unitsymbol,quantityname:quantityname,quantitysymbol:quantitysymbol,dimensionsymbol:dimensionsymbol},
+        height:'90vh',
+        width:'150vh',
+        disableClose: true,
+        hasBackdrop: false
+      })
+      dialogRef.backdropClick().subscribe(result => {
+        console.log('backdropClick');
+        this.ngOnInit();
+      });                
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        this.ngOnInit();
+      });
   }
 
   unitdelete(id:string){

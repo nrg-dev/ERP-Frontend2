@@ -8,20 +8,10 @@
   color:$white;
 }
 
-.create-button {
-  float: right;
-  color: $white;
-  background: $btn-bg;
-  border: 1px solid $btn-bg;
-  margin-right: 10px;
-  //font-family: $font-family;
-  //padding:8px 20px;
-  border-radius: $btn-border-radius;
-  padding: $btn-padding;
-}
-#table-outer-div{ 
-  overflow-y: auto; 
-  height: 75vh; 
+@import "_base";
+
+h4{
+  font-size: $header-label;
 }
 #table-outer-div thead th { 
   position: sticky; 
@@ -32,6 +22,7 @@
 table  { 
   border-collapse: collapse; 
   width: 100%; 
+  margin-top: 1rem;
 }
 th { 
   background:$table-header-bg; 
@@ -56,6 +47,7 @@ tbody {
   font-size: $table-font-size;
   border-top:5px solid $main-bg;   
   color:$table-row-font-color;
+  vertical-align: middle;
 }
 .table > tbody > tr:hover {
   background-color: $header-bg;
@@ -63,6 +55,7 @@ tbody {
 .table > tbody > tr:hover, .table > tbody > tr:hover span  {
   background-color: $header-bg;
 }
+
 table tbody tr td span{
   display: none;
 }
@@ -70,9 +63,28 @@ table tbody tr td span{
 table tbody tr:hover td span{
   display: block !important;
 }
-tr[ng-click] {
-  cursor: pointer;
+
+.txt-right{
+  text-align: right;
 }
+
+.create-button {
+  float: right;
+  color: $white;
+  background: $btn-bg;
+  border: 1px solid $btn-bg;
+  margin-right: 10px;
+  font-family: $font-family;
+  border-radius: $btn-border-radius;
+  padding: $btn-padding;
+  font-style: normal;
+  font-size: $table-font-size;
+}
+.wid-50px{
+  width: 50px!important;
+}
+.mar-let-40px{margin-left: 40px;}
+.wid-130px{width: 130px!important;}
 
 .edit-delete-icon {
   display: none;
@@ -80,16 +92,16 @@ tr[ng-click] {
   position: relative;
   height: 20px;
   top: 0px;
-  margin-top: 5px;
+  margin-top: -18px;
 }
-.wid-150px{width: 150px!important;}
 
-.mar-let-40px{
-  margin: -13px 0px 0px 50px;
+.fa-pen {
+  float: left;
   cursor: pointer;
 }
-.mar-let-30px{
-  margin: -13px 0px 0px 100px;
+
+.fa-trash {
+  float: right;
   cursor: pointer;
 }
 // iPhone media query start
@@ -100,7 +112,7 @@ tr[ng-click] {
      font-size:12px;
   }
   .table>tbody>tr>td{
-  font-size:10px;
+    font-size:10px;
   }
   .table>thead>tr>th{
     font-size:10px;
@@ -113,7 +125,7 @@ tr[ng-click] {
      font-size:12px;
   }
   .table>tbody>tr>td{
-  font-size:10px;
+    font-size:10px;
   }
   .table>thead>tr>th{
     font-size:10px;
@@ -127,7 +139,7 @@ tr[ng-click] {
      font-size:12px;
   }
   .table>tbody>tr>td{
-  font-size:10px;
+    font-size:10px;
   }
   .table>thead>tr>th{
     font-size:10px;
@@ -141,49 +153,50 @@ tr[ng-click] {
      font-size:12px;
   }
   .table>tbody>tr>td{
-  font-size:10px;
+    font-size:10px;
   }
   .table>thead>tr>th{
     font-size:10px;
   } 
 }
-// iPhone 2G-4S in portrait
-@media only screen and (min-width: 320px) and (max-width: 480px) { 
+ // iPhone 2G-4S in portrait
+ @media only screen and (min-width: 320px) and (max-width: 480px) { 
   h3 {
      font-size:12px;
   }
   .table>tbody>tr>td{
-  font-size:10px;
+    font-size:10px;
   }
   .table>thead>tr>th{
     font-size:10px;
   } 
 }
 
- // iPhone media query end
+// iPhone media query end
 
- // Galaxy S6
+// Galaxy S6
 
- // Xperia Z3
+// Xperia Z3
 
- // Lumia 920
+// Lumia 920
 
- // Nexus 6
+// Nexus 6
 
- // Iphone 6 Plus
+// Iphone 6 Plus
 
- // Galaxy Note 4 
+// Galaxy Note 4 
 
- // Galaxy Note II 
+// Galaxy Note II 
 
- // iPad Air
+// iPad Air
 
- // Galaxy Tab 2 10.1
+// Galaxy Tab 2 10.1
 
- // Galaxy Nexus 7
+// Galaxy Nexus 7
 
- // Kindle Fire
+// Kindle Fire
 
- // Kindle Fire HD 7"
+// Kindle Fire HD 7"
 
- // Kindle Fire HD 8.9"
+// Kindle Fire HD 8.9"
+

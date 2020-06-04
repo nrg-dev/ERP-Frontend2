@@ -83,6 +83,7 @@ export class AddunitsComponent implements OnInit {
               verticalPosition: 'top'      
             });
           });
+          this.unitClose();
       },
       error => {
         setTimeout(() => {
@@ -110,6 +111,7 @@ export class AddunitsComponent implements OnInit {
               verticalPosition: 'top'      
             });
           });
+          this.unitClose();
       },
       error => {
         setTimeout(() => {
