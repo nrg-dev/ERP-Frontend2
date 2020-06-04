@@ -1619,7 +1619,8 @@ productlist(number: string){
     };
     this.dialog.open(AddnewcategoryComponent,{
       //height:'55vh',
-      width:'70vh',
+      width:'90vh',
+      height:'40vh',
       panelClass: 'addnewcategory',
       disableClose: true,
       hasBackdrop: false
@@ -1642,6 +1643,8 @@ productlist(number: string){
     };
     this.dialog.open(AddpromotionComponent,{
       panelClass: 'addpromotion',
+      width:'120vh',
+      height:'70vh',
       data: {title: title, key: show},
       disableClose: true,
       hasBackdrop: false
@@ -1661,6 +1664,7 @@ productlist(number: string){
       left: '100'
     };
     this.dialog.open(CategoryeditdeleteComponent,{
+      width:'90vh',
       data: this.categorylist,
       panelClass: 'categoryeditdelete'
 
@@ -1681,6 +1685,8 @@ productlist(number: string){
       left: '100'
     };
     this.dialog.open(DiscounteditComponent,{
+      width:'120vh',
+      height:'70vh',
       panelClass: 'discountedit',
       data: discountcode,
     })
@@ -1751,6 +1757,8 @@ productlist(number: string){
       left: '100'
     };
     this.dialog.open(ProductviewComponent,{ 
+      width:'120vh',
+      height:'70vh',
       panelClass: 'productview'
     })
     .afterClosed().subscribe(result => {
@@ -1765,6 +1773,8 @@ productlist(number: string){
       left: '100'
     };
     this.dialog.open(ProducteditComponent,{ 
+      width:'120vh',
+      height:'70vh',
       panelClass: 'productedit'
     })
     .afterClosed().subscribe(result => {

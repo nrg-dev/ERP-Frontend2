@@ -1,37 +1,14 @@
-
 @import "_base";
 
-.create-button {
-  float: right;
-  color: $white;
-  background: $btn-bg;
-  border: 1px solid $btn-bg;
-  margin-right: 10px;
-  //font-family: $font-family;
-  //padding:8px 20px;
-  border-radius: $btn-border-radius;
-  padding: $btn-padding;
-}
-::ng-deep .mat-drawer-content {
-  position: relative;
-  z-index: 1;
-  display: block;
-  height: 100%;
-  overflow: hidden !important;
+h4{
+  font-size: $header-label;
 }
 
-.col-12{
-  overflow-y: auto; 
-  height: 75vh;
-  font-family:$font-family;
-}
-
-/* Just common table stuff. Really. */
 table  { 
   border-collapse: collapse; 
   width: 100%; 
+  margin-top: 1rem;
 }
-
 th { 
   background:$table-header-bg; 
 }
@@ -55,6 +32,7 @@ tbody {
   font-size: $table-font-size;
   border-top:5px solid $main-bg;   
   color:$table-row-font-color;
+  vertical-align: middle;
 }
 .table > tbody > tr:hover {
   background-color: $header-bg;
@@ -62,6 +40,7 @@ tbody {
 .table > tbody > tr:hover, .table > tbody > tr:hover span  {
   background-color: $header-bg;
 }
+
 table tbody tr td span{
   display: none;
 }
@@ -69,23 +48,33 @@ table tbody tr td span{
 table tbody tr:hover td span{
   display: block !important;
 }
-tr[ng-click] {
-  cursor: pointer;
-}
-/* .mar-let-40px{
-  margin: -18px 60px 0px 0px;
-  float: right;
-}
-.mar-let-30px{
-  margin: -18px 10px 0px 0px;
-  float: right;
-} */
 
-.loadingimage{
-	left: 90%;
-	position: absolute;
-	margin-top: 30%;
+.txt-right{
+  text-align: right;
 }
+.custom-control {
+  padding-left: 0px;
+  padding-top: 3px;
+}
+
+.create-button {
+  float: right;
+  color: $white;
+  background: $btn-bg;
+  border: 1px solid $btn-bg;
+  margin-right: 10px;
+  font-family: $font-family;
+  border-radius: $btn-border-radius;
+  padding: $btn-padding;
+  font-style: normal;
+  font-size: $table-font-size;
+}
+
+.wid-50px{width: 50px!important;}
+.wid-100px{width: 100px!important;}
+.font-bld{ font-weight: bold;}
+.font-norm{ font-weight: normal;}
+.mar-let-40px{margin-left: 40px;}
 
 .edit-delete-icon {
   display: none;
@@ -93,25 +82,22 @@ tr[ng-click] {
   position: relative;
   height: 20px;
   top: 0px;
-  margin-top: 5px;
+  margin-top: -18px;
 }
 
 .fa-pen {
   float: left;
-  font-size: 12px;
   cursor: pointer;
-  margin-top: -15px;
-  margin-left: 55px
 }
 
 .fa-trash {
   float: right;
-  font-size: 12px;
   cursor: pointer;
-  margin-top: -15px;
 }
-.txt-right{
-  text-align: right;
+.loadingimage{
+	left: 90%;
+	position: absolute;
+	margin-top: 30%;
 }
 // iPhone media query start
 
@@ -121,7 +107,7 @@ tr[ng-click] {
      font-size:12px;
   }
   .table>tbody>tr>td{
-  font-size:10px;
+    font-size:10px;
   }
   .table>thead>tr>th{
     font-size:10px;
@@ -134,7 +120,7 @@ tr[ng-click] {
      font-size:12px;
   }
   .table>tbody>tr>td{
-  font-size:10px;
+    font-size:10px;
   }
   .table>thead>tr>th{
     font-size:10px;
@@ -148,7 +134,7 @@ tr[ng-click] {
      font-size:12px;
   }
   .table>tbody>tr>td{
-  font-size:10px;
+    font-size:10px;
   }
   .table>thead>tr>th{
     font-size:10px;
@@ -162,7 +148,7 @@ tr[ng-click] {
      font-size:12px;
   }
   .table>tbody>tr>td{
-  font-size:10px;
+    font-size:10px;
   }
   .table>thead>tr>th{
     font-size:10px;
@@ -174,37 +160,37 @@ tr[ng-click] {
      font-size:12px;
   }
   .table>tbody>tr>td{
-  font-size:10px;
+    font-size:10px;
   }
   .table>thead>tr>th{
     font-size:10px;
   } 
 }
 
- // iPhone media query end
+// iPhone media query end
 
- // Galaxy S6
+// Galaxy S6
 
- // Xperia Z3
+// Xperia Z3
 
- // Lumia 920
+// Lumia 920
 
- // Nexus 6
+// Nexus 6
 
- // Iphone 6 Plus
+// Iphone 6 Plus
 
- // Galaxy Note 4 
+// Galaxy Note 4 
 
- // Galaxy Note II 
+// Galaxy Note II 
 
- // iPad Air
+// iPad Air
 
- // Galaxy Tab 2 10.1
+// Galaxy Tab 2 10.1
 
- // Galaxy Nexus 7
+// Galaxy Nexus 7
 
- // Kindle Fire
+// Kindle Fire
 
- // Kindle Fire HD 7"
+// Kindle Fire HD 7"
 
- // Kindle Fire HD 8.9"
+// Kindle Fire HD 8.9"
