@@ -2,10 +2,8 @@
 @import "_base";
 
 
-.col-12{ 
-  overflow-y: auto; 
-  overflow-x: auto; 
-  height: 75vh; 
+h4{ 
+  font-size: $header-label; 
 }
 
 ::ng-deep .mat-dialog-container {
