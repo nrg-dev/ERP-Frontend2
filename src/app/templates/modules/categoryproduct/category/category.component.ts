@@ -19,6 +19,7 @@ export class CategoryComponent implements OnInit {
   categorylist:any = {};
   model:any = {};
   dialogConfig = new MatDialogConfig();
+  enable: boolean;
 
   ngOnInit() {
     this.loadCategory();
@@ -28,7 +29,20 @@ export class CategoryComponent implements OnInit {
     this.catprodservice.load()
      .subscribe(
        data => {
-         this.categorylist = data;
+          this.categorylist = data;
+          if(this.categorylist.length > 0){
+            this.enable = true;
+          }else{
+            this.enable = false;
+            setTimeout(() => {
+              this.snackBar.open("Category data is empty", "dismiss", {
+                duration: 300000, 
+                panelClass: ["warning"],
+                verticalPosition: "top",
+                horizontalPosition: 'center'
+              });
+            });
+          }
        },
        error => {
          setTimeout(() => {
@@ -50,10 +64,11 @@ export class CategoryComponent implements OnInit {
       'top': '100',
       left: '100'
     };
-    this.dialog.open(AddnewcategoryComponent,{ 
-      panelClass: 'addNewCategory',
+    this.dialog.open(AddnewcategoryComponent,{
+      width:'90vh',
+      height:'40vh',
+      panelClass: 'addnewcategory',
       data: {categorycode: categorycode, name: name,desc: desc},
-      height:'55vh',width:'80vh',
       disableClose: true,
       hasBackdrop: false
     })

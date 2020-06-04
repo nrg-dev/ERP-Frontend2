@@ -1,13 +1,13 @@
 <div class="row">
-  <div class="col-4">
-  <h3>Category List</h3> 
-</div>
+  <div class="col-12">
+    <h4>Category List</h4> 
+  </div>
 </div>
 
 <div class="row">
   <div class="col-12">
 
-      <table class="table">
+      <table class="table" *ngIf="enable">
         <thead>
           <tr>
             <th>Category Code</th>
@@ -20,9 +20,9 @@
             <td>{{c.categorycode}}</td>
             <td>{{c.name}}</td>
             <td>{{c.description}}
-              <span>
+              <span class="edit-delete-icon user-icon">
+                <span (click)="categorydelete(c.categorycode)" class="fas fa-trash"></span>
                 <span (click)="categoryedit(c.categorycode,c.name,c.description)" class="fas fa-pen mar-let-40px"></span>
-                <span (click)="categorydelete(c.categorycode)" class="fas fa-trash mar-let-30px"></span>
               </span>
             </td>
       
