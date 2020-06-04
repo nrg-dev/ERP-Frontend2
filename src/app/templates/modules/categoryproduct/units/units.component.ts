@@ -70,10 +70,8 @@ export class UnitsComponent implements OnInit {
       .open(AddunitsComponent, {
         panelClass: 'addNewUnit',
         data: {id: id, unitname: unitname,unitsymbol: unitsymbol,quantityname:quantityname,quantitysymbol:quantitysymbol,dimensionsymbol:dimensionsymbol},
-        height:'90vh',
+        height:'110vh',
         width:'150vh',
-        disableClose: true,
-        hasBackdrop: false
       })
       dialogRef.backdropClick().subscribe(result => {
         console.log('backdropClick');
