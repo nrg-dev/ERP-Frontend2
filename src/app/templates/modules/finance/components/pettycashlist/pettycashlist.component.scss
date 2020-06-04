@@ -1,6 +1,10 @@
 
 @import "_base";
 
+h4{
+  font-size: $header-label;
+}
+
 ::ng-deep .mat-dialog-container {
   background:$po-order-form-bg !important;
   border-radius: $dialog-border-radius;
@@ -22,17 +26,12 @@
   margin-top: 12px;
   margin-right: 10px;
 }
-.col-12{ 
-  overflow-y: auto; 
-  overflow-x: auto; 
-  height: 75vh; 
-  margin-top:25px;
-}
 
 /* Just common table stuff. Really. */
 table  { 
   border-collapse: collapse; 
   width: 100%; 
+  margin-top: 1rem;
 }
 th { 
   background:$table-header-bg; 
@@ -57,6 +56,7 @@ tbody {
   font-size: $table-font-size;
   border-top:5px solid $main-bg;   
   color:$table-row-font-color;
+  vertical-align: middle;
 }
 .table > tbody > tr:hover {
   background-color: $header-bg;
