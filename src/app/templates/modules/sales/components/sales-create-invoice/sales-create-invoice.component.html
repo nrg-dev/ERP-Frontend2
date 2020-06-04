@@ -23,7 +23,7 @@
               <span>{{ invoiceItem.categoryname }}</span>
             </div>
             <div>
-              {{ invoiceItem.subtotal }}
+              {{ invoiceItem.subtotal | number : '1.3-3' }}
             </div>
           </div>
         </div>
@@ -63,13 +63,13 @@
                 <span>{{ item.categoryname }}</span>
               </div>
               <div>{{ item.qty }} {{ item.unit }}</div>
-              <div>{{ item.subtotal }}</div>
+              <div>{{ item.subtotal | number : '1.3-3' }}</div>
             </div>
           </div>
           <div class="invoice-footer">
             <div>
               <div>Subtotal</div>
-              <div>{{ getSubTotal() }}</div>
+              <div>{{ getSubTotal() | number : '1.3-3' }}</div>
             </div>
             <div class='sub-gross'>
               <div>Delivery Charges</div>
@@ -81,7 +81,7 @@
               <div><span>Total</span></div>
               <div>
                
-                <span>{{ getTotal() }}</span>
+                <span>{{ getTotal() | number : '1.3-3' }}</span>
               </div>
             </div>
           </div>

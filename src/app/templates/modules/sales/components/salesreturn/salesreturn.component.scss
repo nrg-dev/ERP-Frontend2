@@ -1,10 +1,9 @@
 
 @import "_base";
 
-.col-12 {
-  height: 90vh; 
+h4{
+  font-size: $header-label;
 }
-
 #table-outer-div thead th { 
   position: sticky; 
   top: 0; 

@@ -1,35 +1,13 @@
 
 @import "_base";
 
-.col-12 {
-  overflow-y: auto; 
-  height: 90vh; 
+h4{
+  font-size: $header-label;
+  vertical-align:middle; 
 }
-
-//#title{
- //height: 6vh; 
-  //position:fixed;
-  //.col-12[_ngcontent-hsx-c7] {
-  //  overflow-y: none !important;
-   // height: 75vh;
-//}
-//  width: 100%;
-//}
-
-//#table-outer-div{ 
-  //overflow-y: auto; 
-  //height: 75vh; 
-//}
-#table-outer-div thead th { 
-  position: sticky; 
-  top: 0; 
-}
-
-/* Just common table stuff. Really. */
 table  { 
   border-collapse: collapse; 
   width: 100%; 
-  overflow-y: auto; 
 }
 th { 
   background:$table-header-bg; 
@@ -54,6 +32,7 @@ tbody {
   font-size: $table-font-size;
   border-top:5px solid $main-bg;   
   color:$table-row-font-color;
+  vertical-align: middle;
 }
 .table > tbody > tr:hover {
   background-color: $header-bg;
