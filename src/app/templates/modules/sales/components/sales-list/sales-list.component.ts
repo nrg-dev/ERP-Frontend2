@@ -16,8 +16,7 @@ import { SalesCreateReturnComponent } from '../sales-create-return/sales-create-
   selector: "app-saleslist",
   templateUrl: "./sales-list.component.html",
   styleUrls: [
-    "./sales-list.component.scss",
-    "./sales-list.component.css",
+    "./sales-list.component.scss"
   ],
 })
 export class SalesListComponent implements OnInit, OnDestroy {
