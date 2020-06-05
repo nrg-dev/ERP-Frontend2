@@ -10,14 +10,14 @@
               <input type="file" (change)="fileChangeEvent($event)" class="fileInputProfile">
               <div class="img-space">  
                 <div *ngIf="div1 && !isImageSaved">
-                  <img id="imageplaceholder" [src]="getImage(model.customerbase64)" 
+                  <img id="addproductpic-box" [src]="getImage(model.customerbase64)" 
                     onerror="this.src='/assets/images/no-image.png'" class="img-responsive" />
                 </div> 
                 <div *ngIf="isImageSaved">
-                  <img [src]="cardImageBase64" />
+                  <img id="addproductpic-box" [src]="cardImageBase64" />
                 </div>  
                 <div *ngIf="!isImageSaved && !div1">    
-                  <img id="imageplaceholder" src="./../../assets/images/placeholder.png" class="img-responsive"> 
+                  <img id="addproductpic-box" src="./../../assets/images/placeholder.png" class="img-responsive"> 
                 </div>
 
                 <!-- <ng-container *ngIf="isImageSaved; else elseTemplate">
