@@ -163,11 +163,11 @@ enable: boolean;
       height:'400vh',
       data: data,
       disableClose: true,
-      hasBackdrop: false
+     // hasBackdrop: false
     })
-    .afterClosed().subscribe(result => {
-      this.allemplist();
-    });
+    //.afterClosed().subscribe(result => {
+    //  this.allemplist();
+   // });
     
   }
 
