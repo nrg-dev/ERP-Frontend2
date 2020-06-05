@@ -135,7 +135,7 @@ export class CustomerComponent implements OnInit {
       panelClass: 'addcustomer',
       data: data,
       disableClose: true,
-      hasBackdrop: true
+      //hasBackdrop: true
     })
     dialogRef.backdropClick().subscribe(result => {
       this.getAllCustomerDetails();
