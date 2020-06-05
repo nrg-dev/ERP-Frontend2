@@ -163,7 +163,7 @@ enable: boolean;
       height:'400vh',
       data: data,
       disableClose: true,
-      hasBackdrop: true
+     // hasBackdrop: true
     })
     //.afterClosed().subscribe(result => {
     //  this.allemplist();

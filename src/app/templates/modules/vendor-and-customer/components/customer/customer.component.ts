@@ -139,7 +139,7 @@ export class CustomerComponent implements OnInit {
       panelClass: 'addcustomer',
       data: data,
       disableClose: true,
-      hasBackdrop: false
+     // hasBackdrop: false
     })
     .afterClosed().subscribe(result => {
      this.getAllCustomerDetails();
