@@ -178,7 +178,7 @@ export class VendorAndCustomerListComponent implements OnInit, OnDestroy {
       panelClass: 'addcustomer',
       data: data,
       disableClose: true,
-      hasBackdrop: false
+      hasBackdrop: true
     })
     .afterClosed().subscribe(result => {
       this.ngOnInit();

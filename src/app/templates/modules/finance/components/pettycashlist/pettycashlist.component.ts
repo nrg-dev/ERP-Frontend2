@@ -87,7 +87,7 @@ export class PettycashlistComponent implements OnInit {
       height:'80vh',
       data: data,
       disableClose: true,
-      hasBackdrop: false
+      hasBackdrop: true
     })
     dialogRef.backdropClick().subscribe(result => {
       this.load();

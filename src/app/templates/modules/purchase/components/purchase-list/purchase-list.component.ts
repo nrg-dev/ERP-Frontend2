@@ -255,7 +255,7 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
         height:'400vh',
         data: data,
         disableClose: true,
-        hasBackdrop: false
+        hasBackdrop: true
       })
       dialogRef.backdropClick().subscribe(result => {
         console.log('backdropClick');
@@ -412,7 +412,7 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
       width:'120vh',
       height:'200vh',
       //disableClose: true,
-      //hasBackdrop: false
+      //hasBackdrop: true
       data: data,
     })
     dialogRef.backdropClick().subscribe(result => {

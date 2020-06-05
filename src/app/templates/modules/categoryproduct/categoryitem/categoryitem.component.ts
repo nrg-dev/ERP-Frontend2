@@ -1623,7 +1623,7 @@ productlist(number: string){
       height:'40vh',
       panelClass: 'addnewcategory',
       disableClose: true,
-      hasBackdrop: false
+      hasBackdrop: true
      // data: {dialogTitle: "hello", dialogText: "text"},
     })
     .afterClosed().subscribe(result => {
@@ -1647,7 +1647,7 @@ productlist(number: string){
       height:'70vh',
       data: {title: title, key: show},
       disableClose: true,
-      hasBackdrop: false
+      hasBackdrop: true
     })
     .afterClosed().subscribe(result => {
       this.alldiscountList();
@@ -1742,7 +1742,7 @@ productlist(number: string){
     //  width:'150vh',
       panelClass: 'addnewproduct',
       disableClose: true,
-      hasBackdrop: false
+      hasBackdrop: true
     })
     .afterClosed().subscribe(result => {
       this.allproductList();

@@ -254,7 +254,7 @@ export class SalesListComponent implements OnInit, OnDestroy {
         height:'400vh',
         data: data,
         disableClose: true,
-        hasBackdrop: false
+        hasBackdrop: true
       })
       dialogRef.backdropClick().subscribe(result => {
         console.log('Sales Order backdropClick');
