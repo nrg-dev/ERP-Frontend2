@@ -53,23 +53,9 @@ export class CustomerComponent implements OnInit {
   vendors: MatTableDataSource<Vendor>;
   vendor: Vendor;
   isEditMode: boolean;
-  displayedColumns: string[] = [
-    "vendorCode",
-    "vendorName",
-    "addeddate",
-    "phone",
-    "action"
-  ];
-
   customers: MatTableDataSource<Customer>;
   customer: Customer;
-  displayedColumns2: string[] = [
-    "custcode",
-    "customerName",
-    "addeddate",
-    "phoneNumber",
-    "action"
-  ];
+  button:string;
 
   constructor(
     private vendorService: VendorService,
@@ -127,22 +113,35 @@ export class CustomerComponent implements OnInit {
     );
   }
 
-  addCustomer() {
-    let data = {};
+  addCustomer(id:string,custcode:string,customerName:string,country:string,
+    address:string,email:string,city:string,phoneNumber:string,customerbase64:string) {
+    let data: any;
+    if (id !== null) {
+      this.button = "Update";
+    } else {
+      this.button = "Add";
+    }
+    data = { dialogText: this.button, id: id, custcode: custcode, 
+      customerName: customerName, country: country, email: email, address: address,
+      city: city, phoneNumber: phoneNumber, customerbase64: customerbase64 };
+
     this.dialogConfig.disableClose = true;
     this.dialogConfig.autoFocus = true;
     this.dialogConfig.position = {
       'top': '1000',
       left: '100'
     };
-    this.dialog.open(CustomerAddComponent,{
+    let dialogRef = this.dialog.open(CustomerAddComponent,{
       panelClass: 'addcustomer',
       data: data,
       disableClose: true,
-      hasBackdrop: false
+      hasBackdrop: true
     })
-    .afterClosed().subscribe(result => {
-     this.getAllCustomerDetails();
+    dialogRef.backdropClick().subscribe(result => {
+      this.getAllCustomerDetails();
+    });                
+    dialogRef.afterClosed().subscribe(result => {
+      this.getAllCustomerDetails();
     });
    
   }
@@ -161,91 +160,32 @@ export class CustomerComponent implements OnInit {
     this.customerService.getComponentType(assignValue);
    }
 
-  deleteVendorCustomer(code: string, deleteType: string) {
+  deleteVendorCustomer(code: string) {
     console.log("code -->" + code);
-    console.log("remove type -->" + deleteType);
-    // if (deleteType == "vendor") {
-    //   this.vendorService.remove(code).subscribe(
-    //     data => {
-    //       this.vendor = data;
-    //       if (this.vendor.status == "Success") {
-    //         setTimeout(() => {
-    //           this.snackBar.open("Vendor is detleted successfully", "", {
-    //             panelClass: ["error"],
-    //             verticalPosition: "top"
-    //           });
-    //         });
-    //         this.getAllVendorDetails();
-    //       } else {
-    //         setTimeout(() => {
-    //           this.snackBar.open(
-    //             "Network error: server is temporarily unavailable",
-    //             "dismss",
-    //             {
-    //               panelClass: ["error"],
-    //               verticalPosition: "top"
-    //             }
-    //           );
-    //         });
-    //       }
-    //     },
-    //     error => {
-    //       setTimeout(() => {
-    //         this.snackBar.open(
-    //           "Network error: server is temporarily unavailable",
-    //           "dismss",
-    //           {
-    //             panelClass: ["error"],
-    //             verticalPosition: "top"
-    //           }
-    //         );
-    //       });
-    //     }
-    //   );
-    // } else {
-      this.customerService.remove(code).subscribe(
-        data => {
-          this.customer = data;
-          if (this.customer.status == "Success") {
-            setTimeout(() => {
-              this.snackBar.open("Customer is detleted successfully", "", {
-                panelClass: ["error"],
-                verticalPosition: "top"
-              });
-            });
-            this.getAllCustomerDetails();
-          } else {
-            setTimeout(() => {
-              this.snackBar.open(
-                "Network error: server is temporarily unavailable",
-                "",
-                {
-                  panelClass: ["error"],
-                  verticalPosition: "top"
-                }
-              );
-            });
-          }
-        },
-        error => {
-          setTimeout(() => {
-            this.snackBar.open(
-              "Network error: server is temporarily unavailable",
-              "",
-              {
-                panelClass: ["error"],
-                verticalPosition: "top"
-              }
-            );
+    this.customerService.remove(code).subscribe(
+      data => {
+        this.customer = data;
+        setTimeout(() => {
+          this.snackBar.open("Customer is detleted successfully", "", {
+            panelClass: ["success"],
+            verticalPosition: "top"
           });
-        }
-      );
-    //}
-
-    //  this.vendorsDS = this.vendorsDS.filter(
-    //   vendor => vendor.vendorCode !== vendorCode
-    // );
-    // this.vendors.data = this.vendorsDS;
+        });
+        this.getAllCustomerDetails();
+      },
+      error => {
+        setTimeout(() => {
+          this.snackBar.open(
+            "Network error: server is temporarily unavailable",
+            "",
+            {
+              panelClass: ["error"],
+              verticalPosition: "top"
+            }
+          );
+        });
+      }
+    );
   }
 
   backNavigation() {

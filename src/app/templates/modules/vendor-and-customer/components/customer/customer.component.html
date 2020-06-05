@@ -8,7 +8,8 @@
         </div>
         <div class="col-8">
           <div style="float: right;">
-            <button  class="create-button" style="float: left; margin-right: 10px; margin-top: 4px;" (click)="addCustomer()">
+            <button  class="create-button" style="float: left; margin-right: 10px; margin-top: 4px;"
+              (click)="addCustomer(null,null,null,null,null,null,null,null)">
               <span class="fas fa-plus"></span> Add New Customer 
             </button>
             <img src="assets/images/print.png" style="margin-right: 10px;" class="img-fluid logo" alt="print"/>
@@ -32,9 +33,9 @@
                 <th style="cursor:pointer;">Name</th>
                 <th style="cursor:pointer;">Country</th>
                 <th>Email</th>
+                <th>Address</th>
                 <th>City</th>
                 <th class="txt-right">Phone Number</th>
-                <th class="txt-right">Contact Number</th>
               </tr>
             </thead>
             <tbody *ngFor="let item of customersDS; let i = index"
@@ -49,15 +50,15 @@
                 <td>{{item.customerName}}</td>
                 <td>{{item.country}}</td>
                 <td>{{item.email}}</td>
+                <td>{{item.address}}</td>
                 <td>{{item.city}}</td>
-                <td class="txt-right">{{item.phoneNumber}}</td>
-                <td class="txt-right">{{item.phoneNumber}}</td>
-                <!-- <td>
+                <td class="txt-right">{{item.phoneNumber}}
                   <span class="edit-delete-icon user-icon">
-                    <span class="fas fa-pen mar-let-40px" (click)="toggleVendorDetailView(row.id)"></span>
-                    <span class="fas fa-trash" (click)="deleteVendorCustomer(row.id, 'vendor')"></span>
+                    <span class="fas fa-trash" (click)="deleteVendorCustomer(item.custcode)"></span>
+                    <span class="fas fa-pen mar-let-40px" (click)="addCustomer(item.id,item.custcode,item.customerName,
+                    item.country,item.address,item.email,item.city,item.phoneNumber,item.customerbase64)"></span>
                   </span>
-                </td> -->
+                </td>
               </tr>
             
             </tbody>

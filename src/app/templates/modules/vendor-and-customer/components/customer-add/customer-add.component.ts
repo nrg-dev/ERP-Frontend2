@@ -5,9 +5,19 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Component, OnInit,Inject,Optional } from '@angular/core';
 import { VendorService } from '../../services/vendor.service';
 import * as _ from 'lodash';
+import { DomSanitizer } from '@angular/platform-browser';
 
 export interface UsersData{
   key:string;
+  id:string;
+  custcode:string;
+  customerName:string;
+  country:string,
+  address:string;
+  email:string;
+  city:string;
+  phoneNumber:string;
+  customerbase64:string;
 }
 @Component({
   selector: 'app-customer-add',
@@ -25,41 +35,68 @@ export class CustomerAddComponent implements OnInit {
   key:string;
   type:boolean;
   labelname:string;
+  btnname:string;
   name:string;
   showTasksOf:string;
+  public div1 = false;
+  dialogTxt:string;
+
   constructor( 
     @Optional() @Inject(MAT_DIALOG_DATA) public data: UsersData,
     private customerService: CustomerService, 
     private vendorService: VendorService, 
     private snackBar: MatSnackBar,
+    private _sanitizer: DomSanitizer,
     private dialogRef: MatDialogRef<CustomerAddComponent>
     ) { 
       this.local_data = {...data};
       this.key = this.local_data.key;
       if(this.key!=null){
-        console.log("Venodr Register");
+        console.log("Vendor Register");
         this.type=true; // vendor
         this.labelname="Vendor Name";
         this.showTasksOf="vendor";
-
+        this.btnname = "Add";
       }else {
         console.log("Customer Register");
         this.type=false; // customer
         this.labelname="Customer Name";
         this.name="customerName";
         this.showTasksOf="customer";
-
-
       }
 
     }
 
   ngOnInit() {
     this.emptyFields();
+    this.editCustomer(this.data);
+  }
+
+  editCustomer(data: any){
+    if (data.id !== undefined) {
+      this.model.id = data.id;
+      this.model.custcode = data.custcode;
+      this.model.customerName = data.customerName;
+      this.model.country = data.country;
+      this.model.address = data.address;
+      this.model.email = data.email;
+      this.model.city = data.city;
+      this.model.phoneNumber = data.phoneNumber;
+      this.model.customerbase64 = data.customerbase64;
+      this.btnname = data.dialogText;
+      if(this.model.customerbase64!=undefined){
+        this.div1 = true;
+        this.isImageSaved = false;
+      }    
+    }
   }
 
   ngAfterViewInit() {
     (<HTMLElement>document.querySelector('.mat-dialog-container')).style.background = 'inherit';
+  }
+
+  getImage(imgData) {
+    return this._sanitizer.bypassSecurityTrustResourceUrl(imgData);
   }
 
   fileChangeEvent(fileInput: any) {
@@ -100,6 +137,9 @@ export class CustomerAddComponent implements OnInit {
           } else {
             const imgBase64Path = e.target.result;
             this.cardImageBase64 = imgBase64Path;
+            if(this.cardImageBase64!=null){
+              console.log("no value...");
+            }
             this.isImageSaved = true;
           }
         };
@@ -139,11 +179,16 @@ export class CustomerAddComponent implements OnInit {
       );
     }else if(labelname == "Customer Name"){
       this.model.customerbase64 = this.cardImageBase64;
+      if(this.model.id !== null){
+        this.dialogTxt = "Updated";  
+      }else {
+        this.dialogTxt = "Added";  
+      }
       this.customerService.save(this.model)
       .subscribe(
         data => {
           setTimeout(() => {
-            this.snackBar.open("Customer created Successfully", "", {
+            this.snackBar.open("Customer " +this.dialogTxt+ " Successfully", "", {
               panelClass: ["success"],
               verticalPosition: 'top'      
             });
