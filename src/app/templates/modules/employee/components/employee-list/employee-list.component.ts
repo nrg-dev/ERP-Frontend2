@@ -36,6 +36,11 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
   isAbsentMouseover = [];
   todayTime: any;
   employeeDetails: any;
+
+  isSortIdDesc: boolean = false;
+  isSortIdAsc: boolean = true;
+  isSortNameDesc: boolean = false;
+  isSortNameAsc: boolean = true;
   
   constructor(
     private employeeService: EmployeeService,
@@ -137,6 +142,26 @@ enable: boolean;
         });
       }
     );
+  }
+
+  sortByOrder(column: string, order: string) {
+    if (column === "code" && order === "desc") {
+      this.isSortIdDesc = true;
+      this.isSortIdAsc = false;
+      this.employeesDS.sort((a, b) => b.employeecode.localeCompare(a.employeecode));
+    } else if (column === "code" && order === "asc") {
+      this.isSortIdDesc = false;
+      this.isSortIdAsc = true;
+      this.employeesDS.sort((a, b) => a.employeecode.localeCompare(b.employeecode));
+    } else if (column === "name" && order === "desc") {
+      this.isSortNameDesc = true;
+      this.isSortNameAsc = false;
+      this.employeesDS.sort((a, b) => b.name.localeCompare(a.name));
+    } else {
+      this.isSortNameDesc = false;
+      this.isSortNameAsc = true;
+      this.employeesDS.sort((a, b) => a.name.localeCompare(b.name));
+    }
   }
 
   applyFilter(filterValue: string) {

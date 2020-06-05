@@ -19,8 +19,14 @@
       <thead>
         <tr>
           <th class="wid-50px" style="width: 4% !important;"></th>
-          <th>ID #</th>
-          <th>Name</th>
+          <th>ID #
+              <i *ngIf="!isSortIdDesc" class="sort-by-desc" (click)="sortByOrder('code','desc')"></i>
+              <i class="sort-by-asc" *ngIf="!isSortIdAsc" (click)="sortByOrder('code','asc')"></i>
+          </th>
+          <th>Name
+              <i *ngIf="!isSortNameDesc" class="sort-by-desc" (click)="sortByOrder('name','desc')"></i>
+              <i class="sort-by-asc" *ngIf="!isSortNameAsc" (click)="sortByOrder('name','asc')"></i>
+          </th>
           <th>Designation</th>
           <th>Email</th>
           <th>Phone</th>
