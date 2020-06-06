@@ -28,7 +28,8 @@ export class AddPettycashComponent implements OnInit {
   showbackbtn:boolean;
   dialogText:string;
   typeList:any = {};
-  
+  currencyList:any = {};
+
   constructor(
     private router: Router,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: UsersData,
@@ -53,6 +54,9 @@ export class AddPettycashComponent implements OnInit {
 
   ngOnInit() {
     this.typeList = ['Credit','Debit'];
+    this.currencyList = ['AED','AUD','USD','IDR','MYR'];
+
+    
   }
 
   addPettyClose(){
