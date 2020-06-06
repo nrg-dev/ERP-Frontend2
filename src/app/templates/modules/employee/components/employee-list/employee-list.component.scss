@@ -109,6 +109,7 @@ table tbody tr:hover td span{
   background: transparent;
   border-top: solid 7px $white;
   border-bottom-width: 0;
+  cursor: pointer;
 }
 
 .sort-by-asc
@@ -122,6 +123,7 @@ table tbody tr:hover td span{
   background: transparent;
   border-bottom: solid 7px $white;
   border-top-width: 0;
+  cursor: pointer;
 }
 
 // iPhone media query start
