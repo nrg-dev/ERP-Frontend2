@@ -31,6 +31,7 @@
           <th>Email</th>
           <th>Joined Date</th>
           <th class="txt-right">Phone</th>
+          <th></th>
           <th class="wid-90px">Status</th>
         </tr>
       </thead>
@@ -53,6 +54,7 @@
             <app-employee-report (closeDailyReport)="closePopup($event, i,'report')" *ngIf="showHideDailyReport[i]" [dailyReportItem]="item" [getDailyReportDetail]="getDailyReportDetail"></app-employee-report>
             {{item.phonenumber}}
           </td>
+          <td></td>
           <td class="wid-75px">{{item.status}}
             <span class="edit-delete-icon user-icon">
               <span class="fas fa-list-alt" (click)="dailyReport(i, item)"></span>
