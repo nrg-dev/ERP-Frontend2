@@ -11,6 +11,7 @@ import { PurchaseService } from "../../services/purchase.service";
 export class PurchaseCreateInvoiceComponent implements OnInit {
   invoiceList = [];
   delivery = 0;
+  model: any = {};
 
   constructor(
     public dialogRef: MatDialogRef<PurchaseCreateInvoiceComponent>,
@@ -21,6 +22,7 @@ export class PurchaseCreateInvoiceComponent implements OnInit {
 
   ngOnInit() {
     this.invoiceList = this.data.invoiceItems;
+    this.model.paymenttype = "";
   }
 
   createPurchaseInvoiceClose(): void {
@@ -36,6 +38,10 @@ export class PurchaseCreateInvoiceComponent implements OnInit {
     }
 
     this.invoiceList = this.invoiceList.concat(product);
+  }
+
+  paymentSelected(){
+    this.model.paymenttype = "cash";
   }
 
   getSubTotal(): number {
@@ -80,7 +86,8 @@ export class PurchaseCreateInvoiceComponent implements OnInit {
       "totalprice": this.getTotal(),
       "qty": this.getQty(),
       "vendorcode" : this.getVendorCode(),
-      "productname" : this.getProductName()
+      "productname" : this.getProductName(),
+      "paymenttype" : this.model.paymenttype
     }
     this.purchaseService.createInvoice(invoice).subscribe(
       (respose) => {
