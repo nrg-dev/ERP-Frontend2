@@ -11,6 +11,7 @@ import { SalesService } from "../../services/sales.service";
 export class SalesCreateInvoiceComponent implements OnInit {
   invoiceList = [];
   delivery = 0;
+  model: any = {};
 
   constructor(
     public dialogRef: MatDialogRef<SalesCreateInvoiceComponent>,
@@ -21,6 +22,7 @@ export class SalesCreateInvoiceComponent implements OnInit {
 
   ngOnInit() {
     this.invoiceList = this.data.invoiceItems;
+    this.model.paymenttype = "";
   }
 
   createSalesInvoiceClose(): void {
@@ -36,6 +38,10 @@ export class SalesCreateInvoiceComponent implements OnInit {
     }
 
     this.invoiceList = this.invoiceList.concat(product);
+  }
+
+  paymentSelected(){
+    this.model.paymenttype = "cash";
   }
 
   getSubTotal(): number {
@@ -80,7 +86,8 @@ export class SalesCreateInvoiceComponent implements OnInit {
       "totalprice": this.getTotal(),
       "qty": this.getQty(),
       "customercode" : this.getCustomerCode(),
-      "productname" : this.getProductName()
+      "productname" : this.getProductName(),
+      "paymenttype" : this.model.paymenttype
     }
 
     this.salesService.createInvoice(invoice).subscribe(
