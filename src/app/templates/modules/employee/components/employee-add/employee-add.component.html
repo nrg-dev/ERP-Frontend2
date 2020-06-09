@@ -1,8 +1,8 @@
 <div class="grid-container">
-  <div class="row">
-    <button id="x" (click)="addEmployeeClose()"> X </button>
-    <form name="employeeForm" (ngSubmit)="employeeForm.form.valid && saveEmployee()"
-      #employeeForm="ngForm" novalidate>
+  <button id="x" (click)="addEmployeeClose()"> X </button>
+  <form name="employeeForm" (ngSubmit)="employeeForm.form.valid && saveEmployee()"
+    #employeeForm="ngForm" novalidate>
+    <div class="row">
       <div class="column">
         <fieldset class="form-group"> 
           <div class="custom-file fileInputProfileWrap">
@@ -19,7 +19,8 @@
           </div>
         </fieldset>
         <a class="btn btn-danger" (click)="removeImage()" *ngIf="isImageSaved">Remove</a>
-  
+        <div> </div>
+        <br/>
       </div>
       <div class="column">
   
@@ -58,7 +59,8 @@
         <label class="heading">Department Name</label>
         <input type="text" name="departmentname" id="textbox6" [(ngModel)]="this.model.departmentname" 
           #departmentname="ngModel" autocomplete="off"/>
-        
+        <div> </div>
+        <br/>
       </div>
       <div class="column">
         
@@ -79,7 +81,7 @@
         <input type="text" name="monthlysalary" id="textbox10" [(ngModel)]="this.model.monthlysalary" 
           #monthlysalary="ngModel" autocomplete="off"/>
         
-        <label class="heading">Work Hour </label>
+        <label class="heading1">Work Hour </label>
         <input type="text" name="workHour" id="textbox11" [(ngModel)]="this.model.workHour" 
           #workHour="ngModel" autocomplete="off"/>
         
@@ -88,16 +90,16 @@
         <input type="text" name="annualLeave" id="textbox12" [(ngModel)]="this.model.annualLeave" 
           #annualLeave="ngModel" autocomplete="off"/>
 
-        <label class="heading">Location</label>
+        <label class="heading1">Location</label>
         <input type="text" name="location" id="textbox6" [(ngModel)]="this.model.location" 
           #location="ngModel" autocomplete="off"/>
   
         <div> </div>
-  
         <br/>
         <button>Add</button>
-  
+        <div style="margin-top: 15px;"> </div>
       </div>
-    </form>
-  </div>
+
+    </div>
+  </form>
 </div>
