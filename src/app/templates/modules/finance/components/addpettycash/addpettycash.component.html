@@ -76,13 +76,20 @@
 
 
               <label id="po-label" style="margin-left: auto;">Currency*</label>
-              <select id="selected-box" [(ngModel)]="model.currency" name="currency" #currency="ngModel" required>
+              <select id="selected-box" [(ngModel)]="model.currency" name="currency"
+                #currency="ngModel" style="margin-left: auto;" required>
                 <option>-- Select --</option>
                 <option *ngFor="let currency of currencyList" value="{{ currency }}">
                   {{ currency }}
                 </option>
               </select>
-              
+
+              <div *ngIf="currency.errors  && (currency.dirty || currency.touched) ||
+                (pettyForm.submitted && !currency.valid )">
+                <span [hidden]="!currency.errors.required" class="spanerror1">
+                  Required field cannot be left blank
+                </span>
+              </div>
 
             </div>
           </div>
