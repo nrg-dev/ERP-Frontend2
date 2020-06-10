@@ -45,6 +45,7 @@ export class AddPettycashComponent implements OnInit {
     this.model.type=this.local_data.type;
     this.model.toPerson=this.local_data.toPerson;
     this.model.totalAmount=this.local_data.totalAmount;    
+    this.model.currency=this.local_data.currency;   
     if(this.local_data.id!=null){
       this.showbackbtn=false;
     }else{
