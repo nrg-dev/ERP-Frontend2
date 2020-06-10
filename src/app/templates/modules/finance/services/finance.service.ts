@@ -26,4 +26,12 @@ export class FinanceService {
     return this.http.delete<String>(`${environment.apiUrl}${API_ENDPOINTS.REMOVE_PETTY+'?id='+id}`); 
   }
 
+  getInvoiceList(){
+    return this.http.get<Finance>(`${environment.apiUrl}${API_ENDPOINTS.LOAD_INVOICE}`);
+  }
+
+  getReturnList(){
+    return this.http.get<Finance>(`${environment.apiUrl}${API_ENDPOINTS.LOAD_RETURN}`);
+  }
+
 }

@@ -116,11 +116,23 @@ export const SidenavItems: MenuItem[] = [
     label: "Finance",
     icon: "assets/images/finance.png",
     path: "/finance",
-    childern: [{
-      id: "pettycash",
-      label: "pettycash",
-      path: "/finance/pettycashlist",
-     }],
+    childern: [
+      {
+        id: "pettycash",
+        label: "pettycash",
+        path: "/finance/pettycashlist",
+      },
+      {
+        id: "invoice",
+        label: "Invoices",
+        path: "/finance/invoicelist",
+      },
+      {
+        id: "return",
+        label: "Return",
+        path: "/finance/returnlist",
+      },
+    ],
     submenu: true
   },
 

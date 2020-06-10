@@ -5,6 +5,8 @@ import { RouterModule, Routes } from "@angular/router";
 import { FinanceComponent } from "./components/finance/finance.component";
 import { PettycashlistComponent } from "./components/pettycashlist/pettycashlist.component";
 import { AddPettycashComponent } from "./components/addpettycash/addpettycash.component";
+import { ReturnListComponent } from "./components/return-list/return-list.component";
+import { InvoiceListComponent } from "./components/invoice-list/invoice-list.component";
 
 const routes: Routes = [
   {
@@ -23,6 +25,14 @@ const routes: Routes = [
   {
     path: 'addpettycash',
     component: AddPettycashComponent,
+  },
+  {
+    path: 'invoicelist',
+    component: InvoiceListComponent,
+  },
+  {
+    path: 'returnlist',
+    component: ReturnListComponent,
   },
 ];
 

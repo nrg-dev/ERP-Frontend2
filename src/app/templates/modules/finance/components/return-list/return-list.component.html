@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-4">
+    <h4>Return List</h4> 
+  </div>
+  <div class="col-8">
+    
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <table class="table" *ngIf="returnTable">
+      <thead>
+        <tr>
+          <th style="cursor:pointer;">Number</th>
+          <th style="cursor:pointer;">Date</th>
+          <th style="cursor:pointer;">Status</th>
+          <th>Vendor</th>
+          <th>Category</th>
+          <th>Product Name</th>
+          <th class="txt-right">Quantity</th>
+          <th class="txt-right wid-130px">Sub Total</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let item of returnList; let i = index"> 
+        <tr>
+          <td>{{item.pocode}}</td>
+          <td>{{item.date}}</td>
+          <td>{{item.status}}</td>
+          <td>{{item.vendorname}}</td>
+          <td>{{item.categoryname}}</td>
+          <td>{{item.productname}}</td>
+          <td class="txt-right">{{item.qty}}</td>
+          <td class="txt-right wid-130px">{{item.subtotal}}</td>
+        </tr>
+      
+      </tbody>
+    </table>
+  </div>
+</div>
+  

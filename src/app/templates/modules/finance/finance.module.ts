@@ -51,6 +51,8 @@ import { FinanceComponent } from "./components/finance/finance.component";
 import { PettycashlistComponent } from "./components/pettycashlist/pettycashlist.component";
 import { CustomMaterialModule } from "src/app/core/material.module";
 import { AddPettycashComponent } from "./components/addpettycash/addpettycash.component";
+import { ReturnListComponent } from "./components/return-list/return-list.component";
+import { InvoiceListComponent } from "./components/invoice-list/invoice-list.component";
 
 import { FormsModule } from "@angular/forms";
 
@@ -58,7 +60,9 @@ import { FormsModule } from "@angular/forms";
   declarations: [
     FinanceComponent,
     PettycashlistComponent,
-    AddPettycashComponent
+    AddPettycashComponent,
+    ReturnListComponent,
+    InvoiceListComponent
   ],
   imports: [
     CommonModule,
