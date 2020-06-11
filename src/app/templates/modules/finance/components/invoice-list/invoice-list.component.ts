@@ -15,6 +15,7 @@ import {
   styleUrls: [ "./invoice-list.component.scss" ],
 })
 export class InvoiceListComponent implements OnInit, OnDestroy {
+  model:any = {};
   invoiceList: any;
   dialogConfig = new MatDialogConfig();
   public invoiceTable = false;
@@ -70,6 +71,7 @@ export class InvoiceListComponent implements OnInit, OnDestroy {
     this.financeService.getInvoiceList().subscribe(
       (res) => {
         this.invoiceList = res;
+        this.invoiceList.sort((a, b) => b.fromdate.localeCompare(a.fromdate));
         this.loadinggif=false;
         if(this.invoiceList.length == 0){
           this.invoiceTable = false;
@@ -112,10 +114,10 @@ export class InvoiceListComponent implements OnInit, OnDestroy {
       this.isPurchaseInvoice = false;
       this.isSalesInvoice = false;
     }else{
-      if(item.invoicetype == "Purchase Invoice"){
+      if(this.invoiceArr[0].invoicetype == "Purchase Invoice"){
         this.isSalesInvoice = false;
         this.isPurchaseInvoice = true;
-      }else if(item.invoicetype == "Sales Invoice"){
+      }else if(this.invoiceArr[0].invoicetype == "Sales Invoice"){
         this.isSalesInvoice = true;
         this.isPurchaseInvoice = false;
       }
@@ -135,6 +137,76 @@ export class InvoiceListComponent implements OnInit, OnDestroy {
     } else if (type === "inv") {
       this.invoiceArr = isCheckedArr;
     } 
+  }
+
+  makePayment(){
+    this.model.invoicenumber = this.invoiceArr[0].invoiceNumber;
+    this.model.debit = this.invoiceArr[0].totalAmount;
+    this.financeService.makePayment(this.model)
+      .subscribe((data: any) => {
+      if (data === null) {
+        setTimeout(() => {
+          this.snackBar.open(
+            "Make Payment has been saved successfully",
+            "dismss",
+            {
+              panelClass: ["success"],
+              verticalPosition: "top",
+            }
+          );
+        });
+        this.getInvoiceList();
+      } else if (data === 500) {
+        setTimeout(() => {
+          this.snackBar.open("Internal server error", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: "top",
+          });
+        });
+      } else {
+        setTimeout(() => {
+          this.snackBar.open("Bad request data", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: "top",
+          });
+        });
+      }
+    });
+  }
+
+  receivePayment(){
+    this.model.invoicenumber = this.invoiceArr[0].invoiceNumber;
+    this.model.credit = this.invoiceArr[0].totalAmount;
+    this.financeService.receivePayment(this.model)
+      .subscribe((data: any) => {
+      if (data === null) {
+        setTimeout(() => {
+          this.snackBar.open(
+            "Receive Payment has been saved successfully",
+            "dismss",
+            {
+              panelClass: ["success"],
+              verticalPosition: "top",
+            }
+          );
+        });
+        this.getInvoiceList();
+      } else if (data === 500) {
+        setTimeout(() => {
+          this.snackBar.open("Internal server error", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: "top",
+          });
+        });
+      } else {
+        setTimeout(() => {
+          this.snackBar.open("Bad request data", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: "top",
+          });
+        });
+      }
+    });
   }
 
 }
