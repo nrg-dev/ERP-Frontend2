@@ -24,6 +24,10 @@ export class InvoiceListComponent implements OnInit, OnDestroy {
   invoiceArr = [];
   isCheckedArr = [];
   loadinggif:boolean = false;
+  isSortTypeDesc: boolean = false;
+  isSortTypeAsc: boolean = true;
+  isSortDateDesc: boolean = false;
+  isSortDateAsc: boolean = true;
 
   constructor(
     private financeService: FinanceService,
@@ -156,6 +160,7 @@ export class InvoiceListComponent implements OnInit, OnDestroy {
           );
         });
         this.getInvoiceList();
+        this.removeItem(this.isCheckedArr, 0, "checked");
       } else if (data === 500) {
         setTimeout(() => {
           this.snackBar.open("Internal server error", "dismss", {
@@ -207,6 +212,26 @@ export class InvoiceListComponent implements OnInit, OnDestroy {
         });
       }
     });
+  }
+
+  sortByOrder(column: string, order: string) {
+    if (column === "type" && order === "desc") {
+      this.isSortTypeDesc = true;
+      this.isSortTypeAsc = false;
+      this.invoiceList.sort((a, b) => b.invoicetype.localeCompare(a.invoicetype));
+    } else if (column === "type" && order === "asc") {
+      this.isSortTypeDesc = false;
+      this.isSortTypeAsc = true;
+      this.invoiceList.sort((a, b) => a.invoicetype.localeCompare(b.invoicetype));
+    } else if (column === "date" && order === "desc") {
+      this.isSortDateDesc = true;
+      this.isSortDateAsc = false;
+      this.invoiceList.sort((a, b) => b.fromdate.localeCompare(a.fromdate));
+    } else {
+      this.isSortDateDesc = false;
+      this.isSortDateAsc = true;
+      this.invoiceList.sort((a, b) => a.fromdate.localeCompare(b.fromdate));
+    }
   }
 
 }

@@ -27,9 +27,15 @@
               <label class="custom-control-label1" for="customCheck2"></label>
             </div>
           </th>
-          <th>Invoice Date</th>
+          <th>Invoice Date
+            <i *ngIf="!isSortDateDesc" class="sort-by-desc" (click)="sortByOrder('date','desc')"></i>
+            <i class="sort-by-asc" *ngIf="!isSortDateAsc" (click)="sortByOrder('date','asc')"></i>
+          </th>
           <th>Invoice Number</th>
-          <th>Invoice Type</th>
+          <th>Invoice Type
+            <i *ngIf="!isSortTypeDesc" class="sort-by-desc" (click)="sortByOrder('type','desc')"></i>
+            <i class="sort-by-asc" *ngIf="!isSortTypeAsc" (click)="sortByOrder('type','asc')"></i>
+          </th>
           <th>Total Amount</th>
           <th>Invoice Status</th>
           <th>Payment Status</th>
