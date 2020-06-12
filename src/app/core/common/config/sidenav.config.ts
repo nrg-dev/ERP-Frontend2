@@ -132,6 +132,11 @@ export const SidenavItems: MenuItem[] = [
         label: "Return",
         path: "/finance/returnlist",
       },
+      {
+        id: "profitandloss",
+        label: "ProfitAndLoss",
+        path: "/finance/profitandloss",
+      }
     ],
     submenu: true
   },

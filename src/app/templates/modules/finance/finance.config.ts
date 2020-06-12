@@ -8,4 +8,5 @@ export const API_ENDPOINTS = {
   RECEIVE_INV_PAYMENT: `/finance/receiveInvPayment`,
   MAKE_RET_PAYMENT: `/finance/makeRetPayment`,
   RECEIVE_RET_PAYMENT: `/finance/receiveRetPayment`,
+  LOAD_PROFITLOSS: `/finance/profitandloss`,
 };

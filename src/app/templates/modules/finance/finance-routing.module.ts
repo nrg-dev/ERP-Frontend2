@@ -7,6 +7,7 @@ import { PettycashlistComponent } from "./components/pettycashlist/pettycashlist
 import { AddPettycashComponent } from "./components/addpettycash/addpettycash.component";
 import { ReturnListComponent } from "./components/return-list/return-list.component";
 import { InvoiceListComponent } from "./components/invoice-list/invoice-list.component";
+import { ProfitandLossComponent } from "./components/profitandloss/profitandloss.component";
 
 const routes: Routes = [
   {
@@ -34,6 +35,10 @@ const routes: Routes = [
     path: 'returnlist',
     component: ReturnListComponent,
   },
+  {
+    path: 'profitandloss',
+    component: ProfitandLossComponent,
+  }
 ];
 
 @NgModule({

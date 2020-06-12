@@ -53,6 +53,7 @@ import { CustomMaterialModule } from "src/app/core/material.module";
 import { AddPettycashComponent } from "./components/addpettycash/addpettycash.component";
 import { ReturnListComponent } from "./components/return-list/return-list.component";
 import { InvoiceListComponent } from "./components/invoice-list/invoice-list.component";
+import { ProfitandLossComponent } from "./components/profitandloss/profitandloss.component";
 
 import { FormsModule } from "@angular/forms";
 
@@ -62,7 +63,8 @@ import { FormsModule } from "@angular/forms";
     PettycashlistComponent,
     AddPettycashComponent,
     ReturnListComponent,
-    InvoiceListComponent
+    InvoiceListComponent,
+    ProfitandLossComponent
   ],
   imports: [
     CommonModule,

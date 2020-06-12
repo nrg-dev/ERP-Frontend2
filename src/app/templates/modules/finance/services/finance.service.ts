@@ -62,5 +62,8 @@ export class FinanceService {
       )
   }
 
- 
+  getProfitLoss(){
+    return this.http.get<Finance>(`${environment.apiUrl}${API_ENDPOINTS.LOAD_PROFITLOSS}`);
+  }
+  
 }
