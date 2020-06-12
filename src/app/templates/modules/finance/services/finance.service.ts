@@ -34,18 +34,33 @@ export class FinanceService {
     return this.http.get<Finance>(`${environment.apiUrl}${API_ENDPOINTS.LOAD_RETURN}`);
   }
 
-  makePayment(data:any){
+  makeInvoicePayment(data:any){
     return this.http.post(
-      `${environment.apiUrl}${API_ENDPOINTS.MAKE_PAYMENT}`,
+      `${environment.apiUrl}${API_ENDPOINTS.MAKE_INV_PAYMENT}`,
         data
       )
   }
 
-  receivePayment(data:any){
+  receiveInvoicePayment(data:any){
     return this.http.post(
-      `${environment.apiUrl}${API_ENDPOINTS.RECEIVE_PAYMENT}`,
+      `${environment.apiUrl}${API_ENDPOINTS.RECEIVE_INV_PAYMENT}`,
         data
       )
   }
-  
+
+  makeRetPayment(data:any){
+    return this.http.post(
+      `${environment.apiUrl}${API_ENDPOINTS.MAKE_RET_PAYMENT}`,
+        data
+      )
+  }
+
+  receiveRetPayment(data:any){
+    return this.http.post(
+      `${environment.apiUrl}${API_ENDPOINTS.RECEIVE_RET_PAYMENT}`,
+        data
+      )
+  }
+
+ 
 }

@@ -4,6 +4,8 @@ export const API_ENDPOINTS = {
   REMOVE_PETTY: `/finance/remove`,
   LOAD_INVOICE: `/finance/loadInvoice`,
   LOAD_RETURN: `/finance/loadReturn`,
-  MAKE_PAYMENT: `/finance/makePayment`,
-  RECEIVE_PAYMENT: `/finance/receivePayment`,
+  MAKE_INV_PAYMENT: `/finance/makeInvPayment`,
+  RECEIVE_INV_PAYMENT: `/finance/receiveInvPayment`,
+  MAKE_RET_PAYMENT: `/finance/makeRetPayment`,
+  RECEIVE_RET_PAYMENT: `/finance/receiveRetPayment`,
 };

@@ -70,6 +70,7 @@ export class InvoiceListComponent implements OnInit, OnDestroy {
   }
 
   getInvoiceList() {
+    this.isCheckedArr = [];
     this.loadinggif=true;
     this.invoiceTable = false;
     this.financeService.getInvoiceList().subscribe(
@@ -146,12 +147,12 @@ export class InvoiceListComponent implements OnInit, OnDestroy {
   makePayment(){
     this.model.invoicenumber = this.invoiceArr[0].invoiceNumber;
     this.model.debit = this.invoiceArr[0].totalAmount;
-    this.financeService.makePayment(this.model)
+    this.financeService.makeInvoicePayment(this.model)
       .subscribe((data: any) => {
       if (data === null) {
         setTimeout(() => {
           this.snackBar.open(
-            "Make Payment has been saved successfully",
+            "Make Invoice Payment has been saved successfully",
             "dismss",
             {
               panelClass: ["success"],
@@ -160,7 +161,6 @@ export class InvoiceListComponent implements OnInit, OnDestroy {
           );
         });
         this.getInvoiceList();
-        this.removeItem(this.isCheckedArr, 0, "checked");
       } else if (data === 500) {
         setTimeout(() => {
           this.snackBar.open("Internal server error", "dismss", {
@@ -182,12 +182,12 @@ export class InvoiceListComponent implements OnInit, OnDestroy {
   receivePayment(){
     this.model.invoicenumber = this.invoiceArr[0].invoiceNumber;
     this.model.credit = this.invoiceArr[0].totalAmount;
-    this.financeService.receivePayment(this.model)
+    this.financeService.receiveInvoicePayment(this.model)
       .subscribe((data: any) => {
       if (data === null) {
         setTimeout(() => {
           this.snackBar.open(
-            "Receive Payment has been saved successfully",
+            "Receive Invoice Payment has been saved successfully",
             "dismss",
             {
               panelClass: ["success"],
