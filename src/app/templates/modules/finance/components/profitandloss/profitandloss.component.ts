@@ -20,6 +20,7 @@ export class ProfitandLossComponent implements OnInit, OnDestroy {
   dialogConfig = new MatDialogConfig();
   public profitTable = false;
   loadinggif:boolean = false;
+  public filterSelecteddiv = false;
 
   constructor(
     private financeService: FinanceService,
@@ -41,6 +42,46 @@ export class ProfitandLossComponent implements OnInit, OnDestroy {
   }
   
   getProfitandLossList() {
+    this.loadinggif=true;
+    this.profitTable = false;
+    this.financeService.getProfitLoss().subscribe(
+      (res) => {
+        this.profitandLossList = res;
+        this.loadinggif=false;
+        if(this.profitandLossList.length == 0){
+          this.profitTable = false;
+        }else{
+          this.profitTable = true;
+          for(let i=0; i<this.profitandLossList.length; i++){
+            this.model.totalDebit += this.profitandLossList[i].debit;
+            this.model.totalCredit += this.profitandLossList[i].credit;
+          }
+        }
+      },
+      (error) => {
+        setTimeout(() => {
+          this.snackBar.open(
+            "Network error: server is temporarily unavailable",
+            "dismss",
+            {
+              panelClass: ["error"],
+              verticalPosition: "top",
+            }
+          );
+        });
+      }
+    );
+  }
+
+  filterSelected(isChecked: boolean){
+    if (isChecked) {
+      this.filterSelecteddiv = true;
+    } else {
+      this.filterSelecteddiv = false;
+    }
+  }
+
+  sortByDate(){
     this.loadinggif=true;
     this.profitTable = false;
     this.financeService.getProfitLoss().subscribe(

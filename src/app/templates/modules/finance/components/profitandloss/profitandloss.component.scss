@@ -34,15 +34,7 @@ tbody {
   color:$table-row-font-color;
   vertical-align: middle;
 }
-.table > tbody > tr:hover {
-  background-color: $header-bg;
-}
-.table > tbody > tr:hover, .table > tbody > tr:hover span  {
-  background-color: $header-bg;
-}
-table tbody tr:hover td span{
-  display: block !important;
-}
+
 tr[ng-click] {
   cursor: pointer;
 }
@@ -60,6 +52,7 @@ tr[ng-click] {
   background: $btn-bg;
   border: 1px solid $btn-bg;
   margin-right: 10px;
+  margin-top: 20px;
   font-family: $font-family;
   border-radius: $btn-border-radius;
   padding: $btn-padding;
@@ -77,6 +70,7 @@ input[type=checkbox] {
   position: relative;
   cursor: pointer;
   vertical-align: middle;
+  margin-left: 25px;
 }
 
 input[type=checkbox]:before {
@@ -108,6 +102,21 @@ input[type=checkbox]:checked:after {
 input[type=checkbox]:checked:before{
   background: #174E76;
 }
+
+#datebox{
+  color:$h2-bg;
+  background: $po-order-form-bg;
+  width: 85%;
+  color: #fff; 
+  padding: 0px 5px;
+  margin-bottom: 15px;
+  height: 30px;
+}
+
+span{
+  margin: 5px 0px 5px 50px;
+}
+
 .edit-delete-icon {
   display: none;
   background: $table-invoived-row-bg;

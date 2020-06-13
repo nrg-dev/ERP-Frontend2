@@ -1,11 +1,47 @@
 <div class="row">
-  <div class="col-8">
+  <div class="col-5">
     <h4>Profit and Loss</h4> 
   </div>
   <div class="col-4">
-    <h4>Profit : {{ this.model.totalDebit }}</h4>
-    <h4>Loss : {{ this.model.totalCredit }}</h4>
   </div>
+  <div class="col-3">
+    <h4>Profit &nbsp; : &nbsp; {{ this.model.totalCredit }}</h4>
+    <h4>Loss &nbsp;&nbsp;&nbsp; : &nbsp; {{ this.model.totalDebit }}</h4>
+  </div>
+</div>
+<br/>
+<div class="row">
+
+  <div class="col-2">
+    <div class="row">
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input1" id="customChecks2" (click)="filterSelected($event.target.checked)">
+        <label class="custom-control-label1" for="customCheck2"></label>
+      </div>
+      <span>Filter</span>
+    </div>
+  </div>
+
+  <div class="col-8" *ngIf="filterSelecteddiv">
+    <div class="row">
+      <div class="col-3">
+        <label id="po-label">From Date*</label>
+        <input type="date" id="datebox" class="m-t-5px" [(ngModel)]="model.fromdate"
+          name="fromdate" placeholder="xx/xx/xx" #fromdate="ngModel" required/>
+      </div>
+      
+      <div class="col-3">
+        <label id="po-label">To Date*</label>
+        <input type="date" id="datebox" class="m-t-5px" [(ngModel)]="model.todate"
+          name="todate" placeholder="xx/xx/xx" #todate="ngModel" required/>
+      </div>
+  
+      <div class="col-2">
+        <button (click)="sortByDate()" class="create-button"> Search </button> 
+      </div>
+    </div>
+  </div>
+    
 </div>
 
 <div class="row">
@@ -17,10 +53,10 @@
           <th>Date</th>
           <th>Description</th>
           <th>Invoice Number</th>
-          <th>Debit</th>
-          <th>Credit</th>
-          <th>Payment Status</th>
           <th>Currency</th>
+          <th class="txt-right">Debit</th>
+          <th></th>
+          <th class="txt-right">Credit</th>
         </tr>
       </thead>
       <tbody *ngFor="let item of profitandLossList; let i = index"> 
@@ -29,10 +65,10 @@
           <td>{{item.transactiondate}}</td>
           <td>{{item.description}}</td>
           <td>{{item.invoicenumber}}</td>
-          <td>{{item.debit}}</td>
-          <td>{{item.credit}}</td>
-          <td>{{item.status}}</td>
           <td>{{item.currency}}</td>
+          <td class="txt-right">{{item.debit}}</td>
+          <td></td>
+          <td class="txt-right">{{item.credit}}</td>
         </tr>
       
       </tbody>
