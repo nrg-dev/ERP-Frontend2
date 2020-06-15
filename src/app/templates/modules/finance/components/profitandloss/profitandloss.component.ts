@@ -84,7 +84,9 @@ export class ProfitandLossComponent implements OnInit, OnDestroy {
   sortByDate(){
     this.loadinggif=true;
     this.profitTable = false;
-    this.financeService.getProfitLoss().subscribe(
+    this.model.totalDebit = 0;
+    this.model.totalCredit = 0;
+    this.financeService.filterByDate(this.model).subscribe(
       (res) => {
         this.profitandLossList = res;
         this.loadinggif=false;
@@ -112,5 +114,6 @@ export class ProfitandLossComponent implements OnInit, OnDestroy {
       }
     );
   }
+
 
 }

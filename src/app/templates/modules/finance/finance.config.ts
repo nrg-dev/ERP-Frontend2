@@ -9,4 +9,5 @@ export const API_ENDPOINTS = {
   MAKE_RET_PAYMENT: `/finance/makeRetPayment`,
   RECEIVE_RET_PAYMENT: `/finance/receiveRetPayment`,
   LOAD_PROFITLOSS: `/finance/profitandloss`,
+  filterByDate: `/finance/filterByDate`,
 };

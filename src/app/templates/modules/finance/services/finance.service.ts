@@ -65,5 +65,10 @@ export class FinanceService {
   getProfitLoss(){
     return this.http.get<Finance>(`${environment.apiUrl}${API_ENDPOINTS.LOAD_PROFITLOSS}`);
   }
+
+  filterByDate(model:any){
+    return this.http.get<Finance>(`${environment.apiUrl}${API_ENDPOINTS.filterByDate+'?fromdate='+model.fromdate
+      +'&todate='+model.todate}`);
+  }
   
 }
