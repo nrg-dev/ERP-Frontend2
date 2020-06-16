@@ -12,7 +12,8 @@
         <tr>
           <th>Invoice Date</th>
           <th>Category Name</th>
-          <th>Item Code</th>
+          <th>Product Code</th>
+          <th>Product Name</th>
           <th>Stock</th>
           <th></th>
           <th>Status</th>
@@ -24,6 +25,7 @@
           <td>{{c.invoicedate}}</td>
           <td>{{c.category}}</td>
           <td>{{c.itemcode}}</td>
+          <td>{{c.itemname}}</td>
           <td style="width:10%;">
             <span *ngIf="noneditable">{{c.recentStock}}</span>
             <input type="text" [(ngModel)]="c.recentStock" #recentStock="ngModel"
