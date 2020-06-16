@@ -24,11 +24,16 @@ export class StockListComponent implements OnInit {
 		private dialog: MatDialog,
 		private stockService: StockService,
 		private snackBar: MatSnackBar
-	) { }
+	) { 
+		
+	}
 
 	stockList:any = {};
 	model:any = {};
 	public stockTable = false;
+	public noneditable = false;
+	public editable = false;
+	loadinggif:boolean = false;
 
 	ngOnInit() {
 		this.loadStock();
@@ -36,14 +41,19 @@ export class StockListComponent implements OnInit {
 
 	loadStock(){
 		let status = "Ready for Sales";
+		this.loadinggif=true;
 		this.stockService.load(status)
 			.subscribe(
 			data => {
 				this.stockList = data;
+				this.stockList.editable = false;
+				this.loadinggif=false;
 				if(this.stockList.length == 0){
 					this.stockTable = false;
 				}else{
 					this.stockTable = true;
+					this.noneditable = true;
+					this.editable = false;
 				}
 			},
 			error => {
@@ -55,5 +65,41 @@ export class StockListComponent implements OnInit {
 				});   
 			}
 		);
+	}
+
+	editStock(stocklist: any){
+		this.noneditable = false;
+		this.editable = true;
+	}
+
+	cancelStock(){
+		this.noneditable = true;
+		this.editable = false;
+	}
+
+	updateStock(id:string,recentStock:number){
+		this.model.id = id;
+		this.model.recentStock = recentStock;
+		this.stockService.updateStock(this.model)
+		.subscribe(
+			data => {
+				this.model =   data; 
+				setTimeout(() => {
+					this.snackBar.open("Stock Updated Successfully", "", {
+						panelClass: ["success"],
+						verticalPosition: 'top'      
+					});
+				});
+				this.loadStock();
+			},
+			error => {
+				setTimeout(() => {
+					this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+						panelClass: ["error"],
+						verticalPosition: 'top'      
+					});
+				}); 
+			}
+		); 
 	}
 }

@@ -7,27 +7,58 @@
 <div class="row">
   <div class="col-12">
 
-      <table class="table" *ngIf="stockTable">
-        <thead>
-          <tr>
-            <th>Invoice Date</th>
-            <th>Category Name</th>
-            <th>Item Code</th>
-            <th>Stock</th>
-            <th>Status</th>
-            <th>Unit</th>
-          </tr>
-      </thead>
-      <tbody *ngFor="let c of stockList; let i = index"> 
-          <tr>
-            <td>{{c.invoicedate}}</td>
-            <td>{{c.category}}</td>
-            <td>{{c.itemcode}}</td>
-            <td>{{c.recentStock}}</td>
-            <td>{{c.status}}</td>
-            <td>{{c.unit}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <table class="table" *ngIf="stockTable">
+      <thead>
+        <tr>
+          <th>Invoice Date</th>
+          <th>Category Name</th>
+          <th>Item Code</th>
+          <th>Stock</th>
+          <th></th>
+          <th>Status</th>
+          <th>Unit</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let c of stockList; let i = index"> 
+        <tr>
+          <td>{{c.invoicedate}}</td>
+          <td>{{c.category}}</td>
+          <td>{{c.itemcode}}</td>
+          <td style="width:10%;">
+            <span *ngIf="noneditable">{{c.recentStock}}</span>
+            <input type="text" [(ngModel)]="c.recentStock" #recentStock="ngModel"
+              name="recentStock"  *ngIf="editable" />
+          </td>
+          <td></td>
+          <td>{{c.status}}</td>
+          <td>{{c.unit}}
+            <span class="edit-delete-icon user-icon" *ngIf="noneditable">
+              <span class="fas fa-pen" (click)="editStock(this.stockList)" ></span>
+            </span>
+
+            <span class="edit-delete-icon user-icon" *ngIf="editable">
+              <span class="fas fa-check" (click)="updateStock(c.id,c.recentStock)" ></span>
+              <span class="fas fa-times" (click)="cancelStock()" ></span>
+            </span>
+
+            <!-- <button *ngIf="enableEdit" (click)="enableEdit=false" class="btn page-secondary-action-btn" ng-click="cancel()">Cancel</button>
+            <button *ngIf="enableEdit" id="saveBtn" class="btn page-primary-action-btn" (click)="saveSegment()" type="submit">Save</button>
+            <a class="table-row-action edit-action" *ngIf="!enableEdit" (click)="enableEdit = true">
+              <i class="fa fa-pencil" uib-tooltip="Edit" tooltip-trigger="mouseenter" tooltip-append-to-body="true" tooltip-placement="left"></i>
+            </a> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>
+
+<!-- Loading Image Start -->
+<div class="row">
+  <div class="col-6 col-md-6 col-xs-6 col-lg-6">			
+    <img *ngIf="loadinggif" class="loadingimage" src="/assets/images/rotateload.gif"/> 
+  </div>
+  <div class="col-6 col-md-6 col-xs-6 col-lg-6">
+  </div>
+</div>
+<!-- Loading Image End -->

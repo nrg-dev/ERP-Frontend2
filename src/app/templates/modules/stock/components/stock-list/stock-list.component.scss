@@ -38,6 +38,8 @@ tbody {
   font-size: $table-font-size;
   border-top:5px solid $main-bg;   
   color:$table-row-font-color;
+  vertical-align: middle;
+  height: 50px;
 }
 .table > tbody > tr:hover {
   background-color: $header-bg;
@@ -46,7 +48,7 @@ tbody {
   background-color: $header-bg;
 }
 table tbody tr td span{
-  display: none;
+  display: block;
 }
 
 table tbody tr:hover td span{
@@ -55,16 +57,38 @@ table tbody tr:hover td span{
 tr[ng-click] {
   cursor: pointer;
 }
-.mar-let-40px{
-  margin: -18px 60px 0px 0px;
-  float: right;
-}
-.mar-let-30px{
-  margin: -18px 10px 0px 0px;
-  float: right;
-}
+
 .txt-right{
   text-align: right;
+}
+
+input{
+  background: grey;
+  width: 80%;
+  height: 30px;
+  border: 1px solid $header-bg !important;
+  color: $white;
+  padding-left: 5px;
+}
+.edit-delete-icon {
+  position: relative;
+  height: 20px;
+  top: 0px;
+  margin-top: -18px;
+}
+.fa-pen,.fa-times {
+  float: right;
+  cursor: pointer;
+}
+.fa-check {
+  float: left;
+  cursor: pointer;
+}
+
+.loadingimage{
+	left: 90%;
+	position: absolute;
+	margin-top: 30%;
 }
 // iPhone media query start
 

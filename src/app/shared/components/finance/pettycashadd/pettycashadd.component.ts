@@ -374,7 +374,7 @@ export class PettycashaddComponent implements OnInit {
         }, 2000);
       }
       ); 
-     }
+  }
 
   deletePettyCash(){
     console.log("deletePettyCash");

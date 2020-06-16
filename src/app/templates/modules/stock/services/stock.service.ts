@@ -18,4 +18,16 @@ export class StockService {
       )
     );
   }
+
+  updateStock(model:any) {
+    console.log("updateStock service");
+    return this.http.put<Stock>(
+      `${environment.apiUrl}${API_ENDPOINTS.updateStock}`,
+        model
+      )
+    /* return this.http.get<Stock>(`${environment.apiUrl}${API_ENDPOINTS.updateStock+'?id='+id
+      +'&recentStock='+recentStock}`); */
+  }
+
+
 }
