@@ -51,13 +51,12 @@ tr[ng-click] {
   color: $white;
   background: $btn-bg;
   border: 1px solid $btn-bg;
-  margin-right: 10px;
-  margin-top: 20px;
   font-family: $font-family;
   border-radius: $btn-border-radius;
   padding: $btn-padding;
   font-style: normal;
   font-size: $table-font-size;
+  margin: 22px auto;
 }
 
 .wid-50px{width: 50px!important;}
@@ -109,7 +108,6 @@ input[type=checkbox]:checked:before{
   width: 85%;
   color: #fff; 
   padding: 0px 5px;
-  margin-bottom: 15px;
   height: 30px;
 }
 
