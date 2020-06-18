@@ -7,11 +7,9 @@ import {
 
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { StockService } from "../../services/stock.service";
-import { AlertService } from "src/app/core/common/_services/index";
+import { Stock } from "src/app/core/common/_models/stock";
 import { PrintDialogService } from "src/app/core/services/print-dialog/print-dialog.service";
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
-import { CommonService } from "../../../../../core/common/_services/common.service";
-import {formatDate } from '@angular/common';
 import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
 
 @Component({
@@ -29,10 +27,10 @@ export class StockListComponent implements OnInit {
 	}
 
 	stockList:any = {};
+	stockEditList:any = {};
 	model:any = {};
+	stock:Stock = new Stock();
 	public stockTable = false;
-	public noneditable = false;
-	public editable = false;
 	loadinggif:boolean = false;
 
 	ngOnInit() {
@@ -46,14 +44,14 @@ export class StockListComponent implements OnInit {
 			.subscribe(
 			data => {
 				this.stockList = data;
-				this.stockList.editable = false;
 				this.loadinggif=false;
 				if(this.stockList.length == 0){
 					this.stockTable = false;
 				}else{
+					for (var i = 0; i < this.stockList.length; i++) {
+						this.stockList[i].editable = false; 
+					}
 					this.stockTable = true;
-					this.noneditable = true;
-					this.editable = false;
 				}
 			},
 			error => {
@@ -67,14 +65,12 @@ export class StockListComponent implements OnInit {
 		);
 	}
 
-	editStock(stocklist: any){
-		this.noneditable = false;
-		this.editable = true;
+	editStock(c: any){
+		c.editable = !c.editable;
 	}
 
-	cancelStock(){
-		this.noneditable = true;
-		this.editable = false;
+	cancelStock(c:any){
+		c.editable = false;
 	}
 
 	updateStock(id:string,recentStock:number){
@@ -83,7 +79,7 @@ export class StockListComponent implements OnInit {
 		this.stockService.updateStock(this.model)
 		.subscribe(
 			data => {
-				this.model =   data; 
+				this.stock =  data; 
 				setTimeout(() => {
 					this.snackBar.open("Stock Updated Successfully", "", {
 						panelClass: ["success"],

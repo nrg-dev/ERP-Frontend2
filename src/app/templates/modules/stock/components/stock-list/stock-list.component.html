@@ -27,27 +27,21 @@
           <td>{{c.itemcode}}</td>
           <td>{{c.itemname}}</td>
           <td style="width:10%;">
-            <span *ngIf="noneditable">{{c.recentStock}}</span>
+            <span *ngIf="!c.editable">{{c.recentStock}}</span>
             <input type="text" [(ngModel)]="c.recentStock" #recentStock="ngModel"
-              name="recentStock"  *ngIf="editable" />
+              name="recentStock" *ngIf="c.editable" />
           </td>
           <td></td>
           <td>{{c.status}}</td>
           <td>{{c.unit}}
-            <span class="edit-delete-icon user-icon" *ngIf="noneditable">
-              <span class="fas fa-pen" (click)="editStock(this.stockList)" ></span>
+            <span class="edit-delete-icon user-icon" *ngIf="!c.editable">
+              <span class="fas fa-pen" (click)="editStock(c)" ></span>
             </span>
 
-            <span class="edit-delete-icon user-icon" *ngIf="editable">
+            <span class="edit-delete-icon user-icon" *ngIf="c.editable">
               <span class="fas fa-check" (click)="updateStock(c.id,c.recentStock)" ></span>
-              <span class="fas fa-times" (click)="cancelStock()" ></span>
+              <span class="fas fa-times" (click)="cancelStock(c)" ></span>
             </span>
-
-            <!-- <button *ngIf="enableEdit" (click)="enableEdit=false" class="btn page-secondary-action-btn" ng-click="cancel()">Cancel</button>
-            <button *ngIf="enableEdit" id="saveBtn" class="btn page-primary-action-btn" (click)="saveSegment()" type="submit">Save</button>
-            <a class="table-row-action edit-action" *ngIf="!enableEdit" (click)="enableEdit = true">
-              <i class="fa fa-pencil" uib-tooltip="Edit" tooltip-trigger="mouseenter" tooltip-append-to-body="true" tooltip-placement="left"></i>
-            </a> -->
           </td>
         </tr>
       </tbody>
