@@ -5,6 +5,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 
 
 import { VendorDetailsService } from './../../services/vendorDetails.service';
+import { Vendor } from 'src/app/core/common/_models';
 
 @Component({
   selector: 'app-vendor-details',
@@ -28,7 +29,7 @@ export class VendorDetailsComponent implements OnInit {
   labelNewText="";
   isAddCategory = false;
   newCateogry = "";
-
+  vendor:Vendor = new Vendor;
 
   @HostListener('document:click', ['$event']) closeNaviOnOutClick(event) {
 
@@ -59,6 +60,7 @@ export class VendorDetailsComponent implements OnInit {
     console.log("Vendor code-->"+this.data['vendorcode']);
      this.vendorDetailsService.loadsidepanel(this.data.vendorcode).subscribe(data => {
        console.log(data);
+       this.data.editable = false;
      })
     let id = this.data['vendorcode'];
     this.vendorDetailsService.loadallcategoryitems(id).subscribe((data:any) => {
@@ -212,7 +214,35 @@ export class VendorDetailsComponent implements OnInit {
         })
   }
 
-  editVendor(){
+  editVendor(data: any){
+    data.editable = !data.editable;
   }
 
+  update(data: any){
+    this.vendorDetailsService.updateVendor(data)
+		.subscribe(
+			data => {
+				this.vendor =  data; 
+				setTimeout(() => {
+					this.snackBar.open("Vendor Updated Successfully", "", {
+						panelClass: ["success"],
+						verticalPosition: 'top'      
+					});
+				});
+				this.ngOnInit();
+			},
+			error => {
+				setTimeout(() => {
+					this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+						panelClass: ["error"],
+						verticalPosition: 'top'      
+					});
+				}); 
+			}
+		); 
+  }
+
+  cancelVendor(data: any){
+    data.editable = false;
+  }
 }

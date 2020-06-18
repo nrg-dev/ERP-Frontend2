@@ -2,6 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 import { environment } from "src/environments/environment";
 import { API_ENDPOINTS } from "./../vendor.config";
+import { Vendor } from "../../../../core/common/_models";
 
 @Injectable()
 export class VendorDetailsService {   
@@ -36,6 +37,13 @@ constructor(private http: HttpClient) { }
 
         return this.http.post<any>(
             `${environment.apiUrl}${API_ENDPOINTS.postnewcategory}`, category);
+    }
+
+    updateVendor(data:any){
+        return this.http.put<Vendor>(
+            `${environment.apiUrl}${API_ENDPOINTS.update}`,
+            data
+        );
     }
 
 
