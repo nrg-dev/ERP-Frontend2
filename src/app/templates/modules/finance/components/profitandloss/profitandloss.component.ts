@@ -94,13 +94,14 @@ export class ProfitandLossComponent implements OnInit, OnDestroy {
     if(this.model.todate > this.todayDate){
       setTimeout(() => {
         this.snackBar.open("ToDate was exceeded on today.No Record Found.", "dismiss", {
-          duration: 300000, 
+          duration: 3000, 
           panelClass: ["warning"],
           verticalPosition: "top",
           horizontalPosition: 'center'
         });
       });
       this.loadinggif=false;
+      this.profitTable = true;
     }else{
       this.financeService.filterByDate(this.model).subscribe(
         (res) => {
@@ -128,10 +129,11 @@ export class ProfitandLossComponent implements OnInit, OnDestroy {
             );
           });
         }
-      );
+      );    
     }
-    
+
   }
 
+  
 
 }
