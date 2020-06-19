@@ -145,6 +145,7 @@ input[type=checkbox]:checked:before{
   background: transparent;
   border-top: solid 7px $white;
   border-bottom-width: 0;
+  cursor: pointer;
 }
 
 .sort-by-asc
@@ -158,6 +159,7 @@ input[type=checkbox]:checked:before{
   background: transparent;
   border-bottom: solid 7px $white;
   border-top-width: 0;
+  cursor: pointer;
 }
 .loadingimage{
 	left: 90%;
