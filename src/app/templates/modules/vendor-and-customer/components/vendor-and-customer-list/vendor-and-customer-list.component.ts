@@ -157,9 +157,15 @@ export class VendorAndCustomerListComponent implements OnInit, OnDestroy {
   }
 
   goToVendorDetails(item) {
-    this.dialog.open(VendorDetailsComponent, {
+    let dialogRef = this.dialog.open(VendorDetailsComponent, {
       panelClass: "vendorDetailsView",
       data: item
+    });
+    dialogRef.backdropClick().subscribe(result => {
+      this.getAllVendorDetails();
+    });  
+    dialogRef.afterClosed().subscribe(result => {
+      this.getAllVendorDetails();
     });
   }
 
