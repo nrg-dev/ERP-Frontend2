@@ -72,7 +72,7 @@
         <div class="org-footer" *ngIf="!data.editable">
             <a [routerLink]="" class="icon-printer"></a>
             <div class="icon-edit" (click)="editVendor(data)"></div>
-            <div class="icon-delete" (click)="deleteVendor()"></div>
+            <div class="icon-delete" (click)="deleteVendor(data.vendorcode)"></div>
         </div>
         <div class="org-footer" *ngIf="data.editable">
             <div class="row">

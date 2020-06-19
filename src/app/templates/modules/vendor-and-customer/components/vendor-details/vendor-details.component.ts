@@ -72,9 +72,7 @@ export class VendorDetailsComponent implements OnInit {
     this.getCategoryItems();
 
   }
-  deleteVendor() {
-    
-  }
+  
   getCategoryItems() {
     this.vendorDetailsService.loadallcategories().subscribe((data: any) => {
       this.categoriesForFilter = data;
@@ -244,5 +242,28 @@ export class VendorDetailsComponent implements OnInit {
 
   cancelVendor(data: any){
     data.editable = false;
+  }
+
+  deleteVendor(vendorcode:string) {
+    this.vendorDetailsService.removeVendor(vendorcode)
+    .subscribe(
+      data => {
+        setTimeout(() => {
+          this.snackBar.open("Vendor Removed Successfully", "", {
+            panelClass: ["success"],
+            verticalPosition: 'top'      
+          });
+        });
+        this.vendorDetailsClose();
+      },
+      error => {
+        setTimeout(() => {
+          this.snackBar.open("Network error: server is temporarily unavailable", "dismss", {
+            panelClass: ["error"],
+            verticalPosition: 'top'      
+          });
+        });  
+      }
+    );
   }
 }

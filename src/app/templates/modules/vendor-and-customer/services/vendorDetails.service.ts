@@ -46,5 +46,8 @@ constructor(private http: HttpClient) { }
         );
     }
 
+    removeVendor(vendorcode:string){
+        return this.http.delete(`${environment.apiUrl}${API_ENDPOINTS.remove}`+'?vendorcode='+vendorcode);
+    }
 
 }
